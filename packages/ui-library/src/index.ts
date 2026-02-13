@@ -146,6 +146,13 @@ export {
 
 export { TOKEN_METADATA } from './styles/generated/token-metadata.js'
 
+export {
+  COMPONENT_METADATA,
+  type ComponentMeta,
+  type ComponentPropMeta,
+  type CompoundComponentMeta,
+} from './generated/component-metadata.js'
+
 // Semantic token utilities (derived from TOKEN_METADATA)
 export {
   COLOR_PALETTES,

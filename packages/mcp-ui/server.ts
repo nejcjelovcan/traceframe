@@ -2,11 +2,6 @@ import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { ErrorCode, McpError } from '@modelcontextprotocol/sdk/types.js'
 
 import {
-  captureStorybookScreenshotsTool,
-  captureStorybookScreenshotsDescription,
-  captureStorybookScreenshotsInputSchema,
-} from './tools/capture-storybook-screenshots.js'
-import {
   getComponentTool,
   getComponentDescription,
   getComponentInputSchema,
@@ -30,35 +25,10 @@ import {
 } from './tools/list-components.js'
 import { listIconsTool, listIconsDescription, listIconsInputSchema } from './tools/list-icons.js'
 import {
-  runOrOpenPlayroomTool,
-  runOrOpenPlayroomDescription,
-  runOrOpenPlayroomInputSchema,
-} from './tools/run-or-open-playroom.js'
-import {
-  runOrOpenStorybookTool,
-  runOrOpenStorybookDescription,
-  runOrOpenStorybookInputSchema,
-} from './tools/run-or-open-storybook.js'
-import {
   searchIconsTool,
   searchIconsDescription,
   searchIconsInputSchema,
 } from './tools/search-icons.js'
-import {
-  stopPlayroomTool,
-  stopPlayroomDescription,
-  stopPlayroomInputSchema,
-} from './tools/stop-playroom.js'
-import {
-  stopStorybookTool,
-  stopStorybookDescription,
-  stopStorybookInputSchema,
-} from './tools/stop-storybook.js'
-import {
-  validateTokenDefinitionsTool,
-  validateTokenDefinitionsDescription,
-  validateTokenDefinitionsInputSchema,
-} from './tools/validate-token-definitions.js'
 import {
   validateTokensTool,
   validateTokensDescription,
@@ -73,130 +43,6 @@ export function createServer(): McpServer {
     name: 'mcp-ui',
     version: '0.1.0',
   })
-
-  // Register the capture_storybook_screenshots tool
-  server.registerTool(
-    'capture_storybook_screenshots',
-    {
-      description: captureStorybookScreenshotsDescription,
-      inputSchema: captureStorybookScreenshotsInputSchema,
-    },
-    async (args) => {
-      if (!Array.isArray(args.stories) || args.stories.length === 0) {
-        throw new McpError(
-          ErrorCode.InvalidParams,
-          'stories is required and must be a non-empty array of strings'
-        )
-      }
-      const storyFilter = typeof args.storyFilter === 'string' ? args.storyFilter : undefined
-      const port = typeof args.port === 'number' ? args.port : undefined
-      const result = await captureStorybookScreenshotsTool({
-        stories: args.stories as string[],
-        ...(storyFilter !== undefined ? { storyFilter } : {}),
-        ...(port !== undefined ? { port } : {}),
-      })
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(result, null, 2),
-          },
-        ],
-      }
-    }
-  )
-
-  // Register the run_or_open_storybook tool
-  server.registerTool(
-    'run_or_open_storybook',
-    {
-      description: runOrOpenStorybookDescription,
-      inputSchema: runOrOpenStorybookInputSchema,
-    },
-    async (args) => {
-      const port = typeof args.port === 'number' ? args.port : undefined
-      const result = await runOrOpenStorybookTool({
-        ...(port !== undefined ? { port } : {}),
-      })
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(result, null, 2),
-          },
-        ],
-      }
-    }
-  )
-
-  // Register the stop_storybook tool
-  server.registerTool(
-    'stop_storybook',
-    {
-      description: stopStorybookDescription,
-      inputSchema: stopStorybookInputSchema,
-    },
-    async (args) => {
-      const port = typeof args.port === 'number' ? args.port : undefined
-      const result = await stopStorybookTool({
-        ...(port !== undefined ? { port } : {}),
-      })
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(result, null, 2),
-          },
-        ],
-      }
-    }
-  )
-
-  // Register the run_or_open_playroom tool
-  server.registerTool(
-    'run_or_open_playroom',
-    {
-      description: runOrOpenPlayroomDescription,
-      inputSchema: runOrOpenPlayroomInputSchema,
-    },
-    async (args) => {
-      const port = typeof args.port === 'number' ? args.port : undefined
-      const result = await runOrOpenPlayroomTool({
-        ...(port !== undefined ? { port } : {}),
-      })
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(result, null, 2),
-          },
-        ],
-      }
-    }
-  )
-
-  // Register the stop_playroom tool
-  server.registerTool(
-    'stop_playroom',
-    {
-      description: stopPlayroomDescription,
-      inputSchema: stopPlayroomInputSchema,
-    },
-    async (args) => {
-      const port = typeof args.port === 'number' ? args.port : undefined
-      const result = await stopPlayroomTool({
-        ...(port !== undefined ? { port } : {}),
-      })
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(result, null, 2),
-          },
-        ],
-      }
-    }
-  )
 
   // Register the list_components tool
   server.registerTool(
@@ -387,33 +233,6 @@ export function createServer(): McpServer {
         ...(fix !== undefined ? { fix } : {}),
         ...(report !== undefined ? { report } : {}),
         ...(includeTests !== undefined ? { includeTests } : {}),
-      })
-      return {
-        content: [
-          {
-            type: 'text',
-            text: JSON.stringify(result, null, 2),
-          },
-        ],
-      }
-    }
-  )
-
-  // Register the validate_token_definitions tool
-  server.registerTool(
-    'validate_token_definitions',
-    {
-      description: validateTokenDefinitionsDescription,
-      inputSchema: validateTokenDefinitionsInputSchema,
-    },
-    async (args) => {
-      const report =
-        typeof args.report === 'string' && ['summary', 'detailed'].includes(args.report)
-          ? (args.report as 'summary' | 'detailed')
-          : undefined
-
-      const result = await validateTokenDefinitionsTool({
-        ...(report !== undefined ? { report } : {}),
       })
       return {
         content: [
