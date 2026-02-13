@@ -1,0 +1,52 @@
+{
+  "name": "@nejcjelovcan/traceframe-storybook-preset",
+  "version": "0.0.1",
+  "description": "Storybook preset for Traceframe theme integration",
+  "main": "./preset.cjs",
+  "exports": {
+    ".": {
+      "require": "./preset.cjs"
+    },
+    "./preview": {
+      "types": "./dist/preview.d.ts",
+      "import": "./dist/preview.js"
+    }
+  },
+  "files": [
+    "dist",
+    "preset.cjs"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nejcjelovcan/traceframe.git",
+    "directory": "packages/storybook-preset"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "typecheck": "tsc --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
+    "format": "prettier --cache --write \"**/*.{ts,tsx,json,md,cjs}\"",
+    "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md,cjs}\""
+  },
+  "dependencies": {
+    "@nejcjelovcan/traceframe-ui-library": "workspace:*"
+  },
+  "peerDependencies": {
+    "@storybook/addon-themes": "^8.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-themes": "^8.5.3",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.3"
+  }
+}

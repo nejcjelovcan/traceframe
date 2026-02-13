@@ -1,7 +1,7 @@
 /**
  * Playroom theme definitions.
  *
- * Each theme is a combination of mode (light/dark) and color theme (dusk/arctic).
+ * Each theme is a combination of mode (light/dark) and color theme (dusk/arctic/ember).
  * Playroom expects named exports - the export name becomes the theme key.
  */
 

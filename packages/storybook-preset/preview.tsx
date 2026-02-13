@@ -1,0 +1,27 @@
+import { withThemeByClassName } from '@storybook/addon-themes'
+import React from 'react'
+
+import { ThemeProvider } from '@nejcjelovcan/traceframe-ui-library'
+import '@nejcjelovcan/traceframe-ui-library/fonts'
+import '@nejcjelovcan/traceframe-ui-library/styles.css'
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const decorators: readonly any[] = [
+  withThemeByClassName({
+    themes: {
+      'Dusk Light': 'dusk light',
+      'Dusk Dark': 'dusk dark',
+      'Arctic Light': 'arctic light',
+      'Arctic Dark': 'arctic dark',
+      'Ember Light': 'ember light',
+      'Ember Dark': 'ember dark',
+    },
+    defaultTheme: 'Dusk Light',
+    parentSelector: 'html',
+  }),
+  (Story: React.ComponentType) => (
+    <ThemeProvider>
+      <Story />
+    </ThemeProvider>
+  ),
+]

@@ -12,7 +12,7 @@ export const statCardSnippets: Snippet[] = [
     code: `<StatCard
   label="Downloads"
   value={1250}
-  trend={{ value: 12, direction: 'up' }}
+  trend="+12%"
 />`,
   },
   {
@@ -31,15 +31,15 @@ export const statCardSnippets: Snippet[] = [
   label="Coverage"
   value={84.5}
   formatValue={(v) => \`\${v}%\`}
-  trend={{ value: 5, direction: 'up' }}
+  trend="+5%"
 />`,
   },
   {
     group: 'StatCard',
     name: 'Grid of Stats',
     code: `<Grid cols={{ md: 4 }} gap="base">
-  <StatCard label="Components" value={142} icon="components" trend={{ value: 12, direction: 'up' }} />
-  <StatCard label="Dependencies" value={48} icon="hierarchy" trend={{ value: 3, direction: 'down' }} />
+  <StatCard label="Components" value={142} icon="components" trend="+12%" />
+  <StatCard label="Dependencies" value={48} icon="hierarchy" trend="-3%" />
   <StatCard label="Issues" value={7} icon="alert-circle" />
   <StatCard label="Coverage" value={84} formatValue={(v) => \`\${v}%\`} />
 </Grid>`,

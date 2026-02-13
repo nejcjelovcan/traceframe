@@ -2,38 +2,24 @@
   "name": "@nejcjelovcan/traceframe-playroom",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
   "description": "Playroom configuration for Traceframe UI library",
   "scripts": {
     "build": "playroom build",
     "start": "playroom start",
     "build:playroom": "playroom build",
-    "typecheck": "tsc --noEmit",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
-    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
-    "format": "prettier --cache --write \"**/*.{ts,tsx,json,md,css,cjs}\"",
-    "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md,css,cjs}\""
+    "format": "prettier --cache --write \"**/*.{json,md,cjs}\"",
+    "format:check": "prettier --cache --check \"**/*.{json,md,cjs}\""
   },
   "dependencies": {
+    "@nejcjelovcan/traceframe-playroom-preset": "workspace:*",
     "@nejcjelovcan/traceframe-ui-library": "workspace:*"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.0",
-    "@babel/preset-env": "^7.29.0",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/preset-typescript": "^7.28.5",
-    "@types/node": "^20.17.10",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "babel-loader": "^10.0.0",
-    "css-loader": "^7.1.3",
+    "autoprefixer": "^10.4.20",
     "playroom": "^1.0.7",
     "postcss": "^8.5.1",
-    "postcss-loader": "^8.2.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "style-loader": "^4.0.0",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^5.9.3"
+    "tailwindcss": "^3.4.17"
   }
 }
