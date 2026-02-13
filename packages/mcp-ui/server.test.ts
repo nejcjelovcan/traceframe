@@ -22,14 +22,9 @@ describe('MCP Server', () => {
       await Promise.all([server.connect(serverTransport), client.connect(clientTransport)])
 
       const toolsResult = await client.listTools()
-      expect(toolsResult.tools).toHaveLength(14)
+      expect(toolsResult.tools).toHaveLength(8)
 
       const toolNames = toolsResult.tools.map((t) => t.name)
-      expect(toolNames).toContain('capture_storybook_screenshots')
-      expect(toolNames).toContain('run_or_open_storybook')
-      expect(toolNames).toContain('stop_storybook')
-      expect(toolNames).toContain('run_or_open_playroom')
-      expect(toolNames).toContain('stop_playroom')
       expect(toolNames).toContain('list_components')
       expect(toolNames).toContain('get_component')
       expect(toolNames).toContain('get_design_tokens')
@@ -38,43 +33,6 @@ describe('MCP Server', () => {
       expect(toolNames).toContain('list_icons')
       expect(toolNames).toContain('get_icon')
       expect(toolNames).toContain('validate_tokens')
-      expect(toolNames).toContain('validate_token_definitions')
-
-      await client.close()
-      await server.close()
-    })
-
-    it('should return error for capture_storybook_screenshots with missing stories', async () => {
-      const server = createServer()
-      const client = new Client({ name: 'test-client', version: '1.0.0' })
-
-      const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair()
-
-      await Promise.all([server.connect(serverTransport), client.connect(clientTransport)])
-
-      const result = await client.callTool({
-        name: 'capture_storybook_screenshots',
-        arguments: {},
-      })
-      expect(result.isError).toBe(true)
-
-      await client.close()
-      await server.close()
-    })
-
-    it('should return error for capture_storybook_screenshots with empty stories array', async () => {
-      const server = createServer()
-      const client = new Client({ name: 'test-client', version: '1.0.0' })
-
-      const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair()
-
-      await Promise.all([server.connect(serverTransport), client.connect(clientTransport)])
-
-      const result = await client.callTool({
-        name: 'capture_storybook_screenshots',
-        arguments: { stories: [] },
-      })
-      expect(result.isError).toBe(true)
 
       await client.close()
       await server.close()

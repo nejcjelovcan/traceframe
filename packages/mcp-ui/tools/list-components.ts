@@ -1,10 +1,16 @@
 import { z } from 'zod'
 
-import {
-  COMPONENT_CATEGORIES,
-  getAllComponents,
-  type ComponentSummary,
-} from '../utils/storybook-parser.js'
+import { COMPONENT_METADATA, type ComponentMeta } from '@nejcjelovcan/traceframe-ui-library'
+
+const COMPONENT_CATEGORIES = [
+  'primitives',
+  'layout',
+  'data',
+  'feedback',
+  'selection',
+  'behavioral',
+  'foundation',
+] as const
 
 /**
  * Input schema for list_components tool.
@@ -32,6 +38,17 @@ export interface ListComponentsInput {
 }
 
 /**
+ * Summary of a component for listing.
+ */
+export interface ComponentSummary {
+  name: string
+  category: string
+  tier: 1 | 2
+  tierLabel: string
+  description: string
+}
+
+/**
  * Result type for listComponentsTool.
  */
 export interface ListComponentsResult {
@@ -47,6 +64,16 @@ export interface ListComponentsResult {
   error?: string
 }
 
+function toSummary(meta: ComponentMeta): ComponentSummary {
+  return {
+    name: meta.name,
+    category: meta.category,
+    tier: meta.tier,
+    tierLabel: meta.tierLabel,
+    description: meta.description,
+  }
+}
+
 /**
  * List all ui-library components with summaries.
  *
@@ -54,42 +81,34 @@ export interface ListComponentsResult {
  * @returns Result with list of components
  */
 export async function listComponentsTool(args: ListComponentsInput): Promise<ListComponentsResult> {
-  try {
-    const components = await getAllComponents(args.category)
+  const allComponents = Object.values(COMPONENT_METADATA)
+  const components = args.category
+    ? allComponents.filter((c) => c.category === args.category).map(toSummary)
+    : allComponents.map(toSummary)
 
-    if (components.length === 0) {
-      return {
-        success: true,
-        components: [],
-        count: 0,
-        summary: args.category
-          ? `No components found in category "${args.category}"`
-          : 'No components found',
-      }
-    }
-
-    // Group by category for summary
-    const categories = new Set(components.map((c) => c.category))
-    const tier1Count = components.filter((c) => c.tier === 1).length
-    const tier2Count = components.filter((c) => c.tier === 2).length
-
-    const summary = args.category
-      ? `Found ${components.length} component(s) in "${args.category}" category (Tier 1: ${tier1Count}, Tier 2: ${tier2Count})`
-      : `Found ${components.length} component(s) across ${categories.size} categories (Tier 1: ${tier1Count}, Tier 2: ${tier2Count})`
-
+  if (components.length === 0) {
     return {
       success: true,
-      components,
-      count: components.length,
-      summary,
-    }
-  } catch (error) {
-    return {
-      success: false,
       components: [],
       count: 0,
-      summary: 'Failed to list components',
-      error: error instanceof Error ? error.message : String(error),
+      summary: args.category
+        ? `No components found in category "${args.category}"`
+        : 'No components found',
     }
+  }
+
+  const categories = new Set(components.map((c) => c.category))
+  const tier1Count = components.filter((c) => c.tier === 1).length
+  const tier2Count = components.filter((c) => c.tier === 2).length
+
+  const summary = args.category
+    ? `Found ${components.length} component(s) in "${args.category}" category (Tier 1: ${tier1Count}, Tier 2: ${tier2Count})`
+    : `Found ${components.length} component(s) across ${categories.size} categories (Tier 1: ${tier1Count}, Tier 2: ${tier2Count})`
+
+  return {
+    success: true,
+    components,
+    count: components.length,
+    summary,
   }
 }

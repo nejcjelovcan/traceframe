@@ -7,5 +7,5 @@
   "access": "restricted",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
-  "ignore": ["@nejcjelovcan/traceframe-mcp-ui", "@nejcjelovcan/traceframe-playroom"]
+  "ignore": ["@nejcjelovcan/traceframe-playroom"]
 }

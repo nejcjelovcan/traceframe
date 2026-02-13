@@ -20,7 +20,8 @@
   },
   "scripts": {
     "dev": "tsc --watch --project tsconfig.build.json",
-    "build": "tsc --build tsconfig.build.json && pnpm build:css",
+    "build": "pnpm generate:component-metadata && tsc --build tsconfig.build.json && pnpm build:css",
+    "generate:component-metadata": "node scripts/generate-component-metadata.js",
     "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/styles.css",
     "generate:tokens": "node scripts/build-tokens.js",
     "validate:token-definitions": "node scripts/validate-token-definitions.js",

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { getComponentByName, type ComponentDetails } from '../utils/storybook-parser.js'
+import { COMPONENT_METADATA, type ComponentMeta } from '@nejcjelovcan/traceframe-ui-library'
 
 /**
  * Input schema for get_component tool.
@@ -29,7 +29,7 @@ export interface GetComponentResult {
   /** Whether the operation succeeded */
   success: boolean
   /** Component details */
-  component?: ComponentDetails
+  component?: ComponentMeta
   /** Human-readable summary */
   summary: string
   /** Error message if operation failed */
@@ -53,30 +53,27 @@ export async function getComponentTool(args: GetComponentInput): Promise<GetComp
     }
   }
 
-  try {
-    const component = await getComponentByName(name.trim())
+  const normalizedName = name.trim().toLowerCase()
 
-    if (!component) {
-      return {
-        success: false,
-        summary: `Component "${name}" not found`,
-        error: `No component named "${name}" found in ui-library. Use list_components to see available components.`,
-      }
-    }
+  // Look up by exact name first, then case-insensitive
+  const component =
+    COMPONENT_METADATA[name.trim()] ??
+    Object.values(COMPONENT_METADATA).find((c) => c.name.toLowerCase() === normalizedName)
 
-    const tierInfo = component.tier === 2 ? ' (Radix UI Primitive)' : ' (Tailwind + CVA)'
-    const propsInfo = component.props.length > 0 ? `, ${component.props.length} props` : ''
-
-    return {
-      success: true,
-      component,
-      summary: `Found ${component.name}: Tier ${component.tier}${tierInfo}, ${component.category} category${propsInfo}`,
-    }
-  } catch (error) {
+  if (!component) {
     return {
       success: false,
-      summary: 'Failed to get component details',
-      error: error instanceof Error ? error.message : String(error),
+      summary: `Component "${name}" not found`,
+      error: `No component named "${name}" found in ui-library. Use list_components to see available components.`,
     }
+  }
+
+  const tierInfo = component.tier === 2 ? ' (Radix UI Primitive)' : ' (Tailwind + CVA)'
+  const propsInfo = component.props.length > 0 ? `, ${component.props.length} props` : ''
+
+  return {
+    success: true,
+    component,
+    summary: `Found ${component.name}: Tier ${component.tier}${tierInfo}, ${component.category} category${propsInfo}`,
   }
 }

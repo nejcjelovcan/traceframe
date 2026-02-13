@@ -22,6 +22,11 @@
     "linear-server": {
       "type": "http",
       "url": "https://mcp.linear.app/mcp"
+    },
+    "mcp-ui": {
+      "type": "stdio",
+      "command": "pnpm",
+      "args": ["--filter", "@nejcjelovcan/traceframe-mcp-ui", "dev"]
     }
   }
 }
