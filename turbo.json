@@ -32,9 +32,11 @@
       "outputs": []
     },
     "lint": {
+      "dependsOn": ["@nejcjelovcan/eslint-plugin-traceframe#build"],
       "inputs": ["**/*.{ts,tsx,json,html}"]
     },
     "lint:fix": {
+      "dependsOn": ["@nejcjelovcan/eslint-plugin-traceframe#build"],
       "inputs": ["**/*.{ts,tsx,json,html}"],
       "outputs": ["**/*.{ts,tsx,json,html}"]
     },
