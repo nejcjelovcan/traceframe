@@ -35,6 +35,14 @@
     "format": "prettier --cache --write \"**/*.{ts,tsx,json,md,css}\"",
     "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md,css}\""
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nejcjelovcan/traceframe.git",
+    "directory": "packages/ui-library"
+  },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"

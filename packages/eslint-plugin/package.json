@@ -5,6 +5,14 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "description": "ESLint plugin with custom rules for Traceframe code quality",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nejcjelovcan/traceframe.git",
+    "directory": "packages/eslint-plugin"
+  },
   "scripts": {
     "build": "tsc --build",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
