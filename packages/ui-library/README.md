@@ -52,130 +52,121 @@ For components requiring complex interactions:
 - Component needs complex keyboard interactions
 - Component has ARIA requirements beyond basic attributes
 
-## Quick Start
+## Install
 
 ```bash
-# Install dependencies
-pnpm install
-
-# Run Storybook for development
-pnpm storybook
-
-# Build the library
-pnpm build
-
-# Run tests
-pnpm test
+npm install @nejcjelovcan/traceframe-ui-library
 ```
 
-## Usage
+**Peer dependencies:** `react@^19`, `react-dom@^19`
+
+> Packages are published to GitHub Packages. Add `@nejcjelovcan:registry=https://npm.pkg.github.com` to your `.npmrc`.
+
+## Consumer Setup
+
+### 1. Configure Tailwind
+
+The library exports a Tailwind preset with all design tokens (colors, typography, spacing, sizing, shadows, animations, dark mode):
+
+```typescript
+// tailwind.config.ts
+import type { Config } from 'tailwindcss'
+import traceframePreset from '@nejcjelovcan/traceframe-ui-library/tailwind-preset'
+
+const config: Config = {
+  presets: [traceframePreset],
+  content: [
+    './src/**/*.{ts,tsx}',
+    // CRITICAL: Include ui-library dist so Tailwind generates classes used by components
+    './node_modules/@nejcjelovcan/traceframe-ui-library/dist/**/*.js',
+  ],
+}
+
+export default config
+```
+
+### 2. Import Fonts and Styles
+
+In your app entry point (e.g., `main.tsx`):
+
+```typescript
+import '@nejcjelovcan/traceframe-ui-library/fonts'
+import '@nejcjelovcan/traceframe-ui-library/styles.css'
+import './index.css' // Your Tailwind CSS entry (@tailwind base/components/utilities)
+```
+
+The `fonts` import loads variable web fonts (IBM Plex Sans, Inter, Space Grotesk, IBM Plex Mono, JetBrains Mono, Space Mono). The `styles.css` import loads all design token CSS variables and Tailwind utilities.
+
+### 3. Wrap with ThemeProvider
 
 ```tsx
-import { Button } from '@nejcjelovcan/traceframe-ui-library'
-import '@nejcjelovcan/traceframe-ui-library/styles.css'
+import { ThemeProvider } from '@nejcjelovcan/traceframe-ui-library'
 
 function App() {
   return (
-    <Button variant="primary" size="md">
-      Click me
-    </Button>
+    <ThemeProvider defaultTheme="dusk" defaultMode="light">
+      {/* Your app */}
+    </ThemeProvider>
   )
 }
 ```
 
-## Component Catalog
-
-### Tooltip (Radix-based)
-
-Accessible tooltip component with automatic positioning.
+### 4. Use Components
 
 ```tsx
-import { Tooltip } from '@nejcjelovcan/traceframe-ui-library'
-
-// Wrap your app (or part of it) with TooltipProvider
-<Tooltip.Provider>
-  <Tooltip.Root>
-    <Tooltip.Trigger asChild>
-      <button>Hover me</button>
-    </Tooltip.Trigger>
-    <Tooltip.Content>Tooltip text</Tooltip.Content>
-  </Tooltip.Root>
-</Tooltip.Provider>
-
-// Variants
-<Tooltip.Content variant="default">Dark background</Tooltip.Content>
-<Tooltip.Content variant="light">Light background</Tooltip.Content>
-
-// Placement (auto-repositions on collision)
-<Tooltip.Content side="top">Top</Tooltip.Content>
-<Tooltip.Content side="bottom">Bottom</Tooltip.Content>
-<Tooltip.Content side="left">Left</Tooltip.Content>
-<Tooltip.Content side="right">Right</Tooltip.Content>
-
-// Without arrow
-<Tooltip.Content showArrow={false}>No arrow</Tooltip.Content>
-
-// Provider delay configuration
-<Tooltip.Provider delayDuration={300}>...</Tooltip.Provider>
+import { Button, Icon, Badge } from '@nejcjelovcan/traceframe-ui-library'
+;<Button variant="primary" size="md">
+  <Icon name="search" size="sm" />
+  Search
+</Button>
 ```
 
-### Button
+### Exports
 
-A versatile button component with multiple variants and sizes.
+| Subpath             | Description                                     |
+| ------------------- | ----------------------------------------------- |
+| `.`                 | All components, utilities, types                |
+| `./fonts`           | Side-effect import that loads web fonts         |
+| `./styles.css`      | Compiled CSS with tokens and Tailwind utilities |
+| `./tailwind-preset` | Tailwind preset with all design tokens          |
 
-```tsx
-import { Button } from '@nejcjelovcan/traceframe-ui-library'
+## Local Development
 
-// Variants
-<Button variant="primary">Primary</Button>
-<Button variant="secondary">Secondary</Button>
-<Button variant="outline">Outline</Button>
-<Button variant="ghost">Ghost</Button>
-<Button variant="destructive">Delete</Button>
-
-// Sizes
-<Button size="sm">Small</Button>
-<Button size="md">Medium</Button>
-<Button size="lg">Large</Button>
+```bash
+pnpm install
+pnpm storybook    # Start Storybook dev server
+pnpm build        # Build the library
+pnpm test         # Run tests
 ```
+
+## Components
+
+| Category   | Components                                                                                                     |
+| ---------- | -------------------------------------------------------------------------------------------------------------- |
+| Primitives | `Badge`, `Button`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`), `Heading`, `Input`, `Link`, `Spinner` |
+| Layout     | `Container`, `Grid`, `Stack`, `PageLayout` (+ `PageHeader`)                                                    |
+| Data       | `DataTable`, `BarChart`, `StatCard`                                                                            |
+| Feedback   | `EmptyState`, `ErrorState`                                                                                     |
+| Selection  | `Select`, `SearchInput`, `ToggleGroup`                                                                         |
+| Behavioral | `Collapsible` (+ trigger/content/header), `Tooltip` (+ provider/trigger/content), `Navigation` (+ `NavItem`)   |
+| Theme      | `ThemeProvider`, `ModeSwitcher`, `ThemeSwitcher`                                                               |
+| Icons      | `Icon` (+ `getAllIconNames`, `getIconsByCategory`, `searchIcons`)                                              |
+| Utilities  | `cn` (class merging), `applyMode`, `applyTheme`, `MODES`, `THEMES`                                             |
+
+Browse all components interactively in [Storybook](https://nejcjelovcan.github.io/traceframe/).
 
 ## Storybook
 
-Run Storybook to view and interact with components:
+**Live:** [nejcjelovcan.github.io/traceframe/storybook](https://nejcjelovcan.github.io/traceframe/)
+
+Run locally:
 
 ```bash
-pnpm storybook
+pnpm storybook           # Dev server at http://localhost:6006
+pnpm build-storybook     # Build static version to storybook-static/
 ```
 
-This starts a local development server at http://localhost:6006.
-
-### Building Storybook
-
-To build a static version of Storybook:
-
-```bash
-pnpm build-storybook
-```
-
-The output is placed in `storybook-static/`.
-
-### Capturing Screenshots
-
-Use the `capture_storybook_screenshots` MCP tool to capture PNG screenshots of component stories:
-
-```
-# Capture screenshots for a specific component
-capture_storybook_screenshots(stories: ["src/components/Button.stories.tsx"])
-
-# Capture all stories (not just AllVariants)
-capture_storybook_screenshots(stories: ["src/components/Card.stories.tsx"], storyFilter: "")
-```
-
-Screenshots are saved to `screenshots/` in the repository root. This is useful for:
-
-- Visual documentation in PRs
-- Before/after comparisons during refactoring
-- Sharing component previews without running Storybook
+To add Traceframe theme switching to your own Storybook, see [`@nejcjelovcan/traceframe-storybook-preset`](../storybook-preset).
 
 ## Design Tokens
 
@@ -421,24 +412,8 @@ packages/ui-library/
 
 ## Dependencies
 
-### Runtime
+All runtime dependencies are bundled -- consumers only need to install peer dependencies.
 
-- `@radix-ui/react-tooltip` - Tooltip primitive (behavioral foundation)
-- `@tabler/icons-react` - Icon library (5,600+ icons)
-- `class-variance-authority` - Type-safe component variants
-- `clsx` - Conditional class names
-- `tailwind-merge` - Merge Tailwind classes intelligently
+**Peer:** `react@^19`, `react-dom@^19`
 
-> **Note:** Additional Radix packages (`@radix-ui/react-dialog`, `@radix-ui/react-popover`, etc.) will be added as we implement more behavioral components.
-
-### Peer
-
-- `react` - UI framework
-- `react-dom` - DOM rendering
-
-### Development
-
-- `tailwindcss` - Utility-first CSS
-- `storybook` - Component development environment
-- `vitest` - Test runner
-- `@testing-library/react` - Testing utilities
+**Bundled runtime:** Radix UI primitives (collapsible, select, toggle-group, tooltip), Tabler Icons, TanStack Virtual, CVA, clsx, tailwind-merge, Fontsource variable fonts
