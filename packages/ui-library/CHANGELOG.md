@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 0.1.1
+
+### Patch Changes
+
+- [#19](https://github.com/nejcjelovcan/traceframe/pull/19) [`244bc1f`](https://github.com/nejcjelovcan/traceframe/commit/244bc1f648d8febfdf68c1d39b7f56ad0633b1ae) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix Grid responsive cols prop not applying md/lg/xl breakpoint classes due to dynamic Tailwind class construction
+
 ## 0.1.0
 
 ### Minor Changes
