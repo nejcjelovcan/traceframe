@@ -1,4 +1,4 @@
-export * from '@traceframe/ui-library'
+export * from '@nejcjelovcan/traceframe-ui-library'
 
 // Export some useful types for TypeScript support
-export type { IconName } from '@traceframe/ui-library'
+export type { IconName } from '@nejcjelovcan/traceframe-ui-library'

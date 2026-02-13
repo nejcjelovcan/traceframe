@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ThemeProvider, type Mode, type Theme } from '@traceframe/ui-library'
-import '@traceframe/ui-library/fonts'
-import '@traceframe/ui-library/styles.css'
+import { ThemeProvider, type Mode, type Theme } from '@nejcjelovcan/traceframe-ui-library'
+import '@nejcjelovcan/traceframe-ui-library/fonts'
+import '@nejcjelovcan/traceframe-ui-library/styles.css'
 
 interface ThemeValue {
   name: string

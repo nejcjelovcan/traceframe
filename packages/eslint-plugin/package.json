@@ -1,5 +1,5 @@
 {
-  "name": "@traceframe/eslint-plugin",
+  "name": "@nejcjelovcan/traceframe-eslint-plugin",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -25,7 +25,7 @@
     "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md}\""
   },
   "dependencies": {
-    "@traceframe/ui-library": "workspace:^",
+    "@nejcjelovcan/traceframe-ui-library": "workspace:^",
     "@typescript-eslint/utils": "^8.18.1"
   },
   "devDependencies": {

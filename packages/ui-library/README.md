@@ -1,4 +1,4 @@
-# @traceframe/ui-library
+# @nejcjelovcan/traceframe-ui-library
 
 Shared React component library for Traceframe applications.
 
@@ -71,8 +71,8 @@ pnpm test
 ## Usage
 
 ```tsx
-import { Button } from '@traceframe/ui-library'
-import '@traceframe/ui-library/styles.css'
+import { Button } from '@nejcjelovcan/traceframe-ui-library'
+import '@nejcjelovcan/traceframe-ui-library/styles.css'
 
 function App() {
   return (
@@ -90,7 +90,7 @@ function App() {
 Accessible tooltip component with automatic positioning.
 
 ```tsx
-import { Tooltip } from '@traceframe/ui-library'
+import { Tooltip } from '@nejcjelovcan/traceframe-ui-library'
 
 // Wrap your app (or part of it) with TooltipProvider
 <Tooltip.Provider>
@@ -124,7 +124,7 @@ import { Tooltip } from '@traceframe/ui-library'
 A versatile button component with multiple variants and sizes.
 
 ```tsx
-import { Button } from '@traceframe/ui-library'
+import { Button } from '@nejcjelovcan/traceframe-ui-library'
 
 // Variants
 <Button variant="primary">Primary</Button>
@@ -287,7 +287,7 @@ This library provides a standardized icon system built on [Tabler Icons](https:/
 ### Quick Start
 
 ```tsx
-import { Icon } from '@traceframe/ui-library'
+import { Icon } from '@nejcjelovcan/traceframe-ui-library'
 
 <Icon name="search" />
 <Icon name="package" size="lg" />
@@ -348,7 +348,7 @@ const buttonVariants = cva('base-classes', {
 The `cn` utility combines clsx and tailwind-merge:
 
 ```tsx
-import { cn } from '@traceframe/ui-library'
+import { cn } from '@nejcjelovcan/traceframe-ui-library'
 
 cn('px-2', 'px-4') // 'px-4' (merge handles conflicts)
 cn('base', condition && 'conditional') // conditional classes

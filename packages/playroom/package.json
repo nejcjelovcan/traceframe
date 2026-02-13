@@ -1,5 +1,5 @@
 {
-  "name": "@traceframe/playroom",
+  "name": "@nejcjelovcan/traceframe-playroom",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -14,7 +14,7 @@
     "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md,css,cjs}\""
   },
   "dependencies": {
-    "@traceframe/ui-library": "workspace:*"
+    "@nejcjelovcan/traceframe-ui-library": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",

@@ -233,7 +233,7 @@ const packageColumns: Column<PackageRow>[] = [
 
 const packageData: PackageRow[] = [
   {
-    name: '@traceframe/ui-library',
+    name: '@nejcjelovcan/traceframe-ui-library',
     version: '1.0.0',
     components: 12,
     dependencies: 5,

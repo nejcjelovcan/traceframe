@@ -11,7 +11,7 @@ import {
   isNonSemanticColorClass,
   isNonSemanticSizingClass,
   isNonSemanticSpacingClass,
-} from '@traceframe/ui-library'
+} from '@nejcjelovcan/traceframe-ui-library'
 
 export const validateTokensDescription =
   'Validate semantic token usage in TypeScript/TSX files and provide migration suggestions'

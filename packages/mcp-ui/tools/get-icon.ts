@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { ICON_METADATA, type IconMeta, type IconName } from '@traceframe/ui-library'
+import { ICON_METADATA, type IconMeta, type IconName } from '@nejcjelovcan/traceframe-ui-library'
 
 /**
  * Input schema for get_icon tool.

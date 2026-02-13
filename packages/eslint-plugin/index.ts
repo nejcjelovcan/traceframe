@@ -1,5 +1,5 @@
 /**
- * @traceframe/eslint-plugin
+ * @nejcjelovcan/traceframe-eslint-plugin
  * ESLint plugin with custom rules for Traceframe code quality
  */
 
@@ -11,9 +11,9 @@ export const rules = {
 
 export const configs = {
   recommended: {
-    plugins: ['@traceframe'],
+    plugins: ['@nejcjelovcan/traceframe'],
     rules: {
-      '@traceframe/no-non-semantic-colors': [
+      '@nejcjelovcan/traceframe/no-non-semantic-colors': [
         'error',
         {
           allowedPalettes: [],

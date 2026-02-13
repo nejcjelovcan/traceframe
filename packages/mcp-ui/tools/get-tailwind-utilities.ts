@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { TOKEN_METADATA } from '@traceframe/ui-library'
+import { TOKEN_METADATA } from '@nejcjelovcan/traceframe-ui-library'
 
 /**
  * Valid utility category types that can be requested.

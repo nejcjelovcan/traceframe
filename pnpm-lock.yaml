@@ -53,7 +53,7 @@ importers:
 
   packages/eslint-plugin:
     dependencies:
-      '@traceframe/ui-library':
+      '@nejcjelovcan/traceframe-ui-library':
         specifier: workspace:^
         version: link:../ui-library
       '@typescript-eslint/utils':
@@ -84,7 +84,7 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.25.0
         version: 1.26.0(zod@3.25.76)
-      '@traceframe/ui-library':
+      '@nejcjelovcan/traceframe-ui-library':
         specifier: workspace:*
         version: link:../ui-library
       glob:
@@ -115,7 +115,7 @@ importers:
 
   packages/playroom:
     dependencies:
-      '@traceframe/ui-library':
+      '@nejcjelovcan/traceframe-ui-library':
         specifier: workspace:*
         version: link:../ui-library
     devDependencies:

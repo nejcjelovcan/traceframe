@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { searchIcons } from '@traceframe/ui-library'
+import { searchIcons } from '@nejcjelovcan/traceframe-ui-library'
 
 /**
  * Input schema for search_icons tool.

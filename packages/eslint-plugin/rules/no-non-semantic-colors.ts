@@ -5,7 +5,7 @@ import {
   getSuggestion as getSuggestionFromLib,
   isNonSemanticColorClass as isNonSemanticColorClassFromLib,
   SEMANTIC_TOKENS,
-} from '@traceframe/ui-library'
+} from '@nejcjelovcan/traceframe-ui-library'
 
 import type { TSESTree } from '@typescript-eslint/utils'
 

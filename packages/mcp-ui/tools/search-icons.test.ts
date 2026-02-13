@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { searchIconsTool } from './search-icons'
 
 // Mock the ui-library module
-vi.mock('@traceframe/ui-library', () => ({
+vi.mock('@nejcjelovcan/traceframe-ui-library', () => ({
   searchIcons: vi.fn(),
 }))
 
@@ -23,7 +23,7 @@ describe('searchIconsTool', () => {
   })
 
   it('returns matching icons', async () => {
-    const { searchIcons } = await import('@traceframe/ui-library')
+    const { searchIcons } = await import('@nejcjelovcan/traceframe-ui-library')
     vi.mocked(searchIcons).mockReturnValue(['search', 'search-off', 'file-search'])
 
     const result = await searchIconsTool({ query: 'search' })
@@ -36,7 +36,7 @@ describe('searchIconsTool', () => {
   })
 
   it('returns empty list when no matches', async () => {
-    const { searchIcons } = await import('@traceframe/ui-library')
+    const { searchIcons } = await import('@nejcjelovcan/traceframe-ui-library')
     vi.mocked(searchIcons).mockReturnValue([])
 
     const result = await searchIconsTool({ query: 'nonexistent' })
@@ -48,7 +48,7 @@ describe('searchIconsTool', () => {
   })
 
   it('trims whitespace from query', async () => {
-    const { searchIcons } = await import('@traceframe/ui-library')
+    const { searchIcons } = await import('@nejcjelovcan/traceframe-ui-library')
     vi.mocked(searchIcons).mockReturnValue(['check'])
 
     await searchIconsTool({ query: '  check  ' })
@@ -57,7 +57,7 @@ describe('searchIconsTool', () => {
   })
 
   it('returns error on failure', async () => {
-    const { searchIcons } = await import('@traceframe/ui-library')
+    const { searchIcons } = await import('@nejcjelovcan/traceframe-ui-library')
     vi.mocked(searchIcons).mockImplementation(() => {
       throw new Error('Search error')
     })

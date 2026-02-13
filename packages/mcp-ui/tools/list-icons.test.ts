@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { listIconsTool } from './list-icons'
 
 // Mock the ui-library module
-vi.mock('@traceframe/ui-library', () => ({
+vi.mock('@nejcjelovcan/traceframe-ui-library', () => ({
   CATEGORY_LABELS: {
     navigation: 'Navigation',
     action: 'Actions',
@@ -48,7 +48,7 @@ describe('listIconsTool', () => {
   })
 
   it('filters by category when specified', async () => {
-    const { getIconsByCategory } = await import('@traceframe/ui-library')
+    const { getIconsByCategory } = await import('@nejcjelovcan/traceframe-ui-library')
     vi.mocked(getIconsByCategory).mockReturnValue(['search'])
 
     const result = await listIconsTool({ category: 'action' })
@@ -66,7 +66,7 @@ describe('listIconsTool', () => {
   })
 
   it('returns empty list when no icons in category', async () => {
-    const { getIconsByCategory } = await import('@traceframe/ui-library')
+    const { getIconsByCategory } = await import('@nejcjelovcan/traceframe-ui-library')
     vi.mocked(getIconsByCategory).mockReturnValue([])
 
     const result = await listIconsTool({ category: 'theme' })

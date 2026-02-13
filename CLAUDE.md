@@ -17,11 +17,12 @@ When using Git MCP tools, the working directory is automatically set via Session
 
 This workspace uses domain-specific MCP servers plus external integrations:
 
-| Server   | Package              | Purpose                            |
-| -------- | -------------------- | ---------------------------------- |
-| mcp-ui   | `@traceframe/mcp-ui` | UI tooling (components, Storybook) |
-| github   | (external)           | GitHub PRs and issues              |
-| git      | (external)           | Git operations                     |
+| Server         | Package                      | Purpose                            |
+| -------------- | ---------------------------- | ---------------------------------- |
+| mcp-ui         | `@nejcjelovcan/traceframe-mcp-ui`         | UI tooling (components, Storybook) |
+| github         | `github/github-mcp-server`   | GitHub PRs and issues              |
+| git            | `@cyanheads/git-mcp-server`  | Git operations                     |
+| linear-server  | Linear HTTP MCP              | Linear issues and projects         |
 
 ### mcp-ui Tools
 
@@ -45,7 +46,7 @@ This workspace uses domain-specific MCP servers plus external integrations:
 
 Tools accept package names in multiple formats:
 
-- Full scoped name: `@traceframe/ui-library`
+- Full scoped name: `@nejcjelovcan/traceframe-ui-library`
 - Bare name: `ui-library`, `mcp-ui`
 
 ## Claude Code Commands
@@ -150,16 +151,91 @@ The `git` MCP server provides tools for common git operations.
 
 **Important:** Always use `owner: "nejcjelovcan"` and `repo: "traceframe"` for this repository.
 
-| Tool                  | Use Instead Of   | Purpose                        |
-| --------------------- | ---------------- | ------------------------------ |
-| `get_me`              | `gh auth status` | Check authenticated user       |
-| `create_pull_request` | `gh pr create`   | Create a pull request          |
-| `pull_request_read`   | `gh pr view`     | Get PR details, diff, comments |
-| `list_pull_requests`  | `gh pr list`     | List repository PRs            |
-| `update_pull_request` | `gh pr edit`     | Update PR title, body, labels  |
-| `issue_read`          | `gh issue view`  | Get issue details              |
-| `list_issues`         | `gh issue list`  | List repository issues         |
-| `issue_write`         | `gh issue create` | Create or update issues       |
+### User & Auth
+
+| Tool       | Purpose                  |
+| ---------- | ------------------------ |
+| `get_me`   | Check authenticated user |
+| `get_teams`| Get user's teams         |
+
+### Issues
+
+| Tool                | Purpose                              |
+| ------------------- | ------------------------------------ |
+| `issue_read`        | Get issue details, comments, labels  |
+| `issue_write`       | Create or update issues              |
+| `list_issues`       | List repository issues               |
+| `search_issues`     | Search issues with query syntax      |
+| `add_issue_comment` | Add comment to an issue              |
+| `list_issue_types`  | List supported issue types for org   |
+| `sub_issue_write`   | Add/remove/reprioritize sub-issues   |
+
+### Pull Requests
+
+| Tool                         | Purpose                                    |
+| ---------------------------- | ------------------------------------------ |
+| `create_pull_request`        | Create a pull request                      |
+| `pull_request_read`          | Get PR details, diff, files, comments      |
+| `list_pull_requests`         | List repository PRs                        |
+| `search_pull_requests`       | Search PRs with query syntax               |
+| `update_pull_request`        | Update PR title, body, reviewers           |
+| `update_pull_request_branch` | Update PR branch with base branch changes  |
+| `merge_pull_request`         | Merge a pull request                       |
+| `pull_request_review_write`  | Create, submit, or delete PR reviews       |
+| `add_comment_to_pending_review` | Add line comment to pending review      |
+| `request_copilot_review`     | Request GitHub Copilot review              |
+
+### Repository
+
+| Tool                   | Purpose                              |
+| ---------------------- | ------------------------------------ |
+| `get_file_contents`    | Get file or directory contents       |
+| `create_or_update_file`| Create or update a file              |
+| `delete_file`          | Delete a file                        |
+| `push_files`           | Push multiple files in one commit    |
+| `list_branches`        | List repository branches             |
+| `create_branch`        | Create a new branch                  |
+| `list_commits`         | List commits on a branch             |
+| `get_commit`           | Get commit details with diff         |
+| `list_tags`            | List git tags                        |
+| `get_tag`              | Get tag details                      |
+
+### Releases
+
+| Tool                 | Purpose                    |
+| -------------------- | -------------------------- |
+| `list_releases`      | List repository releases   |
+| `get_latest_release` | Get latest release         |
+| `get_release_by_tag` | Get release by tag name    |
+
+### Search
+
+| Tool                  | Purpose                           |
+| --------------------- | --------------------------------- |
+| `search_code`         | Search code across repositories   |
+| `search_issues`       | Search issues                     |
+| `search_pull_requests`| Search pull requests              |
+| `search_repositories` | Search repositories               |
+| `search_users`        | Search users                      |
+
+## Linear MCP Tools
+
+**Linear is used for project management and issue tracking.**
+
+| Tool                    | Purpose                                |
+| ----------------------- | -------------------------------------- |
+| `list_issues`           | List Linear issues with filters        |
+| `get_issue`             | Get issue details by ID or identifier  |
+| `create_issue`          | Create a new Linear issue              |
+| `update_issue`          | Update an existing issue               |
+| `list_projects`         | List Linear projects                   |
+| `get_project`           | Get project details                    |
+| `list_teams`            | List Linear teams                      |
+| `get_team`              | Get team details                       |
+| `list_users`            | List Linear users                      |
+| `search_issues`         | Search issues with query              |
+| `list_workflow_states`  | List workflow states for a team        |
+| `add_comment`           | Add comment to an issue                |
 
 ## CLI Commands Reference
 
@@ -198,7 +274,7 @@ packages/
 Use standardized icons from ui-library:
 
 ```typescript
-import { Icon } from '@traceframe/ui-library'
+import { Icon } from '@nejcjelovcan/traceframe-ui-library'
 
 <Icon name="search" />
 <Icon name="package" size="lg" />

@@ -554,7 +554,7 @@ const variants = cva('base', {
 
 **Icon usage (standardized icons):**
 ```typescript
-import { Icon } from '@traceframe/ui-library'
+import { Icon } from '@nejcjelovcan/traceframe-ui-library'
 
 // Use semantic icon names with size presets
 <Icon name="search" size="lg" />

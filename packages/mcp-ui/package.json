@@ -1,5 +1,5 @@
 {
-  "name": "@traceframe/mcp-ui",
+  "name": "@nejcjelovcan/traceframe-mcp-ui",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -20,7 +20,7 @@
     "format:check": "prettier --cache --check \"**/*.{ts,json,md}\""
   },
   "dependencies": {
-    "@traceframe/ui-library": "workspace:*",
+    "@nejcjelovcan/traceframe-ui-library": "workspace:*",
     "@modelcontextprotocol/sdk": "^1.25.0",
     "glob": "^13.0.1",
     "playwright": "^1.58.1",

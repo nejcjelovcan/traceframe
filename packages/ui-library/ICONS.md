@@ -5,7 +5,7 @@ Standardized icon system for elementex applications.
 ## Usage
 
 ```typescript
-import { Icon } from '@traceframe/ui-library'
+import { Icon } from '@nejcjelovcan/traceframe-ui-library'
 
 <Icon name="search" />
 <Icon name="package" size="lg" />
@@ -183,7 +183,7 @@ import {
   searchIcons,
   ICON_METADATA,
   CATEGORY_LABELS,
-} from '@traceframe/ui-library'
+} from '@nejcjelovcan/traceframe-ui-library'
 
 // Get all icon names
 const allIcons = getAllIconNames()

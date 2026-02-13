@@ -3,7 +3,7 @@ import { describe, expect, it, vi } from 'vitest'
 import { getIconTool } from './get-icon'
 
 // Mock the ui-library module
-vi.mock('@traceframe/ui-library', () => ({
+vi.mock('@nejcjelovcan/traceframe-ui-library', () => ({
   ICON_METADATA: {
     search: {
       description: 'Magnifying glass',

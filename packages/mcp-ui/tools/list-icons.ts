@@ -8,7 +8,7 @@ import {
   type IconCategory,
   type IconMeta,
   type IconName,
-} from '@traceframe/ui-library'
+} from '@nejcjelovcan/traceframe-ui-library'
 
 /** All valid icon categories */
 const ICON_CATEGORIES = [

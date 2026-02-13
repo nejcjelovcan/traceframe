@@ -1,4 +1,4 @@
-import { TOKEN_METADATA } from '@traceframe/ui-library'
+import { TOKEN_METADATA } from '@nejcjelovcan/traceframe-ui-library'
 
 /**
  * Semantic token variant info.

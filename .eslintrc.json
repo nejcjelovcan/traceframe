@@ -26,7 +26,7 @@
         "paths": [
           {
             "name": "@tabler/icons-react",
-            "message": "Import icons from '@traceframe/ui-library' instead. See packages/ui-library/ICONS.md for available icons."
+            "message": "Import icons from '@nejcjelovcan/traceframe-ui-library' instead. See packages/ui-library/ICONS.md for available icons."
           }
         ]
       }
@@ -44,7 +44,7 @@
         ],
         "pathGroups": [
           {
-            "pattern": "@traceframe/**",
+            "pattern": "@nejcjelovcan/**",
             "group": "internal",
             "position": "before"
           }

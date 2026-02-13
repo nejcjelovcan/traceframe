@@ -1,6 +1,6 @@
 # UI Library Roadmap
 
-Component development roadmap for `@traceframe/ui-library`. This runs as a parallel track supporting reporter and future Traceframe applications.
+Component development roadmap for `@nejcjelovcan/traceframe-ui-library`. This runs as a parallel track supporting reporter and future Traceframe applications.
 
 ## Track Overview
 
