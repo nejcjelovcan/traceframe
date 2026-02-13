@@ -115,7 +115,6 @@ function App() {
 
 ```tsx
 import { Button, Icon, Badge } from '@nejcjelovcan/traceframe-ui-library'
-
 ;<Button variant="primary" size="md">
   <Icon name="search" size="sm" />
   Search
@@ -154,11 +153,11 @@ pnpm test         # Run tests
 | Icons      | `Icon` (+ `getAllIconNames`, `getIconsByCategory`, `searchIcons`)                                              |
 | Utilities  | `cn` (class merging), `applyMode`, `applyTheme`, `MODES`, `THEMES`                                             |
 
-Browse all components interactively in [Storybook](https://nejcjelovcan.github.io/traceframe/storybook/).
+Browse all components interactively in [Storybook](https://nejcjelovcan.github.io/traceframe/).
 
 ## Storybook
 
-**Live:** [nejcjelovcan.github.io/traceframe/storybook](https://nejcjelovcan.github.io/traceframe/storybook/)
+**Live:** [nejcjelovcan.github.io/traceframe/storybook](https://nejcjelovcan.github.io/traceframe/)
 
 Run locally:
 

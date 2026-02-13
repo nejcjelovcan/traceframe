@@ -2,6 +2,8 @@
 
 A design system and component library for building consistent, theme-aware React applications.
 
+[Storybook](https://nejcjelovcan.github.io/traceframe/) | [Playroom](https://nejcjelovcan.github.io/traceframe/playroom/)
+
 ## Packages
 
 | Package                                                                    | Description                                            | npm                                                                                                                                                               |
@@ -83,7 +85,6 @@ function App() {
 
 ```tsx
 import { Button, Card, Icon, Badge } from '@nejcjelovcan/traceframe-ui-library'
-
 ;<Card>
   <Card.Header>
     <Badge variant="primary">New</Badge>
@@ -202,11 +203,6 @@ export default [
 This catches direct palette usage like `bg-primary-500` and suggests semantic alternatives like `bg-interactive-primary`.
 
 See the [eslint-plugin README](./packages/eslint-plugin) for configuration options.
-
-## Live Demos
-
-- **Storybook:** [nejcjelovcan.github.io/traceframe/storybook](https://nejcjelovcan.github.io/traceframe/storybook/)
-- **Playroom:** [nejcjelovcan.github.io/traceframe/playroom](https://nejcjelovcan.github.io/traceframe/playroom/)
 
 ## Development
 
