@@ -1,4 +1,4 @@
-name: Deploy Storybook
+name: Deploy Storybook & Playroom
 
 on:
   push:
@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build Storybook
+    name: Build Storybook & Playroom
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -34,10 +34,19 @@ jobs:
         env:
           STORYBOOK_BASE_PATH: /traceframe/
 
+      - name: Build Playroom
+        run: pnpm --filter @nejcjelovcan/traceframe-playroom build
+
+      - name: Combine outputs
+        run: |
+          mkdir -p combined/playroom
+          cp -r packages/ui-library/storybook-static/* combined/
+          cp -r packages/playroom/dist/playroom/* combined/playroom/
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: packages/ui-library/storybook-static
+          path: combined
 
   deploy:
     name: Deploy to GitHub Pages

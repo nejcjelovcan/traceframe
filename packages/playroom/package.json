@@ -5,6 +5,7 @@
   "type": "module",
   "description": "Playroom configuration for Traceframe UI library",
   "scripts": {
+    "build": "playroom build",
     "start": "playroom start",
     "build:playroom": "playroom build",
     "typecheck": "tsc --noEmit",

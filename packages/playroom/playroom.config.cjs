@@ -1,6 +1,7 @@
 module.exports = {
   components: './src/playroom/components.ts',
   outputPath: './dist/playroom',
+  baseUrl: '/traceframe/playroom/',
   title: 'Traceframe Playroom',
   widths: [320, 768, 1024, 1440],
   port: 9000,
@@ -46,6 +47,11 @@ module.exports = {
             test: /\.css$/i,
             include: uiLibraryCssPath,
             use: ['style-loader', 'css-loader', 'postcss-loader'],
+          },
+          {
+            test: /\.css$/i,
+            include: /node_modules[\\/]@fontsource/,
+            use: ['style-loader', 'css-loader'],
           },
         ],
       },
