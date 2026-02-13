@@ -1,11 +1,11 @@
 /**
- * @nejcjelovcan/traceframe-eslint-plugin
+ * @nejcjelovcan/eslint-plugin-traceframe
  * ESLint plugin with custom rules for Traceframe code quality
  */
 
-import { noNonSemanticColors } from './rules/no-non-semantic-colors'
-import { noNonSemanticSizing } from './rules/no-non-semantic-sizing'
-import { noNonSemanticSpacing } from './rules/no-non-semantic-spacing'
+import { noNonSemanticColors } from './rules/no-non-semantic-colors.js'
+import { noNonSemanticSizing } from './rules/no-non-semantic-sizing.js'
+import { noNonSemanticSpacing } from './rules/no-non-semantic-spacing.js'
 
 /**
  * File patterns that intentionally use non-semantic tokens.
@@ -63,3 +63,6 @@ export const configs = {
     },
   },
 }
+
+const plugin = { rules, configs }
+export default plugin

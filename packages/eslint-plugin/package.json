@@ -1,5 +1,5 @@
 {
-  "name": "@nejcjelovcan/traceframe-eslint-plugin",
+  "name": "@nejcjelovcan/eslint-plugin-traceframe",
   "version": "0.0.1",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

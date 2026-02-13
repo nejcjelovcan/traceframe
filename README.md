@@ -9,7 +9,7 @@ A design system and component library for building consistent, theme-aware React
 - [`@nejcjelovcan/traceframe-ui-library`](./packages/ui-library) -- Core UI components, design tokens, and Tailwind preset
 - [`@nejcjelovcan/traceframe-storybook-preset`](./packages/storybook-preset) -- Storybook addon for Traceframe theme switching
 - [`@nejcjelovcan/traceframe-playroom-preset`](./packages/playroom-preset) -- Playroom config factory with components and snippets
-- [`@nejcjelovcan/traceframe-eslint-plugin`](./packages/eslint-plugin) -- ESLint rule enforcing semantic token usage
+- [`@nejcjelovcan/eslint-plugin-traceframe`](./packages/eslint-plugin) -- ESLint rule enforcing semantic token usage
 
 Internal (not published):
 
@@ -179,12 +179,12 @@ See the [playroom-preset README](./packages/playroom-preset) for customization o
 Enforce semantic token usage in your codebase:
 
 ```bash
-npm install -D @nejcjelovcan/traceframe-eslint-plugin
+npm install -D @nejcjelovcan/eslint-plugin-traceframe
 ```
 
 ```javascript
 // eslint.config.js
-import traceframePlugin from '@nejcjelovcan/traceframe-eslint-plugin'
+import traceframePlugin from '@nejcjelovcan/eslint-plugin-traceframe'
 
 export default [
   {

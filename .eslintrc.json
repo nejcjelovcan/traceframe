@@ -5,8 +5,59 @@
     "sourceType": "module"
   },
   "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
-  "plugins": ["@typescript-eslint", "unused-imports", "import"],
+  "plugins": ["@typescript-eslint", "unused-imports", "import", "@nejcjelovcan/traceframe"],
   "rules": {
+    "@nejcjelovcan/traceframe/no-non-semantic-colors": [
+      "error",
+      {
+        "allowedPalettes": [],
+        "semanticTokens": [
+          "surface",
+          "foreground",
+          "border",
+          "ring",
+          "interactive",
+          "status",
+          "code",
+          "tooltip",
+          "badge"
+        ],
+        "exceptions": [
+          "packages/ui-library/src/styles/",
+          "packages/ui-library/src/tailwind-preset.ts",
+          "packages/ui-library/tailwind-preset.ts",
+          "packages/ui-library/src/utils/semantic-token-utils.ts",
+          "packages/ui-library/style-dictionary/",
+          "packages/ui-library/src/stories/PaletteShowcase.stories.tsx"
+        ]
+      }
+    ],
+    "@nejcjelovcan/traceframe/no-non-semantic-spacing": [
+      "warn",
+      {
+        "exceptions": [
+          "packages/ui-library/src/styles/",
+          "packages/ui-library/src/tailwind-preset.ts",
+          "packages/ui-library/tailwind-preset.ts",
+          "packages/ui-library/src/utils/semantic-token-utils.ts",
+          "packages/ui-library/style-dictionary/",
+          "packages/ui-library/src/stories/PaletteShowcase.stories.tsx"
+        ]
+      }
+    ],
+    "@nejcjelovcan/traceframe/no-non-semantic-sizing": [
+      "warn",
+      {
+        "exceptions": [
+          "packages/ui-library/src/styles/",
+          "packages/ui-library/src/tailwind-preset.ts",
+          "packages/ui-library/tailwind-preset.ts",
+          "packages/ui-library/src/utils/semantic-token-utils.ts",
+          "packages/ui-library/style-dictionary/",
+          "packages/ui-library/src/stories/PaletteShowcase.stories.tsx"
+        ]
+      }
+    ],
     "@typescript-eslint/no-unused-vars": "off",
     "unused-imports/no-unused-imports": "error",
     "unused-imports/no-unused-vars": [

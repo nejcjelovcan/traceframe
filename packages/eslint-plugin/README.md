@@ -1,11 +1,11 @@
-# @nejcjelovcan/traceframe-eslint-plugin
+# @nejcjelovcan/eslint-plugin-traceframe
 
 ESLint plugin that enforces semantic token usage in Traceframe projects. Catches direct palette color classes (like `bg-primary-500`) and suggests semantic alternatives (like `bg-interactive-primary`).
 
 ## Install
 
 ```bash
-npm install -D @nejcjelovcan/traceframe-eslint-plugin
+npm install -D @nejcjelovcan/eslint-plugin-traceframe
 ```
 
 **Peer dependencies:** `eslint@^8 || ^9`
@@ -16,7 +16,7 @@ npm install -D @nejcjelovcan/traceframe-eslint-plugin
 
 ```javascript
 // eslint.config.js
-import traceframePlugin from '@nejcjelovcan/traceframe-eslint-plugin'
+import traceframePlugin from '@nejcjelovcan/eslint-plugin-traceframe'
 
 export default [
   {
@@ -25,6 +25,8 @@ export default [
     },
     rules: {
       '@nejcjelovcan/traceframe/no-non-semantic-colors': 'error',
+      '@nejcjelovcan/traceframe/no-non-semantic-spacing': 'warn',
+      '@nejcjelovcan/traceframe/no-non-semantic-sizing': 'warn',
     },
   },
 ]
@@ -44,6 +46,8 @@ export default [
 ### `no-non-semantic-colors`
 
 Detects non-semantic Tailwind color classes and suggests semantic token alternatives.
+
+**Severity in recommended config:** `error`
 
 **Bad:**
 
@@ -83,9 +87,71 @@ The rule analyzes `className` strings (including template literals) and reports 
 | `semanticTokens`  | `string[]` | See above | Valid semantic token prefixes used in suggestions                     |
 | `exceptions`      | `string[]` | `[]`      | File paths that are exempt from this rule                             |
 
+### `no-non-semantic-spacing`
+
+Enforces semantic spacing tokens instead of numeric spacing values.
+
+**Severity in recommended config:** `warn`
+
+**Bad:**
+
+```tsx
+<div className="p-2 gap-4 m-8" />
+```
+
+**Good:**
+
+```tsx
+<div className="p-sm gap-md m-lg" />
+```
+
+#### Options
+
+```javascript
+'@nejcjelovcan/traceframe/no-non-semantic-spacing': ['warn', {
+  // File paths exempt from this rule
+  exceptions: [],
+}]
+```
+
+| Option       | Type       | Default | Description                               |
+| ------------ | ---------- | ------- | ----------------------------------------- |
+| `exceptions` | `string[]` | `[]`    | File paths that are exempt from this rule |
+
+### `no-non-semantic-sizing`
+
+Enforces semantic sizing tokens instead of numeric sizing values.
+
+**Severity in recommended config:** `warn`
+
+**Bad:**
+
+```tsx
+<div className="h-10 w-10" />
+```
+
+**Good:**
+
+```tsx
+<div className="h-size-md w-size-md" />
+```
+
+#### Options
+
+```javascript
+'@nejcjelovcan/traceframe/no-non-semantic-sizing': ['warn', {
+  // File paths exempt from this rule
+  exceptions: [],
+}]
+```
+
+| Option       | Type       | Default | Description                               |
+| ------------ | ---------- | ------- | ----------------------------------------- |
+| `exceptions` | `string[]` | `[]`    | File paths that are exempt from this rule |
+
 ## Recommended Config
 
-The `recommended` config enables the rule with default options:
+The `recommended` config enables all rules with default options:
 
 ```javascript
 // Equivalent to:
@@ -98,6 +164,8 @@ The `recommended` config enables the rule with default options:
         'interactive', 'status', 'code', 'tooltip', 'badge',
       ],
     }],
+    '@nejcjelovcan/traceframe/no-non-semantic-spacing': ['warn'],
+    '@nejcjelovcan/traceframe/no-non-semantic-sizing': ['warn'],
   },
 }
 ```
