@@ -1,46 +1,51 @@
 # Implement Issue
 
-Implement a GitHub issue for the Traceframe design system, following project conventions.
+Implement a Linear issue for the Traceframe design system, following project conventions.
 
 ## Configuration
 
-**GitHub:**
+**Linear:**
+- Team: `Traceframe` (prefix: `TRA`)
+
+**GitHub (for PRs only):**
 - Owner: `nejcjelovcan`
 - Repo: `traceframe`
 
 ## Usage
 
-`/implement <ISSUE_NUMBER>` - Issue number is required. Example: `/implement 42`
+`/implement <ISSUE_IDENTIFIER>` - Linear issue identifier is required. Example: `/implement TRA-42`
 
 ## Prerequisites
 
-The issue should contain an implementation plan. If not refined, suggest running `/refine <ISSUE_NUMBER>` first.
+The issue should contain an implementation plan. If not refined, suggest running `/refine <ISSUE_IDENTIFIER>` first.
 
 ## Workflow
 
 ### 1. Fetch Issue Details
 
-Use GitHub MCP tools:
+Use Linear MCP tools:
 
 ```
-issue_read(owner: "nejcjelovcan", repo: "traceframe", issue_number: 42)
+get_issue(id: "TRA-42", includeRelations: true)
 ```
 
 **Verify:**
 
-- Issue exists and is open
+- Issue exists and is not completed/cancelled
 - Issue has an implementation plan (warn if not)
-- Extract implementation plan from issue body
+- Extract implementation plan from issue description
 
 ### 2. Create Feature Branch
+
+Use the `gitBranchName` from the Linear issue response when available:
 
 ```bash
 git checkout main
 git pull origin main
-git checkout -b feat/<description>
+git checkout -b <gitBranchName>
 ```
 
-**Branch naming:**
+**Branch naming (if no `gitBranchName` available):**
 - For ui-library: `feat/ui-library-<description>` (e.g., `feat/ui-library-add-card-component`)
 - For eslint-plugin: `feat/eslint-plugin-<description>`
 - For mcp-ui: `feat/mcp-ui-<description>`
@@ -55,8 +60,8 @@ git checkout -b feat/<description>
 
 ### 4. Check Dependencies
 
-**From the issue's "Dependencies" section:**
-- If issue has dependencies, verify those issues are closed
+**From the issue's relations (blockedBy):**
+- If issue has `blockedBy` relations, verify those issues are completed
 - If dependencies are not met, warn user and ask if they want to proceed anyway
 
 ### 5. Understand Existing Code
@@ -402,7 +407,7 @@ pnpm --filter <package> test
 **Present implementation summary:**
 
 ```markdown
-## Implementation Complete: #<ISSUE_NUMBER>
+## Implementation Complete: <ISSUE_IDENTIFIER> (e.g., TRA-42)
 
 ### Files Changed
 
@@ -438,7 +443,7 @@ git add <file1> <file2> ...
 
 # Commit with descriptive message
 git commit -m "$(cat <<'EOF'
-<Brief description> (#<NUMBER>)
+<Brief description> (<ISSUE_IDENTIFIER>)
 
 <Optional longer description>
 
@@ -454,9 +459,12 @@ EOF
 git push -u origin <branch-name>
 
 # Create PR using gh CLI
-gh pr create --title "<Title> (#<NUMBER>)" --body "$(cat <<'EOF'
+gh pr create --title "<Title> (<ISSUE_IDENTIFIER>)" --body "$(cat <<'EOF'
 ## Summary
 - <1-3 bullet points describing the changes>
+
+## Linear Issue
+<ISSUE_IDENTIFIER>: <issue title>
 
 ## Test plan
 - [x] Build passes
@@ -464,14 +472,14 @@ gh pr create --title "<Title> (#<NUMBER>)" --body "$(cat <<'EOF'
 - [x] Storybook stories render correctly
 - [x] <Additional verification>
 
-Closes #<NUMBER>
-
 Generated with [Claude Code](https://claude.com/claude-code)
 EOF
 )"
 ```
 
-**Return the PR URL to the user.**
+**After PR is created:**
+1. Return the PR URL to the user
+2. Update the Linear issue status to "In Review": `update_issue(id: "<ISSUE_IDENTIFIER>", state: "In Review")`
 
 ## Quick Reference
 
@@ -507,11 +515,14 @@ EOF
 - `git_fetch` - Fetch updates from remote
 - `git_log` - View commit history
 
-**GitHub MCP Tools:**
-- `issue_read` - Get issue details
+**Linear MCP Tools:**
+- `get_issue` - Get issue details and relations
+- `update_issue` - Update issue status/description
+- `list_comments` / `create_comment` - Read/add comments on issues
+
+**GitHub MCP Tools (PRs only):**
 - `create_pull_request` - Create a PR
 - `update_pull_request` - Update PR
-- `add_issue_comment` - Add comment to issue
 
 **Key conventions:**
 - UI packages use `src/` folder
