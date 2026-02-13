@@ -13,6 +13,12 @@ When using GitHub MCP tools, always use:
 
 When using Git MCP tools, the working directory is automatically set via SessionStart hook.
 
+## Tool Usage: MCP First
+
+**ALWAYS use MCP tools instead of Bash for git and GitHub operations.** Do NOT use `git` CLI commands or `gh` CLI via Bash when an equivalent MCP tool exists. This applies to all git operations (status, diff, log, add, commit, push, checkout, branch, etc.) and all GitHub operations (creating PRs, reading PRs, adding comments, etc.).
+
+**Only use Bash for:** build commands (`pnpm build`, `pnpm test`, `pnpm autofix`, etc.) and other non-git/non-GitHub shell operations.
+
 ## MCP Servers
 
 This workspace uses domain-specific MCP servers plus external integrations:
@@ -69,7 +75,7 @@ Tools accept package names in multiple formats:
 
 1. Ensure autofix has been run
 2. Ensure tests pass
-3. Use git MCP tools (`git_add`, `git_commit`, `git_push`) or git CLI for commits
+3. Use git MCP tools (`git_add`, `git_commit`, `git_push`) for commits - NEVER use git CLI via Bash
 
 ### Previewing UI Changes
 
