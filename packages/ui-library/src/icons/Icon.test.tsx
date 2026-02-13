@@ -152,8 +152,8 @@ describe('searchIcons', () => {
 })
 
 describe('getAllIconNames', () => {
-  it('returns all 49 icons', () => {
-    expect(getAllIconNames()).toHaveLength(49)
+  it('returns all 67 icons', () => {
+    expect(getAllIconNames()).toHaveLength(67)
   })
 
   it('includes expected icons', () => {

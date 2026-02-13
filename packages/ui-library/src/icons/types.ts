@@ -11,6 +11,7 @@ export type IconCategory =
   | 'entity'
   | 'code'
   | 'data'
+  | 'agentic'
 
 /** All available icon names */
 export type IconName =
@@ -71,6 +72,25 @@ export type IconName =
   | 'chart'
   | 'users'
   | 'components'
+  // Agentic
+  | 'agent'
+  | 'orchestrator'
+  | 'write'
+  | 'read'
+  | 'edit'
+  | 'tool'
+  | 'text'
+  | 'prompt'
+  | 'idle'
+  | 'waiting'
+  | 'implement'
+  | 'refine'
+  | 'working'
+  | 'watching'
+  | 'message'
+  | 'polling'
+  | 'start'
+  | 'stop'
 
 /** Metadata for a single icon */
 export interface IconMeta {
@@ -107,4 +127,5 @@ export const CATEGORY_LABELS: Record<IconCategory, string> = {
   entity: 'Entities',
   code: 'Code & Props',
   data: 'Data & Metrics',
+  agentic: 'Agentic Workflows',
 }
