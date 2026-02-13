@@ -17,12 +17,12 @@ When using Git MCP tools, the working directory is automatically set via Session
 
 This workspace uses domain-specific MCP servers plus external integrations:
 
-| Server         | Package                      | Purpose                            |
-| -------------- | ---------------------------- | ---------------------------------- |
-| mcp-ui         | `@nejcjelovcan/traceframe-mcp-ui`         | UI tooling (components, Storybook) |
-| github         | `github/github-mcp-server`   | GitHub PRs and issues              |
-| git            | `@cyanheads/git-mcp-server`  | Git operations                     |
-| linear-server  | Linear HTTP MCP              | Linear issues and projects         |
+| Server        | Package                           | Purpose                            |
+| ------------- | --------------------------------- | ---------------------------------- |
+| mcp-ui        | `@nejcjelovcan/traceframe-mcp-ui` | UI tooling (components, Storybook) |
+| github        | `github/github-mcp-server`        | GitHub PRs and issues              |
+| git           | `@cyanheads/git-mcp-server`       | Git operations                     |
+| linear-server | Linear HTTP MCP                   | Linear issues and projects         |
 
 ### mcp-ui Tools
 
@@ -51,10 +51,10 @@ Tools accept package names in multiple formats:
 
 ## Claude Code Commands
 
-| Command      | Purpose                                              |
-| ------------ | ---------------------------------------------------- |
+| Command      | Purpose                                               |
+| ------------ | ----------------------------------------------------- |
 | `/refine`    | Refine a GitHub issue to make it implementation-ready |
-| `/implement` | Implement a refined GitHub issue                     |
+| `/implement` | Implement a refined GitHub issue                      |
 
 ## Development Workflow
 
@@ -153,105 +153,105 @@ The `git` MCP server provides tools for common git operations.
 
 ### User & Auth
 
-| Tool       | Purpose                  |
-| ---------- | ------------------------ |
-| `get_me`   | Check authenticated user |
-| `get_teams`| Get user's teams         |
+| Tool        | Purpose                  |
+| ----------- | ------------------------ |
+| `get_me`    | Check authenticated user |
+| `get_teams` | Get user's teams         |
 
 ### Issues
 
-| Tool                | Purpose                              |
-| ------------------- | ------------------------------------ |
-| `issue_read`        | Get issue details, comments, labels  |
-| `issue_write`       | Create or update issues              |
-| `list_issues`       | List repository issues               |
-| `search_issues`     | Search issues with query syntax      |
-| `add_issue_comment` | Add comment to an issue              |
-| `list_issue_types`  | List supported issue types for org   |
-| `sub_issue_write`   | Add/remove/reprioritize sub-issues   |
+| Tool                | Purpose                             |
+| ------------------- | ----------------------------------- |
+| `issue_read`        | Get issue details, comments, labels |
+| `issue_write`       | Create or update issues             |
+| `list_issues`       | List repository issues              |
+| `search_issues`     | Search issues with query syntax     |
+| `add_issue_comment` | Add comment to an issue             |
+| `list_issue_types`  | List supported issue types for org  |
+| `sub_issue_write`   | Add/remove/reprioritize sub-issues  |
 
 ### Pull Requests
 
-| Tool                         | Purpose                                    |
-| ---------------------------- | ------------------------------------------ |
-| `create_pull_request`        | Create a pull request                      |
-| `pull_request_read`          | Get PR details, diff, files, comments      |
-| `list_pull_requests`         | List repository PRs                        |
-| `search_pull_requests`       | Search PRs with query syntax               |
-| `update_pull_request`        | Update PR title, body, reviewers           |
-| `update_pull_request_branch` | Update PR branch with base branch changes  |
-| `merge_pull_request`         | Merge a pull request                       |
-| `pull_request_review_write`  | Create, submit, or delete PR reviews       |
-| `add_comment_to_pending_review` | Add line comment to pending review      |
-| `request_copilot_review`     | Request GitHub Copilot review              |
+| Tool                            | Purpose                                   |
+| ------------------------------- | ----------------------------------------- |
+| `create_pull_request`           | Create a pull request                     |
+| `pull_request_read`             | Get PR details, diff, files, comments     |
+| `list_pull_requests`            | List repository PRs                       |
+| `search_pull_requests`          | Search PRs with query syntax              |
+| `update_pull_request`           | Update PR title, body, reviewers          |
+| `update_pull_request_branch`    | Update PR branch with base branch changes |
+| `merge_pull_request`            | Merge a pull request                      |
+| `pull_request_review_write`     | Create, submit, or delete PR reviews      |
+| `add_comment_to_pending_review` | Add line comment to pending review        |
+| `request_copilot_review`        | Request GitHub Copilot review             |
 
 ### Repository
 
-| Tool                   | Purpose                              |
-| ---------------------- | ------------------------------------ |
-| `get_file_contents`    | Get file or directory contents       |
-| `create_or_update_file`| Create or update a file              |
-| `delete_file`          | Delete a file                        |
-| `push_files`           | Push multiple files in one commit    |
-| `list_branches`        | List repository branches             |
-| `create_branch`        | Create a new branch                  |
-| `list_commits`         | List commits on a branch             |
-| `get_commit`           | Get commit details with diff         |
-| `list_tags`            | List git tags                        |
-| `get_tag`              | Get tag details                      |
+| Tool                    | Purpose                           |
+| ----------------------- | --------------------------------- |
+| `get_file_contents`     | Get file or directory contents    |
+| `create_or_update_file` | Create or update a file           |
+| `delete_file`           | Delete a file                     |
+| `push_files`            | Push multiple files in one commit |
+| `list_branches`         | List repository branches          |
+| `create_branch`         | Create a new branch               |
+| `list_commits`          | List commits on a branch          |
+| `get_commit`            | Get commit details with diff      |
+| `list_tags`             | List git tags                     |
+| `get_tag`               | Get tag details                   |
 
 ### Releases
 
-| Tool                 | Purpose                    |
-| -------------------- | -------------------------- |
-| `list_releases`      | List repository releases   |
-| `get_latest_release` | Get latest release         |
-| `get_release_by_tag` | Get release by tag name    |
+| Tool                 | Purpose                  |
+| -------------------- | ------------------------ |
+| `list_releases`      | List repository releases |
+| `get_latest_release` | Get latest release       |
+| `get_release_by_tag` | Get release by tag name  |
 
 ### Search
 
-| Tool                  | Purpose                           |
-| --------------------- | --------------------------------- |
-| `search_code`         | Search code across repositories   |
-| `search_issues`       | Search issues                     |
-| `search_pull_requests`| Search pull requests              |
-| `search_repositories` | Search repositories               |
-| `search_users`        | Search users                      |
+| Tool                   | Purpose                         |
+| ---------------------- | ------------------------------- |
+| `search_code`          | Search code across repositories |
+| `search_issues`        | Search issues                   |
+| `search_pull_requests` | Search pull requests            |
+| `search_repositories`  | Search repositories             |
+| `search_users`         | Search users                    |
 
 ## Linear MCP Tools
 
 **Linear is used for project management and issue tracking.**
 
-| Tool                    | Purpose                                |
-| ----------------------- | -------------------------------------- |
-| `list_issues`           | List Linear issues with filters        |
-| `get_issue`             | Get issue details by ID or identifier  |
-| `create_issue`          | Create a new Linear issue              |
-| `update_issue`          | Update an existing issue               |
-| `list_projects`         | List Linear projects                   |
-| `get_project`           | Get project details                    |
-| `list_teams`            | List Linear teams                      |
-| `get_team`              | Get team details                       |
-| `list_users`            | List Linear users                      |
-| `search_issues`         | Search issues with query              |
-| `list_workflow_states`  | List workflow states for a team        |
-| `add_comment`           | Add comment to an issue                |
+| Tool                   | Purpose                               |
+| ---------------------- | ------------------------------------- |
+| `list_issues`          | List Linear issues with filters       |
+| `get_issue`            | Get issue details by ID or identifier |
+| `create_issue`         | Create a new Linear issue             |
+| `update_issue`         | Update an existing issue              |
+| `list_projects`        | List Linear projects                  |
+| `get_project`          | Get project details                   |
+| `list_teams`           | List Linear teams                     |
+| `get_team`             | Get team details                      |
+| `list_users`           | List Linear users                     |
+| `search_issues`        | Search issues with query              |
+| `list_workflow_states` | List workflow states for a team       |
+| `add_comment`          | Add comment to an issue               |
 
 ## CLI Commands Reference
 
-| Operation                 | Command                                |
-| ------------------------- | -------------------------------------- |
-| Build all packages        | `pnpm build`                           |
-| Build one package         | `pnpm --filter <package> build`        |
-| Run all tests             | `pnpm test`                            |
-| Run package tests         | `pnpm --filter <package> test`         |
-| Typecheck all             | `pnpm typecheck`                       |
-| Typecheck one package     | `pnpm --filter <package> typecheck`    |
-| Fix lint + format         | `pnpm autofix`                         |
-| Lint                      | `pnpm lint`                            |
-| Format check              | `pnpm format:check`                    |
-| Validate tokens           | `pnpm validate:tokens`                 |
-| Validate token defs       | `pnpm validate:token-definitions`      |
+| Operation             | Command                             |
+| --------------------- | ----------------------------------- |
+| Build all packages    | `pnpm build`                        |
+| Build one package     | `pnpm --filter <package> build`     |
+| Run all tests         | `pnpm test`                         |
+| Run package tests     | `pnpm --filter <package> test`      |
+| Typecheck all         | `pnpm typecheck`                    |
+| Typecheck one package | `pnpm --filter <package> typecheck` |
+| Fix lint + format     | `pnpm autofix`                      |
+| Lint                  | `pnpm lint`                         |
+| Format check          | `pnpm format:check`                 |
+| Validate tokens       | `pnpm validate:tokens`              |
+| Validate token defs   | `pnpm validate:token-definitions`   |
 
 ## Package Structure
 

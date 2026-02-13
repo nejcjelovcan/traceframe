@@ -101,7 +101,7 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Run ui-library build
-        run: pnpm turbo run build --filter=@traceframe/ui-library
+        run: pnpm turbo run build --filter=@nejcjelovcan/traceframe-ui-library
 
       - name: Validate semantic tokens
         run: pnpm run validate:tokens
