@@ -13,9 +13,6 @@ interface Props {
   children: React.ReactNode
 }
 
-/**
- * Theme mapping from playroom theme names to mode and color theme.
- */
 const THEME_MAP: Record<string, { mode: Mode; theme: Theme }> = {
   'Dusk Light': { mode: 'light', theme: 'dusk' },
   'Dusk Dark': { mode: 'dark', theme: 'dusk' },
@@ -25,10 +22,6 @@ const THEME_MAP: Record<string, { mode: Mode; theme: Theme }> = {
   'Ember Dark': { mode: 'dark', theme: 'ember' },
 }
 
-/**
- * Parse a playroom theme object into mode and color theme.
- * Playroom passes the exported theme value (e.g., { name: 'Dusk Light' }).
- */
 function parseTheme(themeInput: ThemeValue | undefined): {
   mode: Mode
   theme: Theme

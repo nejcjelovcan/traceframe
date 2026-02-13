@@ -1,0 +1,76 @@
+{
+  "name": "@nejcjelovcan/traceframe-playroom-preset",
+  "version": "0.0.1",
+  "description": "Playroom preset for Traceframe theme integration",
+  "main": "./config.cjs",
+  "exports": {
+    ".": {
+      "require": "./config.cjs"
+    },
+    "./frame-component": {
+      "types": "./dist/frame-component.d.ts",
+      "import": "./dist/frame-component.js"
+    },
+    "./themes": {
+      "types": "./dist/themes.d.ts",
+      "import": "./dist/themes.js"
+    },
+    "./components": {
+      "types": "./dist/components.d.ts",
+      "import": "./dist/components.js"
+    },
+    "./snippets": {
+      "types": "./dist/snippets/index.d.ts",
+      "import": "./dist/snippets/index.js"
+    },
+    "./snippets/types": {
+      "types": "./dist/snippets/types.d.ts",
+      "import": "./dist/snippets/types.js"
+    }
+  },
+  "files": [
+    "dist",
+    "config.cjs"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nejcjelovcan/traceframe.git",
+    "directory": "packages/playroom-preset"
+  },
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "typecheck": "tsc --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
+    "format": "prettier --cache --write \"**/*.{ts,tsx,json,md,cjs}\"",
+    "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md,cjs}\""
+  },
+  "dependencies": {
+    "@babel/core": "^7.29.0",
+    "@babel/preset-env": "^7.29.0",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@nejcjelovcan/traceframe-ui-library": "workspace:*",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.3",
+    "postcss-loader": "^8.2.0",
+    "style-loader": "^4.0.0"
+  },
+  "peerDependencies": {
+    "playroom": "^1.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "playroom": "^1.0.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.9.3"
+  }
+}
