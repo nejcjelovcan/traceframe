@@ -54,7 +54,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
     ref
   ) => {
     const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
-    const finalIcon = icon || (external ? 'external' : undefined)
+    const finalIcon = icon || (external ? 'external-link' : undefined)
     const iconSize = iconSizeMap[size || 'md']
 
     const iconElement = finalIcon && <Icon name={finalIcon} size={iconSize} />

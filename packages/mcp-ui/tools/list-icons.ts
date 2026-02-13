@@ -20,6 +20,7 @@ const ICON_CATEGORIES = [
   'entity',
   'code',
   'data',
+  'agentic',
 ] as const
 
 /**
@@ -30,7 +31,7 @@ export const listIconsInputSchema = {
     .enum(ICON_CATEGORIES)
     .optional()
     .describe(
-      'Filter by category (optional). Options: navigation, action, status, sorting, theme, entity, code, data'
+      'Filter by category (optional). Options: navigation, action, status, sorting, theme, entity, code, data, agentic'
     ),
 }
 

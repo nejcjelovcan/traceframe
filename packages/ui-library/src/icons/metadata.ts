@@ -217,6 +217,12 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     usage: 'Use for external dependencies from node_modules or third-party',
     aliases: ['npm', 'node-modules', 'third-party', 'world'],
   },
+  'external-link': {
+    description: 'Arrow pointing out of a box',
+    category: 'action',
+    usage: 'Use for links that open in a new tab or navigate to an external URL',
+    aliases: ['open-in-new-tab', 'outbound', 'new-window', 'launch'],
+  },
   internal: {
     description: 'Folder with code',
     category: 'entity',
@@ -326,6 +332,125 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     category: 'data',
     usage: 'Use for component counts or component lists',
     aliases: ['grid', 'count', 'list'],
+  },
+
+  // ============================================
+  // Agentic Workflows
+  // ============================================
+
+  agent: {
+    description: 'Robot icon for AI agent',
+    category: 'agentic',
+    usage: 'Use to represent an AI agent or autonomous process',
+    aliases: ['robot', 'ai', 'bot', 'assistant', 'autonomous'],
+  },
+  orchestrator: {
+    description: 'Sitemap icon for orchestration',
+    category: 'agentic',
+    usage: 'Use to represent an orchestrator coordinating multiple agents or workflows',
+    aliases: ['coordinator', 'conductor', 'manager', 'sitemap', 'workflow'],
+  },
+
+  // -- Actions --
+  write: {
+    description: 'Pencil icon for writing/composing',
+    category: 'agentic',
+    usage: 'Use for write actions in agentic workflows (creating new content)',
+    aliases: ['compose', 'create', 'author', 'pencil'],
+  },
+  read: {
+    description: 'Open book icon for reading',
+    category: 'agentic',
+    usage: 'Use for read actions in agentic workflows (reading files, documents)',
+    aliases: ['book', 'view', 'inspect'],
+  },
+  edit: {
+    description: 'Pencil-in-square icon for editing',
+    category: 'agentic',
+    usage: 'Use for edit actions in agentic workflows (modifying existing content)',
+    aliases: ['modify', 'update', 'change'],
+  },
+  tool: {
+    description: 'Wrench icon for tool usage',
+    category: 'agentic',
+    usage: 'Use for tool calls or tool invocations in agentic workflows',
+    aliases: ['wrench', 'utility', 'tool-call', 'tool-use'],
+  },
+  text: {
+    description: 'Document with text lines',
+    category: 'agentic',
+    usage: 'Use for text content or text output in agentic workflows',
+    aliases: ['content', 'output', 'document'],
+  },
+  prompt: {
+    description: 'Terminal prompt symbol',
+    category: 'agentic',
+    usage: 'Use for prompts or command inputs in agentic workflows',
+    aliases: ['terminal', 'command', 'input', 'instruction'],
+  },
+
+  // -- Status --
+  idle: {
+    description: 'Coffee cup icon for idle state',
+    category: 'agentic',
+    usage: 'Use for idle/inactive agent state',
+    aliases: ['inactive', 'rest', 'standby', 'coffee'],
+  },
+  waiting: {
+    description: 'Hourglass icon for waiting state',
+    category: 'agentic',
+    usage: 'Use for waiting/blocked agent state',
+    aliases: ['hourglass', 'blocked', 'paused', 'queued'],
+  },
+  implement: {
+    description: 'Hammer icon for implementation',
+    category: 'agentic',
+    usage: 'Use for implementation/building actions in agentic workflows',
+    aliases: ['build', 'construct', 'hammer', 'develop'],
+  },
+  refine: {
+    description: 'Magic wand icon for refinement',
+    category: 'agentic',
+    usage: 'Use for refining/polishing actions in agentic workflows',
+    aliases: ['polish', 'improve', 'enhance', 'wand', 'magic'],
+  },
+  working: {
+    description: 'Spinning loader icon for active work',
+    category: 'agentic',
+    usage: 'Use for active/in-progress agent state',
+    aliases: ['loading', 'processing', 'busy', 'spinner', 'running'],
+  },
+  watching: {
+    description: 'Eye icon for observing/monitoring',
+    category: 'agentic',
+    usage: 'Use for watching/monitoring state in agentic workflows',
+    aliases: ['observe', 'monitor', 'eye', 'supervise'],
+  },
+
+  // -- Orchestration --
+  message: {
+    description: 'Speech bubble icon for messages',
+    category: 'agentic',
+    usage: 'Use for messages or communication between agents',
+    aliases: ['chat', 'speech', 'conversation', 'bubble'],
+  },
+  polling: {
+    description: 'Refresh arrows icon for polling',
+    category: 'agentic',
+    usage: 'Use for polling or repeated checking actions',
+    aliases: ['refresh', 'retry', 'cycle', 'repeat'],
+  },
+  start: {
+    description: 'Play button icon for starting',
+    category: 'agentic',
+    usage: 'Use for starting workflows or agent processes',
+    aliases: ['play', 'begin', 'launch', 'run'],
+  },
+  stop: {
+    description: 'Stop button icon for stopping',
+    category: 'agentic',
+    usage: 'Use for stopping workflows or agent processes',
+    aliases: ['halt', 'terminate', 'end', 'kill'],
   },
 }
 

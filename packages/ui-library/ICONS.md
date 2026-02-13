@@ -125,6 +125,29 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 | `users`      | User counts, team metrics         |
 | `components` | Component counts, component lists |
 
+### Agentic Workflows
+
+| Name           | Use Case                                   |
+| -------------- | ------------------------------------------ |
+| `agent`        | AI agent or autonomous process             |
+| `orchestrator` | Orchestrator coordinating agents/workflows |
+| `write`        | Write/compose actions                      |
+| `read`         | Read/inspect actions                       |
+| `edit`         | Edit/modify actions                        |
+| `tool`         | Tool calls or tool invocations             |
+| `text`         | Text content or output                     |
+| `prompt`       | Prompts or command inputs                  |
+| `idle`         | Idle/inactive agent state                  |
+| `waiting`      | Waiting/blocked agent state                |
+| `implement`    | Implementation/building actions            |
+| `refine`       | Refining/polishing actions                 |
+| `working`      | Active/in-progress agent state             |
+| `watching`     | Watching/monitoring state                  |
+| `message`      | Messages between agents                    |
+| `polling`      | Polling or repeated checking               |
+| `start`        | Starting workflows or processes            |
+| `stop`         | Stopping workflows or processes            |
+
 ## Applying Colors
 
 Use Tailwind classes via `className`:
