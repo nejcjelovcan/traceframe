@@ -53,6 +53,7 @@ export type IconName =
   | 'file-description'
   | 'location-code'
   | 'external'
+  | 'external-link'
   | 'internal'
   // Code
   | 'code'

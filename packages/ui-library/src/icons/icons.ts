@@ -25,6 +25,7 @@ import {
   IconDots,
   IconEdit,
   IconEye,
+  IconExternalLink,
   IconEyeCheck,
   IconEyeX,
   IconFile,
@@ -111,6 +112,7 @@ export const ICON_REGISTRY: Record<IconName, TablerIcon> = {
   'file-description': IconFileDescription,
   'location-code': IconLocationCode,
   external: IconGlobe,
+  'external-link': IconExternalLink,
   internal: IconFolderCode,
   // Code
   code: IconCode,

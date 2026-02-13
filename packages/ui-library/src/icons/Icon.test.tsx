@@ -115,7 +115,8 @@ describe('getIconsByCategory', () => {
     const icons = getIconsByCategory('action')
     expect(icons).toContain('search')
     expect(icons).toContain('close')
-    expect(icons).toHaveLength(5)
+    expect(icons).toContain('external-link')
+    expect(icons).toHaveLength(6)
   })
 })
 
@@ -152,8 +153,8 @@ describe('searchIcons', () => {
 })
 
 describe('getAllIconNames', () => {
-  it('returns all 67 icons', () => {
-    expect(getAllIconNames()).toHaveLength(67)
+  it('returns all 68 icons', () => {
+    expect(getAllIconNames()).toHaveLength(68)
   })
 
   it('includes expected icons', () => {

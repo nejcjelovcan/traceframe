@@ -217,6 +217,12 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     usage: 'Use for external dependencies from node_modules or third-party',
     aliases: ['npm', 'node-modules', 'third-party', 'world'],
   },
+  'external-link': {
+    description: 'Arrow pointing out of a box',
+    category: 'action',
+    usage: 'Use for links that open in a new tab or navigate to an external URL',
+    aliases: ['open-in-new-tab', 'outbound', 'new-window', 'launch'],
+  },
   internal: {
     description: 'Folder with code',
     category: 'entity',
