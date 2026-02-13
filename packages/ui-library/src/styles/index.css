@@ -1,0 +1,13 @@
+@import url('./index.base.css');
+@import url('./generated/palette.dusk.css');
+@import url('./generated/palette.arctic.css');
+@import url('./generated/palette.ember.css');
+@import url('./generated/theme.dusk.css');
+@import url('./generated/theme.arctic.css');
+@import url('./generated/theme.ember.css');
+@import url('./generated/semantic.light.css');
+@import url('./generated/semantic.dark.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

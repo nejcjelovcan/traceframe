@@ -1,0 +1,163 @@
+@layer base {
+  :root.light {
+    /* Accent 1 base color for categorical data and visual distinction */
+    --color-accent-1: var(--palette-accent-1-500);
+    /* Accent 1 border color for containers and elements */
+    --color-accent-1-border: var(--palette-accent-1-200);
+    /* Accent 1 emphasis color for icons and strong indicators */
+    --color-accent-1-emphasis: var(--palette-accent-1-600);
+    /* Accent 1 text color for readability on accent backgrounds */
+    --color-accent-1-foreground: var(--palette-accent-1-700);
+    /* Accent 1 muted background for subtle indicators */
+    --color-accent-1-muted: var(--palette-accent-1-50);
+    /* Accent 2 base color for categorical data and visual distinction */
+    --color-accent-2: var(--palette-accent-2-500);
+    /* Accent 2 border color for containers and elements */
+    --color-accent-2-border: var(--palette-accent-2-200);
+    /* Accent 2 emphasis color for icons and strong indicators */
+    --color-accent-2-emphasis: var(--palette-accent-2-600);
+    /* Accent 2 text color for readability on accent backgrounds */
+    --color-accent-2-foreground: var(--palette-accent-2-700);
+    /* Accent 2 muted background for subtle indicators */
+    --color-accent-2-muted: var(--palette-accent-2-50);
+    /* Accent 3 base color for categorical data and visual distinction */
+    --color-accent-3: var(--palette-accent-3-500);
+    /* Accent 3 border color for containers and elements */
+    --color-accent-3-border: var(--palette-accent-3-200);
+    /* Accent 3 emphasis color for icons and strong indicators */
+    --color-accent-3-emphasis: var(--palette-accent-3-600);
+    /* Accent 3 text color for readability on accent backgrounds */
+    --color-accent-3-foreground: var(--palette-accent-3-700);
+    /* Accent 3 muted background for subtle indicators */
+    --color-accent-3-muted: var(--palette-accent-3-50);
+    /* Accent 4 base color for categorical data and visual distinction */
+    --color-accent-4: var(--palette-accent-4-500);
+    /* Accent 4 border color for containers and elements */
+    --color-accent-4-border: var(--palette-accent-4-200);
+    /* Accent 4 emphasis color for icons and strong indicators */
+    --color-accent-4-emphasis: var(--palette-accent-4-600);
+    /* Accent 4 text color for readability on accent backgrounds */
+    --color-accent-4-foreground: var(--palette-accent-4-700);
+    /* Accent 4 muted background for subtle indicators */
+    --color-accent-4-muted: var(--palette-accent-4-50);
+    /* Accent 5 base color for categorical data and visual distinction */
+    --color-accent-5: var(--palette-accent-5-500);
+    /* Accent 5 border color for containers and elements */
+    --color-accent-5-border: var(--palette-accent-5-200);
+    /* Accent 5 emphasis color for icons and strong indicators */
+    --color-accent-5-emphasis: var(--palette-accent-5-600);
+    /* Accent 5 text color for readability on accent backgrounds */
+    --color-accent-5-foreground: var(--palette-accent-5-700);
+    /* Accent 5 muted background for subtle indicators */
+    --color-accent-5-muted: var(--palette-accent-5-50);
+
+    /* Primary border color for inputs, cards, and containers */
+    --color-border: var(--palette-neutral-200);
+    /* Subtle border for dividers, separators, and less prominent boundaries */
+    --color-border-muted: var(--palette-neutral-100);
+
+    /* Disabled background color for inactive interactive elements */
+    --color-disabled: var(--palette-neutral-100);
+    /* Disabled text and icon color for inactive elements */
+    --color-disabled-foreground: var(--palette-neutral-400);
+
+    /* Primary text and icon color for headings and body text */
+    --color-foreground: var(--palette-neutral-900);
+    /* Text color on dark backgrounds like primary buttons */
+    --color-foreground-inverted: var(--palette-neutral-50);
+    /* Secondary text color on dark backgrounds */
+    --color-foreground-inverted-muted: var(--palette-neutral-400);
+    /* Secondary text for descriptions, placeholders, and less prominent content */
+    --color-foreground-muted: var(--palette-neutral-500);
+
+    /* Background color for active or selected states */
+    --color-interactive-active: var(--palette-neutral-200);
+    /* Destructive action button background color */
+    --color-interactive-destructive: var(--palette-error-600);
+    /* Border color for destructive buttons and outlined destructive elements */
+    --color-interactive-destructive-border: var(--palette-error-700);
+    /* Text and icon color on destructive buttons */
+    --color-interactive-destructive-foreground: var(--palette-neutral-50);
+    /* Destructive button background on hover */
+    --color-interactive-destructive-hover: var(--palette-error-800);
+    /* Background color for hover states on neutral interactive elements */
+    --color-interactive-hover: var(--palette-neutral-100);
+    /* Background color for pressed or clicking states */
+    --color-interactive-pressed: var(--palette-neutral-300);
+    /* Primary button and CTA background color */
+    --color-interactive-primary: var(--palette-primary-600);
+    /* Border color for primary buttons and outlined primary elements */
+    --color-interactive-primary-border: var(--palette-primary-700);
+    /* Text and icon color on primary buttons */
+    --color-interactive-primary-foreground: var(--palette-neutral-50);
+    /* Primary button background on hover */
+    --color-interactive-primary-hover: var(--palette-primary-700);
+    /* Secondary button and accent background color */
+    --color-interactive-secondary: var(--palette-secondary-300);
+    /* Border color for secondary buttons and outlined secondary elements */
+    --color-interactive-secondary-border: var(--palette-secondary-400);
+    /* Text and icon color on secondary buttons */
+    --color-interactive-secondary-foreground: var(--palette-secondary-900);
+    /* Secondary button background on hover */
+    --color-interactive-secondary-hover: var(--palette-secondary-400);
+
+    /* Focus ring color for accessibility outlines and focus states */
+    --color-ring: var(--palette-primary-500);
+
+    /* Error status color for failures, critical issues, and destructive actions */
+    --color-status-error: var(--palette-error-500);
+    /* Error status border color for error containers and alerts */
+    --color-status-error-border: var(--palette-error-200);
+    /* Error status emphasis color for icons and strong indicators */
+    --color-status-error-emphasis: var(--palette-error-600);
+    /* Error status text color for readability on error backgrounds */
+    --color-status-error-foreground: var(--palette-error-700);
+    /* Error status muted background for subtle error indicators */
+    --color-status-error-muted: var(--palette-error-50);
+    /* Info status color for informational messages, tips, and non-critical alerts */
+    --color-status-info: var(--palette-primary-500);
+    /* Info status border color for info containers and alerts */
+    --color-status-info-border: var(--palette-primary-200);
+    /* Info status emphasis color for icons and strong indicators */
+    --color-status-info-emphasis: var(--palette-primary-600);
+    /* Info status text color for readability on info backgrounds */
+    --color-status-info-foreground: var(--palette-primary-700);
+    /* Info status muted background for subtle info indicators */
+    --color-status-info-muted: var(--palette-primary-50);
+    /* Success status color for positive outcomes, completed actions, and confirmations */
+    --color-status-success: var(--palette-success-500);
+    /* Success status border color for success containers and alerts */
+    --color-status-success-border: var(--palette-success-200);
+    /* Success status emphasis color for icons and strong indicators */
+    --color-status-success-emphasis: var(--palette-success-600);
+    /* Success status text color for readability on success backgrounds */
+    --color-status-success-foreground: var(--palette-success-700);
+    /* Success status muted background for subtle success indicators */
+    --color-status-success-muted: var(--palette-success-50);
+    /* Warning status color for cautions, pending states, and attention required */
+    --color-status-warning: var(--palette-warning-500);
+    /* Warning status border color for warning containers and alerts */
+    --color-status-warning-border: var(--palette-warning-200);
+    /* Warning status emphasis color for icons and strong indicators */
+    --color-status-warning-emphasis: var(--palette-warning-600);
+    /* Warning status text color for readability on warning backgrounds */
+    --color-status-warning-foreground: var(--palette-warning-700);
+    /* Warning status muted background for subtle warning indicators */
+    --color-status-warning-muted: var(--palette-warning-50);
+
+    /* Primary surface color for backgrounds and containers */
+    --color-surface: var(--palette-surface);
+    /* Secondary surface for sidebars, alternating rows, and nested elements */
+    --color-surface-muted: var(--palette-neutral-100);
+    /* Tertiary surface for hover states, wells, and recessed areas */
+    --color-surface-subtle: var(--palette-neutral-200);
+
+    /* Tooltip background color for contextual help and hints */
+    --color-tooltip: var(--palette-neutral-900);
+    /* Tooltip text color for readability on dark tooltip backgrounds */
+    --color-tooltip-foreground: var(--palette-neutral-50);
+
+    /* Primary shadow color for elevation effects */
+    --color-shadow: var(--palette-neutral-950);
+  }
+}

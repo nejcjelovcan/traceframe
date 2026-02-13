@@ -1,0 +1,34 @@
+{
+  "name": "@traceframe/eslint-plugin",
+  "version": "0.0.1",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "description": "ESLint plugin with custom rules for Traceframe code quality",
+  "scripts": {
+    "build": "tsc --build",
+    "clean": "rm -rf dist tsconfig.tsbuildinfo",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"*.ts\" \"**/*.ts\" --ignore-pattern \"dist/**\"",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"*.ts\" \"**/*.ts\" --ignore-pattern \"dist/**\"",
+    "format": "prettier --cache --write \"**/*.{ts,tsx,json,md}\"",
+    "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md}\""
+  },
+  "dependencies": {
+    "@traceframe/ui-library": "workspace:^",
+    "@typescript-eslint/utils": "^8.18.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "@typescript-eslint/parser": "^8.19.1",
+    "@typescript-eslint/rule-tester": "^8.18.1",
+    "eslint": "^9.18.0",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.8"
+  },
+  "peerDependencies": {
+    "eslint": "^8.0.0 || ^9.0.0"
+  }
+}

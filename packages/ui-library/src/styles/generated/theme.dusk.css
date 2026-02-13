@@ -1,0 +1,46 @@
+@layer base {
+  /**
+   * Theme: "dusk"
+   *
+   * Moody, sophisticated theme inspired by twilight. Deep purples meet warm earth tones for dramatic, creative interfaces.
+   */
+
+  :root.dusk {
+    /* ===== THEME: DUSK ===== */
+
+    /* Typography */
+    --font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', Menlo, monospace;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 3px 0 rgb(var(--color-shadow) / 0.08);
+    --shadow-md:
+      0 4px 8px -1px rgb(var(--color-shadow) / 0.12), 0 2px 4px -2px rgb(var(--color-shadow) / 0.08);
+    --shadow-lg:
+      0 12px 20px -4px rgb(var(--color-shadow) / 0.15),
+      0 4px 8px -4px rgb(var(--color-shadow) / 0.1);
+
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+
+    /* Element Sizing */
+    --size-xs: 1.5rem;
+    --size-sm: 2rem;
+    --size-md: 2.5rem;
+    --size-lg: 3rem;
+    --size-xl: 3.5rem;
+
+    /* Custom Spacing */
+    --spacing-2xs: 0.125rem;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 0.75rem;
+    --spacing-base: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+    --spacing-2xl: 8rem;
+  }
+}

@@ -1,0 +1,6 @@
+@layer base {
+  body {
+    background-color: rgb(var(--color-surface));
+    color: rgb(var(--color-foreground));
+  }
+}

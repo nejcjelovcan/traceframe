@@ -1,0 +1,100 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["@typescript-eslint", "unused-imports", "import"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
+    "no-console": "off",
+    "no-useless-escape": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@tabler/icons-react",
+            "message": "Import icons from '@traceframe/ui-library' instead. See packages/ui-library/ICONS.md for available icons."
+          }
+        ]
+      }
+    ],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin"],
+          ["external"],
+          ["internal"],
+          ["parent", "sibling"],
+          ["index"],
+          ["type"]
+        ],
+        "pathGroups": [
+          {
+            "pattern": "@traceframe/**",
+            "group": "internal",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["type"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        },
+        "warnOnUnassignedImports": true
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "packages/ui-library/src/icons/**/*.ts",
+        "packages/ui-library/src/icons/**/*.tsx",
+        "**/ui-library/src/icons/**/*.ts",
+        "**/ui-library/src/icons/**/*.tsx",
+        "src/icons/**/*.ts",
+        "src/icons/**/*.tsx"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      },
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "ignorePatterns": [
+    "dist",
+    "build",
+    "node_modules",
+    ".turbo",
+    "coverage",
+    "**/tests/fixtures/**",
+    "fixtures"
+  ]
+}

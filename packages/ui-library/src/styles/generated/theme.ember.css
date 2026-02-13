@@ -1,0 +1,47 @@
+@layer base {
+  /**
+   * Theme: "ember"
+   *
+   * Warm, refined, compact. A design-studio aesthetic where data glows like embers. Terracotta warmth meets jade accents in a dense, information-rich layout built for designers who appreciate both beauty and substance. Space Grotesk brings geometric character; tight spacing maximizes data density.
+   */
+
+  :root.ember {
+    /* ===== THEME: EMBER ===== */
+
+    /* Typography */
+    --font-sans: 'Space Grotesk Variable', 'Space Grotesk', Inter, system-ui, sans-serif;
+    --font-mono: 'Space Mono', 'JetBrains Mono', Menlo, monospace;
+
+    /* Shadows */
+    --shadow-sm:
+      0 1px 2px 0 rgb(var(--color-shadow) / 0.06), 0 1px 3px 0 rgb(var(--color-shadow) / 0.04);
+    --shadow-md:
+      0 3px 6px -1px rgb(var(--color-shadow) / 0.09), 0 2px 4px -2px rgb(var(--color-shadow) / 0.06);
+    --shadow-lg:
+      0 10px 18px -4px rgb(var(--color-shadow) / 0.12),
+      0 4px 8px -4px rgb(var(--color-shadow) / 0.08);
+
+    /* Border Radius */
+    --radius-sm: 0.1875rem;
+    --radius-md: 0.3125rem;
+    --radius-lg: 0.4375rem;
+    --radius-xl: 0.625rem;
+
+    /* Element Sizing */
+    --size-xs: 1.25rem;
+    --size-sm: 1.625rem;
+    --size-md: 2rem;
+    --size-lg: 2.5rem;
+    --size-xl: 3rem;
+
+    /* Custom Spacing */
+    --spacing-2xs: 0.0625rem;
+    --spacing-xs: 0.1875rem;
+    --spacing-sm: 0.375rem;
+    --spacing-md: 0.5rem;
+    --spacing-base: 0.75rem;
+    --spacing-lg: 1.25rem;
+    --spacing-xl: 2.5rem;
+    --spacing-2xl: 4.5rem;
+  }
+}

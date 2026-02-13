@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+.pnp
+.pnp.js
+package-lock.json
+
+# Build outputs
+dist
+build
+.turbo
+.next
+.vite
+.prettier-cache
+*.tsbuildinfo
+
+# Testing
+coverage
+.vitest-cache
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+pnpm-debug.log*
+
+# Generated output
+screenshots
+
+# Claude Code
+.claude/settings.local.json

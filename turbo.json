@@ -1,0 +1,47 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["**/*.{ts,tsx,json,html}"],
+      "outputs": ["dist/**"]
+    },
+    "clean": {
+      "dependsOn": [],
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "inputs": ["**/*.{ts,tsx,json,html}"]
+    },
+    "test:ci": {
+      "dependsOn": ["build"],
+      "inputs": ["**/*.{ts,tsx,json,html}"],
+      "outputs": ["coverage/**"]
+    },
+    "format": {
+      "dependsOn": [],
+      "inputs": ["**/*.{ts,tsx,json,html,md,yaml}", ".prettierrc.json"],
+      "outputs": []
+    },
+    "format:check": {
+      "dependsOn": [],
+      "inputs": ["**/*.{ts,tsx,json,html,md,yaml}", ".prettierrc.json"],
+      "outputs": []
+    },
+    "lint": {
+      "inputs": ["**/*.{ts,tsx,json,html}"]
+    },
+    "lint:fix": {
+      "inputs": ["**/*.{ts,tsx,json,html}"],
+      "outputs": ["**/*.{ts,tsx,json,html}"]
+    },
+    "typecheck": {
+      "dependsOn": ["^build"],
+      "inputs": ["**/*.{ts,tsx}", "tsconfig.json", "package.json"],
+      "outputs": ["tsconfig.tsbuildinfo"]
+    }
+  }
+}

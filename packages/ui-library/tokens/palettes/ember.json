@@ -1,0 +1,639 @@
+{
+  "$paletteDescription": "Palette: \"Ember\"\n\nWhere data meets craft, insights glow like coals.\n\nA warm, refined palette inspired by artisanal design studios.\nTerracotta primary meets deep jade in natural harmony.\nMedium chroma values (0.10-0.13) create richness without excess.\nWarm stone neutrals ground the interface with tactile presence.\nIdeal for analytics dashboards, design tools, and data-rich interfaces\nwhere beauty and information density coexist.\n\nGenerated using OKLCH color space for perceptual uniformity.\nAll RGB values are space-separated for alpha channel support.",
+  "palette": {
+    "surface": {
+      "$value": "254 252 250",
+      "$type": "color",
+      "$description": "Surface color - warm parchment white with subtle terracotta undertone"
+    },
+    "primary": {
+      "50": {
+        "$value": "255 248 240",
+        "$type": "color",
+        "$description": "Lightest primary - oklch(0.98 0.05 38)"
+      },
+      "100": {
+        "$value": "255 239 222",
+        "$type": "color",
+        "$description": "Very light primary - oklch(0.95 0.08 38)"
+      },
+      "200": {
+        "$value": "253 224 198",
+        "$type": "color",
+        "$description": "Light primary - oklch(0.90 0.10 38)"
+      },
+      "300": {
+        "$value": "244 201 168",
+        "$type": "color",
+        "$description": "Light-medium primary - oklch(0.82 0.11 38)"
+      },
+      "400": {
+        "$value": "225 170 128",
+        "$type": "color",
+        "$description": "Medium-light primary - oklch(0.70 0.12 38)"
+      },
+      "500": {
+        "$value": "200 138 92",
+        "$type": "color",
+        "$description": "Base primary (copper) - oklch(0.58 0.12 38)"
+      },
+      "600": {
+        "$value": "170 108 64",
+        "$type": "color",
+        "$description": "Medium-dark primary - oklch(0.48 0.12 38)"
+      },
+      "700": {
+        "$value": "138 82 42",
+        "$type": "color",
+        "$description": "Dark primary - oklch(0.38 0.11 38)"
+      },
+      "800": {
+        "$value": "106 60 26",
+        "$type": "color",
+        "$description": "Darker primary - oklch(0.28 0.10 38)"
+      },
+      "900": {
+        "$value": "78 42 14",
+        "$type": "color",
+        "$description": "Very dark primary - oklch(0.20 0.08 38)"
+      },
+      "950": {
+        "$value": "44 22 6",
+        "$type": "color",
+        "$description": "Darkest primary - oklch(0.10 0.06 38)"
+      }
+    },
+    "secondary": {
+      "50": {
+        "$value": "238 253 250",
+        "$type": "color",
+        "$description": "Lightest secondary - oklch(0.98 0.04 170)"
+      },
+      "100": {
+        "$value": "218 248 242",
+        "$type": "color",
+        "$description": "Very light secondary - oklch(0.95 0.07 170)"
+      },
+      "200": {
+        "$value": "189 238 228",
+        "$type": "color",
+        "$description": "Light secondary - oklch(0.90 0.09 170)"
+      },
+      "300": {
+        "$value": "148 222 208",
+        "$type": "color",
+        "$description": "Light-medium secondary - oklch(0.82 0.10 170)"
+      },
+      "400": {
+        "$value": "97 196 180",
+        "$type": "color",
+        "$description": "Medium-light secondary - oklch(0.70 0.11 170)"
+      },
+      "500": {
+        "$value": "52 164 148",
+        "$type": "color",
+        "$description": "Base secondary (jade) - oklch(0.58 0.11 170)"
+      },
+      "600": {
+        "$value": "28 134 120",
+        "$type": "color",
+        "$description": "Medium-dark secondary - oklch(0.48 0.11 170)"
+      },
+      "700": {
+        "$value": "16 106 94",
+        "$type": "color",
+        "$description": "Dark secondary - oklch(0.38 0.10 170)"
+      },
+      "800": {
+        "$value": "8 80 70",
+        "$type": "color",
+        "$description": "Darker secondary - oklch(0.28 0.09 170)"
+      },
+      "900": {
+        "$value": "4 58 50",
+        "$type": "color",
+        "$description": "Very dark secondary - oklch(0.20 0.07 170)"
+      },
+      "950": {
+        "$value": "2 32 27",
+        "$type": "color",
+        "$description": "Darkest secondary - oklch(0.10 0.05 170)"
+      }
+    },
+    "neutral": {
+      "50": {
+        "$value": "252 250 249",
+        "$type": "color",
+        "$description": "Warm near-white - oklch(0.98 0.005 25)"
+      },
+      "100": {
+        "$value": "246 243 241",
+        "$type": "color",
+        "$description": "Warm very light gray - oklch(0.95 0.008 25)"
+      },
+      "200": {
+        "$value": "234 229 226",
+        "$type": "color",
+        "$description": "Warm light gray - oklch(0.90 0.010 25)"
+      },
+      "300": {
+        "$value": "216 209 204",
+        "$type": "color",
+        "$description": "Warm light-medium gray - oklch(0.82 0.012 25)"
+      },
+      "400": {
+        "$value": "180 172 166",
+        "$type": "color",
+        "$description": "Warm medium-light gray - oklch(0.70 0.012 25)"
+      },
+      "500": {
+        "$value": "144 134 128",
+        "$type": "color",
+        "$description": "Warm base gray - oklch(0.58 0.012 25)"
+      },
+      "600": {
+        "$value": "114 103 97",
+        "$type": "color",
+        "$description": "Warm medium-dark gray - oklch(0.48 0.012 25)"
+      },
+      "700": {
+        "$value": "86 76 70",
+        "$type": "color",
+        "$description": "Warm dark gray - oklch(0.38 0.011 25)"
+      },
+      "800": {
+        "$value": "63 53 48",
+        "$type": "color",
+        "$description": "Warm darker gray - oklch(0.28 0.010 25)"
+      },
+      "900": {
+        "$value": "45 36 32",
+        "$type": "color",
+        "$description": "Warm very dark gray - oklch(0.20 0.008 25)"
+      },
+      "950": {
+        "$value": "25 18 15",
+        "$type": "color",
+        "$description": "Warm nearly black - oklch(0.10 0.006 25)"
+      }
+    },
+    "success": {
+      "50": {
+        "$value": "239 252 245",
+        "$type": "color",
+        "$description": "Lightest success - oklch(0.98 0.04 150)"
+      },
+      "100": {
+        "$value": "222 248 234",
+        "$type": "color",
+        "$description": "Very light success - oklch(0.95 0.06 150)"
+      },
+      "200": {
+        "$value": "194 239 217",
+        "$type": "color",
+        "$description": "Light success - oklch(0.90 0.08 150)"
+      },
+      "300": {
+        "$value": "153 222 192",
+        "$type": "color",
+        "$description": "Light-medium success - oklch(0.82 0.09 150)"
+      },
+      "400": {
+        "$value": "106 196 160",
+        "$type": "color",
+        "$description": "Medium-light success - oklch(0.70 0.10 150)"
+      },
+      "500": {
+        "$value": "64 164 128",
+        "$type": "color",
+        "$description": "Base success - oklch(0.58 0.10 150)"
+      },
+      "600": {
+        "$value": "42 134 102",
+        "$type": "color",
+        "$description": "Medium-dark success - oklch(0.48 0.10 150)"
+      },
+      "700": {
+        "$value": "28 106 80",
+        "$type": "color",
+        "$description": "Dark success - oklch(0.38 0.09 150)"
+      },
+      "800": {
+        "$value": "19 80 59",
+        "$type": "color",
+        "$description": "Darker success - oklch(0.28 0.08 150)"
+      },
+      "900": {
+        "$value": "12 58 42",
+        "$type": "color",
+        "$description": "Very dark success - oklch(0.20 0.06 150)"
+      },
+      "950": {
+        "$value": "6 32 23",
+        "$type": "color",
+        "$description": "Darkest success - oklch(0.10 0.04 150)"
+      }
+    },
+    "warning": {
+      "50": {
+        "$value": "255 251 238",
+        "$type": "color",
+        "$description": "Lightest warning - oklch(0.98 0.06 55)"
+      },
+      "100": {
+        "$value": "255 246 216",
+        "$type": "color",
+        "$description": "Very light warning - oklch(0.95 0.09 55)"
+      },
+      "200": {
+        "$value": "252 235 184",
+        "$type": "color",
+        "$description": "Light warning - oklch(0.90 0.11 55)"
+      },
+      "300": {
+        "$value": "244 218 142",
+        "$type": "color",
+        "$description": "Light-medium warning - oklch(0.82 0.12 55)"
+      },
+      "400": {
+        "$value": "228 192 98",
+        "$type": "color",
+        "$description": "Medium-light warning - oklch(0.70 0.13 55)"
+      },
+      "500": {
+        "$value": "204 164 60",
+        "$type": "color",
+        "$description": "Base warning (golden) - oklch(0.58 0.13 55)"
+      },
+      "600": {
+        "$value": "172 136 38",
+        "$type": "color",
+        "$description": "Medium-dark warning - oklch(0.48 0.13 55)"
+      },
+      "700": {
+        "$value": "140 108 24",
+        "$type": "color",
+        "$description": "Dark warning - oklch(0.38 0.12 55)"
+      },
+      "800": {
+        "$value": "108 82 14",
+        "$type": "color",
+        "$description": "Darker warning - oklch(0.28 0.11 55)"
+      },
+      "900": {
+        "$value": "78 60 8",
+        "$type": "color",
+        "$description": "Very dark warning - oklch(0.20 0.09 55)"
+      },
+      "950": {
+        "$value": "44 34 3",
+        "$type": "color",
+        "$description": "Darkest warning - oklch(0.10 0.06 55)"
+      }
+    },
+    "error": {
+      "50": {
+        "$value": "255 244 242",
+        "$type": "color",
+        "$description": "Lightest error - oklch(0.98 0.06 15)"
+      },
+      "100": {
+        "$value": "255 232 227",
+        "$type": "color",
+        "$description": "Very light error - oklch(0.95 0.10 15)"
+      },
+      "200": {
+        "$value": "255 212 204",
+        "$type": "color",
+        "$description": "Light error - oklch(0.90 0.12 15)"
+      },
+      "300": {
+        "$value": "248 184 172",
+        "$type": "color",
+        "$description": "Light-medium error - oklch(0.82 0.13 15)"
+      },
+      "400": {
+        "$value": "230 148 132",
+        "$type": "color",
+        "$description": "Medium-light error - oklch(0.70 0.14 15)"
+      },
+      "500": {
+        "$value": "204 114 96",
+        "$type": "color",
+        "$description": "Base error - oklch(0.58 0.14 15)"
+      },
+      "600": {
+        "$value": "172 86 70",
+        "$type": "color",
+        "$description": "Medium-dark error - oklch(0.48 0.14 15)"
+      },
+      "700": {
+        "$value": "138 64 48",
+        "$type": "color",
+        "$description": "Dark error - oklch(0.38 0.13 15)"
+      },
+      "800": {
+        "$value": "106 44 32",
+        "$type": "color",
+        "$description": "Darker error - oklch(0.28 0.12 15)"
+      },
+      "900": {
+        "$value": "76 30 20",
+        "$type": "color",
+        "$description": "Very dark error - oklch(0.20 0.10 15)"
+      },
+      "950": {
+        "$value": "42 15 10",
+        "$type": "color",
+        "$description": "Darkest error - oklch(0.10 0.07 15)"
+      }
+    },
+    "accent": {
+      "1": {
+        "50": {
+          "$value": "243 246 255",
+          "$type": "color",
+          "$description": "oklch(0.98 0.04 230) - Cerulean"
+        },
+        "100": {
+          "$value": "230 237 255",
+          "$type": "color",
+          "$description": "oklch(0.95 0.07 230)"
+        },
+        "200": {
+          "$value": "210 222 255",
+          "$type": "color",
+          "$description": "oklch(0.90 0.09 230)"
+        },
+        "300": {
+          "$value": "180 200 248",
+          "$type": "color",
+          "$description": "oklch(0.82 0.10 230)"
+        },
+        "400": {
+          "$value": "138 168 230",
+          "$type": "color",
+          "$description": "oklch(0.70 0.11 230)"
+        },
+        "500": {
+          "$value": "100 136 204",
+          "$type": "color",
+          "$description": "oklch(0.58 0.11 230)"
+        },
+        "600": {
+          "$value": "72 108 172",
+          "$type": "color",
+          "$description": "oklch(0.48 0.11 230)"
+        },
+        "700": {
+          "$value": "50 82 138",
+          "$type": "color",
+          "$description": "oklch(0.38 0.10 230)"
+        },
+        "800": {
+          "$value": "34 60 106",
+          "$type": "color",
+          "$description": "oklch(0.28 0.09 230)"
+        },
+        "900": {
+          "$value": "22 42 76",
+          "$type": "color",
+          "$description": "oklch(0.20 0.07 230)"
+        },
+        "950": {
+          "$value": "10 22 42",
+          "$type": "color",
+          "$description": "oklch(0.10 0.05 230)"
+        }
+      },
+      "2": {
+        "50": {
+          "$value": "255 243 250",
+          "$type": "color",
+          "$description": "oklch(0.98 0.05 330) - Fuchsia"
+        },
+        "100": {
+          "$value": "255 230 244",
+          "$type": "color",
+          "$description": "oklch(0.95 0.08 330)"
+        },
+        "200": {
+          "$value": "255 212 234",
+          "$type": "color",
+          "$description": "oklch(0.90 0.10 330)"
+        },
+        "300": {
+          "$value": "248 184 216",
+          "$type": "color",
+          "$description": "oklch(0.82 0.11 330)"
+        },
+        "400": {
+          "$value": "228 148 192",
+          "$type": "color",
+          "$description": "oklch(0.70 0.12 330)"
+        },
+        "500": {
+          "$value": "200 114 164",
+          "$type": "color",
+          "$description": "oklch(0.58 0.12 330)"
+        },
+        "600": {
+          "$value": "168 86 136",
+          "$type": "color",
+          "$description": "oklch(0.48 0.12 330)"
+        },
+        "700": {
+          "$value": "134 62 108",
+          "$type": "color",
+          "$description": "oklch(0.38 0.11 330)"
+        },
+        "800": {
+          "$value": "102 44 82",
+          "$type": "color",
+          "$description": "oklch(0.28 0.10 330)"
+        },
+        "900": {
+          "$value": "74 30 58",
+          "$type": "color",
+          "$description": "oklch(0.20 0.08 330)"
+        },
+        "950": {
+          "$value": "42 14 32",
+          "$type": "color",
+          "$description": "oklch(0.10 0.06 330)"
+        }
+      },
+      "3": {
+        "50": {
+          "$value": "244 252 240",
+          "$type": "color",
+          "$description": "oklch(0.98 0.04 120) - Chartreuse"
+        },
+        "100": {
+          "$value": "234 248 226",
+          "$type": "color",
+          "$description": "oklch(0.95 0.06 120)"
+        },
+        "200": {
+          "$value": "216 240 204",
+          "$type": "color",
+          "$description": "oklch(0.90 0.08 120)"
+        },
+        "300": {
+          "$value": "190 226 172",
+          "$type": "color",
+          "$description": "oklch(0.82 0.09 120)"
+        },
+        "400": {
+          "$value": "156 204 132",
+          "$type": "color",
+          "$description": "oklch(0.70 0.10 120)"
+        },
+        "500": {
+          "$value": "122 176 98",
+          "$type": "color",
+          "$description": "oklch(0.58 0.10 120)"
+        },
+        "600": {
+          "$value": "96 148 74",
+          "$type": "color",
+          "$description": "oklch(0.48 0.10 120)"
+        },
+        "700": {
+          "$value": "72 118 54",
+          "$type": "color",
+          "$description": "oklch(0.38 0.09 120)"
+        },
+        "800": {
+          "$value": "52 90 38",
+          "$type": "color",
+          "$description": "oklch(0.28 0.08 120)"
+        },
+        "900": {
+          "$value": "36 66 26",
+          "$type": "color",
+          "$description": "oklch(0.20 0.06 120)"
+        },
+        "950": {
+          "$value": "18 38 12",
+          "$type": "color",
+          "$description": "oklch(0.10 0.04 120)"
+        }
+      },
+      "4": {
+        "50": {
+          "$value": "248 244 255",
+          "$type": "color",
+          "$description": "oklch(0.98 0.04 285) - Plum"
+        },
+        "100": {
+          "$value": "242 234 255",
+          "$type": "color",
+          "$description": "oklch(0.95 0.07 285)"
+        },
+        "200": {
+          "$value": "228 218 255",
+          "$type": "color",
+          "$description": "oklch(0.90 0.09 285)"
+        },
+        "300": {
+          "$value": "208 192 248",
+          "$type": "color",
+          "$description": "oklch(0.82 0.10 285)"
+        },
+        "400": {
+          "$value": "178 158 228",
+          "$type": "color",
+          "$description": "oklch(0.70 0.11 285)"
+        },
+        "500": {
+          "$value": "148 124 200",
+          "$type": "color",
+          "$description": "oklch(0.58 0.11 285)"
+        },
+        "600": {
+          "$value": "120 96 168",
+          "$type": "color",
+          "$description": "oklch(0.48 0.11 285)"
+        },
+        "700": {
+          "$value": "94 72 136",
+          "$type": "color",
+          "$description": "oklch(0.38 0.10 285)"
+        },
+        "800": {
+          "$value": "70 52 104",
+          "$type": "color",
+          "$description": "oklch(0.28 0.09 285)"
+        },
+        "900": {
+          "$value": "50 36 76",
+          "$type": "color",
+          "$description": "oklch(0.20 0.07 285)"
+        },
+        "950": {
+          "$value": "28 18 42",
+          "$type": "color",
+          "$description": "oklch(0.10 0.05 285)"
+        }
+      },
+      "5": {
+        "50": {
+          "$value": "240 250 255",
+          "$type": "color",
+          "$description": "oklch(0.98 0.03 195) - Aqua"
+        },
+        "100": {
+          "$value": "224 244 255",
+          "$type": "color",
+          "$description": "oklch(0.95 0.06 195)"
+        },
+        "200": {
+          "$value": "200 234 252",
+          "$type": "color",
+          "$description": "oklch(0.90 0.08 195)"
+        },
+        "300": {
+          "$value": "166 218 244",
+          "$type": "color",
+          "$description": "oklch(0.82 0.09 195)"
+        },
+        "400": {
+          "$value": "122 194 228",
+          "$type": "color",
+          "$description": "oklch(0.70 0.10 195)"
+        },
+        "500": {
+          "$value": "82 164 204",
+          "$type": "color",
+          "$description": "oklch(0.58 0.10 195)"
+        },
+        "600": {
+          "$value": "56 136 172",
+          "$type": "color",
+          "$description": "oklch(0.48 0.10 195)"
+        },
+        "700": {
+          "$value": "38 108 140",
+          "$type": "color",
+          "$description": "oklch(0.38 0.09 195)"
+        },
+        "800": {
+          "$value": "24 82 108",
+          "$type": "color",
+          "$description": "oklch(0.28 0.08 195)"
+        },
+        "900": {
+          "$value": "14 60 78",
+          "$type": "color",
+          "$description": "oklch(0.20 0.06 195)"
+        },
+        "950": {
+          "$value": "6 34 44",
+          "$type": "color",
+          "$description": "oklch(0.10 0.04 195)"
+        }
+      }
+    }
+  }
+}

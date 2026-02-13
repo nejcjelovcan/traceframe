@@ -1,0 +1,97 @@
+{
+  "shadow": {
+    "DEFAULT": "rgb(var(--color-shadow) / <alpha-value>)"
+  },
+  "surface": {
+    "DEFAULT": "rgb(var(--color-surface) / <alpha-value>)",
+    "muted": "rgb(var(--color-surface-muted) / <alpha-value>)",
+    "subtle": "rgb(var(--color-surface-subtle) / <alpha-value>)"
+  },
+  "foreground": {
+    "DEFAULT": "rgb(var(--color-foreground) / <alpha-value>)",
+    "muted": "rgb(var(--color-foreground-muted) / <alpha-value>)",
+    "inverted": "rgb(var(--color-foreground-inverted) / <alpha-value>)",
+    "inverted-muted": "rgb(var(--color-foreground-inverted-muted) / <alpha-value>)"
+  },
+  "border": {
+    "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
+    "muted": "rgb(var(--color-border-muted) / <alpha-value>)"
+  },
+  "ring": {
+    "DEFAULT": "rgb(var(--color-ring) / <alpha-value>)"
+  },
+  "interactive": {
+    "hover": "rgb(var(--color-interactive-hover) / <alpha-value>)",
+    "active": "rgb(var(--color-interactive-active) / <alpha-value>)",
+    "pressed": "rgb(var(--color-interactive-pressed) / <alpha-value>)",
+    "primary": "rgb(var(--color-interactive-primary) / <alpha-value>)",
+    "primary-hover": "rgb(var(--color-interactive-primary-hover) / <alpha-value>)",
+    "primary-foreground": "rgb(var(--color-interactive-primary-foreground) / <alpha-value>)",
+    "primary-border": "rgb(var(--color-interactive-primary-border) / <alpha-value>)",
+    "secondary": "rgb(var(--color-interactive-secondary) / <alpha-value>)",
+    "secondary-hover": "rgb(var(--color-interactive-secondary-hover) / <alpha-value>)",
+    "secondary-foreground": "rgb(var(--color-interactive-secondary-foreground) / <alpha-value>)",
+    "secondary-border": "rgb(var(--color-interactive-secondary-border) / <alpha-value>)",
+    "destructive": "rgb(var(--color-interactive-destructive) / <alpha-value>)",
+    "destructive-hover": "rgb(var(--color-interactive-destructive-hover) / <alpha-value>)",
+    "destructive-foreground": "rgb(var(--color-interactive-destructive-foreground) / <alpha-value>)",
+    "destructive-border": "rgb(var(--color-interactive-destructive-border) / <alpha-value>)"
+  },
+  "status": {
+    "info": "rgb(var(--color-status-info) / <alpha-value>)",
+    "info-muted": "rgb(var(--color-status-info-muted) / <alpha-value>)",
+    "info-foreground": "rgb(var(--color-status-info-foreground) / <alpha-value>)",
+    "info-emphasis": "rgb(var(--color-status-info-emphasis) / <alpha-value>)",
+    "info-border": "rgb(var(--color-status-info-border) / <alpha-value>)",
+    "success": "rgb(var(--color-status-success) / <alpha-value>)",
+    "success-muted": "rgb(var(--color-status-success-muted) / <alpha-value>)",
+    "success-foreground": "rgb(var(--color-status-success-foreground) / <alpha-value>)",
+    "success-emphasis": "rgb(var(--color-status-success-emphasis) / <alpha-value>)",
+    "success-border": "rgb(var(--color-status-success-border) / <alpha-value>)",
+    "warning": "rgb(var(--color-status-warning) / <alpha-value>)",
+    "warning-muted": "rgb(var(--color-status-warning-muted) / <alpha-value>)",
+    "warning-foreground": "rgb(var(--color-status-warning-foreground) / <alpha-value>)",
+    "warning-emphasis": "rgb(var(--color-status-warning-emphasis) / <alpha-value>)",
+    "warning-border": "rgb(var(--color-status-warning-border) / <alpha-value>)",
+    "error": "rgb(var(--color-status-error) / <alpha-value>)",
+    "error-muted": "rgb(var(--color-status-error-muted) / <alpha-value>)",
+    "error-foreground": "rgb(var(--color-status-error-foreground) / <alpha-value>)",
+    "error-emphasis": "rgb(var(--color-status-error-emphasis) / <alpha-value>)",
+    "error-border": "rgb(var(--color-status-error-border) / <alpha-value>)"
+  },
+  "disabled": {
+    "DEFAULT": "rgb(var(--color-disabled) / <alpha-value>)",
+    "foreground": "rgb(var(--color-disabled-foreground) / <alpha-value>)"
+  },
+  "tooltip": {
+    "DEFAULT": "rgb(var(--color-tooltip) / <alpha-value>)",
+    "foreground": "rgb(var(--color-tooltip-foreground) / <alpha-value>)"
+  },
+  "accent": {
+    "1": "rgb(var(--color-accent-1) / <alpha-value>)",
+    "2": "rgb(var(--color-accent-2) / <alpha-value>)",
+    "3": "rgb(var(--color-accent-3) / <alpha-value>)",
+    "4": "rgb(var(--color-accent-4) / <alpha-value>)",
+    "5": "rgb(var(--color-accent-5) / <alpha-value>)",
+    "1-muted": "rgb(var(--color-accent-1-muted) / <alpha-value>)",
+    "1-foreground": "rgb(var(--color-accent-1-foreground) / <alpha-value>)",
+    "1-emphasis": "rgb(var(--color-accent-1-emphasis) / <alpha-value>)",
+    "1-border": "rgb(var(--color-accent-1-border) / <alpha-value>)",
+    "2-muted": "rgb(var(--color-accent-2-muted) / <alpha-value>)",
+    "2-foreground": "rgb(var(--color-accent-2-foreground) / <alpha-value>)",
+    "2-emphasis": "rgb(var(--color-accent-2-emphasis) / <alpha-value>)",
+    "2-border": "rgb(var(--color-accent-2-border) / <alpha-value>)",
+    "3-muted": "rgb(var(--color-accent-3-muted) / <alpha-value>)",
+    "3-foreground": "rgb(var(--color-accent-3-foreground) / <alpha-value>)",
+    "3-emphasis": "rgb(var(--color-accent-3-emphasis) / <alpha-value>)",
+    "3-border": "rgb(var(--color-accent-3-border) / <alpha-value>)",
+    "4-muted": "rgb(var(--color-accent-4-muted) / <alpha-value>)",
+    "4-foreground": "rgb(var(--color-accent-4-foreground) / <alpha-value>)",
+    "4-emphasis": "rgb(var(--color-accent-4-emphasis) / <alpha-value>)",
+    "4-border": "rgb(var(--color-accent-4-border) / <alpha-value>)",
+    "5-muted": "rgb(var(--color-accent-5-muted) / <alpha-value>)",
+    "5-foreground": "rgb(var(--color-accent-5-foreground) / <alpha-value>)",
+    "5-emphasis": "rgb(var(--color-accent-5-emphasis) / <alpha-value>)",
+    "5-border": "rgb(var(--color-accent-5-border) / <alpha-value>)"
+  }
+}

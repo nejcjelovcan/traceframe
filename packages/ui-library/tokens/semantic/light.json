@@ -1,0 +1,385 @@
+{
+  "color": {
+    "shadow": {
+      "$value": "{palette.neutral.950}",
+      "$type": "color",
+      "$description": "Primary shadow color for elevation effects"
+    },
+    "surface": {
+      "$value": "{palette.surface}",
+      "$type": "color",
+      "$description": "Primary surface color for backgrounds and containers",
+      "muted": {
+        "$value": "{palette.neutral.100}",
+        "$type": "color",
+        "$description": "Secondary surface for sidebars, alternating rows, and nested elements"
+      },
+      "subtle": {
+        "$value": "{palette.neutral.200}",
+        "$type": "color",
+        "$description": "Tertiary surface for hover states, wells, and recessed areas"
+      }
+    },
+    "foreground": {
+      "$value": "{palette.neutral.900}",
+      "$type": "color",
+      "$description": "Primary text and icon color for headings and body text",
+      "muted": {
+        "$value": "{palette.neutral.500}",
+        "$type": "color",
+        "$description": "Secondary text for descriptions, placeholders, and less prominent content"
+      },
+      "inverted": {
+        "$value": "{palette.neutral.50}",
+        "$type": "color",
+        "$description": "Text color on dark backgrounds like primary buttons",
+        "muted": {
+          "$value": "{palette.neutral.400}",
+          "$type": "color",
+          "$description": "Secondary text color on dark backgrounds"
+        }
+      }
+    },
+    "border": {
+      "$value": "{palette.neutral.200}",
+      "$type": "color",
+      "$description": "Primary border color for inputs, cards, and containers",
+      "muted": {
+        "$value": "{palette.neutral.100}",
+        "$type": "color",
+        "$description": "Subtle border for dividers, separators, and less prominent boundaries"
+      }
+    },
+    "ring": {
+      "$value": "{palette.primary.500}",
+      "$type": "color",
+      "$description": "Focus ring color for accessibility outlines and focus states"
+    },
+    "interactive": {
+      "hover": {
+        "$value": "{palette.neutral.100}",
+        "$type": "color",
+        "$description": "Background color for hover states on neutral interactive elements"
+      },
+      "active": {
+        "$value": "{palette.neutral.200}",
+        "$type": "color",
+        "$description": "Background color for active or selected states"
+      },
+      "pressed": {
+        "$value": "{palette.neutral.300}",
+        "$type": "color",
+        "$description": "Background color for pressed or clicking states"
+      },
+      "primary": {
+        "$value": "{palette.primary.600}",
+        "$type": "color",
+        "$description": "Primary button and CTA background color",
+        "hover": {
+          "$value": "{palette.primary.700}",
+          "$type": "color",
+          "$description": "Primary button background on hover"
+        },
+        "foreground": {
+          "$value": "{palette.neutral.50}",
+          "$type": "color",
+          "$description": "Text and icon color on primary buttons"
+        },
+        "border": {
+          "$value": "{palette.primary.700}",
+          "$type": "color",
+          "$description": "Border color for primary buttons and outlined primary elements"
+        }
+      },
+      "secondary": {
+        "$value": "{palette.secondary.300}",
+        "$type": "color",
+        "$description": "Secondary button and accent background color",
+        "hover": {
+          "$value": "{palette.secondary.400}",
+          "$type": "color",
+          "$description": "Secondary button background on hover"
+        },
+        "foreground": {
+          "$value": "{palette.secondary.900}",
+          "$type": "color",
+          "$description": "Text and icon color on secondary buttons"
+        },
+        "border": {
+          "$value": "{palette.secondary.400}",
+          "$type": "color",
+          "$description": "Border color for secondary buttons and outlined secondary elements"
+        }
+      },
+      "destructive": {
+        "$value": "{palette.error.600}",
+        "$type": "color",
+        "$description": "Destructive action button background color",
+        "hover": {
+          "$value": "{palette.error.800}",
+          "$type": "color",
+          "$description": "Destructive button background on hover"
+        },
+        "foreground": {
+          "$value": "{palette.neutral.50}",
+          "$type": "color",
+          "$description": "Text and icon color on destructive buttons"
+        },
+        "border": {
+          "$value": "{palette.error.700}",
+          "$type": "color",
+          "$description": "Border color for destructive buttons and outlined destructive elements"
+        }
+      }
+    },
+    "status": {
+      "info": {
+        "$value": "{palette.primary.500}",
+        "$type": "color",
+        "$description": "Info status color for informational messages, tips, and non-critical alerts",
+        "muted": {
+          "$value": "{palette.primary.50}",
+          "$type": "color",
+          "$description": "Info status muted background for subtle info indicators"
+        },
+        "foreground": {
+          "$value": "{palette.primary.700}",
+          "$type": "color",
+          "$description": "Info status text color for readability on info backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.primary.600}",
+          "$type": "color",
+          "$description": "Info status emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.primary.200}",
+          "$type": "color",
+          "$description": "Info status border color for info containers and alerts"
+        }
+      },
+      "success": {
+        "$value": "{palette.success.500}",
+        "$type": "color",
+        "$description": "Success status color for positive outcomes, completed actions, and confirmations",
+        "muted": {
+          "$value": "{palette.success.50}",
+          "$type": "color",
+          "$description": "Success status muted background for subtle success indicators"
+        },
+        "foreground": {
+          "$value": "{palette.success.700}",
+          "$type": "color",
+          "$description": "Success status text color for readability on success backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.success.600}",
+          "$type": "color",
+          "$description": "Success status emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.success.200}",
+          "$type": "color",
+          "$description": "Success status border color for success containers and alerts"
+        }
+      },
+      "warning": {
+        "$value": "{palette.warning.500}",
+        "$type": "color",
+        "$description": "Warning status color for cautions, pending states, and attention required",
+        "muted": {
+          "$value": "{palette.warning.50}",
+          "$type": "color",
+          "$description": "Warning status muted background for subtle warning indicators"
+        },
+        "foreground": {
+          "$value": "{palette.warning.700}",
+          "$type": "color",
+          "$description": "Warning status text color for readability on warning backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.warning.600}",
+          "$type": "color",
+          "$description": "Warning status emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.warning.200}",
+          "$type": "color",
+          "$description": "Warning status border color for warning containers and alerts"
+        }
+      },
+      "error": {
+        "$value": "{palette.error.500}",
+        "$type": "color",
+        "$description": "Error status color for failures, critical issues, and destructive actions",
+        "muted": {
+          "$value": "{palette.error.50}",
+          "$type": "color",
+          "$description": "Error status muted background for subtle error indicators"
+        },
+        "foreground": {
+          "$value": "{palette.error.700}",
+          "$type": "color",
+          "$description": "Error status text color for readability on error backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.error.600}",
+          "$type": "color",
+          "$description": "Error status emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.error.200}",
+          "$type": "color",
+          "$description": "Error status border color for error containers and alerts"
+        }
+      }
+    },
+    "disabled": {
+      "$value": "{palette.neutral.100}",
+      "$type": "color",
+      "$description": "Disabled background color for inactive interactive elements",
+      "foreground": {
+        "$value": "{palette.neutral.400}",
+        "$type": "color",
+        "$description": "Disabled text and icon color for inactive elements"
+      }
+    },
+    "tooltip": {
+      "$value": "{palette.neutral.900}",
+      "$type": "color",
+      "$description": "Tooltip background color for contextual help and hints",
+      "foreground": {
+        "$value": "{palette.neutral.50}",
+        "$type": "color",
+        "$description": "Tooltip text color for readability on dark tooltip backgrounds"
+      }
+    },
+    "accent": {
+      "1": {
+        "$value": "{palette.accent.1.500}",
+        "$type": "color",
+        "$description": "Accent 1 base color for categorical data and visual distinction",
+        "muted": {
+          "$value": "{palette.accent.1.50}",
+          "$type": "color",
+          "$description": "Accent 1 muted background for subtle indicators"
+        },
+        "foreground": {
+          "$value": "{palette.accent.1.700}",
+          "$type": "color",
+          "$description": "Accent 1 text color for readability on accent backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.accent.1.600}",
+          "$type": "color",
+          "$description": "Accent 1 emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.accent.1.200}",
+          "$type": "color",
+          "$description": "Accent 1 border color for containers and elements"
+        }
+      },
+      "2": {
+        "$value": "{palette.accent.2.500}",
+        "$type": "color",
+        "$description": "Accent 2 base color for categorical data and visual distinction",
+        "muted": {
+          "$value": "{palette.accent.2.50}",
+          "$type": "color",
+          "$description": "Accent 2 muted background for subtle indicators"
+        },
+        "foreground": {
+          "$value": "{palette.accent.2.700}",
+          "$type": "color",
+          "$description": "Accent 2 text color for readability on accent backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.accent.2.600}",
+          "$type": "color",
+          "$description": "Accent 2 emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.accent.2.200}",
+          "$type": "color",
+          "$description": "Accent 2 border color for containers and elements"
+        }
+      },
+      "3": {
+        "$value": "{palette.accent.3.500}",
+        "$type": "color",
+        "$description": "Accent 3 base color for categorical data and visual distinction",
+        "muted": {
+          "$value": "{palette.accent.3.50}",
+          "$type": "color",
+          "$description": "Accent 3 muted background for subtle indicators"
+        },
+        "foreground": {
+          "$value": "{palette.accent.3.700}",
+          "$type": "color",
+          "$description": "Accent 3 text color for readability on accent backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.accent.3.600}",
+          "$type": "color",
+          "$description": "Accent 3 emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.accent.3.200}",
+          "$type": "color",
+          "$description": "Accent 3 border color for containers and elements"
+        }
+      },
+      "4": {
+        "$value": "{palette.accent.4.500}",
+        "$type": "color",
+        "$description": "Accent 4 base color for categorical data and visual distinction",
+        "muted": {
+          "$value": "{palette.accent.4.50}",
+          "$type": "color",
+          "$description": "Accent 4 muted background for subtle indicators"
+        },
+        "foreground": {
+          "$value": "{palette.accent.4.700}",
+          "$type": "color",
+          "$description": "Accent 4 text color for readability on accent backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.accent.4.600}",
+          "$type": "color",
+          "$description": "Accent 4 emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.accent.4.200}",
+          "$type": "color",
+          "$description": "Accent 4 border color for containers and elements"
+        }
+      },
+      "5": {
+        "$value": "{palette.accent.5.500}",
+        "$type": "color",
+        "$description": "Accent 5 base color for categorical data and visual distinction",
+        "muted": {
+          "$value": "{palette.accent.5.50}",
+          "$type": "color",
+          "$description": "Accent 5 muted background for subtle indicators"
+        },
+        "foreground": {
+          "$value": "{palette.accent.5.700}",
+          "$type": "color",
+          "$description": "Accent 5 text color for readability on accent backgrounds"
+        },
+        "emphasis": {
+          "$value": "{palette.accent.5.600}",
+          "$type": "color",
+          "$description": "Accent 5 emphasis color for icons and strong indicators"
+        },
+        "border": {
+          "$value": "{palette.accent.5.200}",
+          "$type": "color",
+          "$description": "Accent 5 border color for containers and elements"
+        }
+      }
+    }
+  }
+}

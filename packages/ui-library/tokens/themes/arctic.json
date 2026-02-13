@@ -1,0 +1,182 @@
+{
+  "$palette": "arctic",
+  "$description": "Clean, precise, trustworthy. Inspired by crisp winter air and ice. Ideal for data-heavy applications, analytics tools, and interfaces where clarity and trust matter.",
+  "$fonts": ["@fontsource-variable/ibm-plex-sans", "@fontsource/ibm-plex-mono"],
+
+  "fontFamily": {
+    "sans": {
+      "$value": ["IBM Plex Sans Variable", "IBM Plex Sans", "Inter", "system-ui", "sans-serif"],
+      "$type": "fontFamily",
+      "$description": "Technical, neutral typeface optimized for data-heavy interfaces and extended reading"
+    },
+    "mono": {
+      "$value": ["IBM Plex Mono", "JetBrains Mono", "Menlo", "monospace"],
+      "$type": "fontFamily",
+      "$description": "Matching monospace for code, data tables, and technical content"
+    }
+  },
+
+  "fontSize": {
+    "xs": {
+      "$value": "0.75rem",
+      "$lineHeight": "1rem",
+      "$type": "fontSize",
+      "$description": "Extra small (12px) - labels, captions"
+    },
+    "sm": {
+      "$value": "0.875rem",
+      "$lineHeight": "1.125rem",
+      "$type": "fontSize",
+      "$description": "Small (14px) - compact tables and data rows"
+    },
+    "base": {
+      "$value": "0.9375rem",
+      "$lineHeight": "1.375rem",
+      "$type": "fontSize",
+      "$description": "Base (15px) - slightly smaller for data density"
+    },
+    "lg": {
+      "$value": "1.0625rem",
+      "$lineHeight": "1.5rem",
+      "$type": "fontSize",
+      "$description": "Large (17px) - section headers"
+    },
+    "xl": {
+      "$value": "1.1875rem",
+      "$lineHeight": "1.625rem",
+      "$type": "fontSize",
+      "$description": "Extra large (19px) - page headers"
+    },
+    "2xl": {
+      "$value": "1.375rem",
+      "$lineHeight": "1.75rem",
+      "$type": "fontSize",
+      "$description": "2x large (22px) - major headers"
+    },
+    "3xl": {
+      "$value": "1.625rem",
+      "$lineHeight": "2rem",
+      "$type": "fontSize",
+      "$description": "3x large (26px) - dashboard titles"
+    },
+    "4xl": {
+      "$value": "2rem",
+      "$lineHeight": "2.25rem",
+      "$type": "fontSize",
+      "$description": "4x large (32px) - hero metrics"
+    }
+  },
+
+  "shadow": {
+    "sm": {
+      "$value": "0 1px 2px 0 rgb(var(--color-shadow) / 0.03)",
+      "$type": "shadow",
+      "$description": "Small shadow - barely perceptible, crisp"
+    },
+    "md": {
+      "$value": "0 2px 4px -1px rgb(var(--color-shadow) / 0.05), 0 1px 2px -1px rgb(var(--color-shadow) / 0.03)",
+      "$type": "shadow",
+      "$description": "Medium shadow - subtle, clean elevation"
+    },
+    "lg": {
+      "$value": "0 6px 12px -3px rgb(var(--color-shadow) / 0.07), 0 3px 6px -3px rgb(var(--color-shadow) / 0.04)",
+      "$type": "shadow",
+      "$description": "Large shadow - restrained, professional"
+    }
+  },
+
+  "borderRadius": {
+    "sm": {
+      "$value": "0.125rem",
+      "$type": "borderRadius",
+      "$description": "Small border radius - precise, technical"
+    },
+    "md": {
+      "$value": "0.25rem",
+      "$type": "borderRadius",
+      "$description": "Default border radius - sharp, clean",
+      "$default": true
+    },
+    "lg": {
+      "$value": "0.375rem",
+      "$type": "borderRadius",
+      "$description": "Large border radius - still restrained"
+    },
+    "xl": {
+      "$value": "0.5rem",
+      "$type": "borderRadius",
+      "$description": "Extra large border radius - pill shapes, badges"
+    }
+  },
+
+  "size": {
+    "xs": {
+      "$value": "1.25rem",
+      "$type": "size",
+      "$description": "Extra small element size (20px) - compact buttons, badges"
+    },
+    "sm": {
+      "$value": "1.75rem",
+      "$type": "size",
+      "$description": "Small element size (28px) - small buttons, inputs"
+    },
+    "md": {
+      "$value": "2.25rem",
+      "$type": "size",
+      "$description": "Medium element size (36px) - default buttons, inputs"
+    },
+    "lg": {
+      "$value": "2.75rem",
+      "$type": "size",
+      "$description": "Large element size (44px) - large buttons, inputs"
+    },
+    "xl": {
+      "$value": "3.25rem",
+      "$type": "size",
+      "$description": "Extra large element size (52px) - hero buttons, prominent elements"
+    }
+  },
+
+  "spacing": {
+    "2xs": {
+      "$value": "0.125rem",
+      "$type": "spacing",
+      "$description": "Micro spacing (2px) - tight gaps between related elements"
+    },
+    "xs": {
+      "$value": "0.25rem",
+      "$type": "spacing",
+      "$description": "Extra small (4px) - icon gaps, inline elements"
+    },
+    "sm": {
+      "$value": "0.375rem",
+      "$type": "spacing",
+      "$description": "Small spacing (6px) - compact form inputs, tight padding"
+    },
+    "md": {
+      "$value": "0.625rem",
+      "$type": "spacing",
+      "$description": "Medium spacing (10px) - efficient card padding, compact sections"
+    },
+    "base": {
+      "$value": "0.875rem",
+      "$type": "spacing",
+      "$description": "Base spacing (14px) - component padding, medium element gaps"
+    },
+    "lg": {
+      "$value": "1.5rem",
+      "$type": "spacing",
+      "$description": "Large spacing (24px) - section gaps optimized for data density"
+    },
+    "xl": {
+      "$value": "3rem",
+      "$type": "spacing",
+      "$description": "Extra large (48px) - page sections with efficient use of space"
+    },
+    "2xl": {
+      "$value": "5rem",
+      "$type": "spacing",
+      "$description": "Double extra large (80px) - major landmarks, still restrained"
+    }
+  }
+}

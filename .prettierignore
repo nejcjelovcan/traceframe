@@ -1,0 +1,15 @@
+dist
+build
+coverage
+.turbo
+pnpm-lock.yaml
+node_modules
+
+# Test fixtures
+**/tests/fixtures/**
+
+# Invalid YAML fixtures for testing parse errors
+**/invalid.yaml
+
+# Large test fixtures (git submodules)
+fixtures/

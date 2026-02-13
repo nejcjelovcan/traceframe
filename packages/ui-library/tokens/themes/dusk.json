@@ -1,0 +1,182 @@
+{
+  "$palette": "dusk",
+  "$description": "Moody, sophisticated theme inspired by twilight. Deep purples meet warm earth tones for dramatic, creative interfaces.",
+  "$fonts": ["@fontsource-variable/inter", "@fontsource/jetbrains-mono"],
+
+  "fontFamily": {
+    "sans": {
+      "$value": ["Inter Variable", "Inter", "system-ui", "sans-serif"],
+      "$type": "fontFamily",
+      "$description": "Primary font family for body text and UI"
+    },
+    "mono": {
+      "$value": ["JetBrains Mono", "Menlo", "monospace"],
+      "$type": "fontFamily",
+      "$description": "Monospace font family for code"
+    }
+  },
+
+  "fontSize": {
+    "xs": {
+      "$value": "0.75rem",
+      "$lineHeight": "1rem",
+      "$type": "fontSize",
+      "$description": "Extra small text (12px)"
+    },
+    "sm": {
+      "$value": "0.875rem",
+      "$lineHeight": "1.25rem",
+      "$type": "fontSize",
+      "$description": "Small text (14px)"
+    },
+    "base": {
+      "$value": "1rem",
+      "$lineHeight": "1.5rem",
+      "$type": "fontSize",
+      "$description": "Base text size (16px)"
+    },
+    "lg": {
+      "$value": "1.125rem",
+      "$lineHeight": "1.75rem",
+      "$type": "fontSize",
+      "$description": "Large text (18px)"
+    },
+    "xl": {
+      "$value": "1.25rem",
+      "$lineHeight": "1.75rem",
+      "$type": "fontSize",
+      "$description": "Extra large text (20px)"
+    },
+    "2xl": {
+      "$value": "1.5rem",
+      "$lineHeight": "2rem",
+      "$type": "fontSize",
+      "$description": "2x large text (24px)"
+    },
+    "3xl": {
+      "$value": "1.875rem",
+      "$lineHeight": "2.25rem",
+      "$type": "fontSize",
+      "$description": "3x large text (30px)"
+    },
+    "4xl": {
+      "$value": "2.25rem",
+      "$lineHeight": "2.5rem",
+      "$type": "fontSize",
+      "$description": "4x large text (36px)"
+    }
+  },
+
+  "shadow": {
+    "sm": {
+      "$value": "0 1px 3px 0 rgb(var(--color-shadow) / 0.08)",
+      "$type": "shadow",
+      "$description": "Small shadow with slightly deeper intensity for drama"
+    },
+    "md": {
+      "$value": "0 4px 8px -1px rgb(var(--color-shadow) / 0.12), 0 2px 4px -2px rgb(var(--color-shadow) / 0.08)",
+      "$type": "shadow",
+      "$description": "Medium shadow for cards, dropdowns"
+    },
+    "lg": {
+      "$value": "0 12px 20px -4px rgb(var(--color-shadow) / 0.15), 0 4px 8px -4px rgb(var(--color-shadow) / 0.1)",
+      "$type": "shadow",
+      "$description": "Large shadow for modals, popovers - deeper for mystery"
+    }
+  },
+
+  "borderRadius": {
+    "sm": {
+      "$value": "0.25rem",
+      "$type": "borderRadius",
+      "$description": "Small border radius"
+    },
+    "md": {
+      "$value": "0.375rem",
+      "$type": "borderRadius",
+      "$description": "Medium border radius - default",
+      "$default": true
+    },
+    "lg": {
+      "$value": "0.5rem",
+      "$type": "borderRadius",
+      "$description": "Large border radius"
+    },
+    "xl": {
+      "$value": "0.75rem",
+      "$type": "borderRadius",
+      "$description": "Extra large border radius - pill shapes, badges"
+    }
+  },
+
+  "size": {
+    "xs": {
+      "$value": "1.5rem",
+      "$type": "size",
+      "$description": "Extra small element size (24px) - compact buttons, badges"
+    },
+    "sm": {
+      "$value": "2rem",
+      "$type": "size",
+      "$description": "Small element size (32px) - small buttons, inputs"
+    },
+    "md": {
+      "$value": "2.5rem",
+      "$type": "size",
+      "$description": "Medium element size (40px) - default buttons, inputs"
+    },
+    "lg": {
+      "$value": "3rem",
+      "$type": "size",
+      "$description": "Large element size (48px) - large buttons, inputs"
+    },
+    "xl": {
+      "$value": "3.5rem",
+      "$type": "size",
+      "$description": "Extra large element size (56px) - hero buttons, prominent elements"
+    }
+  },
+
+  "spacing": {
+    "2xs": {
+      "$value": "0.125rem",
+      "$type": "spacing",
+      "$description": "Extra extra small spacing (2px) - very tight gaps, micro spacing"
+    },
+    "xs": {
+      "$value": "0.25rem",
+      "$type": "spacing",
+      "$description": "Extra small spacing (4px) - tight inline elements, icon gaps"
+    },
+    "sm": {
+      "$value": "0.5rem",
+      "$type": "spacing",
+      "$description": "Small spacing (8px) - form inputs, button padding"
+    },
+    "md": {
+      "$value": "0.75rem",
+      "$type": "spacing",
+      "$description": "Medium spacing (12px) - card padding, section gaps"
+    },
+    "base": {
+      "$value": "1rem",
+      "$type": "spacing",
+      "$description": "Base spacing (16px) - component padding, medium element gaps"
+    },
+    "lg": {
+      "$value": "2rem",
+      "$type": "spacing",
+      "$description": "Large spacing (32px) - section separation, major gaps"
+    },
+    "xl": {
+      "$value": "4rem",
+      "$type": "spacing",
+      "$description": "Extra large spacing (64px) - page sections, major separators"
+    },
+    "2xl": {
+      "$value": "8rem",
+      "$type": "spacing",
+      "$description": "Double extra large spacing (128px) - hero sections, major landmarks"
+    }
+  }
+}
