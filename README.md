@@ -6,19 +6,15 @@ A design system and component library for building consistent, theme-aware React
 
 ## Packages
 
-| Package                                                                    | Description                                            | npm                                                                                                                                                               |
-| -------------------------------------------------------------------------- | ------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`@nejcjelovcan/traceframe-ui-library`](./packages/ui-library)             | Core UI components, design tokens, and Tailwind preset | [![npm](https://img.shields.io/npm/v/@nejcjelovcan/traceframe-ui-library)](https://github.com/nejcjelovcan/traceframe/pkgs/npm/traceframe-ui-library)             |
-| [`@nejcjelovcan/traceframe-storybook-preset`](./packages/storybook-preset) | Storybook addon for Traceframe theme switching         | [![npm](https://img.shields.io/npm/v/@nejcjelovcan/traceframe-storybook-preset)](https://github.com/nejcjelovcan/traceframe/pkgs/npm/traceframe-storybook-preset) |
-| [`@nejcjelovcan/traceframe-playroom-preset`](./packages/playroom-preset)   | Playroom config factory with components and snippets   | [![npm](https://img.shields.io/npm/v/@nejcjelovcan/traceframe-playroom-preset)](https://github.com/nejcjelovcan/traceframe/pkgs/npm/traceframe-playroom-preset)   |
-| [`@nejcjelovcan/traceframe-eslint-plugin`](./packages/eslint-plugin)       | ESLint rule enforcing semantic token usage             | [![npm](https://img.shields.io/npm/v/@nejcjelovcan/traceframe-eslint-plugin)](https://github.com/nejcjelovcan/traceframe/pkgs/npm/traceframe-eslint-plugin)       |
+- [`@nejcjelovcan/traceframe-ui-library`](./packages/ui-library) -- Core UI components, design tokens, and Tailwind preset
+- [`@nejcjelovcan/traceframe-storybook-preset`](./packages/storybook-preset) -- Storybook addon for Traceframe theme switching
+- [`@nejcjelovcan/traceframe-playroom-preset`](./packages/playroom-preset) -- Playroom config factory with components and snippets
+- [`@nejcjelovcan/traceframe-eslint-plugin`](./packages/eslint-plugin) -- ESLint rule enforcing semantic token usage
 
-Internal packages (not published):
+Internal (not published):
 
-| Package                                                    | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- |
-| [`@nejcjelovcan/traceframe-mcp-ui`](./packages/mcp-ui)     | MCP server for UI tooling (Storybook, icons, tokens)       |
-| [`@nejcjelovcan/traceframe-playroom`](./packages/playroom) | Internal Playroom instance (dog-foods the playroom-preset) |
+- [`@nejcjelovcan/traceframe-mcp-ui`](./packages/mcp-ui) -- MCP server for UI tooling (Storybook, icons, tokens)
+- [`@nejcjelovcan/traceframe-playroom`](./packages/playroom) -- Internal Playroom instance (dog-foods the playroom-preset)
 
 ## Getting Started
 
