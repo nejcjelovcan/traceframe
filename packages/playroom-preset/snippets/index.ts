@@ -11,6 +11,7 @@ import { gridSnippets } from './grid'
 import { headingSnippets } from './heading'
 import { inputSnippets } from './input'
 import { linkSnippets } from './link'
+import { logViewSnippets } from './log-view'
 import { navigationSnippets } from './navigation'
 import { pageLayoutSnippets } from './page-layout'
 import { searchInputSnippets } from './search-input'
@@ -37,6 +38,7 @@ const allSnippets = [
   ...headingSnippets,
   ...inputSnippets,
   ...linkSnippets,
+  ...logViewSnippets,
   ...navigationSnippets,
   ...pageLayoutSnippets,
   ...searchInputSnippets,
