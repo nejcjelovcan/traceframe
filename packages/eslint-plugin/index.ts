@@ -4,9 +4,26 @@
  */
 
 import { noNonSemanticColors } from './rules/no-non-semantic-colors'
+import { noNonSemanticSizing } from './rules/no-non-semantic-sizing'
+import { noNonSemanticSpacing } from './rules/no-non-semantic-spacing'
+
+/**
+ * File patterns that intentionally use non-semantic tokens.
+ * Shared across all rules for consistency with the mcp-ui validate:tokens tool.
+ */
+const TOKEN_EXCEPTIONS = [
+  'packages/ui-library/src/styles/',
+  'packages/ui-library/src/tailwind-preset.ts',
+  'packages/ui-library/tailwind-preset.ts',
+  'packages/ui-library/src/utils/semantic-token-utils.ts',
+  'packages/ui-library/style-dictionary/',
+  'packages/ui-library/src/stories/PaletteShowcase.stories.tsx',
+]
 
 export const rules = {
   'no-non-semantic-colors': noNonSemanticColors,
+  'no-non-semantic-spacing': noNonSemanticSpacing,
+  'no-non-semantic-sizing': noNonSemanticSizing,
 }
 
 export const configs = {
@@ -28,11 +45,19 @@ export const configs = {
             'tooltip',
             'badge',
           ],
-          exceptions: [
-            'packages/ui-library/src/styles/index.css',
-            'packages/ui-library/src/tailwind-preset.ts',
-            'packages/ui-library/tailwind-preset.ts',
-          ],
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-spacing': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-sizing': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
         },
       ],
     },
