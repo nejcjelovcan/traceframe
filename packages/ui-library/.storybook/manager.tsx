@@ -1,3 +1,4 @@
+import React from 'react'
 import { addons } from '@storybook/manager-api'
 
 addons.register('playroom-link', () => {
