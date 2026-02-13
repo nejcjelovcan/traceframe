@@ -77,6 +77,39 @@ Tools accept package names in multiple formats:
 2. Ensure tests pass
 3. Use git MCP tools (`git_add`, `git_commit`, `git_push`) for commits - NEVER use git CLI via Bash
 
+### Changesets (Versioning & Releases)
+
+This project uses [Changesets](https://github.com/changesets/changesets) for semantic versioning and changelog generation. When a PR includes changes to publishable packages, add a changeset file:
+
+```bash
+pnpm changeset
+```
+
+This prompts you to:
+
+1. Select which packages changed (`ui-library`, `eslint-plugin`, `playroom-preset`, `storybook-preset`)
+2. Choose the semver bump type (`patch` for fixes, `minor` for features, `major` for breaking changes)
+3. Write a short summary of the change (appears in the changelog)
+
+The command creates a `.changeset/<random-name>.md` file. Commit this file with your PR.
+
+**When to add a changeset:**
+
+- Any PR that changes code in a publishable package
+- Bug fixes, new features, breaking changes, dependency updates
+
+**When NOT to add a changeset:**
+
+- Changes to private packages (`mcp-ui`, `playroom`)
+- CI/config-only changes that don't affect published code
+- Documentation-only changes
+
+**Release flow:**
+
+1. PRs with changeset files merge to `main`
+2. The release workflow creates a "Version Packages" PR that bumps versions and updates CHANGELOGs
+3. When that PR is merged, packages are published to GitHub Packages
+
 ### Previewing UI Changes
 
 1. `run_or_open_storybook` - Start Storybook or open browser if running
