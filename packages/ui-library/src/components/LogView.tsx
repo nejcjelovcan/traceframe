@@ -206,7 +206,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       return (
         <div
           ref={ref}
-          className={cn('flex items-baseline gap-sm px-md py-2xs', levelStyle, className)}
+          className={cn('flex items-start gap-sm px-md py-2xs', levelStyle, className)}
           {...props}
         >
           {timestampEl}
@@ -221,7 +221,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       return (
         <div
           ref={ref}
-          className={cn('flex items-center gap-sm px-base py-xs', levelStyle, className)}
+          className={cn('flex items-start gap-sm px-base py-xs', levelStyle, className)}
           {...props}
         >
           {timestampEl}
@@ -235,7 +235,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
     return (
       <CollapsiblePrimitive.Root defaultOpen={defaultExpanded} asChild>
         <div ref={ref} className={cn(levelStyle, className)} {...props}>
-          <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-center gap-sm px-base py-xs text-left transition-colors hover:bg-surface-subtle">
+          <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm px-base py-xs text-left transition-colors hover:bg-surface-subtle">
             {timestampEl}
             {iconEl}
             <span className="min-w-0 flex-1">{children}</span>
