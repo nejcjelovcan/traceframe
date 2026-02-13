@@ -59,6 +59,15 @@ export {
 } from './components/Grid.js'
 export { Link, type LinkProps } from './components/Link.js'
 export {
+  LogView,
+  LogEntry,
+  LogPrompt,
+  logViewVariants,
+  type LogViewProps,
+  type LogEntryProps,
+  type LogPromptProps,
+} from './components/LogView.js'
+export {
   Navigation,
   NavItem,
   type NavigationProps,
