@@ -20,7 +20,7 @@ This workspace uses domain-specific MCP servers plus external integrations:
 | Server        | Package                           | Purpose                            |
 | ------------- | --------------------------------- | ---------------------------------- |
 | mcp-ui        | `@nejcjelovcan/traceframe-mcp-ui` | UI tooling (components, Storybook) |
-| github        | `github/github-mcp-server`        | GitHub PRs and issues              |
+| github        | `github/github-mcp-server`        | GitHub PRs and code review         |
 | git           | `@cyanheads/git-mcp-server`       | Git operations                     |
 | linear-server | Linear HTTP MCP                   | Linear issues and projects         |
 
@@ -53,8 +53,8 @@ Tools accept package names in multiple formats:
 
 | Command      | Purpose                                               |
 | ------------ | ----------------------------------------------------- |
-| `/refine`    | Refine a GitHub issue to make it implementation-ready |
-| `/implement` | Implement a refined GitHub issue                      |
+| `/refine`    | Refine a Linear issue to make it implementation-ready |
+| `/implement` | Implement a refined Linear issue                      |
 
 ## Development Workflow
 
@@ -147,7 +147,7 @@ The `git` MCP server provides tools for common git operations.
 
 ## GitHub MCP Tools
 
-**GitHub is used for both Issues and Pull Requests.**
+**GitHub is used for Pull Requests, code review, and repository operations. All issue tracking and project management lives in Linear.**
 
 **Important:** Always use `owner: "nejcjelovcan"` and `repo: "traceframe"` for this repository.
 
@@ -157,18 +157,6 @@ The `git` MCP server provides tools for common git operations.
 | ----------- | ------------------------ |
 | `get_me`    | Check authenticated user |
 | `get_teams` | Get user's teams         |
-
-### Issues
-
-| Tool                | Purpose                             |
-| ------------------- | ----------------------------------- |
-| `issue_read`        | Get issue details, comments, labels |
-| `issue_write`       | Create or update issues             |
-| `list_issues`       | List repository issues              |
-| `search_issues`     | Search issues with query syntax     |
-| `add_issue_comment` | Add comment to an issue             |
-| `list_issue_types`  | List supported issue types for org  |
-| `sub_issue_write`   | Add/remove/reprioritize sub-issues  |
 
 ### Pull Requests
 
@@ -220,22 +208,59 @@ The `git` MCP server provides tools for common git operations.
 
 ## Linear MCP Tools
 
-**Linear is used for project management and issue tracking.**
+**Linear is the single source of truth for all issue tracking and project management.** All issues, planning, status tracking, and project organization live in Linear. GitHub is only used for PRs and code review.
 
-| Tool                   | Purpose                               |
-| ---------------------- | ------------------------------------- |
-| `list_issues`          | List Linear issues with filters       |
-| `get_issue`            | Get issue details by ID or identifier |
-| `create_issue`         | Create a new Linear issue             |
-| `update_issue`         | Update an existing issue              |
-| `list_projects`        | List Linear projects                  |
-| `get_project`          | Get project details                   |
-| `list_teams`           | List Linear teams                     |
-| `get_team`             | Get team details                      |
-| `list_users`           | List Linear users                     |
-| `search_issues`        | Search issues with query              |
-| `list_workflow_states` | List workflow states for a team       |
-| `add_comment`          | Add comment to an issue               |
+**Team:** `Traceframe` (prefix: `TRA`)
+
+### Issues
+
+| Tool                  | Purpose                                             |
+| --------------------- | --------------------------------------------------- |
+| `get_issue`           | Get issue details by ID or identifier (e.g. TRA-42) |
+| `list_issues`         | List issues with filters (team, status, assignee)   |
+| `create_issue`        | Create a new issue                                  |
+| `update_issue`        | Update issue status, description, assignee, etc.    |
+| `search_issues`       | Search issues with query                            |
+| `list_issue_statuses` | List workflow states for a team                     |
+| `list_issue_labels`   | List available labels                               |
+
+### Comments
+
+| Tool             | Purpose                   |
+| ---------------- | ------------------------- |
+| `list_comments`  | List comments on an issue |
+| `create_comment` | Add a comment to an issue |
+
+### Projects & Organization
+
+| Tool              | Purpose              |
+| ----------------- | -------------------- |
+| `list_projects`   | List Linear projects |
+| `get_project`     | Get project details  |
+| `list_teams`      | List Linear teams    |
+| `get_team`        | Get team details     |
+| `list_users`      | List Linear users    |
+| `list_milestones` | List milestones      |
+
+### Common Workflows
+
+**Fetching an issue with relations:**
+
+```
+get_issue(id: "TRA-42", includeRelations: true)
+```
+
+**Updating issue status after PR:**
+
+```
+update_issue(id: "TRA-42", state: "In Review")
+```
+
+**Marking issue as done after merge:**
+
+```
+update_issue(id: "TRA-42", state: "Done")
+```
 
 ## CLI Commands Reference
 

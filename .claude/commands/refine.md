@@ -1,32 +1,31 @@
 # Refine Issue
 
-Refine a GitHub issue for the Traceframe design system to make it implementation-ready.
+Refine a Linear issue for the Traceframe design system to make it implementation-ready.
 
 ## Configuration
 
-**GitHub:**
-- Owner: `nejcjelovcan`
-- Repo: `traceframe`
+**Linear:**
+- Team: `Traceframe` (prefix: `TRA`)
 
 ## Usage
 
-`/refine <ISSUE_NUMBER>` - Issue number is required. Example: `/refine 42`
+`/refine <ISSUE_IDENTIFIER>` - Linear issue identifier is required. Example: `/refine TRA-42`
 
 ## Workflow
 
 ### 1. Fetch Issue Context
 
-Use GitHub MCP tools:
+Use Linear MCP tools:
 
 ```
-issue_read(owner: "nejcjelovcan", repo: "traceframe", issue_number: 42)
+get_issue(id: "TRA-42", includeRelations: true)
 ```
 
 **Gather:**
 - Title and description
 - Labels
-- All comments (discussion context)
-- Linked issues
+- All comments (use `list_comments`)
+- Linked/blocked issues (from relations)
 
 ### 2. Understand the Request
 
@@ -482,8 +481,8 @@ interface NameProps {
 - <any other notes>
 
 ## Dependencies
-**Depends on:** #X (if applicable)
-**Related:** #X (informational)
+**Blocked by:** TRA-X (if applicable)
+**Related:** TRA-X (informational)
 
 ---
 *Refined by Claude Code*
@@ -496,11 +495,11 @@ interface NameProps {
 1. Summarize key decisions made
 2. Highlight component location choice
 3. List accessibility considerations
-4. Offer to update the issue with GitHub MCP tools
+4. Offer to update the issue on Linear
 
 **If approved, update the issue:**
 ```
-issue_write(owner: "nejcjelovcan", repo: "traceframe", issue_number: 42, body: "<refined-body>")
+update_issue(id: "TRA-42", description: "<refined-body>", state: "Refined")
 ```
 
 ## Quick Reference
@@ -513,7 +512,7 @@ issue_write(owner: "nejcjelovcan", repo: "traceframe", issue_number: 42, body: "
 
 **Fetch issue:**
 ```
-issue_read(owner: "nejcjelovcan", repo: "traceframe", issue_number: 42)
+get_issue(id: "TRA-42", includeRelations: true)
 ```
 
 **Key files to reference:**
