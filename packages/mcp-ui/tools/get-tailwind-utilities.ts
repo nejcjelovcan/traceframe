@@ -5,7 +5,15 @@ import { TOKEN_METADATA } from '@nejcjelovcan/traceframe-ui-library'
 /**
  * Valid utility category types that can be requested.
  */
-export const UTILITY_CATEGORIES = ['spacing', 'colors', 'typography', 'layout', 'all'] as const
+export const UTILITY_CATEGORIES = [
+  'colors',
+  'spacing',
+  'sizing',
+  'typography',
+  'borders',
+  'shadows',
+  'all',
+] as const
 export type UtilityCategory = (typeof UTILITY_CATEGORIES)[number]
 
 /**
@@ -16,7 +24,7 @@ export const getTailwindUtilitiesInputSchema = {
     .enum(UTILITY_CATEGORIES)
     .optional()
     .describe(
-      'Filter by category (optional). Options: spacing, colors, typography, layout, all. Defaults to all.'
+      'Filter by category (optional). Options: colors, spacing, sizing, typography, borders, shadows, all. Defaults to all.'
     ),
 }
 
@@ -24,7 +32,7 @@ export const getTailwindUtilitiesInputSchema = {
  * Description for the get_tailwind_utilities tool.
  */
 export const getTailwindUtilitiesDescription =
-  'Get Tailwind CSS utility classes organized by purpose. Returns project-specific classes (semantic colors, custom spacing) and commonly used standard Tailwind classes for spacing, colors, typography, and layout.'
+  'Get project-specific Tailwind CSS utility classes derived from design tokens. Returns semantic colors, custom spacing, sizing, typography, border radius, and shadow utilities with descriptions. Does NOT return standard Tailwind classes that any AI already knows.'
 
 /**
  * Input arguments for getTailwindUtilitiesTool function.
@@ -34,316 +42,283 @@ export interface GetTailwindUtilitiesInput {
 }
 
 /**
- * Spacing utilities structure.
+ * A single token entry with description and example classes.
  */
-export interface SpacingUtilities {
-  padding: string[]
-  margin: string[]
-  gap: string[]
-  semanticSpacing: string[]
-  sizing: string[]
-  custom: Record<string, string>
+export interface TokenEntry {
+  name: string
+  value: string
+  description: string
+  classes: string[]
+}
+
+/**
+ * A semantic color group with its variants.
+ */
+export interface SemanticColorGroup {
+  group: string
+  description?: string
+  variants: SemanticColorVariant[]
+}
+
+/**
+ * A single semantic color variant with its utility classes.
+ */
+export interface SemanticColorVariant {
+  name: string
+  description?: string
+  classes: string[]
+}
+
+/**
+ * A palette with its shades.
+ */
+export interface PaletteEntry {
+  name: string
+  description: string
+  usage: string
+  shades: readonly number[]
+  exampleClasses: string[]
 }
 
 /**
  * Color utilities structure.
  */
 export interface ColorUtilities {
-  text: string[]
-  background: string[]
-  border: string[]
-}
-
-/**
- * Typography utilities structure.
- */
-export interface TypographyUtilities {
-  size: string[]
-  weight: string[]
-  family: string[]
-}
-
-/**
- * Layout utilities structure.
- */
-export interface LayoutUtilities {
-  display: string[]
-  flexDirection: string[]
-  justify: string[]
-  align: string[]
-  grid: string[]
+  semantic: SemanticColorGroup[]
+  palettes: PaletteEntry[]
 }
 
 /**
  * All utilities structure.
  */
 export interface Utilities {
-  spacing?: SpacingUtilities
   colors?: ColorUtilities
-  typography?: TypographyUtilities
-  layout?: LayoutUtilities
+  spacing?: TokenEntry[]
+  sizing?: TokenEntry[]
+  typography?: TokenEntry[]
+  borders?: TokenEntry[]
+  shadows?: TokenEntry[]
 }
 
 /**
  * Result type for getTailwindUtilitiesTool.
  */
 export interface GetTailwindUtilitiesResult {
-  /** Whether the operation succeeded */
   success: boolean
-  /** The utilities organized by category */
   utilities: Utilities
-  /** Human-readable summary */
   summary: string
 }
 
 /**
- * Generate spacing utilities.
+ * Build the Tailwind class name for a semantic color variant.
  */
-function getSpacingUtilities(): SpacingUtilities {
-  // Standard Tailwind spacing scale used in this project
-  const scales = [
-    '0',
-    '0.5',
-    '1',
-    '1.5',
-    '2',
-    '2.5',
-    '3',
-    '3.5',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '10',
-    '11',
-    '12',
-    '14',
-    '16',
-    '18',
-    '20',
-    '22',
-    '24',
-  ]
-
-  const paddingClasses = [
-    // All sides
-    ...scales.map((s) => `p-${s}`),
-    // X/Y axis
-    ...scales.map((s) => `px-${s}`),
-    ...scales.map((s) => `py-${s}`),
-    // Individual sides
-    ...scales.map((s) => `pt-${s}`),
-    ...scales.map((s) => `pr-${s}`),
-    ...scales.map((s) => `pb-${s}`),
-    ...scales.map((s) => `pl-${s}`),
-  ]
-
-  const marginClasses = [
-    // All sides
-    ...scales.map((s) => `m-${s}`),
-    'm-auto',
-    // X/Y axis
-    ...scales.map((s) => `mx-${s}`),
-    'mx-auto',
-    ...scales.map((s) => `my-${s}`),
-    'my-auto',
-    // Individual sides
-    ...scales.map((s) => `mt-${s}`),
-    ...scales.map((s) => `mr-${s}`),
-    ...scales.map((s) => `mb-${s}`),
-    ...scales.map((s) => `ml-${s}`),
-    // Negative margins
-    ...scales.filter((s) => s !== '0').map((s) => `-m-${s}`),
-    ...scales.filter((s) => s !== '0').map((s) => `-mx-${s}`),
-    ...scales.filter((s) => s !== '0').map((s) => `-my-${s}`),
-    ...scales.filter((s) => s !== '0').map((s) => `-mt-${s}`),
-    ...scales.filter((s) => s !== '0').map((s) => `-mr-${s}`),
-    ...scales.filter((s) => s !== '0').map((s) => `-mb-${s}`),
-    ...scales.filter((s) => s !== '0').map((s) => `-ml-${s}`),
-  ]
-
-  const gapClasses = scales.map((s) => `gap-${s}`)
-
-  // Semantic spacing tokens (theme-aware)
-  const semanticScales = ['2xs', 'xs', 'sm', 'md', 'base', 'lg', 'xl', '2xl']
-  const semanticSpacing = [
-    ...semanticScales.map((s) => `p-${s}`),
-    ...semanticScales.map((s) => `px-${s}`),
-    ...semanticScales.map((s) => `py-${s}`),
-    ...semanticScales.map((s) => `m-${s}`),
-    ...semanticScales.map((s) => `mx-${s}`),
-    ...semanticScales.map((s) => `my-${s}`),
-    ...semanticScales.map((s) => `gap-${s}`),
-  ]
-
-  // Element sizing tokens (theme-aware heights/widths)
-  const sizingScales = ['xs', 'sm', 'md', 'lg', 'xl']
-  const sizing = [
-    ...sizingScales.map((s) => `h-size-${s}`),
-    ...sizingScales.map((s) => `w-size-${s}`),
-  ]
-
-  // Custom spacing from the project
-  const custom: Record<string, string> = {
-    '18': '4.5rem',
-    '22': '5.5rem',
-  }
-
-  return {
-    padding: paddingClasses,
-    margin: marginClasses,
-    gap: gapClasses,
-    semanticSpacing,
-    sizing,
-    custom,
-  }
+function semanticClassName(group: string, variant: string): string {
+  if (variant === 'DEFAULT') return group
+  return `${group}-${variant}`
 }
 
 /**
- * Generate color utilities based on project tokens.
+ * Generate color utilities from TOKEN_METADATA.semantic and TOKEN_METADATA.palettes.
  */
 function getColorUtilities(): ColorUtilities {
-  // Semantic color classes
-  const semanticText = ['text-foreground', 'text-foreground-muted']
-  const semanticBg = ['bg-surface', 'bg-surface-muted', 'bg-surface-subtle']
-  const semanticBorder = ['border-border', 'border-border-muted']
+  const semantic: SemanticColorGroup[] = []
 
-  // Generate palette-based classes from TOKEN_METADATA
-  const paletteText: string[] = []
-  const paletteBg: string[] = []
-  const paletteBorder: string[] = []
+  for (const [groupName, groupMeta] of Object.entries(TOKEN_METADATA.semantic)) {
+    // Skip shadow from colors - it's in the shadows category
+    if (groupName === 'shadow') continue
 
-  for (const [paletteName, meta] of Object.entries(TOKEN_METADATA.palettes)) {
-    for (const shade of meta.shades) {
-      paletteText.push(`text-${paletteName}-${shade}`)
-      paletteBg.push(`bg-${paletteName}-${shade}`)
-      paletteBorder.push(`border-${paletteName}-${shade}`)
+    const variants: SemanticColorVariant[] = []
+    for (const [variantName, variantDescription] of Object.entries(groupMeta.variants)) {
+      const tokenName = semanticClassName(groupName, variantName)
+      const classes = [`bg-${tokenName}`, `text-${tokenName}`, `border-${tokenName}`]
+      variants.push({
+        name: variantName,
+        description: variantDescription,
+        classes,
+      })
     }
+
+    semantic.push({
+      group: groupName,
+      description: groupMeta.description,
+      variants,
+    })
   }
 
-  return {
-    text: [...semanticText, ...paletteText],
-    background: [...semanticBg, ...paletteBg],
-    border: [...semanticBorder, ...paletteBorder],
+  const palettes: PaletteEntry[] = []
+  for (const [paletteName, meta] of Object.entries(TOKEN_METADATA.palettes)) {
+    palettes.push({
+      name: paletteName,
+      description: meta.description,
+      usage: meta.usage,
+      shades: meta.shades,
+      exampleClasses: [
+        `bg-${paletteName}-500`,
+        `text-${paletteName}-500`,
+        `border-${paletteName}-500`,
+      ],
+    })
   }
+
+  return { semantic, palettes }
 }
 
 /**
- * Generate typography utilities.
+ * Generate spacing utilities from TOKEN_METADATA.theme.spacing.
  */
-function getTypographyUtilities(): TypographyUtilities {
-  return {
-    size: [
-      'text-xs',
-      'text-sm',
-      'text-base',
-      'text-lg',
-      'text-xl',
-      'text-2xl',
-      'text-3xl',
-      'text-4xl',
-    ],
-    weight: [
-      'font-thin',
-      'font-extralight',
-      'font-light',
-      'font-normal',
-      'font-medium',
-      'font-semibold',
-      'font-bold',
-      'font-extrabold',
-      'font-black',
-    ],
-    family: ['font-sans', 'font-mono'],
+function getSpacingUtilities(): TokenEntry[] {
+  const entries: TokenEntry[] = []
+  for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.spacing)) {
+    entries.push({
+      name,
+      value: meta.value,
+      description: meta.description,
+      classes: [
+        `p-${name}`,
+        `px-${name}`,
+        `py-${name}`,
+        `m-${name}`,
+        `mx-${name}`,
+        `my-${name}`,
+        `gap-${name}`,
+        `space-x-${name}`,
+        `space-y-${name}`,
+      ],
+    })
   }
+  return entries
 }
 
 /**
- * Generate layout utilities.
+ * Generate sizing utilities from TOKEN_METADATA.theme.size.
  */
-function getLayoutUtilities(): LayoutUtilities {
-  return {
-    display: [
-      'block',
-      'inline-block',
-      'inline',
-      'flex',
-      'inline-flex',
-      'grid',
-      'inline-grid',
-      'hidden',
-    ],
-    flexDirection: ['flex-row', 'flex-row-reverse', 'flex-col', 'flex-col-reverse'],
-    justify: [
-      'justify-start',
-      'justify-end',
-      'justify-center',
-      'justify-between',
-      'justify-around',
-      'justify-evenly',
-    ],
-    align: ['items-start', 'items-end', 'items-center', 'items-baseline', 'items-stretch'],
-    grid: [
-      'grid-cols-1',
-      'grid-cols-2',
-      'grid-cols-3',
-      'grid-cols-4',
-      'grid-cols-5',
-      'grid-cols-6',
-      'grid-cols-12',
-      'grid-rows-1',
-      'grid-rows-2',
-      'grid-rows-3',
-      'grid-rows-4',
-      'grid-rows-5',
-      'grid-rows-6',
-    ],
+function getSizingUtilities(): TokenEntry[] {
+  const entries: TokenEntry[] = []
+  for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.size)) {
+    entries.push({
+      name,
+      value: meta.value,
+      description: meta.description,
+      classes: [`h-size-${name}`, `w-size-${name}`, `min-h-size-${name}`, `min-w-size-${name}`],
+    })
   }
+  return entries
+}
+
+/**
+ * Generate typography utilities from TOKEN_METADATA.theme.fontFamily and fontSize.
+ */
+function getTypographyUtilities(): TokenEntry[] {
+  const entries: TokenEntry[] = []
+
+  for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.fontFamily)) {
+    entries.push({
+      name: `font-${name}`,
+      value: meta.value,
+      description: meta.description,
+      classes: [`font-${name}`],
+    })
+  }
+
+  for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.fontSize)) {
+    entries.push({
+      name: `text-${name}`,
+      value: `${meta.value} / ${meta.lineHeight}`,
+      description: meta.description,
+      classes: [`text-${name}`],
+    })
+  }
+
+  return entries
+}
+
+/**
+ * Generate border radius utilities from TOKEN_METADATA.theme.borderRadius.
+ */
+function getBorderUtilities(): TokenEntry[] {
+  const entries: TokenEntry[] = []
+  for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.borderRadius)) {
+    const isDefault = 'isDefault' in meta && meta.isDefault
+    entries.push({
+      name: `rounded-${name}`,
+      value: meta.value,
+      description: `${meta.description}${isDefault ? ' (default)' : ''}`,
+      classes: [`rounded-${name}`],
+    })
+  }
+  return entries
+}
+
+/**
+ * Generate shadow utilities from TOKEN_METADATA.theme.shadow.
+ */
+function getShadowUtilities(): TokenEntry[] {
+  const entries: TokenEntry[] = []
+  for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.shadow)) {
+    entries.push({
+      name: `shadow-${name}`,
+      value: meta.value,
+      description: meta.description,
+      classes: [`shadow-${name}`],
+    })
+  }
+  return entries
+}
+
+/**
+ * Count total entries for a category.
+ */
+function countEntries(utilities: Utilities): string[] {
+  const counts: string[] = []
+  if (utilities.colors) {
+    const variantCount = utilities.colors.semantic.reduce((sum, g) => sum + g.variants.length, 0)
+    counts.push(
+      `${variantCount} semantic color variants, ${utilities.colors.palettes.length} palettes`
+    )
+  }
+  if (utilities.spacing) counts.push(`${utilities.spacing.length} spacing tokens`)
+  if (utilities.sizing) counts.push(`${utilities.sizing.length} sizing tokens`)
+  if (utilities.typography) counts.push(`${utilities.typography.length} typography tokens`)
+  if (utilities.borders) counts.push(`${utilities.borders.length} border radius tokens`)
+  if (utilities.shadows) counts.push(`${utilities.shadows.length} shadow tokens`)
+  return counts
 }
 
 /**
  * Get Tailwind CSS utility classes organized by purpose.
- *
- * @param args - Input arguments
- * @returns Result with utilities organized by category
+ * All output is derived from TOKEN_METADATA - no hardcoded standard Tailwind classes.
  */
 export function getTailwindUtilitiesTool(
   args: GetTailwindUtilitiesInput
 ): GetTailwindUtilitiesResult {
   const category = args.category ?? 'all'
   const utilities: Utilities = {}
-  const counts: string[] = []
-
-  if (category === 'all' || category === 'spacing') {
-    utilities.spacing = getSpacingUtilities()
-    counts.push(
-      `${utilities.spacing.padding.length + utilities.spacing.margin.length + utilities.spacing.gap.length + utilities.spacing.semanticSpacing.length + utilities.spacing.sizing.length} spacing classes`
-    )
-  }
 
   if (category === 'all' || category === 'colors') {
     utilities.colors = getColorUtilities()
-    counts.push(
-      `${utilities.colors.text.length + utilities.colors.background.length + utilities.colors.border.length} color classes`
-    )
+  }
+
+  if (category === 'all' || category === 'spacing') {
+    utilities.spacing = getSpacingUtilities()
+  }
+
+  if (category === 'all' || category === 'sizing') {
+    utilities.sizing = getSizingUtilities()
   }
 
   if (category === 'all' || category === 'typography') {
     utilities.typography = getTypographyUtilities()
-    counts.push(
-      `${utilities.typography.size.length + utilities.typography.weight.length + utilities.typography.family.length} typography classes`
-    )
   }
 
-  if (category === 'all' || category === 'layout') {
-    utilities.layout = getLayoutUtilities()
-    counts.push(
-      `${utilities.layout.display.length + utilities.layout.flexDirection.length + utilities.layout.justify.length + utilities.layout.align.length + utilities.layout.grid.length} layout classes`
-    )
+  if (category === 'all' || category === 'borders') {
+    utilities.borders = getBorderUtilities()
   }
 
+  if (category === 'all' || category === 'shadows') {
+    utilities.shadows = getShadowUtilities()
+  }
+
+  const counts = countEntries(utilities)
   const summary = `Retrieved ${counts.join(', ')}`
 
   return {

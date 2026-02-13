@@ -127,7 +127,7 @@ export function createServer(): McpServer {
     (args) => {
       const category =
         typeof args.category === 'string' && UTILITY_CATEGORIES.includes(args.category as never)
-          ? (args.category as 'spacing' | 'colors' | 'typography' | 'layout' | 'all')
+          ? (args.category as (typeof UTILITY_CATEGORIES)[number])
           : undefined
       const result = getTailwindUtilitiesTool({
         ...(category !== undefined ? { category } : {}),
