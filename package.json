@@ -22,7 +22,8 @@
     "typecheck": "turbo run typecheck",
     "validate:tokens": "tsx scripts/validate-semantic-tokens.ts --report=detailed",
     "validate:token-definitions": "tsx scripts/validate-token-definitions.ts",
-    "playroom": "cd packages/playroom/ && pnpm start"
+    "playroom": "cd packages/playroom/ && pnpm start",
+    "storybook": "pnpm --filter ui-library storybook"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.0",
