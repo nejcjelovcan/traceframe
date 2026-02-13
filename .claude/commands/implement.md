@@ -479,7 +479,8 @@ EOF
 
 **After PR is created:**
 1. Return the PR URL to the user
-2. Update the Linear issue status to "In Review": `update_issue(id: "<ISSUE_IDENTIFIER>", state: "In Review")`
+
+**Important:** Do NOT manually update Linear issue statuses. Status transitions (e.g., "In Review", "Done") are handled automatically by the Linear-GitHub integration.
 
 ## Quick Reference
 

@@ -256,17 +256,7 @@ The `git` MCP server provides tools for common git operations.
 get_issue(id: "TRA-42", includeRelations: true)
 ```
 
-**Updating issue status after PR:**
-
-```
-update_issue(id: "TRA-42", state: "In Review")
-```
-
-**Marking issue as done after merge:**
-
-```
-update_issue(id: "TRA-42", state: "Done")
-```
+**Important:** Do NOT manually update Linear issue statuses (e.g., "In Review", "Done"). Status transitions are handled automatically by the Linear-GitHub integration when PRs are created, merged, or closed.
 
 ## CLI Commands Reference
 

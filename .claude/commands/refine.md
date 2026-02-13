@@ -497,10 +497,12 @@ interface NameProps {
 3. List accessibility considerations
 4. Offer to update the issue on Linear
 
-**If approved, update the issue:**
+**If approved, update the issue description:**
 ```
-update_issue(id: "TRA-42", description: "<refined-body>", state: "Refined")
+update_issue(id: "TRA-42", description: "<refined-body>")
 ```
+
+**Important:** Do NOT manually update Linear issue statuses. Status transitions are handled automatically by the Linear-GitHub integration.
 
 ## Quick Reference
 
