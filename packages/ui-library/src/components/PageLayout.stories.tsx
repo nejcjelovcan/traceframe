@@ -365,9 +365,9 @@ export const WithSkipLink: Story = {
       <Stack gap="md">
         <Heading level={1}>Skip Link Demo</Heading>
         <p className="text-foreground-muted">
-          Press <kbd className="rounded border bg-surface-muted px-xs py-2xs text-sm">Tab</kbd> to
-          reveal the skip link at the top-left of the page. This is a WCAG 2.1 Level A requirement
-          that helps keyboard users bypass repetitive navigation.
+          Press <kbd className="rounded-sm border bg-surface-muted px-xs py-2xs text-sm">Tab</kbd>{' '}
+          to reveal the skip link at the top-left of the page. This is a WCAG 2.1 Level A
+          requirement that helps keyboard users bypass repetitive navigation.
         </p>
         <div className="rounded-lg border border-border bg-surface-subtle p-base">
           <Heading level={2}>How it works:</Heading>

@@ -1,13 +1,14 @@
-@import url('./index.base.css');
-@import url('./generated/palette.dusk.css');
-@import url('./generated/palette.arctic.css');
-@import url('./generated/palette.ember.css');
-@import url('./generated/theme.dusk.css');
-@import url('./generated/theme.arctic.css');
-@import url('./generated/theme.ember.css');
-@import url('./generated/semantic.light.css');
-@import url('./generated/semantic.dark.css');
+@import 'tailwindcss';
+@import './generated/tailwind-theme.css';
+@import './index.base.css';
+@import './generated/palette.dusk.css';
+@import './generated/palette.arctic.css';
+@import './generated/palette.ember.css';
+@import './generated/theme.dusk.css';
+@import './generated/theme.arctic.css';
+@import './generated/theme.ember.css';
+@import './generated/semantic.light.css';
+@import './generated/semantic.dark.css';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@source "../../.storybook/**/*.{ts,tsx}";
+@variant dark (&:where(.dark, .dark *));

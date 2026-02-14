@@ -68,7 +68,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const GridItem = ({ children }: { children: React.ReactNode }) => (
-  <div className="flex h-20 items-center justify-center rounded border border-dashed border-border-muted bg-surface-muted p-base text-sm font-medium text-foreground-muted">
+  <div className="flex h-20 items-center justify-center rounded-sm border border-dashed border-border-muted bg-surface-muted p-base text-sm font-medium text-foreground-muted">
     {children}
   </div>
 )
@@ -209,7 +209,7 @@ export const PhotoGallery: Story = {
           {images.map((color, i) => (
             <div
               key={i}
-              className={`aspect-square rounded ${color} flex items-center justify-center text-sm font-medium`}
+              className={`aspect-square rounded-sm ${color} flex items-center justify-center text-sm font-medium`}
             >
               Image {i + 1}
             </div>

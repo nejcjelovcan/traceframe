@@ -39,8 +39,8 @@ export const Collapsible = CollapsiblePrimitive.Root
 // Trigger variants
 const collapsibleTriggerVariants = cva(
   [
-    'flex w-full items-center gap-sm rounded font-medium transition-colors',
-    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+    'flex w-full items-center gap-sm rounded-sm font-medium transition-colors',
+    'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
     'disabled:cursor-not-allowed disabled:opacity-50',
   ],
   {
@@ -130,7 +130,7 @@ const collapsibleContentVariants = cva(
     'overflow-hidden',
     'data-[state=open]:animate-collapsible-down',
     'data-[state=closed]:animate-collapsible-up',
-    'bg-surface-muted rounded border border-border',
+    'bg-surface-muted rounded-sm border border-border',
   ],
   {
     variants: {

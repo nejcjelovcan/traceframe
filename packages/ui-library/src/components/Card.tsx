@@ -6,7 +6,7 @@ import { cn } from '../utils/cn.js'
 
 import type { IconName } from '../icons/types.js'
 
-const cardVariants = cva('rounded border', {
+const cardVariants = cva('rounded-sm border', {
   variants: {
     variant: {
       // Core variants

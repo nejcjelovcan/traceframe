@@ -174,7 +174,7 @@ describe('Card', () => {
   it('applies base classes', () => {
     render(<Card>Base</Card>)
     const card = screen.getByText('Base')
-    expect(card.className).toContain('rounded')
+    expect(card.className).toContain('rounded-sm')
     expect(card.className).toContain('border')
   })
 
