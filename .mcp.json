@@ -27,6 +27,11 @@
       "type": "stdio",
       "command": "pnpm",
       "args": ["--filter", "@nejcjelovcan/traceframe-mcp-ui", "dev"]
+    },
+    "mcp-dev": {
+      "type": "stdio",
+      "command": "pnpm",
+      "args": ["--filter", "@nejcjelovcan/mcp-dev", "dev"]
     }
   }
 }
