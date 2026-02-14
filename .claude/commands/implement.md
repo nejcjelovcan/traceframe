@@ -252,9 +252,9 @@ export const Tooltip = {
 ```
 
 **After writing code:**
-1. Run `pnpm autofix` to fix formatting and lint
-2. Run `pnpm --filter <package> build` to build
-3. Run `pnpm --filter <package> typecheck` to check types
+1. Use `autofix` mcp-dev tool to fix formatting and lint
+2. Use `build_package` mcp-dev tool to build
+3. Use `typecheck_package` mcp-dev tool to check types
 4. Fix any errors before proceeding
 
 ### 8. Export New Components (ui-library only)
@@ -371,15 +371,15 @@ it('is keyboard accessible', () => {
 
 **Check each item in the issue's "Acceptance Criteria" section:**
 
-```bash
+```
 # Build the package
-pnpm --filter <package> build
+Use build_package mcp-dev tool
 
 # Run tests
-pnpm --filter <package> test
+Use test_package mcp-dev tool
 
 # For ui-library: verify Storybook runs
-# Use MCP: run_or_open_storybook
+Use run_or_open_storybook mcp-ui tool
 ```
 
 **Document results:**
@@ -389,11 +389,11 @@ pnpm --filter <package> test
 
 ### 12. Final Verification
 
-**Run full verification:**
-1. `pnpm autofix` - Fix any remaining lint/format issues
-2. `pnpm --filter <package> build` - Verify build succeeds
-3. `pnpm --filter <package> typecheck` - Verify types
-4. `pnpm --filter <package> test` - Run tests
+**Run full verification using mcp-dev tools:**
+1. `autofix` - Fix any remaining lint/format issues
+2. `build_package` - Verify build succeeds
+3. `typecheck_package` - Verify types
+4. `test_package` - Run tests
 
 **For ui-library components:**
 - Use `run_or_open_storybook` to start/open Storybook
@@ -489,13 +489,16 @@ EOF
 - Prefer extending existing components over creating new ones
 - Generic patterns belong in ui-library
 
-**CLI commands:**
-- `pnpm autofix` - Fix formatting and lint
-- `pnpm --filter ui-library build` - Build package
-- `pnpm --filter ui-library typecheck` - Check types
-- `pnpm --filter ui-library test` - Run tests
+**mcp-dev tools (preferred over CLI):**
+- `autofix` - Fix formatting and lint
+- `build_package` - Build package with dependencies
+- `typecheck_package` - Check types
+- `test_package` - Run tests
+- `run_single_test` - Run a specific test file
+- `list_package_scripts` - List available scripts
+- `run_pnpm_script` - Run any pnpm script
 
-**MCP tools:**
+**mcp-ui tools:**
 - `list_components` - List all ui-library components (filter by category)
 - `get_component` - Get detailed component info (props, usage, accessibility)
 - `get_design_tokens` - Get design tokens (colors, typography, sizing, spacing)

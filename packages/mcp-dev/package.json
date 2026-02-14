@@ -1,0 +1,45 @@
+{
+  "name": "@nejcjelovcan/mcp-dev",
+  "version": "0.1.0",
+  "type": "module",
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "bin": {
+    "mcp-dev": "./dist/main.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsx main.ts",
+    "build": "tsc --build",
+    "clean": "rm -rf dist",
+    "start": "node dist/main.js",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"**/*.ts\" --ignore-pattern \"dist/**\"",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"**/*.ts\" --ignore-pattern \"dist/**\"",
+    "format": "prettier --cache --write \"**/*.{ts,json,md}\"",
+    "format:check": "prettier --cache --check \"**/*.{ts,json,md}\""
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nejcjelovcan/traceframe.git",
+    "directory": "packages/mcp-dev"
+  },
+  "dependencies": {
+    "@nejcjelovcan/mcp-shared": "workspace:*",
+    "@modelcontextprotocol/sdk": "^1.25.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "tsx": "^4.19.2",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.8"
+  }
+}

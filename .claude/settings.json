@@ -1,4 +1,17 @@
 {
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '{\"additionalContext\": \"IMPORTANT: Before using any git MCP tools, you MUST first call mcp__git__git_set_working_dir with path: '\"$CLAUDE_PROJECT_DIR\"' to set the working directory.\"}'"
+          }
+        ]
+      }
+    ]
+  },
   "permissions": {
     "allow": [
       "mcp__github__get_me",
@@ -54,7 +67,8 @@
       "mcp__git__git_rebase",
       "mcp__git__git_set_working_dir",
       "mcp__linear-server__*",
-      "mcp__mcp-ui__*"
+      "mcp__mcp-ui__*",
+      "mcp__mcp-dev__*"
     ]
   }
 }
