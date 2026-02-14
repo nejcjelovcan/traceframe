@@ -15,11 +15,11 @@
     },
     "git": {
       "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "@cyanheads/git-mcp-server"],
-      "env": {
-        "GIT_BASE_DIR": "${CLAUDE_PROJECT_DIR}"
-      }
+      "command": "bash",
+      "args": [
+        "-c",
+        "export GIT_BASE_DIR=\"$(pwd)\" && exec node node_modules/@cyanheads/git-mcp-server/dist/index.js"
+      ]
     },
     "linear-server": {
       "type": "http",
