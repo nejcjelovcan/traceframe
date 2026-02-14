@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import { Link } from './Link'
@@ -61,5 +62,63 @@ describe('Link', () => {
       </Link>
     )
     expect(ref.current).toBeInstanceOf(HTMLAnchorElement)
+  })
+
+  describe('asChild', () => {
+    it('renders child element instead of anchor', () => {
+      render(
+        <Link asChild>
+          <button type="button">Click me</button>
+        </Link>
+      )
+      const button = screen.getByRole('button')
+      expect(button).toBeDefined()
+      expect(button.tagName).toBe('BUTTON')
+    })
+
+    it('merges className onto child element', () => {
+      render(
+        <Link asChild className="extra">
+          <button type="button" className="child-class">
+            Click
+          </button>
+        </Link>
+      )
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('child-class')
+      expect(button.className).toContain('extra')
+    })
+
+    it('passes external props to child element', () => {
+      render(
+        <Link asChild external>
+          <a href="https://github.com">GitHub</a>
+        </Link>
+      )
+      const link = screen.getByRole('link')
+      expect(link.getAttribute('target')).toBe('_blank')
+      expect(link.getAttribute('rel')).toBe('noopener noreferrer')
+    })
+
+    it('renders icon alongside child content', () => {
+      render(
+        <Link asChild icon="arrow-right">
+          <button type="button">Next</button>
+        </Link>
+      )
+      const button = screen.getByRole('button')
+      expect(button.textContent).toContain('Next')
+      expect(button.querySelector('svg')).toBeDefined()
+    })
+
+    it('forwards ref to child element', () => {
+      const ref = createRef<HTMLAnchorElement>()
+      render(
+        <Link asChild ref={ref}>
+          <a href="/test">Test</a>
+        </Link>
+      )
+      expect(ref.current).toBeInstanceOf(HTMLAnchorElement)
+    })
   })
 })

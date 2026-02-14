@@ -235,6 +235,45 @@ export const InlineUsage: Story = {
   ),
 }
 
+export const AsChild: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Using `asChild` to render custom elements (e.g., framework router links) instead of `<a>`. Props like className, ref, and external attributes are merged onto the child.',
+      },
+    },
+  },
+  render: () => (
+    <Stack gap="md">
+      <div>
+        <span className="text-foreground-muted mr-sm">asChild with button:</span>
+        <Link asChild variant="default">
+          <button type="button" onClick={() => {}}>
+            Navigate
+          </button>
+        </Link>
+      </div>
+      <div>
+        <span className="text-foreground-muted mr-sm">asChild with icon:</span>
+        <Link asChild variant="default" icon="arrow-right">
+          <button type="button" onClick={() => {}}>
+            Next page
+          </button>
+        </Link>
+      </div>
+      <div>
+        <span className="text-foreground-muted mr-sm">asChild subtle:</span>
+        <Link asChild variant="subtle">
+          <button type="button" onClick={() => {}}>
+            Dashboard
+          </button>
+        </Link>
+      </div>
+    </Stack>
+  ),
+}
+
 export const AllVariants: Story = {
   render: () => (
     <Stack gap="lg">
