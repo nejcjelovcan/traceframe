@@ -3,7 +3,7 @@ import { Heading } from './Heading'
 import { Link } from './Link'
 import { Stack } from './Stack'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Link> = {
   title: 'Components/Link',

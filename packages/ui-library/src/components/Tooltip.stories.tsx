@@ -4,7 +4,7 @@ import { Stack } from './Stack.js'
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from './Tooltip.js'
 import { Icon } from '../icons/index.js'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof TooltipContent> = {
   title: 'Components/Tooltip',

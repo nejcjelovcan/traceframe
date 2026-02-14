@@ -6,7 +6,7 @@ import { Navigation, NavItem } from './Navigation'
 import { PageLayout, PageHeader } from './PageLayout'
 import { Stack } from './Stack'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof PageLayout> = {
   title: 'Components/PageLayout',

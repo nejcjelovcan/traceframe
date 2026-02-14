@@ -6,7 +6,7 @@ import { CATEGORY_LABELS, SIZE_MAP, type IconCategory } from './types.js'
 import { Heading } from '../components/Heading.js'
 import { SearchInput } from '../components/SearchInput.js'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Icon> = {
   title: 'Foundation/Icons',

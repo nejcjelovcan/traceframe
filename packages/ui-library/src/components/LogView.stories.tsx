@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Heading } from './Heading'
 import { LogEntry, LogPrompt, LogView } from './LogView'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof LogView> = {
   title: 'Components/LogView',
