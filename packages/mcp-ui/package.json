@@ -32,8 +32,8 @@
     "directory": "packages/mcp-ui"
   },
   "dependencies": {
-    "@nejcjelovcan/traceframe-ui-library": "workspace:^",
     "@modelcontextprotocol/sdk": "^1.25.0",
+    "@nejcjelovcan/traceframe-ui-library": "workspace:^",
     "glob": "^13.0.1",
     "zod": "^3.24.0"
   },
