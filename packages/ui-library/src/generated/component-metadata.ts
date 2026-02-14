@@ -31,1792 +31,1549 @@ export interface ComponentMeta {
 }
 
 export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
-  "Badge": {
-    "name": "Badge",
-    "category": "primitives",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A small label component for displaying status, categories, or counts.",
-    "usage": "Use badges to highlight metadata, status indicators, tags, or counts. Common use cases include displaying item counts, category labels, or status flags.",
-    "accessibility": [
-      "Uses semantic `<span>` element",
-      "Color is not the only indicator of meaning - text content provides context",
-      "Sufficient color contrast ratios for all variants"
+  Badge: {
+    name: 'Badge',
+    category: 'primitives',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A small label component for displaying status, categories, or counts.',
+    usage:
+      'Use badges to highlight metadata, status indicators, tags, or counts. Common use cases include displaying item counts, category labels, or status flags.',
+    accessibility: [
+      'Uses semantic `<span>` element',
+      'Color is not the only indicator of meaning - text content provides context',
+      'Sufficient color contrast ratios for all variants',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual style variant indicating semantic meaning",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "secondary",
-          "info",
-          "success",
-          "warning",
-          "error",
-          "accent1",
-          "accent2",
-          "accent3",
-          "accent4",
-          "accent5",
-          "outline-default",
-          "outline-info",
-          "outline-success",
-          "outline-warning",
-          "outline-error"
+        name: 'variant',
+        description: 'Visual style variant indicating semantic meaning',
+        type: 'select',
+        required: false,
+        options: [
+          'default',
+          'secondary',
+          'info',
+          'success',
+          'warning',
+          'error',
+          'accent1',
+          'accent2',
+          'accent3',
+          'accent4',
+          'accent5',
+          'outline-default',
+          'outline-info',
+          'outline-success',
+          'outline-warning',
+          'outline-error',
         ],
-        "defaultValue": "default"
+        defaultValue: 'default',
       },
       {
-        "name": "size",
-        "description": "Size preset affecting padding and font size",
-        "type": "select",
-        "required": false,
-        "options": [
-          "xs",
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting padding and font size',
+        type: 'select',
+        required: false,
+        options: ['xs', 'sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "children",
-        "description": "Badge content (text or number)",
-        "type": "unknown",
-        "required": false
+        name: 'children',
+        description: 'Badge content (text or number)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "icon",
-        "description": "Icon name from ui-library Icon component",
-        "type": "text",
-        "required": false
+        name: 'icon',
+        description: 'Icon name from ui-library Icon component',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "iconPosition",
-        "description": "Icon position relative to text",
-        "type": "select",
-        "required": false,
-        "options": [
-          "left",
-          "right"
-        ],
-        "defaultValue": "left"
-      }
-    ]
+        name: 'iconPosition',
+        description: 'Icon position relative to text',
+        type: 'select',
+        required: false,
+        options: ['left', 'right'],
+        defaultValue: 'left',
+      },
+    ],
   },
-  "BarChart": {
-    "name": "BarChart",
-    "category": "data",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A data visualization component for displaying bar charts with tooltips.",
-    "usage": "Use for visualizing comparative data, rankings, or distributions. Supports horizontal and vertical orientations with default or semantic coloring.",
-    "accessibility": [
-      "`role=\"figure\"` on chart container",
-      "Each bar has `aria-label` with label and value",
-      "Includes hidden `<table>` for screen reader data access",
-      "Keyboard navigation to individual bars",
-      "Tooltips appear on focus (not just hover)"
+  BarChart: {
+    name: 'BarChart',
+    category: 'data',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A data visualization component for displaying bar charts with tooltips.',
+    usage:
+      'Use for visualizing comparative data, rankings, or distributions. Supports horizontal and vertical orientations with default or semantic coloring.',
+    accessibility: [
+      '`role="figure"` on chart container',
+      'Each bar has `aria-label` with label and value',
+      'Includes hidden `<table>` for screen reader data access',
+      'Keyboard navigation to individual bars',
+      'Tooltips appear on focus (not just hover)',
     ],
-    "props": [
+    props: [
       {
-        "name": "data",
-        "description": "Array of data items with label and value",
-        "type": "unknown",
-        "required": false
+        name: 'data',
+        description: 'Array of data items with label and value',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "orientation",
-        "description": "Chart orientation (horizontal bars vs vertical bars)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "horizontal",
-          "vertical"
-        ],
-        "defaultValue": "horizontal"
+        name: 'orientation',
+        description: 'Chart orientation (horizontal bars vs vertical bars)',
+        type: 'select',
+        required: false,
+        options: ['horizontal', 'vertical'],
+        defaultValue: 'horizontal',
       },
       {
-        "name": "colorScheme",
-        "description": "Color scheme for bars",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "semantic"
-        ],
-        "defaultValue": "default"
+        name: 'colorScheme',
+        description: 'Color scheme for bars',
+        type: 'select',
+        required: false,
+        options: ['default', 'semantic'],
+        defaultValue: 'default',
       },
       {
-        "name": "thresholds",
-        "description": "Thresholds for semantic coloring (required if colorScheme=",
-        "type": "unknown",
-        "required": false
+        name: 'thresholds',
+        description: 'Thresholds for semantic coloring (required if colorScheme=',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "showValues",
-        "description": "Display values inline on bars",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'showValues',
+        description: 'Display values inline on bars',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "maxBars",
-        "description": "Limit number of bars displayed",
-        "type": "number",
-        "required": false
+        name: 'maxBars',
+        description: 'Limit number of bars displayed',
+        type: 'number',
+        required: false,
       },
       {
-        "name": "formatValue",
-        "description": "Custom formatter for tooltip values (e.g., add % suffix)",
-        "type": "unknown",
-        "required": false
+        name: 'formatValue',
+        description: 'Custom formatter for tooltip values (e.g., add % suffix)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "onBarClick",
-        "description": "Click handler for bar interaction",
-        "type": "unknown",
-        "required": false
+        name: 'onBarClick',
+        description: 'Click handler for bar interaction',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "ariaLabel",
-        "description": "Accessible label for the chart",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'ariaLabel',
+        description: 'Accessible label for the chart',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "Button": {
-    "name": "Button",
-    "category": "primitives",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A versatile button component with multiple variants and sizes.",
-    "usage": "Use for primary actions, form submissions, navigation triggers, and interactive controls. Choose variant based on action importance and context.",
-    "accessibility": [
-      "Uses semantic `<button>` element",
-      "Supports keyboard navigation (Enter/Space to activate)",
-      "Maintains visible focus state for keyboard users",
-      "Icon-only buttons include sr-only text for screen readers",
-      "Disabled state removes from tab order and indicates non-interactive state",
-      "Loading state includes aria-busy attribute for screen readers"
+  Button: {
+    name: 'Button',
+    category: 'primitives',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A versatile button component with multiple variants and sizes.',
+    usage:
+      'Use for primary actions, form submissions, navigation triggers, and interactive controls. Choose variant based on action importance and context.',
+    accessibility: [
+      'Uses semantic `<button>` element',
+      'Supports keyboard navigation (Enter/Space to activate)',
+      'Maintains visible focus state for keyboard users',
+      'Icon-only buttons include sr-only text for screen readers',
+      'Disabled state removes from tab order and indicates non-interactive state',
+      'Loading state includes aria-busy attribute for screen readers',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual style variant indicating action importance",
-        "type": "select",
-        "required": false,
-        "options": [
-          "primary",
-          "secondary",
-          "outline",
-          "ghost",
-          "destructive"
-        ],
-        "defaultValue": "primary"
+        name: 'variant',
+        description: 'Visual style variant indicating action importance',
+        type: 'select',
+        required: false,
+        options: ['primary', 'secondary', 'outline', 'ghost', 'destructive'],
+        defaultValue: 'primary',
       },
       {
-        "name": "size",
-        "description": "Size preset affecting height, padding, and font size",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting height, padding, and font size',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "leftIcon",
-        "description": "Icon name to display before button text",
-        "type": "select",
-        "required": false,
-        "options": [
-          "search",
-          "check",
-          "close",
-          "copy",
-          "arrow-left"
-        ]
+        name: 'leftIcon',
+        description: 'Icon name to display before button text',
+        type: 'select',
+        required: false,
+        options: ['search', 'check', 'close', 'copy', 'arrow-left'],
       },
       {
-        "name": "rightIcon",
-        "description": "Icon name to display after button text",
-        "type": "select",
-        "required": false,
-        "options": [
-          "arrow-right",
-          "chevron-right",
-          "chevron-down",
-          "external"
-        ]
+        name: 'rightIcon',
+        description: 'Icon name to display after button text',
+        type: 'select',
+        required: false,
+        options: ['arrow-right', 'chevron-right', 'chevron-down', 'external'],
       },
       {
-        "name": "iconOnly",
-        "description": "Render as square icon-only button (children become sr-only)",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'iconOnly',
+        description: 'Render as square icon-only button (children become sr-only)',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "fullWidth",
-        "description": "Make button full width of container",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'fullWidth',
+        description: 'Make button full width of container',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "loading",
-        "description": "Show loading spinner instead of children",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'loading',
+        description: 'Show loading spinner instead of children',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "loadingText",
-        "description": "Custom loading text (default: ",
-        "type": "text",
-        "required": false,
-        "defaultValue": "Loading..."
+        name: 'loadingText',
+        description: 'Custom loading text (default: ',
+        type: 'text',
+        required: false,
+        defaultValue: 'Loading...',
       },
       {
-        "name": "disabled",
-        "description": "Disable the button, preventing interaction",
-        "type": "boolean",
-        "required": false
+        name: 'disabled',
+        description: 'Disable the button, preventing interaction',
+        type: 'boolean',
+        required: false,
       },
       {
-        "name": "children",
-        "description": "Button content (text label)",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'children',
+        description: 'Button content (text label)',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "Card": {
-    "name": "Card",
-    "category": "data",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A container component for grouping related content with optional header and footer.",
-    "usage": "Use for displaying grouped content like statistics, previews, form sections, or list items. Choose variant based on visual hierarchy needs.",
-    "accessibility": [
-      "Uses semantic `<div>` elements",
-      "Header content should use appropriate heading levels",
-      "Consider adding `role=\"region\"` and `aria-labelledby` for significant cards",
-      "Icons in headers have `aria-hidden=\"true\"` (they are decorative)"
+  Card: {
+    name: 'Card',
+    category: 'data',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A container component for grouping related content with optional header and footer.',
+    usage:
+      'Use for displaying grouped content like statistics, previews, form sections, or list items. Choose variant based on visual hierarchy needs.',
+    accessibility: [
+      'Uses semantic `<div>` elements',
+      'Header content should use appropriate heading levels',
+      'Consider adding `role="region"` and `aria-labelledby` for significant cards',
+      'Icons in headers have `aria-hidden="true"` (they are decorative)',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual style variant affecting background, text, and border colors",
-        "type": "select",
-        "required": false,
-        "options": [
-          "outlined",
-          "elevated",
-          "info",
-          "success",
-          "warning",
-          "error",
-          "accent1",
-          "accent2",
-          "accent3",
-          "data1",
-          "data2"
+        name: 'variant',
+        description: 'Visual style variant affecting background, text, and border colors',
+        type: 'select',
+        required: false,
+        options: [
+          'outlined',
+          'elevated',
+          'info',
+          'success',
+          'warning',
+          'error',
+          'accent1',
+          'accent2',
+          'accent3',
+          'data1',
+          'data2',
         ],
-        "defaultValue": "outlined"
+        defaultValue: 'outlined',
       },
       {
-        "name": "children",
-        "description": "Card content (typically CardHeader, CardContent, CardFooter)",
-        "type": "unknown",
-        "required": false
-      }
+        name: 'children',
+        description: 'Card content (typically CardHeader, CardContent, CardFooter)',
+        type: 'unknown',
+        required: false,
+      },
     ],
-    "subcomponents": [
-      "Card",
-      "CardHeader",
-      "CardContent",
-      "CardFooter"
-    ]
+    subcomponents: ['Card', 'CardHeader', 'CardContent', 'CardFooter'],
   },
-  "Collapsible": {
-    "name": "Collapsible",
-    "category": "behavioral",
-    "tier": 2,
-    "tierLabel": "Radix UI Primitive",
-    "description": "Accessible collapsible section component for showing/hiding content.",
-    "usage": "",
-    "accessibility": [
-      "Uses `aria-expanded` to indicate state",
-      "`aria-controls` links trigger to content",
-      "Keyboard accessible (Tab to focus, Enter/Space to toggle)",
-      "Chevron rotates to indicate state visually"
+  Collapsible: {
+    name: 'Collapsible',
+    category: 'behavioral',
+    tier: 2,
+    tierLabel: 'Radix UI Primitive',
+    description: 'Accessible collapsible section component for showing/hiding content.',
+    usage: '',
+    accessibility: [
+      'Uses `aria-expanded` to indicate state',
+      '`aria-controls` links trigger to content',
+      'Keyboard accessible (Tab to focus, Enter/Space to toggle)',
+      'Chevron rotates to indicate state visually',
     ],
-    "props": [
+    props: [
       {
-        "name": "size",
-        "description": "Size preset affecting padding and font size",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting padding and font size',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "hideChevron",
-        "description": "Hide the chevron indicator icon",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'hideChevron',
+        description: 'Hide the chevron indicator icon',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "disabled",
-        "description": "Disable the trigger, preventing toggle",
-        "type": "boolean",
-        "required": false
+        name: 'disabled',
+        description: 'Disable the trigger, preventing toggle',
+        type: 'boolean',
+        required: false,
       },
       {
-        "name": "children",
-        "description": "Trigger label text",
-        "type": "unknown",
-        "required": false
-      }
+        name: 'children',
+        description: 'Trigger label text',
+        type: 'unknown',
+        required: false,
+      },
     ],
-    "radixHandles": [
-      "WAI-ARIA disclosure pattern (`aria-expanded`, `aria-controls`)",
-      "Keyboard support (Enter/Space to toggle)",
-      "State management (controlled/uncontrolled)",
-      "Animation support via data attributes"
+    radixHandles: [
+      'WAI-ARIA disclosure pattern (`aria-expanded`, `aria-controls`)',
+      'Keyboard support (Enter/Space to toggle)',
+      'State management (controlled/uncontrolled)',
+      'Animation support via data attributes',
     ],
-    "compoundComponents": [
+    compoundComponents: [
       {
-        "name": "Collapsible",
-        "description": "State management, controlled via `open`/`onOpenChange`"
+        name: 'Collapsible',
+        description: 'State management, controlled via `open`/`onOpenChange`',
       },
       {
-        "name": "CollapsibleTrigger",
-        "description": "Button that toggles visibility (includes chevron)"
+        name: 'CollapsibleTrigger',
+        description: 'Button that toggles visibility (includes chevron)',
       },
       {
-        "name": "CollapsibleContent",
-        "description": "Collapsible content area with animation"
-      }
-    ]
+        name: 'CollapsibleContent',
+        description: 'Collapsible content area with animation',
+      },
+    ],
   },
-  "Container": {
-    "name": "Container",
-    "category": "layout",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A layout wrapper that constrains content width and provides consistent horizontal padding.",
-    "usage": "Wrap page content to maintain readable line lengths and consistent margins. Use different sizes based on content type: `sm` for forms, `lg` for standard pages, `full` for data tables.",
-    "accessibility": [
-      "Uses semantic `<div>` element",
-      "Does not affect content accessibility",
-      "Horizontal padding provides comfortable reading margins"
+  Container: {
+    name: 'Container',
+    category: 'layout',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A layout wrapper that constrains content width and provides consistent horizontal padding.',
+    usage:
+      'Wrap page content to maintain readable line lengths and consistent margins. Use different sizes based on content type: `sm` for forms, `lg` for standard pages, `full` for data tables.',
+    accessibility: [
+      'Uses semantic `<div>` element',
+      'Does not affect content accessibility',
+      'Horizontal padding provides comfortable reading margins',
     ],
-    "props": [
+    props: [
       {
-        "name": "size",
-        "description": "Maximum width constraint for the container",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg",
-          "xl",
-          "2xl",
-          "full"
-        ],
-        "defaultValue": "lg"
+        name: 'size',
+        description: 'Maximum width constraint for the container',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg', 'xl', '2xl', 'full'],
+        defaultValue: 'lg',
       },
       {
-        "name": "padding",
-        "description": "Horizontal padding on container edges",
-        "type": "select",
-        "required": false,
-        "options": [
-          "none",
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'padding',
+        description: 'Horizontal padding on container edges',
+        type: 'select',
+        required: false,
+        options: ['none', 'sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "children",
-        "description": "Content to render inside the container",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'children',
+        description: 'Content to render inside the container',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "DataTable": {
-    "name": "DataTable",
-    "category": "data",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A data table component with sorting and virtualization support for large datasets.",
-    "usage": "",
-    "accessibility": [
-      "Uses semantic `<table>`, `<thead>`, `<tbody>` elements",
-      "Sortable headers are keyboard accessible (Tab + Enter/Space)",
-      "Sort state announced via live region for screen readers",
-      "Clickable rows have `cursor-pointer` visual indicator"
+  DataTable: {
+    name: 'DataTable',
+    category: 'data',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A data table component with sorting and virtualization support for large datasets.',
+    usage: '',
+    accessibility: [
+      'Uses semantic `<table>`, `<thead>`, `<tbody>` elements',
+      'Sortable headers are keyboard accessible (Tab + Enter/Space)',
+      'Sort state announced via live region for screen readers',
+      'Clickable rows have `cursor-pointer` visual indicator',
     ],
-    "props": []
+    props: [],
   },
-  "EmptyState": {
-    "name": "EmptyState",
-    "category": "feedback",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A feedback component for displaying empty data states with optional call-to-action.",
-    "usage": "Use when a list, table, or content area has no data to display. Provides a friendly message with optional icon, description, and action button to guide users on next steps.",
-    "accessibility": [
-      "Uses semantic heading for title",
-      "Icon is decorative (aria-hidden) when present",
-      "Action buttons should have clear, descriptive labels"
+  EmptyState: {
+    name: 'EmptyState',
+    category: 'feedback',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A feedback component for displaying empty data states with optional call-to-action.',
+    usage:
+      'Use when a list, table, or content area has no data to display. Provides a friendly message with optional icon, description, and action button to guide users on next steps.',
+    accessibility: [
+      'Uses semantic heading for title',
+      'Icon is decorative (aria-hidden) when present',
+      'Action buttons should have clear, descriptive labels',
     ],
-    "props": [
+    props: [
       {
-        "name": "title",
-        "description": "Main heading text explaining the empty state",
-        "type": "text",
-        "required": false
+        name: 'title',
+        description: 'Main heading text explaining the empty state',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "description",
-        "description": "Optional supporting text with additional context or guidance",
-        "type": "text",
-        "required": false
+        name: 'description',
+        description: 'Optional supporting text with additional context or guidance',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "size",
-        "description": "Size variant controlling padding, icon size, and typography scale",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ]
+        name: 'size',
+        description: 'Size variant controlling padding, icon size, and typography scale',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
       },
       {
-        "name": "icon",
-        "description": "Icon name from ui-library (type-safe)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "search",
-          "search-off",
-          "package",
-          "file",
-          "file-search",
-          "database",
-          "users",
-          "empty",
-          "alert-circle",
-          "info-circle"
-        ]
+        name: 'icon',
+        description: 'Icon name from ui-library (type-safe)',
+        type: 'select',
+        required: false,
+        options: [
+          'search',
+          'search-off',
+          'package',
+          'file',
+          'file-search',
+          'database',
+          'users',
+          'empty',
+          'alert-circle',
+          'info-circle',
+        ],
       },
       {
-        "name": "customIcon",
-        "description": "Custom icon element (use when IconName does not suffice)",
-        "type": "false",
-        "required": false
+        name: 'customIcon',
+        description: 'Custom icon element (use when IconName does not suffice)',
+        type: 'false',
+        required: false,
       },
       {
-        "name": "action",
-        "description": "Optional action element (button or link) for user to take action",
-        "type": "false",
-        "required": false
-      }
-    ]
+        name: 'action',
+        description: 'Optional action element (button or link) for user to take action',
+        type: 'false',
+        required: false,
+      },
+    ],
   },
-  "ErrorState": {
-    "name": "ErrorState",
-    "category": "feedback",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A feedback component for displaying error states with optional retry action.",
-    "usage": "Use when an operation fails (network error, server error, validation failure). Provides a clear error message with optional details and retry button to help users recover.",
-    "accessibility": [
-      "`role=\"alert\"` for screen reader announcements",
-      "Error icon includes `aria-hidden` (decorative)",
-      "Title and error message are announced to screen readers",
-      "Retry/action buttons are keyboard accessible",
-      "Uses appropriate color contrast for error states"
+  ErrorState: {
+    name: 'ErrorState',
+    category: 'feedback',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A feedback component for displaying error states with optional retry action.',
+    usage:
+      'Use when an operation fails (network error, server error, validation failure). Provides a clear error message with optional details and retry button to help users recover.',
+    accessibility: [
+      '`role="alert"` for screen reader announcements',
+      'Error icon includes `aria-hidden` (decorative)',
+      'Title and error message are announced to screen readers',
+      'Retry/action buttons are keyboard accessible',
+      'Uses appropriate color contrast for error states',
     ],
-    "props": [
+    props: [
       {
-        "name": "size",
-        "description": "Size variant affecting padding, icon size, and typography",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size variant affecting padding, icon size, and typography',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "title",
-        "description": "Main heading text explaining what failed",
-        "type": "text",
-        "required": false
+        name: 'title',
+        description: 'Main heading text explaining what failed',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "error",
-        "description": "Optional detailed error message or description",
-        "type": "text",
-        "required": false
+        name: 'error',
+        description: 'Optional detailed error message or description',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "icon",
-        "description": "Icon name from ui-library (defaults to alert-circle)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "alert-circle",
-          "info-circle",
-          "search-off",
-          "close"
-        ],
-        "defaultValue": "alert-circle"
+        name: 'icon',
+        description: 'Icon name from ui-library (defaults to alert-circle)',
+        type: 'select',
+        required: false,
+        options: ['alert-circle', 'info-circle', 'search-off', 'close'],
+        defaultValue: 'alert-circle',
       },
       {
-        "name": "customIcon",
-        "description": "Custom icon element (takes precedence over icon prop)",
-        "type": "false",
-        "required": false
+        name: 'customIcon',
+        description: 'Custom icon element (takes precedence over icon prop)',
+        type: 'false',
+        required: false,
       },
       {
-        "name": "onRetry",
-        "description": "Callback for retry button. Shows default retry button when provided.",
-        "type": "unknown",
-        "required": false
+        name: 'onRetry',
+        description: 'Callback for retry button. Shows default retry button when provided.',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "retryLabel",
-        "description": "Custom label for the retry button",
-        "type": "text",
-        "required": false,
-        "defaultValue": "Try again"
+        name: 'retryLabel',
+        description: 'Custom label for the retry button',
+        type: 'text',
+        required: false,
+        defaultValue: 'Try again',
       },
       {
-        "name": "action",
-        "description": "Custom action element (takes precedence over onRetry)",
-        "type": "false",
-        "required": false
-      }
-    ]
+        name: 'action',
+        description: 'Custom action element (takes precedence over onRetry)',
+        type: 'false',
+        required: false,
+      },
+    ],
   },
-  "Grid": {
-    "name": "Grid",
-    "category": "layout",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A CSS Grid layout component with responsive column support.",
-    "usage": "Use for multi-column layouts like card grids, dashboards, and galleries. Supports fixed column counts or responsive breakpoints.",
-    "accessibility": [
-      "Uses semantic `<div>` element with CSS Grid",
-      "Grid layout does not affect content accessibility",
-      "Children maintain their natural reading order"
+  Grid: {
+    name: 'Grid',
+    category: 'layout',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A CSS Grid layout component with responsive column support.',
+    usage:
+      'Use for multi-column layouts like card grids, dashboards, and galleries. Supports fixed column counts or responsive breakpoints.',
+    accessibility: [
+      'Uses semantic `<div>` element with CSS Grid',
+      'Grid layout does not affect content accessibility',
+      'Children maintain their natural reading order',
     ],
-    "props": [
+    props: [
       {
-        "name": "cols",
-        "description": "Number of columns: fixed number (1-6) or responsive object with breakpoints",
-        "type": "select",
-        "required": false,
-        "defaultValue": "1"
+        name: 'cols',
+        description: 'Number of columns: fixed number (1-6) or responsive object with breakpoints',
+        type: 'select',
+        required: false,
+        defaultValue: '1',
       },
       {
-        "name": "gap",
-        "description": "Gap size between grid items (semantic spacing tokens)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "none",
-          "2xs",
-          "xs",
-          "sm",
-          "md",
-          "base",
-          "lg",
-          "xl",
-          "2xl"
-        ],
-        "defaultValue": "base"
+        name: 'gap',
+        description: 'Gap size between grid items (semantic spacing tokens)',
+        type: 'select',
+        required: false,
+        options: ['none', '2xs', 'xs', 'sm', 'md', 'base', 'lg', 'xl', '2xl'],
+        defaultValue: 'base',
       },
       {
-        "name": "rows",
-        "description": "Optional fixed row count (sets grid-template-rows)",
-        "type": "number",
-        "required": false
+        name: 'rows',
+        description: 'Optional fixed row count (sets grid-template-rows)',
+        type: 'number',
+        required: false,
       },
       {
-        "name": "children",
-        "description": "Grid items to render",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'children',
+        description: 'Grid items to render',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "Heading": {
-    "name": "Heading",
-    "category": "primitives",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A typography component for rendering semantic headings (h1-h6) with consistent styling.",
-    "usage": "Use for all heading text in the application. Prefer semantic `level` that matches document outline, and override `size` only when visual hierarchy differs from semantic hierarchy.",
-    "accessibility": [
-      "Renders semantic HTML heading elements (h1-h6)",
-      "No additional ARIA needed (native heading semantics)",
-      "Supports all standard HTML heading attributes"
+  Heading: {
+    name: 'Heading',
+    category: 'primitives',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A typography component for rendering semantic headings (h1-h6) with consistent styling.',
+    usage:
+      'Use for all heading text in the application. Prefer semantic `level` that matches document outline, and override `size` only when visual hierarchy differs from semantic hierarchy.',
+    accessibility: [
+      'Renders semantic HTML heading elements (h1-h6)',
+      'No additional ARIA needed (native heading semantics)',
+      'Supports all standard HTML heading attributes',
     ],
-    "props": [
+    props: [
       {
-        "name": "level",
-        "description": "Semantic heading level (1-6), determines which HTML element is rendered",
-        "type": "unknown",
-        "required": false
+        name: 'level',
+        description: 'Semantic heading level (1-6), determines which HTML element is rendered',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "size",
-        "description": "Visual size override. When omitted, defaults based on level (h1=2xl, h2=xl, h3=lg, h4=base, h5=sm, h6=xs)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "4xl",
-          "3xl",
-          "2xl",
-          "xl",
-          "lg",
-          "base",
-          "sm",
-          "xs"
-        ],
-        "defaultValue": "based on level"
+        name: 'size',
+        description:
+          'Visual size override. When omitted, defaults based on level (h1=2xl, h2=xl, h3=lg, h4=base, h5=sm, h6=xs)',
+        type: 'select',
+        required: false,
+        options: ['4xl', '3xl', '2xl', 'xl', 'lg', 'base', 'sm', 'xs'],
+        defaultValue: 'based on level',
       },
       {
-        "name": "color",
-        "description": "Text color variant",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "muted"
-        ],
-        "defaultValue": "default"
+        name: 'color',
+        description: 'Text color variant',
+        type: 'select',
+        required: false,
+        options: ['default', 'muted'],
+        defaultValue: 'default',
       },
       {
-        "name": "tracking",
-        "description": "Letter spacing",
-        "type": "select",
-        "required": false,
-        "options": [
-          "normal",
-          "tight"
-        ],
-        "defaultValue": "normal"
-      }
-    ]
+        name: 'tracking',
+        description: 'Letter spacing',
+        type: 'select',
+        required: false,
+        options: ['normal', 'tight'],
+        defaultValue: 'normal',
+      },
+    ],
   },
-  "Input": {
-    "name": "Input",
-    "category": "primitives",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A styled text input component for forms with validation states, icons, and helper text support.",
-    "usage": "Use for single-line text entry in forms. Supports leading/trailing icons, validation states (default, error, success), helper text, and automatic status icons. For dedicated search inputs, consider using SearchInput.",
-    "accessibility": [
-      "Uses semantic `<input>` element",
-      "Always pair with a `<label>` element or `aria-label` attribute",
-      "Error state uses `aria-invalid` and `aria-describedby` for screen reader announcements",
-      "Visible focus state for keyboard navigation",
-      "Disabled state removes from tab order"
+  Input: {
+    name: 'Input',
+    category: 'primitives',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A styled text input component for forms with validation states, icons, and helper text support.',
+    usage:
+      'Use for single-line text entry in forms. Supports leading/trailing icons, validation states (default, error, success), helper text, and automatic status icons. For dedicated search inputs, consider using SearchInput.',
+    accessibility: [
+      'Uses semantic `<input>` element',
+      'Always pair with a `<label>` element or `aria-label` attribute',
+      'Error state uses `aria-invalid` and `aria-describedby` for screen reader announcements',
+      'Visible focus state for keyboard navigation',
+      'Disabled state removes from tab order',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual style variant for validation states",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "error",
-          "success"
-        ],
-        "defaultValue": "default"
+        name: 'variant',
+        description: 'Visual style variant for validation states',
+        type: 'select',
+        required: false,
+        options: ['default', 'error', 'success'],
+        defaultValue: 'default',
       },
       {
-        "name": "size",
-        "description": "Size preset affecting height and padding",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting height and padding',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "type",
-        "description": "HTML input type attribute",
-        "type": "select",
-        "required": false,
-        "options": [
-          "text",
-          "email",
-          "password",
-          "number",
-          "search",
-          "tel",
-          "url"
-        ],
-        "defaultValue": "text"
+        name: 'type',
+        description: 'HTML input type attribute',
+        type: 'select',
+        required: false,
+        options: ['text', 'email', 'password', 'number', 'search', 'tel', 'url'],
+        defaultValue: 'text',
       },
       {
-        "name": "disabled",
-        "description": "Disable the input, preventing interaction",
-        "type": "boolean",
-        "required": false
+        name: 'disabled',
+        description: 'Disable the input, preventing interaction',
+        type: 'boolean',
+        required: false,
       },
       {
-        "name": "placeholder",
-        "description": "Placeholder text shown when input is empty",
-        "type": "text",
-        "required": false
+        name: 'placeholder',
+        description: 'Placeholder text shown when input is empty',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "leftIcon",
-        "description": "Icon name to display on the left side of the input",
-        "type": "select",
-        "required": false,
-        "options": [
-          "search",
-          "package",
-          "file",
-          "code",
-          "alert-circle"
-        ]
+        name: 'leftIcon',
+        description: 'Icon name to display on the left side of the input',
+        type: 'select',
+        required: false,
+        options: ['search', 'package', 'file', 'code', 'alert-circle'],
       },
       {
-        "name": "rightIcon",
-        "description": "Icon name to display on the right side of the input",
-        "type": "select",
-        "required": false,
-        "options": [
-          "check",
-          "close",
-          "arrow-right",
-          "external",
-          "info-circle"
-        ]
+        name: 'rightIcon',
+        description: 'Icon name to display on the right side of the input',
+        type: 'select',
+        required: false,
+        options: ['check', 'close', 'arrow-right', 'external', 'info-circle'],
       },
       {
-        "name": "helperText",
-        "description": "Helper text displayed below the input",
-        "type": "text",
-        "required": false
+        name: 'helperText',
+        description: 'Helper text displayed below the input',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "showStatusIcon",
-        "description": "Show status icon automatically based on variant (error: alert-circle, success: check)",
-        "type": "boolean",
-        "required": false
+        name: 'showStatusIcon',
+        description:
+          'Show status icon automatically based on variant (error: alert-circle, success: check)',
+        type: 'boolean',
+        required: false,
       },
       {
-        "name": "fullWidth",
-        "description": "Whether the input takes full container width",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
-      }
-    ]
+        name: 'fullWidth',
+        description: 'Whether the input takes full container width',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
+      },
+    ],
   },
-  "Link": {
-    "name": "Link",
-    "category": "primitives",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A versatile anchor component for navigation with multiple style variants and icon support.",
-    "usage": "Use for navigation links throughout the application. Choose the variant that best fits your context:\n- **default**: Standard links in text content with underline\n- **subtle**: Less prominent links that become more visible on hover\n- **standalone**: CTA-style links that work like buttons",
-    "accessibility": [
-      "Uses semantic `<a>` element",
-      "External links include visual indicator and screen reader text",
-      "Visible focus state for keyboard navigation",
-      "Inherits browser link behaviors (middle-click, right-click menu)",
-      "Meets WCAG contrast requirements for all variants"
+  Link: {
+    name: 'Link',
+    category: 'primitives',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A versatile anchor component for navigation with multiple style variants and icon support.',
+    usage:
+      'Use for navigation links throughout the application. Choose the variant that best fits your context:\n- **default**: Standard links in text content with underline\n- **subtle**: Less prominent links that become more visible on hover\n- **standalone**: CTA-style links that work like buttons',
+    accessibility: [
+      'Uses semantic `<a>` element',
+      'External links include visual indicator and screen reader text',
+      'Visible focus state for keyboard navigation',
+      'Inherits browser link behaviors (middle-click, right-click menu)',
+      'Meets WCAG contrast requirements for all variants',
     ],
-    "props": [
+    props: [
       {
-        "name": "href",
-        "description": "URL to navigate to",
-        "type": "text",
-        "required": false
+        name: 'href',
+        description: 'URL to navigate to',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "variant",
-        "description": "Visual style variant",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "subtle",
-          "standalone"
-        ],
-        "defaultValue": "default"
+        name: 'variant',
+        description: 'Visual style variant',
+        type: 'select',
+        required: false,
+        options: ['default', 'subtle', 'standalone'],
+        defaultValue: 'default',
       },
       {
-        "name": "size",
-        "description": "Size of the link text and icon",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size of the link text and icon',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "external",
-        "description": "Whether the link opens in a new tab with external indicator",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'external',
+        description: 'Whether the link opens in a new tab with external indicator',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "icon",
-        "description": "Icon name from ui-library Icon component",
-        "type": "select",
-        "required": false,
-        "options": [
-          "arrow-right",
-          "chevron-right",
-          "external",
-          "file",
-          "package"
-        ]
+        name: 'icon',
+        description: 'Icon name from ui-library Icon component',
+        type: 'select',
+        required: false,
+        options: ['arrow-right', 'chevron-right', 'external', 'file', 'package'],
       },
       {
-        "name": "iconPosition",
-        "description": "Position of icon relative to text",
-        "type": "select",
-        "required": false,
-        "options": [
-          "left",
-          "right"
-        ],
-        "defaultValue": "right"
+        name: 'iconPosition',
+        description: 'Position of icon relative to text',
+        type: 'select',
+        required: false,
+        options: ['left', 'right'],
+        defaultValue: 'right',
       },
       {
-        "name": "children",
-        "description": "Link text content",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'children',
+        description: 'Link text content',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "LogView": {
-    "name": "LogView",
-    "category": "data",
-    "tier": 2,
-    "tierLabel": "Behavioral",
-    "description": "A compound component for displaying sequential log output - from plain CLI/terminal streams to rich structured agent logs.",
-    "usage": "",
-    "accessibility": [
-      "`role=\"log\"` with `aria-live=\"polite\"` on scroll container",
-      "Expandable entries use Radix Collapsible for proper ARIA attributes",
-      "Timestamps use `<time>` element"
+  LogView: {
+    name: 'LogView',
+    category: 'data',
+    tier: 2,
+    tierLabel: 'Behavioral',
+    description:
+      'A compound component for displaying sequential log output - from plain CLI/terminal streams to rich structured agent logs.',
+    usage: '',
+    accessibility: [
+      '`role="log"` with `aria-live="polite"` on scroll container',
+      'Expandable entries use Radix Collapsible for proper ARIA attributes',
+      'Timestamps use `<time>` element',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual style variant",
-        "type": "select",
-        "required": false,
-        "options": [
-          "cli",
-          "rich"
-        ],
-        "defaultValue": "cli"
+        name: 'variant',
+        description: 'Visual style variant',
+        type: 'select',
+        required: false,
+        options: ['cli', 'rich'],
+        defaultValue: 'cli',
       },
       {
-        "name": "showTimestamps",
-        "description": "Show timestamps on entries",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
+        name: 'showTimestamps',
+        description: 'Show timestamps on entries',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
       },
       {
-        "name": "autoScroll",
-        "description": "Auto-scroll to bottom on new entries",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
+        name: 'autoScroll',
+        description: 'Auto-scroll to bottom on new entries',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
       },
       {
-        "name": "maxHeight",
-        "description": "Max height of the scroll area (CSS value)",
-        "type": "text",
-        "required": false
-      }
+        name: 'maxHeight',
+        description: 'Max height of the scroll area (CSS value)',
+        type: 'text',
+        required: false,
+      },
     ],
-    "subcomponents": [
-      "LogView",
-      "LogEntry",
-      "LogPrompt"
-    ]
+    subcomponents: ['LogView', 'LogEntry', 'LogPrompt'],
   },
-  "Navigation": {
-    "name": "Navigation",
-    "category": "layout",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A navigation component that supports both horizontal (header) and vertical (sidebar) layouts.",
-    "usage": "",
-    "accessibility": [],
-    "props": [
+  Navigation: {
+    name: 'Navigation',
+    category: 'layout',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A navigation component that supports both horizontal (header) and vertical (sidebar) layouts.',
+    usage: '',
+    accessibility: [],
+    props: [
       {
-        "name": "orientation",
-        "description": "Navigation layout orientation",
-        "type": "select",
-        "required": false,
-        "options": [
-          "horizontal",
-          "vertical"
-        ],
-        "defaultValue": "horizontal"
-      }
+        name: 'orientation',
+        description: 'Navigation layout orientation',
+        type: 'select',
+        required: false,
+        options: ['horizontal', 'vertical'],
+        defaultValue: 'horizontal',
+      },
     ],
-    "subcomponents": [
-      "NavItem"
-    ]
+    subcomponents: ['NavItem'],
   },
-  "PageLayout": {
-    "name": "PageLayout",
-    "category": "layout",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A full-page layout component with header, sidebar, main content, and footer slots.",
-    "usage": "",
-    "accessibility": [
-      "Supports skip link for keyboard navigation (`skipLinkText` prop)",
-      "Uses semantic `<header>`, `<main>`, `<aside>`, `<footer>` elements",
-      "Main content has `id=\"main-content\"` for skip link target",
-      "Skip link appears on focus (visually hidden otherwise)"
+  PageLayout: {
+    name: 'PageLayout',
+    category: 'layout',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A full-page layout component with header, sidebar, main content, and footer slots.',
+    usage: '',
+    accessibility: [
+      'Supports skip link for keyboard navigation (`skipLinkText` prop)',
+      'Uses semantic `<header>`, `<main>`, `<aside>`, `<footer>` elements',
+      'Main content has `id="main-content"` for skip link target',
+      'Skip link appears on focus (visually hidden otherwise)',
     ],
-    "props": [
+    props: [
       {
-        "name": "children",
-        "description": "Main content to render in the content area",
-        "type": "unknown",
-        "required": false
+        name: 'children',
+        description: 'Main content to render in the content area',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "header",
-        "description": "Header slot content (sticky top)",
-        "type": "unknown",
-        "required": false
+        name: 'header',
+        description: 'Header slot content (sticky top)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "sidebar",
-        "description": "Sidebar slot content (left or right)",
-        "type": "unknown",
-        "required": false
+        name: 'sidebar',
+        description: 'Sidebar slot content (left or right)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "footer",
-        "description": "Footer slot content",
-        "type": "unknown",
-        "required": false
+        name: 'footer',
+        description: 'Footer slot content',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "contentWidth",
-        "description": "Main content width behavior",
-        "type": "select",
-        "required": false,
-        "options": [
-          "contained",
-          "full"
-        ],
-        "defaultValue": "contained"
+        name: 'contentWidth',
+        description: 'Main content width behavior',
+        type: 'select',
+        required: false,
+        options: ['contained', 'full'],
+        defaultValue: 'contained',
       },
       {
-        "name": "sidebarPosition",
-        "description": "Sidebar placement (left or right)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "left",
-          "right"
-        ],
-        "defaultValue": "left"
+        name: 'sidebarPosition',
+        description: 'Sidebar placement (left or right)',
+        type: 'select',
+        required: false,
+        options: ['left', 'right'],
+        defaultValue: 'left',
       },
       {
-        "name": "sidebarCollapsible",
-        "description": "Allow sidebar to collapse on mobile viewports",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
+        name: 'sidebarCollapsible',
+        description: 'Allow sidebar to collapse on mobile viewports',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
       },
       {
-        "name": "skipLinkText",
-        "description": "Text for the skip navigation link (enables skip link when provided)",
-        "type": "text",
-        "required": false
-      }
-    ]
+        name: 'skipLinkText',
+        description: 'Text for the skip navigation link (enables skip link when provided)',
+        type: 'text',
+        required: false,
+      },
+    ],
   },
-  "SearchInput": {
-    "name": "SearchInput",
-    "category": "selection",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A specialized input component for search functionality with a search icon.",
-    "usage": "Use for search fields throughout the application. Includes a leading search icon for visual clarity.",
-    "accessibility": [
-      "Search icon is decorative (aria-hidden)",
-      "Uses native `type=\"search\"` for proper semantics",
-      "Supports keyboard navigation (Tab, Escape to clear in browsers that support it)",
-      "Consider adding `role=\"search\"` on the containing form"
+  SearchInput: {
+    name: 'SearchInput',
+    category: 'selection',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A specialized input component for search functionality with a search icon.',
+    usage:
+      'Use for search fields throughout the application. Includes a leading search icon for visual clarity.',
+    accessibility: [
+      'Search icon is decorative (aria-hidden)',
+      'Uses native `type="search"` for proper semantics',
+      'Supports keyboard navigation (Tab, Escape to clear in browsers that support it)',
+      'Consider adding `role="search"` on the containing form',
     ],
-    "props": [
+    props: [
       {
-        "name": "size",
-        "description": "Size preset affecting height and padding",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting height and padding',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "disabled",
-        "description": "Disable the input, preventing interaction",
-        "type": "boolean",
-        "required": false
+        name: 'disabled',
+        description: 'Disable the input, preventing interaction',
+        type: 'boolean',
+        required: false,
       },
       {
-        "name": "placeholder",
-        "description": "Placeholder text shown when input is empty",
-        "type": "text",
-        "required": false
+        name: 'placeholder',
+        description: 'Placeholder text shown when input is empty',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "value",
-        "description": "Controlled input value",
-        "type": "unknown",
-        "required": false
+        name: 'value',
+        description: 'Controlled input value',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "onChange",
-        "description": "Callback when input value changes",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'onChange',
+        description: 'Callback when input value changes',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "Select": {
-    "name": "Select",
-    "category": "selection",
-    "tier": 2,
-    "tierLabel": "Radix UI Primitive",
-    "description": "Accessible dropdown select component with keyboard navigation.",
-    "usage": "",
-    "accessibility": [
-      "Full keyboard navigation (Arrow keys, Home/End, Page Up/Down)",
-      "Type-ahead search (type to jump to matching option)",
-      "Screen reader announces selection changes",
-      "Focus trapped in dropdown when open"
+  Select: {
+    name: 'Select',
+    category: 'selection',
+    tier: 2,
+    tierLabel: 'Radix UI Primitive',
+    description: 'Accessible dropdown select component with keyboard navigation.',
+    usage: '',
+    accessibility: [
+      'Full keyboard navigation (Arrow keys, Home/End, Page Up/Down)',
+      'Type-ahead search (type to jump to matching option)',
+      'Screen reader announces selection changes',
+      'Focus trapped in dropdown when open',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual variant affecting colors and style",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "secondary",
-          "error",
-          "success",
-          "ghost"
-        ],
-        "defaultValue": "default"
+        name: 'variant',
+        description: 'Visual variant affecting colors and style',
+        type: 'select',
+        required: false,
+        options: ['default', 'secondary', 'error', 'success', 'ghost'],
+        defaultValue: 'default',
       },
       {
-        "name": "size",
-        "description": "Size preset affecting height and padding",
-        "type": "select",
-        "required": false,
-        "options": [
-          "xs",
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting height and padding',
+        type: 'select',
+        required: false,
+        options: ['xs', 'sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "density",
-        "description": "Density preset affecting padding",
-        "type": "select",
-        "required": false,
-        "options": [
-          "compact",
-          "comfortable",
-          "spacious"
-        ],
-        "defaultValue": "comfortable"
+        name: 'density',
+        description: 'Density preset affecting padding',
+        type: 'select',
+        required: false,
+        options: ['compact', 'comfortable', 'spacious'],
+        defaultValue: 'comfortable',
       },
       {
-        "name": "width",
-        "description": "Width behavior (auto, full container width, or fit content)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "auto",
-          "full",
-          "fit"
-        ],
-        "defaultValue": "auto"
+        name: 'width',
+        description: 'Width behavior (auto, full container width, or fit content)',
+        type: 'select',
+        required: false,
+        options: ['auto', 'full', 'fit'],
+        defaultValue: 'auto',
       },
       {
-        "name": "leftIcon",
-        "description": "Icon to display on the left side of the trigger",
-        "type": "text",
-        "required": false
+        name: 'leftIcon',
+        description: 'Icon to display on the left side of the trigger',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "rightIcon",
-        "description": "Icon to display on the right side of the trigger (defaults to chevron-down)",
-        "type": "text",
-        "required": false
+        name: 'rightIcon',
+        description: 'Icon to display on the right side of the trigger (defaults to chevron-down)',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "disabled",
-        "description": "Disable the select trigger",
-        "type": "boolean",
-        "required": false
+        name: 'disabled',
+        description: 'Disable the select trigger',
+        type: 'boolean',
+        required: false,
       },
       {
-        "name": "children",
-        "description": "Trigger content (typically Select.Value)",
-        "type": "unknown",
-        "required": false
-      }
+        name: 'children',
+        description: 'Trigger content (typically Select.Value)',
+        type: 'unknown',
+        required: false,
+      },
     ],
-    "radixHandles": [
-      "WAI-ARIA listbox pattern",
-      "Full keyboard navigation (Arrow keys, Enter, Escape, Type-ahead)",
-      "Focus management and trapping",
-      "Screen reader announcements",
-      "Touch device support",
-      "Scroll buttons for long lists"
+    radixHandles: [
+      'WAI-ARIA listbox pattern',
+      'Full keyboard navigation (Arrow keys, Enter, Escape, Type-ahead)',
+      'Focus management and trapping',
+      'Screen reader announcements',
+      'Touch device support',
+      'Scroll buttons for long lists',
     ],
-    "compoundComponents": [
+    compoundComponents: [
       {
-        "name": "Select.Root",
-        "description": "State management (controlled/uncontrolled)"
+        name: 'Select.Root',
+        description: 'State management (controlled/uncontrolled)',
       },
       {
-        "name": "Select.Trigger",
-        "description": "Button that opens the dropdown"
+        name: 'Select.Trigger',
+        description: 'Button that opens the dropdown',
       },
       {
-        "name": "Select.Value",
-        "description": "Displays selected value or placeholder"
+        name: 'Select.Value',
+        description: 'Displays selected value or placeholder',
       },
       {
-        "name": "Select.Content",
-        "description": "Dropdown container"
+        name: 'Select.Content',
+        description: 'Dropdown container',
       },
       {
-        "name": "Select.Item",
-        "description": "Individual option"
+        name: 'Select.Item',
+        description: 'Individual option',
       },
       {
-        "name": "Select.Group",
-        "description": "Group options with label"
+        name: 'Select.Group',
+        description: 'Group options with label',
       },
       {
-        "name": "Select.Label",
-        "description": "Group label"
+        name: 'Select.Label',
+        description: 'Group label',
       },
       {
-        "name": "Select.Separator",
-        "description": "Visual divider"
-      }
-    ]
+        name: 'Select.Separator',
+        description: 'Visual divider',
+      },
+    ],
   },
-  "Spinner": {
-    "name": "Spinner",
-    "category": "primitives",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A loading indicator that shows an animated spinning circle.",
-    "usage": "Use to indicate loading states, async operations, or pending content. Typically used inside buttons during form submission, loading overlays, or as placeholder content.",
-    "accessibility": [
-      "Has `role=\"status\"` to announce loading state to screen readers",
-      "Includes visually hidden text for screen readers (customizable via `label` prop)",
-      "Animation respects `prefers-reduced-motion` preference"
+  Spinner: {
+    name: 'Spinner',
+    category: 'primitives',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description: 'A loading indicator that shows an animated spinning circle.',
+    usage:
+      'Use to indicate loading states, async operations, or pending content. Typically used inside buttons during form submission, loading overlays, or as placeholder content.',
+    accessibility: [
+      'Has `role="status"` to announce loading state to screen readers',
+      'Includes visually hidden text for screen readers (customizable via `label` prop)',
+      'Animation respects `prefers-reduced-motion` preference',
     ],
-    "props": [
+    props: [
       {
-        "name": "size",
-        "description": "Size preset affecting spinner dimensions",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset affecting spinner dimensions',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "label",
-        "description": "Accessible label for screen readers",
-        "type": "text",
-        "required": false,
-        "defaultValue": "Loading"
-      }
-    ]
+        name: 'label',
+        description: 'Accessible label for screen readers',
+        type: 'text',
+        required: false,
+        defaultValue: 'Loading',
+      },
+    ],
   },
-  "Stack": {
-    "name": "Stack",
-    "category": "layout",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A flexbox layout component for arranging items in a row or column with consistent spacing.",
-    "usage": "Use for linear layouts like form fields, button groups, navigation items, or any content that flows in a single direction. Prefer Stack over manual flex utilities for consistency.",
-    "accessibility": [
-      "Uses semantic `<div>` element with flexbox",
-      "Maintains natural DOM order for screen readers",
-      "Gap spacing does not affect content accessibility"
+  Stack: {
+    name: 'Stack',
+    category: 'layout',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A flexbox layout component for arranging items in a row or column with consistent spacing.',
+    usage:
+      'Use for linear layouts like form fields, button groups, navigation items, or any content that flows in a single direction. Prefer Stack over manual flex utilities for consistency.',
+    accessibility: [
+      'Uses semantic `<div>` element with flexbox',
+      'Maintains natural DOM order for screen readers',
+      'Gap spacing does not affect content accessibility',
     ],
-    "props": [
+    props: [
       {
-        "name": "direction",
-        "description": "Stack direction: vertical (column) or horizontal (row)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "vertical",
-          "horizontal"
-        ],
-        "defaultValue": "vertical"
+        name: 'direction',
+        description: 'Stack direction: vertical (column) or horizontal (row)',
+        type: 'select',
+        required: false,
+        options: ['vertical', 'horizontal'],
+        defaultValue: 'vertical',
       },
       {
-        "name": "gap",
-        "description": "Gap size between items (semantic spacing scale)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "none",
-          "2xs",
-          "xs",
-          "sm",
-          "md",
-          "base",
-          "lg",
-          "xl",
-          "2xl"
-        ],
-        "defaultValue": "sm"
+        name: 'gap',
+        description: 'Gap size between items (semantic spacing scale)',
+        type: 'select',
+        required: false,
+        options: ['none', '2xs', 'xs', 'sm', 'md', 'base', 'lg', 'xl', '2xl'],
+        defaultValue: 'sm',
       },
       {
-        "name": "align",
-        "description": "Cross-axis alignment (align-items)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "start",
-          "center",
-          "end",
-          "stretch",
-          "baseline"
-        ],
-        "defaultValue": "stretch"
+        name: 'align',
+        description: 'Cross-axis alignment (align-items)',
+        type: 'select',
+        required: false,
+        options: ['start', 'center', 'end', 'stretch', 'baseline'],
+        defaultValue: 'stretch',
       },
       {
-        "name": "justify",
-        "description": "Main-axis alignment (justify-content)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "start",
-          "center",
-          "end",
-          "between",
-          "around",
-          "evenly"
-        ],
-        "defaultValue": "start"
+        name: 'justify',
+        description: 'Main-axis alignment (justify-content)',
+        type: 'select',
+        required: false,
+        options: ['start', 'center', 'end', 'between', 'around', 'evenly'],
+        defaultValue: 'start',
       },
       {
-        "name": "wrap",
-        "description": "Allow items to wrap to new lines",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'wrap',
+        description: 'Allow items to wrap to new lines',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "children",
-        "description": "Items to arrange in the stack",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'children',
+        description: 'Items to arrange in the stack',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "StatCard": {
-    "name": "StatCard",
-    "category": "data",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "A specialized card for displaying key metrics and statistics with optional trend indicators.",
-    "usage": "Use in dashboards and summary views to highlight important metrics. Typically arranged in a grid layout. Supports trend indicators that automatically colorize based on positive/negative values.",
-    "accessibility": [
-      "Trend indicators include `aria-label` describing the change",
-      "Trend arrow icons are marked as decorative with `aria-hidden`",
-      "Icon is decorative when present",
-      "Values should be formatted for screen readers (e.g., \"1.2K\" should be \"1,200\")"
+  StatCard: {
+    name: 'StatCard',
+    category: 'data',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'A specialized card for displaying key metrics and statistics with optional trend indicators.',
+    usage:
+      'Use in dashboards and summary views to highlight important metrics. Typically arranged in a grid layout. Supports trend indicators that automatically colorize based on positive/negative values.',
+    accessibility: [
+      'Trend indicators include `aria-label` describing the change',
+      'Trend arrow icons are marked as decorative with `aria-hidden`',
+      'Icon is decorative when present',
+      'Values should be formatted for screen readers (e.g., "1.2K" should be "1,200")',
     ],
-    "props": [
+    props: [
       {
-        "name": "label",
-        "description": "Descriptive label for the statistic",
-        "type": "text",
-        "required": false
+        name: 'label',
+        description: 'Descriptive label for the statistic',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "value",
-        "description": "The main statistic value (number or formatted string)",
-        "type": "text",
-        "required": false
+        name: 'value',
+        description: 'The main statistic value (number or formatted string)',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "trend",
-        "description": "Optional trend indicator (e.g., ",
-        "type": "text",
-        "required": false
+        name: 'trend',
+        description: 'Optional trend indicator (e.g., ',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "icon",
-        "description": "Type-safe icon name from ui-library",
-        "type": "select",
-        "required": false,
-        "options": [
-          "package",
-          "users",
-          "chart",
-          "database",
-          "component",
-          "file-code"
-        ]
+        name: 'icon',
+        description: 'Type-safe icon name from ui-library',
+        type: 'select',
+        required: false,
+        options: ['package', 'users', 'chart', 'database', 'component', 'file-code'],
       },
       {
-        "name": "customIcon",
-        "description": "Custom icon element when IconName doesn",
-        "type": "unknown",
-        "required": false
+        name: 'customIcon',
+        description: 'Custom icon element when IconName doesn',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "iconPosition",
-        "description": "Icon position relative to value",
-        "type": "select",
-        "required": false,
-        "options": [
-          "left",
-          "right"
+        name: 'iconPosition',
+        description: 'Icon position relative to value',
+        type: 'select',
+        required: false,
+        options: ['left', 'right'],
+        defaultValue: 'left',
+      },
+      {
+        name: 'variant',
+        description: 'Card variant (inherited from Card component)',
+        type: 'select',
+        required: false,
+        options: [
+          'outlined',
+          'elevated',
+          'info',
+          'success',
+          'warning',
+          'error',
+          'accent1',
+          'accent2',
+          'accent3',
+          'data1',
+          'data2',
         ],
-        "defaultValue": "left"
+        defaultValue: 'outlined',
       },
       {
-        "name": "variant",
-        "description": "Card variant (inherited from Card component)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "outlined",
-          "elevated",
-          "info",
-          "success",
-          "warning",
-          "error",
-          "accent1",
-          "accent2",
-          "accent3",
-          "data1",
-          "data2"
-        ],
-        "defaultValue": "outlined"
+        name: 'subtitle',
+        description: 'Optional secondary label below main label',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "subtitle",
-        "description": "Optional secondary label below main label",
-        "type": "text",
-        "required": false
+        name: 'description',
+        description: 'Optional longer description below value',
+        type: 'text',
+        required: false,
       },
       {
-        "name": "description",
-        "description": "Optional longer description below value",
-        "type": "text",
-        "required": false
+        name: 'compact',
+        description: 'Reduced padding for dense layouts',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "compact",
-        "description": "Reduced padding for dense layouts",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'trendVariant',
+        description: 'Manual control for trend color/icon',
+        type: 'select',
+        required: false,
+        options: ['auto', 'positive', 'negative', 'neutral'],
+        defaultValue: 'auto',
       },
       {
-        "name": "trendVariant",
-        "description": "Manual control for trend color/icon",
-        "type": "select",
-        "required": false,
-        "options": [
-          "auto",
-          "positive",
-          "negative",
-          "neutral"
-        ],
-        "defaultValue": "auto"
+        name: 'size',
+        description: 'Size preset affecting typography',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "size",
-        "description": "Size preset affecting typography",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'loading',
+        description: 'Show loading skeleton animation',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "loading",
-        "description": "Show loading skeleton animation",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'showTrendIcon',
+        description: 'Show arrow icons for trends',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
       },
-      {
-        "name": "showTrendIcon",
-        "description": "Show arrow icons for trends",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
-      }
-    ]
+    ],
   },
-  "ToggleGroup": {
-    "name": "ToggleGroup",
-    "category": "selection",
-    "tier": 2,
-    "tierLabel": "Radix UI Primitive",
-    "description": "Toggle button group for filtering, mode switching, or multi-selection.",
-    "usage": "",
-    "accessibility": [
-      "Uses `aria-label` on group for screen readers",
-      "Arrow keys navigate between options",
-      "Selection state announced via `aria-pressed`",
-      "Icon-only mode includes sr-only label text",
-      "Supports keyboard looping and roving focus"
+  ToggleGroup: {
+    name: 'ToggleGroup',
+    category: 'selection',
+    tier: 2,
+    tierLabel: 'Radix UI Primitive',
+    description: 'Toggle button group for filtering, mode switching, or multi-selection.',
+    usage: '',
+    accessibility: [
+      'Uses `aria-label` on group for screen readers',
+      'Arrow keys navigate between options',
+      'Selection state announced via `aria-pressed`',
+      'Icon-only mode includes sr-only label text',
+      'Supports keyboard looping and roving focus',
     ],
-    "props": [
+    props: [
       {
-        "name": "type",
-        "description": "Selection mode: single or multiple",
-        "type": "select",
-        "required": false,
-        "options": [
-          "single",
-          "multiple"
-        ],
-        "defaultValue": "single"
+        name: 'type',
+        description: 'Selection mode: single or multiple',
+        type: 'select',
+        required: false,
+        options: ['single', 'multiple'],
+        defaultValue: 'single',
       },
       {
-        "name": "variant",
-        "description": "Visual variant affecting appearance",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "solid",
-          "ghost",
-          "tabs"
-        ],
-        "defaultValue": "default"
+        name: 'variant',
+        description: 'Visual variant affecting appearance',
+        type: 'select',
+        required: false,
+        options: ['default', 'solid', 'ghost', 'tabs'],
+        defaultValue: 'default',
       },
       {
-        "name": "size",
-        "description": "Size preset affecting button dimensions",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "sm"
+        name: 'size',
+        description: 'Size preset affecting button dimensions',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'sm',
       },
       {
-        "name": "orientation",
-        "description": "Layout orientation",
-        "type": "select",
-        "required": false,
-        "options": [
-          "horizontal",
-          "vertical"
-        ],
-        "defaultValue": "horizontal"
+        name: 'orientation',
+        description: 'Layout orientation',
+        type: 'select',
+        required: false,
+        options: ['horizontal', 'vertical'],
+        defaultValue: 'horizontal',
       },
       {
-        "name": "indicator",
-        "description": "Visual indicator style for selection",
-        "type": "select",
-        "required": false,
-        "options": [
-          "background",
-          "underline",
-          "dot"
-        ],
-        "defaultValue": "background"
+        name: 'indicator',
+        description: 'Visual indicator style for selection',
+        type: 'select',
+        required: false,
+        options: ['background', 'underline', 'dot'],
+        defaultValue: 'background',
       },
       {
-        "name": "displayMode",
-        "description": "Display mode: text shows labels, icon shows only icons",
-        "type": "select",
-        "required": false,
-        "options": [
-          "text",
-          "icon"
-        ],
-        "defaultValue": "text"
+        name: 'displayMode',
+        description: 'Display mode: text shows labels, icon shows only icons',
+        type: 'select',
+        required: false,
+        options: ['text', 'icon'],
+        defaultValue: 'text',
       },
       {
-        "name": "loop",
-        "description": "Enable keyboard navigation looping at ends",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'loop',
+        description: 'Enable keyboard navigation looping at ends',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "rovingFocus",
-        "description": "Enable roving focus for keyboard navigation",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
+        name: 'rovingFocus',
+        description: 'Enable roving focus for keyboard navigation',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
       },
       {
-        "name": "disabled",
-        "description": "Disable the entire toggle group",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "false"
+        name: 'disabled',
+        description: 'Disable the entire toggle group',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
-        "name": "options",
-        "description": "Array of options with value, label, and optional icon",
-        "type": "unknown",
-        "required": false
+        name: 'options',
+        description: 'Array of options with value, label, and optional icon',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "value",
-        "description": "Currently selected value(s) (controlled)",
-        "type": "unknown",
-        "required": false
+        name: 'value',
+        description: 'Currently selected value(s) (controlled)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "onChange",
-        "description": "Callback when selection changes",
-        "type": "unknown",
-        "required": false
+        name: 'onChange',
+        description: 'Callback when selection changes',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "aria-label",
-        "description": "Accessible label for the toggle group (required)",
-        "type": "unknown",
-        "required": false
-      }
-    ]
+        name: 'aria-label',
+        description: 'Accessible label for the toggle group (required)',
+        type: 'unknown',
+        required: false,
+      },
+    ],
   },
-  "Tooltip": {
-    "name": "Tooltip",
-    "category": "feedback",
-    "tier": 2,
-    "tierLabel": "Radix UI Primitive",
-    "description": "Accessible tooltip component with automatic positioning.",
-    "usage": "",
-    "accessibility": [
-      "`role=\"tooltip\"` with proper ARIA attributes",
-      "Keyboard accessible (Tab to trigger, Escape to dismiss)",
-      "Appears on hover AND focus",
-      "Respects reduced-motion preferences"
+  Tooltip: {
+    name: 'Tooltip',
+    category: 'feedback',
+    tier: 2,
+    tierLabel: 'Radix UI Primitive',
+    description: 'Accessible tooltip component with automatic positioning.',
+    usage: '',
+    accessibility: [
+      '`role="tooltip"` with proper ARIA attributes',
+      'Keyboard accessible (Tab to trigger, Escape to dismiss)',
+      'Appears on hover AND focus',
+      'Respects reduced-motion preferences',
     ],
-    "props": [
+    props: [
       {
-        "name": "variant",
-        "description": "Visual style variant",
-        "type": "select",
-        "required": false,
-        "options": [
-          "default",
-          "light",
-          "info",
-          "success",
-          "warning",
-          "error"
-        ],
-        "defaultValue": "default"
+        name: 'variant',
+        description: 'Visual style variant',
+        type: 'select',
+        required: false,
+        options: ['default', 'light', 'info', 'success', 'warning', 'error'],
+        defaultValue: 'default',
       },
       {
-        "name": "size",
-        "description": "Size variant for padding and text",
-        "type": "select",
-        "required": false,
-        "options": [
-          "sm",
-          "md",
-          "lg"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size variant for padding and text',
+        type: 'select',
+        required: false,
+        options: ['sm', 'md', 'lg'],
+        defaultValue: 'md',
       },
       {
-        "name": "side",
-        "description": "Preferred side for tooltip placement",
-        "type": "select",
-        "required": false,
-        "options": [
-          "top",
-          "bottom",
-          "left",
-          "right"
-        ],
-        "defaultValue": "top"
+        name: 'side',
+        description: 'Preferred side for tooltip placement',
+        type: 'select',
+        required: false,
+        options: ['top', 'bottom', 'left', 'right'],
+        defaultValue: 'top',
       },
       {
-        "name": "showArrow",
-        "description": "Whether to show arrow pointing to trigger",
-        "type": "boolean",
-        "required": false,
-        "defaultValue": "true"
+        name: 'showArrow',
+        description: 'Whether to show arrow pointing to trigger',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'true',
       },
       {
-        "name": "sideOffset",
-        "description": "Distance from trigger in pixels",
-        "type": "unknown",
-        "required": false,
-        "defaultValue": "4"
+        name: 'sideOffset',
+        description: 'Distance from trigger in pixels',
+        type: 'unknown',
+        required: false,
+        defaultValue: '4',
       },
       {
-        "name": "children",
-        "description": "Tooltip content",
-        "type": "unknown",
-        "required": false
-      }
+        name: 'children',
+        description: 'Tooltip content',
+        type: 'unknown',
+        required: false,
+      },
     ],
-    "radixHandles": [
-      "Positioning and collision detection (auto-repositions near viewport edges)",
-      "Focus management",
-      "Keyboard navigation (Escape to dismiss)",
-      "Delay timing (configurable via Provider)",
-      "WAI-ARIA compliance (`role=\"tooltip\"`)"
+    radixHandles: [
+      'Positioning and collision detection (auto-repositions near viewport edges)',
+      'Focus management',
+      'Keyboard navigation (Escape to dismiss)',
+      'Delay timing (configurable via Provider)',
+      'WAI-ARIA compliance (`role="tooltip"`)',
     ],
-    "compoundComponents": [
+    compoundComponents: [
       {
-        "name": "TooltipProvider",
-        "description": "Wraps app, configures global delay"
+        name: 'TooltipProvider',
+        description: 'Wraps app, configures global delay',
       },
       {
-        "name": "Tooltip",
-        "description": "State management for open/close"
+        name: 'Tooltip',
+        description: 'State management for open/close',
       },
       {
-        "name": "TooltipTrigger",
-        "description": "Element that triggers tooltip (use `asChild`)"
+        name: 'TooltipTrigger',
+        description: 'Element that triggers tooltip (use `asChild`)',
       },
       {
-        "name": "TooltipContent",
-        "description": "The tooltip content with styling"
-      }
-    ]
+        name: 'TooltipContent',
+        description: 'The tooltip content with styling',
+      },
+    ],
   },
-  "Icons": {
-    "name": "Icons",
-    "category": "foundation",
-    "tier": 1,
-    "tierLabel": "Tailwind + CVA",
-    "description": "Icon component providing a standardized interface for using icons throughout the application.",
-    "usage": "Always use this Icon component instead of importing directly from @tabler/icons-react. This ensures consistent sizing, stroke widths, and accessibility attributes.",
-    "accessibility": [
-      "Decorative icons (default): `aria-hidden=\"true\"`",
-      "Meaningful icons: Pass `aria-label` to add `role=\"img\"` and label"
+  Icons: {
+    name: 'Icons',
+    category: 'foundation',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'Icon component providing a standardized interface for using icons throughout the application.',
+    usage:
+      'Always use this Icon component instead of importing directly from @tabler/icons-react. This ensures consistent sizing, stroke widths, and accessibility attributes.',
+    accessibility: [
+      'Decorative icons (default): `aria-hidden="true"`',
+      'Meaningful icons: Pass `aria-label` to add `role="img"` and label',
     ],
-    "props": [
+    props: [
       {
-        "name": "name",
-        "description": "Icon name from the registry (see categories below for all options)",
-        "type": "select",
-        "required": false
+        name: 'name',
+        description: 'Icon name from the registry (see categories below for all options)',
+        type: 'select',
+        required: false,
       },
       {
-        "name": "size",
-        "description": "Size preset (or pass number for custom pixel size)",
-        "type": "select",
-        "required": false,
-        "options": [
-          "xs",
-          "sm",
-          "md",
-          "lg",
-          "xl",
-          "2xl"
-        ],
-        "defaultValue": "md"
+        name: 'size',
+        description: 'Size preset (or pass number for custom pixel size)',
+        type: 'select',
+        required: false,
+        options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+        defaultValue: 'md',
       },
       {
-        "name": "stroke",
-        "description": "Stroke width override (default: 2, or 1.5 for xl/2xl)",
-        "type": "unknown",
-        "required": false
+        name: 'stroke',
+        description: 'Stroke width override (default: 2, or 1.5 for xl/2xl)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "aria-label",
-        "description": "Accessibility label for meaningful icons (removes aria-hidden)",
-        "type": "unknown",
-        "required": false
+        name: 'aria-label',
+        description: 'Accessibility label for meaningful icons (removes aria-hidden)',
+        type: 'unknown',
+        required: false,
       },
       {
-        "name": "className",
-        "description": "Additional CSS classes (e.g., for colors)",
-        "type": "text",
-        "required": false
-      }
-    ]
-  }
+        name: 'className',
+        description: 'Additional CSS classes (e.g., for colors)',
+        type: 'text',
+        required: false,
+      },
+    ],
+  },
 } as const
