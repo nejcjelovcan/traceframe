@@ -44,8 +44,8 @@ This workspace uses domain-specific MCP servers plus external integrations:
 | `format_package`        | `pnpm --filter <pkg> format`    | Run prettier for a package               |
 | `run_single_test`       | `pnpm vitest run <file>`        | Run a specific test file                 |
 | `get_changed_packages`  | -                               | List packages with uncommitted changes   |
-| `list_package_scripts`  | -                               | List all scripts in a package.json       |
-| `run_pnpm_script`       | `pnpm --filter <pkg> <script>`  | Run any pnpm script for a package        |
+| `list_package_scripts`  | -                               | List scripts in a package.json (or root) |
+| `run_pnpm_script`       | `pnpm --filter <pkg> <script>`  | Run any pnpm script (package or root)    |
 
 ### mcp-ui Tools
 
