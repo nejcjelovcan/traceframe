@@ -83,125 +83,22 @@ const config = {
         },
       ],
     },
-    // Generate Tailwind colors JSON
-    'tailwind-colors': {
+    // Generate Tailwind v4 CSS theme configuration
+    'tailwind-theme': {
       source: [
-        join(rootDir, 'tokens/palettes/dusk.json'), // Include palette so references resolve
+        join(rootDir, 'tokens/palettes/dusk.json'),
         join(rootDir, 'tokens/semantic/light.json'),
+        join(rootDir, 'tokens/themes/dusk.json'),
       ],
-      transformGroup: 'js',
+      transformGroup: 'css',
       buildPath: join(rootDir, 'src/styles/generated/'),
       files: [
         {
-          destination: 'tailwind-colors.json',
-          format: 'json/tailwind',
+          destination: 'tailwind-theme.css',
+          format: 'css/tailwind-theme',
           options: {
-            tokenPath: 'color',
-            cssVarPrefix: '--color',
-            valueTemplate: 'rgb(var({VAR}))',
+            showFileHeader: true,
           },
-        },
-      ],
-    },
-    // Generate Tailwind font families JSON
-    'tailwind-fonts': {
-      source: [join(rootDir, 'tokens/themes/dusk.json')],
-      transformGroup: 'js',
-      buildPath: join(rootDir, 'src/styles/generated/'),
-      files: [
-        {
-          destination: 'tailwind-fonts.json',
-          format: 'json/tailwind',
-          options: {
-            tokenPath: 'fontFamily',
-            cssVarPrefix: '--font',
-            valueTemplate: 'var({VAR})',
-            flatOutput: true,
-          },
-        },
-      ],
-    },
-    // Generate Tailwind spacing JSON
-    'tailwind-spacing': {
-      source: [join(rootDir, 'tokens/themes/dusk.json')],
-      transformGroup: 'js',
-      buildPath: join(rootDir, 'src/styles/generated/'),
-      files: [
-        {
-          destination: 'tailwind-spacing.json',
-          format: 'json/tailwind',
-          options: {
-            tokenPath: 'spacing',
-            cssVarPrefix: '--spacing',
-            valueTemplate: 'var({VAR})',
-            flatOutput: true,
-          },
-        },
-      ],
-    },
-    // Generate Tailwind sizing JSON
-    'tailwind-sizing': {
-      source: [join(rootDir, 'tokens/themes/dusk.json')],
-      transformGroup: 'js',
-      buildPath: join(rootDir, 'src/styles/generated/'),
-      files: [
-        {
-          destination: 'tailwind-sizing.json',
-          format: 'json/tailwind',
-          options: {
-            tokenPath: 'size',
-            cssVarPrefix: '--size',
-            valueTemplate: 'var({VAR})',
-            flatOutput: true,
-          },
-        },
-      ],
-    },
-    // Generate Tailwind border radius JSON
-    'tailwind-radius': {
-      source: [join(rootDir, 'tokens/themes/dusk.json')],
-      transformGroup: 'js',
-      buildPath: join(rootDir, 'src/styles/generated/'),
-      files: [
-        {
-          destination: 'tailwind-radius.json',
-          format: 'json/tailwind',
-          options: {
-            tokenPath: 'borderRadius',
-            cssVarPrefix: '--radius',
-            valueTemplate: 'var({VAR})',
-            flatOutput: true,
-          },
-        },
-      ],
-    },
-    // Generate Tailwind shadows JSON
-    'tailwind-shadows': {
-      source: [join(rootDir, 'tokens/themes/dusk.json')],
-      transformGroup: 'js',
-      buildPath: join(rootDir, 'src/styles/generated/'),
-      files: [
-        {
-          destination: 'tailwind-shadows.json',
-          format: 'json/tailwind',
-          options: {
-            tokenPath: 'shadow',
-            cssVarPrefix: '--shadow',
-            valueTemplate: 'var({VAR})',
-            flatOutput: true,
-          },
-        },
-      ],
-    },
-    // Generate Tailwind font sizes JSON
-    'tailwind-font-sizes': {
-      source: [join(rootDir, 'tokens/themes/dusk.json')],
-      transformGroup: 'js',
-      buildPath: join(rootDir, 'src/styles/generated/'),
-      files: [
-        {
-          destination: 'tailwind-font-sizes.json',
-          format: 'json/tailwind-fontsize',
         },
       ],
     },

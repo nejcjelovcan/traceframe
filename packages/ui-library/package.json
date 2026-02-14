@@ -23,7 +23,7 @@
     "build": "pnpm generate:component-metadata && tsc --build tsconfig.build.json && pnpm build:css",
     "generate:component-metadata": "node scripts/generate-component-metadata.js",
     "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/styles.css",
-    "generate:tokens": "node scripts/build-tokens.js && node scripts/generate-tailwind-theme.js",
+    "generate:tokens": "node scripts/build-tokens.js",
     "validate:token-definitions": "node scripts/validate-token-definitions.js",
     "clean": "rm -rf dist",
     "storybook": "storybook dev -p 6006",
