@@ -35,7 +35,7 @@
       "$type": "color",
       "$description": "Primary text and icon color for headings and body text",
       "muted": {
-        "$value": "{palette.neutral.500}",
+        "$value": "{palette.neutral.600}",
         "$type": "color",
         "$description": "Secondary text for descriptions, placeholders, and less prominent content"
       },

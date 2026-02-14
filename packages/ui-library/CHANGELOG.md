@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 0.4.1
+
+### Patch Changes
+
+- Fix foreground-muted contrast to meet WCAG AA standards. Updated light theme foreground-muted token from neutral.500 to neutral.600 to achieve WCAG AA compliance (4.5:1 contrast ratio). This improves readability for secondary text in components like Badge, Input placeholders, DataTable secondary columns, EmptyState/ErrorState descriptions, and Navigation secondary labels.
+
 ## 0.4.0
 
 ### Minor Changes

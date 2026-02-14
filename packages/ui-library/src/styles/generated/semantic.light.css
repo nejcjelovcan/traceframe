@@ -72,7 +72,7 @@
     /* Secondary text color on dark backgrounds */
     --color-foreground-inverted-muted: var(--palette-neutral-400);
     /* Secondary text for descriptions, placeholders, and less prominent content */
-    --color-foreground-muted: var(--palette-neutral-500);
+    --color-foreground-muted: var(--palette-neutral-600);
 
     /* Background color for active or selected states */
     --color-interactive-active: var(--palette-neutral-200);
