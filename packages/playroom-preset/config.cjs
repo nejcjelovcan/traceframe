@@ -4,6 +4,7 @@ const path = require('path')
  * @typedef {Object} PlayroomPresetOptions
  * @property {string} [components] - Path to consumer's component file (re-exports ui-library + own components)
  * @property {string} [snippets] - Path to consumer's snippet file (merges preset + own snippets)
+ * @property {string} [frameComponent] - Path to consumer's frame component file (wraps or replaces preset's frame component)
  * @property {string} [outputPath] - Override output path (default: './dist/playroom')
  * @property {string} [baseUrl] - Override base URL (default: '/')
  * @property {string} [title] - Override Playroom title
@@ -31,7 +32,7 @@ function createPlayroomConfig(options) {
 
   return {
     components: options.components || path.join(distDir, 'components.js'),
-    frameComponent: path.join(distDir, 'frame-component.js'),
+    frameComponent: options.frameComponent || path.join(distDir, 'frame-component.js'),
     themes: path.join(distDir, 'themes.js'),
     snippets: options.snippets || path.join(distDir, 'snippets', 'index.js'),
     outputPath: options.outputPath || './dist/playroom',
