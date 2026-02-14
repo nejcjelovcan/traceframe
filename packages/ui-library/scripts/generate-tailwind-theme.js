@@ -54,9 +54,9 @@ function generateThemeCSS() {
   const themeLines = []
 
   // --- Colors ---
-  // Token values: "rgb(var(--color-surface))" → self-referencing when key is --color-surface
+  // Semantic colors already wrap palette colors in rgb() function
   // Bridge: --tw-color-surface: var(--color-surface)
-  // Theme: --color-surface: rgb(var(--tw-color-surface))
+  // Theme: --color-surface: var(--tw-color-surface)
   const colors = readJson('tailwind-colors.json')
   const colorEntries = flattenColors(colors)
 
@@ -64,7 +64,8 @@ function generateThemeCSS() {
   themeLines.push('  /* Colors */')
   for (const [name] of colorEntries) {
     bridgeLines.push(`  --tw-color-${name}: var(--color-${name});`)
-    themeLines.push(`  --color-${name}: rgb(var(--tw-color-${name}));`)
+    // Don't wrap in rgb() - semantic colors are already wrapped
+    themeLines.push(`  --color-${name}: var(--tw-color-${name});`)
   }
 
   // --- Spacing ---

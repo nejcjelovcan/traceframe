@@ -267,17 +267,17 @@ export const TOKEN_METADATA = {
     },
     shadow: {
       sm: {
-        value: '0 1px 3px 0 rgb(var(--color-shadow) / 0.08)',
+        value: '0 1px 3px 0 color-mix(in srgb, var(--color-shadow) 8%, transparent)',
         description: 'Small shadow with slightly deeper intensity for drama',
       },
       md: {
         value:
-          '0 4px 8px -1px rgb(var(--color-shadow) / 0.12), 0 2px 4px -2px rgb(var(--color-shadow) / 0.08)',
+          '0 4px 8px -1px color-mix(in srgb, var(--color-shadow) 12%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 8%, transparent)',
         description: 'Medium shadow for cards, dropdowns',
       },
       lg: {
         value:
-          '0 12px 20px -4px rgb(var(--color-shadow) / 0.15), 0 4px 8px -4px rgb(var(--color-shadow) / 0.1)',
+          '0 12px 20px -4px color-mix(in srgb, var(--color-shadow) 15%, transparent), 0 4px 8px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent)',
         description: 'Large shadow for modals, popovers - deeper for mystery',
       },
     },

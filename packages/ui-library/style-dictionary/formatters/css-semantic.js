@@ -8,9 +8,9 @@
 
 /**
  * Converts a token reference like {palette.neutral.900} to a CSS var() reference.
- * - {palette.surface} -> var(--palette-surface)
- * - {palette.neutral.900} -> var(--palette-neutral-900)
- * - {palette.accent.1.500} -> var(--palette-accent-1-500)
+ * - {palette.surface} -> rgb(var(--palette-surface))
+ * - {palette.neutral.900} -> rgb(var(--palette-neutral-900))
+ * - {palette.accent.1.500} -> rgb(var(--palette-accent-1-500))
  */
 function referenceToVar(ref) {
   if (!ref || typeof ref !== 'string') return null
@@ -23,7 +23,8 @@ function referenceToVar(ref) {
   if (refPath[0] === 'palette') {
     // palette.neutral.900 -> --palette-neutral-900
     const varName = refPath.slice(1).join('-')
-    return `var(--palette-${varName})`
+    // Wrap palette colors in rgb() for Tailwind v4 compatibility
+    return `rgb(var(--palette-${varName}))`
   }
 
   // For other references, just convert dots to dashes
