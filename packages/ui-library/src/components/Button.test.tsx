@@ -1,4 +1,5 @@
 import { render, screen } from '@testing-library/react'
+import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
 import { Button } from './Button'
@@ -141,6 +142,66 @@ describe('Button', () => {
       )
       const button = screen.getByRole('button')
       expect(button.className).toContain('w-full')
+    })
+  })
+
+  describe('asChild', () => {
+    it('renders child element instead of button', () => {
+      render(
+        <Button asChild variant="outline">
+          <a href="/test">Link</a>
+        </Button>
+      )
+      const link = screen.getByRole('link')
+      expect(link.tagName).toBe('A')
+      expect(link.getAttribute('href')).toBe('/test')
+    })
+
+    it('merges className onto child element', () => {
+      render(
+        <Button asChild variant="outline" className="extra">
+          <a href="/test" className="child-class">
+            Link
+          </a>
+        </Button>
+      )
+      const link = screen.getByRole('link')
+      expect(link.className).toContain('child-class')
+      expect(link.className).toContain('extra')
+    })
+
+    it('renders icons alongside child content', () => {
+      render(
+        <Button asChild variant="outline" rightIcon="external">
+          <a href="https://example.com">External</a>
+        </Button>
+      )
+      const link = screen.getByRole('link')
+      expect(link.textContent).toContain('External')
+      expect(link.querySelector('svg')).toBeDefined()
+    })
+
+    it('forwards ref to child element', () => {
+      const ref = createRef<HTMLButtonElement>()
+      render(
+        <Button asChild ref={ref}>
+          <a href="/test">Link</a>
+        </Button>
+      )
+      expect(ref.current).toBeInstanceOf(HTMLAnchorElement)
+    })
+
+    it('passes additional props to child element', () => {
+      render(
+        <Button asChild variant="outline">
+          <a href="https://example.com" target="_blank" rel="noopener noreferrer">
+            External
+          </a>
+        </Button>
+      )
+      const link = screen.getByRole('link')
+      expect(link.getAttribute('target')).toBe('_blank')
+      expect(link.getAttribute('rel')).toBe('noopener noreferrer')
     })
   })
 

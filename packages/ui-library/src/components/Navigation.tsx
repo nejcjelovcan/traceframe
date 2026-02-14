@@ -1,3 +1,4 @@
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { createContext, forwardRef, useContext, type HTMLAttributes, type ReactNode } from 'react'
 
@@ -72,31 +73,34 @@ const Navigation = forwardRef<HTMLElement, NavigationProps>(
 Navigation.displayName = 'Navigation'
 
 export interface NavItemProps extends HTMLAttributes<HTMLAnchorElement> {
-  /** URL the nav item links to */
-  href: string
+  /** URL the nav item links to (optional when asChild is true) */
+  href?: string
   /** Whether this item is currently active */
   active?: boolean
   /** Optional icon to display before the label */
   icon?: IconName
+  /** Render as child element instead of <a>, merging props onto the child */
+  asChild?: boolean
   /** Nav item label */
   children: ReactNode
 }
 
 const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
-  ({ className, href, active = false, icon, children, ...props }, ref) => {
+  ({ className, href, active = false, icon, asChild = false, children, ...props }, ref) => {
     const { orientation } = useContext(NavigationContext)
+    const Comp = asChild ? Slot : 'a'
 
     return (
-      <a
+      <Comp
         ref={ref}
-        href={href}
+        href={asChild ? undefined : href}
         className={cn(navItemVariants({ orientation, active, className }))}
         aria-current={active ? 'page' : undefined}
         {...props}
       >
         {icon && <Icon name={icon} size="sm" />}
-        {children}
-      </a>
+        <Slottable>{children}</Slottable>
+      </Comp>
     )
   }
 )

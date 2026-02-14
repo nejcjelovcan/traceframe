@@ -123,6 +123,72 @@ export const VerticalWithIcons: Story = {
   ),
 }
 
+export const AsChildHorizontal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Using `asChild` to render custom elements (e.g., framework router links) instead of `<a>`. Props like className, aria-current, and ref are merged onto the child.',
+      },
+    },
+  },
+  render: () => (
+    <Navigation orientation="horizontal">
+      <NavItem asChild active icon="dashboard">
+        <button type="button" onClick={() => {}}>
+          Dashboard
+        </button>
+      </NavItem>
+      <NavItem asChild>
+        <button type="button" onClick={() => {}}>
+          Reports
+        </button>
+      </NavItem>
+      <NavItem asChild>
+        <button type="button" onClick={() => {}}>
+          Settings
+        </button>
+      </NavItem>
+    </Navigation>
+  ),
+}
+
+export const AsChildVertical: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Vertical navigation with `asChild` and icons.',
+      },
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-64 rounded-lg border border-border bg-surface p-base">
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <Navigation orientation="vertical">
+      <NavItem asChild active icon="dashboard">
+        <button type="button" onClick={() => {}}>
+          Overview
+        </button>
+      </NavItem>
+      <NavItem asChild icon="components">
+        <button type="button" onClick={() => {}}>
+          Components
+        </button>
+      </NavItem>
+      <NavItem asChild icon="hierarchy">
+        <button type="button" onClick={() => {}}>
+          Dependencies
+        </button>
+      </NavItem>
+    </Navigation>
+  ),
+}
+
 export const SidebarExample: Story = {
   parameters: {
     docs: {

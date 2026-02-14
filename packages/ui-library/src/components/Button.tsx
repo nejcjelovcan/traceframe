@@ -1,3 +1,4 @@
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type ButtonHTMLAttributes } from 'react'
 
@@ -81,6 +82,8 @@ export interface ButtonProps
   loading?: boolean
   /** Custom loading text (default: "Loading...") */
   loadingText?: string
+  /** Render as child element instead of <button>, merging props onto the child */
+  asChild?: boolean
 }
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
@@ -96,6 +99,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       loading = false,
       loadingText = 'Loading...',
       disabled,
+      asChild = false,
       children,
       ...props
     },
@@ -103,28 +107,27 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const iconSize = BUTTON_SIZE_TO_ICON_SIZE[size ?? 'md']
     const spinnerSize = BUTTON_SIZE_TO_SPINNER_SIZE[size ?? 'md']
+    const Comp = asChild ? Slot : 'button'
 
     return (
-      <button
+      <Comp
         className={cn(buttonVariants({ variant, size, iconOnly, fullWidth, className }))}
         ref={ref}
         disabled={disabled || loading}
         aria-busy={loading}
         {...props}
       >
-        {loading ? (
-          <>
-            <Spinner size={spinnerSize} label={loadingText} />
-            <span className={iconOnly ? 'sr-only' : ''}>{loadingText}</span>
-          </>
-        ) : (
-          <>
-            {leftIcon && <Icon name={leftIcon} size={iconSize} />}
-            {iconOnly ? <span className="sr-only">{children}</span> : children}
-            {rightIcon && <Icon name={rightIcon} size={iconSize} />}
-          </>
+        {loading && <Spinner size={spinnerSize} label={loadingText} />}
+        {loading && <span className={iconOnly ? 'sr-only' : ''}>{loadingText}</span>}
+        {!loading && leftIcon && <Icon name={leftIcon} size={iconSize} />}
+        {!loading && iconOnly && (
+          <span className="sr-only">
+            <Slottable>{children}</Slottable>
+          </span>
         )}
-      </button>
+        {!loading && !iconOnly && <Slottable>{children}</Slottable>}
+        {!loading && rightIcon && <Icon name={rightIcon} size={iconSize} />}
+      </Comp>
     )
   }
 )

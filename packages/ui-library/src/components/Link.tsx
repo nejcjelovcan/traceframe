@@ -1,3 +1,4 @@
+import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type AnchorHTMLAttributes } from 'react'
 
@@ -40,6 +41,8 @@ export interface LinkProps
   icon?: IconName
   /** Icon position relative to text */
   iconPosition?: 'left' | 'right'
+  /** Render as child element instead of <a>, merging props onto the child */
+  asChild?: boolean
 }
 
 const iconSizeMap: Record<'sm' | 'md' | 'lg', IconSize> = {
@@ -50,7 +53,17 @@ const iconSizeMap: Record<'sm' | 'md' | 'lg', IconSize> = {
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
   (
-    { className, external, children, variant, size, icon, iconPosition = 'right', ...props },
+    {
+      className,
+      external,
+      children,
+      variant,
+      size,
+      icon,
+      iconPosition = 'right',
+      asChild = false,
+      ...props
+    },
     ref
   ) => {
     const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {}
@@ -61,18 +74,20 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(
 
     const screenReaderText = external && <span className="sr-only">(opens in new tab)</span>
 
+    const Comp = asChild ? Slot : 'a'
+
     return (
-      <a
+      <Comp
         className={cn(linkVariants({ variant, size }), className)}
         ref={ref}
         {...externalProps}
         {...props}
       >
         {iconPosition === 'left' && iconElement}
-        {children}
+        <Slottable>{children}</Slottable>
         {screenReaderText}
         {iconPosition === 'right' && iconElement}
-      </a>
+      </Comp>
     )
   }
 )
