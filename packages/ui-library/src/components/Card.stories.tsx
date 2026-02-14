@@ -510,7 +510,7 @@ function ShowcaseContent() {
 
       {/* Core Variants Section */}
       <section>
-        <Heading level={3} size="md" className="mb-base">
+        <Heading level={3} size="base" className="mb-base">
           Core Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
@@ -531,7 +531,7 @@ function ShowcaseContent() {
 
       {/* Status Variants Section */}
       <section>
-        <Heading level={3} size="md" className="mb-base">
+        <Heading level={3} size="base" className="mb-base">
           Status Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
@@ -564,7 +564,7 @@ function ShowcaseContent() {
 
       {/* Accent Variants Section */}
       <section>
-        <Heading level={3} size="md" className="mb-base">
+        <Heading level={3} size="base" className="mb-base">
           Accent Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
@@ -603,7 +603,7 @@ function ShowcaseContent() {
 
       {/* Composition Section */}
       <section>
-        <Heading level={3} size="md" className="mb-base">
+        <Heading level={3} size="base" className="mb-base">
           Compositions
         </Heading>
         <div className="flex flex-wrap gap-base">
