@@ -354,19 +354,15 @@ import { Icon } from '@nejcjelovcan/traceframe-ui-library'
 <Icon name="alert-circle" className="text-error-500" />
 ```
 
-### Icon Categories
+### Discovering Icons
 
-| Category   | Icons                                                                                                                                                                              |
-| ---------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Navigation | `chevron-down`, `chevron-up`, `chevron-right`, `chevron-left`, `arrow-left`, `arrow-right`                                                                                         |
-| Actions    | `search`, `search-off`, `close`, `check`, `copy`                                                                                                                                   |
-| Status     | `alert-circle`, `info-circle`, `resolved`, `unresolved`, `pending`, `empty`                                                                                                        |
-| Sorting    | `sort-asc`, `sort-desc`, `sort-none`                                                                                                                                               |
-| Theme      | `sun`, `moon`, `desktop`                                                                                                                                                           |
-| Entity     | `package`, `component`, `hierarchy`, `file`, `file-code`, `file-search`, `file-description`, `location-code`, `external`, `internal`                                               |
-| Code       | `code`, `element`, `brackets`, `dots`, `toggle`, `percentage`, `prop`, `prop-name`, `prop-value`, `string`, `function`                                                             |
-| Data       | `database`, `chart`, `users`, `components`                                                                                                                                         |
-| Agentic    | `agent`, `orchestrator`, `write`, `read`, `edit`, `tool`, `text`, `prompt`, `idle`, `waiting`, `implement`, `refine`, `working`, `watching`, `message`, `polling`, `start`, `stop` |
+Use the `mcp-ui` tools to discover and search icons at runtime:
+
+- `list_icons` - List all icons, optionally filter by category
+- `search_icons` - Search icons by name, description, or aliases
+- `get_icon` - Get full metadata for a specific icon
+
+**Categories:** Navigation, Actions, Status & Feedback, Sorting, Theme, Entities, Code & Props, Data & Metrics, Agentic Workflows, Brand & Integrations, Developer Tools
 
 ### Size Presets
 

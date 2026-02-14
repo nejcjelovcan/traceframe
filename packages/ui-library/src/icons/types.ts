@@ -12,6 +12,8 @@ export type IconCategory =
   | 'code'
   | 'data'
   | 'agentic'
+  | 'brand'
+  | 'developer'
 
 /** All available icon names */
 export type IconName =
@@ -28,6 +30,20 @@ export type IconName =
   | 'close'
   | 'check'
   | 'copy'
+  | 'plus'
+  | 'minus'
+  | 'trash'
+  | 'settings'
+  | 'menu'
+  | 'filter'
+  | 'link'
+  | 'upload'
+  | 'download'
+  | 'eye-off'
+  | 'lock'
+  | 'help'
+  | 'bookmark'
+  | 'dots-vertical'
   // Status
   | 'alert-circle'
   | 'info-circle'
@@ -35,6 +51,9 @@ export type IconName =
   | 'unresolved'
   | 'pending'
   | 'empty'
+  | 'success'
+  | 'error'
+  | 'warning'
   // Sorting
   | 'sort-asc'
   | 'sort-desc'
@@ -55,6 +74,8 @@ export type IconName =
   | 'external'
   | 'external-link'
   | 'internal'
+  | 'folder'
+  | 'hash'
   // Code
   | 'code'
   | 'element'
@@ -73,6 +94,9 @@ export type IconName =
   | 'chart'
   | 'users'
   | 'components'
+  | 'calendar'
+  | 'clock'
+  | 'history'
   // Agentic
   | 'agent'
   | 'orchestrator'
@@ -92,6 +116,20 @@ export type IconName =
   | 'polling'
   | 'start'
   | 'stop'
+  // Brand
+  | 'github'
+  | 'linear'
+  // Developer
+  | 'terminal'
+  | 'git-branch'
+  | 'git-merge'
+  | 'git-pull-request'
+  | 'bug'
+  | 'test-tube'
+  | 'rocket'
+  | 'sparkles'
+  | 'bolt'
+  | 'palette'
 
 /** Metadata for a single icon */
 export interface IconMeta {
@@ -129,4 +167,6 @@ export const CATEGORY_LABELS: Record<IconCategory, string> = {
   code: 'Code & Props',
   data: 'Data & Metrics',
   agentic: 'Agentic Workflows',
+  brand: 'Brand & Integrations',
+  developer: 'Developer Tools',
 }

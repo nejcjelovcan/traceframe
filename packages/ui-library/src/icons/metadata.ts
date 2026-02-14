@@ -75,6 +75,90 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     usage: 'Use for copy-to-clipboard actions',
     aliases: ['clipboard', 'duplicate'],
   },
+  plus: {
+    description: 'Plus sign for adding',
+    category: 'action',
+    usage: 'Use for add/create actions, increment, expand',
+    aliases: ['add', 'create', 'new', 'increment', 'expand'],
+  },
+  minus: {
+    description: 'Minus sign for removing',
+    category: 'action',
+    usage: 'Use for remove actions, decrement, collapse',
+    aliases: ['remove', 'subtract', 'decrement', 'collapse'],
+  },
+  trash: {
+    description: 'Trash can for deletion',
+    category: 'action',
+    usage: 'Use for destructive delete actions (distinct from close/dismiss)',
+    aliases: ['delete', 'destroy', 'bin', 'garbage', 'discard'],
+  },
+  settings: {
+    description: 'Gear/cog icon for configuration',
+    category: 'action',
+    usage: 'Use for settings, preferences, configuration panels',
+    aliases: ['gear', 'cog', 'preferences', 'config', 'configuration', 'options'],
+  },
+  menu: {
+    description: 'Hamburger menu (three horizontal lines)',
+    category: 'action',
+    usage: 'Use for mobile navigation menus, sidebar toggles',
+    aliases: ['hamburger', 'sidebar', 'navigation', 'nav', 'three-lines'],
+  },
+  filter: {
+    description: 'Funnel filter icon',
+    category: 'action',
+    usage: 'Use for filtering, faceted search, narrowing results',
+    aliases: ['funnel', 'facet', 'narrow', 'refine-results', 'sieve'],
+  },
+  link: {
+    description: 'Chain link icon',
+    category: 'action',
+    usage: 'Use for hyperlinks, URL references, linking items together',
+    aliases: ['url', 'hyperlink', 'chain', 'connect', 'href'],
+  },
+  upload: {
+    description: 'Upload arrow icon',
+    category: 'action',
+    usage: 'Use for file upload actions, data import',
+    aliases: ['import', 'send', 'up', 'attach'],
+  },
+  download: {
+    description: 'Download arrow icon',
+    category: 'action',
+    usage: 'Use for file download actions, data export',
+    aliases: ['export', 'save', 'down', 'receive'],
+  },
+  'eye-off': {
+    description: 'Eye with slash for hidden/invisible',
+    category: 'action',
+    usage: 'Use for toggling visibility off, hiding content, password fields',
+    aliases: ['hidden', 'invisible', 'hide', 'conceal', 'password-hide'],
+  },
+  lock: {
+    description: 'Padlock icon',
+    category: 'action',
+    usage: 'Use for locked/protected content, security, permissions',
+    aliases: ['locked', 'secure', 'protected', 'private', 'restricted', 'security'],
+  },
+  help: {
+    description: 'Question mark in circle',
+    category: 'action',
+    usage: 'Use for help tooltips, documentation links, contextual help',
+    aliases: ['question', 'faq', 'support', 'docs', 'info', 'guide'],
+  },
+  bookmark: {
+    description: 'Bookmark flag icon',
+    category: 'action',
+    usage: 'Use for saved/favorited items, bookmarked content',
+    aliases: ['save', 'favorite', 'star', 'flag', 'pin', 'saved'],
+  },
+  'dots-vertical': {
+    description: 'Vertical three dots (kebab menu)',
+    category: 'action',
+    usage: 'Use for vertical "more" menus, overflow actions',
+    aliases: ['kebab', 'more-vertical', 'overflow', 'options-vertical', 'context-menu'],
+  },
 
   // ============================================
   // Status
@@ -114,6 +198,24 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     category: 'status',
     usage: 'Use for empty/unset/null states',
     aliases: ['null', 'undefined', 'unset', 'blank'],
+  },
+  success: {
+    description: 'Checkmark in circle for success',
+    category: 'status',
+    usage: 'Use for success states, completed operations, positive outcomes',
+    aliases: ['completed', 'done', 'passed', 'ok', 'approved', 'valid'],
+  },
+  error: {
+    description: 'X mark in circle for errors',
+    category: 'status',
+    usage: 'Use for error states, failed operations, critical problems',
+    aliases: ['failed', 'failure', 'critical', 'problem', 'invalid', 'rejected'],
+  },
+  warning: {
+    description: 'Triangle with exclamation mark for warnings',
+    category: 'status',
+    usage: 'Use for warning states, caution indicators, non-critical issues',
+    aliases: ['caution', 'attention', 'alert-triangle', 'danger', 'risk'],
   },
 
   // ============================================
@@ -229,6 +331,18 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     usage: 'Use for local/internal imports within the project',
     aliases: ['local', 'project', 'workspace', 'relative'],
   },
+  folder: {
+    description: 'Folder icon',
+    category: 'entity',
+    usage: 'Use for directories, file system organization, categories',
+    aliases: ['directory', 'dir', 'category', 'group', 'collection'],
+  },
+  hash: {
+    description: 'Hash/pound sign',
+    category: 'entity',
+    usage: 'Use for tags, channels, ID references, numbered items',
+    aliases: ['tag', 'channel', 'number', 'pound', 'id', 'anchor'],
+  },
 
   // ============================================
   // Code (Domain-specific)
@@ -332,6 +446,24 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     category: 'data',
     usage: 'Use for component counts or component lists',
     aliases: ['grid', 'count', 'list'],
+  },
+  calendar: {
+    description: 'Calendar icon',
+    category: 'data',
+    usage: 'Use for date pickers, scheduling, date-based features',
+    aliases: ['date', 'schedule', 'event', 'day', 'month', 'datepicker'],
+  },
+  clock: {
+    description: 'Clock face icon',
+    category: 'data',
+    usage: 'Use for time display, timestamps, duration, time-based features',
+    aliases: ['time', 'timestamp', 'duration', 'timer', 'hour', 'schedule'],
+  },
+  history: {
+    description: 'Counter-clockwise arrow for history',
+    category: 'data',
+    usage: 'Use for version history, undo history, recent items, activity logs',
+    aliases: ['undo', 'recent', 'past', 'changelog', 'activity', 'log', 'revert'],
   },
 
   // ============================================
@@ -451,6 +583,86 @@ export const ICON_METADATA: Record<IconName, IconMeta> = {
     category: 'agentic',
     usage: 'Use for stopping workflows or agent processes',
     aliases: ['halt', 'terminate', 'end', 'kill'],
+  },
+
+  // ============================================
+  // Brand & Integrations
+  // ============================================
+  github: {
+    description: 'GitHub octocat logo',
+    category: 'brand',
+    usage: 'Use for GitHub integrations, repository links, PR references',
+    aliases: ['octocat', 'repo', 'repository', 'gh', 'source-control', 'vcs'],
+  },
+  linear: {
+    description: 'Linear project management icon (hexagon with L)',
+    category: 'brand',
+    usage: 'Use for Linear integrations, issue tracking references',
+    aliases: ['issue-tracker', 'project-management', 'tickets', 'issues', 'backlog'],
+  },
+
+  // ============================================
+  // Developer Tools
+  // ============================================
+  terminal: {
+    description: 'Terminal/console window',
+    category: 'developer',
+    usage: 'Use for CLI, command execution, console output, shell',
+    aliases: ['console', 'cli', 'shell', 'command-line', 'bash', 'cmd', 'prompt-dev'],
+  },
+  'git-branch': {
+    description: 'Git branch fork icon',
+    category: 'developer',
+    usage: 'Use for branch visualization, version control branches',
+    aliases: ['branch', 'fork', 'diverge', 'version-control', 'vcs'],
+  },
+  'git-merge': {
+    description: 'Git merge icon',
+    category: 'developer',
+    usage: 'Use for merge operations, combining branches',
+    aliases: ['merge', 'combine', 'join', 'integrate', 'converge'],
+  },
+  'git-pull-request': {
+    description: 'Git pull request icon',
+    category: 'developer',
+    usage: 'Use for pull request references, code review',
+    aliases: ['pr', 'pull-request', 'review', 'code-review', 'contribution'],
+  },
+  bug: {
+    description: 'Bug/insect icon',
+    category: 'developer',
+    usage: 'Use for bug reports, issue tracking, debugging',
+    aliases: ['debug', 'issue', 'defect', 'problem', 'insect', 'fix'],
+  },
+  'test-tube': {
+    description: 'Test tube / flask icon',
+    category: 'developer',
+    usage: 'Use for testing, test runs, test results, experiments',
+    aliases: ['test', 'testing', 'experiment', 'flask', 'lab', 'spec', 'unit-test'],
+  },
+  rocket: {
+    description: 'Rocket icon for launch/deploy',
+    category: 'developer',
+    usage: 'Use for deployment, launches, releases, shipping features',
+    aliases: ['deploy', 'launch', 'release', 'ship', 'publish', 'go-live'],
+  },
+  sparkles: {
+    description: 'Sparkles/stars icon',
+    category: 'developer',
+    usage: 'Use for AI features, magic/auto actions, new features, enhancements',
+    aliases: ['ai', 'magic', 'auto', 'new-feature', 'enhancement', 'generate', 'smart'],
+  },
+  bolt: {
+    description: 'Lightning bolt icon',
+    category: 'developer',
+    usage: 'Use for performance, speed, instant actions, power features',
+    aliases: ['lightning', 'fast', 'speed', 'instant', 'power', 'quick', 'performance'],
+  },
+  palette: {
+    description: 'Artist palette icon',
+    category: 'developer',
+    usage: 'Use for design tokens, theming, color configuration, styling',
+    aliases: ['colors', 'theme', 'design', 'styling', 'paint', 'appearance', 'customize'],
   },
 }
 

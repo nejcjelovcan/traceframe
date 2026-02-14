@@ -116,7 +116,9 @@ describe('getIconsByCategory', () => {
     expect(icons).toContain('search')
     expect(icons).toContain('close')
     expect(icons).toContain('external-link')
-    expect(icons).toHaveLength(6)
+    expect(icons).toContain('plus')
+    expect(icons).toContain('trash')
+    expect(icons).toHaveLength(20)
   })
 })
 
@@ -153,8 +155,8 @@ describe('searchIcons', () => {
 })
 
 describe('getAllIconNames', () => {
-  it('returns all 68 icons', () => {
-    expect(getAllIconNames()).toHaveLength(68)
+  it('returns all 102 icons', () => {
+    expect(getAllIconNames()).toHaveLength(102)
   })
 
   it('includes expected icons', () => {
