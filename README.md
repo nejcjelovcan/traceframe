@@ -16,7 +16,7 @@ A design system and component library for building consistent, theme-aware React
 ### MCP Servers & Utilities
 
 - [`@nejcjelovcan/mcp-shared`](./packages/mcp-shared) -- Shared utilities for building MCP servers in pnpm/turbo monorepos
-- [`@nejcjelovcan/mcp-dev`](./packages/mcp-dev) -- MCP server providing development tools (build, test, lint, typecheck)
+- [`@nejcjelovcan/mcp-dev`](./packages/mcp-dev) -- MCP server providing development tools (build, test, lint, typecheck, dependency management)
 
 ### Internal (not published)
 
@@ -243,6 +243,11 @@ Available tools:
 | `get_changed_packages`  | List packages affected by uncommitted changes |
 | `list_package_scripts`  | List all scripts in a package's package.json  |
 | `run_pnpm_script`       | Run any pnpm script for a package             |
+| `pnpm_add`              | Add dependencies to a package or root         |
+| `pnpm_remove`           | Remove dependencies from a package or root    |
+| `pnpm_install`          | Install all workspace dependencies            |
+| `pnpm_query`            | Query dependency info (list, why, outdated)   |
+| `create_changeset`      | Create a changeset file non-interactively     |
 
 For building custom MCP servers, use the shared utilities:
 

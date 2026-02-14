@@ -56,7 +56,12 @@ pnpm --filter @nejcjelovcan/mcp-dev start
 | `run_single_test`       | Run a specific test file with optional grep filter             |
 | `get_changed_packages`  | List packages affected by uncommitted changes or since a ref   |
 | `list_package_scripts`  | List all scripts defined in a package's package.json           |
-| `run_pnpm_script`       | Run an arbitrary pnpm script for a package                     |
+| `run_pnpm_script`       | Run any pnpm script defined in package.json                    |
+| `pnpm_add`              | Add dependencies to a workspace package or root                |
+| `pnpm_remove`           | Remove dependencies from a workspace package or root           |
+| `pnpm_install`          | Install all workspace dependencies                             |
+| `pnpm_query`            | Query dependency info (list, why, outdated)                    |
+| `create_changeset`      | Create a changeset file non-interactively                      |
 
 ## Tool Details
 
@@ -182,7 +187,7 @@ Omit `package` to list scripts from the root `package.json`. The output annotate
 
 ### run_pnpm_script
 
-Run any pnpm script defined in a package or root `package.json`. Use this for scripts not covered by dedicated tools (build, test, typecheck, etc.).
+Run any pnpm script defined in a package or root `package.json`. Only for scripts listed in package.json, NOT for pnpm CLI commands (add, remove, install) -- use the dedicated tools below for those.
 
 ```json
 {
@@ -197,6 +202,95 @@ Parameters:
 - `script` (required) - The npm script name to run
 - `package` (optional) - Package to target via `pnpm --filter`. Omit to run at workspace root
 - `args` (optional) - Extra arguments appended after `--`
+
+### pnpm_add
+
+Add one or more npm dependencies to a workspace package or the workspace root.
+
+```json
+{
+  "dependency": "react @types/react",
+  "package": "ui-library",
+  "dev": true,
+  "exact": false
+}
+```
+
+Parameters:
+
+- `dependency` (required) - Package name(s) to add, space-separated. Supports version specifiers (e.g., `lodash@^4.0.0`)
+- `package` (optional) - Target workspace package. Omit to add to workspace root
+- `dev` (optional) - Add as devDependency (`-D` flag). Default: `false`
+- `exact` (optional) - Save exact version (`-E` flag). Default: `false`
+
+### pnpm_remove
+
+Remove one or more npm dependencies from a workspace package or the workspace root.
+
+```json
+{
+  "dependency": "lodash",
+  "package": "ui-library"
+}
+```
+
+Parameters:
+
+- `dependency` (required) - Package name(s) to remove, space-separated
+- `package` (optional) - Target workspace package. Omit to remove from workspace root
+
+### pnpm_install
+
+Install all workspace dependencies.
+
+```json
+{
+  "frozen": false
+}
+```
+
+Parameters:
+
+- `frozen` (optional) - Use `--frozen-lockfile` for CI environments. Default: `false`
+
+### pnpm_query
+
+Query dependency information. Supports listing installed dependencies, showing why a dependency is installed, and checking for outdated packages.
+
+```json
+{
+  "command": "why",
+  "dependency": "zod",
+  "package": "mcp-dev"
+}
+```
+
+Parameters:
+
+- `command` (required) - Query type: `"list"`, `"why"`, or `"outdated"`
+- `dependency` (optional) - Dependency name (required for `"why"`)
+- `package` (optional) - Target workspace package. Omit to query workspace root
+- `depth` (optional) - Depth for `"list"` command. Default: `0`
+
+### create_changeset
+
+Create a changeset file non-interactively for versioning and changelog generation.
+
+```json
+{
+  "packages": ["ui-library"],
+  "bump": "minor",
+  "summary": "Add new Button variant"
+}
+```
+
+Parameters:
+
+- `packages` (required) - Package names that changed (resolved via package resolver)
+- `bump` (required) - Semver bump type: `"patch"`, `"minor"`, or `"major"`
+- `summary` (required) - Short description of the change (appears in changelog)
+
+Returns the created file path and content.
 
 ## Package Resolution
 
