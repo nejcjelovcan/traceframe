@@ -54,18 +54,18 @@ This workspace uses domain-specific MCP servers plus external integrations:
 
 ### mcp-ui Tools
 
-| Tool                            | Use Instead Of                       | Purpose                                            |
-| ------------------------------- | ------------------------------------ | -------------------------------------------------- |
-| `run_or_open_playroom`          | `pnpm playroom`                      | Start Playroom or open browser if already running  |
-| `stop_playroom`                 | -                                    | Stop a running Playroom process                    |
-|`list_components`               | -                                    | List all ui-library components with summaries      |
-| `get_component`                 | -                                    | Get detailed component info (props, usage, a11y)   |
-| `get_design_tokens`             | -                                    | Get design tokens (colors, typography, spacing)    |
-| `get_tailwind_utilities`        | -                                    | Get Tailwind CSS utility classes by category       |
-| `search_icons`                  | -                                    | Search icons by name, description, or aliases      |
-| `list_icons`                    | -                                    | List all icons with optional category filter       |
-| `get_icon`                      | -                                    | Get full metadata for a specific icon              |
-| `validate_tokens`               | -                                    | Validate design token definitions                  |
+| Tool                     | Use Instead Of  | Purpose                                           |
+| ------------------------ | --------------- | ------------------------------------------------- |
+| `run_or_open_playroom`   | `pnpm playroom` | Start Playroom or open browser if already running |
+| `stop_playroom`          | -               | Stop a running Playroom process                   |
+| `list_components`        | -               | List all ui-library components with summaries     |
+| `get_component`          | -               | Get detailed component info (props, usage, a11y)  |
+| `get_design_tokens`      | -               | Get design tokens (colors, typography, spacing)   |
+| `get_tailwind_utilities` | -               | Get Tailwind CSS utility classes by category      |
+| `search_icons`           | -               | Search icons by name, description, or aliases     |
+| `list_icons`             | -               | List all icons with optional category filter      |
+| `get_icon`               | -               | Get full metadata for a specific icon             |
+| `validate_tokens`        | -               | Validate design token definitions                 |
 
 ### Package Names
 
