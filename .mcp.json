@@ -17,7 +17,9 @@
       "type": "stdio",
       "command": "npx",
       "args": ["-y", "@cyanheads/git-mcp-server"],
-      "env": {}
+      "env": {
+        "GIT_BASE_DIR": "${CLAUDE_PROJECT_DIR}"
+      }
     },
     "linear-server": {
       "type": "http",
@@ -26,12 +28,18 @@
     "mcp-ui": {
       "type": "stdio",
       "command": "bash",
-      "args": ["-c", "pnpm turbo run build --filter=@nejcjelovcan/traceframe-mcp-ui && node packages/mcp-ui/dist/main.js"]
+      "args": [
+        "-c",
+        "pnpm turbo run build --filter=@nejcjelovcan/traceframe-mcp-ui && node packages/mcp-ui/dist/main.js"
+      ]
     },
     "mcp-dev": {
       "type": "stdio",
       "command": "bash",
-      "args": ["-c", "pnpm turbo run build --filter=@nejcjelovcan/mcp-dev && node packages/mcp-dev/dist/main.js"]
+      "args": [
+        "-c",
+        "pnpm turbo run build --filter=@nejcjelovcan/mcp-dev && node packages/mcp-dev/dist/main.js"
+      ]
     }
   }
 }
