@@ -23,6 +23,16 @@ import {
   lintFixPackageInputSchema,
 } from './tools/lint-fix-package.js'
 import {
+  listPackageScripts,
+  listPackageScriptsDescription,
+  listPackageScriptsInputSchema,
+} from './tools/list-package-scripts.js'
+import {
+  runPnpmScript,
+  runPnpmScriptDescription,
+  runPnpmScriptInputSchema,
+} from './tools/run-pnpm-script.js'
+import {
   runSingleTest,
   runSingleTestDescription,
   runSingleTestInputSchema,
@@ -207,6 +217,52 @@ export function createServer(): McpServer {
         file: args.file,
         ...(grep !== undefined ? { grep } : {}),
         ...(reporter !== undefined ? { reporter } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the run_pnpm_script tool
+  server.registerTool(
+    'run_pnpm_script',
+    { description: runPnpmScriptDescription, inputSchema: runPnpmScriptInputSchema },
+    async (args) => {
+      if (typeof args.script !== 'string' || args.script === '') {
+        throw new McpError(ErrorCode.InvalidParams, 'script is required and must be a string')
+      }
+      const pkg = typeof args.package === 'string' ? args.package : undefined
+      const extraArgs = typeof args.args === 'string' ? args.args : undefined
+      const result = await runPnpmScript({
+        script: args.script,
+        ...(pkg !== undefined ? { package: pkg } : {}),
+        ...(extraArgs !== undefined ? { args: extraArgs } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the list_package_scripts tool
+  server.registerTool(
+    'list_package_scripts',
+    { description: listPackageScriptsDescription, inputSchema: listPackageScriptsInputSchema },
+    async (args) => {
+      const pkg = typeof args.package === 'string' ? args.package : undefined
+      const result = await listPackageScripts({
+        ...(pkg !== undefined ? { package: pkg } : {}),
       })
       return {
         content: [

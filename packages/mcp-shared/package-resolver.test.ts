@@ -58,6 +58,38 @@ describe('package-resolver', () => {
         expect(result.package).toBe('@nejcjelovcan/mcp-shared')
         expect(result.type).toBe('package')
       })
+
+      it('should resolve by directory name: ui-library', async () => {
+        const result = await resolvePackage('ui-library')
+
+        expect(result.resolved).toBe(true)
+        expect(result.package).toBe('@nejcjelovcan/traceframe-ui-library')
+        expect(result.type).toBe('package')
+      })
+
+      it('should resolve by directory name: mcp-ui', async () => {
+        const result = await resolvePackage('mcp-ui')
+
+        expect(result.resolved).toBe(true)
+        expect(result.package).toBe('@nejcjelovcan/traceframe-mcp-ui')
+        expect(result.type).toBe('package')
+      })
+
+      it('should resolve by directory name: eslint-plugin', async () => {
+        const result = await resolvePackage('eslint-plugin')
+
+        expect(result.resolved).toBe(true)
+        expect(result.package).toBe('@nejcjelovcan/eslint-plugin-traceframe')
+        expect(result.type).toBe('package')
+      })
+
+      it('should resolve by directory name: playroom', async () => {
+        const result = await resolvePackage('playroom')
+
+        expect(result.resolved).toBe(true)
+        expect(result.package).toBe('@nejcjelovcan/traceframe-playroom')
+        expect(result.type).toBe('package')
+      })
     })
 
     describe('error handling', () => {

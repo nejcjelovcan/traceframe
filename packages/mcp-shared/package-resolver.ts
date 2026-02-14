@@ -156,7 +156,9 @@ async function scanAppPackages(workspaceRoot: string): Promise<PackageInfo[]> {
  * Resolution algorithm (applied in order):
  * 1. Full scoped name (exact match): @myorg/my-package
  * 2. Bare package name: my-package → tries @scope/my-package for each detected scope
- * 3. No match → error with list of valid packages
+ * 3. Directory name match: ui-library → matches package at packages/ui-library
+ * 4. Suffix match: ui-library → matches @scope/traceframe-ui-library
+ * 5. No match → error with list of valid packages
  *
  * @param input - The package identifier to resolve
  * @returns Resolution result with package name or error
@@ -207,7 +209,36 @@ export async function resolvePackage(input: string): Promise<ResolvePackageResul
     }
   }
 
-  // 3. No match found
+  // 3. Try directory name match (e.g., "ui-library" matches packages/ui-library)
+  const dirMatch = packages.find((p) => {
+    const dirName = p.path.split('/').pop()
+    return dirName === input
+  })
+  if (dirMatch !== undefined) {
+    return {
+      resolved: true,
+      package: dirMatch.name,
+      type: dirMatch.type,
+      path: dirMatch.path,
+    }
+  }
+
+  // 4. Try suffix match on unscoped name (e.g., "ui-library" matches "traceframe-ui-library")
+  const suffixMatches = packages.filter((p) => {
+    const unscopedName = p.name.replace(/^@[^/]+\//, '')
+    return unscopedName.endsWith(`-${input}`)
+  })
+  const suffixMatch = suffixMatches.length === 1 ? suffixMatches[0] : undefined
+  if (suffixMatch !== undefined) {
+    return {
+      resolved: true,
+      package: suffixMatch.name,
+      type: suffixMatch.type,
+      path: suffixMatch.path,
+    }
+  }
+
+  // 5. No match found
   return {
     resolved: false,
     error: `Unknown package: "${input}". Use a full scoped name (@scope/pkg) or a bare package name.`,
