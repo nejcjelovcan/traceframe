@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-storybook-preset
 
+## 1.0.0
+
+### Major Changes
+
+- [#36](https://github.com/nejcjelovcan/traceframe/pull/36) [`ddc2985`](https://github.com/nejcjelovcan/traceframe/commit/ddc2985f726a32e44c3a16c7a8bad503be8103bf) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Upgrade to Storybook 10 and convert preset entry point from CJS to ESM
+
 ## 0.1.4
 
 ### Patch Changes
