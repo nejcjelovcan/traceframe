@@ -689,7 +689,7 @@ const ShowcaseTableDemo = () => {
       render: (row) => (
         <a
           href="#"
-          className="font-medium text-interactive-primary hover:text-interactive-primary-hover focus:outline-none focus:underline"
+          className="font-medium text-interactive-primary hover:text-interactive-primary-hover focus:outline-hidden focus:underline"
           onClick={(e) => {
             e.preventDefault()
             e.stopPropagation()

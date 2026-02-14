@@ -840,19 +840,19 @@ export const Accessibility: Story = {
       <Stack gap="lg">
         <Stack direction="horizontal" gap="base" className="mb-base">
           <button
-            className="px-md py-xs bg-interactive-primary text-foreground-inverted rounded text-sm"
+            className="px-md py-xs bg-interactive-primary text-foreground-inverted rounded-sm text-sm"
             onClick={() => setDisabled(!disabled)}
           >
             Toggle Disabled: {disabled ? 'ON' : 'OFF'}
           </button>
           <button
-            className="px-md py-xs bg-interactive-primary text-foreground-inverted rounded text-sm"
+            className="px-md py-xs bg-interactive-primary text-foreground-inverted rounded-sm text-sm"
             onClick={() => setLoop(!loop)}
           >
             Keyboard Loop: {loop ? 'ON' : 'OFF'}
           </button>
           <button
-            className="px-md py-xs bg-interactive-primary text-foreground-inverted rounded text-sm"
+            className="px-md py-xs bg-interactive-primary text-foreground-inverted rounded-sm text-sm"
             onClick={() => setRovingFocus(!rovingFocus)}
           >
             Roving Focus: {rovingFocus ? 'ON' : 'OFF'}
@@ -874,7 +874,7 @@ export const Accessibility: Story = {
           />
         </div>
 
-        <div className="p-base bg-surface-subtle rounded text-sm">
+        <div className="p-base bg-surface-subtle rounded-sm text-sm">
           <p className="font-medium mb-sm">Keyboard Navigation:</p>
           <ul className="list-disc list-inside space-y-xs text-foreground-muted">
             <li>Arrow keys to navigate between options</li>

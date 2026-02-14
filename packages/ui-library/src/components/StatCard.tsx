@@ -180,11 +180,11 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
         <CardContent className={statCardContentVariants({ compact })}>
           {loading ? (
             <>
-              <div className="h-size-xs w-20 bg-surface-muted rounded animate-pulse" />
+              <div className="h-size-xs w-20 bg-surface-muted rounded-sm animate-pulse" />
               {!compact && (
-                <div className="mt-xs h-3 w-size-xl bg-surface-muted rounded animate-pulse" />
+                <div className="mt-xs h-3 w-size-xl bg-surface-muted rounded-sm animate-pulse" />
               )}
-              <div className="mt-sm h-size-sm w-32 bg-surface-muted rounded animate-pulse" />
+              <div className="mt-sm h-size-sm w-32 bg-surface-muted rounded-sm animate-pulse" />
             </>
           ) : (
             <>

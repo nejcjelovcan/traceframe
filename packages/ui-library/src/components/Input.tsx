@@ -6,15 +6,15 @@ import { cn } from '../utils/cn.js'
 
 /** Base styles shared between standalone input and wrapper */
 const baseInputStyles =
-  'rounded border bg-surface transition-colors placeholder:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-50'
+  'rounded-sm border bg-surface transition-colors placeholder:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-50'
 
 /** Focus styles for standalone input (no icons) */
 const focusStyles =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface'
+  'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface'
 
 /** Focus-within styles for wrapper (with icons) */
 const focusWithinStyles =
-  'focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-surface'
+  'focus-within:outline-hidden focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-surface'
 
 /** Variants for standalone input (no icons) */
 const inputVariants = cva([baseInputStyles, focusStyles, 'px-md'], {
@@ -184,7 +184,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
             type={type}
             disabled={disabled}
             value={value}
-            className="h-full w-full bg-transparent outline-none placeholder:text-foreground-muted disabled:cursor-not-allowed"
+            className="h-full w-full bg-transparent outline-hidden placeholder:text-foreground-muted disabled:cursor-not-allowed"
             {...props}
           />
           {effectiveRightIcon && (

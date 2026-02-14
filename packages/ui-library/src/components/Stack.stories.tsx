@@ -160,7 +160,7 @@ export const GapSizes: Story = {
       {(['none', '2xs', 'xs', 'sm', 'md', 'base', 'lg', 'xl', '2xl'] as const).map((gap) => (
         <Stack key={gap} gap="xs" align="center">
           <Badge variant="secondary">{gap}</Badge>
-          <Stack gap={gap} className="rounded border border-border p-sm">
+          <Stack gap={gap} className="rounded-sm border border-border p-sm">
             <Button size="sm">A</Button>
             <Button size="sm">B</Button>
             <Button size="sm">C</Button>
@@ -177,7 +177,7 @@ export const AlignmentVariations: Story = {
       {(['start', 'center', 'end', 'stretch'] as const).map((align) => (
         <Stack key={align} gap="xs" align="center">
           <Badge>{align}</Badge>
-          <Stack align={align} gap="xs" className="w-36 rounded border border-border p-sm">
+          <Stack align={align} gap="xs" className="w-36 rounded-sm border border-border p-sm">
             <Button size="sm">Short</Button>
             <Button size="sm">Medium text</Button>
             <Button size="sm">Lg</Button>
@@ -197,7 +197,7 @@ export const JustifyVariations: Story = {
           <Stack
             direction="horizontal"
             justify={justify}
-            className="rounded border border-border p-sm"
+            className="rounded-sm border border-border p-sm"
           >
             <Button size="sm">A</Button>
             <Button size="sm">B</Button>

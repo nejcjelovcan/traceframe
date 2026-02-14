@@ -98,7 +98,7 @@ const config = {
           options: {
             tokenPath: 'color',
             cssVarPrefix: '--color',
-            valueTemplate: 'rgb(var({VAR}) / <alpha-value>)',
+            valueTemplate: 'rgb(var({VAR}))',
           },
         },
       ],

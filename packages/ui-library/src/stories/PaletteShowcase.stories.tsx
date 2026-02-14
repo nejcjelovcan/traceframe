@@ -61,7 +61,7 @@ const ColorSwatch = ({ colorVar, shade, isBase = false, size = 'md' }: ColorSwat
   return (
     <div className="flex flex-col items-center group">
       <div
-        className={`${sizeClasses[size]} rounded shadow-sm ring-1 ring-black/5 transition-all duration-200 group-hover:scale-110 group-hover:shadow-md ${
+        className={`${sizeClasses[size]} rounded-sm shadow-xs ring-1 ring-black/5 transition-all duration-200 group-hover:scale-110 group-hover:shadow-md ${
           isBase ? 'ring-2 ring-blue-400 shadow-md' : ''
         }`}
         style={{ backgroundColor: rgbValue }}
@@ -95,7 +95,7 @@ const ColorFamilyCard = ({ name, baseVar, category, compact = false }: ColorFami
 
   if (compact) {
     return (
-      <div className="bg-surface rounded-lg p-3 border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
+      <div className="bg-surface rounded-lg p-3 border border-gray-200 shadow-xs hover:shadow-md transition-shadow">
         <div className="flex items-center justify-between mb-2">
           <Heading level={3} size="sm">
             {name}
@@ -122,7 +122,7 @@ const ColorFamilyCard = ({ name, baseVar, category, compact = false }: ColorFami
   }
 
   return (
-    <div className="bg-surface rounded-xl p-4 border border-gray-200 shadow-sm hover:shadow-lg transition-all duration-200">
+    <div className="bg-surface rounded-xl p-4 border border-gray-200 shadow-xs hover:shadow-lg transition-all duration-200">
       <div className="flex items-center justify-between mb-3">
         <Heading level={3}>{name}</Heading>
         <span
@@ -169,7 +169,7 @@ export const AllPalettes: Story = {
           <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-blue-100 p-2 rounded-lg">
-                <div className="w-6 h-6 bg-blue-500 rounded"></div>
+                <div className="w-6 h-6 bg-blue-500 rounded-sm"></div>
               </div>
               <div>
                 <Heading level={2} size="2xl">
@@ -194,7 +194,7 @@ export const AllPalettes: Story = {
           <div className="mt-12">
             <div className="flex items-center gap-3 mb-6">
               <div className="bg-purple-100 p-2 rounded-lg">
-                <div className="w-6 h-6 bg-purple-500 rounded"></div>
+                <div className="w-6 h-6 bg-purple-500 rounded-sm"></div>
               </div>
               <div>
                 <Heading level={2} size="2xl">
@@ -225,7 +225,7 @@ export const AllPalettes: Story = {
             <div className="grid md:grid-cols-3 gap-8">
               <div>
                 <Heading level={3} className="mb-3 flex items-center gap-2">
-                  <div className="w-3 h-3 bg-gradient-to-r from-gray-200 to-gray-800 rounded"></div>
+                  <div className="w-3 h-3 bg-gradient-to-r from-gray-200 to-gray-800 rounded-sm"></div>
                   Color Scale
                 </Heading>
                 <ul className="space-y-2 text-sm text-gray-700">
@@ -248,7 +248,7 @@ export const AllPalettes: Story = {
               </div>
               <div>
                 <Heading level={3} className="mb-3 flex items-center gap-2">
-                  <div className="w-3 h-3 bg-blue-500 rounded"></div>
+                  <div className="w-3 h-3 bg-blue-500 rounded-sm"></div>
                   Semantic Colors
                 </Heading>
                 <ul className="space-y-2 text-sm text-gray-700">
@@ -271,14 +271,14 @@ export const AllPalettes: Story = {
               </div>
               <div>
                 <Heading level={3} className="mb-3 flex items-center gap-2">
-                  <div className="w-3 h-3 bg-purple-500 rounded"></div>
+                  <div className="w-3 h-3 bg-purple-500 rounded-sm"></div>
                   CSS Variables
                 </Heading>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li>Space-separated RGB values</li>
                   <li>Alpha channel support</li>
                   <li>
-                    <code className="bg-gray-100 px-1 rounded text-xs">
+                    <code className="bg-gray-100 px-1 rounded-sm text-xs">
                       rgb(var(--palette-primary-500) / 0.8)
                     </code>
                   </li>

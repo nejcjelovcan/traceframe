@@ -259,7 +259,7 @@ export const MetadataReference: Story = {
             {(Object.keys(CATEGORY_LABELS) as IconCategory[]).map((cat) => (
               <div
                 key={cat}
-                className="flex items-center justify-between rounded border border-border px-md py-sm dark:border-border"
+                className="flex items-center justify-between rounded-sm border border-border px-md py-sm dark:border-border"
               >
                 <span className="font-mono text-sm">{cat}</span>
                 <span className="text-sm text-foreground-muted">
@@ -299,7 +299,7 @@ function SearchableIcons() {
               key={name}
               className="flex items-start gap-md rounded-lg border border-border p-md dark:border-border"
             >
-              <div className="flex h-size-sm w-size-sm shrink-0 items-center justify-center rounded bg-surface-subtle">
+              <div className="flex h-size-sm w-size-sm shrink-0 items-center justify-center rounded-sm bg-surface-subtle">
                 <Icon name={name} size="md" />
               </div>
               <div className="flex min-w-0 flex-col">
@@ -333,7 +333,7 @@ export const Accessibility: Story = {
         <div className="flex items-center gap-base rounded-lg border border-border p-base dark:border-border">
           <Icon name="search" size="lg" />
           <div className="flex flex-col gap-xs">
-            <code className="rounded bg-surface-subtle px-sm py-xs text-sm">
+            <code className="rounded-sm bg-surface-subtle px-sm py-xs text-sm">
               aria-hidden=&quot;true&quot;
             </code>
             <span className="text-sm text-foreground-muted">
@@ -342,7 +342,7 @@ export const Accessibility: Story = {
             </span>
           </div>
         </div>
-        <div className="rounded bg-surface-muted p-md font-mono text-sm dark:bg-surface">
+        <div className="rounded-sm bg-surface-muted p-md font-mono text-sm dark:bg-surface">
           {'<Icon name="search" />'}
           <br />
           {'<button><Icon name="close" /> Close</button>'}
@@ -356,7 +356,7 @@ export const Accessibility: Story = {
         <div className="flex items-center gap-base rounded-lg border border-border p-base dark:border-border">
           <Icon name="alert-circle" size="lg" aria-label="Warning" />
           <div className="flex flex-col gap-xs">
-            <code className="rounded bg-surface-subtle px-sm py-xs text-sm">
+            <code className="rounded-sm bg-surface-subtle px-sm py-xs text-sm">
               role=&quot;img&quot; aria-label=&quot;Warning&quot;
             </code>
             <span className="text-sm text-foreground-muted">
@@ -365,7 +365,7 @@ export const Accessibility: Story = {
             </span>
           </div>
         </div>
-        <div className="rounded bg-surface-muted p-md font-mono text-sm dark:bg-surface">
+        <div className="rounded-sm bg-surface-muted p-md font-mono text-sm dark:bg-surface">
           {'<Icon name="alert-circle" aria-label="Warning" />'}
           <br />
           {'<button aria-label="Close dialog"><Icon name="close" /></button>'}

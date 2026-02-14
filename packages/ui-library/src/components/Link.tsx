@@ -8,7 +8,7 @@ import { cn } from '../utils/cn.js'
 import type { IconName, IconSize } from '../icons/types.js'
 
 const linkVariants = cva(
-  'inline-flex items-center gap-xs transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-sm',
+  'inline-flex items-center gap-xs transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-xs',
   {
     variants: {
       variant: {
@@ -17,7 +17,7 @@ const linkVariants = cva(
         subtle:
           'text-foreground-muted hover:text-foreground hover:underline hover:underline-offset-2',
         standalone:
-          'text-interactive-accent hover:text-interactive-accent-hover hover:outline hover:outline-border px-sm py-xs -mx-sm -my-xs rounded',
+          'text-interactive-accent hover:text-interactive-accent-hover hover:outline hover:outline-border px-sm py-xs -mx-sm -my-xs rounded-sm',
         nav: 'text-foreground hover:text-interactive-accent',
       },
       size: {

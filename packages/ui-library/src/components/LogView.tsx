@@ -85,7 +85,7 @@ function toDateTimeAttr(timestamp: string | Date): string | undefined {
 // LogView
 // ---------------------------------------------------------------------------
 
-const logViewVariants = cva('flex flex-col overflow-hidden rounded border border-border', {
+const logViewVariants = cva('flex flex-col overflow-hidden rounded-sm border border-border', {
   variants: {
     variant: {
       cli: 'bg-surface-muted font-mono text-sm',
@@ -314,7 +314,7 @@ export const LogPrompt = forwardRef<HTMLDivElement, LogPromptProps>(
           onKeyDown={handleKeyDown}
           placeholder={placeholder}
           disabled={disabled}
-          className="min-w-0 flex-1 bg-transparent outline-none placeholder:text-foreground-muted disabled:cursor-not-allowed"
+          className="min-w-0 flex-1 bg-transparent outline-hidden placeholder:text-foreground-muted disabled:cursor-not-allowed"
           aria-label="Log prompt input"
         />
       </div>

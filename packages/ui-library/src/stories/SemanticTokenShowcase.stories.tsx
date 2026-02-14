@@ -28,7 +28,7 @@ interface TokenSwatchProps {
 const TokenSwatch = ({ name, cssVar, description, showBorder = false }: TokenSwatchProps) => (
   <div className="flex items-center gap-md group">
     <div
-      className={`w-size-md h-size-md rounded-md shadow-sm flex-shrink-0 transition-transform group-hover:scale-110 ${
+      className={`w-size-md h-size-md rounded-md shadow-xs flex-shrink-0 transition-transform group-hover:scale-110 ${
         showBorder ? 'ring-1 ring-border' : ''
       }`}
       style={{ backgroundColor: `rgb(var(${cssVar}))` }}
@@ -364,31 +364,31 @@ export const AllTokens: Story = {
           </Heading>
           <div className="grid grid-cols-2 sm:grid-cols-5 gap-base text-xs">
             <div className="flex items-center gap-sm">
-              <div className="w-size-xs h-size-xs rounded bg-status-info" />
+              <div className="w-size-xs h-size-xs rounded-sm bg-status-info" />
               <span className="text-foreground-muted">
                 <strong>base</strong> - Primary color
               </span>
             </div>
             <div className="flex items-center gap-sm">
-              <div className="w-size-xs h-size-xs rounded bg-status-info-muted" />
+              <div className="w-size-xs h-size-xs rounded-sm bg-status-info-muted" />
               <span className="text-foreground-muted">
                 <strong>muted</strong> - Subtle bg
               </span>
             </div>
             <div className="flex items-center gap-sm">
-              <div className="w-size-xs h-size-xs rounded bg-status-info-foreground" />
+              <div className="w-size-xs h-size-xs rounded-sm bg-status-info-foreground" />
               <span className="text-foreground-muted">
                 <strong>foreground</strong> - Text
               </span>
             </div>
             <div className="flex items-center gap-sm">
-              <div className="w-size-xs h-size-xs rounded bg-status-info-emphasis" />
+              <div className="w-size-xs h-size-xs rounded-sm bg-status-info-emphasis" />
               <span className="text-foreground-muted">
                 <strong>emphasis</strong> - Strong
               </span>
             </div>
             <div className="flex items-center gap-sm">
-              <div className="w-size-xs h-size-xs rounded bg-status-info-border" />
+              <div className="w-size-xs h-size-xs rounded-sm bg-status-info-border" />
               <span className="text-foreground-muted">
                 <strong>border</strong> - Borders
               </span>
@@ -413,9 +413,9 @@ const SurfaceLayersExample = () => (
     <div className="text-xs font-medium text-foreground-muted mb-md">Surface Layering</div>
     <div className="bg-surface-muted p-base rounded-lg">
       <div className="text-xs text-foreground-muted mb-sm">surface-muted (page bg)</div>
-      <div className="bg-surface p-base rounded-lg shadow-sm">
+      <div className="bg-surface p-base rounded-lg shadow-xs">
         <div className="text-xs text-foreground-muted mb-sm">surface (card)</div>
-        <div className="bg-surface-subtle p-md rounded">
+        <div className="bg-surface-subtle p-md rounded-sm">
           <div className="text-xs text-foreground-muted">surface-subtle (well/hover)</div>
         </div>
       </div>
@@ -449,7 +449,7 @@ const InteractiveStatesExample = () => (
       {['Item 1', 'Item 2', 'Item 3'].map((item) => (
         <button
           key={item}
-          className="w-full px-base py-md text-sm text-foreground text-left border-b border-border-muted last:border-b-0 transition-colors hover:bg-interactive-hover active:bg-interactive-pressed focus:outline-none focus:ring-2 focus:ring-ring focus:ring-inset"
+          className="w-full px-base py-md text-sm text-foreground text-left border-b border-border-muted last:border-b-0 transition-colors hover:bg-interactive-hover active:bg-interactive-pressed focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-inset"
         >
           {item}
         </button>
@@ -584,11 +584,11 @@ const DataVisualizationExample = () => (
       {/* Legend */}
       <div className="flex gap-base text-xs">
         <div className="flex items-center gap-sm">
-          <div className="w-3 h-3 rounded bg-accent-4" />
+          <div className="w-3 h-3 rounded-sm bg-accent-4" />
           <span className="text-foreground-muted">Series A (accent-4)</span>
         </div>
         <div className="flex items-center gap-sm">
-          <div className="w-3 h-3 rounded bg-accent-5" />
+          <div className="w-3 h-3 rounded-sm bg-accent-5" />
           <span className="text-foreground-muted">Series B (accent-5)</span>
         </div>
       </div>
@@ -613,11 +613,11 @@ const TextHierarchyExample = () => (
       <Heading level={3}>Primary Heading</Heading>
       <p className="text-sm text-foreground">
         Primary body text uses{' '}
-        <code className="text-xs bg-surface-subtle px-xs rounded">foreground</code>
+        <code className="text-xs bg-surface-subtle px-xs rounded-sm">foreground</code>
       </p>
       <p className="text-sm text-foreground-muted">
         Secondary text uses{' '}
-        <code className="text-xs bg-surface-subtle px-xs rounded">foreground-muted</code>
+        <code className="text-xs bg-surface-subtle px-xs rounded-sm">foreground-muted</code>
       </p>
     </div>
     {/* Inverted */}
@@ -627,13 +627,13 @@ const TextHierarchyExample = () => (
       </Heading>
       <p className="text-sm text-foreground-inverted">
         On dark backgrounds use{' '}
-        <code className="text-xs bg-interactive-primary-hover px-xs rounded">
+        <code className="text-xs bg-interactive-primary-hover px-xs rounded-sm">
           foreground-inverted
         </code>
       </p>
       <p className="text-sm text-foreground-inverted-muted">
         Secondary uses{' '}
-        <code className="text-xs bg-interactive-primary-hover px-xs rounded">
+        <code className="text-xs bg-interactive-primary-hover px-xs rounded-sm">
           foreground-inverted-muted
         </code>
       </p>
@@ -648,13 +648,13 @@ const FocusRingExample = () => (
       Focus States (tab through)
     </div>
     <div className="flex flex-wrap gap-md">
-      <button className="px-base py-sm rounded-md text-sm font-medium bg-surface border border-border text-foreground hover:bg-interactive-hover focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface transition-colors">
+      <button className="px-base py-sm rounded-md text-sm font-medium bg-surface border border-border text-foreground hover:bg-interactive-hover focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface transition-colors">
         Focus me
       </button>
       <input
         type="text"
         placeholder="Or focus this input"
-        className="px-md py-sm rounded-md text-sm bg-surface border border-border text-foreground placeholder:text-foreground-muted focus:outline-none focus:ring-2 focus:ring-ring focus:border-ring transition-colors"
+        className="px-md py-sm rounded-md text-sm bg-surface border border-border text-foreground placeholder:text-foreground-muted focus:outline-hidden focus:ring-2 focus:ring-ring focus:border-ring transition-colors"
       />
     </div>
   </div>
