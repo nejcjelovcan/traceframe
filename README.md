@@ -6,12 +6,19 @@ A design system and component library for building consistent, theme-aware React
 
 ## Packages
 
+### UI & Design System
+
 - [`@nejcjelovcan/traceframe-ui-library`](./packages/ui-library) -- Core UI components, design tokens, and Tailwind preset
 - [`@nejcjelovcan/traceframe-storybook-preset`](./packages/storybook-preset) -- Storybook addon for Traceframe theme switching
 - [`@nejcjelovcan/traceframe-playroom-preset`](./packages/playroom-preset) -- Playroom config factory with components and snippets
 - [`@nejcjelovcan/eslint-plugin-traceframe`](./packages/eslint-plugin) -- ESLint rule enforcing semantic token usage
 
-Internal (not published):
+### MCP Servers & Utilities
+
+- [`@nejcjelovcan/mcp-shared`](./packages/mcp-shared) -- Shared utilities for building MCP servers in pnpm/turbo monorepos
+- [`@nejcjelovcan/mcp-dev`](./packages/mcp-dev) -- MCP server providing development tools (build, test, lint, typecheck)
+
+### Internal (not published)
 
 - [`@nejcjelovcan/traceframe-mcp-ui`](./packages/mcp-ui) -- MCP server for UI tooling (Storybook, icons, tokens)
 - [`@nejcjelovcan/traceframe-playroom`](./packages/playroom) -- Internal Playroom instance (dog-foods the playroom-preset)
@@ -200,6 +207,49 @@ This catches direct palette usage like `bg-primary-500` and suggests semantic al
 
 See the [eslint-plugin README](./packages/eslint-plugin) for configuration options.
 
+## MCP Development Tools
+
+The `mcp-dev` package provides an MCP server for AI assistants to interact with your pnpm/turbo monorepo:
+
+```bash
+npm install @nejcjelovcan/mcp-dev
+```
+
+Add to your Claude Code MCP configuration:
+
+```json
+{
+  "mcpServers": {
+    "mcp-dev": {
+      "command": "npx",
+      "args": ["@nejcjelovcan/mcp-dev"]
+    }
+  }
+}
+```
+
+Available tools:
+
+| Tool                    | Description                                   |
+| ----------------------- | --------------------------------------------- |
+| `autofix`               | Run lint:fix and format across the workspace  |
+| `build_package`         | Build a package (with dependency resolution)  |
+| `test_package`          | Run tests for a package                       |
+| `test_package_coverage` | Run tests with coverage                       |
+| `typecheck_package`     | Type-check a package                          |
+| `lint_fix_package`      | Run lint:fix for a package                    |
+| `format_package`        | Run prettier for a package                    |
+| `run_single_test`       | Run a specific test file                      |
+| `get_changed_packages`  | List packages affected by uncommitted changes |
+
+For building custom MCP servers, use the shared utilities:
+
+```bash
+npm install @nejcjelovcan/mcp-shared
+```
+
+See the [mcp-dev README](./packages/mcp-dev) and [mcp-shared README](./packages/mcp-shared) for details.
+
 ## Development
 
 ### Prerequisites
@@ -238,6 +288,8 @@ traceframe/
 │   ├── storybook-preset/   # Storybook theme integration addon
 │   ├── playroom-preset/    # Playroom config factory + snippets
 │   ├── eslint-plugin/      # Semantic token enforcement
+│   ├── mcp-shared/         # Shared utilities for MCP servers
+│   ├── mcp-dev/            # MCP server for dev tools (build, test, lint)
 │   ├── mcp-ui/             # MCP server for UI tooling (internal)
 │   └── playroom/           # Internal Playroom instance
 ├── CLAUDE.md               # AI agent instructions
