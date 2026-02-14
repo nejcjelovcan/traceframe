@@ -379,7 +379,7 @@ Use build_package mcp-dev tool
 Use test_package mcp-dev tool
 
 # For ui-library: verify Storybook runs
-Use run_or_open_storybook mcp-ui tool
+Run pnpm --filter ui-library storybook
 ```
 
 **Document results:**
@@ -396,11 +396,10 @@ Use run_or_open_storybook mcp-ui tool
 4. `test_package` - Run tests
 
 **For ui-library components:**
-- Use `run_or_open_storybook` to start/open Storybook
+- Run `pnpm --filter ui-library storybook` to start Storybook
 - Verify component appears in Storybook
 - Check all stories render correctly
 - Verify controls work as expected
-- Use `stop_storybook` when done (optional)
 
 ### 13. Summary Report
 
@@ -506,10 +505,6 @@ EOF
 - `search_icons` - Search icons by name, description, or aliases
 - `list_icons` - List all icons (optionally filter by category)
 - `get_icon` - Get full metadata for a specific icon
-- `run_or_open_storybook` - Start Storybook or open browser if running
-- `stop_storybook` - Stop a running Storybook process
-- `capture_storybook_screenshots` - Capture screenshots of stories
-
 **Git MCP Tools:**
 - `git_status` - Show working tree status
 - `git_diff` - View changes before committing
