@@ -41,7 +41,7 @@ const selectTriggerVariants = cva(
   [
     'inline-flex items-center justify-between gap-sm rounded-md border transition-colors',
     'bg-surface text-foreground',
-    'focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface',
+    'focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface',
     'disabled:cursor-not-allowed disabled:opacity-50',
     '[&>span]:truncate',
   ],
@@ -132,7 +132,7 @@ const selectContentVariants = cva(
 const selectItemVariants = cva(
   [
     'relative flex cursor-default select-none items-center gap-sm',
-    'rounded-sm outline-none transition-colors',
+    'rounded-xs outline-hidden transition-colors',
     'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
   ],
   {

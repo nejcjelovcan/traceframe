@@ -82,7 +82,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
         {skipLinkText && (
           <a
             href="#main-content"
-            className="sr-only focus:not-sr-only focus:absolute focus:left-base focus:top-base focus:z-50 focus:rounded focus:bg-surface focus:px-base focus:py-sm focus:text-sm focus:font-medium focus:shadow-lg focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface"
+            className="sr-only focus:not-sr-only focus:absolute focus:left-base focus:top-base focus:z-50 focus:rounded-sm focus:bg-surface focus:px-base focus:py-sm focus:text-sm focus:font-medium focus:shadow-lg focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface"
           >
             {skipLinkText}
           </a>
@@ -104,7 +104,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
           <main
             id="main-content"
             tabIndex={-1}
-            className="flex-1 overflow-y-auto focus:outline-none"
+            className="flex-1 overflow-y-auto focus:outline-hidden"
           >
             {contentWidth === 'contained' ? (
               <Container className="py-lg">{children}</Container>

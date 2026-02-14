@@ -373,7 +373,7 @@ export const StatusTooltips: Story = {
       <Stack direction="horizontal" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
-            <button className="rounded p-xs hover:bg-interactive-hover">
+            <button className="rounded-sm p-xs hover:bg-interactive-hover">
               <Icon name="info-circle" size="md" className="text-status-info" />
             </button>
           </TooltipTrigger>
@@ -385,7 +385,7 @@ export const StatusTooltips: Story = {
       <Stack direction="horizontal" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
-            <button className="rounded p-xs hover:bg-interactive-hover">
+            <button className="rounded-sm p-xs hover:bg-interactive-hover">
               <Icon name="check" size="md" className="text-status-success" />
             </button>
           </TooltipTrigger>
@@ -397,7 +397,7 @@ export const StatusTooltips: Story = {
       <Stack direction="horizontal" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
-            <button className="rounded p-xs hover:bg-interactive-hover">
+            <button className="rounded-sm p-xs hover:bg-interactive-hover">
               <Icon name="alert-circle" size="md" className="text-status-warning" />
             </button>
           </TooltipTrigger>
@@ -409,7 +409,7 @@ export const StatusTooltips: Story = {
       <Stack direction="horizontal" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
-            <button className="rounded p-xs hover:bg-interactive-hover">
+            <button className="rounded-sm p-xs hover:bg-interactive-hover">
               <Icon name="close" size="md" className="text-status-error" />
             </button>
           </TooltipTrigger>
@@ -493,9 +493,9 @@ export const RichContent: Story = {
         </TooltipTrigger>
         <TooltipContent>
           <div className="flex items-center gap-sm">
-            <kbd className="rounded bg-surface-muted px-xs py-2xs text-xs">⌘</kbd>
+            <kbd className="rounded-sm bg-surface-muted px-xs py-2xs text-xs">⌘</kbd>
             <span>+</span>
-            <kbd className="rounded bg-surface-muted px-xs py-2xs text-xs">K</kbd>
+            <kbd className="rounded-sm bg-surface-muted px-xs py-2xs text-xs">K</kbd>
           </div>
         </TooltipContent>
       </Tooltip>
@@ -556,7 +556,7 @@ export const InteractiveTriggers: Story = {
 
       <Tooltip>
         <TooltipTrigger asChild>
-          <button className="rounded p-xs hover:bg-interactive-hover">
+          <button className="rounded-sm p-xs hover:bg-interactive-hover">
             <Icon name="info-circle" size="md" />
           </button>
         </TooltipTrigger>
@@ -565,7 +565,9 @@ export const InteractiveTriggers: Story = {
 
       <Tooltip>
         <TooltipTrigger asChild>
-          <div className="cursor-help rounded border border-border px-md py-xs">Custom element</div>
+          <div className="cursor-help rounded-sm border border-border px-md py-xs">
+            Custom element
+          </div>
         </TooltipTrigger>
         <TooltipContent>Custom element trigger</TooltipContent>
       </Tooltip>

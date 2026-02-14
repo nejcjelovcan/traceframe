@@ -65,7 +65,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 const ContentBox = ({ children }: { children: React.ReactNode }) => (
-  <div className="rounded border border-dashed border-border-muted bg-surface-muted p-base">
+  <div className="rounded-sm border border-dashed border-border-muted bg-surface-muted p-base">
     {children}
   </div>
 )
@@ -170,7 +170,7 @@ export const AllSizes: Story = {
       ).map(([size, width]) => (
         <div key={size} className="bg-surface-subtle">
           <Container size={size}>
-            <div className="rounded border border-dashed border-border-muted bg-surface p-sm">
+            <div className="rounded-sm border border-dashed border-border-muted bg-surface p-sm">
               <p className="text-sm font-medium">
                 {size} ({width})
               </p>

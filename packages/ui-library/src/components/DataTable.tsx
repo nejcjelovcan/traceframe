@@ -348,8 +348,8 @@ function DataTableInner<T>(
           }
         }}
         className={cn(
-          'mr-xs inline-flex h-size-xs w-size-xs items-center justify-center rounded',
-          'hover:bg-interactive-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-ring'
+          'mr-xs inline-flex h-size-xs w-size-xs items-center justify-center rounded-sm',
+          'hover:bg-interactive-hover focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring'
         )}
         aria-expanded={isExpanded}
         aria-label={isExpanded ? 'Collapse row' : 'Expand row'}
@@ -437,7 +437,7 @@ function DataTableInner<T>(
           onKeyDown={(e) => handleSortKeyDown(e, columnKey)}
           className={cn(
             'flex w-full items-center gap-xs text-left',
-            'hover:text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-surface',
+            'hover:text-foreground focus:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-surface',
             isSorted && 'font-semibold text-foreground'
           )}
         >

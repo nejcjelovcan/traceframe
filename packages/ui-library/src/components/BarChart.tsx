@@ -132,12 +132,12 @@ export function BarChart({
             {isHorizontal ? (
               <div className="flex items-center gap-md">
                 <span className="w-24 shrink-0 truncate text-sm text-foreground">{item.label}</span>
-                <div className="relative h-size-xs flex-1 rounded bg-surface-subtle">
+                <div className="relative h-size-xs flex-1 rounded-sm bg-surface-subtle">
                   <TooltipTrigger asChild>
                     <button
                       type="button"
                       className={cn(
-                        'absolute inset-y-0 left-0 rounded transition-all duration-200',
+                        'absolute inset-y-0 left-0 rounded-sm transition-all duration-200',
                         getBarColor(item, index),
                         onBarClick && 'cursor-pointer hover:opacity-80',
                         !onBarClick && 'cursor-default'
@@ -157,12 +157,12 @@ export function BarChart({
               </div>
             ) : (
               <div className="flex h-full flex-1 flex-col items-center gap-sm">
-                <div className="relative h-full w-full rounded bg-surface-subtle">
+                <div className="relative h-full w-full rounded-sm bg-surface-subtle">
                   <TooltipTrigger asChild>
                     <button
                       type="button"
                       className={cn(
-                        'absolute inset-x-0 bottom-0 rounded transition-all duration-200',
+                        'absolute inset-x-0 bottom-0 rounded-sm transition-all duration-200',
                         getBarColor(item, index),
                         onBarClick && 'cursor-pointer hover:opacity-80',
                         !onBarClick && 'cursor-default'

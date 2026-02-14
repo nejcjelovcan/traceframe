@@ -356,7 +356,7 @@ export const AutoScroll: Story = {
         <div className="space-y-sm">
           <button
             onClick={() => setRunning(!running)}
-            className="rounded bg-interactive-primary px-md py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
+            className="rounded-sm bg-interactive-primary px-md py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
           >
             {running ? 'Stop' : 'Start'} streaming
           </button>
