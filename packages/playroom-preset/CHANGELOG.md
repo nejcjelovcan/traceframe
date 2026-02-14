@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-playroom-preset
 
+## 0.1.3
+
+### Patch Changes
+
+- [#26](https://github.com/nejcjelovcan/traceframe/pull/26) [`fc4fafe`](https://github.com/nejcjelovcan/traceframe/commit/fc4fafea5e73452f13f373e96cbc3b08586e7c4e) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update playroom peer dependency from ^1.0.0 to ^1.0.7
+
 ## 0.1.2
 
 ### Patch Changes
