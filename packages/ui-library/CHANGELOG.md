@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 0.3.0
+
+### Minor Changes
+
+- [#28](https://github.com/nejcjelovcan/traceframe/pull/28) [`674c747`](https://github.com/nejcjelovcan/traceframe/commit/674c747657b2a29a944f5efe1c9ad4a9f0fb72b2) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add 34 new icons: status (success, error, warning), brand (github, linear), general actions (plus, minus, trash, settings, menu, filter, link, upload, download, eye-off, lock, help, bookmark, dots-vertical), entities (folder, hash), data (calendar, clock, history), and developer tools (terminal, git-branch, git-merge, git-pull-request, bug, test-tube, rocket, sparkles, bolt, palette)
+
 ## 0.2.0
 
 ### Minor Changes
