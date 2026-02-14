@@ -53,6 +53,10 @@
 
     /* Primary border color for inputs, cards, and containers */
     --color-border: var(--palette-neutral-200);
+    /* Border color for inverted surfaces */
+    --color-border-inverted: var(--palette-neutral-700);
+    /* Subtle border for dividers within inverted containers */
+    --color-border-inverted-muted: var(--palette-neutral-800);
     /* Subtle border for dividers, separators, and less prominent boundaries */
     --color-border-muted: var(--palette-neutral-100);
 
@@ -147,6 +151,10 @@
 
     /* Primary surface color for backgrounds and containers */
     --color-surface: var(--palette-surface);
+    /* Inverted surface for dark backgrounds in light mode */
+    --color-surface-inverted: var(--palette-neutral-800);
+    /* Secondary inverted surface for nested elements within inverted containers */
+    --color-surface-inverted-muted: var(--palette-neutral-700);
     /* Secondary surface for sidebars, alternating rows, and nested elements */
     --color-surface-muted: var(--palette-neutral-100);
     /* Tertiary surface for hover states, wells, and recessed areas */

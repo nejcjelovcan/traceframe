@@ -96,6 +96,81 @@ describe('Card', () => {
     expect(card.className).toContain('border-accent-5-border')
   })
 
+  it('applies tf-inverted class when inverted is true', () => {
+    render(<Card inverted>Inverted</Card>)
+    const card = screen.getByText('Inverted')
+    expect(card.className).toContain('tf-inverted')
+  })
+
+  it('does not apply tf-inverted class when inverted is false', () => {
+    render(<Card>Normal</Card>)
+    const card = screen.getByText('Normal')
+    expect(card.className).not.toContain('tf-inverted')
+  })
+
+  it('combines inverted with outlined variant', () => {
+    render(<Card inverted>Inverted Outlined</Card>)
+    const card = screen.getByText('Inverted Outlined')
+    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('bg-surface')
+    expect(card.className).toContain('border-border')
+  })
+
+  it('combines inverted with elevated variant', () => {
+    render(
+      <Card variant="elevated" inverted>
+        Inverted Elevated
+      </Card>
+    )
+    const card = screen.getByText('Inverted Elevated')
+    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('shadow-md')
+  })
+
+  it('applies filled/solid look for inverted info variant', () => {
+    render(
+      <Card variant="info" inverted>
+        Inverted Info
+      </Card>
+    )
+    const card = screen.getByText('Inverted Info')
+    expect(card.className).toContain('bg-status-info-emphasis')
+    expect(card.className).toContain('text-foreground-inverted')
+  })
+
+  it('applies filled/solid look for inverted success variant', () => {
+    render(
+      <Card variant="success" inverted>
+        Inverted Success
+      </Card>
+    )
+    const card = screen.getByText('Inverted Success')
+    expect(card.className).toContain('bg-status-success-emphasis')
+    expect(card.className).toContain('text-foreground-inverted')
+  })
+
+  it('applies filled/solid look for inverted accent1 variant', () => {
+    render(
+      <Card variant="accent1" inverted>
+        Inverted Accent
+      </Card>
+    )
+    const card = screen.getByText('Inverted Accent')
+    expect(card.className).toContain('bg-accent-1-emphasis')
+    expect(card.className).toContain('text-foreground-inverted')
+  })
+
+  it('merges custom className with inverted', () => {
+    render(
+      <Card inverted className="custom-class">
+        Custom
+      </Card>
+    )
+    const card = screen.getByText('Custom')
+    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('custom-class')
+  })
+
   it('applies base classes', () => {
     render(<Card>Base</Card>)
     const card = screen.getByText('Base')

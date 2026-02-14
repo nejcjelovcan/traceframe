@@ -1,7 +1,10 @@
+import { useState } from 'react'
+
 import { Grid } from './Grid.js'
 import { Heading } from './Heading.js'
 import { Stack } from './Stack.js'
 import { StatCard } from './StatCard.js'
+import { ToggleGroup } from './ToggleGroup.js'
 import { Icon } from '../icons/index.js'
 
 import type { Meta, StoryObj } from '@storybook/react'
@@ -137,6 +140,13 @@ A specialized card for displaying key metrics and statistics with optional trend
       control: 'boolean',
       table: {
         defaultValue: { summary: 'true' },
+      },
+    },
+    inverted: {
+      description: 'Render with inverted colors (dark bg in light mode, light bg in dark mode)',
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
       },
     },
   },
@@ -468,41 +478,174 @@ export const MixedStates: Story = {
   ),
 }
 
-export const Showcase: Story = {
-  parameters: {
-    layout: 'fullscreen',
+export const Inverted: Story = {
+  args: {
+    label: 'Total Components',
+    value: 42,
+    trend: '+12%',
+    icon: 'package',
+    inverted: true,
   },
+}
+
+export const InvertedComparison: Story = {
+  name: 'Normal vs Inverted StatCards',
   render: () => (
+    <Stack gap="base">
+      <Stack direction="horizontal" gap="base">
+        <StatCard label="Outlined" value={1234} trend="+12%" icon="users" className="w-48" />
+        <StatCard
+          label="Outlined"
+          value={1234}
+          trend="+12%"
+          icon="users"
+          inverted
+          className="w-48"
+        />
+      </Stack>
+      <Stack direction="horizontal" gap="base">
+        <StatCard variant="info" label="Info" value={256} icon="info-circle" className="w-48" />
+        <StatCard
+          variant="info"
+          label="Info"
+          value={256}
+          icon="info-circle"
+          inverted
+          className="w-48"
+        />
+      </Stack>
+      <Stack direction="horizontal" gap="base">
+        <StatCard variant="success" label="Success" value="98%" trend="+3%" className="w-48" />
+        <StatCard
+          variant="success"
+          label="Success"
+          value="98%"
+          trend="+3%"
+          inverted
+          className="w-48"
+        />
+      </Stack>
+      <Stack direction="horizontal" gap="base">
+        <StatCard variant="accent1" label="Accent 1" value="A1" className="w-48" />
+        <StatCard variant="accent1" label="Accent 1" value="A1" inverted className="w-48" />
+      </Stack>
+    </Stack>
+  ),
+}
+
+function ShowcaseContent() {
+  const [inverted, setInverted] = useState(false)
+
+  return (
     <Stack gap="lg" className="bg-surface p-lg">
-      {/* All 11 Card Variants */}
+      {/* Title + Inverted Toggle */}
+      <div className="flex items-center gap-base">
+        <Heading level={2} size="lg">
+          StatCard Showcase
+        </Heading>
+        <ToggleGroup
+          type="single"
+          variant="solid"
+          size="sm"
+          aria-label="Inverted mode"
+          options={[
+            { value: 'off', label: 'Normal' },
+            { value: 'on', label: 'Inverted' },
+          ]}
+          value={inverted ? 'on' : 'off'}
+          onChange={(val) => setInverted(val === 'on')}
+        />
+      </div>
+
+      {/* All Card Variants */}
       <section>
         <Heading level={3} className="mb-base">
           All Card Variants
         </Heading>
         <Grid cols={{ sm: 3, md: 4, lg: 6 }} gap="base">
-          <StatCard variant="outlined" label="Outlined" value={42} trend="+5%" className="w-full" />
+          <StatCard
+            variant="outlined"
+            label="Outlined"
+            value={42}
+            trend="+5%"
+            inverted={inverted}
+            className="w-full"
+          />
           <StatCard
             variant="elevated"
             label="Elevated"
             value={128}
             trend="-2%"
+            inverted={inverted}
             className="w-full"
           />
-          <StatCard variant="info" label="Info" value={256} icon="info-circle" className="w-full" />
-          <StatCard variant="success" label="Success" value="98%" trend="+3%" className="w-full" />
+          <StatCard
+            variant="info"
+            label="Info"
+            value={256}
+            icon="info-circle"
+            inverted={inverted}
+            className="w-full"
+          />
+          <StatCard
+            variant="success"
+            label="Success"
+            value="98%"
+            trend="+3%"
+            inverted={inverted}
+            className="w-full"
+          />
           <StatCard
             variant="warning"
             label="Warning"
             value={15}
             trend="stable"
+            inverted={inverted}
             className="w-full"
           />
-          <StatCard variant="error" label="Error" value={3} trend="-1" className="w-full" />
-          <StatCard variant="accent1" label="Accent 1" value="A1" className="w-full" />
-          <StatCard variant="accent2" label="Accent 2" value="A2" className="w-full" />
-          <StatCard variant="accent3" label="Accent 3" value="A3" className="w-full" />
-          <StatCard variant="accent4" label="Accent 4" value={512} className="w-full" />
-          <StatCard variant="accent5" label="Accent 5" value={1024} className="w-full" />
+          <StatCard
+            variant="error"
+            label="Error"
+            value={3}
+            trend="-1"
+            inverted={inverted}
+            className="w-full"
+          />
+          <StatCard
+            variant="accent1"
+            label="Accent 1"
+            value="A1"
+            inverted={inverted}
+            className="w-full"
+          />
+          <StatCard
+            variant="accent2"
+            label="Accent 2"
+            value="A2"
+            inverted={inverted}
+            className="w-full"
+          />
+          <StatCard
+            variant="accent3"
+            label="Accent 3"
+            value="A3"
+            inverted={inverted}
+            className="w-full"
+          />
+          <StatCard
+            variant="accent4"
+            label="Accent 4"
+            value={512}
+            inverted={inverted}
+            className="w-full"
+          />
+          <StatCard
+            variant="accent5"
+            label="Accent 5"
+            value={1024}
+            inverted={inverted}
+            className="w-full"
+          />
         </Grid>
       </section>
 
@@ -518,6 +661,7 @@ export const Showcase: Story = {
             value={42}
             trend="+5%"
             icon="package"
+            inverted={inverted}
             className="w-40"
           />
           <StatCard
@@ -526,6 +670,7 @@ export const Showcase: Story = {
             value={128}
             trend="-2%"
             icon="users"
+            inverted={inverted}
             className="w-48"
           />
           <StatCard
@@ -534,6 +679,7 @@ export const Showcase: Story = {
             value={256}
             trend="+10%"
             icon="chart"
+            inverted={inverted}
             className="w-56"
           />
         </Stack>
@@ -550,6 +696,7 @@ export const Showcase: Story = {
             value={100}
             icon="database"
             iconPosition="left"
+            inverted={inverted}
             className="w-48"
           />
           <StatCard
@@ -557,9 +704,10 @@ export const Showcase: Story = {
             value={200}
             icon="component"
             iconPosition="right"
+            inverted={inverted}
             className="w-48"
           />
-          <StatCard label="No Icon" value={300} className="w-48" />
+          <StatCard label="No Icon" value={300} inverted={inverted} className="w-48" />
         </Stack>
       </section>
 
@@ -569,13 +717,26 @@ export const Showcase: Story = {
           Trend Indicators
         </Heading>
         <Stack direction="horizontal" gap="base">
-          <StatCard label="Auto Positive" value={100} trend="+25%" className="w-40" />
-          <StatCard label="Auto Negative" value={50} trend="-10%" className="w-40" />
+          <StatCard
+            label="Auto Positive"
+            value={100}
+            trend="+25%"
+            inverted={inverted}
+            className="w-40"
+          />
+          <StatCard
+            label="Auto Negative"
+            value={50}
+            trend="-10%"
+            inverted={inverted}
+            className="w-40"
+          />
           <StatCard
             label="Manual Positive"
             value={75}
             trend="5 units"
             trendVariant="positive"
+            inverted={inverted}
             className="w-40"
           />
           <StatCard
@@ -583,6 +744,7 @@ export const Showcase: Story = {
             value={25}
             trend="3 units"
             trendVariant="negative"
+            inverted={inverted}
             className="w-40"
           />
           <StatCard
@@ -590,6 +752,7 @@ export const Showcase: Story = {
             value={60}
             trend="stable"
             trendVariant="neutral"
+            inverted={inverted}
             className="w-40"
           />
         </Stack>
@@ -607,6 +770,7 @@ export const Showcase: Story = {
             subtitle="Hidden in compact"
             value={42}
             description="Also hidden"
+            inverted={inverted}
             className="w-40"
           />
           <StatCard
@@ -615,6 +779,7 @@ export const Showcase: Story = {
             subtitle="Visible subtitle"
             value={84}
             description="Visible description text"
+            inverted={inverted}
             className="w-48"
           />
         </Stack>
@@ -626,9 +791,33 @@ export const Showcase: Story = {
           Loading States
         </Heading>
         <Stack direction="horizontal" gap="base">
-          <StatCard loading variant="outlined" label="" value={0} size="sm" className="w-40" />
-          <StatCard loading variant="elevated" label="" value={0} size="md" className="w-48" />
-          <StatCard loading variant="info" label="" value={0} size="lg" className="w-56" />
+          <StatCard
+            loading
+            variant="outlined"
+            label=""
+            value={0}
+            size="sm"
+            inverted={inverted}
+            className="w-40"
+          />
+          <StatCard
+            loading
+            variant="elevated"
+            label=""
+            value={0}
+            size="md"
+            inverted={inverted}
+            className="w-48"
+          />
+          <StatCard
+            loading
+            variant="info"
+            label=""
+            value={0}
+            size="lg"
+            inverted={inverted}
+            className="w-56"
+          />
         </Stack>
       </section>
 
@@ -646,6 +835,7 @@ export const Showcase: Story = {
             description="Average response time across all endpoints"
             trend="-5ms"
             icon="code"
+            inverted={inverted}
             className="w-full"
           />
           <StatCard
@@ -656,6 +846,7 @@ export const Showcase: Story = {
             description="2 minutes of downtime"
             trend="+0.02%"
             icon="resolved"
+            inverted={inverted}
             className="w-full"
           />
           <StatCard
@@ -666,6 +857,7 @@ export const Showcase: Story = {
             description="Consider scaling if it reaches 85%"
             trend="+12%"
             icon="database"
+            inverted={inverted}
             className="w-full"
           />
         </Grid>
@@ -677,14 +869,21 @@ export const Showcase: Story = {
           Dashboard Grid Layout
         </Heading>
         <Grid cols={{ md: 4, lg: 6 }} gap="base">
-          <StatCard label="Users" value={1234} trend="+12%" icon="users" />
-          <StatCard label="Revenue" value="$45.2K" trend="+8%" icon="chart" />
-          <StatCard label="Orders" value={89} trend="-3" icon="package" />
-          <StatCard label="Products" value={456} icon="database" />
-          <StatCard label="Reviews" value={4.8} trend="+0.2" />
-          <StatCard label="Support" value={12} trend="-5" />
+          <StatCard label="Users" value={1234} trend="+12%" icon="users" inverted={inverted} />
+          <StatCard label="Revenue" value="$45.2K" trend="+8%" icon="chart" inverted={inverted} />
+          <StatCard label="Orders" value={89} trend="-3" icon="package" inverted={inverted} />
+          <StatCard label="Products" value={456} icon="database" inverted={inverted} />
+          <StatCard label="Reviews" value={4.8} trend="+0.2" inverted={inverted} />
+          <StatCard label="Support" value={12} trend="-5" inverted={inverted} />
         </Grid>
       </section>
     </Stack>
-  ),
+  )
+}
+
+export const Showcase: Story = {
+  parameters: {
+    layout: 'fullscreen',
+  },
+  render: () => <ShowcaseContent />,
 }

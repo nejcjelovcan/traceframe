@@ -3,4 +3,14 @@
     background-color: rgb(var(--color-surface));
     color: rgb(var(--color-foreground));
   }
+
+  .tf-inverted {
+    --color-surface: var(--color-surface-inverted);
+    --color-surface-muted: var(--color-surface-inverted-muted);
+    --color-foreground: var(--color-foreground-inverted);
+    --color-foreground-muted: var(--color-foreground-inverted-muted);
+    --color-border: var(--color-border-inverted);
+    --color-border-muted: var(--color-border-inverted-muted);
+    color: rgb(var(--color-foreground));
+  }
 }
