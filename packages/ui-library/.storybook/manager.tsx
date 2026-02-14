@@ -1,5 +1,5 @@
 import React from 'react'
-import { addons } from '@storybook/manager-api'
+import { addons } from 'storybook/manager-api'
 
 addons.register('playroom-link', () => {
   const base = window.location.pathname.replace(/\/$/, '')

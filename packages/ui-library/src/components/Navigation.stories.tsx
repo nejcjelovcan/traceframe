@@ -1,7 +1,7 @@
 import { Heading } from './Heading'
 import { Navigation, NavItem } from './Navigation'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Navigation> = {
   title: 'Components/Navigation',

@@ -7,7 +7,7 @@ import { StatCard } from './StatCard.js'
 import { ToggleGroup } from './ToggleGroup.js'
 import { Icon } from '../icons/index.js'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof StatCard> = {
   title: 'Components/StatCard',

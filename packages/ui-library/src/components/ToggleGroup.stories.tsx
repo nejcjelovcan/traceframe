@@ -4,7 +4,7 @@ import { Heading } from './Heading'
 import { Stack } from './Stack'
 import { ToggleGroup, type ToggleGroupOption } from './ToggleGroup'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 type FilterValue = 'all' | 'external' | 'local'
 type ViewMode = 'grid' | 'list' | 'compact'

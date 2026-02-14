@@ -2,7 +2,7 @@ import { BarChart, type BarChartDataItem } from './BarChart'
 import { Heading } from './Heading'
 import { Stack } from './Stack'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const sampleData: BarChartDataItem[] = [
   { label: 'Button', value: 45 },

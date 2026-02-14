@@ -3,7 +3,7 @@ import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { StatCard } from './StatCard'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Grid> = {
   title: 'Components/Grid',

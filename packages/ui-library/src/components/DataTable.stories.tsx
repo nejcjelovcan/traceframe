@@ -8,7 +8,7 @@ import { Heading } from './Heading'
 import { Stack } from './Stack'
 import { Icon } from '../icons/index.js'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 interface SampleRow {
   id: number

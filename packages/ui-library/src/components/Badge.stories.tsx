@@ -3,7 +3,7 @@ import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { Stack } from './Stack'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',

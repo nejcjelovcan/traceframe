@@ -54,21 +54,18 @@ This workspace uses domain-specific MCP servers plus external integrations:
 
 ### mcp-ui Tools
 
-| Tool                            | Use Instead Of                       | Purpose                                            |
-| ------------------------------- | ------------------------------------ | -------------------------------------------------- |
-| `run_or_open_storybook`         | `pnpm --filter ui-library storybook` | Start Storybook or open browser if already running |
-| `stop_storybook`                | -                                    | Stop a running Storybook process                   |
-| `capture_storybook_screenshots` | -                                    | Capture Storybook screenshots for PRs              |
-| `run_or_open_playroom`          | `pnpm playroom`                      | Start Playroom or open browser if already running  |
-| `stop_playroom`                 | -                                    | Stop a running Playroom process                    |
-| `list_components`               | -                                    | List all ui-library components with summaries      |
-| `get_component`                 | -                                    | Get detailed component info (props, usage, a11y)   |
-| `get_design_tokens`             | -                                    | Get design tokens (colors, typography, spacing)    |
-| `get_tailwind_utilities`        | -                                    | Get Tailwind CSS utility classes by category       |
-| `search_icons`                  | -                                    | Search icons by name, description, or aliases      |
-| `list_icons`                    | -                                    | List all icons with optional category filter       |
-| `get_icon`                      | -                                    | Get full metadata for a specific icon              |
-| `validate_tokens`               | -                                    | Validate design token definitions                  |
+| Tool                     | Use Instead Of  | Purpose                                           |
+| ------------------------ | --------------- | ------------------------------------------------- |
+| `run_or_open_playroom`   | `pnpm playroom` | Start Playroom or open browser if already running |
+| `stop_playroom`          | -               | Stop a running Playroom process                   |
+| `list_components`        | -               | List all ui-library components with summaries     |
+| `get_component`          | -               | Get detailed component info (props, usage, a11y)  |
+| `get_design_tokens`      | -               | Get design tokens (colors, typography, spacing)   |
+| `get_tailwind_utilities` | -               | Get Tailwind CSS utility classes by category      |
+| `search_icons`           | -               | Search icons by name, description, or aliases     |
+| `list_icons`             | -               | List all icons with optional category filter      |
+| `get_icon`               | -               | Get full metadata for a specific icon             |
+| `validate_tokens`        | -               | Validate design token definitions                 |
 
 ### Package Names
 
@@ -128,9 +125,8 @@ This creates a `.changeset/<random-name>.md` file. Commit this file with your PR
 
 ### Previewing UI Changes
 
-1. `run_or_open_storybook` - Start Storybook or open browser if running
+1. Run Storybook with `pnpm --filter ui-library storybook`
 2. Verify component renders correctly with all variants
-3. `stop_storybook` - Stop when done (optional)
 
 ## Code Conventions
 
