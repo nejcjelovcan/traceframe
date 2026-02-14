@@ -17,7 +17,7 @@ When using Git MCP tools, the working directory is automatically set via Session
 
 **ALWAYS use MCP tools instead of Bash for git, GitHub, and development operations.** Do NOT use `git` CLI commands or `gh` CLI via Bash when an equivalent MCP tool exists. This applies to all git operations (status, diff, log, add, commit, push, checkout, branch, etc.), all GitHub operations (creating PRs, reading PRs, adding comments, etc.), and all build/test/lint operations (use mcp-dev tools instead of `pnpm` CLI).
 
-**Only use Bash for:** operations without an MCP equivalent (e.g., `pnpm install`, `pnpm changeset`, `pnpm generate:tokens`).
+**Only use Bash for:** operations without an MCP equivalent (e.g., `pnpm generate:tokens`).
 
 ## MCP Servers
 
@@ -46,6 +46,11 @@ This workspace uses domain-specific MCP servers plus external integrations:
 | `get_changed_packages`  | -                               | List packages with uncommitted changes   |
 | `list_package_scripts`  | -                               | List scripts in a package.json (or root) |
 | `run_pnpm_script`       | `pnpm --filter <pkg> <script>`  | Run any pnpm script (package or root)    |
+| `pnpm_add`              | `pnpm add <dep>`                | Add dependency to a package or root      |
+| `pnpm_remove`           | `pnpm remove <dep>`             | Remove dependency from a package or root |
+| `pnpm_install`          | `pnpm install`                  | Install all workspace dependencies       |
+| `pnpm_query`            | `pnpm list/why/outdated`        | Query dependency information             |
+| `create_changeset`      | `pnpm changeset`                | Create changeset file non-interactively  |
 
 ### mcp-ui Tools
 
@@ -96,19 +101,13 @@ Tools accept package names in multiple formats:
 
 ### Changesets (Versioning & Releases)
 
-This project uses [Changesets](https://github.com/changesets/changesets) for semantic versioning and changelog generation. When a PR includes changes to publishable packages, add a changeset file:
+This project uses [Changesets](https://github.com/changesets/changesets) for semantic versioning and changelog generation. When a PR includes changes to publishable packages, add a changeset file using the `create_changeset` mcp-dev tool:
 
-```bash
-pnpm changeset
+```
+create_changeset(packages: ["ui-library"], bump: "minor", summary: "Add new component")
 ```
 
-This prompts you to:
-
-1. Select which packages changed (`ui-library`, `eslint-plugin`, `playroom-preset`, `storybook-preset`)
-2. Choose the semver bump type (`patch` for fixes, `minor` for features, `major` for breaking changes)
-3. Write a short summary of the change (appears in the changelog)
-
-The command creates a `.changeset/<random-name>.md` file. Commit this file with your PR.
+This creates a `.changeset/<random-name>.md` file. Commit this file with your PR.
 
 **When to add a changeset:**
 
@@ -323,6 +322,11 @@ get_issue(id: "TRA-42", includeRelations: true)
 | Fix lint + format     | `pnpm autofix`                      | `autofix`           |
 | Lint                  | `pnpm lint`                         | `lint_fix_package`  |
 | Format check          | `pnpm format:check`                 | `format_package`    |
+| Add dependency        | `pnpm add <dep>`                    | `pnpm_add`          |
+| Remove dependency     | `pnpm remove <dep>`                 | `pnpm_remove`       |
+| Install deps          | `pnpm install`                      | `pnpm_install`      |
+| Query deps            | `pnpm list/why/outdated`            | `pnpm_query`        |
+| Create changeset      | `pnpm changeset`                    | `create_changeset`  |
 | Validate tokens       | `pnpm validate:tokens`              | -                   |
 | Validate token defs   | `pnpm validate:token-definitions`   | -                   |
 

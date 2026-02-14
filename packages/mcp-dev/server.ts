@@ -8,6 +8,11 @@ import {
   buildPackageInputSchema,
 } from './tools/build-package.js'
 import {
+  createChangeset,
+  createChangesetDescription,
+  createChangesetInputSchema,
+} from './tools/create-changeset.js'
+import {
   formatPackage,
   formatPackageDescription,
   formatPackageInputSchema,
@@ -27,6 +32,14 @@ import {
   listPackageScriptsDescription,
   listPackageScriptsInputSchema,
 } from './tools/list-package-scripts.js'
+import { pnpmAdd, pnpmAddDescription, pnpmAddInputSchema } from './tools/pnpm-add.js'
+import {
+  pnpmInstall,
+  pnpmInstallDescription,
+  pnpmInstallInputSchema,
+} from './tools/pnpm-install.js'
+import { pnpmQuery, pnpmQueryDescription, pnpmQueryInputSchema } from './tools/pnpm-query.js'
+import { pnpmRemove, pnpmRemoveDescription, pnpmRemoveInputSchema } from './tools/pnpm-remove.js'
 import {
   runPnpmScript,
   runPnpmScriptDescription,
@@ -286,6 +299,139 @@ export function createServer(): McpServer {
       const result = await getChangedPackages({
         ...(since !== undefined ? { since } : {}),
         ...(includeUntracked !== undefined ? { includeUntracked } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the pnpm_add tool
+  server.registerTool(
+    'pnpm_add',
+    { description: pnpmAddDescription, inputSchema: pnpmAddInputSchema },
+    async (args) => {
+      if (typeof args.dependency !== 'string' || args.dependency === '') {
+        throw new McpError(ErrorCode.InvalidParams, 'dependency is required and must be a string')
+      }
+      const pkg = typeof args.package === 'string' ? args.package : undefined
+      const dev = typeof args.dev === 'boolean' ? args.dev : undefined
+      const exact = typeof args.exact === 'boolean' ? args.exact : undefined
+      const result = await pnpmAdd({
+        dependency: args.dependency,
+        ...(pkg !== undefined ? { package: pkg } : {}),
+        ...(dev !== undefined ? { dev } : {}),
+        ...(exact !== undefined ? { exact } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the pnpm_remove tool
+  server.registerTool(
+    'pnpm_remove',
+    { description: pnpmRemoveDescription, inputSchema: pnpmRemoveInputSchema },
+    async (args) => {
+      if (typeof args.dependency !== 'string' || args.dependency === '') {
+        throw new McpError(ErrorCode.InvalidParams, 'dependency is required and must be a string')
+      }
+      const pkg = typeof args.package === 'string' ? args.package : undefined
+      const result = await pnpmRemove({
+        dependency: args.dependency,
+        ...(pkg !== undefined ? { package: pkg } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the pnpm_install tool
+  server.registerTool(
+    'pnpm_install',
+    { description: pnpmInstallDescription, inputSchema: pnpmInstallInputSchema },
+    async (args) => {
+      const frozen = typeof args.frozen === 'boolean' ? args.frozen : undefined
+      const result = await pnpmInstall({
+        ...(frozen !== undefined ? { frozen } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the pnpm_query tool
+  server.registerTool(
+    'pnpm_query',
+    { description: pnpmQueryDescription, inputSchema: pnpmQueryInputSchema },
+    async (args) => {
+      if (typeof args.command !== 'string') {
+        throw new McpError(ErrorCode.InvalidParams, 'command is required and must be a string')
+      }
+      const pkg = typeof args.package === 'string' ? args.package : undefined
+      const dependency = typeof args.dependency === 'string' ? args.dependency : undefined
+      const depth = typeof args.depth === 'number' ? args.depth : undefined
+      const result = await pnpmQuery({
+        command: args.command as 'list' | 'why' | 'outdated',
+        ...(pkg !== undefined ? { package: pkg } : {}),
+        ...(dependency !== undefined ? { dependency } : {}),
+        ...(depth !== undefined ? { depth } : {}),
+      })
+      return {
+        content: [
+          {
+            type: 'text',
+            text: JSON.stringify(result, null, 2),
+          },
+        ],
+      }
+    }
+  )
+
+  // Register the create_changeset tool
+  server.registerTool(
+    'create_changeset',
+    { description: createChangesetDescription, inputSchema: createChangesetInputSchema },
+    async (args) => {
+      if (!Array.isArray(args.packages) || args.packages.length === 0) {
+        throw new McpError(
+          ErrorCode.InvalidParams,
+          'packages is required and must be a non-empty array'
+        )
+      }
+      if (typeof args.bump !== 'string') {
+        throw new McpError(ErrorCode.InvalidParams, 'bump is required and must be a string')
+      }
+      if (typeof args.summary !== 'string') {
+        throw new McpError(ErrorCode.InvalidParams, 'summary is required and must be a string')
+      }
+      const result = await createChangeset({
+        packages: args.packages as string[],
+        bump: args.bump as 'patch' | 'minor' | 'major',
+        summary: args.summary,
       })
       return {
         content: [
