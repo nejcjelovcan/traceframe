@@ -34,7 +34,7 @@
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
     "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
-    "format:check": "prettier --cache --check \"**/*.{ts,tsx,json,md,css}\""
+    "format:check": "prettier --check \"**/*.{ts,tsx,json,md,css}\""
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

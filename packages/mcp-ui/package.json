@@ -20,8 +20,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"**/*.ts\" --ignore-pattern \"dist/**\"",
     "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"**/*.ts\" --ignore-pattern \"dist/**\"",
-    "format": "prettier --cache --write \"**/*.{ts,json,md}\"",
-    "format:check": "prettier --cache --check \"**/*.{ts,json,md}\""
+    "format": "prettier --write \"**/*.{ts,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,json,md}\""
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"

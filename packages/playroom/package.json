@@ -7,8 +7,8 @@
     "build": "playroom build",
     "start": "playroom start",
     "build:playroom": "playroom build",
-    "format": "prettier --cache --write \"**/*.{json,md,cjs}\"",
-    "format:check": "prettier --cache --check \"**/*.{json,md,cjs}\""
+    "format": "prettier --write \"**/*.{json,md,cjs}\"",
+    "format:check": "prettier --check \"**/*.{json,md,cjs}\""
   },
   "dependencies": {
     "@nejcjelovcan/traceframe-playroom-preset": "workspace:*",
