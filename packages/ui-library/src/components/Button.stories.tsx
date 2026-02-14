@@ -291,6 +291,32 @@ export const IconsWithSizes: Story = {
   ),
 }
 
+export const AsChild: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Using `asChild` to render as a different element (e.g., an `<a>` tag for external links). Button styles are merged onto the child element.',
+      },
+    },
+  },
+  render: () => (
+    <Stack direction="horizontal" gap="sm">
+      <Button asChild variant="outline" rightIcon="external">
+        <a href="https://linear.app" target="_blank" rel="noopener noreferrer">
+          View Issue
+        </a>
+      </Button>
+      <Button asChild variant="primary" rightIcon="arrow-right">
+        <a href="/dashboard">Go to Dashboard</a>
+      </Button>
+      <Button asChild variant="ghost">
+        <a href="/settings">Settings</a>
+      </Button>
+    </Stack>
+  ),
+}
+
 export const AllVariants: Story = {
   render: () => (
     <Stack direction="vertical" gap="lg">
