@@ -1,10 +1,5 @@
 @import 'tailwindcss';
-
-@source "../../.storybook/**/*.{ts,tsx}";
-@variant dark (&:where(.dark, .dark *));
-
 @import './generated/tailwind-theme.css';
-
 @import './index.base.css';
 @import './generated/palette.dusk.css';
 @import './generated/palette.arctic.css';
@@ -14,3 +9,6 @@
 @import './generated/theme.ember.css';
 @import './generated/semantic.light.css';
 @import './generated/semantic.dark.css';
+
+@source "../../.storybook/**/*.{ts,tsx}";
+@variant dark (&:where(.dark, .dark *));
