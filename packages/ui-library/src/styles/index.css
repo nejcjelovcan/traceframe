@@ -1,5 +1,8 @@
 @import 'tailwindcss';
-@config "../../tailwind.config.ts";
+
+@source "../../.storybook/**/*.{ts,tsx}";
+@variant dark (&:where(.dark, .dark *));
+
 @import './generated/tailwind-theme.css';
 
 @import './index.base.css';
