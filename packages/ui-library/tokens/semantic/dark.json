@@ -18,6 +18,16 @@
         "$value": "{palette.neutral.800}",
         "$type": "color",
         "$description": "Tertiary surface for hover states, wells, and recessed areas"
+      },
+      "inverted": {
+        "$value": "{palette.neutral.100}",
+        "$type": "color",
+        "$description": "Inverted surface for light backgrounds in dark mode",
+        "muted": {
+          "$value": "{palette.neutral.200}",
+          "$type": "color",
+          "$description": "Secondary inverted surface for nested elements within inverted containers"
+        }
       }
     },
     "foreground": {
@@ -48,6 +58,16 @@
         "$value": "{palette.neutral.800}",
         "$type": "color",
         "$description": "Subtle border for dividers, separators, and less prominent boundaries"
+      },
+      "inverted": {
+        "$value": "{palette.neutral.200}",
+        "$type": "color",
+        "$description": "Border color for inverted surfaces",
+        "muted": {
+          "$value": "{palette.neutral.100}",
+          "$type": "color",
+          "$description": "Subtle border for dividers within inverted containers"
+        }
       }
     },
     "ring": {

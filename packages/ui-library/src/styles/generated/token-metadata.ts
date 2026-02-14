@@ -73,6 +73,9 @@ export const TOKEN_METADATA = {
         DEFAULT: 'Primary surface color for backgrounds and containers',
         muted: 'Secondary surface for sidebars, alternating rows, and nested elements',
         subtle: 'Tertiary surface for hover states, wells, and recessed areas',
+        inverted: 'Inverted surface for dark backgrounds in light mode',
+        'inverted-muted':
+          'Secondary inverted surface for nested elements within inverted containers',
       },
     },
     foreground: {
@@ -89,6 +92,8 @@ export const TOKEN_METADATA = {
       variants: {
         DEFAULT: 'Primary border color for inputs, cards, and containers',
         muted: 'Subtle border for dividers, separators, and less prominent boundaries',
+        inverted: 'Border color for inverted surfaces',
+        'inverted-muted': 'Subtle border for dividers within inverted containers',
       },
     },
     ring: {

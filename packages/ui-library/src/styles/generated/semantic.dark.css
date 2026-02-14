@@ -53,6 +53,10 @@
 
     /* Primary border color for inputs, cards, and containers */
     --color-border: var(--palette-neutral-700);
+    /* Border color for inverted surfaces */
+    --color-border-inverted: var(--palette-neutral-200);
+    /* Subtle border for dividers within inverted containers */
+    --color-border-inverted-muted: var(--palette-neutral-100);
     /* Subtle border for dividers, separators, and less prominent boundaries */
     --color-border-muted: var(--palette-neutral-800);
 
@@ -63,9 +67,9 @@
 
     /* Primary text and icon color for headings and body text */
     --color-foreground: var(--palette-neutral-50);
-    /* Text color on light backgrounds in dark mode */
+    /* Text color on dark backgrounds like primary buttons */
     --color-foreground-inverted: var(--palette-neutral-950);
-    /* Secondary text color on light backgrounds in dark mode */
+    /* Secondary text color on dark backgrounds */
     --color-foreground-inverted-muted: var(--palette-neutral-600);
     /* Secondary text for descriptions, placeholders, and less prominent content */
     --color-foreground-muted: var(--palette-neutral-400);
@@ -147,6 +151,10 @@
 
     /* Primary surface color for backgrounds and containers */
     --color-surface: var(--palette-neutral-950);
+    /* Inverted surface for light backgrounds in dark mode */
+    --color-surface-inverted: var(--palette-neutral-100);
+    /* Secondary inverted surface for nested elements within inverted containers */
+    --color-surface-inverted-muted: var(--palette-neutral-200);
     /* Secondary surface for sidebars, alternating rows, and nested elements */
     --color-surface-muted: var(--palette-neutral-900);
     /* Tertiary surface for hover states, wells, and recessed areas */
@@ -154,10 +162,10 @@
 
     /* Tooltip background color for contextual help and hints */
     --color-tooltip: var(--palette-neutral-800);
-    /* Tooltip text color for readability on tooltip backgrounds */
+    /* Tooltip text color for readability on dark tooltip backgrounds */
     --color-tooltip-foreground: var(--palette-neutral-50);
 
-    /* Primary shadow color for elevation effects (darker in dark mode for depth) */
+    /* Primary shadow color for elevation effects */
     --color-shadow: var(--palette-neutral-950);
   }
 }

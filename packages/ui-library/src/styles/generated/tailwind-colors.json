@@ -5,7 +5,9 @@
   "surface": {
     "DEFAULT": "rgb(var(--color-surface) / <alpha-value>)",
     "muted": "rgb(var(--color-surface-muted) / <alpha-value>)",
-    "subtle": "rgb(var(--color-surface-subtle) / <alpha-value>)"
+    "subtle": "rgb(var(--color-surface-subtle) / <alpha-value>)",
+    "inverted": "rgb(var(--color-surface-inverted) / <alpha-value>)",
+    "inverted-muted": "rgb(var(--color-surface-inverted-muted) / <alpha-value>)"
   },
   "foreground": {
     "DEFAULT": "rgb(var(--color-foreground) / <alpha-value>)",
@@ -15,7 +17,9 @@
   },
   "border": {
     "DEFAULT": "rgb(var(--color-border) / <alpha-value>)",
-    "muted": "rgb(var(--color-border-muted) / <alpha-value>)"
+    "muted": "rgb(var(--color-border-muted) / <alpha-value>)",
+    "inverted": "rgb(var(--color-border-inverted) / <alpha-value>)",
+    "inverted-muted": "rgb(var(--color-border-inverted-muted) / <alpha-value>)"
   },
   "ring": {
     "DEFAULT": "rgb(var(--color-ring) / <alpha-value>)"

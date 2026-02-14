@@ -9,6 +9,7 @@
  * Pattern follows TOKEN_METADATA generation via Style Dictionary.
  */
 import { readFileSync, readdirSync, writeFileSync, mkdirSync } from 'node:fs'
+import { execSync } from 'node:child_process'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -425,6 +426,9 @@ function main() {
 
   mkdirSync(OUTPUT_DIR, { recursive: true })
   writeFileSync(OUTPUT_FILE, output, 'utf-8')
+
+  // Format the generated file so it passes format:check in CI
+  execSync(`npx prettier --write "${OUTPUT_FILE}"`, { stdio: 'ignore' })
 
   console.log(`\n✅ Generated ${OUTPUT_FILE}`)
   console.log(`   ${Object.keys(metadata).length} components`)

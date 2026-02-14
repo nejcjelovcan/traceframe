@@ -246,6 +246,27 @@ describe('StatCard', () => {
     })
   })
 
+  describe('inverted prop', () => {
+    it('passes inverted prop to Card', () => {
+      render(<StatCard label="Test" value={42} inverted data-testid="card" />)
+      const card = screen.getByTestId('card')
+      expect(card.className).toContain('tf-inverted')
+    })
+
+    it('does not apply tf-inverted when inverted is not set', () => {
+      render(<StatCard label="Test" value={42} data-testid="card" />)
+      const card = screen.getByTestId('card')
+      expect(card.className).not.toContain('tf-inverted')
+    })
+
+    it('combines inverted with variant', () => {
+      render(<StatCard label="Test" value={42} variant="elevated" inverted data-testid="card" />)
+      const card = screen.getByTestId('card')
+      expect(card.className).toContain('tf-inverted')
+      expect(card.className).toContain('shadow-md')
+    })
+  })
+
   describe('new props', () => {
     it('accepts showTrendIcon prop', () => {
       render(<StatCard label="Test" value={42} trend="+5%" showTrendIcon={false} />)

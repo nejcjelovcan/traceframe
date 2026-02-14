@@ -28,9 +28,68 @@ const cardVariants = cva('rounded border', {
       accent4: 'bg-accent-4-muted text-accent-4-foreground border-accent-4-border',
       accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-border',
     },
+    inverted: {
+      true: '',
+      false: '',
+    },
   },
+  compoundVariants: [
+    // Core variants: CSS variable override for full semantic token inversion
+    { variant: 'outlined', inverted: true, class: 'tf-inverted' },
+    { variant: 'elevated', inverted: true, class: 'tf-inverted' },
+
+    // Status variants: filled/solid look with emphasis background and inverted text
+    {
+      variant: 'info',
+      inverted: true,
+      class: 'bg-status-info-emphasis text-foreground-inverted border-status-info',
+    },
+    {
+      variant: 'success',
+      inverted: true,
+      class: 'bg-status-success-emphasis text-foreground-inverted border-status-success',
+    },
+    {
+      variant: 'warning',
+      inverted: true,
+      class: 'bg-status-warning-emphasis text-foreground-inverted border-status-warning',
+    },
+    {
+      variant: 'error',
+      inverted: true,
+      class: 'bg-status-error-emphasis text-foreground-inverted border-status-error',
+    },
+
+    // Accent variants: filled/solid look with emphasis background and inverted text
+    {
+      variant: 'accent1',
+      inverted: true,
+      class: 'bg-accent-1-emphasis text-foreground-inverted border-accent-1',
+    },
+    {
+      variant: 'accent2',
+      inverted: true,
+      class: 'bg-accent-2-emphasis text-foreground-inverted border-accent-2',
+    },
+    {
+      variant: 'accent3',
+      inverted: true,
+      class: 'bg-accent-3-emphasis text-foreground-inverted border-accent-3',
+    },
+    {
+      variant: 'accent4',
+      inverted: true,
+      class: 'bg-accent-4-emphasis text-foreground-inverted border-accent-4',
+    },
+    {
+      variant: 'accent5',
+      inverted: true,
+      class: 'bg-accent-5-emphasis text-foreground-inverted border-accent-5',
+    },
+  ],
   defaultVariants: {
     variant: 'outlined',
+    inverted: false,
   },
 })
 
@@ -39,8 +98,10 @@ export interface CardProps
   extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {}
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, ...props }, ref) => {
-    return <div className={cn(cardVariants({ variant, className }))} ref={ref} {...props} />
+  ({ className, variant, inverted, ...props }, ref) => {
+    return (
+      <div className={cn(cardVariants({ variant, inverted }), className)} ref={ref} {...props} />
+    )
   }
 )
 
