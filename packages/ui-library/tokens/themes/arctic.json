@@ -69,17 +69,17 @@
 
   "shadow": {
     "sm": {
-      "$value": "0 1px 2px 0 rgb(var(--color-shadow) / 0.03)",
+      "$value": "0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 3%, transparent)",
       "$type": "shadow",
       "$description": "Small shadow - barely perceptible, crisp"
     },
     "md": {
-      "$value": "0 2px 4px -1px rgb(var(--color-shadow) / 0.05), 0 1px 2px -1px rgb(var(--color-shadow) / 0.03)",
+      "$value": "0 2px 4px -1px color-mix(in srgb, var(--color-shadow) 5%, transparent), 0 1px 2px -1px color-mix(in srgb, var(--color-shadow) 3%, transparent)",
       "$type": "shadow",
       "$description": "Medium shadow - subtle, clean elevation"
     },
     "lg": {
-      "$value": "0 6px 12px -3px rgb(var(--color-shadow) / 0.07), 0 3px 6px -3px rgb(var(--color-shadow) / 0.04)",
+      "$value": "0 6px 12px -3px color-mix(in srgb, var(--color-shadow) 7%, transparent), 0 3px 6px -3px color-mix(in srgb, var(--color-shadow) 4%, transparent)",
       "$type": "shadow",
       "$description": "Large shadow - restrained, professional"
     }
