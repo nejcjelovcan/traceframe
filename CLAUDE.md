@@ -17,7 +17,7 @@ When using Git MCP tools, the working directory is automatically set via Session
 
 **ALWAYS use MCP tools instead of Bash for git, GitHub, and development operations.** Do NOT use `git` CLI commands or `gh` CLI via Bash when an equivalent MCP tool exists. This applies to all git operations (status, diff, log, add, commit, push, checkout, branch, etc.), all GitHub operations (creating PRs, reading PRs, adding comments, etc.), and all build/test/lint operations (use mcp-dev tools instead of `pnpm` CLI).
 
-**Only use Bash for:** operations without an MCP equivalent (e.g., `pnpm install`, `pnpm changeset`, `pnpm generate:tokens`).
+**Only use Bash for:** operations without an MCP equivalent (e.g., `pnpm generate:tokens`).
 
 ## MCP Servers
 
@@ -46,6 +46,11 @@ This workspace uses domain-specific MCP servers plus external integrations:
 | `get_changed_packages`  | -                               | List packages with uncommitted changes   |
 | `list_package_scripts`  | -                               | List scripts in a package.json (or root) |
 | `run_pnpm_script`       | `pnpm --filter <pkg> <script>`  | Run any pnpm script (package or root)    |
+| `pnpm_add`              | `pnpm add <dep>`                | Add dependency to a package or root      |
+| `pnpm_remove`           | `pnpm remove <dep>`             | Remove dependency from a package or root |
+| `pnpm_install`          | `pnpm install`                  | Install all workspace dependencies       |
+| `pnpm_query`            | `pnpm list/why/outdated`        | Query dependency information             |
+| `create_changeset`      | `pnpm changeset`                | Create changeset file non-interactively  |
 
 ### mcp-ui Tools
 

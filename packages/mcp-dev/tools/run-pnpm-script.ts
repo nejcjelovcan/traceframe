@@ -40,7 +40,7 @@ export const runPnpmScriptInputSchema = {
  * Description for the run_pnpm_script tool.
  */
 export const runPnpmScriptDescription =
-  'Run any pnpm script defined in a package or root package.json. Use this for scripts not covered by dedicated tools (build, test, typecheck, etc.).'
+  'Run any pnpm script defined in a package or root package.json. Only for scripts listed in package.json, NOT for pnpm CLI commands (add, remove, install) - use dedicated tools for those.'
 
 /**
  * Input arguments for runPnpmScript function.
