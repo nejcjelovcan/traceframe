@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-playroom-preset
 
+## 0.1.4
+
+### Patch Changes
+
+- [#29](https://github.com/nejcjelovcan/traceframe/pull/29) [`3d39d1a`](https://github.com/nejcjelovcan/traceframe/commit/3d39d1aa0551d95c93d690b705c030dddece28a3) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add `frameComponent` option to `createPlayroomConfig()` so consumers can provide a custom frame component path
+
 ## 0.1.3
 
 ### Patch Changes
