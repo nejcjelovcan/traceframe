@@ -50,13 +50,27 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 
 ### Actions
 
-| Name         | Use Case                        |
-| ------------ | ------------------------------- |
-| `search`     | Search inputs and actions       |
-| `search-off` | "No results found" empty states |
-| `close`      | Close buttons, dismiss, clear   |
-| `check`      | Success states, selected items  |
-| `copy`       | Copy-to-clipboard actions       |
+| Name            | Use Case                             |
+| --------------- | ------------------------------------ |
+| `search`        | Search inputs and actions            |
+| `search-off`    | "No results found" empty states      |
+| `close`         | Close buttons, dismiss, clear        |
+| `check`         | Success states, selected items       |
+| `copy`          | Copy-to-clipboard actions            |
+| `plus`          | Add/create actions, increment        |
+| `minus`         | Remove actions, decrement, collapse  |
+| `trash`         | Destructive delete actions           |
+| `settings`      | Settings, preferences, configuration |
+| `menu`          | Hamburger menu, sidebar toggles      |
+| `filter`        | Filtering, faceted search            |
+| `link`          | Hyperlinks, URL references           |
+| `upload`        | File upload, data import             |
+| `download`      | File download, data export           |
+| `eye-off`       | Toggle visibility off, hide content  |
+| `lock`          | Locked/protected content, security   |
+| `help`          | Help tooltips, documentation links   |
+| `bookmark`      | Saved/favorited items                |
+| `dots-vertical` | Vertical "more" menu (kebab)         |
 
 ### Status & Feedback
 
@@ -68,6 +82,9 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 | `unresolved`   | Unresolved imports, broken references           |
 | `pending`      | In-progress states                              |
 | `empty`        | Empty/null/unset states                         |
+| `success`      | Success states, completed operations            |
+| `error`        | Error states, failed operations                 |
+| `warning`      | Warning states, caution indicators              |
 
 ### Sorting
 
@@ -99,6 +116,8 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 | `location-code`    | Code locations, line numbers               |
 | `external`         | External dependencies (node_modules)       |
 | `internal`         | Local/internal imports                     |
+| `folder`           | Directories, file system organization      |
+| `hash`             | Tags, channels, ID references              |
 
 ### Code & Props
 
@@ -124,6 +143,9 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 | `chart`      | Statistics, analytics, metrics    |
 | `users`      | User counts, team metrics         |
 | `components` | Component counts, component lists |
+| `calendar`   | Date pickers, scheduling          |
+| `clock`      | Time display, timestamps          |
+| `history`    | Version history, recent items     |
 
 ### Agentic Workflows
 
@@ -147,6 +169,28 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 | `polling`      | Polling or repeated checking               |
 | `start`        | Starting workflows or processes            |
 | `stop`         | Stopping workflows or processes            |
+
+### Brand & Integrations
+
+| Name     | Use Case                              |
+| -------- | ------------------------------------- |
+| `github` | GitHub integrations, repository links |
+| `linear` | Linear integrations, issue tracking   |
+
+### Developer Tools
+
+| Name               | Use Case                              |
+| ------------------ | ------------------------------------- |
+| `terminal`         | CLI, command execution, console       |
+| `git-branch`       | Branch visualization, version control |
+| `git-merge`        | Merge operations, combining branches  |
+| `git-pull-request` | Pull request references, code review  |
+| `bug`              | Bug reports, debugging                |
+| `test-tube`        | Testing, test runs, experiments       |
+| `rocket`           | Deployment, launches, releases        |
+| `sparkles`         | AI features, magic/auto actions       |
+| `bolt`             | Performance, speed, instant actions   |
+| `palette`          | Design tokens, theming, color config  |
 
 ## Applying Colors
 
