@@ -61,7 +61,7 @@
     "style-loader": "^4.0.0"
   },
   "peerDependencies": {
-    "playroom": "^1.0.0",
+    "playroom": "^1.0.7",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
