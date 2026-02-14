@@ -4,6 +4,12 @@
 
 ### Patch Changes
 
+- [#40](https://github.com/nejcjelovcan/traceframe/pull/40) [`f160511`](https://github.com/nejcjelovcan/traceframe/commit/f1605114a23e05448678a718834d5dbf5d362749) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix foreground-muted contrast to meet WCAG AA standards
+
+## 0.4.1
+
+### Patch Changes
+
 - Fix foreground-muted contrast to meet WCAG AA standards. Updated light theme foreground-muted token from neutral.500 to neutral.600 to achieve WCAG AA compliance (4.5:1 contrast ratio). This improves readability for secondary text in components like Badge, Input placeholders, DataTable secondary columns, EmptyState/ErrorState descriptions, and Navigation secondary labels.
 
 ## 0.4.0
