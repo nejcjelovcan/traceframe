@@ -55,6 +55,8 @@ pnpm --filter @nejcjelovcan/mcp-dev start
 | `format_package`        | Run prettier format for a single package                       |
 | `run_single_test`       | Run a specific test file with optional grep filter             |
 | `get_changed_packages`  | List packages affected by uncommitted changes or since a ref   |
+| `list_package_scripts`  | List all scripts defined in a package's package.json           |
+| `run_pnpm_script`       | Run an arbitrary pnpm script for a package                     |
 
 ## Tool Details
 
@@ -166,14 +168,46 @@ Returns:
 }
 ```
 
+### list_package_scripts
+
+List all scripts defined in a package's `package.json`. Shows which scripts have dedicated mcp-dev tools.
+
+```json
+{
+  "package": "ui-library"
+}
+```
+
+Omit `package` to list scripts from the root `package.json`. The output annotates scripts that have dedicated tools (e.g., `build` -> `build_package`, `test` -> `test_package`).
+
+### run_pnpm_script
+
+Run any pnpm script defined in a package or root `package.json`. Use this for scripts not covered by dedicated tools (build, test, typecheck, etc.).
+
+```json
+{
+  "script": "generate:component-metadata",
+  "package": "ui-library",
+  "args": "--watch"
+}
+```
+
+Parameters:
+
+- `script` (required) - The npm script name to run
+- `package` (optional) - Package to target via `pnpm --filter`. Omit to run at workspace root
+- `args` (optional) - Extra arguments appended after `--`
+
 ## Package Resolution
 
 All package tools accept packages in multiple formats:
 
 - **Full scoped name**: `@myorg/ui-library`
 - **Bare package name**: `ui-library`, `utils`
+- **Directory name**: `ui-library` matches `packages/ui-library`
+- **Suffix match**: `ui-library` matches `@scope/traceframe-ui-library`
 
-The resolver dynamically detects scopes from your workspace packages, so it works with any npm scope.
+The resolver dynamically detects scopes from your workspace packages, so it works with any npm scope. Directory name matching uses the last segment of the package path, and suffix matching checks if the unscoped name ends with `-{input}`.
 
 ## Dependencies
 

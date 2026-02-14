@@ -15,20 +15,37 @@ When using Git MCP tools, the working directory is automatically set via Session
 
 ## Tool Usage: MCP First
 
-**ALWAYS use MCP tools instead of Bash for git and GitHub operations.** Do NOT use `git` CLI commands or `gh` CLI via Bash when an equivalent MCP tool exists. This applies to all git operations (status, diff, log, add, commit, push, checkout, branch, etc.) and all GitHub operations (creating PRs, reading PRs, adding comments, etc.).
+**ALWAYS use MCP tools instead of Bash for git, GitHub, and development operations.** Do NOT use `git` CLI commands or `gh` CLI via Bash when an equivalent MCP tool exists. This applies to all git operations (status, diff, log, add, commit, push, checkout, branch, etc.), all GitHub operations (creating PRs, reading PRs, adding comments, etc.), and all build/test/lint operations (use mcp-dev tools instead of `pnpm` CLI).
 
-**Only use Bash for:** build commands (`pnpm build`, `pnpm test`, `pnpm autofix`, etc.) and other non-git/non-GitHub shell operations.
+**Only use Bash for:** operations without an MCP equivalent (e.g., `pnpm install`, `pnpm changeset`, `pnpm generate:tokens`).
 
 ## MCP Servers
 
 This workspace uses domain-specific MCP servers plus external integrations:
 
-| Server        | Package                           | Purpose                            |
-| ------------- | --------------------------------- | ---------------------------------- |
-| mcp-ui        | `@nejcjelovcan/traceframe-mcp-ui` | UI tooling (components, Storybook) |
-| github        | `github/github-mcp-server`        | GitHub PRs and code review         |
-| git           | `@cyanheads/git-mcp-server`       | Git operations                     |
-| linear-server | Linear HTTP MCP                   | Linear issues and projects         |
+| Server        | Package                           | Purpose                               |
+| ------------- | --------------------------------- | ------------------------------------- |
+| mcp-dev       | `@nejcjelovcan/mcp-dev`           | Development tools (build, test, lint) |
+| mcp-ui        | `@nejcjelovcan/traceframe-mcp-ui` | UI tooling (components, Storybook)    |
+| github        | `github/github-mcp-server`        | GitHub PRs and code review            |
+| git           | `@cyanheads/git-mcp-server`       | Git operations                        |
+| linear-server | Linear HTTP MCP                   | Linear issues and projects            |
+
+### mcp-dev Tools
+
+| Tool                    | Use Instead Of                  | Purpose                                  |
+| ----------------------- | ------------------------------- | ---------------------------------------- |
+| `autofix`               | `pnpm autofix`                  | Run lint:fix and format across workspace |
+| `build_package`         | `pnpm --filter <pkg> build`     | Build a package with dependencies        |
+| `test_package`          | `pnpm --filter <pkg> test`      | Run tests for a package                  |
+| `test_package_coverage` | `pnpm --filter <pkg> test:ci`   | Run tests with coverage                  |
+| `typecheck_package`     | `pnpm --filter <pkg> typecheck` | Type-check a package                     |
+| `lint_fix_package`      | `pnpm --filter <pkg> lint:fix`  | Run lint:fix for a package               |
+| `format_package`        | `pnpm --filter <pkg> format`    | Run prettier for a package               |
+| `run_single_test`       | `pnpm vitest run <file>`        | Run a specific test file                 |
+| `get_changed_packages`  | -                               | List packages with uncommitted changes   |
+| `list_package_scripts`  | -                               | List all scripts in a package.json       |
+| `run_pnpm_script`       | `pnpm --filter <pkg> <script>`  | Run any pnpm script for a package        |
 
 ### mcp-ui Tools
 
@@ -66,10 +83,10 @@ Tools accept package names in multiple formats:
 
 ### After Writing Code
 
-1. **Autofix** - Run `pnpm autofix` to fix formatting and lint issues
-2. **Build** - Run `pnpm --filter <package> build` to verify build
-3. **Tests** - Run `pnpm --filter <package> test` for the modified package
-4. **Typecheck** - Run `pnpm --filter <package> typecheck` if types changed
+1. **Autofix** - Use `autofix` mcp-dev tool to fix formatting and lint issues
+2. **Build** - Use `build_package` mcp-dev tool to verify build
+3. **Tests** - Use `test_package` mcp-dev tool for the modified package
+4. **Typecheck** - Use `typecheck_package` mcp-dev tool if types changed
 
 ### Before Committing
 
@@ -293,19 +310,21 @@ get_issue(id: "TRA-42", includeRelations: true)
 
 ## CLI Commands Reference
 
-| Operation             | Command                             |
-| --------------------- | ----------------------------------- |
-| Build all packages    | `pnpm build`                        |
-| Build one package     | `pnpm --filter <package> build`     |
-| Run all tests         | `pnpm test`                         |
-| Run package tests     | `pnpm --filter <package> test`      |
-| Typecheck all         | `pnpm typecheck`                    |
-| Typecheck one package | `pnpm --filter <package> typecheck` |
-| Fix lint + format     | `pnpm autofix`                      |
-| Lint                  | `pnpm lint`                         |
-| Format check          | `pnpm format:check`                 |
-| Validate tokens       | `pnpm validate:tokens`              |
-| Validate token defs   | `pnpm validate:token-definitions`   |
+> **Note:** Prefer mcp-dev tools over CLI commands. Use CLI only when no MCP equivalent exists.
+
+| Operation             | Command                             | mcp-dev Tool        |
+| --------------------- | ----------------------------------- | ------------------- |
+| Build all packages    | `pnpm build`                        | -                   |
+| Build one package     | `pnpm --filter <package> build`     | `build_package`     |
+| Run all tests         | `pnpm test`                         | -                   |
+| Run package tests     | `pnpm --filter <package> test`      | `test_package`      |
+| Typecheck all         | `pnpm typecheck`                    | -                   |
+| Typecheck one package | `pnpm --filter <package> typecheck` | `typecheck_package` |
+| Fix lint + format     | `pnpm autofix`                      | `autofix`           |
+| Lint                  | `pnpm lint`                         | `lint_fix_package`  |
+| Format check          | `pnpm format:check`                 | `format_package`    |
+| Validate tokens       | `pnpm validate:tokens`              | -                   |
+| Validate token defs   | `pnpm validate:token-definitions`   | -                   |
 
 ## Package Structure
 

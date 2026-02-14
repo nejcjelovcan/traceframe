@@ -241,6 +241,8 @@ Available tools:
 | `format_package`        | Run prettier for a package                    |
 | `run_single_test`       | Run a specific test file                      |
 | `get_changed_packages`  | List packages affected by uncommitted changes |
+| `list_package_scripts`  | List all scripts in a package's package.json  |
+| `run_pnpm_script`       | Run any pnpm script for a package             |
 
 For building custom MCP servers, use the shared utilities:
 
