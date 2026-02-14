@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 0.4.0
+
+### Minor Changes
+
+- [#34](https://github.com/nejcjelovcan/traceframe/pull/34) [`f7943d0`](https://github.com/nejcjelovcan/traceframe/commit/f7943d0440f126a14038a131fa5eb7a9a0222e6a) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add inverted prop to Card and StatCard components. Core variants (outlined, elevated) use CSS variable override scoping for full color inversion. Status variants (info, success, warning, error) and accent variants (accent1-5) use filled/solid emphasis backgrounds with inverted text. Includes new semantic tokens for inverted surfaces and borders.
+
 ## 0.3.0
 
 ### Minor Changes

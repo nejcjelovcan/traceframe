@@ -1,5 +1,11 @@
 # @nejcjelovcan/mcp-dev
 
+## 0.3.0
+
+### Minor Changes
+
+- [#32](https://github.com/nejcjelovcan/traceframe/pull/32) [`1bbf30e`](https://github.com/nejcjelovcan/traceframe/commit/1bbf30e2c7288fc2d975ae4cc168125623a529bc) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add pnpm dependency management tools (pnpm_add, pnpm_remove, pnpm_install, pnpm_query) and non-interactive create_changeset tool
+
 ## 0.2.0
 
 ### Minor Changes
