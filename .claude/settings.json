@@ -54,7 +54,8 @@
       "mcp__git__git_rebase",
       "mcp__git__git_set_working_dir",
       "mcp__linear-server__*",
-      "mcp__mcp-ui__*"
+      "mcp__mcp-ui__*",
+      "mcp__mcp-dev__*"
     ]
   }
 }
