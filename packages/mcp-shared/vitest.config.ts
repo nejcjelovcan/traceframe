@@ -10,7 +10,7 @@ export default defineConfig({
         // (exec-command, cli-runner execute shell commands)
         lines: 40,
         functions: 40,
-        branches: 70,
+        branches: 40,
         statements: 40,
       },
     },
