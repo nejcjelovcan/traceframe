@@ -1,7 +1,7 @@
 @layer base {
   body {
-    background-color: rgb(var(--color-surface));
-    color: rgb(var(--color-foreground));
+    background-color: var(--color-surface);
+    color: var(--color-foreground);
   }
 
   .tf-inverted {
@@ -11,6 +11,6 @@
     --color-foreground-muted: var(--color-foreground-inverted-muted);
     --color-border: var(--color-border-inverted);
     --color-border-muted: var(--color-border-inverted-muted);
-    color: rgb(var(--color-foreground));
+    color: var(--color-foreground);
   }
 }
