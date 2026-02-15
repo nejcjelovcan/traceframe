@@ -65,6 +65,9 @@ export const TOKEN_METADATA = {
         sm: 'Small shadow with slightly deeper intensity for drama',
         md: 'Medium shadow for cards, dropdowns',
         lg: 'Large shadow for modals, popovers - deeper for mystery',
+        interactive: '',
+        highlight: '',
+        inset: '',
       },
     },
     surface: {
@@ -279,6 +282,45 @@ export const TOKEN_METADATA = {
         value:
           '0 12px 20px -4px color-mix(in srgb, var(--color-shadow) 15%, transparent), 0 4px 8px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent)',
         description: 'Large shadow for modals, popovers - deeper for mystery',
+      },
+      interactive: {
+        value: '0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent)',
+        description: 'Resting shadow for interactive elements',
+      },
+      'interactive-hover': {
+        value:
+          '0 6px 12px -2px color-mix(in srgb, var(--color-shadow) 14%, transparent), 0 3px 6px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent)',
+        description: 'Elevated shadow for hover state',
+      },
+      'interactive-pressed': {
+        value: '0 1px 2px 0 color-mix(in srgb, var(--color-shadow) 8%, transparent)',
+        description: 'Compressed shadow for pressed/active state',
+      },
+      highlight: {
+        value:
+          '0 4px 8px -1px color-mix(in srgb, var(--color-shadow) 12%, transparent), 0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 8%, transparent)',
+        description: 'Prominent resting shadow for featured elements',
+      },
+      'highlight-hover': {
+        value:
+          '0 8px 16px -3px color-mix(in srgb, var(--color-shadow) 16%, transparent), 0 4px 8px -3px color-mix(in srgb, var(--color-shadow) 12%, transparent)',
+        description: 'Elevated shadow for highlighted hover state',
+      },
+      'highlight-pressed': {
+        value: '0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent)',
+        description: 'Compressed shadow for highlighted pressed state',
+      },
+      'inset-sm': {
+        value: 'inset 0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 8%, transparent)',
+        description: 'Small inset shadow for subtle pressed states',
+      },
+      'inset-md': {
+        value: 'inset 0 4px 8px 0 color-mix(in srgb, var(--color-shadow) 10%, transparent)',
+        description: 'Medium inset shadow for standard pressed states',
+      },
+      'inset-underline': {
+        value: 'inset 0 -2px 0 0',
+        description: 'Bottom underline effect for active indicators',
       },
     },
     spacing: {

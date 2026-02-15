@@ -71,15 +71,33 @@ export default function cssThemeFormatter({ options = {} }) {
     output += '\n'
   }
 
-  // Output shadows
+  // Output shadows recursively to handle nested structure
   if (themeData.shadow) {
     output += '    /* Shadows */\n'
 
-    for (const size of Object.keys(themeData.shadow)) {
-      const shadowValue = themeData.shadow[size].$value
-      output += `    --shadow-${size}: ${shadowValue};\n`
+    // Helper function to recursively process shadow tokens
+    const processShadowTokens = (obj, prefix = '') => {
+      for (const key of Object.keys(obj)) {
+        const value = obj[key]
+
+        if (value.$value && value.$type === 'shadow') {
+          // This is a shadow token, output it
+          // Handle DEFAULT keys specially - they map to parent name
+          const varName = key === 'DEFAULT' && prefix
+            ? `--shadow-${prefix}`
+            : prefix
+              ? `--shadow-${prefix}-${key}`
+              : `--shadow-${key}`
+          output += `    ${varName}: ${value.$value};\n`
+        } else if (typeof value === 'object' && !value.$value) {
+          // This is a nested object, recurse into it
+          const newPrefix = prefix ? `${prefix}-${key}` : key
+          processShadowTokens(value, newPrefix)
+        }
+      }
     }
 
+    processShadowTokens(themeData.shadow)
     output += '\n'
   }
 

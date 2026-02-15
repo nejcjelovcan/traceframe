@@ -150,6 +150,89 @@ function main() {
 
   console.log()
 
+  // 3. Validate theme tokens (shadows, borders, gradients): dusk.json as source of truth
+  console.log('Validating theme tokens (dusk.json as source of truth)...\n')
+
+  const themeDuskJson = JSON.parse(readFileSync(join(tokensDir, 'themes', 'dusk.json'), 'utf-8'))
+  const themeDuskTokens = themeDuskJson
+
+  // Find all other theme files
+  const themeFiles = readdirSync(join(tokensDir, 'themes')).filter(
+    (f) => f.endsWith('.json') && f !== 'dusk.json'
+  )
+
+  for (const themeFile of themeFiles) {
+    const themeJson = JSON.parse(readFileSync(join(tokensDir, 'themes', themeFile), 'utf-8'))
+    const themeTokens = themeJson
+
+    const themeResult = validateTokens('dusk.json', themeDuskTokens, themeFile, themeTokens)
+
+    if (themeResult.missing.length > 0) {
+      hasErrors = true
+      console.log(`Missing in ${themeFile} (defined in dusk.json):`)
+      themeResult.missing.forEach((path) => console.log(`  - ${path}`))
+      console.log()
+    }
+
+    if (themeResult.extra.length > 0) {
+      hasErrors = true
+      console.log(`Extra in ${themeFile} (not in dusk.json):`)
+      themeResult.extra.forEach((path) => console.log(`  - ${path}`))
+      console.log()
+    }
+
+    if (themeResult.missing.length === 0 && themeResult.extra.length === 0) {
+      console.log(`${themeFile}: OK`)
+    }
+  }
+
+  console.log()
+
+  // 4. Validate shadow token format (inset shadows include 'inset' keyword)
+  console.log('Validating shadow token formats...\n')
+
+  const allThemeFiles = readdirSync(join(tokensDir, 'themes')).filter((f) => f.endsWith('.json'))
+  let shadowFormatErrors = false
+
+  for (const themeFile of allThemeFiles) {
+    const themeJson = JSON.parse(readFileSync(join(tokensDir, 'themes', themeFile), 'utf-8'))
+    const shadowTokens = themeJson.shadow || {}
+
+    // Check inset shadows include 'inset' keyword
+    const checkShadowFormat = (obj, path = '') => {
+      for (const [key, value] of Object.entries(obj)) {
+        const currentPath = path ? `${path}.${key}` : key
+
+        if (value && typeof value === 'object') {
+          if (value.$value && value.$type === 'shadow') {
+            // Check if this is an inset shadow but doesn't have 'inset' keyword
+            if (currentPath.includes('inset') && !value.$value.includes('inset')) {
+              console.log(`${themeFile}: shadow.${currentPath} is an inset shadow but doesn't start with 'inset'`)
+              shadowFormatErrors = true
+            }
+            // Check if non-inset shadows accidentally have 'inset' keyword
+            if (!currentPath.includes('inset') && value.$value.includes('inset')) {
+              console.log(`${themeFile}: shadow.${currentPath} contains 'inset' but is not in the inset category`)
+              shadowFormatErrors = true
+            }
+          } else if (!value.$value) {
+            // Recurse into nested objects
+            checkShadowFormat(value, currentPath)
+          }
+        }
+      }
+    }
+
+    checkShadowFormat(shadowTokens)
+  }
+
+  if (!shadowFormatErrors) {
+    console.log('Shadow token formats: OK\n')
+  } else {
+    hasErrors = true
+    console.log()
+  }
+
   if (hasErrors) {
     console.log('Token validation failed!')
     process.exit(1)

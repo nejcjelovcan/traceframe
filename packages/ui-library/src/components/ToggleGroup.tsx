@@ -152,7 +152,7 @@ const toggleGroupItemVariants = cva(
       {
         indicator: 'underline',
         className:
-          'data-[state=on]:shadow-[inset_0_-2px_0_0] data-[state=on]:shadow-interactive-primary',
+          'data-[state=on]:shadow-inset-underline data-[state=on]:shadow-interactive-primary',
       },
       // Dot indicator
       {

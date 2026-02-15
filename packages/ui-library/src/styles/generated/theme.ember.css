@@ -22,6 +22,22 @@
     --shadow-lg:
       0 10px 18px -4px color-mix(in srgb, var(--color-shadow) 12%, transparent),
       0 4px 8px -4px color-mix(in srgb, var(--color-shadow) 8%, transparent);
+    --shadow-interactive: 0 2px 3px 0 color-mix(in srgb, var(--color-shadow) 7%, transparent);
+    --shadow-interactive-hover:
+      0 5px 10px -2px color-mix(in srgb, var(--color-shadow) 10%, transparent),
+      0 2px 5px -2px color-mix(in srgb, var(--color-shadow) 7%, transparent);
+    --shadow-interactive-pressed: 0 1px 2px 0
+      color-mix(in srgb, var(--color-shadow) 5%, transparent);
+    --shadow-highlight:
+      0 3px 6px -1px color-mix(in srgb, var(--color-shadow) 9%, transparent),
+      0 2px 4px -2px color-mix(in srgb, var(--color-shadow) 6%, transparent);
+    --shadow-highlight-hover:
+      0 7px 14px -3px color-mix(in srgb, var(--color-shadow) 12%, transparent),
+      0 3px 7px -3px color-mix(in srgb, var(--color-shadow) 8%, transparent);
+    --shadow-highlight-pressed: 0 2px 3px 0 color-mix(in srgb, var(--color-shadow) 7%, transparent);
+    --shadow-inset-sm: inset 0 2px 4px 0 color-mix(in srgb, var(--color-shadow) 5%, transparent);
+    --shadow-inset-md: inset 0 4px 8px 0 color-mix(in srgb, var(--color-shadow) 7%, transparent);
+    --shadow-inset-underline: inset 0 -2px 0 0;
 
     /* Border Radius */
     --radius-sm: 0.1875rem;
