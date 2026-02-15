@@ -19,19 +19,27 @@ describe('traceframeFontsPlugin', () => {
 
   it('resolves virtual module ID correctly', () => {
     const plugin = traceframeFontsPlugin()
-    const result = plugin.resolveId?.('virtual:traceframe-fonts', undefined, {})
-    expect(result).toBe('\0virtual:traceframe-fonts')
+    const resolveId = plugin.resolveId
+    if (typeof resolveId === 'function') {
+      // Call with .call to provide proper context
+      const result = resolveId.call({} as any, 'virtual:traceframe-fonts', undefined, {} as any)
+      expect(result).toBe('\0virtual:traceframe-fonts')
+    }
   })
 
   it('returns undefined for non-virtual module IDs', () => {
     const plugin = traceframeFontsPlugin()
-    const result = plugin.resolveId?.('some-other-module', undefined, {})
-    expect(result).toBeUndefined()
+    const resolveId = plugin.resolveId
+    if (typeof resolveId === 'function') {
+      // Call with .call to provide proper context
+      const result = resolveId.call({} as any, 'some-other-module', undefined, {} as any)
+      expect(result).toBeUndefined()
+    }
   })
 
   it('excludes font packages from optimization', () => {
     const plugin = traceframeFontsPlugin()
-    const config = { optimizeDeps: {} }
+    const config: any = { optimizeDeps: {} }
     // @ts-expect-error - config is partial for testing
     plugin.config?.(config, { command: 'serve', mode: 'development' })
 
