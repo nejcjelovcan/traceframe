@@ -27,8 +27,8 @@ describe('storybook-preset exports', () => {
     expect(typeof plugin.config).toBe('function')
   })
 
-  it('resolveFontPackages returns a promise', () => {
+  it('resolveFontPackages returns an array', () => {
     const result = resolveFontPackages()
-    expect(result).toBeInstanceOf(Promise)
+    expect(Array.isArray(result)).toBe(true)
   })
 })
