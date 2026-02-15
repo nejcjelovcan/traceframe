@@ -77,80 +77,80 @@
     /* Accent 1 emphasis gradient */
     --gradient-accent-1: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-1-400)),
-      rgb(var(--palette-accent-1-500))
+      rgb(var(--palette-accent-1-300)),
+      rgb(var(--palette-accent-1-400))
     );
     /* Accent 2 emphasis gradient */
     --gradient-accent-2: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-2-400)),
-      rgb(var(--palette-accent-2-500))
+      rgb(var(--palette-accent-2-300)),
+      rgb(var(--palette-accent-2-400))
     );
     /* Accent 3 emphasis gradient */
     --gradient-accent-3: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-3-400)),
-      rgb(var(--palette-accent-3-500))
+      rgb(var(--palette-accent-3-300)),
+      rgb(var(--palette-accent-3-400))
     );
     /* Accent 4 emphasis gradient */
     --gradient-accent-4: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-4-400)),
-      rgb(var(--palette-accent-4-500))
+      rgb(var(--palette-accent-4-300)),
+      rgb(var(--palette-accent-4-400))
     );
     /* Accent 5 emphasis gradient */
     --gradient-accent-5: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-5-400)),
-      rgb(var(--palette-accent-5-500))
+      rgb(var(--palette-accent-5-300)),
+      rgb(var(--palette-accent-5-400))
     );
     /* Destructive button gradient */
     --gradient-interactive-destructive: linear-gradient(
       180deg,
-      rgb(var(--palette-error-400)),
-      rgb(var(--palette-error-500))
+      rgb(var(--palette-error-300)),
+      rgb(var(--palette-error-400))
     );
     /* Primary button and CTA gradient */
     --gradient-interactive-primary: linear-gradient(
       180deg,
-      rgb(var(--palette-primary-400)),
-      rgb(var(--palette-primary-500))
+      rgb(var(--palette-primary-300)),
+      rgb(var(--palette-primary-400))
     );
     /* Secondary button gradient */
     --gradient-interactive-secondary: linear-gradient(
       180deg,
-      rgb(var(--palette-secondary-400)),
-      rgb(var(--palette-secondary-500))
+      rgb(var(--palette-secondary-300)),
+      rgb(var(--palette-secondary-400))
     );
     /* Error status emphasis gradient */
     --gradient-status-error: linear-gradient(
       180deg,
-      rgb(var(--palette-error-400)),
-      rgb(var(--palette-error-500))
+      rgb(var(--palette-error-300)),
+      rgb(var(--palette-error-400))
     );
     /* Info status emphasis gradient */
     --gradient-status-info: linear-gradient(
       180deg,
-      rgb(var(--palette-primary-400)),
-      rgb(var(--palette-primary-500))
+      rgb(var(--palette-primary-300)),
+      rgb(var(--palette-primary-400))
     );
     /* Success status emphasis gradient */
     --gradient-status-success: linear-gradient(
       180deg,
-      rgb(var(--palette-success-400)),
-      rgb(var(--palette-success-500))
+      rgb(var(--palette-success-300)),
+      rgb(var(--palette-success-400))
     );
     /* Warning status emphasis gradient */
     --gradient-status-warning: linear-gradient(
       180deg,
-      rgb(var(--palette-warning-300)),
-      rgb(var(--palette-warning-400))
+      rgb(var(--palette-warning-200)),
+      rgb(var(--palette-warning-300))
     );
     /* Inverted surface gradient for contrasting backgrounds */
     --gradient-surface-inverted: linear-gradient(
       180deg,
-      rgb(var(--palette-neutral-200)),
-      rgb(var(--palette-neutral-300))
+      rgb(var(--palette-neutral-100)),
+      rgb(var(--palette-neutral-200))
     );
 
     /* Background color for active or selected states */

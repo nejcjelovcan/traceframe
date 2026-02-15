@@ -12,19 +12,13 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-interactive-primary text-interactive-primary-foreground hover:bg-interactive-primary-hover shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-interactive-primary text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         secondary:
-          'bg-interactive-secondary text-interactive-secondary-foreground hover:bg-interactive-secondary-hover shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-interactive-secondary text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         outline:
           'border border-border bg-transparent hover:bg-surface-subtle focus-visible:ring-ring',
         ghost: 'hover:bg-interactive-hover focus-visible:ring-ring',
         destructive:
-          'bg-interactive-destructive text-interactive-destructive-foreground hover:bg-interactive-destructive-hover shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
-        'gradient-primary':
-          'bg-gradient-interactive-primary text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
-        'gradient-secondary':
-          'bg-gradient-interactive-secondary text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
-        'gradient-destructive':
           'bg-gradient-interactive-destructive text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
       },
       size: {

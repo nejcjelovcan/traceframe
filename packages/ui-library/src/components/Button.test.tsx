@@ -13,7 +13,7 @@ describe('Button', () => {
   it('applies variant classes', () => {
     render(<Button variant="destructive">Delete</Button>)
     const button = screen.getByRole('button')
-    expect(button.className).toContain('bg-interactive-destructive')
+    expect(button.className).toContain('bg-gradient-interactive-destructive')
   })
 
   it('applies size classes', () => {
@@ -73,16 +73,7 @@ describe('Button', () => {
     })
 
     it('applies loading state with different variants', () => {
-      const variants = [
-        'primary',
-        'secondary',
-        'outline',
-        'ghost',
-        'destructive',
-        'gradient-primary',
-        'gradient-secondary',
-        'gradient-destructive',
-      ] as const
+      const variants = ['primary', 'secondary', 'outline', 'ghost', 'destructive'] as const
       variants.forEach((variant) => {
         const { unmount } = render(
           <Button variant={variant} loading>
@@ -130,16 +121,7 @@ describe('Button', () => {
     })
 
     it('works with all variants', () => {
-      const variants = [
-        'primary',
-        'secondary',
-        'outline',
-        'ghost',
-        'destructive',
-        'gradient-primary',
-        'gradient-secondary',
-        'gradient-destructive',
-      ] as const
+      const variants = ['primary', 'secondary', 'outline', 'ghost', 'destructive'] as const
       variants.forEach((variant) => {
         const { unmount } = render(
           <Button variant={variant} fullWidth>
@@ -327,16 +309,7 @@ describe('Button', () => {
     })
 
     it('works with all button variants', () => {
-      const variants = [
-        'primary',
-        'secondary',
-        'outline',
-        'ghost',
-        'destructive',
-        'gradient-primary',
-        'gradient-secondary',
-        'gradient-destructive',
-      ] as const
+      const variants = ['primary', 'secondary', 'outline', 'ghost', 'destructive'] as const
       variants.forEach((variant) => {
         const { unmount } = render(
           <Button variant={variant} leftIcon="check">
@@ -350,102 +323,29 @@ describe('Button', () => {
     })
   })
 
-  describe('gradient variants', () => {
-    it('applies gradient-primary classes', () => {
-      render(<Button variant="gradient-primary">Upgrade Now</Button>)
+  describe('gradient backgrounds', () => {
+    it('applies gradient background to primary variant', () => {
+      render(<Button variant="primary">Primary</Button>)
       const button = screen.getByRole('button')
       expect(button.className).toContain('bg-gradient-interactive-primary')
       expect(button.className).toContain('text-foreground-inverted')
       expect(button.className).toContain('hover:opacity-90')
-      expect(button.className).toContain('shadow-interactive')
     })
 
-    it('applies gradient-secondary classes', () => {
-      render(<Button variant="gradient-secondary">Learn More</Button>)
+    it('applies gradient background to secondary variant', () => {
+      render(<Button variant="secondary">Secondary</Button>)
       const button = screen.getByRole('button')
       expect(button.className).toContain('bg-gradient-interactive-secondary')
       expect(button.className).toContain('text-foreground-inverted')
       expect(button.className).toContain('hover:opacity-90')
-      expect(button.className).toContain('shadow-interactive')
     })
 
-    it('applies gradient-destructive classes', () => {
-      render(<Button variant="gradient-destructive">Delete Account</Button>)
+    it('applies gradient background to destructive variant', () => {
+      render(<Button variant="destructive">Destructive</Button>)
       const button = screen.getByRole('button')
       expect(button.className).toContain('bg-gradient-interactive-destructive')
       expect(button.className).toContain('text-foreground-inverted')
       expect(button.className).toContain('hover:opacity-90')
-      expect(button.className).toContain('shadow-interactive')
-    })
-
-    it('includes interactive shadow classes', () => {
-      const gradientVariants = [
-        'gradient-primary',
-        'gradient-secondary',
-        'gradient-destructive',
-      ] as const
-      gradientVariants.forEach((variant) => {
-        const { unmount } = render(<Button variant={variant}>Test</Button>)
-        const button = screen.getByRole('button')
-        expect(button.className).toContain('shadow-interactive')
-        expect(button.className).toContain('hover:shadow-interactive-hover')
-        expect(button.className).toContain('active:shadow-interactive-pressed')
-        unmount()
-      })
-    })
-
-    it('works with all button sizes', () => {
-      const sizes = ['sm', 'md', 'lg'] as const
-      sizes.forEach((size) => {
-        const { unmount } = render(
-          <Button variant="gradient-primary" size={size}>
-            Size {size}
-          </Button>
-        )
-        const button = screen.getByRole('button')
-        expect(button.className).toContain('bg-gradient-interactive-primary')
-        if (size === 'sm') expect(button.className).toContain('h-size-sm')
-        if (size === 'md') expect(button.className).toContain('h-size-md')
-        if (size === 'lg') expect(button.className).toContain('h-size-lg')
-        unmount()
-      })
-    })
-
-    it('supports icons with gradient variants', () => {
-      render(
-        <Button variant="gradient-primary" leftIcon="sparkles" rightIcon="arrow-right">
-          Premium
-        </Button>
-      )
-      const button = screen.getByRole('button')
-      const icons = button.querySelectorAll('[data-testid="icon"]')
-      expect(icons).toHaveLength(2)
-      expect(button.className).toContain('bg-gradient-interactive-primary')
-    })
-
-    it('handles loading state with gradient variants', () => {
-      render(
-        <Button variant="gradient-primary" loading>
-          Processing
-        </Button>
-      )
-      const button = screen.getByRole('button')
-      expect(button).toBeDisabled()
-      expect(screen.getByRole('status')).toBeDefined()
-      expect(button.className).toContain('bg-gradient-interactive-primary')
-    })
-
-    it('handles disabled state with gradient variants', () => {
-      render(
-        <Button variant="gradient-primary" disabled>
-          Disabled
-        </Button>
-      )
-      const button = screen.getByRole('button')
-      expect(button).toBeDisabled()
-      // Disabled state overrides gradient with disabled classes
-      expect(button.className).toContain('disabled:bg-disabled')
-      expect(button.className).toContain('disabled:text-disabled-foreground')
     })
   })
 
