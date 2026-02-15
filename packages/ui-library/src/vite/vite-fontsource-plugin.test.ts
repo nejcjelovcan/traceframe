@@ -12,7 +12,7 @@ describe('traceframeFontsPlugin', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     // Reset the mock to default resolved state
-    vi.mocked(resolveFontPackages).mockResolvedValue([
+    vi.mocked(resolveFontPackages).mockReturnValue([
       { name: '@fontsource/ibm-plex-mono', cssPath: '/path/to/ibm-plex-mono/index.css' },
       { name: '@fontsource/jetbrains-mono', cssPath: '/path/to/jetbrains-mono/index.css' },
       { name: '@fontsource/space-mono', cssPath: '/path/to/space-mono/index.css' },
@@ -149,7 +149,7 @@ describe('traceframeFontsPlugin', () => {
     })
 
     it('emits warning when font packages have cssPath: null', async () => {
-      vi.mocked(resolveFontPackages).mockResolvedValue([
+      vi.mocked(resolveFontPackages).mockReturnValue([
         { name: '@fontsource/ibm-plex-mono', cssPath: '/path/to/ibm-plex-mono/index.css' },
         { name: '@fontsource/jetbrains-mono', cssPath: null }, // Missing
         { name: '@fontsource/space-mono', cssPath: null }, // Missing
@@ -173,7 +173,7 @@ describe('traceframeFontsPlugin', () => {
     })
 
     it('does not warn when logWarnings: false', async () => {
-      vi.mocked(resolveFontPackages).mockResolvedValue([
+      vi.mocked(resolveFontPackages).mockReturnValue([
         { name: '@fontsource/ibm-plex-mono', cssPath: null },
         { name: '@fontsource/jetbrains-mono', cssPath: null },
         { name: '@fontsource/space-mono', cssPath: null },
@@ -229,7 +229,7 @@ describe('traceframeFontsPlugin', () => {
     })
 
     it('returns "// No font packages found" when no packages resolve', async () => {
-      vi.mocked(resolveFontPackages).mockResolvedValue([
+      vi.mocked(resolveFontPackages).mockReturnValue([
         { name: '@fontsource/ibm-plex-mono', cssPath: null },
         { name: '@fontsource/jetbrains-mono', cssPath: null },
         { name: '@fontsource/space-mono', cssPath: null },
@@ -270,7 +270,7 @@ describe('traceframeFontsPlugin', () => {
     })
 
     it('only includes CSS paths that are not null', async () => {
-      vi.mocked(resolveFontPackages).mockResolvedValue([
+      vi.mocked(resolveFontPackages).mockReturnValue([
         { name: '@fontsource/ibm-plex-mono', cssPath: '/path/to/ibm-plex-mono/index.css' },
         { name: '@fontsource/jetbrains-mono', cssPath: null }, // Missing
         { name: '@fontsource/space-mono', cssPath: null }, // Missing
