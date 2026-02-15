@@ -1,5 +1,17 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.1.0
+
+### Minor Changes
+
+- [#56](https://github.com/nejcjelovcan/traceframe/pull/56) [`69302fd`](https://github.com/nejcjelovcan/traceframe/commit/69302fdc3dfdb555abee94051d3657a071fc1eb3) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add Vite font loading plugin with automatic font discovery and CSS injection, plus comprehensive tests and documentation
+
+- [#53](https://github.com/nejcjelovcan/traceframe/pull/53) [`4c04234`](https://github.com/nejcjelovcan/traceframe/commit/4c04234a4319a5adfdd291eb80cba61082cd4ee6) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add Vite plugin for automatic font loading
+  - Add traceframeFontsPlugin to ui-library for centralized font management
+  - Plugin automatically resolves and loads @fontsource packages
+  - Re-export plugin from storybook-preset for backward compatibility
+  - Add comprehensive tests for font resolver and plugin functionality
+
 ## 1.0.3
 
 ### Patch Changes
