@@ -91,9 +91,9 @@ export function traceframeFontsPlugin(options: TraceframeFontsPluginOptions = {}
     name: 'vite-plugin-traceframe-fonts',
     enforce: 'pre',
 
-    async buildStart() {
+    buildStart() {
       if (!cache || !isResolved) {
-        fontPackages = await resolveFontPackages()
+        fontPackages = resolveFontPackages()
         isResolved = true
 
         if (logWarnings) {
