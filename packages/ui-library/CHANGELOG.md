@@ -1,5 +1,29 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.2.0
+
+### Minor Changes
+
+- [#64](https://github.com/nejcjelovcan/traceframe/pull/64) [`aca71ac`](https://github.com/nejcjelovcan/traceframe/commit/aca71accc3b0f8951c1b11bd0f81325266ba1da5) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update outline Badge styling
+
+- [#67](https://github.com/nejcjelovcan/traceframe/pull/67) [`2969c2b`](https://github.com/nejcjelovcan/traceframe/commit/2969c2b161f2427a4b7b49f976d0a1837a0a7b7a) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add actionable and hero variants to Card
+
+- [#69](https://github.com/nejcjelovcan/traceframe/pull/69) [`cbe0904`](https://github.com/nejcjelovcan/traceframe/commit/cbe09048a18b59a071ba45ee724fe3abf82db8bb) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add light/dark mode variants for gradient tokens
+
+- [#65](https://github.com/nejcjelovcan/traceframe/pull/65) [`26c6b98`](https://github.com/nejcjelovcan/traceframe/commit/26c6b985a8873031c354e490402ef2ff2b6e665f) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add emphasis accent badge variants (emphasis-accent1 through emphasis-accent5) using gradient tokens
+
+- [#57](https://github.com/nejcjelovcan/traceframe/pull/57) [`d74476c`](https://github.com/nejcjelovcan/traceframe/commit/d74476cf35f24352621da56ba3f6f3f24406e0b3) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add gradient background tokens for emphasis surfaces
+
+- [#62](https://github.com/nejcjelovcan/traceframe/pull/62) [`48b2a29`](https://github.com/nejcjelovcan/traceframe/commit/48b2a297313c5605931f7e4d49ad5a956351ceed) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add box shadow tokens for interactive states including hover, focus, and pressed states
+
+- [#61](https://github.com/nejcjelovcan/traceframe/pull/61) [`ef6733d`](https://github.com/nejcjelovcan/traceframe/commit/ef6733d0b95ade096d67993783292243a40f44c7) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add themable border style tokens for dashed and dotted borders
+
+### Patch Changes
+
+- [#71](https://github.com/nejcjelovcan/traceframe/pull/71) [`497114c`](https://github.com/nejcjelovcan/traceframe/commit/497114ccbe454824fd6c3db4b696cca471fafd78) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Remove hero variant from Card component
+
+- [#63](https://github.com/nejcjelovcan/traceframe/pull/63) [`1e88f5f`](https://github.com/nejcjelovcan/traceframe/commit/1e88f5f81f62526d0d42e0c88b7c87e47c0e46ba) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update README with documentation for new border style, shadow (interactive/highlight/inset), and gradient design tokens
+
 ## 1.1.1
 
 ### Patch Changes
