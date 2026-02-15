@@ -29,12 +29,17 @@ A container component for grouping related content with optional header and foot
 **Variant Guide:**
 - \`outlined\` (default) - Standard cards, list items
 - \`elevated\` - Featured or highlighted content with shadow
+- \`hero\` - Featured content sections with gradient background
 - \`info\` - Informational callouts
 - \`success\` - Success states, positive feedback
 - \`warning\` - Warning states, caution indicators
 - \`error\` - Error states, critical alerts
-- \`accent1-3\` - Categorical cards for visual grouping
-- \`data1-2\` - Data visualization cards
+- \`accent1-5\` - Categorical cards for visual grouping
+
+**Actionable Prop:**
+- \`actionable\` - Makes the card clickable with interactive shadow states
+- Works with all variants for hover/active feedback
+- Adds cursor-pointer and smooth shadow transitions
 
 **Icon Support:**
 - \`CardHeader\` accepts an \`icon\` prop with any icon name from ui-library
@@ -57,6 +62,7 @@ A container component for grouping related content with optional header and foot
       options: [
         'outlined',
         'elevated',
+        'hero',
         'info',
         'success',
         'warning',
@@ -64,11 +70,18 @@ A container component for grouping related content with optional header and foot
         'accent1',
         'accent2',
         'accent3',
-        'data1',
-        'data2',
+        'accent4',
+        'accent5',
       ],
       table: {
         defaultValue: { summary: 'outlined' },
+      },
+    },
+    actionable: {
+      description: 'Makes the card clickable with interactive shadow states',
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
       },
     },
     inverted: {
@@ -90,6 +103,7 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     variant: 'outlined',
+    actionable: false,
   },
   render: (args) => (
     <Card {...args} className="w-80">
@@ -464,6 +478,120 @@ export const InvertedComparison: Story = {
   ),
 }
 
+export const Hero: Story = {
+  render: () => (
+    <Card variant="hero" className="w-80">
+      <CardHeader icon="sparkles">Featured Content</CardHeader>
+      <CardContent>
+        <p>This hero card uses a gradient background for strong visual emphasis.</p>
+      </CardContent>
+    </Card>
+  ),
+}
+
+export const Actionable: Story = {
+  render: () => (
+    <Card actionable className="w-80">
+      <CardHeader icon="link">Clickable Card</CardHeader>
+      <CardContent>
+        <p>This card has interactive shadow states. Hover or click to see the effect.</p>
+      </CardContent>
+    </Card>
+  ),
+}
+
+export const ActionableHero: Story = {
+  name: 'Hero Actionable',
+  render: () => (
+    <Card variant="hero" actionable className="w-80">
+      <CardHeader icon="arrow-right">Call to Action</CardHeader>
+      <CardContent>
+        <p>A hero card that's also clickable. Perfect for featured CTAs.</p>
+      </CardContent>
+    </Card>
+  ),
+}
+
+export const ActionableVariants: Story = {
+  name: 'All Actionable Variants',
+  render: () => (
+    <div className="flex flex-wrap gap-base">
+      <Card variant="outlined" actionable className="w-56">
+        <CardHeader>Outlined</CardHeader>
+        <CardContent>
+          <p className="text-sm">Click me!</p>
+        </CardContent>
+      </Card>
+      <Card variant="elevated" actionable className="w-56">
+        <CardHeader>Elevated</CardHeader>
+        <CardContent>
+          <p className="text-sm">Click me!</p>
+        </CardContent>
+      </Card>
+      <Card variant="hero" actionable className="w-56">
+        <CardHeader>Hero</CardHeader>
+        <CardContent>
+          <p className="text-sm">Click me!</p>
+        </CardContent>
+      </Card>
+      <Card variant="info" actionable className="w-56">
+        <CardHeader icon="info-circle">Info</CardHeader>
+        <CardContent>
+          <p className="text-sm">Click me!</p>
+        </CardContent>
+      </Card>
+      <Card variant="success" actionable className="w-56">
+        <CardHeader icon="check">Success</CardHeader>
+        <CardContent>
+          <p className="text-sm">Click me!</p>
+        </CardContent>
+      </Card>
+      <Card variant="accent1" actionable className="w-56">
+        <CardHeader>Accent 1</CardHeader>
+        <CardContent>
+          <p className="text-sm">Click me!</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
+export const InteractiveComparison: Story = {
+  name: 'Normal vs Actionable',
+  render: () => (
+    <div className="space-y-base">
+      <div className="flex flex-wrap gap-base">
+        <Card variant="outlined" className="w-64">
+          <CardHeader>Normal Card</CardHeader>
+          <CardContent>
+            <p className="text-sm">Standard card with no interaction.</p>
+          </CardContent>
+        </Card>
+        <Card variant="outlined" actionable className="w-64">
+          <CardHeader>Actionable Card</CardHeader>
+          <CardContent>
+            <p className="text-sm">Hover or click for shadow feedback.</p>
+          </CardContent>
+        </Card>
+      </div>
+      <div className="flex flex-wrap gap-base">
+        <Card variant="hero" className="w-64">
+          <CardHeader>Normal Hero</CardHeader>
+          <CardContent>
+            <p className="text-sm">Static hero with shadow-md.</p>
+          </CardContent>
+        </Card>
+        <Card variant="hero" actionable className="w-64">
+          <CardHeader>Actionable Hero</CardHeader>
+          <CardContent>
+            <p className="text-sm">Interactive hero with hover states.</p>
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  ),
+}
+
 export const AllVariants: Story = {
   name: 'Core Variants',
   render: () => (
@@ -480,16 +608,23 @@ export const AllVariants: Story = {
           <p className="text-sm">Background with shadow for emphasis.</p>
         </CardContent>
       </Card>
+      <Card variant="hero" className="w-56">
+        <CardHeader>Hero</CardHeader>
+        <CardContent>
+          <p className="text-sm">Gradient background with inverted text.</p>
+        </CardContent>
+      </Card>
     </div>
   ),
 }
 
 function ShowcaseContent() {
   const [inverted, setInverted] = useState(false)
+  const [actionable, setActionable] = useState(false)
 
   return (
     <div className="space-y-lg p-base">
-      {/* Inverted Toggle */}
+      {/* Controls */}
       <div className="flex items-center gap-base">
         <Heading level={2} size="lg">
           Card Showcase
@@ -506,6 +641,18 @@ function ShowcaseContent() {
           value={inverted ? 'on' : 'off'}
           onChange={(val) => setInverted(val === 'on')}
         />
+        <ToggleGroup
+          type="single"
+          variant="solid"
+          size="sm"
+          aria-label="Actionable mode"
+          options={[
+            { value: 'off', label: 'Static' },
+            { value: 'on', label: 'Actionable' },
+          ]}
+          value={actionable ? 'on' : 'off'}
+          onChange={(val) => setActionable(val === 'on')}
+        />
       </div>
 
       {/* Core Variants Section */}
@@ -514,16 +661,22 @@ function ShowcaseContent() {
           Core Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card variant="outlined" inverted={inverted} className="w-64">
+          <Card variant="outlined" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader>Outlined</CardHeader>
             <CardContent>
               <p className="text-sm">Standard card with neutral background and border.</p>
             </CardContent>
           </Card>
-          <Card variant="elevated" inverted={inverted} className="w-64">
+          <Card variant="elevated" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader>Elevated</CardHeader>
             <CardContent>
               <p className="text-sm">Card with shadow for visual hierarchy.</p>
+            </CardContent>
+          </Card>
+          <Card variant="hero" inverted={inverted} actionable={actionable} className="w-64">
+            <CardHeader>Hero</CardHeader>
+            <CardContent>
+              <p className="text-sm">Featured content with gradient background.</p>
             </CardContent>
           </Card>
         </div>
@@ -535,25 +688,25 @@ function ShowcaseContent() {
           Status Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card variant="info" inverted={inverted} className="w-64">
+          <Card variant="info" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader icon="info-circle">Info</CardHeader>
             <CardContent>
               <p className="text-sm">Informational content that needs attention.</p>
             </CardContent>
           </Card>
-          <Card variant="success" inverted={inverted} className="w-64">
+          <Card variant="success" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader icon="check">Success</CardHeader>
             <CardContent>
               <p className="text-sm">Positive outcome or successful operation.</p>
             </CardContent>
           </Card>
-          <Card variant="warning" inverted={inverted} className="w-64">
+          <Card variant="warning" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader icon="alert-circle">Warning</CardHeader>
             <CardContent>
               <p className="text-sm">Caution required, potential issues ahead.</p>
             </CardContent>
           </Card>
-          <Card variant="error" inverted={inverted} className="w-64">
+          <Card variant="error" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader icon="alert-circle">Error</CardHeader>
             <CardContent>
               <p className="text-sm">Critical issue that needs immediate attention.</p>
@@ -568,31 +721,31 @@ function ShowcaseContent() {
           Accent Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card variant="accent1" inverted={inverted} className="w-56">
+          <Card variant="accent1" inverted={inverted} actionable={actionable} className="w-56">
             <CardHeader>Accent 1</CardHeader>
             <CardContent>
               <p className="text-sm">Arctic Blue</p>
             </CardContent>
           </Card>
-          <Card variant="accent2" inverted={inverted} className="w-56">
+          <Card variant="accent2" inverted={inverted} actionable={actionable} className="w-56">
             <CardHeader>Accent 2</CardHeader>
             <CardContent>
               <p className="text-sm">Lavender Dusk</p>
             </CardContent>
           </Card>
-          <Card variant="accent3" inverted={inverted} className="w-56">
+          <Card variant="accent3" inverted={inverted} actionable={actionable} className="w-56">
             <CardHeader>Accent 3</CardHeader>
             <CardContent>
               <p className="text-sm">Dusty Rose</p>
             </CardContent>
           </Card>
-          <Card variant="accent4" inverted={inverted} className="w-56">
+          <Card variant="accent4" inverted={inverted} actionable={actionable} className="w-56">
             <CardHeader>Accent 4</CardHeader>
             <CardContent>
               <p className="text-sm">Fresh Lime</p>
             </CardContent>
           </Card>
-          <Card variant="accent5" inverted={inverted} className="w-56">
+          <Card variant="accent5" inverted={inverted} actionable={actionable} className="w-56">
             <CardHeader>Accent 5</CardHeader>
             <CardContent>
               <p className="text-sm">Terracotta</p>
@@ -607,18 +760,18 @@ function ShowcaseContent() {
           Compositions
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card inverted={inverted} className="w-64">
+          <Card inverted={inverted} actionable={actionable} className="w-64">
             <CardContent>
               <p className="text-sm">Content only - no header or footer.</p>
             </CardContent>
           </Card>
-          <Card inverted={inverted} className="w-64">
+          <Card inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader icon="file">Header + Content</CardHeader>
             <CardContent>
               <p className="text-sm">Header with content, no footer.</p>
             </CardContent>
           </Card>
-          <Card variant="elevated" inverted={inverted} className="w-64">
+          <Card variant="elevated" inverted={inverted} actionable={actionable} className="w-64">
             <CardHeader icon="chart">Full Card</CardHeader>
             <CardContent>
               <ul className="space-y-xs text-sm">
@@ -644,7 +797,7 @@ export const Showcase: Story = {
     docs: {
       description: {
         story:
-          'A comprehensive showcase of all Card features. Use the toggle to switch between normal and inverted modes.',
+          'A comprehensive showcase of all Card features. Use the toggles to switch between normal/inverted modes and static/actionable states.',
       },
     },
   },
