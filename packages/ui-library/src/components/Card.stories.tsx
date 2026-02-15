@@ -29,7 +29,6 @@ A container component for grouping related content with optional header and foot
 **Variant Guide:**
 - \`outlined\` (default) - Standard cards, list items
 - \`elevated\` - Featured or highlighted content with shadow
-- \`hero\` - Featured content sections with gradient background
 - \`info\` - Informational callouts
 - \`success\` - Success states, positive feedback
 - \`warning\` - Warning states, caution indicators
@@ -62,7 +61,6 @@ A container component for grouping related content with optional header and foot
       options: [
         'outlined',
         'elevated',
-        'hero',
         'info',
         'success',
         'warning',
@@ -478,35 +476,12 @@ export const InvertedComparison: Story = {
   ),
 }
 
-export const Hero: Story = {
-  render: () => (
-    <Card variant="hero" className="w-80">
-      <CardHeader icon="sparkles">Featured Content</CardHeader>
-      <CardContent>
-        <p>This hero card uses a gradient background for strong visual emphasis.</p>
-      </CardContent>
-    </Card>
-  ),
-}
-
 export const Actionable: Story = {
   render: () => (
     <Card actionable className="w-80">
       <CardHeader icon="link">Clickable Card</CardHeader>
       <CardContent>
         <p>This card has interactive shadow states. Hover or click to see the effect.</p>
-      </CardContent>
-    </Card>
-  ),
-}
-
-export const ActionableHero: Story = {
-  name: 'Hero Actionable',
-  render: () => (
-    <Card variant="hero" actionable className="w-80">
-      <CardHeader icon="arrow-right">Call to Action</CardHeader>
-      <CardContent>
-        <p>A hero card that's also clickable. Perfect for featured CTAs.</p>
       </CardContent>
     </Card>
   ),
@@ -524,12 +499,6 @@ export const ActionableVariants: Story = {
       </Card>
       <Card variant="elevated" actionable className="w-56">
         <CardHeader>Elevated</CardHeader>
-        <CardContent>
-          <p className="text-sm">Click me!</p>
-        </CardContent>
-      </Card>
-      <Card variant="hero" actionable className="w-56">
-        <CardHeader>Hero</CardHeader>
         <CardContent>
           <p className="text-sm">Click me!</p>
         </CardContent>
@@ -574,20 +543,6 @@ export const InteractiveComparison: Story = {
           </CardContent>
         </Card>
       </div>
-      <div className="flex flex-wrap gap-base">
-        <Card variant="hero" className="w-64">
-          <CardHeader>Normal Hero</CardHeader>
-          <CardContent>
-            <p className="text-sm">Static hero with shadow-md.</p>
-          </CardContent>
-        </Card>
-        <Card variant="hero" actionable className="w-64">
-          <CardHeader>Actionable Hero</CardHeader>
-          <CardContent>
-            <p className="text-sm">Interactive hero with hover states.</p>
-          </CardContent>
-        </Card>
-      </div>
     </div>
   ),
 }
@@ -606,12 +561,6 @@ export const AllVariants: Story = {
         <CardHeader>Elevated</CardHeader>
         <CardContent>
           <p className="text-sm">Background with shadow for emphasis.</p>
-        </CardContent>
-      </Card>
-      <Card variant="hero" className="w-56">
-        <CardHeader>Hero</CardHeader>
-        <CardContent>
-          <p className="text-sm">Gradient background with inverted text.</p>
         </CardContent>
       </Card>
     </div>
@@ -671,12 +620,6 @@ function ShowcaseContent() {
             <CardHeader>Elevated</CardHeader>
             <CardContent>
               <p className="text-sm">Card with shadow for visual hierarchy.</p>
-            </CardContent>
-          </Card>
-          <Card variant="hero" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader>Hero</CardHeader>
-            <CardContent>
-              <p className="text-sm">Featured content with gradient background.</p>
             </CardContent>
           </Card>
         </div>
