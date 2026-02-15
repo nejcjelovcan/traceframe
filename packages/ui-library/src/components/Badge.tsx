@@ -47,6 +47,13 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       'emphasis-success': 'bg-gradient-status-success text-foreground-inverted',
       'emphasis-warning': 'bg-gradient-status-warning text-foreground-inverted',
       'emphasis-error': 'bg-gradient-status-error text-foreground-inverted',
+
+      // Emphasis accent variants using gradient backgrounds (no border)
+      'emphasis-accent1': 'bg-gradient-accent-1 text-foreground-inverted',
+      'emphasis-accent2': 'bg-gradient-accent-2 text-foreground-inverted',
+      'emphasis-accent3': 'bg-gradient-accent-3 text-foreground-inverted',
+      'emphasis-accent4': 'bg-gradient-accent-4 text-foreground-inverted',
+      'emphasis-accent5': 'bg-gradient-accent-5 text-foreground-inverted',
     },
     size: {
       xs: 'px-xs py-2xs text-xs leading-none', // Tight inline badges

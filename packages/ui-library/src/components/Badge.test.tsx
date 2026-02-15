@@ -156,6 +156,46 @@ describe('Badge', () => {
     expect(badge.className).not.toMatch(/border-/)
   })
 
+  it('applies emphasis-accent1 variant classes', () => {
+    render(<Badge variant="emphasis-accent1">Emphasis Accent 1</Badge>)
+    const badge = screen.getByText('Emphasis Accent 1')
+    expect(badge.className).toContain('bg-gradient-accent-1')
+    expect(badge.className).toContain('text-foreground-inverted')
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-accent2 variant classes', () => {
+    render(<Badge variant="emphasis-accent2">Emphasis Accent 2</Badge>)
+    const badge = screen.getByText('Emphasis Accent 2')
+    expect(badge.className).toContain('bg-gradient-accent-2')
+    expect(badge.className).toContain('text-foreground-inverted')
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-accent3 variant classes', () => {
+    render(<Badge variant="emphasis-accent3">Emphasis Accent 3</Badge>)
+    const badge = screen.getByText('Emphasis Accent 3')
+    expect(badge.className).toContain('bg-gradient-accent-3')
+    expect(badge.className).toContain('text-foreground-inverted')
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-accent4 variant classes', () => {
+    render(<Badge variant="emphasis-accent4">Emphasis Accent 4</Badge>)
+    const badge = screen.getByText('Emphasis Accent 4')
+    expect(badge.className).toContain('bg-gradient-accent-4')
+    expect(badge.className).toContain('text-foreground-inverted')
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-accent5 variant classes', () => {
+    render(<Badge variant="emphasis-accent5">Emphasis Accent 5</Badge>)
+    const badge = screen.getByText('Emphasis Accent 5')
+    expect(badge.className).toContain('bg-gradient-accent-5')
+    expect(badge.className).toContain('text-foreground-inverted')
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
   it('applies xs size classes', () => {
     render(<Badge size="xs">Extra Small</Badge>)
     const badge = screen.getByText('Extra Small')
