@@ -163,7 +163,7 @@
           "$description": "Info status muted background for subtle info indicators"
         },
         "foreground": {
-          "$value": "{palette.primary.800}",
+          "$value": "{palette.primary.700}",
           "$type": "color",
           "$description": "Info status text color for readability on info backgrounds"
         },
@@ -188,7 +188,7 @@
           "$description": "Success status muted background for subtle success indicators"
         },
         "foreground": {
-          "$value": "{palette.success.800}",
+          "$value": "{palette.success.700}",
           "$type": "color",
           "$description": "Success status text color for readability on success backgrounds"
         },
@@ -213,7 +213,7 @@
           "$description": "Warning status muted background for subtle warning indicators"
         },
         "foreground": {
-          "$value": "{palette.warning.800}",
+          "$value": "{palette.warning.700}",
           "$type": "color",
           "$description": "Warning status text color for readability on warning backgrounds"
         },
@@ -238,7 +238,7 @@
           "$description": "Error status muted background for subtle error indicators"
         },
         "foreground": {
-          "$value": "{palette.error.800}",
+          "$value": "{palette.error.700}",
           "$type": "color",
           "$description": "Error status text color for readability on error backgrounds"
         },
@@ -285,7 +285,7 @@
           "$description": "Accent 1 muted background for subtle indicators"
         },
         "foreground": {
-          "$value": "{palette.accent.1.800}",
+          "$value": "{palette.accent.1.700}",
           "$type": "color",
           "$description": "Accent 1 text color for readability on accent backgrounds"
         },
@@ -310,7 +310,7 @@
           "$description": "Accent 2 muted background for subtle indicators"
         },
         "foreground": {
-          "$value": "{palette.accent.2.800}",
+          "$value": "{palette.accent.2.700}",
           "$type": "color",
           "$description": "Accent 2 text color for readability on accent backgrounds"
         },
@@ -335,7 +335,7 @@
           "$description": "Accent 3 muted background for subtle indicators"
         },
         "foreground": {
-          "$value": "{palette.accent.3.800}",
+          "$value": "{palette.accent.3.700}",
           "$type": "color",
           "$description": "Accent 3 text color for readability on accent backgrounds"
         },
@@ -360,7 +360,7 @@
           "$description": "Accent 4 muted background for subtle indicators"
         },
         "foreground": {
-          "$value": "{palette.accent.4.800}",
+          "$value": "{palette.accent.4.700}",
           "$type": "color",
           "$description": "Accent 4 text color for readability on accent backgrounds"
         },
@@ -385,7 +385,7 @@
           "$description": "Accent 5 muted background for subtle indicators"
         },
         "foreground": {
-          "$value": "{palette.accent.5.800}",
+          "$value": "{palette.accent.5.700}",
           "$type": "color",
           "$description": "Accent 5 text color for readability on accent backgrounds"
         },
