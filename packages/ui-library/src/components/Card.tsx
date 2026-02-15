@@ -13,6 +13,9 @@ const cardVariants = cva('rounded-sm border-line', {
       outlined: 'bg-surface border-line-border',
       elevated: 'bg-surface border-line-border shadow-md',
 
+      // Hero variant for featured content
+      hero: 'bg-gradient-surface-inverted text-foreground-inverted border-line-border',
+
       // Status variants with proper semantic token structure
       info: 'bg-status-info-muted text-status-info-foreground border-line-status-info-border',
       success:
@@ -28,12 +31,47 @@ const cardVariants = cva('rounded-sm border-line', {
       accent4: 'bg-accent-4-muted text-accent-4-foreground border-line-accent-4-border',
       accent5: 'bg-accent-5-muted text-accent-5-foreground border-line-accent-5-border',
     },
+    actionable: {
+      true: 'cursor-pointer transition-shadow',
+      false: '',
+    },
     inverted: {
       true: '',
       false: '',
     },
   },
   compoundVariants: [
+    // Actionable + non-hero variants: interactive shadows
+    {
+      actionable: true,
+      variant: [
+        'outlined',
+        'elevated',
+        'info',
+        'success',
+        'warning',
+        'error',
+        'accent1',
+        'accent2',
+        'accent3',
+        'accent4',
+        'accent5',
+      ],
+      class: 'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
+    },
+    // Hero variant base shadow (when not actionable)
+    {
+      variant: 'hero',
+      actionable: false,
+      class: 'shadow-md',
+    },
+    // Hero + actionable: uses interactive shadows instead
+    {
+      variant: 'hero',
+      actionable: true,
+      class: 'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
+    },
+
     // Core variants: CSS variable override for full semantic token inversion
     {
       variant: 'outlined',
@@ -97,18 +135,26 @@ const cardVariants = cva('rounded-sm border-line', {
   ],
   defaultVariants: {
     variant: 'outlined',
+    actionable: false,
     inverted: false,
   },
 })
 
 // Card
 export interface CardProps
-  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {}
+  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof cardVariants> {
+  /** Makes the card clickable with interactive shadow states */
+  actionable?: boolean
+}
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({ className, variant, inverted, ...props }, ref) => {
+  ({ className, variant, actionable, inverted, ...props }, ref) => {
     return (
-      <div className={cn(cardVariants({ variant, inverted }), className)} ref={ref} {...props} />
+      <div
+        className={cn(cardVariants({ variant, actionable, inverted }), className)}
+        ref={ref}
+        {...props}
+      />
     )
   }
 )
