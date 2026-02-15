@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+
 import { traceframeFontsPlugin, resolveFontPackages, VIRTUAL_FONTS_MODULE_ID } from '../index'
 
 describe('storybook-preset exports', () => {
