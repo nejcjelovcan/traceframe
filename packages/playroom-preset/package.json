@@ -1,6 +1,6 @@
 {
   "name": "@nejcjelovcan/traceframe-playroom-preset",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "Playroom preset for Traceframe theme integration",
   "main": "./config.cjs",
   "exports": {

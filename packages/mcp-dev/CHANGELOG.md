@@ -1,5 +1,11 @@
 # @nejcjelovcan/mcp-dev
 
+## 0.3.1
+
+### Patch Changes
+
+- [#53](https://github.com/nejcjelovcan/traceframe/pull/53) [`4c04234`](https://github.com/nejcjelovcan/traceframe/commit/4c04234a4319a5adfdd291eb80cba61082cd4ee6) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add lint verification step to autofix tool to catch non-auto-fixable errors
+
 ## 0.3.0
 
 ### Minor Changes
