@@ -16,7 +16,7 @@
     "lint:fix": "turbo run lint:fix",
     "format:root": "prettier --write \"*.{ts,tsx,json,md}\"",
     "format:check:root": "prettier --check \"*.{ts,tsx,json,md}\"",
-    "autofix": "pnpm sherif:fix && pnpm lint:fix && pnpm format --force",
+    "autofix": "pnpm sherif:fix && pnpm lint:fix && pnpm format --force && pnpm lint && pnpm format:check",
     "format": "turbo run format && pnpm format:root",
     "format:check": "turbo run format:check && pnpm format:check:root",
     "typecheck": "turbo run typecheck",

@@ -19,30 +19,18 @@ describe('traceframeFontsPlugin', () => {
 
   it('resolves virtual module ID correctly', () => {
     const plugin = traceframeFontsPlugin()
-    const resolveId = plugin.resolveId
+    const resolveId = plugin.resolveId as ((id: string) => string | undefined) | undefined
     if (typeof resolveId === 'function') {
-      // Provide required arguments for TypeScript
-      const result = (resolveId as any).call(
-        undefined,
-        'virtual:traceframe-fonts',
-        undefined,
-        { isEntry: false }
-      )
+      const result = resolveId('virtual:traceframe-fonts')
       expect(result).toBe('\0virtual:traceframe-fonts')
     }
   })
 
   it('returns undefined for non-virtual module IDs', () => {
     const plugin = traceframeFontsPlugin()
-    const resolveId = plugin.resolveId
+    const resolveId = plugin.resolveId as ((id: string) => string | undefined) | undefined
     if (typeof resolveId === 'function') {
-      // Provide required arguments for TypeScript
-      const result = (resolveId as any).call(
-        undefined,
-        'some-other-module',
-        undefined,
-        { isEntry: false }
-      )
+      const result = resolveId('some-other-module')
       expect(result).toBeUndefined()
     }
   })
