@@ -401,5 +401,81 @@
         }
       }
     }
+  },
+
+  "gradient": {
+    "interactive": {
+      "primary": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-primary-400)), rgb(var(--palette-primary-500)))",
+        "$type": "gradient",
+        "$description": "Primary button gradient for dark mode"
+      },
+      "secondary": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-secondary-400)), rgb(var(--palette-secondary-500)))",
+        "$type": "gradient",
+        "$description": "Secondary button gradient for dark mode"
+      },
+      "destructive": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-error-400)), rgb(var(--palette-error-500)))",
+        "$type": "gradient",
+        "$description": "Destructive button gradient for dark mode"
+      }
+    },
+    "status": {
+      "info": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-primary-400)), rgb(var(--palette-primary-500)))",
+        "$type": "gradient",
+        "$description": "Info status emphasis gradient for dark mode"
+      },
+      "success": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-success-400)), rgb(var(--palette-success-500)))",
+        "$type": "gradient",
+        "$description": "Success status emphasis gradient for dark mode"
+      },
+      "warning": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-warning-300)), rgb(var(--palette-warning-400)))",
+        "$type": "gradient",
+        "$description": "Warning status emphasis gradient for dark mode"
+      },
+      "error": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-error-400)), rgb(var(--palette-error-500)))",
+        "$type": "gradient",
+        "$description": "Error status emphasis gradient for dark mode"
+      }
+    },
+    "accent": {
+      "1": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-1-400)), rgb(var(--palette-accent-1-500)))",
+        "$type": "gradient",
+        "$description": "Accent 1 emphasis gradient for dark mode"
+      },
+      "2": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-2-400)), rgb(var(--palette-accent-2-500)))",
+        "$type": "gradient",
+        "$description": "Accent 2 emphasis gradient for dark mode"
+      },
+      "3": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-3-400)), rgb(var(--palette-accent-3-500)))",
+        "$type": "gradient",
+        "$description": "Accent 3 emphasis gradient for dark mode"
+      },
+      "4": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-4-400)), rgb(var(--palette-accent-4-500)))",
+        "$type": "gradient",
+        "$description": "Accent 4 emphasis gradient for dark mode"
+      },
+      "5": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-5-400)), rgb(var(--palette-accent-5-500)))",
+        "$type": "gradient",
+        "$description": "Accent 5 emphasis gradient for dark mode"
+      }
+    },
+    "surface": {
+      "inverted": {
+        "$value": "linear-gradient(180deg, rgb(var(--palette-neutral-200)), rgb(var(--palette-neutral-300)))",
+        "$type": "gradient",
+        "$description": "Inverted surface gradient for light backgrounds in dark mode"
+      }
+    }
   }
 }

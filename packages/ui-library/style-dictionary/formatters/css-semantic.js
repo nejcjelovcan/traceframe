@@ -59,6 +59,8 @@ export default function cssSemanticFormatter({ dictionary, options }) {
     let category
     if (token.path[0] === 'shadow') {
       category = 'shadow'
+    } else if (token.path[0] === 'gradient') {
+      category = 'gradient'
     } else if (token.path[0] === 'color') {
       // Tokens from semantic JSON files: ['color', category, ...rest]
       category = token.path[1]

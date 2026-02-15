@@ -385,18 +385,18 @@ export const TOKEN_METADATA = {
         variants: {
           primary: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-primary-600)), rgb(var(--palette-primary-700)))',
-            description: 'Primary button and CTA gradient',
+              'linear-gradient(180deg, rgb(var(--palette-primary-500)), rgb(var(--palette-primary-600)))',
+            description: 'Primary button gradient for light mode',
           },
           secondary: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-secondary-600)), rgb(var(--palette-secondary-700)))',
-            description: 'Secondary button gradient',
+              'linear-gradient(180deg, rgb(var(--palette-secondary-500)), rgb(var(--palette-secondary-600)))',
+            description: 'Secondary button gradient for light mode',
           },
           destructive: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-error-600)), rgb(var(--palette-error-700)))',
-            description: 'Destructive button gradient',
+              'linear-gradient(180deg, rgb(var(--palette-error-500)), rgb(var(--palette-error-600)))',
+            description: 'Destructive button gradient for light mode',
           },
         },
       },
@@ -405,23 +405,23 @@ export const TOKEN_METADATA = {
         variants: {
           info: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-primary-600)), rgb(var(--palette-primary-700)))',
-            description: 'Info status emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-primary-500)), rgb(var(--palette-primary-600)))',
+            description: 'Info status emphasis gradient for light mode',
           },
           success: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-success-600)), rgb(var(--palette-success-700)))',
-            description: 'Success status emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-success-500)), rgb(var(--palette-success-600)))',
+            description: 'Success status emphasis gradient for light mode',
           },
           warning: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-warning-500)), rgb(var(--palette-warning-600)))',
-            description: 'Warning status emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-warning-400)), rgb(var(--palette-warning-500)))',
+            description: 'Warning status emphasis gradient for light mode',
           },
           error: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-error-600)), rgb(var(--palette-error-700)))',
-            description: 'Error status emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-error-500)), rgb(var(--palette-error-600)))',
+            description: 'Error status emphasis gradient for light mode',
           },
         },
       },
@@ -430,28 +430,28 @@ export const TOKEN_METADATA = {
         variants: {
           '1': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-1-600)), rgb(var(--palette-accent-1-700)))',
-            description: 'Accent 1 emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-accent-1-500)), rgb(var(--palette-accent-1-600)))',
+            description: 'Accent 1 emphasis gradient for light mode',
           },
           '2': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-2-600)), rgb(var(--palette-accent-2-700)))',
-            description: 'Accent 2 emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-accent-2-500)), rgb(var(--palette-accent-2-600)))',
+            description: 'Accent 2 emphasis gradient for light mode',
           },
           '3': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-3-600)), rgb(var(--palette-accent-3-700)))',
-            description: 'Accent 3 emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-accent-3-500)), rgb(var(--palette-accent-3-600)))',
+            description: 'Accent 3 emphasis gradient for light mode',
           },
           '4': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-4-600)), rgb(var(--palette-accent-4-700)))',
-            description: 'Accent 4 emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-accent-4-500)), rgb(var(--palette-accent-4-600)))',
+            description: 'Accent 4 emphasis gradient for light mode',
           },
           '5': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-5-600)), rgb(var(--palette-accent-5-700)))',
-            description: 'Accent 5 emphasis gradient',
+              'linear-gradient(180deg, rgb(var(--palette-accent-5-500)), rgb(var(--palette-accent-5-600)))',
+            description: 'Accent 5 emphasis gradient for light mode',
           },
         },
       },
@@ -460,8 +460,8 @@ export const TOKEN_METADATA = {
         variants: {
           inverted: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-neutral-800)), rgb(var(--palette-neutral-900)))',
-            description: 'Inverted surface gradient for dark backgrounds',
+              'linear-gradient(180deg, rgb(var(--palette-neutral-700)), rgb(var(--palette-neutral-800)))',
+            description: 'Inverted surface gradient for dark backgrounds in light mode',
           },
         },
       },

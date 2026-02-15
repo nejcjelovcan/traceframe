@@ -74,6 +74,85 @@
     /* Secondary text for descriptions, placeholders, and less prominent content */
     --color-foreground-muted: rgb(var(--palette-neutral-600));
 
+    /* Accent 1 emphasis gradient for light mode */
+    --gradient-accent-1: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-1-500)),
+      rgb(var(--palette-accent-1-600))
+    );
+    /* Accent 2 emphasis gradient for light mode */
+    --gradient-accent-2: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-2-500)),
+      rgb(var(--palette-accent-2-600))
+    );
+    /* Accent 3 emphasis gradient for light mode */
+    --gradient-accent-3: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-3-500)),
+      rgb(var(--palette-accent-3-600))
+    );
+    /* Accent 4 emphasis gradient for light mode */
+    --gradient-accent-4: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-4-500)),
+      rgb(var(--palette-accent-4-600))
+    );
+    /* Accent 5 emphasis gradient for light mode */
+    --gradient-accent-5: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-5-500)),
+      rgb(var(--palette-accent-5-600))
+    );
+    /* Destructive button gradient for light mode */
+    --gradient-interactive-destructive: linear-gradient(
+      180deg,
+      rgb(var(--palette-error-500)),
+      rgb(var(--palette-error-600))
+    );
+    /* Primary button gradient for light mode */
+    --gradient-interactive-primary: linear-gradient(
+      180deg,
+      rgb(var(--palette-primary-500)),
+      rgb(var(--palette-primary-600))
+    );
+    /* Secondary button gradient for light mode */
+    --gradient-interactive-secondary: linear-gradient(
+      180deg,
+      rgb(var(--palette-secondary-500)),
+      rgb(var(--palette-secondary-600))
+    );
+    /* Error status emphasis gradient for light mode */
+    --gradient-status-error: linear-gradient(
+      180deg,
+      rgb(var(--palette-error-500)),
+      rgb(var(--palette-error-600))
+    );
+    /* Info status emphasis gradient for light mode */
+    --gradient-status-info: linear-gradient(
+      180deg,
+      rgb(var(--palette-primary-500)),
+      rgb(var(--palette-primary-600))
+    );
+    /* Success status emphasis gradient for light mode */
+    --gradient-status-success: linear-gradient(
+      180deg,
+      rgb(var(--palette-success-500)),
+      rgb(var(--palette-success-600))
+    );
+    /* Warning status emphasis gradient for light mode */
+    --gradient-status-warning: linear-gradient(
+      180deg,
+      rgb(var(--palette-warning-400)),
+      rgb(var(--palette-warning-500))
+    );
+    /* Inverted surface gradient for dark backgrounds in light mode */
+    --gradient-surface-inverted: linear-gradient(
+      180deg,
+      rgb(var(--palette-neutral-700)),
+      rgb(var(--palette-neutral-800))
+    );
+
     /* Background color for active or selected states */
     --color-interactive-active: rgb(var(--palette-neutral-200));
     /* Destructive action button background color */
