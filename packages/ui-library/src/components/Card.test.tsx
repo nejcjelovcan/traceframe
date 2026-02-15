@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { Card, CardContent, CardFooter, CardHeader } from './Card'
+import { Card, CardContent, CardFooter, CardHeader, CardProps } from './Card'
 
 describe('Card', () => {
   it('renders children', () => {
@@ -430,10 +430,10 @@ describe('Card actionable variant', () => {
   })
 
   it('works with status variants', () => {
-    const variants = ['info', 'success', 'warning', 'error']
+    const variants = ['info', 'success', 'warning', 'error'] as CardProps['variant'][]
     variants.forEach((variant) => {
       const { container } = render(
-        <Card variant={variant as any} actionable>
+        <Card variant={variant} actionable>
           Actionable {variant}
         </Card>
       )
@@ -444,10 +444,16 @@ describe('Card actionable variant', () => {
   })
 
   it('works with accent variants', () => {
-    const variants = ['accent1', 'accent2', 'accent3', 'accent4', 'accent5']
+    const variants = [
+      'accent1',
+      'accent2',
+      'accent3',
+      'accent4',
+      'accent5',
+    ] as CardProps['variant'][]
     variants.forEach((variant) => {
       const { container } = render(
-        <Card variant={variant as any} actionable>
+        <Card variant={variant} actionable>
           Actionable {variant}
         </Card>
       )
