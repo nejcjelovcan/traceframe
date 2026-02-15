@@ -29,11 +29,18 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-border',
 
       // Outline variants (ghost style with surface background for inverted contexts)
-      'outline-default': 'bg-surface border border-border text-foreground',
-      'outline-info': 'bg-surface border border-status-info text-status-info-foreground',
-      'outline-success': 'bg-surface border border-status-success text-status-success-foreground',
-      'outline-warning': 'bg-surface border border-status-warning text-status-warning-foreground',
-      'outline-error': 'bg-surface border border-status-error text-status-error-foreground',
+      'outline-default': 'bg-surface border-thick-border text-foreground',
+      'outline-info': 'bg-surface border-thick-status-info text-status-info-foreground',
+      'outline-success': 'bg-surface border-thick-status-success text-status-success-foreground',
+      'outline-warning': 'bg-surface border-thick-status-warning text-status-warning-foreground',
+      'outline-error': 'bg-surface border-thick-status-error text-status-error-foreground',
+
+      // Outline accent variants for categorization with thick borders
+      'outline-accent1': 'bg-surface border-thick-accent-1 text-accent-1-foreground',
+      'outline-accent2': 'bg-surface border-thick-accent-2 text-accent-2-foreground',
+      'outline-accent3': 'bg-surface border-thick-accent-3 text-accent-3-foreground',
+      'outline-accent4': 'bg-surface border-thick-accent-4 text-accent-4-foreground',
+      'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5-foreground',
     },
     size: {
       xs: 'px-xs py-2xs text-xs leading-none', // Tight inline badges
