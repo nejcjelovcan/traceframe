@@ -1,8 +1,8 @@
 import { withThemeByClassName } from '@storybook/addon-themes'
 import React from 'react'
+import 'virtual:traceframe-fonts'
 
 import { ThemeProvider } from '@nejcjelovcan/traceframe-ui-library'
-import '@nejcjelovcan/traceframe-ui-library/fonts'
 import '@nejcjelovcan/traceframe-ui-library/styles.css'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
