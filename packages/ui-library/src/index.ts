@@ -144,7 +144,7 @@ export {
   type Theme,
 } from './utils/theme.js'
 
-export { TOKEN_METADATA } from './styles/generated/token-metadata.js'
+export { TOKEN_METADATA } from './styles/token-metadata.js'
 
 export {
   COMPONENT_METADATA,

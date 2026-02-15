@@ -1,6 +1,6 @@
 #!/usr/bin/env tsx
 /**
- * CI script for validating token definition files for structural consistency.
+ * CI script for validating token definition CSS files for structural consistency.
  * Wraps the mcp-ui validateTokenDefinitionsTool for use outside of MCP context.
  */
 

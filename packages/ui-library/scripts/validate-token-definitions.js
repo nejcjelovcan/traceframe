@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 /**
- * Validates token consistency across JSON files:
- * 1. All tokens in light.json must exist in dark.json (semantic tokens)
- * 2. All tokens in dusk.json must exist in all other palette JSONs
+ * Validates token consistency across CSS source files:
+ * 1. All CSS custom properties in light.css must exist in dark.css (modes)
+ * 2. All CSS custom properties in dusk.css must exist in all other palette CSS files
+ * 3. All CSS custom properties in dusk.css must exist in all other theme CSS files
+ * 4. Shadow token format validation (inset shadows must include 'inset' keyword)
  */
 
 import { readFileSync, readdirSync } from 'node:fs'
@@ -10,71 +12,54 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
-const tokensDir = join(__dirname, '..', 'tokens')
+const stylesDir = join(__dirname, '..', 'src', 'styles', 'tokens')
 
 /**
- * Recursively extracts all token paths from a JSON object.
- * A token is identified by having a $value property.
- * @param {object} obj - The object to traverse
- * @param {string} prefix - Current path prefix
- * @returns {string[]} Array of token paths
+ * Extracts all CSS custom property declarations from a CSS file.
+ * Matches lines like: --token-surface: rgb(var(--palette-neutral-50));
+ * @param {string} content - CSS file content
+ * @returns {string[]} Array of custom property names
  */
-function extractTokenPaths(obj, prefix = '') {
-  const paths = []
-
-  for (const [key, value] of Object.entries(obj)) {
-    // Skip $ prefixed keys (metadata)
-    if (key.startsWith('$')) continue
-
-    const currentPath = prefix ? `${prefix}.${key}` : key
-
-    if (typeof value === 'object' && value !== null) {
-      // If this object has $value, it's a token
-      if ('$value' in value) {
-        paths.push(currentPath)
-      }
-      // Recurse into nested objects
-      paths.push(...extractTokenPaths(value, currentPath))
-    }
+function extractCssCustomProperties(content) {
+  const properties = []
+  const regex = /^\s*(--[\w-]+)\s*:/gm
+  let match
+  while ((match = regex.exec(content)) !== null) {
+    properties.push(match[1])
   }
-
-  return paths
+  return properties
 }
 
 /**
- * Checks if a path exists in an object
- * @param {object} obj - The object to check
- * @param {string} path - Dot-separated path
- * @returns {boolean}
+ * Extracts CSS custom property declarations with their values.
+ * @param {string} content - CSS file content
+ * @returns {Map<string, string>} Map of property name to value
  */
-function pathExists(obj, path) {
-  const parts = path.split('.')
-  let current = obj
-
-  for (const part of parts) {
-    if (current === null || typeof current !== 'object' || !(part in current)) {
-      return false
-    }
-    current = current[part]
+function extractCssCustomPropertyValues(content) {
+  const properties = new Map()
+  // Match property declarations, handling multi-line values (e.g., gradients)
+  const regex = /^\s*(--[\w-]+)\s*:\s*([^;]+);/gm
+  let match
+  while ((match = regex.exec(content)) !== null) {
+    properties.set(match[1], match[2].trim())
   }
-
-  return current !== null && typeof current === 'object' && '$value' in current
+  return properties
 }
 
 /**
- * Validates that all tokens in source exist in target
+ * Validates that all properties in source exist in target and vice versa.
  * @param {string} sourceName - Name of source file
- * @param {object} sourceTokens - Source token object
+ * @param {string[]} sourceProps - Source CSS custom properties
  * @param {string} targetName - Name of target file
- * @param {object} targetTokens - Target token object
+ * @param {string[]} targetProps - Target CSS custom properties
  * @returns {{ missing: string[], extra: string[] }}
  */
-function validateTokens(sourceName, sourceTokens, targetName, targetTokens) {
-  const sourcePaths = extractTokenPaths(sourceTokens)
-  const targetPaths = extractTokenPaths(targetTokens)
+function validateProperties(sourceName, sourceProps, targetName, targetProps) {
+  const sourceSet = new Set(sourceProps)
+  const targetSet = new Set(targetProps)
 
-  const missing = sourcePaths.filter((path) => !pathExists(targetTokens, path))
-  const extra = targetPaths.filter((path) => !pathExists(sourceTokens, path))
+  const missing = sourceProps.filter((prop) => !targetSet.has(prop))
+  const extra = targetProps.filter((prop) => !sourceSet.has(prop))
 
   return { missing, extra }
 }
@@ -82,64 +67,62 @@ function validateTokens(sourceName, sourceTokens, targetName, targetTokens) {
 function main() {
   let hasErrors = false
 
-  // 1. Validate semantic tokens: light.json -> dark.json
-  console.log('Validating semantic tokens (light.json as source of truth)...\n')
+  // 1. Validate mode tokens: light.css -> dark.css
+  console.log('Validating mode tokens (light.css as source of truth)...\n')
 
-  const lightJson = JSON.parse(readFileSync(join(tokensDir, 'semantic', 'light.json'), 'utf-8'))
-  const darkJson = JSON.parse(readFileSync(join(tokensDir, 'semantic', 'dark.json'), 'utf-8'))
+  const lightCss = readFileSync(join(stylesDir, 'modes', 'light.css'), 'utf-8')
+  const darkCss = readFileSync(join(stylesDir, 'modes', 'dark.css'), 'utf-8')
 
-  // Extract the inner object (skip the "light"/"dark" wrapper)
-  const lightTokens = lightJson
-  const darkTokens = darkJson
+  const lightProps = extractCssCustomProperties(lightCss)
+  const darkProps = extractCssCustomProperties(darkCss)
 
-  const semanticResult = validateTokens('light.json', lightTokens, 'dark.json', darkTokens)
+  const modeResult = validateProperties('light.css', lightProps, 'dark.css', darkProps)
 
-  if (semanticResult.missing.length > 0) {
+  if (modeResult.missing.length > 0) {
     hasErrors = true
-    console.log('Missing in dark.json (defined in light.json):')
-    semanticResult.missing.forEach((path) => console.log(`  - ${path}`))
+    console.log('Missing in dark.css (defined in light.css):')
+    modeResult.missing.forEach((prop) => console.log(`  - ${prop}`))
     console.log()
   }
 
-  if (semanticResult.extra.length > 0) {
+  if (modeResult.extra.length > 0) {
     hasErrors = true
-    console.log('Extra in dark.json (not in light.json):')
-    semanticResult.extra.forEach((path) => console.log(`  - ${path}`))
+    console.log('Extra in dark.css (not in light.css):')
+    modeResult.extra.forEach((prop) => console.log(`  - ${prop}`))
     console.log()
   }
 
-  if (semanticResult.missing.length === 0 && semanticResult.extra.length === 0) {
-    console.log('Semantic tokens: OK\n')
+  if (modeResult.missing.length === 0 && modeResult.extra.length === 0) {
+    console.log('Mode tokens: OK\n')
   }
 
-  // 2. Validate palette tokens: dusk.json as source of truth
-  console.log('Validating palette tokens (dusk.json as source of truth)...\n')
+  // 2. Validate palette tokens: dusk.css as source of truth
+  console.log('Validating palette tokens (dusk.css as source of truth)...\n')
 
-  const duskJson = JSON.parse(readFileSync(join(tokensDir, 'palettes', 'dusk.json'), 'utf-8'))
-  const duskTokens = duskJson
+  const duskPaletteCss = readFileSync(join(stylesDir, 'palettes', 'dusk.css'), 'utf-8')
+  const duskPaletteProps = extractCssCustomProperties(duskPaletteCss)
 
-  // Find all other palette files
-  const paletteFiles = readdirSync(join(tokensDir, 'palettes')).filter(
-    (f) => f.endsWith('.json') && f !== 'dusk.json'
+  const paletteFiles = readdirSync(join(stylesDir, 'palettes')).filter(
+    (f) => f.endsWith('.css') && f !== 'dusk.css'
   )
 
   for (const paletteFile of paletteFiles) {
-    const paletteJson = JSON.parse(readFileSync(join(tokensDir, 'palettes', paletteFile), 'utf-8'))
-    const paletteTokens = paletteJson
+    const paletteCss = readFileSync(join(stylesDir, 'palettes', paletteFile), 'utf-8')
+    const paletteProps = extractCssCustomProperties(paletteCss)
 
-    const paletteResult = validateTokens('dusk.json', duskTokens, paletteFile, paletteTokens)
+    const paletteResult = validateProperties('dusk.css', duskPaletteProps, paletteFile, paletteProps)
 
     if (paletteResult.missing.length > 0) {
       hasErrors = true
-      console.log(`Missing in ${paletteFile} (defined in dusk.json):`)
-      paletteResult.missing.forEach((path) => console.log(`  - ${path}`))
+      console.log(`Missing in ${paletteFile} (defined in dusk.css):`)
+      paletteResult.missing.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
 
     if (paletteResult.extra.length > 0) {
       hasErrors = true
-      console.log(`Extra in ${paletteFile} (not in dusk.json):`)
-      paletteResult.extra.forEach((path) => console.log(`  - ${path}`))
+      console.log(`Extra in ${paletteFile} (not in dusk.css):`)
+      paletteResult.extra.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
 
@@ -150,34 +133,33 @@ function main() {
 
   console.log()
 
-  // 3. Validate theme tokens (shadows, borders, gradients): dusk.json as source of truth
-  console.log('Validating theme tokens (dusk.json as source of truth)...\n')
+  // 3. Validate theme tokens: dusk.css as source of truth
+  console.log('Validating theme tokens (dusk.css as source of truth)...\n')
 
-  const themeDuskJson = JSON.parse(readFileSync(join(tokensDir, 'themes', 'dusk.json'), 'utf-8'))
-  const themeDuskTokens = themeDuskJson
+  const duskThemeCss = readFileSync(join(stylesDir, 'themes', 'dusk.css'), 'utf-8')
+  const duskThemeProps = extractCssCustomProperties(duskThemeCss)
 
-  // Find all other theme files
-  const themeFiles = readdirSync(join(tokensDir, 'themes')).filter(
-    (f) => f.endsWith('.json') && f !== 'dusk.json'
+  const themeFiles = readdirSync(join(stylesDir, 'themes')).filter(
+    (f) => f.endsWith('.css') && f !== 'dusk.css'
   )
 
   for (const themeFile of themeFiles) {
-    const themeJson = JSON.parse(readFileSync(join(tokensDir, 'themes', themeFile), 'utf-8'))
-    const themeTokens = themeJson
+    const themeCss = readFileSync(join(stylesDir, 'themes', themeFile), 'utf-8')
+    const themeProps = extractCssCustomProperties(themeCss)
 
-    const themeResult = validateTokens('dusk.json', themeDuskTokens, themeFile, themeTokens)
+    const themeResult = validateProperties('dusk.css', duskThemeProps, themeFile, themeProps)
 
     if (themeResult.missing.length > 0) {
       hasErrors = true
-      console.log(`Missing in ${themeFile} (defined in dusk.json):`)
-      themeResult.missing.forEach((path) => console.log(`  - ${path}`))
+      console.log(`Missing in ${themeFile} (defined in dusk.css):`)
+      themeResult.missing.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
 
     if (themeResult.extra.length > 0) {
       hasErrors = true
-      console.log(`Extra in ${themeFile} (not in dusk.json):`)
-      themeResult.extra.forEach((path) => console.log(`  - ${path}`))
+      console.log(`Extra in ${themeFile} (not in dusk.css):`)
+      themeResult.extra.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
 
@@ -191,39 +173,31 @@ function main() {
   // 4. Validate shadow token format (inset shadows include 'inset' keyword)
   console.log('Validating shadow token formats...\n')
 
-  const allThemeFiles = readdirSync(join(tokensDir, 'themes')).filter((f) => f.endsWith('.json'))
+  const allThemeFiles = readdirSync(join(stylesDir, 'themes')).filter((f) => f.endsWith('.css'))
   let shadowFormatErrors = false
 
   for (const themeFile of allThemeFiles) {
-    const themeJson = JSON.parse(readFileSync(join(tokensDir, 'themes', themeFile), 'utf-8'))
-    const shadowTokens = themeJson.shadow || {}
+    const themeCss = readFileSync(join(stylesDir, 'themes', themeFile), 'utf-8')
+    const themeValues = extractCssCustomPropertyValues(themeCss)
 
-    // Check inset shadows include 'inset' keyword
-    const checkShadowFormat = (obj, path = '') => {
-      for (const [key, value] of Object.entries(obj)) {
-        const currentPath = path ? `${path}.${key}` : key
+    for (const [prop, value] of themeValues) {
+      if (!prop.includes('shadow')) continue
 
-        if (value && typeof value === 'object') {
-          if (value.$value && value.$type === 'shadow') {
-            // Check if this is an inset shadow but doesn't have 'inset' keyword
-            if (currentPath.includes('inset') && !value.$value.includes('inset')) {
-              console.log(`${themeFile}: shadow.${currentPath} is an inset shadow but doesn't start with 'inset'`)
-              shadowFormatErrors = true
-            }
-            // Check if non-inset shadows accidentally have 'inset' keyword
-            if (!currentPath.includes('inset') && value.$value.includes('inset')) {
-              console.log(`${themeFile}: shadow.${currentPath} contains 'inset' but is not in the inset category`)
-              shadowFormatErrors = true
-            }
-          } else if (!value.$value) {
-            // Recurse into nested objects
-            checkShadowFormat(value, currentPath)
-          }
-        }
+      // Check if this is an inset shadow but doesn't have 'inset' keyword
+      if (prop.includes('inset') && !value.includes('inset')) {
+        console.log(
+          `${themeFile}: ${prop} is an inset shadow but value doesn't include 'inset'`
+        )
+        shadowFormatErrors = true
+      }
+      // Check if non-inset shadows accidentally have 'inset' keyword
+      if (!prop.includes('inset') && value.includes('inset')) {
+        console.log(
+          `${themeFile}: ${prop} contains 'inset' but is not in the inset category`
+        )
+        shadowFormatErrors = true
       }
     }
-
-    checkShadowFormat(shadowTokens)
   }
 
   if (!shadowFormatErrors) {

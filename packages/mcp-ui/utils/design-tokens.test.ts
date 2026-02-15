@@ -44,4 +44,13 @@ describe('getDesignTokens', () => {
 
     expect(tokens.spacing).toBeDefined()
   })
+
+  it('returns border radius tokens', async () => {
+    const tokens = await getDesignTokens()
+
+    expect(tokens.borderRadius).toBeDefined()
+    expect(tokens.borderRadius.sm).toBeDefined()
+    expect(tokens.borderRadius.sm.value).toBe('0.25rem')
+    expect(tokens.borderRadius.md.description).toContain('Medium border radius')
+  })
 })

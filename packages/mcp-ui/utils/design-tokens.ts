@@ -83,6 +83,14 @@ export interface GradientTokenInfo {
 }
 
 /**
+ * Border radius token info with value and description.
+ */
+export interface BorderRadiusInfo {
+  value: string
+  description: string
+}
+
+/**
  * Complete design tokens structure.
  * Note: Palettes are intentionally not exposed. UI code should only use semantic tokens.
  */
@@ -96,6 +104,7 @@ export interface DesignTokens {
   shadows: Record<string, ShadowInfo>
   borders: Record<string, BorderStyleInfo>
   gradients: Record<string, GradientTokenInfo>
+  borderRadius: Record<string, BorderRadiusInfo>
 }
 
 /**
@@ -197,6 +206,17 @@ export async function getDesignTokens(): Promise<DesignTokens> {
     }
   }
 
+  // Border radius values from TOKEN_METADATA.theme.borderRadius
+  const borderRadius: Record<string, BorderRadiusInfo> = {}
+  if ('theme' in TOKEN_METADATA && 'borderRadius' in TOKEN_METADATA.theme) {
+    for (const [name, data] of Object.entries(TOKEN_METADATA.theme.borderRadius)) {
+      borderRadius[name] = {
+        value: data.value,
+        description: data.description,
+      }
+    }
+  }
+
   return {
     colors: {
       semantic,
@@ -207,5 +227,6 @@ export async function getDesignTokens(): Promise<DesignTokens> {
     shadows,
     borders,
     gradients,
+    borderRadius,
   }
 }
