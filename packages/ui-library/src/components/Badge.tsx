@@ -28,12 +28,12 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       accent4: 'bg-accent-4-muted text-accent-4-foreground border-accent-4-border',
       accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-border',
 
-      // Outline variants (ghost style)
-      'outline-default': 'border border-border text-foreground',
-      'outline-info': 'border border-status-info text-status-info',
-      'outline-success': 'border border-status-success text-status-success',
-      'outline-warning': 'border border-status-warning text-status-warning',
-      'outline-error': 'border border-status-error text-status-error',
+      // Outline variants (ghost style with surface background for inverted contexts)
+      'outline-default': 'bg-surface border border-border text-foreground',
+      'outline-info': 'bg-surface border border-status-info text-status-info-foreground',
+      'outline-success': 'bg-surface border border-status-success text-status-success-foreground',
+      'outline-warning': 'bg-surface border border-status-warning text-status-warning-foreground',
+      'outline-error': 'bg-surface border border-status-error text-status-error-foreground',
     },
     size: {
       xs: 'px-xs py-2xs text-xs leading-none', // Tight inline badges

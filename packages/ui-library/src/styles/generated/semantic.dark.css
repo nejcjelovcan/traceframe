@@ -9,7 +9,7 @@
     /* Accent 1 text color for readability on accent backgrounds */
     --color-accent-1-foreground: rgb(var(--palette-accent-1-300));
     /* Accent 1 muted background for subtle indicators */
-    --color-accent-1-muted: rgb(var(--palette-accent-1-950));
+    --color-accent-1-muted: rgb(var(--palette-accent-1-900));
     /* Accent 2 base color for categorical data and visual distinction */
     --color-accent-2: rgb(var(--palette-accent-2-400));
     /* Accent 2 border color for containers and elements */
@@ -19,7 +19,7 @@
     /* Accent 2 text color for readability on accent backgrounds */
     --color-accent-2-foreground: rgb(var(--palette-accent-2-300));
     /* Accent 2 muted background for subtle indicators */
-    --color-accent-2-muted: rgb(var(--palette-accent-2-950));
+    --color-accent-2-muted: rgb(var(--palette-accent-2-900));
     /* Accent 3 base color for categorical data and visual distinction */
     --color-accent-3: rgb(var(--palette-accent-3-400));
     /* Accent 3 border color for containers and elements */
@@ -29,7 +29,7 @@
     /* Accent 3 text color for readability on accent backgrounds */
     --color-accent-3-foreground: rgb(var(--palette-accent-3-300));
     /* Accent 3 muted background for subtle indicators */
-    --color-accent-3-muted: rgb(var(--palette-accent-3-950));
+    --color-accent-3-muted: rgb(var(--palette-accent-3-900));
     /* Accent 4 base color for categorical data and visual distinction */
     --color-accent-4: rgb(var(--palette-accent-4-400));
     /* Accent 4 border color for containers and elements */
@@ -39,7 +39,7 @@
     /* Accent 4 text color for readability on accent backgrounds */
     --color-accent-4-foreground: rgb(var(--palette-accent-4-300));
     /* Accent 4 muted background for subtle indicators */
-    --color-accent-4-muted: rgb(var(--palette-accent-4-950));
+    --color-accent-4-muted: rgb(var(--palette-accent-4-900));
     /* Accent 5 base color for categorical data and visual distinction */
     --color-accent-5: rgb(var(--palette-accent-5-400));
     /* Accent 5 border color for containers and elements */
@@ -49,7 +49,7 @@
     /* Accent 5 text color for readability on accent backgrounds */
     --color-accent-5-foreground: rgb(var(--palette-accent-5-300));
     /* Accent 5 muted background for subtle indicators */
-    --color-accent-5-muted: rgb(var(--palette-accent-5-950));
+    --color-accent-5-muted: rgb(var(--palette-accent-5-900));
 
     /* Primary border color for inputs, cards, and containers */
     --color-border: rgb(var(--palette-neutral-700));
@@ -93,7 +93,7 @@
     /* Border color for primary buttons and outlined primary elements */
     --color-interactive-primary-border: rgb(var(--palette-primary-400));
     /* Text and icon color on primary buttons */
-    --color-interactive-primary-foreground: rgb(var(--palette-neutral-50));
+    --color-interactive-primary-foreground: rgb(var(--palette-primary-950));
     /* Primary button background on hover */
     --color-interactive-primary-hover: rgb(var(--palette-primary-600));
     /* Secondary button and accent background color */
@@ -117,7 +117,7 @@
     /* Error status text color for readability on error backgrounds */
     --color-status-error-foreground: rgb(var(--palette-error-300));
     /* Error status muted background for subtle error indicators */
-    --color-status-error-muted: rgb(var(--palette-error-950));
+    --color-status-error-muted: rgb(var(--palette-error-900));
     /* Info status color for informational messages, tips, and non-critical alerts */
     --color-status-info: rgb(var(--palette-primary-400));
     /* Info status border color for info containers and alerts */
@@ -127,7 +127,7 @@
     /* Info status text color for readability on info backgrounds */
     --color-status-info-foreground: rgb(var(--palette-primary-300));
     /* Info status muted background for subtle info indicators */
-    --color-status-info-muted: rgb(var(--palette-primary-950));
+    --color-status-info-muted: rgb(var(--palette-primary-900));
     /* Success status color for positive outcomes, completed actions, and confirmations */
     --color-status-success: rgb(var(--palette-success-400));
     /* Success status border color for success containers and alerts */
@@ -137,7 +137,7 @@
     /* Success status text color for readability on success backgrounds */
     --color-status-success-foreground: rgb(var(--palette-success-300));
     /* Success status muted background for subtle success indicators */
-    --color-status-success-muted: rgb(var(--palette-success-950));
+    --color-status-success-muted: rgb(var(--palette-success-900));
     /* Warning status color for cautions, pending states, and attention required */
     --color-status-warning: rgb(var(--palette-warning-400));
     /* Warning status border color for warning containers and alerts */
@@ -147,7 +147,7 @@
     /* Warning status text color for readability on warning backgrounds */
     --color-status-warning-foreground: rgb(var(--palette-warning-300));
     /* Warning status muted background for subtle warning indicators */
-    --color-status-warning-muted: rgb(var(--palette-warning-950));
+    --color-status-warning-muted: rgb(var(--palette-warning-900));
 
     /* Primary surface color for backgrounds and containers */
     --color-surface: rgb(var(--palette-neutral-950));

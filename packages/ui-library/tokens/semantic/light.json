@@ -158,7 +158,7 @@
         "$type": "color",
         "$description": "Info status color for informational messages, tips, and non-critical alerts",
         "muted": {
-          "$value": "{palette.primary.50}",
+          "$value": "{palette.primary.100}",
           "$type": "color",
           "$description": "Info status muted background for subtle info indicators"
         },
@@ -183,7 +183,7 @@
         "$type": "color",
         "$description": "Success status color for positive outcomes, completed actions, and confirmations",
         "muted": {
-          "$value": "{palette.success.50}",
+          "$value": "{palette.success.100}",
           "$type": "color",
           "$description": "Success status muted background for subtle success indicators"
         },
@@ -208,7 +208,7 @@
         "$type": "color",
         "$description": "Warning status color for cautions, pending states, and attention required",
         "muted": {
-          "$value": "{palette.warning.50}",
+          "$value": "{palette.warning.100}",
           "$type": "color",
           "$description": "Warning status muted background for subtle warning indicators"
         },
@@ -233,7 +233,7 @@
         "$type": "color",
         "$description": "Error status color for failures, critical issues, and destructive actions",
         "muted": {
-          "$value": "{palette.error.50}",
+          "$value": "{palette.error.100}",
           "$type": "color",
           "$description": "Error status muted background for subtle error indicators"
         },
@@ -280,7 +280,7 @@
         "$type": "color",
         "$description": "Accent 1 base color for categorical data and visual distinction",
         "muted": {
-          "$value": "{palette.accent.1.50}",
+          "$value": "{palette.accent.1.100}",
           "$type": "color",
           "$description": "Accent 1 muted background for subtle indicators"
         },
@@ -305,7 +305,7 @@
         "$type": "color",
         "$description": "Accent 2 base color for categorical data and visual distinction",
         "muted": {
-          "$value": "{palette.accent.2.50}",
+          "$value": "{palette.accent.2.100}",
           "$type": "color",
           "$description": "Accent 2 muted background for subtle indicators"
         },
@@ -330,7 +330,7 @@
         "$type": "color",
         "$description": "Accent 3 base color for categorical data and visual distinction",
         "muted": {
-          "$value": "{palette.accent.3.50}",
+          "$value": "{palette.accent.3.100}",
           "$type": "color",
           "$description": "Accent 3 muted background for subtle indicators"
         },
@@ -355,7 +355,7 @@
         "$type": "color",
         "$description": "Accent 4 base color for categorical data and visual distinction",
         "muted": {
-          "$value": "{palette.accent.4.50}",
+          "$value": "{palette.accent.4.100}",
           "$type": "color",
           "$description": "Accent 4 muted background for subtle indicators"
         },
@@ -380,7 +380,7 @@
         "$type": "color",
         "$description": "Accent 5 base color for categorical data and visual distinction",
         "muted": {
-          "$value": "{palette.accent.5.50}",
+          "$value": "{palette.accent.5.100}",
           "$type": "color",
           "$description": "Accent 5 muted background for subtle indicators"
         },
