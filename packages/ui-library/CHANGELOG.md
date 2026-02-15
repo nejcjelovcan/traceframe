@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.0.3
+
+### Patch Changes
+
+- [#51](https://github.com/nejcjelovcan/traceframe/pull/51) [`7592dbf`](https://github.com/nejcjelovcan/traceframe/commit/7592dbf212d079d4c63d8955b5bcc776bde2725a) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix StatCard inverted mode: use foreground-inverted-muted for label, subtitle, icon, and description text when inverted
+
 ## 1.0.2
 
 ### Patch Changes

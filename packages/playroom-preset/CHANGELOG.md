@@ -1,5 +1,12 @@
 # @nejcjelovcan/traceframe-playroom-preset
 
+## 0.1.10
+
+### Patch Changes
+
+- Updated dependencies [[`7592dbf`](https://github.com/nejcjelovcan/traceframe/commit/7592dbf212d079d4c63d8955b5bcc776bde2725a)]:
+  - @nejcjelovcan/traceframe-ui-library@1.0.3
+
 ## 0.1.9
 
 ### Patch Changes
