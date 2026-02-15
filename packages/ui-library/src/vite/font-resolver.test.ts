@@ -105,7 +105,7 @@ describe('resolveFontPackages', () => {
             }
             throw new Error(`Cannot find module '${path}'`)
           },
-        } as ReturnType<typeof createRequire>
+        } as unknown as ReturnType<typeof createRequire>
       }
       // UI library require that throws for some packages
       return {
@@ -115,7 +115,7 @@ describe('resolveFontPackages', () => {
           }
           return `/mock/node_modules/${path}`
         },
-      } as ReturnType<typeof createRequire>
+      } as unknown as ReturnType<typeof createRequire>
     })
 
     const packages = await resolveFontPackages()
@@ -135,7 +135,7 @@ describe('resolveFontPackages', () => {
         resolve: (path: string) => {
           throw new Error(`Cannot find module '${path}'`)
         },
-      } as ReturnType<typeof createRequire>
+      } as unknown as ReturnType<typeof createRequire>
     })
 
     const packages = await resolveFontPackages()
