@@ -30,10 +30,10 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
 
       // Outline variants (ghost style with surface background for inverted contexts)
       'outline-default': 'bg-surface border border-border text-foreground',
-      'outline-info': 'bg-surface border border-status-info text-status-info',
-      'outline-success': 'bg-surface border border-status-success text-status-success',
-      'outline-warning': 'bg-surface border border-status-warning text-status-warning',
-      'outline-error': 'bg-surface border border-status-error text-status-error',
+      'outline-info': 'bg-surface border border-status-info text-status-info-foreground',
+      'outline-success': 'bg-surface border border-status-success text-status-success-foreground',
+      'outline-warning': 'bg-surface border border-status-warning text-status-warning-foreground',
+      'outline-error': 'bg-surface border border-status-error text-status-error-foreground',
     },
     size: {
       xs: 'px-xs py-2xs text-xs leading-none', // Tight inline badges
