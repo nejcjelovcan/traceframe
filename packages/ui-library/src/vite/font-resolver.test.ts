@@ -105,7 +105,7 @@ describe('resolveFontPackages', () => {
             }
             throw new Error(`Cannot find module '${path}'`)
           },
-        } as any
+        } as ReturnType<typeof createRequire>
       }
       // UI library require that throws for some packages
       return {
@@ -115,7 +115,7 @@ describe('resolveFontPackages', () => {
           }
           return `/mock/node_modules/${path}`
         },
-      } as any
+      } as ReturnType<typeof createRequire>
     })
 
     const packages = await resolveFontPackages()
@@ -130,12 +130,12 @@ describe('resolveFontPackages', () => {
     const mockCreateRequire = vi.mocked(createRequire)
 
     // Mock to fail resolving ui-library itself
-    mockCreateRequire.mockImplementationOnce((url: string | URL) => {
+    mockCreateRequire.mockImplementationOnce((_url: string | URL) => {
       return {
         resolve: (path: string) => {
           throw new Error(`Cannot find module '${path}'`)
         },
-      } as any
+      } as ReturnType<typeof createRequire>
     })
 
     const packages = await resolveFontPackages()

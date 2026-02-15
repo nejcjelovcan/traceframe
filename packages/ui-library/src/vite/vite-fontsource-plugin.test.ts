@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 
-import { traceframeFontsPlugin } from './vite-fontsource-plugin'
 import { resolveFontPackages } from './font-resolver.js'
+import { traceframeFontsPlugin } from './vite-fontsource-plugin'
 
 // Mock the font resolver module
 vi.mock('./font-resolver.js', () => ({
@@ -108,7 +108,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       expect(resolveFontPackages).toHaveBeenCalledTimes(1)
@@ -120,13 +120,13 @@ describe('traceframeFontsPlugin', () => {
 
       // First buildStart
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
       expect(resolveFontPackages).toHaveBeenCalledTimes(1)
 
       // Second buildStart - should not re-resolve
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
       expect(resolveFontPackages).toHaveBeenCalledTimes(1) // Still 1
     })
@@ -137,13 +137,13 @@ describe('traceframeFontsPlugin', () => {
 
       // First buildStart
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
       expect(resolveFontPackages).toHaveBeenCalledTimes(1)
 
       // Second buildStart - should re-resolve
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
       expect(resolveFontPackages).toHaveBeenCalledTimes(2)
     })
@@ -162,7 +162,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       expect(context.warn).toHaveBeenCalledTimes(1)
@@ -186,7 +186,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       expect(context.warn).not.toHaveBeenCalled()
@@ -198,7 +198,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       expect(context.warn).not.toHaveBeenCalled()
@@ -212,7 +212,7 @@ describe('traceframeFontsPlugin', () => {
 
       // First need to call buildStart to resolve packages
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       const result =
@@ -242,7 +242,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       const result =
@@ -258,7 +258,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       const result =
@@ -283,7 +283,7 @@ describe('traceframeFontsPlugin', () => {
       const context = { warn: vi.fn() }
 
       if (typeof plugin.buildStart === 'function') {
-        await plugin.buildStart.call(context as any, {} as any)
+        await plugin.buildStart.call(context as never, {} as never)
       }
 
       const result =
