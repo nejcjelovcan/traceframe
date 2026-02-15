@@ -1,3 +1,23 @@
+/**
+ * @module vite-fontsource-plugin
+ *
+ * Vite plugin that solves development mode font loading issues for @fontsource packages.
+ *
+ * ## Problem
+ *
+ * When importing @fontsource CSS files directly in JavaScript/TypeScript files,
+ * esbuild's pre-bundling process strips the CSS imports during development,
+ * causing fonts not to load. This only affects development mode - production
+ * builds work correctly.
+ *
+ * ## Solution
+ *
+ * This plugin creates a virtual module that imports all required font CSS files,
+ * bypassing esbuild's pre-bundling and ensuring fonts load correctly in development.
+ * The virtual module pattern is a common Vite/Rollup technique for generating
+ * dynamic import statements at build time.
+ */
+
 import { resolveFontPackages, type ResolvedFontPackage } from './font-resolver.js'
 
 import type { Plugin } from 'vite'
@@ -27,6 +47,40 @@ export interface TraceframeFontsPluginOptions {
   logWarnings?: boolean
 }
 
+/**
+ * Creates a Vite plugin that handles @fontsource font loading for Traceframe.
+ *
+ * The plugin resolves font packages installed in ui-library and creates a
+ * virtual module that imports their CSS files. This ensures fonts load correctly
+ * in development mode despite esbuild's CSS stripping behavior.
+ *
+ * @param options - Plugin configuration options
+ * @param options.cache - Whether to cache resolved font paths (default: true)
+ * @param options.logWarnings - Whether to log warnings for missing packages (default: true)
+ * @returns Vite plugin object
+ *
+ * @example
+ * ```typescript
+ * // vite.config.ts
+ * import { defineConfig } from 'vite'
+ * import { traceframeFontsPlugin } from '@nejcjelovcan/traceframe-ui-library/vite-plugin'
+ *
+ * export default defineConfig({
+ *   plugins: [
+ *     traceframeFontsPlugin({
+ *       cache: true,        // Cache font resolutions (default)
+ *       logWarnings: true,  // Warn about missing fonts (default)
+ *     }),
+ *   ],
+ * })
+ * ```
+ *
+ * @example
+ * ```typescript
+ * // main.tsx - Import the virtual module in your app
+ * import 'virtual:traceframe-fonts'
+ * ```
+ */
 export function traceframeFontsPlugin(options: TraceframeFontsPluginOptions = {}): Plugin {
   const { cache = true, logWarnings = true } = options
 

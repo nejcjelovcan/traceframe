@@ -83,12 +83,118 @@ export default preview
 
 ## How It Works
 
-The preset entry point (`preset.cjs`) tells Storybook where to find the preview annotations:
+The preset entry point (`preset.js`) tells Storybook where to find the preview annotations:
 
 ```javascript
-// preset.cjs
-const path = require('path')
-exports.previewAnnotations = [path.join(__dirname, 'dist', 'preview.js')]
+// preset.js
+import path from 'path'
+import { fileURLToPath } from 'url'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
+export const previewAnnotations = [path.join(__dirname, 'dist', 'preview.js')]
 ```
 
 The preview module exports a `decorators` array that Storybook merges with any decorators defined in the consumer's `.storybook/preview.ts`.
+
+## Standalone Vite Plugin
+
+For Vite-based React apps that use Traceframe fonts without Storybook, you can use the Vite plugin directly:
+
+```typescript
+// vite.config.ts
+import { defineConfig } from 'vite'
+import { traceframeFontsPlugin } from '@nejcjelovcan/traceframe-storybook-preset/plugin'
+
+export default defineConfig({
+  plugins: [
+    react(),
+    traceframeFontsPlugin(),
+  ],
+})
+```
+
+The plugin creates a virtual module that imports all Traceframe font CSS files. You can then import this virtual module in your app:
+
+```typescript
+// main.tsx or App.tsx
+import 'virtual:traceframe-fonts'
+```
+
+### TypeScript Support for Virtual Module
+
+To avoid TypeScript errors for the virtual module, add this type declaration:
+
+```typescript
+// vite-env.d.ts or global.d.ts
+declare module 'virtual:traceframe-fonts' {
+  // Virtual module for font imports
+}
+```
+
+## How Font Loading Works
+
+The preset includes a Vite plugin that solves a development mode issue with @fontsource packages. When importing font CSS directly in JavaScript/TypeScript files, esbuild's pre-bundling process strips the CSS imports, causing fonts not to load in development.
+
+The plugin works by:
+
+1. **Resolving font packages** - Uses Node's module resolution from ui-library's perspective to find installed @fontsource packages
+2. **Creating a virtual module** - Generates a `virtual:traceframe-fonts` module that imports all resolved font CSS files
+3. **Bypassing esbuild** - The virtual module ensures CSS imports survive the pre-bundling process
+4. **Caching resolutions** - Font paths are resolved once per dev server session for performance
+
+### Virtual Module Pattern
+
+The virtual module ID `virtual:traceframe-fonts` is resolved to `\0virtual:traceframe-fonts` internally (the `\0` prefix is a Rollup convention for virtual modules). When loaded, it returns import statements for all available font CSS files:
+
+```javascript
+// Generated content of virtual:traceframe-fonts
+import '/path/to/@fontsource/ibm-plex-mono/index.css'
+import '/path/to/@fontsource-variable/inter/index.css'
+// ... more font imports
+```
+
+## Troubleshooting
+
+### Fonts Not Loading in Development
+
+If fonts aren't loading:
+
+1. **Check installation** - Ensure font packages are installed in ui-library's dependencies
+2. **Clear Vite cache** - Delete `node_modules/.vite` and restart the dev server
+3. **Check browser console** - Look for 404 errors on font CSS files
+4. **Verify imports** - Ensure `virtual:traceframe-fonts` is imported in your app
+
+### TypeScript Errors for Virtual Module
+
+If you see `Cannot find module 'virtual:traceframe-fonts'`:
+
+1. Add the type declaration shown above to your `vite-env.d.ts`
+2. Ensure the Vite plugin is added to your config before using the import
+3. Restart your TypeScript server (in VS Code: Cmd+Shift+P → "TypeScript: Restart TS Server")
+
+### Clearing Vite Cache
+
+Sometimes Vite's dependency cache can cause issues with font loading:
+
+```bash
+# Clear Vite's cache
+rm -rf node_modules/.vite
+
+# Restart dev server
+pnpm dev
+```
+
+### Missing Font Warnings
+
+The plugin will warn about missing font packages in the console:
+
+```
+[vite-plugin-traceframe-fonts] Missing font packages: @fontsource/space-mono. These fonts will not be loaded. Install them in ui-library to fix.
+```
+
+To resolve, install the missing packages in the ui-library package:
+
+```bash
+cd packages/ui-library
+pnpm add @fontsource/space-mono
+```
