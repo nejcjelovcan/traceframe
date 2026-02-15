@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import type { Plugin } from 'vite'
+
 import { traceframeFontsPlugin } from './vite-fontsource-plugin'
 
 describe('traceframeFontsPlugin', () => {

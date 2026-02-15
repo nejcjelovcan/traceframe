@@ -1,4 +1,5 @@
 import type { Plugin } from 'vite'
+
 import { resolveFontPackages, type ResolvedFontPackage } from './font-resolver.js'
 
 const VIRTUAL_MODULE_ID = 'virtual:traceframe-fonts'

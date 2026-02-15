@@ -1,5 +1,5 @@
-import { dirname } from 'node:path'
 import { createRequire } from 'node:module'
+import { dirname } from 'node:path'
 
 export interface ResolvedFontPackage {
   name: string
