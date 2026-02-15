@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.0.2
+
+### Patch Changes
+
+- [#49](https://github.com/nejcjelovcan/traceframe/pull/49) [`0c5c390`](https://github.com/nejcjelovcan/traceframe/commit/0c5c390d3099b8d3ede999e2c2069e2b76474b2a) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix semantic token values for light/dark mode: update dark mode primary button foreground to use primary.950, adjust status and accent muted backgrounds (50→100 light, 950→900 dark), and add bg-surface to Badge outline variants for inverted background support
+
 ## 1.0.1
 
 ### Patch Changes
