@@ -12,6 +12,7 @@ export const UTILITY_CATEGORIES = [
   'typography',
   'borders',
   'shadows',
+  'gradients',
   'all',
 ] as const
 export type UtilityCategory = (typeof UTILITY_CATEGORIES)[number]
@@ -24,7 +25,7 @@ export const getTailwindUtilitiesInputSchema = {
     .enum(UTILITY_CATEGORIES)
     .optional()
     .describe(
-      'Filter by category (optional). Options: colors, spacing, sizing, typography, borders, shadows, all. Defaults to all.'
+      'Filter by category (optional). Options: colors, spacing, sizing, typography, borders, shadows, gradients, all. Defaults to all.'
     ),
 }
 
@@ -32,7 +33,7 @@ export const getTailwindUtilitiesInputSchema = {
  * Description for the get_tailwind_utilities tool.
  */
 export const getTailwindUtilitiesDescription =
-  'Get project-specific Tailwind CSS utility classes derived from design tokens. Returns semantic colors, custom spacing, sizing, typography, border radius, and shadow utilities with descriptions. Does NOT return standard Tailwind classes that any AI already knows.'
+  'Get project-specific Tailwind CSS utility classes derived from design tokens. Returns semantic colors, custom spacing, sizing, typography, border radius, shadow utilities, border styles, and gradients with descriptions. Does NOT return standard Tailwind classes that any AI already knows.'
 
 /**
  * Input arguments for getTailwindUtilitiesTool function.
@@ -98,6 +99,7 @@ export interface Utilities {
   typography?: TokenEntry[]
   borders?: TokenEntry[]
   shadows?: TokenEntry[]
+  gradients?: TokenEntry[]
 }
 
 /**
@@ -233,10 +235,12 @@ function getTypographyUtilities(): TokenEntry[] {
 }
 
 /**
- * Generate border radius utilities from TOKEN_METADATA.theme.borderRadius.
+ * Generate border utilities from TOKEN_METADATA.theme.borderRadius and borderStyle.
  */
 function getBorderUtilities(): TokenEntry[] {
   const entries: TokenEntry[] = []
+
+  // Border radius utilities
   for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.borderRadius)) {
     const isDefault = 'isDefault' in meta && meta.isDefault
     entries.push({
@@ -246,6 +250,28 @@ function getBorderUtilities(): TokenEntry[] {
       classes: [`rounded-${name}`],
     })
   }
+
+  // Border style utilities
+  if ('borderStyle' in TOKEN_METADATA.theme) {
+    for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.borderStyle)) {
+      const classes = [
+        `border-${name}`,
+        `border-t-${name}`,
+        `border-r-${name}`,
+        `border-b-${name}`,
+        `border-l-${name}`,
+      ]
+      // Add examples with color variants for common semantic tokens
+      const colorExamples = [`border-${name}-status-error-border`, `border-${name}-accent-1-border`]
+      entries.push({
+        name: `border-${name}`,
+        value: meta.value,
+        description: meta.description,
+        classes: [...classes, ...colorExamples],
+      })
+    }
+  }
+
   return entries
 }
 
@@ -266,6 +292,29 @@ function getShadowUtilities(): TokenEntry[] {
 }
 
 /**
+ * Generate gradient utilities from TOKEN_METADATA.theme.gradient.
+ */
+function getGradientUtilities(): TokenEntry[] {
+  const entries: TokenEntry[] = []
+
+  if ('gradient' in TOKEN_METADATA.theme) {
+    for (const [category, categoryMeta] of Object.entries(TOKEN_METADATA.theme.gradient)) {
+      for (const [variant, variantMeta] of Object.entries(categoryMeta.variants)) {
+        const name = `bg-gradient-${category}-${variant}`
+        entries.push({
+          name,
+          value: variantMeta.value,
+          description: variantMeta.description,
+          classes: [name],
+        })
+      }
+    }
+  }
+
+  return entries
+}
+
+/**
  * Count total entries for a category.
  */
 function countEntries(utilities: Utilities): string[] {
@@ -279,8 +328,9 @@ function countEntries(utilities: Utilities): string[] {
   if (utilities.spacing) counts.push(`${utilities.spacing.length} spacing tokens`)
   if (utilities.sizing) counts.push(`${utilities.sizing.length} sizing tokens`)
   if (utilities.typography) counts.push(`${utilities.typography.length} typography tokens`)
-  if (utilities.borders) counts.push(`${utilities.borders.length} border radius tokens`)
+  if (utilities.borders) counts.push(`${utilities.borders.length} border tokens`)
   if (utilities.shadows) counts.push(`${utilities.shadows.length} shadow tokens`)
+  if (utilities.gradients) counts.push(`${utilities.gradients.length} gradient tokens`)
   return counts
 }
 
@@ -316,6 +366,10 @@ export function getTailwindUtilitiesTool(
 
   if (category === 'all' || category === 'shadows') {
     utilities.shadows = getShadowUtilities()
+  }
+
+  if (category === 'all' || category === 'gradients') {
+    utilities.gradients = getGradientUtilities()
   }
 
   const counts = countEntries(utilities)

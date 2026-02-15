@@ -14,6 +14,7 @@ describe('getTailwindUtilitiesTool', () => {
         'typography',
         'borders',
         'shadows',
+        'gradients',
         'all',
       ])
     })
@@ -30,6 +31,7 @@ describe('getTailwindUtilitiesTool', () => {
       expect(result.utilities.typography).toBeDefined()
       expect(result.utilities.borders).toBeDefined()
       expect(result.utilities.shadows).toBeDefined()
+      expect(result.utilities.gradients).toBeDefined()
     })
 
     it('returns all categories when filter is "all"', () => {
@@ -42,31 +44,38 @@ describe('getTailwindUtilitiesTool', () => {
       expect(result.utilities.typography).toBeDefined()
       expect(result.utilities.borders).toBeDefined()
       expect(result.utilities.shadows).toBeDefined()
+      expect(result.utilities.gradients).toBeDefined()
     })
 
-    it.each(['colors', 'spacing', 'sizing', 'typography', 'borders', 'shadows'] as const)(
-      'returns only %s when filter is "%s"',
-      (category) => {
-        const result = getTailwindUtilitiesTool({ category })
+    it.each([
+      'colors',
+      'spacing',
+      'sizing',
+      'typography',
+      'borders',
+      'shadows',
+      'gradients',
+    ] as const)('returns only %s when filter is "%s"', (category) => {
+      const result = getTailwindUtilitiesTool({ category })
 
-        expect(result.success).toBe(true)
-        expect(result.utilities[category]).toBeDefined()
+      expect(result.success).toBe(true)
+      expect(result.utilities[category]).toBeDefined()
 
-        const allCategories = [
-          'colors',
-          'spacing',
-          'sizing',
-          'typography',
-          'borders',
-          'shadows',
-        ] as const
-        for (const other of allCategories) {
-          if (other !== category) {
-            expect(result.utilities[other]).toBeUndefined()
-          }
+      const allCategories = [
+        'colors',
+        'spacing',
+        'sizing',
+        'typography',
+        'borders',
+        'shadows',
+        'gradients',
+      ] as const
+      for (const other of allCategories) {
+        if (other !== category) {
+          expect(result.utilities[other]).toBeUndefined()
         }
       }
-    )
+    })
   })
 
   describe('colors', () => {
@@ -282,12 +291,15 @@ describe('getTailwindUtilitiesTool', () => {
   })
 
   describe('borders', () => {
-    it('returns entries derived from TOKEN_METADATA.theme.borderRadius', () => {
+    it('returns entries derived from TOKEN_METADATA.theme.borderRadius and borderStyle', () => {
       const result = getTailwindUtilitiesTool({ category: 'borders' })
+      const borderRadiusCount = Object.keys(TOKEN_METADATA.theme.borderRadius).length
+      const borderStyleCount =
+        'borderStyle' in TOKEN_METADATA.theme
+          ? Object.keys(TOKEN_METADATA.theme.borderStyle).length
+          : 0
 
-      expect(result.utilities.borders!.length).toBe(
-        Object.keys(TOKEN_METADATA.theme.borderRadius).length
-      )
+      expect(result.utilities.borders!.length).toBe(borderRadiusCount + borderStyleCount)
     })
 
     it('includes rounded- classes', () => {
@@ -304,6 +316,28 @@ describe('getTailwindUtilitiesTool', () => {
       const md = result.utilities.borders!.find((e) => e.name === 'rounded-md')!
 
       expect(md.description).toContain('(default)')
+    })
+
+    it('includes border style tokens', () => {
+      const result = getTailwindUtilitiesTool({ category: 'borders' })
+      const names = result.utilities.borders!.map((e) => e.name)
+
+      expect(names).toContain('border-line')
+      expect(names).toContain('border-thick')
+      expect(names).toContain('border-highlight')
+    })
+
+    it('border style entries include directional and color variant classes', () => {
+      const result = getTailwindUtilitiesTool({ category: 'borders' })
+      const line = result.utilities.borders!.find((e) => e.name === 'border-line')!
+
+      expect(line.classes).toContain('border-line')
+      expect(line.classes).toContain('border-t-line')
+      expect(line.classes).toContain('border-r-line')
+      expect(line.classes).toContain('border-b-line')
+      expect(line.classes).toContain('border-l-line')
+      expect(line.classes).toContain('border-line-status-error-border')
+      expect(line.classes).toContain('border-line-accent-1-border')
     })
   })
 
@@ -332,6 +366,57 @@ describe('getTailwindUtilitiesTool', () => {
     })
   })
 
+  describe('gradients', () => {
+    it('returns gradient entries from TOKEN_METADATA.theme.gradient', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+
+      expect(result.utilities.gradients).toBeDefined()
+      expect(result.utilities.gradients!.length).toBeGreaterThan(0)
+    })
+
+    it('includes interactive gradient utilities', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+      const names = result.utilities.gradients!.map((e) => e.name)
+
+      expect(names).toContain('bg-gradient-interactive-primary')
+      expect(names).toContain('bg-gradient-interactive-secondary')
+      expect(names).toContain('bg-gradient-interactive-destructive')
+    })
+
+    it('includes status gradient utilities', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+      const names = result.utilities.gradients!.map((e) => e.name)
+
+      expect(names).toContain('bg-gradient-status-info')
+      expect(names).toContain('bg-gradient-status-success')
+      expect(names).toContain('bg-gradient-status-warning')
+      expect(names).toContain('bg-gradient-status-error')
+    })
+
+    it('includes accent gradient utilities', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+      const names = result.utilities.gradients!.map((e) => e.name)
+
+      expect(names).toContain('bg-gradient-accent-1')
+      expect(names).toContain('bg-gradient-accent-2')
+    })
+
+    it('includes surface inverted gradient', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+      const names = result.utilities.gradients!.map((e) => e.name)
+
+      expect(names).toContain('bg-gradient-surface-inverted')
+    })
+
+    it('each gradient entry has a CSS value', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+      for (const entry of result.utilities.gradients!) {
+        expect(entry.value).toBeDefined()
+        expect(entry.value.length).toBeGreaterThan(0)
+      }
+    })
+  })
+
   describe('summary', () => {
     it('provides meaningful summary for all categories', () => {
       const result = getTailwindUtilitiesTool({})
@@ -341,14 +426,15 @@ describe('getTailwindUtilitiesTool', () => {
       expect(result.summary).toContain('spacing tokens')
       expect(result.summary).toContain('sizing tokens')
       expect(result.summary).toContain('typography tokens')
-      expect(result.summary).toContain('border radius tokens')
+      expect(result.summary).toContain('border tokens')
       expect(result.summary).toContain('shadow tokens')
+      expect(result.summary).toContain('gradient tokens')
     })
 
     it('provides summary for single category', () => {
       const result = getTailwindUtilitiesTool({ category: 'borders' })
 
-      expect(result.summary).toContain('border radius tokens')
+      expect(result.summary).toContain('border tokens')
       expect(result.summary).not.toContain('spacing')
     })
   })

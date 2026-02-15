@@ -3,7 +3,10 @@
  * ESLint plugin with custom rules for Traceframe code quality
  */
 
+import { noNonSemanticBorders } from './rules/no-non-semantic-borders.js'
 import { noNonSemanticColors } from './rules/no-non-semantic-colors.js'
+import { noNonSemanticGradients } from './rules/no-non-semantic-gradients.js'
+import { noNonSemanticShadows } from './rules/no-non-semantic-shadows.js'
 import { noNonSemanticSizing } from './rules/no-non-semantic-sizing.js'
 import { noNonSemanticSpacing } from './rules/no-non-semantic-spacing.js'
 
@@ -19,9 +22,12 @@ const TOKEN_EXCEPTIONS = [
 ]
 
 export const rules = {
+  'no-non-semantic-borders': noNonSemanticBorders,
   'no-non-semantic-colors': noNonSemanticColors,
-  'no-non-semantic-spacing': noNonSemanticSpacing,
+  'no-non-semantic-gradients': noNonSemanticGradients,
+  'no-non-semantic-shadows': noNonSemanticShadows,
   'no-non-semantic-sizing': noNonSemanticSizing,
+  'no-non-semantic-spacing': noNonSemanticSpacing,
 }
 
 export const configs = {
@@ -53,6 +59,24 @@ export const configs = {
         },
       ],
       '@nejcjelovcan/traceframe/no-non-semantic-sizing': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-borders': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-shadows': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-gradients': [
         'warn',
         {
           exceptions: TOKEN_EXCEPTIONS,

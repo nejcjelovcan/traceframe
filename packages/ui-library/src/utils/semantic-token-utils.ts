@@ -494,5 +494,165 @@ export function getSizingSuggestion(className: string): string | undefined {
   return undefined
 }
 
+/**
+ * Check if a class uses non-semantic border styles (width/style hardcoded numbers instead of semantic tokens).
+ * Non-semantic: border-2, border-4 (using numeric thickness)
+ * Semantic: border (default 1px), border-line, border-thick, border-highlight
+ */
+export function isNonSemanticBorderClass(className: string): boolean {
+  const clean = stripModifiers(className)
+
+  // Check for border width classes with numeric values (border-2, border-4, etc.)
+  // But allow semantic classes like border-line, border-thick, border-highlight
+  const borderPattern = /^border(?:-[trblxy])?(?:-\d+)?$/
+  if (borderPattern.test(clean)) {
+    // Extract the numeric part if present
+    const match = clean.match(/border(?:-[trblxy])?-(\d+)$/)
+    if (match && match[1]) {
+      const value = parseInt(match[1])
+      // Border widths 2, 4, 8 are non-semantic
+      // border-0 is allowed (removing border)
+      // border or border-[trblxy] without number is default (1px)
+      return value > 0
+    }
+  }
+
+  return false
+}
+
+/**
+ * Check if a class uses non-semantic shadow values.
+ * Non-semantic: shadow, shadow-none (standard tailwind shadows without semantic meaning)
+ * Semantic: shadow-sm, shadow-md, shadow-lg, shadow-interactive-*, shadow-highlight-*, shadow-inset-*
+ */
+export function isNonSemanticShadowClass(className: string): boolean {
+  const clean = stripModifiers(className)
+
+  // Check for non-semantic shadow classes
+  // shadow (without suffix) and shadow-none are non-semantic
+  // shadow-inner, shadow-xl, shadow-2xl are also non-semantic (standard Tailwind)
+  if (clean === 'shadow' || clean === 'shadow-none' || clean === 'shadow-inner') {
+    return true
+  }
+
+  // Check for non-semantic Tailwind shadow sizes
+  if (clean === 'shadow-xl' || clean === 'shadow-2xl') {
+    return true
+  }
+
+  return false
+}
+
+/**
+ * Check if a value matches a palette color with shade (e.g., "primary-500", "neutral-200").
+ */
+function isColorClass(value: string): boolean {
+  for (const palette of COLOR_PALETTES) {
+    for (const shade of SHADES) {
+      if (value === `${palette}-${shade}`) return true
+    }
+  }
+  if (value === 'white' || value === 'black') return true
+  return false
+}
+
+/**
+ * Check if a class uses non-semantic gradient patterns.
+ * Non-semantic: bg-gradient-to-*, from-*, via-*, to-* (arbitrary gradient construction)
+ * Semantic: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*, bg-gradient-surface-inverted
+ */
+export function isNonSemanticGradientClass(className: string): boolean {
+  const clean = stripModifiers(className)
+
+  // Check for gradient direction classes (non-semantic)
+  if (clean.startsWith('bg-gradient-to-')) {
+    return true
+  }
+
+  // Check for gradient color stops (non-semantic)
+  if (clean.startsWith('from-') || clean.startsWith('via-') || clean.startsWith('to-')) {
+    // Extract the color part
+    const colorPart = clean.replace(/^(from|via|to)-/, '')
+    // If it's a palette color, it's non-semantic
+    if (isColorClass(colorPart)) {
+      return true
+    }
+  }
+
+  return false
+}
+
+/**
+ * Get suggestion for semantic border style replacement.
+ */
+export function getBorderSuggestion(className: string): string | undefined {
+  const modifier = className.match(/^((?:[\w-]+:)+)/)?.[0] || ''
+  const clean = stripModifiers(className)
+
+  // Extract direction if present
+  const directionMatch = clean.match(/^border-([trblxy])-(\d+)$/)
+  if (directionMatch) {
+    const direction = directionMatch[1]
+    const value = parseInt(directionMatch[2]!)
+    if (value === 1) {
+      return `${modifier}border-${direction}-line`
+    } else if (value === 2) {
+      return `${modifier}border-${direction}-thick or ${modifier}border-${direction}-highlight`
+    }
+  }
+
+  // No direction
+  const match = clean.match(/^border-(\d+)$/)
+  if (match) {
+    const value = parseInt(match[1]!)
+    if (value === 1) {
+      return `${modifier}border-line`
+    } else if (value === 2) {
+      return `${modifier}border-thick or ${modifier}border-highlight`
+    }
+  }
+
+  return undefined
+}
+
+/**
+ * Get suggestion for semantic shadow replacement.
+ */
+export function getShadowSuggestion(className: string): string | undefined {
+  const modifier = className.match(/^((?:[\w-]+:)+)/)?.[0] || ''
+  const clean = stripModifiers(className)
+
+  if (clean === 'shadow') {
+    return `${modifier}shadow-sm or ${modifier}shadow-interactive`
+  } else if (clean === 'shadow-none') {
+    return `Remove class or use ${modifier}shadow-sm for minimal elevation`
+  } else if (clean === 'shadow-inner') {
+    return `${modifier}shadow-inset-sm or ${modifier}shadow-inset-md`
+  } else if (clean === 'shadow-xl') {
+    return `${modifier}shadow-lg or ${modifier}shadow-highlight`
+  } else if (clean === 'shadow-2xl') {
+    return `${modifier}shadow-lg`
+  }
+
+  return undefined
+}
+
+/**
+ * Get suggestion for semantic gradient replacement.
+ */
+export function getGradientSuggestion(className: string): string | undefined {
+  const clean = stripModifiers(className)
+
+  if (clean.startsWith('bg-gradient-to-')) {
+    return 'Use semantic gradients: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*, or bg-gradient-surface-inverted'
+  }
+
+  if (clean.startsWith('from-') || clean.startsWith('via-') || clean.startsWith('to-')) {
+    return 'Use pre-defined semantic gradients instead of constructing custom gradients'
+  }
+
+  return undefined
+}
+
 // Re-export TOKEN_METADATA for convenience
 export { TOKEN_METADATA }

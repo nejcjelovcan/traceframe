@@ -42,13 +42,42 @@ vi.mock('../utils/design-tokens.js', () => ({
       },
     },
     sizing: {
-      xs: 'var(--size-xs)',
-      sm: 'var(--size-sm)',
-      md: 'var(--size-md)',
+      xs: { value: '1.5rem', description: 'Extra small size' },
+      sm: { value: '2rem', description: 'Small size' },
+      md: { value: '2.5rem', description: 'Medium size' },
     },
     spacing: {
-      '18': '4.5rem',
-      '22': '5.5rem',
+      xs: { value: '0.25rem', description: 'Extra small spacing' },
+      sm: { value: '0.5rem', description: 'Small spacing' },
+    },
+    shadows: {
+      sm: { value: 'shadow-value-sm', description: 'Small shadow' },
+      interactive: { value: 'shadow-value-interactive', description: 'Interactive shadow' },
+      'highlight-hover': {
+        value: 'shadow-value-highlight-hover',
+        description: 'Highlight hover shadow',
+      },
+    },
+    borders: {
+      line: { value: '1px solid', description: 'Standard border' },
+      thick: { value: '2px solid', description: 'Thick border' },
+      highlight: { value: '2px dashed', description: 'Highlight border' },
+    },
+    gradients: {
+      interactive: {
+        description: 'Interactive gradients',
+        variants: {
+          primary: { value: 'gradient-primary', description: 'Primary gradient' },
+          secondary: { value: 'gradient-secondary', description: 'Secondary gradient' },
+        },
+      },
+      status: {
+        description: 'Status gradients',
+        variants: {
+          success: { value: 'gradient-success', description: 'Success gradient' },
+          error: { value: 'gradient-error', description: 'Error gradient' },
+        },
+      },
     },
   }),
 }))
@@ -120,7 +149,59 @@ describe('getDesignTokensTool', () => {
     const result = await getDesignTokensTool({ type: 'spacing' })
 
     expect(result.success).toBe(true)
-    expect(result.tokens.spacing?.['18']).toBe('4.5rem')
-    expect(result.tokens.spacing?.['22']).toBe('5.5rem')
+    expect(result.tokens.spacing?.xs.value).toBe('0.25rem')
+    expect(result.tokens.spacing?.sm.value).toBe('0.5rem')
+  })
+
+  it('filters to shadows only', async () => {
+    const result = await getDesignTokensTool({ type: 'shadows' })
+
+    expect(result.success).toBe(true)
+    expect(result.tokens.shadows).toBeDefined()
+    expect(result.tokens.colors).toBeUndefined()
+    expect(result.tokens.borders).toBeUndefined()
+    expect(result.summary).toContain('shadow tokens')
+    expect(result.tokens.shadows?.sm.value).toBe('shadow-value-sm')
+    expect(result.tokens.shadows?.interactive.description).toBe('Interactive shadow')
+  })
+
+  it('filters to borders only', async () => {
+    const result = await getDesignTokensTool({ type: 'borders' })
+
+    expect(result.success).toBe(true)
+    expect(result.tokens.borders).toBeDefined()
+    expect(result.tokens.colors).toBeUndefined()
+    expect(result.tokens.shadows).toBeUndefined()
+    expect(result.summary).toContain('border style tokens')
+    expect(result.tokens.borders?.line.value).toBe('1px solid')
+    expect(result.tokens.borders?.thick.description).toBe('Thick border')
+  })
+
+  it('filters to gradients only', async () => {
+    const result = await getDesignTokensTool({ type: 'gradients' })
+
+    expect(result.success).toBe(true)
+    expect(result.tokens.gradients).toBeDefined()
+    expect(result.tokens.colors).toBeUndefined()
+    expect(result.tokens.borders).toBeUndefined()
+    expect(result.summary).toContain('gradient categories')
+    expect(result.tokens.gradients?.interactive.description).toBe('Interactive gradients')
+    expect(result.tokens.gradients?.status.variants.success.value).toBe('gradient-success')
+  })
+
+  it('includes all new token types when type is all', async () => {
+    const result = await getDesignTokensTool({ type: 'all' })
+
+    expect(result.success).toBe(true)
+    expect(result.tokens.colors).toBeDefined()
+    expect(result.tokens.typography).toBeDefined()
+    expect(result.tokens.spacing).toBeDefined()
+    expect(result.tokens.sizing).toBeDefined()
+    expect(result.tokens.shadows).toBeDefined()
+    expect(result.tokens.borders).toBeDefined()
+    expect(result.tokens.gradients).toBeDefined()
+    expect(result.summary).toContain('shadow values')
+    expect(result.summary).toContain('border styles')
+    expect(result.summary).toContain('gradient categories')
   })
 })

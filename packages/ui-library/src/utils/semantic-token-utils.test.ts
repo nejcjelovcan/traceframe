@@ -3,8 +3,14 @@ import { describe, it, expect } from 'vitest'
 import {
   isNonSemanticSpacingClass,
   isNonSemanticSizingClass,
+  isNonSemanticBorderClass,
+  isNonSemanticShadowClass,
+  isNonSemanticGradientClass,
   getSpacingSuggestion,
   getSizingSuggestion,
+  getBorderSuggestion,
+  getShadowSuggestion,
+  getGradientSuggestion,
   SPACING_MAP,
   SIZING_MAP,
 } from './semantic-token-utils'
@@ -278,5 +284,238 @@ describe('SIZING_MAP', () => {
     expect(SIZING_MAP.get('10')).toEqual({ semantic: 'size-md', rem: '2.5rem' })
     expect(SIZING_MAP.get('12')).toEqual({ semantic: 'size-lg', rem: '3rem' })
     expect(SIZING_MAP.get('14')).toEqual({ semantic: 'size-xl', rem: '3.5rem' })
+  })
+})
+
+describe('isNonSemanticBorderClass', () => {
+  it('detects numeric border widths', () => {
+    expect(isNonSemanticBorderClass('border-2')).toBe(true)
+    expect(isNonSemanticBorderClass('border-4')).toBe(true)
+    expect(isNonSemanticBorderClass('border-8')).toBe(true)
+  })
+
+  it('detects directional numeric border widths', () => {
+    expect(isNonSemanticBorderClass('border-t-2')).toBe(true)
+    expect(isNonSemanticBorderClass('border-r-4')).toBe(true)
+    expect(isNonSemanticBorderClass('border-b-2')).toBe(true)
+    expect(isNonSemanticBorderClass('border-l-2')).toBe(true)
+  })
+
+  it('strips modifiers before checking', () => {
+    expect(isNonSemanticBorderClass('hover:border-2')).toBe(true)
+    expect(isNonSemanticBorderClass('dark:border-4')).toBe(true)
+  })
+
+  it('does NOT flag border-0', () => {
+    expect(isNonSemanticBorderClass('border-0')).toBe(false)
+  })
+
+  it('does NOT flag default border (no width)', () => {
+    expect(isNonSemanticBorderClass('border')).toBe(false)
+  })
+
+  it('does NOT flag semantic border style tokens', () => {
+    expect(isNonSemanticBorderClass('border-line')).toBe(false)
+    expect(isNonSemanticBorderClass('border-thick')).toBe(false)
+    expect(isNonSemanticBorderClass('border-highlight')).toBe(false)
+  })
+
+  it('does NOT flag border color classes', () => {
+    expect(isNonSemanticBorderClass('border-border')).toBe(false)
+    expect(isNonSemanticBorderClass('border-status-error-border')).toBe(false)
+  })
+
+  it('does NOT flag non-border classes', () => {
+    expect(isNonSemanticBorderClass('bg-surface')).toBe(false)
+    expect(isNonSemanticBorderClass('flex')).toBe(false)
+  })
+})
+
+describe('isNonSemanticShadowClass', () => {
+  it('detects plain shadow', () => {
+    expect(isNonSemanticShadowClass('shadow')).toBe(true)
+  })
+
+  it('detects shadow-none', () => {
+    expect(isNonSemanticShadowClass('shadow-none')).toBe(true)
+  })
+
+  it('detects shadow-inner', () => {
+    expect(isNonSemanticShadowClass('shadow-inner')).toBe(true)
+  })
+
+  it('detects non-semantic shadow sizes', () => {
+    expect(isNonSemanticShadowClass('shadow-xl')).toBe(true)
+    expect(isNonSemanticShadowClass('shadow-2xl')).toBe(true)
+  })
+
+  it('strips modifiers before checking', () => {
+    expect(isNonSemanticShadowClass('hover:shadow')).toBe(true)
+    expect(isNonSemanticShadowClass('dark:shadow-xl')).toBe(true)
+  })
+
+  it('does NOT flag semantic shadow tokens', () => {
+    expect(isNonSemanticShadowClass('shadow-sm')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-md')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-lg')).toBe(false)
+  })
+
+  it('does NOT flag interactive shadow tokens', () => {
+    expect(isNonSemanticShadowClass('shadow-interactive')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-interactive-hover')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-interactive-pressed')).toBe(false)
+  })
+
+  it('does NOT flag highlight shadow tokens', () => {
+    expect(isNonSemanticShadowClass('shadow-highlight')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-highlight-hover')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-highlight-pressed')).toBe(false)
+  })
+
+  it('does NOT flag inset shadow tokens', () => {
+    expect(isNonSemanticShadowClass('shadow-inset-sm')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-inset-md')).toBe(false)
+    expect(isNonSemanticShadowClass('shadow-inset-underline')).toBe(false)
+  })
+
+  it('does NOT flag non-shadow classes', () => {
+    expect(isNonSemanticShadowClass('bg-surface')).toBe(false)
+    expect(isNonSemanticShadowClass('flex')).toBe(false)
+  })
+})
+
+describe('isNonSemanticGradientClass', () => {
+  it('detects gradient direction classes', () => {
+    expect(isNonSemanticGradientClass('bg-gradient-to-r')).toBe(true)
+    expect(isNonSemanticGradientClass('bg-gradient-to-t')).toBe(true)
+    expect(isNonSemanticGradientClass('bg-gradient-to-bl')).toBe(true)
+  })
+
+  it('detects from-* with palette colors', () => {
+    expect(isNonSemanticGradientClass('from-primary-500')).toBe(true)
+    expect(isNonSemanticGradientClass('from-neutral-200')).toBe(true)
+  })
+
+  it('detects via-* with palette colors', () => {
+    expect(isNonSemanticGradientClass('via-neutral-200')).toBe(true)
+    expect(isNonSemanticGradientClass('via-primary-300')).toBe(true)
+  })
+
+  it('detects to-* with palette colors', () => {
+    expect(isNonSemanticGradientClass('to-error-600')).toBe(true)
+    expect(isNonSemanticGradientClass('to-success-500')).toBe(true)
+  })
+
+  it('detects from/to with white/black', () => {
+    expect(isNonSemanticGradientClass('from-white')).toBe(true)
+    expect(isNonSemanticGradientClass('to-black')).toBe(true)
+  })
+
+  it('strips modifiers before checking', () => {
+    expect(isNonSemanticGradientClass('hover:bg-gradient-to-r')).toBe(true)
+    expect(isNonSemanticGradientClass('dark:from-primary-500')).toBe(true)
+  })
+
+  it('does NOT flag semantic gradient tokens', () => {
+    expect(isNonSemanticGradientClass('bg-gradient-interactive-primary')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-interactive-secondary')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-status-success')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-accent-1')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-surface-inverted')).toBe(false)
+  })
+
+  it('does NOT flag from/via/to with non-palette values', () => {
+    expect(isNonSemanticGradientClass('from-transparent')).toBe(false)
+    expect(isNonSemanticGradientClass('to-current')).toBe(false)
+  })
+
+  it('does NOT flag non-gradient classes', () => {
+    expect(isNonSemanticGradientClass('bg-surface')).toBe(false)
+    expect(isNonSemanticGradientClass('flex')).toBe(false)
+  })
+})
+
+describe('getBorderSuggestion', () => {
+  it('suggests border-line for border-1', () => {
+    expect(getBorderSuggestion('border-1')).toBe('border-line')
+  })
+
+  it('suggests border-thick or border-highlight for border-2', () => {
+    expect(getBorderSuggestion('border-2')).toBe('border-thick or border-highlight')
+  })
+
+  it('suggests directional variants', () => {
+    expect(getBorderSuggestion('border-t-1')).toBe('border-t-line')
+    expect(getBorderSuggestion('border-t-2')).toBe('border-t-thick or border-t-highlight')
+  })
+
+  it('preserves modifiers', () => {
+    expect(getBorderSuggestion('hover:border-2')).toBe(
+      'hover:border-thick or hover:border-highlight'
+    )
+  })
+
+  it('returns undefined for unmatched classes', () => {
+    expect(getBorderSuggestion('border-4')).toBeUndefined()
+    expect(getBorderSuggestion('flex')).toBeUndefined()
+  })
+})
+
+describe('getShadowSuggestion', () => {
+  it('suggests shadow-sm or shadow-interactive for shadow', () => {
+    expect(getShadowSuggestion('shadow')).toBe('shadow-sm or shadow-interactive')
+  })
+
+  it('suggests removal for shadow-none', () => {
+    expect(getShadowSuggestion('shadow-none')).toContain('Remove class')
+  })
+
+  it('suggests inset variants for shadow-inner', () => {
+    expect(getShadowSuggestion('shadow-inner')).toBe('shadow-inset-sm or shadow-inset-md')
+  })
+
+  it('suggests shadow-lg or shadow-highlight for shadow-xl', () => {
+    expect(getShadowSuggestion('shadow-xl')).toBe('shadow-lg or shadow-highlight')
+  })
+
+  it('suggests shadow-lg for shadow-2xl', () => {
+    expect(getShadowSuggestion('shadow-2xl')).toBe('shadow-lg')
+  })
+
+  it('preserves modifiers', () => {
+    expect(getShadowSuggestion('hover:shadow')).toBe('hover:shadow-sm or hover:shadow-interactive')
+  })
+
+  it('returns undefined for unmatched classes', () => {
+    expect(getShadowSuggestion('shadow-sm')).toBeUndefined()
+    expect(getShadowSuggestion('flex')).toBeUndefined()
+  })
+})
+
+describe('getGradientSuggestion', () => {
+  it('suggests semantic gradients for bg-gradient-to-*', () => {
+    const suggestion = getGradientSuggestion('bg-gradient-to-r')
+    expect(suggestion).toContain('semantic gradients')
+    expect(suggestion).toContain('bg-gradient-interactive-*')
+  })
+
+  it('suggests semantic gradients for from-* classes', () => {
+    const suggestion = getGradientSuggestion('from-primary-500')
+    expect(suggestion).toContain('semantic gradients')
+  })
+
+  it('suggests semantic gradients for via-* classes', () => {
+    const suggestion = getGradientSuggestion('via-neutral-200')
+    expect(suggestion).toContain('semantic gradients')
+  })
+
+  it('suggests semantic gradients for to-* classes', () => {
+    const suggestion = getGradientSuggestion('to-error-600')
+    expect(suggestion).toContain('semantic gradients')
+  })
+
+  it('returns undefined for non-gradient classes', () => {
+    expect(getGradientSuggestion('bg-surface')).toBeUndefined()
+    expect(getGradientSuggestion('flex')).toBeUndefined()
   })
 })

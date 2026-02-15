@@ -51,6 +51,38 @@ export interface SizingInfo {
 }
 
 /**
+ * Shadow token info with value and description.
+ */
+export interface ShadowInfo {
+  value: string
+  description: string
+}
+
+/**
+ * Border style token info with value and description.
+ */
+export interface BorderStyleInfo {
+  value: string
+  description: string
+}
+
+/**
+ * Gradient token variant info with value and description.
+ */
+export interface GradientVariantInfo {
+  value: string
+  description: string
+}
+
+/**
+ * Gradient token with description and variants.
+ */
+export interface GradientTokenInfo {
+  description: string
+  variants: Record<string, GradientVariantInfo>
+}
+
+/**
  * Complete design tokens structure.
  * Note: Palettes are intentionally not exposed. UI code should only use semantic tokens.
  */
@@ -61,6 +93,9 @@ export interface DesignTokens {
   typography: TypographyInfo
   sizing: Record<string, SizingInfo>
   spacing: Record<string, SpacingInfo>
+  shadows: Record<string, ShadowInfo>
+  borders: Record<string, BorderStyleInfo>
+  gradients: Record<string, GradientTokenInfo>
 }
 
 /**
@@ -122,6 +157,46 @@ export async function getDesignTokens(): Promise<DesignTokens> {
     }
   }
 
+  // Shadow values from TOKEN_METADATA.theme.shadow
+  const shadows: Record<string, ShadowInfo> = {}
+  if ('theme' in TOKEN_METADATA && 'shadow' in TOKEN_METADATA.theme) {
+    for (const [name, data] of Object.entries(TOKEN_METADATA.theme.shadow)) {
+      shadows[name] = {
+        value: data.value,
+        description: data.description,
+      }
+    }
+  }
+
+  // Border style values from TOKEN_METADATA.theme.borderStyle
+  const borders: Record<string, BorderStyleInfo> = {}
+  if ('theme' in TOKEN_METADATA && 'borderStyle' in TOKEN_METADATA.theme) {
+    for (const [name, data] of Object.entries(TOKEN_METADATA.theme.borderStyle)) {
+      borders[name] = {
+        value: data.value,
+        description: data.description,
+      }
+    }
+  }
+
+  // Gradient values from TOKEN_METADATA.theme.gradient
+  const gradients: Record<string, GradientTokenInfo> = {}
+  if ('theme' in TOKEN_METADATA && 'gradient' in TOKEN_METADATA.theme) {
+    for (const [category, categoryData] of Object.entries(TOKEN_METADATA.theme.gradient)) {
+      const variants: Record<string, GradientVariantInfo> = {}
+      for (const [variant, variantData] of Object.entries(categoryData.variants)) {
+        variants[variant] = {
+          value: variantData.value,
+          description: variantData.description,
+        }
+      }
+      gradients[category] = {
+        description: categoryData.description,
+        variants,
+      }
+    }
+  }
+
   return {
     colors: {
       semantic,
@@ -129,5 +204,8 @@ export async function getDesignTokens(): Promise<DesignTokens> {
     typography,
     sizing,
     spacing,
+    shadows,
+    borders,
+    gradients,
   }
 }
