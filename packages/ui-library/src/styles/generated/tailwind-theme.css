@@ -113,6 +113,21 @@
   /* Font families */
   --tw-font-sans: var(--font-sans);
   --tw-font-mono: var(--font-mono);
+
+  /* Gradients */
+  --tw-gradient-interactive-primary: var(--gradient-interactive-primary);
+  --tw-gradient-interactive-secondary: var(--gradient-interactive-secondary);
+  --tw-gradient-interactive-destructive: var(--gradient-interactive-destructive);
+  --tw-gradient-status-info: var(--gradient-status-info);
+  --tw-gradient-status-success: var(--gradient-status-success);
+  --tw-gradient-status-warning: var(--gradient-status-warning);
+  --tw-gradient-status-error: var(--gradient-status-error);
+  --tw-gradient-accent-1: var(--gradient-accent-1);
+  --tw-gradient-accent-2: var(--gradient-accent-2);
+  --tw-gradient-accent-3: var(--gradient-accent-3);
+  --tw-gradient-accent-4: var(--gradient-accent-4);
+  --tw-gradient-accent-5: var(--gradient-accent-5);
+  --tw-gradient-surface-inverted: var(--gradient-surface-inverted);
 }
 
 @theme inline {
@@ -221,6 +236,21 @@
   /* Font families */
   --font-sans: var(--tw-font-sans);
   --font-mono: var(--tw-font-mono);
+
+  /* Gradients (map to background-image) */
+  --gradient-interactive-primary: var(--tw-gradient-interactive-primary);
+  --gradient-interactive-secondary: var(--tw-gradient-interactive-secondary);
+  --gradient-interactive-destructive: var(--tw-gradient-interactive-destructive);
+  --gradient-status-info: var(--tw-gradient-status-info);
+  --gradient-status-success: var(--tw-gradient-status-success);
+  --gradient-status-warning: var(--tw-gradient-status-warning);
+  --gradient-status-error: var(--tw-gradient-status-error);
+  --gradient-accent-1: var(--tw-gradient-accent-1);
+  --gradient-accent-2: var(--tw-gradient-accent-2);
+  --gradient-accent-3: var(--tw-gradient-accent-3);
+  --gradient-accent-4: var(--tw-gradient-accent-4);
+  --gradient-accent-5: var(--tw-gradient-accent-5);
+  --gradient-surface-inverted: var(--tw-gradient-surface-inverted);
 
   /* Sizing (width & height) */
   --width-size-xs: var(--size-xs);

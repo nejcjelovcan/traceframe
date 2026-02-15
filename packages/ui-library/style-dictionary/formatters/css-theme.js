@@ -121,6 +121,30 @@ export default function cssThemeFormatter({ options = {} }) {
     output += '\n'
   }
 
+  // Output gradients recursively to handle nested structure
+  if (themeData.gradient) {
+    output += '    /* Gradients */\n'
+
+    // Helper function to recursively process gradient tokens
+    const processGradientTokens = (obj, prefix = '') => {
+      for (const key of Object.keys(obj)) {
+        const value = obj[key]
+        const varName = prefix ? `${prefix}-${key}` : key
+
+        if (value.$value && value.$type === 'gradient') {
+          // This is a gradient token, output it
+          output += `    --gradient-${varName}: ${value.$value};\n`
+        } else if (typeof value === 'object' && !value.$value) {
+          // This is a nested object, recurse into it
+          processGradientTokens(value, varName)
+        }
+      }
+    }
+
+    processGradientTokens(themeData.gradient)
+    output += '\n'
+  }
+
   output += '  }\n'
   output += '}\n'
 

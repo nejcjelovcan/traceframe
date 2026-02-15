@@ -45,5 +45,72 @@
     --spacing-lg: 1.25rem;
     --spacing-xl: 2.5rem;
     --spacing-2xl: 4.5rem;
+
+    /* Gradients */
+    --gradient-interactive-primary: linear-gradient(
+      180deg,
+      rgb(var(--palette-primary-700)),
+      rgb(var(--palette-primary-800))
+    );
+    --gradient-interactive-secondary: linear-gradient(
+      180deg,
+      rgb(var(--palette-secondary-700)),
+      rgb(var(--palette-secondary-800))
+    );
+    --gradient-interactive-destructive: linear-gradient(
+      180deg,
+      rgb(var(--palette-error-700)),
+      rgb(var(--palette-error-800))
+    );
+    --gradient-status-info: linear-gradient(
+      180deg,
+      rgb(var(--palette-primary-700)),
+      rgb(var(--palette-primary-800))
+    );
+    --gradient-status-success: linear-gradient(
+      180deg,
+      rgb(var(--palette-success-700)),
+      rgb(var(--palette-success-800))
+    );
+    --gradient-status-warning: linear-gradient(
+      180deg,
+      rgb(var(--palette-warning-600)),
+      rgb(var(--palette-warning-700))
+    );
+    --gradient-status-error: linear-gradient(
+      180deg,
+      rgb(var(--palette-error-700)),
+      rgb(var(--palette-error-800))
+    );
+    --gradient-accent-1: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-1-700)),
+      rgb(var(--palette-accent-1-800))
+    );
+    --gradient-accent-2: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-2-700)),
+      rgb(var(--palette-accent-2-800))
+    );
+    --gradient-accent-3: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-3-700)),
+      rgb(var(--palette-accent-3-800))
+    );
+    --gradient-accent-4: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-4-700)),
+      rgb(var(--palette-accent-4-800))
+    );
+    --gradient-accent-5: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-5-700)),
+      rgb(var(--palette-accent-5-800))
+    );
+    --gradient-surface-inverted: linear-gradient(
+      180deg,
+      rgb(var(--palette-neutral-850)),
+      rgb(var(--palette-neutral-950))
+    );
   }
 }

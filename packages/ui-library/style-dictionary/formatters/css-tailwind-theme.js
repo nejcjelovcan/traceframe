@@ -43,6 +43,7 @@ function extractTokensByCategory(dictionary) {
  * - ['color', 'surface', 'muted'] -> 'surface-muted'
  * - ['spacing', 'xs'] -> 'xs'
  * - ['fontFamily', 'sans'] -> 'sans'
+ * - ['gradient', 'interactive', 'primary'] -> 'interactive-primary'
  */
 function generateCssVarName(token) {
   const path = token.path
@@ -59,6 +60,9 @@ function generateCssVarName(token) {
     return path.slice(1).join('-')
   } else if (category === 'shadow') {
     // For shadows, use the variant name
+    return path.slice(1).join('-')
+  } else if (category === 'gradient') {
+    // For gradients, skip the 'gradient' prefix and use the rest
     return path.slice(1).join('-')
   }
 
@@ -179,6 +183,20 @@ export default function cssTailwindThemeFormatter({ dictionary, options = {}, fi
       const varName = generateCssVarName(token)
       bridgeLines.push(`  --tw-font-${varName}: var(--font-${varName});`)
       themeLines.push(`  --font-${varName}: var(--tw-font-${varName});`)
+    })
+  }
+
+  // Process gradients
+  if (tokensByCategory.gradient) {
+    bridgeLines.push('')
+    bridgeLines.push('  /* Gradients */')
+    themeLines.push('')
+    themeLines.push('  /* Gradients (map to background-image) */')
+    tokensByCategory.gradient.forEach((token) => {
+      const varName = generateCssVarName(token)
+      bridgeLines.push(`  --tw-gradient-${varName}: var(--gradient-${varName});`)
+      // Map to background-image for Tailwind's bg- utility
+      themeLines.push(`  --gradient-${varName}: var(--tw-gradient-${varName});`)
     })
   }
 
