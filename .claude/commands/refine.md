@@ -131,7 +131,10 @@ Is this component purely visual with no complex interactions?
 | `foreground` | DEFAULT, muted, inverted, inverted-muted | Text colors |
 | `border` | DEFAULT, muted | Border colors |
 | `ring` | DEFAULT | Focus indicators |
-| `shadow` | sm, md, lg | Elevation shadows |
+| `shadow` | sm, md, lg | Static elevation shadows |
+| `shadow` | interactive (DEFAULT, hover, pressed), highlight (DEFAULT, hover, pressed), inset (sm, md, underline) | Interactive and inset shadows |
+| `borderStyle` | line, thick, highlight | Composite border styles (via `border-line`, `border-thick`, `border-highlight` utilities) |
+| `gradient` | interactive (primary, secondary, destructive), status (info, success, warning, error), accent (1-5), surface (inverted) | Background gradients (via `bg-gradient-*` utilities) |
 | `interactive` | hover, active, pressed, primary (with hover/foreground/border), secondary (with hover/foreground/border), destructive (with hover/foreground/border) | Interactive element states |
 | `status` | info, success, warning, error (each with: DEFAULT, muted, foreground, emphasis, border) | Status indicators |
 | `disabled` | DEFAULT, foreground | Disabled state colors |

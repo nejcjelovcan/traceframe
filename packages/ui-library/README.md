@@ -191,7 +191,7 @@ The token system has three layers:
 
 1. **Palettes** (`palettes/`) - Raw color definitions with 11 shades per color
 2. **Semantic tokens** (`semantic/`) - Theme-aware color mappings that reference palette values; enable light/dark mode switching
-3. **Themes** (`themes/`) - Non-color tokens (typography, sizing, spacing, shadows, radii) that reference semantic color variables
+3. **Themes** (`themes/`) - Non-color tokens (typography, sizing, spacing, shadows, border styles, gradients, radii) that reference semantic color variables
 
 Themes reference **semantic** color variables (not palettes directly), enabling:
 
@@ -209,8 +209,10 @@ Each theme file (`themes/*.json`) defines non-color tokens and declares its asso
   "$description": "Moody, sophisticated theme...",
   "fontFamily": { "sans": {...}, "mono": {...} },
   "fontSize": { "xs": {...}, "sm": {...}, ... },
-  "shadow": { "sm": {...}, "md": {...}, "lg": {...} },
+  "shadow": { "sm": {...}, "md": {...}, "lg": {...}, "interactive": {...}, "highlight": {...}, "inset": {...} },
   "borderRadius": { "sm": {...}, "md": {...}, "lg": {...} },
+  "borderStyle": { "line": {...}, "thick": {...}, "highlight": {...} },
+  "gradient": { "interactive": {...}, "status": {...}, "accent": {...}, "surface": {...} },
   "size": { "xs": {...}, "sm": {...}, "md": {...}, "lg": {...}, "xl": {...} },
   "spacing": { "2xs": {...}, "xs": {...}, "sm": {...}, "md": {...}, "base": {...}, ... }
 }
@@ -236,6 +238,18 @@ pnpm validate:token-definitions
 
 // Palette colors (direct shade reference)
 <div className="bg-primary-500 text-neutral-50" />
+
+// Shadow tokens (interactive states)
+<div className="shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow" />
+
+// Border style tokens
+<div className="border-line" />
+<div className="border-thick" />
+<div className="border-line-status-error-border" />
+
+// Gradient tokens
+<button className="bg-gradient-interactive-primary text-white" />
+<div className="bg-gradient-status-success" />
 ```
 
 ### Token Categories
@@ -253,14 +267,19 @@ pnpm validate:token-definitions
 
 **Theme Tokens** (from active theme):
 
-| Category      | Tokens                                   | Usage                        |
-| ------------- | ---------------------------------------- | ---------------------------- |
-| Font Family   | `font-sans`, `font-mono`                 | Typography                   |
-| Font Size     | `text-xs` to `text-4xl`                  | Text sizing with line-height |
-| Border Radius | `rounded-sm`, `rounded-md`, `rounded-lg` | Corner rounding              |
-| Shadow        | `shadow-sm`, `shadow-md`, `shadow-lg`    | Elevation                    |
-| Sizing        | `h-size-xs` to `h-size-xl`               | Element heights/widths       |
-| Spacing       | `spacing-2xs` to `spacing-2xl`           | Margins, padding, gaps       |
+| Category      | Tokens                                                                         | Usage                                     |
+| ------------- | ------------------------------------------------------------------------------ | ----------------------------------------- |
+| Font Family   | `font-sans`, `font-mono`                                                       | Typography                                |
+| Font Size     | `text-xs` to `text-4xl`                                                        | Text sizing with line-height              |
+| Border Radius | `rounded-sm`, `rounded-md`, `rounded-lg`                                       | Corner rounding                           |
+| Shadow        | `shadow-sm`, `shadow-md`, `shadow-lg`                                          | Static elevation                          |
+| Shadow        | `shadow-interactive`, `shadow-interactive-hover`, `shadow-interactive-pressed` | Interactive element shadow states         |
+| Shadow        | `shadow-highlight`, `shadow-highlight-hover`, `shadow-highlight-pressed`       | Prominent interactive element shadows     |
+| Shadow        | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                 | Inset shadows for pressed/active states   |
+| Border Style  | `border-line`, `border-thick`, `border-highlight`                              | Composite border styles (width + pattern) |
+| Gradient      | `bg-gradient-interactive-*`, `bg-gradient-status-*`, `bg-gradient-accent-*`    | Background gradients for emphasis         |
+| Sizing        | `h-size-xs` to `h-size-xl`                                                     | Element heights/widths                    |
+| Spacing       | `spacing-2xs` to `spacing-2xl`                                                 | Margins, padding, gaps                    |
 
 ### Full Documentation
 

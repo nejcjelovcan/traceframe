@@ -385,12 +385,15 @@ Use the `get_design_tokens` MCP tool to query design tokens from ui-library.
 
 ### Token Types
 
-| Type       | Filter       | Description                                                                   |
-| ---------- | ------------ | ----------------------------------------------------------------------------- |
-| Colors     | `colors`     | Palettes (primary, neutral, success, warning, error) with RGB/hex values      |
-| Semantic   | `colors`     | Theme-aware tokens (surface, foreground, border, ring) with light/dark values |
-| Typography | `typography` | Font families (sans, mono) and font sizes with line heights                   |
-| Spacing    | `spacing`    | Semantic spacing tokens (xs, sm, md, lg, xl, 2xl) plus custom values (18, 22) |
+| Type          | Filter       | Description                                                                   |
+| ------------- | ------------ | ----------------------------------------------------------------------------- |
+| Colors        | `colors`     | Palettes (primary, neutral, success, warning, error) with RGB/hex values      |
+| Semantic      | `colors`     | Theme-aware tokens (surface, foreground, border, ring) with light/dark values |
+| Typography    | `typography` | Font families (sans, mono) and font sizes with line heights                   |
+| Spacing       | `spacing`    | Semantic spacing tokens (xs, sm, md, lg, xl, 2xl) plus custom values (18, 22) |
+| Shadows       | -            | Elevation, interactive states, highlight, and inset shadows (per theme)       |
+| Border Styles | -            | Composite border style tokens (width + line style, per theme)                 |
+| Gradients     | -            | Background gradient tokens for emphasis surfaces (per theme)                  |
 
 ### Color Palettes
 
@@ -428,6 +431,42 @@ Use the `get_design_tokens` MCP tool to query design tokens from ui-library.
 | `xl`  | 4rem    | 64px      | Page sections, major separators  |
 | `2xl` | 8rem    | 128px     | Hero sections, major landmarks   |
 
+### Shadow Tokens (Per Theme)
+
+Shadow tokens are defined per theme in `tokens/themes/*.json` and vary by theme personality.
+
+| Category    | Tokens                                                    | Tailwind Classes                                                               | Usage                             |
+| ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
+| Elevation   | `sm`, `md`, `lg`                                          | `shadow-sm`, `shadow-md`, `shadow-lg`                                          | Static elevation (cards, modals)  |
+| Interactive | `interactive`, `interactive-hover`, `interactive-pressed` | `shadow-interactive`, `shadow-interactive-hover`, `shadow-interactive-pressed` | Clickable elements (cards, rows)  |
+| Highlight   | `highlight`, `highlight-hover`, `highlight-pressed`       | `shadow-highlight`, `shadow-highlight-hover`, `shadow-highlight-pressed`       | Prominent clickable elements      |
+| Inset       | `inset-sm`, `inset-md`, `inset-underline`                 | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                 | Pressed/active states, underlines |
+
+### Border Style Tokens (Per Theme)
+
+Border style tokens combine width + line style and are consumed via custom Tailwind utilities (using `@utility` directives). They are defined per theme in `tokens/themes/*.json`.
+
+| Token       | Value        | Tailwind Class     | Usage                                        |
+| ----------- | ------------ | ------------------ | -------------------------------------------- |
+| `line`      | `1px solid`  | `border-line`      | Standard borders (cards, inputs, containers) |
+| `thick`     | `2px solid`  | `border-thick`     | Emphasis or structural separation            |
+| `highlight` | `2px dashed` | `border-highlight` | Selection, CTAs, highlighting                |
+
+**Directional variants:** `border-t-line`, `border-r-line`, `border-b-line`, `border-l-line` (same for `thick` and `highlight`).
+
+**Custom color:** `border-line-*` accepts any color token, e.g., `border-line-status-error-border`, `border-highlight-accent-1-border`. Without a color suffix, they default to `--color-border`.
+
+### Gradient Tokens (Per Theme)
+
+Gradient tokens provide subtle background gradients for emphasis surfaces. They are theme-level tokens (vary by theme personality, not by light/dark mode). Consumed via `bg-gradient-*` Tailwind utilities.
+
+| Category    | Tokens                                | Tailwind Classes                                                                                                  | Usage                       |
+| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------- |
+| Interactive | `primary`, `secondary`, `destructive` | `bg-gradient-interactive-primary`, `bg-gradient-interactive-secondary`, `bg-gradient-interactive-destructive`     | Buttons, CTAs               |
+| Status      | `info`, `success`, `warning`, `error` | `bg-gradient-status-info`, `bg-gradient-status-success`, `bg-gradient-status-warning`, `bg-gradient-status-error` | Status emphasis areas       |
+| Accent      | `1` through `5`                       | `bg-gradient-accent-1` through `bg-gradient-accent-5`                                                             | Data visualization emphasis |
+| Surface     | `inverted`                            | `bg-gradient-surface-inverted`                                                                                    | Dark background areas       |
+
 ### Using Tokens in Tailwind
 
 ```tsx
@@ -450,6 +489,22 @@ Use the `get_design_tokens` MCP tool to query design tokens from ui-library.
 // Semantic spacing
 <div className="gap-sm p-md" />
 <div className="p-xs m-lg space-y-xl" />
+
+// Shadow tokens (interactive states)
+<div className="shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow" />
+<div className="shadow-highlight hover:shadow-highlight-hover" />
+<div className="shadow-inset-sm" />
+
+// Border style tokens
+<div className="border-line" />                           // 1px solid with default border color
+<div className="border-thick" />                          // 2px solid with default border color
+<div className="border-line-status-error-border" />       // 1px solid with error border color
+<div className="border-b-line" />                         // Bottom border only
+
+// Gradient tokens
+<button className="bg-gradient-interactive-primary text-white" />
+<div className="bg-gradient-status-success" />
+<div className="bg-gradient-surface-inverted text-foreground-inverted" />
 ```
 
 ### When to Propose New Semantic Tokens
