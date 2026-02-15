@@ -168,7 +168,7 @@ describe('Card', () => {
       </Card>
     )
     const card = screen.getByText('Custom')
-    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('bg-surface-inverted')
     expect(card.className).toContain('custom-class')
   })
 
