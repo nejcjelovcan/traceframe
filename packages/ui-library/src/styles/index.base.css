@@ -14,3 +14,45 @@
     color: var(--color-foreground);
   }
 }
+
+@layer utilities {
+  .bg-gradient-interactive-primary {
+    background-image: var(--gradient-interactive-primary);
+  }
+  .bg-gradient-interactive-secondary {
+    background-image: var(--gradient-interactive-secondary);
+  }
+  .bg-gradient-interactive-destructive {
+    background-image: var(--gradient-interactive-destructive);
+  }
+  .bg-gradient-status-info {
+    background-image: var(--gradient-status-info);
+  }
+  .bg-gradient-status-success {
+    background-image: var(--gradient-status-success);
+  }
+  .bg-gradient-status-warning {
+    background-image: var(--gradient-status-warning);
+  }
+  .bg-gradient-status-error {
+    background-image: var(--gradient-status-error);
+  }
+  .bg-gradient-accent-1 {
+    background-image: var(--gradient-accent-1);
+  }
+  .bg-gradient-accent-2 {
+    background-image: var(--gradient-accent-2);
+  }
+  .bg-gradient-accent-3 {
+    background-image: var(--gradient-accent-3);
+  }
+  .bg-gradient-accent-4 {
+    background-image: var(--gradient-accent-4);
+  }
+  .bg-gradient-accent-5 {
+    background-image: var(--gradient-accent-5);
+  }
+  .bg-gradient-surface-inverted {
+    background-image: var(--gradient-surface-inverted);
+  }
+}
