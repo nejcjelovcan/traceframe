@@ -109,6 +109,15 @@
   --tw-shadow-sm: var(--shadow-sm);
   --tw-shadow-md: var(--shadow-md);
   --tw-shadow-lg: var(--shadow-lg);
+  --tw-shadow-interactive: var(--shadow-interactive);
+  --tw-shadow-interactive-hover: var(--shadow-interactive-hover);
+  --tw-shadow-interactive-pressed: var(--shadow-interactive-pressed);
+  --tw-shadow-highlight: var(--shadow-highlight);
+  --tw-shadow-highlight-hover: var(--shadow-highlight-hover);
+  --tw-shadow-highlight-pressed: var(--shadow-highlight-pressed);
+  --tw-shadow-inset-sm: var(--shadow-inset-sm);
+  --tw-shadow-inset-md: var(--shadow-inset-md);
+  --tw-shadow-inset-underline: var(--shadow-inset-underline);
 
   /* Font families */
   --tw-font-sans: var(--font-sans);
@@ -237,6 +246,15 @@
   --shadow-sm: var(--tw-shadow-sm);
   --shadow-md: var(--tw-shadow-md);
   --shadow-lg: var(--tw-shadow-lg);
+  --shadow-interactive: var(--tw-shadow-interactive);
+  --shadow-interactive-hover: var(--tw-shadow-interactive-hover);
+  --shadow-interactive-pressed: var(--tw-shadow-interactive-pressed);
+  --shadow-highlight: var(--tw-shadow-highlight);
+  --shadow-highlight-hover: var(--tw-shadow-highlight-hover);
+  --shadow-highlight-pressed: var(--tw-shadow-highlight-pressed);
+  --shadow-inset-sm: var(--tw-shadow-inset-sm);
+  --shadow-inset-md: var(--tw-shadow-inset-md);
+  --shadow-inset-underline: var(--tw-shadow-inset-underline);
 
   /* Font families */
   --font-sans: var(--tw-font-sans);

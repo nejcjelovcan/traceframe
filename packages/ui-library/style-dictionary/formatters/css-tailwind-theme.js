@@ -59,8 +59,13 @@ function generateCssVarName(token) {
     // For these, just use the variant name
     return path.slice(1).join('-')
   } else if (category === 'shadow') {
-    // For shadows, use the variant name
-    return path.slice(1).join('-')
+    // For shadows, handle nested structure and DEFAULT keys
+    // Handle DEFAULT specially - it becomes the parent name
+    const parts = path.slice(1)
+    if (parts[parts.length - 1] === 'DEFAULT') {
+      return parts.slice(0, -1).join('-')
+    }
+    return parts.join('-')
   } else if (category === 'gradient') {
     // For gradients, skip the 'gradient' prefix and use the rest
     return path.slice(1).join('-')

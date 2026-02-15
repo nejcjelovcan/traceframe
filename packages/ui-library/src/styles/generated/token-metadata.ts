@@ -65,6 +65,9 @@ export const TOKEN_METADATA = {
         sm: 'Small shadow with slightly deeper intensity for drama',
         md: 'Medium shadow for cards, dropdowns',
         lg: 'Large shadow for modals, popovers - deeper for mystery',
+        interactive: '',
+        highlight: '',
+        inset: '',
       },
     },
     surface: {
@@ -279,6 +282,18 @@ export const TOKEN_METADATA = {
         value:
           '0 12px 20px -4px color-mix(in srgb, var(--color-shadow) 15%, transparent), 0 4px 8px -4px color-mix(in srgb, var(--color-shadow) 10%, transparent)',
         description: 'Large shadow for modals, popovers - deeper for mystery',
+      },
+      interactive: {
+        value: '',
+        description: '',
+      },
+      highlight: {
+        value: '',
+        description: '',
+      },
+      inset: {
+        value: '',
+        description: '',
       },
     },
     spacing: {
