@@ -375,3 +375,185 @@ describe('Card composition', () => {
     expect(screen.getByText('Content')).toBeDefined()
   })
 })
+
+describe('Card actionable variant', () => {
+  it('applies cursor-pointer when actionable=true', () => {
+    render(<Card actionable>Actionable</Card>)
+    const card = screen.getByText('Actionable')
+    expect(card.className).toContain('cursor-pointer')
+  })
+
+  it('applies transition-shadow when actionable=true', () => {
+    render(<Card actionable>Actionable</Card>)
+    const card = screen.getByText('Actionable')
+    expect(card.className).toContain('transition-shadow')
+  })
+
+  it('applies shadow-interactive classes when actionable=true', () => {
+    render(<Card actionable>Actionable</Card>)
+    const card = screen.getByText('Actionable')
+    expect(card.className).toContain('shadow-interactive')
+    expect(card.className).toContain('hover:shadow-interactive-hover')
+    expect(card.className).toContain('active:shadow-interactive-pressed')
+  })
+
+  it('does not apply actionable classes when actionable=false', () => {
+    render(<Card actionable={false}>Not Actionable</Card>)
+    const card = screen.getByText('Not Actionable')
+    expect(card.className).not.toContain('cursor-pointer')
+    expect(card.className).not.toContain('transition-shadow')
+    expect(card.className).not.toContain('shadow-interactive')
+  })
+
+  it('works with outlined variant', () => {
+    render(
+      <Card variant="outlined" actionable>
+        Actionable Outlined
+      </Card>
+    )
+    const card = screen.getByText('Actionable Outlined')
+    expect(card.className).toContain('bg-surface')
+    expect(card.className).toContain('cursor-pointer')
+    expect(card.className).toContain('shadow-interactive')
+  })
+
+  it('works with elevated variant', () => {
+    render(
+      <Card variant="elevated" actionable>
+        Actionable Elevated
+      </Card>
+    )
+    const card = screen.getByText('Actionable Elevated')
+    expect(card.className).toContain('shadow-md')
+    expect(card.className).toContain('cursor-pointer')
+    expect(card.className).toContain('shadow-interactive')
+  })
+
+  it('works with status variants', () => {
+    const variants = ['info', 'success', 'warning', 'error']
+    variants.forEach((variant) => {
+      const { container } = render(
+        <Card variant={variant as any} actionable>
+          Actionable {variant}
+        </Card>
+      )
+      const card = container.firstChild as HTMLElement
+      expect(card.className).toContain('cursor-pointer')
+      expect(card.className).toContain('shadow-interactive')
+    })
+  })
+
+  it('works with accent variants', () => {
+    const variants = ['accent1', 'accent2', 'accent3', 'accent4', 'accent5']
+    variants.forEach((variant) => {
+      const { container } = render(
+        <Card variant={variant as any} actionable>
+          Actionable {variant}
+        </Card>
+      )
+      const card = container.firstChild as HTMLElement
+      expect(card.className).toContain('cursor-pointer')
+      expect(card.className).toContain('shadow-interactive')
+    })
+  })
+
+  it('works with inverted prop', () => {
+    render(
+      <Card actionable inverted>
+        Actionable Inverted
+      </Card>
+    )
+    const card = screen.getByText('Actionable Inverted')
+    expect(card.className).toContain('cursor-pointer')
+    expect(card.className).toContain('shadow-interactive')
+    expect(card.className).toContain('bg-surface-inverted')
+  })
+
+  it('combines actionable with inverted status variant', () => {
+    render(
+      <Card variant="info" actionable inverted>
+        Actionable Inverted Info
+      </Card>
+    )
+    const card = screen.getByText('Actionable Inverted Info')
+    expect(card.className).toContain('cursor-pointer')
+    expect(card.className).toContain('shadow-interactive')
+    expect(card.className).toContain('bg-status-info-emphasis')
+    expect(card.className).toContain('text-foreground-inverted')
+  })
+})
+
+describe('Card hero variant', () => {
+  it('applies bg-gradient-surface-inverted', () => {
+    render(<Card variant="hero">Hero</Card>)
+    const card = screen.getByText('Hero')
+    expect(card.className).toContain('bg-gradient-surface-inverted')
+  })
+
+  it('applies text-foreground-inverted', () => {
+    render(<Card variant="hero">Hero</Card>)
+    const card = screen.getByText('Hero')
+    expect(card.className).toContain('text-foreground-inverted')
+  })
+
+  it('applies border-line-border', () => {
+    render(<Card variant="hero">Hero</Card>)
+    const card = screen.getByText('Hero')
+    expect(card.className).toContain('border-line-border')
+  })
+
+  it('applies shadow-md when not actionable', () => {
+    render(<Card variant="hero">Hero</Card>)
+    const card = screen.getByText('Hero')
+    expect(card.className).toContain('shadow-md')
+    expect(card.className).not.toContain('shadow-interactive')
+  })
+
+  it('applies interactive shadows when actionable=true', () => {
+    render(
+      <Card variant="hero" actionable>
+        Hero Actionable
+      </Card>
+    )
+    const card = screen.getByText('Hero Actionable')
+    expect(card.className).toContain('cursor-pointer')
+    expect(card.className).toContain('shadow-interactive')
+    expect(card.className).toContain('hover:shadow-interactive-hover')
+    expect(card.className).toContain('active:shadow-interactive-pressed')
+    expect(card.className).not.toContain('shadow-md')
+  })
+
+  it('works with inverted prop (though may be visually redundant)', () => {
+    render(
+      <Card variant="hero" inverted>
+        Hero Inverted
+      </Card>
+    )
+    const card = screen.getByText('Hero Inverted')
+    expect(card.className).toContain('bg-gradient-surface-inverted')
+    expect(card.className).toContain('text-foreground-inverted')
+  })
+
+  it('combines hero with actionable and inverted', () => {
+    render(
+      <Card variant="hero" actionable inverted>
+        Hero Actionable Inverted
+      </Card>
+    )
+    const card = screen.getByText('Hero Actionable Inverted')
+    expect(card.className).toContain('bg-gradient-surface-inverted')
+    expect(card.className).toContain('cursor-pointer')
+    expect(card.className).toContain('shadow-interactive')
+  })
+
+  it('maintains hero variant with custom className', () => {
+    render(
+      <Card variant="hero" className="custom-class">
+        Hero Custom
+      </Card>
+    )
+    const card = screen.getByText('Hero Custom')
+    expect(card.className).toContain('bg-gradient-surface-inverted')
+    expect(card.className).toContain('custom-class')
+  })
+})

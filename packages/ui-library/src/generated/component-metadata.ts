@@ -290,6 +290,7 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         options: [
           'outlined',
           'elevated',
+          'hero',
           'info',
           'success',
           'warning',
@@ -297,10 +298,17 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
           'accent1',
           'accent2',
           'accent3',
-          'data1',
-          'data2',
+          'accent4',
+          'accent5',
         ],
         defaultValue: 'outlined',
+      },
+      {
+        name: 'actionable',
+        description: 'Makes the card clickable with interactive shadow states',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
       },
       {
         name: 'inverted',
