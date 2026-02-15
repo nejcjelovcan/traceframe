@@ -44,7 +44,7 @@
         "$type": "color",
         "$description": "Text color on dark backgrounds like primary buttons",
         "muted": {
-          "$value": "{palette.neutral.400}",
+          "$value": "{palette.neutral.200}",
           "$type": "color",
           "$description": "Secondary text color on dark backgrounds"
         }

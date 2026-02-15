@@ -96,23 +96,24 @@ describe('Card', () => {
     expect(card.className).toContain('border-accent-5-border')
   })
 
-  it('applies tf-inverted class when inverted is true', () => {
+  it('applies inverted classes when inverted is true', () => {
     render(<Card inverted>Inverted</Card>)
     const card = screen.getByText('Inverted')
-    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('bg-surface-inverted')
+    expect(card.className).toContain('text-foreground-inverted')
   })
 
-  it('does not apply tf-inverted class when inverted is false', () => {
+  it('does not apply inverted classes when inverted is false', () => {
     render(<Card>Normal</Card>)
     const card = screen.getByText('Normal')
-    expect(card.className).not.toContain('tf-inverted')
+    expect(card.className).not.toContain('bg-surface-inverted')
   })
 
   it('combines inverted with outlined variant', () => {
     render(<Card inverted>Inverted Outlined</Card>)
     const card = screen.getByText('Inverted Outlined')
-    expect(card.className).toContain('tf-inverted')
-    expect(card.className).toContain('bg-surface')
+    expect(card.className).toContain('bg-surface-inverted')
+    expect(card.className).toContain('text-foreground-inverted')
     expect(card.className).toContain('border-border')
   })
 
@@ -123,7 +124,7 @@ describe('Card', () => {
       </Card>
     )
     const card = screen.getByText('Inverted Elevated')
-    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('bg-surface-inverted')
     expect(card.className).toContain('shadow-md')
   })
 
@@ -167,7 +168,7 @@ describe('Card', () => {
       </Card>
     )
     const card = screen.getByText('Custom')
-    expect(card.className).toContain('tf-inverted')
+    expect(card.className).toContain('bg-surface-inverted')
     expect(card.className).toContain('custom-class')
   })
 

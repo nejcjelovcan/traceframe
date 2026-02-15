@@ -35,8 +35,16 @@ const cardVariants = cva('rounded-sm border', {
   },
   compoundVariants: [
     // Core variants: CSS variable override for full semantic token inversion
-    { variant: 'outlined', inverted: true, class: 'tf-inverted' },
-    { variant: 'elevated', inverted: true, class: 'tf-inverted' },
+    {
+      variant: 'outlined',
+      inverted: true,
+      class: 'bg-surface-inverted text-foreground-inverted border-border',
+    },
+    {
+      variant: 'elevated',
+      inverted: true,
+      class: 'bg-surface-inverted text-foreground-inverted border-border',
+    },
 
     // Status variants: filled/solid look with emphasis background and inverted text
     {

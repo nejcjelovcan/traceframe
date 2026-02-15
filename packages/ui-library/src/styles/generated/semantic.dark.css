@@ -70,7 +70,7 @@
     /* Text color on dark backgrounds like primary buttons */
     --color-foreground-inverted: rgb(var(--palette-neutral-950));
     /* Secondary text color on dark backgrounds */
-    --color-foreground-inverted-muted: rgb(var(--palette-neutral-600));
+    --color-foreground-inverted-muted: rgb(var(--palette-neutral-800));
     /* Secondary text for descriptions, placeholders, and less prominent content */
     --color-foreground-muted: rgb(var(--palette-neutral-400));
 
