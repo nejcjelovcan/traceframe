@@ -254,21 +254,41 @@ function extractBorderRadius(tokens) {
 
 /**
  * Extract shadow metadata from theme tokens.
+ * Handles nested shadow structure (e.g., interactive.DEFAULT, interactive.hover)
  */
 function extractThemeShadows(tokens) {
   const shadowToken = tokens.shadow
   if (!shadowToken) return null
 
   const values = {}
-  for (const [key, value] of Object.entries(shadowToken)) {
-    if (key.startsWith('$') || typeof value !== 'object') continue
 
-    values[key] = {
-      value: value.$value || '',
-      description: value.$description || '',
+  // Helper function to recursively process shadow tokens
+  const processShadowTokens = (obj, prefix = '') => {
+    for (const [key, value] of Object.entries(obj)) {
+      if (key.startsWith('$')) continue
+
+      if (value.$value !== undefined && value.$type === 'shadow') {
+        // This is a shadow token, add it to values
+        // Handle DEFAULT keys specially - they map to parent name
+        const tokenName = key === 'DEFAULT' && prefix
+          ? prefix
+          : prefix
+            ? `${prefix}-${key}`
+            : key
+
+        values[tokenName] = {
+          value: value.$value || '',
+          description: value.$description || '',
+        }
+      } else if (typeof value === 'object' && value !== null && !value.$value) {
+        // This is a nested object, recurse into it
+        const newPrefix = prefix ? `${prefix}-${key}` : key
+        processShadowTokens(value, newPrefix)
+      }
     }
   }
 
+  processShadowTokens(shadowToken)
   return values
 }
 
