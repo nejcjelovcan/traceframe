@@ -7,19 +7,25 @@ import { Icon, type IconName, type IconSize } from '../icons/index.js'
 import { cn } from '../utils/cn.js'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
+  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
   {
     variants: {
       variant: {
         primary:
-          'bg-interactive-primary text-interactive-primary-foreground hover:bg-interactive-primary-hover focus-visible:ring-ring',
+          'bg-interactive-primary text-interactive-primary-foreground hover:bg-interactive-primary-hover shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         secondary:
-          'bg-interactive-secondary text-interactive-secondary-foreground hover:bg-interactive-secondary-hover focus-visible:ring-ring',
+          'bg-interactive-secondary text-interactive-secondary-foreground hover:bg-interactive-secondary-hover shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         outline:
           'border border-border bg-transparent hover:bg-surface-subtle focus-visible:ring-ring',
         ghost: 'hover:bg-interactive-hover focus-visible:ring-ring',
         destructive:
-          'bg-interactive-destructive text-interactive-destructive-foreground hover:bg-interactive-destructive-hover focus-visible:ring-ring',
+          'bg-interactive-destructive text-interactive-destructive-foreground hover:bg-interactive-destructive-hover shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+        'gradient-primary':
+          'bg-gradient-interactive-primary text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+        'gradient-secondary':
+          'bg-gradient-interactive-secondary text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+        'gradient-destructive':
+          'bg-gradient-interactive-destructive text-foreground-inverted hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
       },
       size: {
         sm: 'h-size-sm px-md text-sm',

@@ -199,7 +199,16 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         description: 'Visual style variant indicating action importance',
         type: 'select',
         required: false,
-        options: ['primary', 'secondary', 'outline', 'ghost', 'destructive'],
+        options: [
+          'primary',
+          'secondary',
+          'outline',
+          'ghost',
+          'destructive',
+          'gradient-primary',
+          'gradient-secondary',
+          'gradient-destructive',
+        ],
         defaultValue: 'primary',
       },
       {

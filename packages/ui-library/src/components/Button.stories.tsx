@@ -35,7 +35,16 @@ A versatile button component with multiple variants and sizes.
     variant: {
       description: 'Visual style variant indicating action importance',
       control: 'select',
-      options: ['primary', 'secondary', 'outline', 'ghost', 'destructive'],
+      options: [
+        'primary',
+        'secondary',
+        'outline',
+        'ghost',
+        'destructive',
+        'gradient-primary',
+        'gradient-secondary',
+        'gradient-destructive',
+      ],
       table: {
         defaultValue: { summary: 'primary' },
       },
@@ -134,6 +143,27 @@ export const Destructive: Story = {
   },
 }
 
+export const GradientPrimary: Story = {
+  args: {
+    variant: 'gradient-primary',
+    children: 'Upgrade Now',
+  },
+}
+
+export const GradientSecondary: Story = {
+  args: {
+    variant: 'gradient-secondary',
+    children: 'Learn More',
+  },
+}
+
+export const GradientDestructive: Story = {
+  args: {
+    variant: 'gradient-destructive',
+    children: 'Delete Account',
+  },
+}
+
 export const Small: Story = {
   args: {
     size: 'sm',
@@ -220,6 +250,113 @@ export const IconOnlyVariants: Story = {
       <Button leftIcon="close" iconOnly variant="destructive" aria-label="Delete">
         Delete
       </Button>
+    </Stack>
+  ),
+}
+
+export const GradientVariants: Story = {
+  render: () => (
+    <Stack gap="md">
+      <Stack direction="horizontal" gap="sm">
+        <Button variant="gradient-primary">Upgrade Now</Button>
+        <Button variant="gradient-secondary">Learn More</Button>
+        <Button variant="gradient-destructive">Delete Account</Button>
+      </Stack>
+      <Stack direction="horizontal" gap="sm">
+        <Button variant="gradient-primary" size="sm">
+          Small Gradient
+        </Button>
+        <Button variant="gradient-secondary" size="md">
+          Medium Gradient
+        </Button>
+        <Button variant="gradient-destructive" size="lg">
+          Large Gradient
+        </Button>
+      </Stack>
+    </Stack>
+  ),
+}
+
+export const GradientWithIcons: Story = {
+  render: () => (
+    <Stack direction="horizontal" gap="sm">
+      <Button variant="gradient-primary" leftIcon="sparkles">
+        Premium
+      </Button>
+      <Button variant="gradient-secondary" rightIcon="arrow-right">
+        Continue
+      </Button>
+      <Button variant="gradient-destructive" leftIcon="trash" rightIcon="chevron-right">
+        Remove Item
+      </Button>
+    </Stack>
+  ),
+}
+
+export const GradientStates: Story = {
+  render: () => (
+    <Stack gap="md">
+      <Stack direction="horizontal" gap="sm">
+        <Button variant="gradient-primary">Default</Button>
+        <Button variant="gradient-primary" disabled>
+          Disabled
+        </Button>
+        <Button variant="gradient-primary" loading>
+          Loading
+        </Button>
+        <Button variant="gradient-primary" loading loadingText="Upgrading...">
+          Custom Loading
+        </Button>
+      </Stack>
+      <Stack direction="horizontal" gap="sm">
+        <Button variant="gradient-secondary">Default</Button>
+        <Button variant="gradient-secondary" disabled>
+          Disabled
+        </Button>
+        <Button variant="gradient-secondary" loading>
+          Loading
+        </Button>
+      </Stack>
+    </Stack>
+  ),
+}
+
+export const InteractiveShadows: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Interactive shadow progression (rest → hover → pressed) for solid and gradient variants. Try hovering and clicking the buttons to see the shadow transitions.',
+      },
+    },
+  },
+  render: () => (
+    <Stack gap="lg">
+      <Stack gap="sm">
+        <p className="text-xs text-foreground-muted">Solid variants with interactive shadows</p>
+        <Stack direction="horizontal" gap="sm">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="destructive">Destructive</Button>
+        </Stack>
+      </Stack>
+      <Stack gap="sm">
+        <p className="text-xs text-foreground-muted">Gradient variants with interactive shadows</p>
+        <Stack direction="horizontal" gap="sm">
+          <Button variant="gradient-primary">Gradient Primary</Button>
+          <Button variant="gradient-secondary">Gradient Secondary</Button>
+          <Button variant="gradient-destructive">Gradient Destructive</Button>
+        </Stack>
+      </Stack>
+      <Stack gap="sm">
+        <p className="text-xs text-foreground-muted">
+          Minimal variants without shadows (design intent)
+        </p>
+        <Stack direction="horizontal" gap="sm">
+          <Button variant="outline">Outline (no shadow)</Button>
+          <Button variant="ghost">Ghost (no shadow)</Button>
+        </Stack>
+      </Stack>
     </Stack>
   ),
 }
@@ -326,65 +463,170 @@ export const AllVariants: Story = {
           All Variants × All Sizes
         </Heading>
 
-        <Grid cols={6} gap="sm">
-          <div />
-          <div className="text-xs text-foreground-muted">Primary</div>
-          <div className="text-xs text-foreground-muted">Secondary</div>
-          <div className="text-xs text-foreground-muted">Outline</div>
-          <div className="text-xs text-foreground-muted">Ghost</div>
-          <div className="text-xs text-foreground-muted">Destructive</div>
-
-          <div className="text-xs text-foreground-muted">Small</div>
-          <Button variant="primary" size="sm">
-            Button
-          </Button>
-          <Button variant="secondary" size="sm">
-            Button
-          </Button>
-          <Button variant="outline" size="sm">
-            Button
-          </Button>
-          <Button variant="ghost" size="sm">
-            Button
-          </Button>
-          <Button variant="destructive" size="sm">
-            Button
-          </Button>
-
-          <div className="text-xs text-foreground-muted">Medium</div>
-          <Button variant="primary" size="md">
-            Button
-          </Button>
-          <Button variant="secondary" size="md">
-            Button
-          </Button>
-          <Button variant="outline" size="md">
-            Button
-          </Button>
-          <Button variant="ghost" size="md">
-            Button
-          </Button>
-          <Button variant="destructive" size="md">
-            Button
-          </Button>
-
-          <div className="text-xs text-foreground-muted">Large</div>
-          <Button variant="primary" size="lg">
-            Button
-          </Button>
-          <Button variant="secondary" size="lg">
-            Button
-          </Button>
-          <Button variant="outline" size="lg">
-            Button
-          </Button>
-          <Button variant="ghost" size="lg">
-            Button
-          </Button>
-          <Button variant="destructive" size="lg">
-            Button
-          </Button>
-        </Grid>
+        <div className="overflow-x-auto">
+          <table className="w-full">
+            <thead>
+              <tr>
+                <th className="text-left text-xs font-medium text-foreground-muted p-sm" />
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Primary
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Secondary
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Outline
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Ghost
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Destructive
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Gradient Primary
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Gradient Secondary
+                </th>
+                <th className="text-center text-xs font-medium text-foreground-muted p-sm">
+                  Gradient Destructive
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td className="text-xs font-medium text-foreground-muted p-sm">Small</td>
+                <td className="text-center p-sm">
+                  <Button variant="primary" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="secondary" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="outline" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="ghost" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="destructive" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-primary" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-secondary" size="sm">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-destructive" size="sm">
+                    Button
+                  </Button>
+                </td>
+              </tr>
+              <tr>
+                <td className="text-xs font-medium text-foreground-muted p-sm">Medium</td>
+                <td className="text-center p-sm">
+                  <Button variant="primary" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="secondary" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="outline" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="ghost" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="destructive" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-primary" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-secondary" size="md">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-destructive" size="md">
+                    Button
+                  </Button>
+                </td>
+              </tr>
+              <tr>
+                <td className="text-xs font-medium text-foreground-muted p-sm">Large</td>
+                <td className="text-center p-sm">
+                  <Button variant="primary" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="secondary" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="outline" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="ghost" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="destructive" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-primary" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-secondary" size="lg">
+                    Button
+                  </Button>
+                </td>
+                <td className="text-center p-sm">
+                  <Button variant="gradient-destructive" size="lg">
+                    Button
+                  </Button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
 
       {/* States */}
@@ -449,30 +691,39 @@ export const Showcase: Story = {
               </tr>
             </thead>
             <tbody>
-              {(['primary', 'secondary', 'outline', 'ghost', 'destructive'] as const).map(
-                (variant) => (
-                  <tr key={variant}>
-                    <td className="text-sm font-medium text-foreground-muted capitalize p-sm">
-                      {variant}
-                    </td>
-                    <td className="text-center p-sm">
-                      <Button variant={variant} size="sm">
-                        Button
-                      </Button>
-                    </td>
-                    <td className="text-center p-sm">
-                      <Button variant={variant} size="md">
-                        Button
-                      </Button>
-                    </td>
-                    <td className="text-center p-sm">
-                      <Button variant={variant} size="lg">
-                        Button
-                      </Button>
-                    </td>
-                  </tr>
-                )
-              )}
+              {(
+                [
+                  'primary',
+                  'secondary',
+                  'outline',
+                  'ghost',
+                  'destructive',
+                  'gradient-primary',
+                  'gradient-secondary',
+                  'gradient-destructive',
+                ] as const
+              ).map((variant) => (
+                <tr key={variant}>
+                  <td className="text-sm font-medium text-foreground-muted capitalize p-sm">
+                    {variant}
+                  </td>
+                  <td className="text-center p-sm">
+                    <Button variant={variant} size="sm">
+                      Button
+                    </Button>
+                  </td>
+                  <td className="text-center p-sm">
+                    <Button variant={variant} size="md">
+                      Button
+                    </Button>
+                  </td>
+                  <td className="text-center p-sm">
+                    <Button variant={variant} size="lg">
+                      Button
+                    </Button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -506,7 +757,18 @@ export const Showcase: Story = {
           </Stack>
         </Grid>
         <Grid cols={5} gap="base">
-          {(['primary', 'secondary', 'outline', 'ghost', 'destructive'] as const).map((variant) => (
+          {(
+            [
+              'primary',
+              'secondary',
+              'outline',
+              'ghost',
+              'destructive',
+              'gradient-primary',
+              'gradient-secondary',
+              'gradient-destructive',
+            ] as const
+          ).map((variant) => (
             <Button key={variant} variant={variant} loading>
               {variant}
             </Button>
