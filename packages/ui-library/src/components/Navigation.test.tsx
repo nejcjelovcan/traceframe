@@ -70,6 +70,41 @@ describe('NavItem', () => {
     expect(ref.current).toBeInstanceOf(HTMLAnchorElement)
   })
 
+  it('applies border-b-highlight classes when active in horizontal orientation', () => {
+    const { container } = render(
+      <Navigation orientation="horizontal">
+        <NavItem href="#" active>
+          Active
+        </NavItem>
+      </Navigation>
+    )
+    const activeItem = container.querySelector('a')
+    expect(activeItem?.className).toContain('border-b-highlight-interactive-primary-border')
+  })
+
+  it('applies border-l-highlight classes when active in vertical orientation', () => {
+    const { container } = render(
+      <Navigation orientation="vertical">
+        <NavItem href="#" active>
+          Active
+        </NavItem>
+      </Navigation>
+    )
+    const activeItem = container.querySelector('a')
+    expect(activeItem?.className).toContain('border-l-highlight-interactive-primary-border')
+  })
+
+  it('does not apply border classes when inactive', () => {
+    const { container } = render(
+      <Navigation orientation="horizontal">
+        <NavItem href="#">Inactive</NavItem>
+      </Navigation>
+    )
+    const inactiveItem = container.querySelector('a')
+    expect(inactiveItem?.className).not.toContain('border-b-highlight')
+    expect(inactiveItem?.className).not.toContain('border-l-highlight')
+  })
+
   describe('asChild', () => {
     it('renders child element instead of anchor', () => {
       render(
