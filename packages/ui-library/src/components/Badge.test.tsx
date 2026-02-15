@@ -120,6 +120,42 @@ describe('Badge', () => {
     expect(badge.className).toContain('text-accent-5-foreground')
   })
 
+  it('applies emphasis-info variant classes', () => {
+    render(<Badge variant="emphasis-info">Emphasis Info</Badge>)
+    const badge = screen.getByText('Emphasis Info')
+    expect(badge.className).toContain('bg-gradient-status-info')
+    expect(badge.className).toContain('text-foreground-inverted')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-success variant classes', () => {
+    render(<Badge variant="emphasis-success">Emphasis Success</Badge>)
+    const badge = screen.getByText('Emphasis Success')
+    expect(badge.className).toContain('bg-gradient-status-success')
+    expect(badge.className).toContain('text-foreground-inverted')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-warning variant classes', () => {
+    render(<Badge variant="emphasis-warning">Emphasis Warning</Badge>)
+    const badge = screen.getByText('Emphasis Warning')
+    expect(badge.className).toContain('bg-gradient-status-warning')
+    expect(badge.className).toContain('text-foreground-inverted')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-error variant classes', () => {
+    render(<Badge variant="emphasis-error">Emphasis Error</Badge>)
+    const badge = screen.getByText('Emphasis Error')
+    expect(badge.className).toContain('bg-gradient-status-error')
+    expect(badge.className).toContain('text-foreground-inverted')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
   it('applies xs size classes', () => {
     render(<Badge size="xs">Extra Small</Badge>)
     const badge = screen.getByText('Extra Small')

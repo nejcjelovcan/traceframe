@@ -49,6 +49,15 @@ A small label component for displaying status, categories, or counts.
         'outline-success',
         'outline-warning',
         'outline-error',
+        'outline-accent1',
+        'outline-accent2',
+        'outline-accent3',
+        'outline-accent4',
+        'outline-accent5',
+        'emphasis-info',
+        'emphasis-success',
+        'emphasis-warning',
+        'emphasis-error',
       ],
       table: {
         defaultValue: { summary: 'default' },
@@ -178,6 +187,37 @@ export const OutlineVariant: Story = {
   },
 }
 
+export const EmphasisInfo: Story = {
+  args: {
+    variant: 'emphasis-info',
+    icon: 'info-circle',
+    children: 'New',
+  },
+}
+
+export const EmphasisSuccess: Story = {
+  args: {
+    variant: 'emphasis-success',
+    icon: 'check',
+    children: 'Deployed',
+  },
+}
+
+export const EmphasisWarning: Story = {
+  args: {
+    variant: 'emphasis-warning',
+    icon: 'alert-circle',
+    children: 'Beta',
+  },
+}
+
+export const EmphasisError: Story = {
+  args: {
+    variant: 'emphasis-error',
+    children: 'Critical',
+  },
+}
+
 export const AllVariants: Story = {
   render: () => (
     <div className="flex flex-col gap-base">
@@ -195,6 +235,12 @@ export const AllVariants: Story = {
         <Badge variant="accent3">Accent 3</Badge>
         <Badge variant="accent4">Accent 4</Badge>
         <Badge variant="accent5">Accent 5</Badge>
+      </div>
+      <div className="flex gap-sm">
+        <Badge variant="emphasis-info" icon="info-circle">New</Badge>
+        <Badge variant="emphasis-success" icon="check">Deployed</Badge>
+        <Badge variant="emphasis-warning" icon="alert-circle">Beta</Badge>
+        <Badge variant="emphasis-error">Critical</Badge>
       </div>
       <div className="flex items-center gap-sm">
         <Badge size="xs">Extra Small</Badge>
@@ -235,6 +281,17 @@ export const Showcase: Story = {
           <Badge variant="outline-success">Success</Badge>
           <Badge variant="outline-warning">Warning</Badge>
           <Badge variant="outline-error">Error</Badge>
+          {/* Outline accent variants */}
+          <Badge variant="outline-accent1">Accent 1</Badge>
+          <Badge variant="outline-accent2">Accent 2</Badge>
+          <Badge variant="outline-accent3">Accent 3</Badge>
+          <Badge variant="outline-accent4">Accent 4</Badge>
+          <Badge variant="outline-accent5">Accent 5</Badge>
+          {/* Emphasis variants */}
+          <Badge variant="emphasis-info">Info</Badge>
+          <Badge variant="emphasis-success">Success</Badge>
+          <Badge variant="emphasis-warning">Warning</Badge>
+          <Badge variant="emphasis-error">Error</Badge>
         </Grid>
       </section>
 
@@ -299,6 +356,24 @@ export const Showcase: Story = {
           </Badge>
           <Badge variant="info" icon="info-circle">
             Beta
+          </Badge>
+          <Badge variant="emphasis-error">
+            Critical
+          </Badge>
+          <Badge variant="emphasis-success" icon="check">
+            Deployed
+          </Badge>
+          <Badge variant="emphasis-warning" icon="alert-circle">
+            Beta Feature
+          </Badge>
+          <Badge variant="emphasis-info" size="sm">
+            New
+          </Badge>
+          <Badge variant="emphasis-error" size="lg" icon="close">
+            System Down
+          </Badge>
+          <Badge variant="emphasis-success" size="xs">
+            Live
           </Badge>
         </Grid>
       </section>
