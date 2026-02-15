@@ -12,11 +12,7 @@
       "import": "./dist/fonts.js"
     },
     "./styles.css": "./dist/styles.css",
-    "./tailwind-preset": {
-      "types": "./dist/tailwind-preset.d.ts",
-      "import": "./dist/tailwind-preset.js",
-      "default": "./dist/tailwind-preset.js"
-    }
+    "./theme.css": "./dist/styles/generated/tailwind-theme.css"
   },
   "scripts": {
     "dev": "tsc --watch --project tsconfig.build.json",
