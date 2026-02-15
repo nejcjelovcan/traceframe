@@ -237,9 +237,15 @@ export const AllVariants: Story = {
         <Badge variant="accent5">Accent 5</Badge>
       </div>
       <div className="flex gap-sm">
-        <Badge variant="emphasis-info" icon="info-circle">New</Badge>
-        <Badge variant="emphasis-success" icon="check">Deployed</Badge>
-        <Badge variant="emphasis-warning" icon="alert-circle">Beta</Badge>
+        <Badge variant="emphasis-info" icon="info-circle">
+          New
+        </Badge>
+        <Badge variant="emphasis-success" icon="check">
+          Deployed
+        </Badge>
+        <Badge variant="emphasis-warning" icon="alert-circle">
+          Beta
+        </Badge>
         <Badge variant="emphasis-error">Critical</Badge>
       </div>
       <div className="flex items-center gap-sm">
@@ -357,9 +363,7 @@ export const Showcase: Story = {
           <Badge variant="info" icon="info-circle">
             Beta
           </Badge>
-          <Badge variant="emphasis-error">
-            Critical
-          </Badge>
+          <Badge variant="emphasis-error">Critical</Badge>
           <Badge variant="emphasis-success" icon="check">
             Deployed
           </Badge>
