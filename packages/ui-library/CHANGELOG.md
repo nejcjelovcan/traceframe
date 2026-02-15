@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.0.1
+
+### Patch Changes
+
+- [#47](https://github.com/nejcjelovcan/traceframe/pull/47) [`ce31e21`](https://github.com/nejcjelovcan/traceframe/commit/ce31e21485170bd5b1eb763cadf22c18bb03d5e2) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix broken design tokens in Tailwind v4 theme formatter. The theme CSS now registers all ~81 semantic color tokens instead of only ~22 top-level ones, restoring utility classes for status, accent, interactive, and nested surface/foreground/border variants.
+
 ## 1.0.0
 
 ### Major Changes
