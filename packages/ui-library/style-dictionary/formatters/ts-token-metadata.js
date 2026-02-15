@@ -304,6 +304,26 @@ function extractGradients(tokens) {
   return categories
 }
 
+/**
+ * Extract border style metadata from theme tokens.
+ */
+function extractBorderStyles(tokens) {
+  const borderStyleToken = tokens.borderStyle
+  if (!borderStyleToken) return null
+
+  const values = {}
+  for (const [key, value] of Object.entries(borderStyleToken)) {
+    if (key.startsWith('$') || typeof value !== 'object') continue
+
+    values[key] = {
+      value: value.$value || '',
+      description: value.$description || '',
+    }
+  }
+
+  return values
+}
+
 export default function tsTokenMetadataFormatter({ dictionary, options }) {
   // Build token tree from allTokens
   const tokens = {}
@@ -357,6 +377,7 @@ export default function tsTokenMetadataFormatter({ dictionary, options }) {
   const borderRadius = extractBorderRadius(rawTokens)
   const themeShadows = extractThemeShadows(rawTokens)
   const gradients = extractGradients(rawTokens)
+  const borderStyles = extractBorderStyles(rawTokens)
 
   if (shadows) {
     semantic.shadow = shadows
@@ -508,6 +529,20 @@ export const TOKEN_METADATA = {
       }
 
       output += `        },\n`
+      output += `      },\n`
+    }
+  }
+
+  output += `    },
+    borderStyle: {\n`
+
+  // Output border style tokens
+  if (borderStyles) {
+    for (const [name, data] of Object.entries(borderStyles)) {
+      const key = name.includes('-') || !isNaN(name[0]) ? `'${name}'` : name
+      output += `      ${key}: {\n`
+      output += `        value: ${JSON.stringify(data.value)},\n`
+      output += `        description: ${JSON.stringify(data.description)},\n`
       output += `      },\n`
     }
   }

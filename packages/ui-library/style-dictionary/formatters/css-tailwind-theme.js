@@ -64,6 +64,9 @@ function generateCssVarName(token) {
   } else if (category === 'gradient') {
     // For gradients, skip the 'gradient' prefix and use the rest
     return path.slice(1).join('-')
+  } else if (category === 'borderStyle') {
+    // For border styles, use the variant name
+    return path.slice(1).join('-')
   }
 
   // Default: use full path excluding category
@@ -197,6 +200,19 @@ export default function cssTailwindThemeFormatter({ dictionary, options = {}, fi
       bridgeLines.push(`  --tw-gradient-${varName}: var(--gradient-${varName});`)
       // Map to background-image for Tailwind's bg- utility
       themeLines.push(`  --gradient-${varName}: var(--tw-gradient-${varName});`)
+    })
+  }
+
+  // Process border styles - using bridge pattern
+  if (tokensByCategory.borderStyle) {
+    bridgeLines.push('')
+    bridgeLines.push('  /* Border Styles */')
+    themeLines.push('')
+    themeLines.push('  /* Border Styles */')
+    tokensByCategory.borderStyle.forEach((token) => {
+      const varName = generateCssVarName(token)
+      bridgeLines.push(`  --tw-border-style-${varName}: var(--border-style-${varName});`)
+      themeLines.push(`  --border-style-${varName}: var(--tw-border-style-${varName});`)
     })
   }
 

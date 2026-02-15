@@ -6,7 +6,7 @@ import { cn } from '../utils/cn.js'
 
 /** Base styles shared between standalone input and wrapper */
 const baseInputStyles =
-  'rounded-sm border bg-surface transition-colors placeholder:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-50'
+  'rounded-sm border-line bg-surface transition-colors placeholder:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-50'
 
 /** Focus styles for standalone input (no icons) */
 const focusStyles =
@@ -53,11 +53,12 @@ const inputWrapperVariants = cva(
   {
     variants: {
       variant: {
-        default: 'border-border focus-within:border-interactive-active focus-within:ring-ring',
+        default:
+          'border-line-border focus-within:border-line-interactive-active focus-within:ring-ring',
         error:
-          'border-status-error-border focus-within:border-status-error-border focus-within:ring-status-error-border',
+          'border-line-status-error-border focus-within:border-line-status-error-border focus-within:ring-status-error-border',
         success:
-          'border-status-success-border focus-within:border-status-success-border focus-within:ring-status-success-border',
+          'border-line-status-success-border focus-within:border-line-status-success-border focus-within:ring-status-success-border',
       },
       size: {
         sm: 'h-size-sm px-sm text-sm',

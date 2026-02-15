@@ -110,5 +110,10 @@
       rgb(var(--palette-neutral-800)),
       rgb(var(--palette-neutral-900))
     );
+
+    /* Border Styles */
+    --border-style-line: 1px solid;
+    --border-style-thick: 2px solid;
+    --border-style-highlight: 2px dashed;
   }
 }

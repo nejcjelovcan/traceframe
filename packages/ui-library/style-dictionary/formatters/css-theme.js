@@ -145,6 +145,18 @@ export default function cssThemeFormatter({ options = {} }) {
     output += '\n'
   }
 
+  // Output border styles
+  if (themeData.borderStyle) {
+    output += '    /* Border Styles */\n'
+
+    for (const key of Object.keys(themeData.borderStyle)) {
+      const borderValue = themeData.borderStyle[key].$value
+      output += `    --border-style-${key}: ${borderValue};\n`
+    }
+
+    output += '\n'
+  }
+
   output += '  }\n'
   output += '}\n'
 

@@ -168,7 +168,7 @@ describe('Input', () => {
     it('applies error variant to wrapper when icons present', () => {
       render(<Input variant="error" leftIcon="alert-circle" data-testid="input" />)
       const wrapper = screen.getByTestId('input').parentElement
-      expect(wrapper?.className).toContain('border-status-error-border')
+      expect(wrapper?.className).toContain('border-line-status-error-border')
     })
 
     it('handles disabled state with icons', () => {
