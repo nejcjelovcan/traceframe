@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.3.0
+
+### Minor Changes
+
+- [#66](https://github.com/nejcjelovcan/traceframe/pull/66) [`df30a6a`](https://github.com/nejcjelovcan/traceframe/commit/df30a6a5585c6057435846c8aaefb530249e9965) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Use gradient backgrounds for Button primary, secondary, and destructive variants, remove separate gradient variants, and darken/lighten gradient tokens for light/dark modes
+
 ## 1.2.0
 
 ### Minor Changes
