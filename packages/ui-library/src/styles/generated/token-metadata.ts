@@ -386,17 +386,17 @@ export const TOKEN_METADATA = {
           primary: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-primary-500)), rgb(var(--palette-primary-600)))',
-            description: 'Primary button gradient for light mode',
+            description: 'Primary button and CTA gradient',
           },
           secondary: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-secondary-500)), rgb(var(--palette-secondary-600)))',
-            description: 'Secondary button gradient for light mode',
+            description: 'Secondary button gradient',
           },
           destructive: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-error-500)), rgb(var(--palette-error-600)))',
-            description: 'Destructive button gradient for light mode',
+            description: 'Destructive button gradient',
           },
         },
       },
@@ -406,22 +406,22 @@ export const TOKEN_METADATA = {
           info: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-primary-500)), rgb(var(--palette-primary-600)))',
-            description: 'Info status emphasis gradient for light mode',
+            description: 'Info status emphasis gradient',
           },
           success: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-success-500)), rgb(var(--palette-success-600)))',
-            description: 'Success status emphasis gradient for light mode',
+            description: 'Success status emphasis gradient',
           },
           warning: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-warning-400)), rgb(var(--palette-warning-500)))',
-            description: 'Warning status emphasis gradient for light mode',
+            description: 'Warning status emphasis gradient',
           },
           error: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-error-500)), rgb(var(--palette-error-600)))',
-            description: 'Error status emphasis gradient for light mode',
+            description: 'Error status emphasis gradient',
           },
         },
       },
@@ -431,27 +431,27 @@ export const TOKEN_METADATA = {
           '1': {
             value:
               'linear-gradient(180deg, rgb(var(--palette-accent-1-500)), rgb(var(--palette-accent-1-600)))',
-            description: 'Accent 1 emphasis gradient for light mode',
+            description: 'Accent 1 emphasis gradient',
           },
           '2': {
             value:
               'linear-gradient(180deg, rgb(var(--palette-accent-2-500)), rgb(var(--palette-accent-2-600)))',
-            description: 'Accent 2 emphasis gradient for light mode',
+            description: 'Accent 2 emphasis gradient',
           },
           '3': {
             value:
               'linear-gradient(180deg, rgb(var(--palette-accent-3-500)), rgb(var(--palette-accent-3-600)))',
-            description: 'Accent 3 emphasis gradient for light mode',
+            description: 'Accent 3 emphasis gradient',
           },
           '4': {
             value:
               'linear-gradient(180deg, rgb(var(--palette-accent-4-500)), rgb(var(--palette-accent-4-600)))',
-            description: 'Accent 4 emphasis gradient for light mode',
+            description: 'Accent 4 emphasis gradient',
           },
           '5': {
             value:
               'linear-gradient(180deg, rgb(var(--palette-accent-5-500)), rgb(var(--palette-accent-5-600)))',
-            description: 'Accent 5 emphasis gradient for light mode',
+            description: 'Accent 5 emphasis gradient',
           },
         },
       },
@@ -461,7 +461,7 @@ export const TOKEN_METADATA = {
           inverted: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-neutral-700)), rgb(var(--palette-neutral-800)))',
-            description: 'Inverted surface gradient for dark backgrounds in light mode',
+            description: 'Inverted surface gradient for contrasting backgrounds',
           },
         },
       },
