@@ -180,6 +180,24 @@ export async function autofix(_args: object): Promise<AutofixResult> {
     }
   }
 
+  // Step 3: Run lint (without fix) to catch non-auto-fixable errors
+  if (result.lintResults.errors === 0) {
+    try {
+      const { stderr, exitCode } = await execCommand('pnpm lint', workspaceRoot)
+
+      if (exitCode !== 0) {
+        const errors = parseLintErrors(stderr)
+        result.lintResults.errors = errors > 0 ? errors : 1
+        result.lintResults.output +=
+          '\n\n--- Lint verification ---\n' + truncateOutput(stderr.trim(), 30)
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      result.lintResults.errors = 1
+      result.lintResults.output += `\n\nLint verification failed: ${message}`
+    }
+  }
+
   // Determine if code is ready to commit
   result.ready = result.lintResults.errors === 0
 
