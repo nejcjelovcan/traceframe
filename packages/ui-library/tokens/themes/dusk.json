@@ -180,6 +180,24 @@
     }
   },
 
+  "borderStyle": {
+    "line": {
+      "$value": "1px solid",
+      "$type": "borderStyle",
+      "$description": "Standard border for cards, inputs, containers (default)"
+    },
+    "thick": {
+      "$value": "2px solid",
+      "$type": "borderStyle",
+      "$description": "Heavier border for emphasis or structural separation"
+    },
+    "highlight": {
+      "$value": "2px dashed",
+      "$type": "borderStyle",
+      "$description": "Prominent dashed border for highlighting, selection, or CTAs"
+    }
+  },
+
   "gradient": {
     "interactive": {
       "primary": {

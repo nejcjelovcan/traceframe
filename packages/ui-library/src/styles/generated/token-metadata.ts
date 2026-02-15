@@ -424,5 +424,19 @@ export const TOKEN_METADATA = {
         },
       },
     },
+    borderStyle: {
+      line: {
+        value: '1px solid',
+        description: 'Standard border for cards, inputs, containers (default)',
+      },
+      thick: {
+        value: '2px solid',
+        description: 'Heavier border for emphasis or structural separation',
+      },
+      highlight: {
+        value: '2px dashed',
+        description: 'Prominent dashed border for highlighting, selection, or CTAs',
+      },
+    },
   },
 } as const

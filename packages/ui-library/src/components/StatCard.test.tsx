@@ -77,7 +77,7 @@ describe('StatCard', () => {
     render(<StatCard label="Test" value={1} variant="outlined" data-testid="card" />)
     const card = screen.getByTestId('card')
     expect(card.className).toContain('bg-surface')
-    expect(card.className).toContain('border-border')
+    expect(card.className).toContain('border-line-border')
   })
 
   it('inherits Card variant classes - elevated', () => {
@@ -90,7 +90,7 @@ describe('StatCard', () => {
     render(<StatCard label="Test" value={1} variant="info" data-testid="card" />)
     const card = screen.getByTestId('card')
     expect(card.className).toContain('bg-status-info-muted')
-    expect(card.className).toContain('border-status-info-border')
+    expect(card.className).toContain('border-line-status-info-border')
   })
 
   it('forwards ref correctly', () => {

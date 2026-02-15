@@ -9,6 +9,7 @@
 @import './generated/theme.ember.css';
 @import './generated/semantic.light.css';
 @import './generated/semantic.dark.css';
+@import './border-utilities.css';
 
 @source "../../.storybook/**/*.{ts,tsx}";
 @variant dark (&:where(.dark, .dark *));

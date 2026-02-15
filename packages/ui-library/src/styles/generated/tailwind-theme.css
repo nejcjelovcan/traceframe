@@ -128,6 +128,11 @@
   --tw-gradient-accent-4: var(--gradient-accent-4);
   --tw-gradient-accent-5: var(--gradient-accent-5);
   --tw-gradient-surface-inverted: var(--gradient-surface-inverted);
+
+  /* Border Styles */
+  --tw-border-style-line: var(--border-style-line);
+  --tw-border-style-thick: var(--border-style-thick);
+  --tw-border-style-highlight: var(--border-style-highlight);
 }
 
 @theme inline {
@@ -251,6 +256,11 @@
   --gradient-accent-4: var(--tw-gradient-accent-4);
   --gradient-accent-5: var(--tw-gradient-accent-5);
   --gradient-surface-inverted: var(--tw-gradient-surface-inverted);
+
+  /* Border Styles */
+  --border-style-line: var(--tw-border-style-line);
+  --border-style-thick: var(--tw-border-style-thick);
+  --border-style-highlight: var(--tw-border-style-highlight);
 
   /* Sizing (width & height) */
   --width-size-xs: var(--size-xs);
