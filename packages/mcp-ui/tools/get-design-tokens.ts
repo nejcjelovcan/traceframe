@@ -5,7 +5,16 @@ import { getDesignTokens, type DesignTokens } from '../utils/design-tokens.js'
 /**
  * Valid token types that can be requested.
  */
-export const TOKEN_TYPES = ['colors', 'typography', 'sizing', 'spacing', 'all'] as const
+export const TOKEN_TYPES = [
+  'colors',
+  'typography',
+  'sizing',
+  'spacing',
+  'shadows',
+  'borders',
+  'gradients',
+  'all',
+] as const
 export type TokenType = (typeof TOKEN_TYPES)[number]
 
 /**
@@ -16,7 +25,7 @@ export const getDesignTokensInputSchema = {
     .enum(TOKEN_TYPES)
     .optional()
     .describe(
-      'Filter by token type (optional). Options: colors, typography, sizing, spacing, all. Defaults to all.'
+      'Filter by token type (optional). Options: colors, typography, sizing, spacing, shadows, borders, gradients, all. Defaults to all.'
     ),
 }
 
@@ -24,7 +33,7 @@ export const getDesignTokensInputSchema = {
  * Description for the get_design_tokens tool.
  */
 export const getDesignTokensDescription =
-  'Get design tokens from ui-library with metadata. Returns semantic colors (theme-aware tokens for surfaces, text, borders, etc.), typography (font families and sizes), sizing (element height/width tokens), and spacing values. Note: Palette colors are not exposed as UI code should only use semantic tokens.'
+  'Get design tokens from ui-library with metadata. Returns semantic colors (theme-aware tokens for surfaces, text, borders, etc.), typography (font families and sizes), sizing (element height/width tokens), spacing values, shadows (elevation and interactive states), border styles (line, thick, highlight), and gradients (emphasis surfaces). Note: Palette colors are not exposed as UI code should only use semantic tokens.'
 
 /**
  * Input arguments for getDesignTokensTool function.
@@ -80,10 +89,22 @@ export async function getDesignTokensTool(
         tokens = { spacing: allTokens.spacing }
         summary = `Retrieved spacing tokens: ${Object.keys(allTokens.spacing).length} custom spacing values`
         break
+      case 'shadows':
+        tokens = { shadows: allTokens.shadows }
+        summary = `Retrieved shadow tokens: ${Object.keys(allTokens.shadows).length} shadow values`
+        break
+      case 'borders':
+        tokens = { borders: allTokens.borders }
+        summary = `Retrieved border style tokens: ${Object.keys(allTokens.borders).length} border styles`
+        break
+      case 'gradients':
+        tokens = { gradients: allTokens.gradients }
+        summary = `Retrieved gradient tokens: ${Object.keys(allTokens.gradients).length} gradient categories`
+        break
       case 'all':
       default:
         tokens = allTokens
-        summary = `Retrieved all design tokens: ${Object.keys(allTokens.colors.semantic).length} semantic color groups, ${Object.keys(allTokens.typography.fontSize).length} font sizes, ${Object.keys(allTokens.sizing).length} sizing values, ${Object.keys(allTokens.spacing).length} spacing values`
+        summary = `Retrieved all design tokens: ${Object.keys(allTokens.colors.semantic).length} semantic color groups, ${Object.keys(allTokens.typography.fontSize).length} font sizes, ${Object.keys(allTokens.sizing).length} sizing values, ${Object.keys(allTokens.spacing).length} spacing values, ${Object.keys(allTokens.shadows).length} shadow values, ${Object.keys(allTokens.borders).length} border styles, ${Object.keys(allTokens.gradients).length} gradient categories`
         break
     }
 
