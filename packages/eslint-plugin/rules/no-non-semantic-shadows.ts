@@ -99,7 +99,7 @@ export const noNonSemanticShadows = createRule<Options, MessageIds>({
                   } else {
                     // Extract the actual class name from suggestions like "use shadow-sm for minimal elevation"
                     const classMatch = replacementOption.match(/use ([\w-]+)/)
-                    const replacementClass = classMatch ? classMatch[1] : replacementOption.trim()
+                    const replacementClass = classMatch?.[1] ?? replacementOption.trim()
                     const newValue = value.replace(className, replacementClass)
                     if (node.type === AST_NODE_TYPES.Literal) {
                       return fixer.replaceText(node, `"${newValue}"`)

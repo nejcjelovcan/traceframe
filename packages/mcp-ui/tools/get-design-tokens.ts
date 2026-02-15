@@ -33,7 +33,7 @@ export const getDesignTokensInputSchema = {
  * Description for the get_design_tokens tool.
  */
 export const getDesignTokensDescription =
-  'Get design tokens from ui-library with metadata. Returns semantic colors (theme-aware tokens for surfaces, text, borders, etc.), typography (font families and sizes), sizing (element height/width tokens), spacing values, shadows (elevation and interactive states), border styles (line, thick, highlight), and gradients (emphasis surfaces). Note: Palette colors are not exposed as UI code should only use semantic tokens.'
+  'Get design tokens from ui-library with metadata. Returns semantic colors (theme-aware tokens for surfaces, text, borders, etc.), typography (font families and sizes), sizing (element height/width tokens), spacing values, shadows (elevation and interactive states), border styles (line, thick, highlight), and gradients (semantic with light/dark variants for emphasis surfaces; values shown are from light mode). Note: Palette colors are not exposed as UI code should only use semantic tokens.'
 
 /**
  * Input arguments for getDesignTokensTool function.
@@ -99,7 +99,7 @@ export async function getDesignTokensTool(
         break
       case 'gradients':
         tokens = { gradients: allTokens.gradients }
-        summary = `Retrieved gradient tokens: ${Object.keys(allTokens.gradients).length} gradient categories`
+        summary = `Retrieved gradient tokens: ${Object.keys(allTokens.gradients).length} gradient categories (semantic with light/dark variants; values shown are from light mode)`
         break
       case 'all':
       default:

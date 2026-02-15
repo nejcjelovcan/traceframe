@@ -262,10 +262,7 @@ function getBorderUtilities(): TokenEntry[] {
         `border-l-${name}`,
       ]
       // Add examples with color variants for common semantic tokens
-      const colorExamples = [
-        `border-${name}-status-error-border`,
-        `border-${name}-accent-1-border`,
-      ]
+      const colorExamples = [`border-${name}-status-error-border`, `border-${name}-accent-1-border`]
       entries.push({
         name: `border-${name}`,
         value: meta.value,

@@ -53,7 +53,10 @@ vi.mock('../utils/design-tokens.js', () => ({
     shadows: {
       sm: { value: 'shadow-value-sm', description: 'Small shadow' },
       interactive: { value: 'shadow-value-interactive', description: 'Interactive shadow' },
-      'highlight-hover': { value: 'shadow-value-highlight-hover', description: 'Highlight hover shadow' },
+      'highlight-hover': {
+        value: 'shadow-value-highlight-hover',
+        description: 'Highlight hover shadow',
+      },
     },
     borders: {
       line: { value: '1px solid', description: 'Standard border' },

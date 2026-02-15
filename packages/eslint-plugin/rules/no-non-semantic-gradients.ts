@@ -26,7 +26,6 @@ export const noNonSemanticGradients = createRule<Options, MessageIds>({
       description:
         'Enforce usage of semantic gradient tokens instead of arbitrary gradient construction',
     },
-    fixable: undefined, // No automatic fix for gradients since they're complex
     hasSuggestions: false, // Just show the error message with guidance
     schema: [
       {
@@ -42,8 +41,7 @@ export const noNonSemanticGradients = createRule<Options, MessageIds>({
       },
     ],
     messages: {
-      nonSemanticGradient:
-        'Use semantic gradient token instead of "{{className}}". {{suggestion}}',
+      nonSemanticGradient: 'Use semantic gradient token instead of "{{className}}". {{suggestion}}',
       suggestSemantic: 'Replace with semantic gradient',
     },
   },

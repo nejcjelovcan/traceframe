@@ -544,6 +544,19 @@ export function isNonSemanticShadowClass(className: string): boolean {
 }
 
 /**
+ * Check if a value matches a palette color with shade (e.g., "primary-500", "neutral-200").
+ */
+function isColorClass(value: string): boolean {
+  for (const palette of COLOR_PALETTES) {
+    for (const shade of SHADES) {
+      if (value === `${palette}-${shade}`) return true
+    }
+  }
+  if (value === 'white' || value === 'black') return true
+  return false
+}
+
+/**
  * Check if a class uses non-semantic gradient patterns.
  * Non-semantic: bg-gradient-to-*, from-*, via-*, to-* (arbitrary gradient construction)
  * Semantic: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*, bg-gradient-surface-inverted
@@ -580,7 +593,7 @@ export function getBorderSuggestion(className: string): string | undefined {
   const directionMatch = clean.match(/^border-([trblxy])-(\d+)$/)
   if (directionMatch) {
     const direction = directionMatch[1]
-    const value = parseInt(directionMatch[2])
+    const value = parseInt(directionMatch[2]!)
     if (value === 1) {
       return `${modifier}border-${direction}-line`
     } else if (value === 2) {
@@ -591,7 +604,7 @@ export function getBorderSuggestion(className: string): string | undefined {
   // No direction
   const match = clean.match(/^border-(\d+)$/)
   if (match) {
-    const value = parseInt(match[1])
+    const value = parseInt(match[1]!)
     if (value === 1) {
       return `${modifier}border-line`
     } else if (value === 2) {
