@@ -406,73 +406,73 @@
   "gradient": {
     "interactive": {
       "primary": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-primary-400)), rgb(var(--palette-primary-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-primary-300)), rgb(var(--palette-primary-400)))",
         "$type": "gradient",
         "$description": "Primary button and CTA gradient"
       },
       "secondary": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-secondary-400)), rgb(var(--palette-secondary-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-secondary-300)), rgb(var(--palette-secondary-400)))",
         "$type": "gradient",
         "$description": "Secondary button gradient"
       },
       "destructive": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-error-400)), rgb(var(--palette-error-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-error-300)), rgb(var(--palette-error-400)))",
         "$type": "gradient",
         "$description": "Destructive button gradient"
       }
     },
     "status": {
       "info": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-primary-400)), rgb(var(--palette-primary-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-primary-300)), rgb(var(--palette-primary-400)))",
         "$type": "gradient",
         "$description": "Info status emphasis gradient"
       },
       "success": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-success-400)), rgb(var(--palette-success-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-success-300)), rgb(var(--palette-success-400)))",
         "$type": "gradient",
         "$description": "Success status emphasis gradient"
       },
       "warning": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-warning-300)), rgb(var(--palette-warning-400)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-warning-200)), rgb(var(--palette-warning-300)))",
         "$type": "gradient",
         "$description": "Warning status emphasis gradient"
       },
       "error": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-error-400)), rgb(var(--palette-error-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-error-300)), rgb(var(--palette-error-400)))",
         "$type": "gradient",
         "$description": "Error status emphasis gradient"
       }
     },
     "accent": {
       "1": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-1-400)), rgb(var(--palette-accent-1-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-1-300)), rgb(var(--palette-accent-1-400)))",
         "$type": "gradient",
         "$description": "Accent 1 emphasis gradient"
       },
       "2": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-2-400)), rgb(var(--palette-accent-2-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-2-300)), rgb(var(--palette-accent-2-400)))",
         "$type": "gradient",
         "$description": "Accent 2 emphasis gradient"
       },
       "3": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-3-400)), rgb(var(--palette-accent-3-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-3-300)), rgb(var(--palette-accent-3-400)))",
         "$type": "gradient",
         "$description": "Accent 3 emphasis gradient"
       },
       "4": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-4-400)), rgb(var(--palette-accent-4-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-4-300)), rgb(var(--palette-accent-4-400)))",
         "$type": "gradient",
         "$description": "Accent 4 emphasis gradient"
       },
       "5": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-5-400)), rgb(var(--palette-accent-5-500)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-accent-5-300)), rgb(var(--palette-accent-5-400)))",
         "$type": "gradient",
         "$description": "Accent 5 emphasis gradient"
       }
     },
     "surface": {
       "inverted": {
-        "$value": "linear-gradient(180deg, rgb(var(--palette-neutral-200)), rgb(var(--palette-neutral-300)))",
+        "$value": "linear-gradient(180deg, rgb(var(--palette-neutral-100)), rgb(var(--palette-neutral-200)))",
         "$type": "gradient",
         "$description": "Inverted surface gradient for contrasting backgrounds"
       }

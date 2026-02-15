@@ -224,6 +224,38 @@ export const IconOnlyVariants: Story = {
   ),
 }
 
+export const InteractiveShadows: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Interactive shadow progression (rest → hover → pressed) for solid and gradient variants. Try hovering and clicking the buttons to see the shadow transitions.',
+      },
+    },
+  },
+  render: () => (
+    <Stack gap="lg">
+      <Stack gap="sm">
+        <p className="text-xs text-foreground-muted">Variants with interactive shadows</p>
+        <Stack direction="horizontal" gap="sm">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="destructive">Destructive</Button>
+        </Stack>
+      </Stack>
+      <Stack gap="sm">
+        <p className="text-xs text-foreground-muted">
+          Minimal variants without shadows (design intent)
+        </p>
+        <Stack direction="horizontal" gap="sm">
+          <Button variant="outline">Outline (no shadow)</Button>
+          <Button variant="ghost">Ghost (no shadow)</Button>
+        </Stack>
+      </Stack>
+    </Stack>
+  ),
+}
+
 export const IconOnlySizes: Story = {
   render: () => (
     <Stack direction="horizontal" gap="sm">
@@ -313,113 +345,6 @@ export const AsChild: Story = {
       <Button asChild variant="ghost">
         <a href="/settings">Settings</a>
       </Button>
-    </Stack>
-  ),
-}
-
-export const AllVariants: Story = {
-  render: () => (
-    <Stack direction="vertical" gap="lg">
-      {/* Variants × Sizes Matrix */}
-      <section className="space-y-sm">
-        <Heading level={3} size="sm" color="muted">
-          All Variants × All Sizes
-        </Heading>
-
-        <Grid cols={6} gap="sm">
-          <div />
-          <div className="text-xs text-foreground-muted">Primary</div>
-          <div className="text-xs text-foreground-muted">Secondary</div>
-          <div className="text-xs text-foreground-muted">Outline</div>
-          <div className="text-xs text-foreground-muted">Ghost</div>
-          <div className="text-xs text-foreground-muted">Destructive</div>
-
-          <div className="text-xs text-foreground-muted">Small</div>
-          <Button variant="primary" size="sm">
-            Button
-          </Button>
-          <Button variant="secondary" size="sm">
-            Button
-          </Button>
-          <Button variant="outline" size="sm">
-            Button
-          </Button>
-          <Button variant="ghost" size="sm">
-            Button
-          </Button>
-          <Button variant="destructive" size="sm">
-            Button
-          </Button>
-
-          <div className="text-xs text-foreground-muted">Medium</div>
-          <Button variant="primary" size="md">
-            Button
-          </Button>
-          <Button variant="secondary" size="md">
-            Button
-          </Button>
-          <Button variant="outline" size="md">
-            Button
-          </Button>
-          <Button variant="ghost" size="md">
-            Button
-          </Button>
-          <Button variant="destructive" size="md">
-            Button
-          </Button>
-
-          <div className="text-xs text-foreground-muted">Large</div>
-          <Button variant="primary" size="lg">
-            Button
-          </Button>
-          <Button variant="secondary" size="lg">
-            Button
-          </Button>
-          <Button variant="outline" size="lg">
-            Button
-          </Button>
-          <Button variant="ghost" size="lg">
-            Button
-          </Button>
-          <Button variant="destructive" size="lg">
-            Button
-          </Button>
-        </Grid>
-      </section>
-
-      {/* States */}
-      <section className="space-y-sm">
-        <Heading level={3} size="sm" color="muted">
-          States
-        </Heading>
-        <Stack direction="horizontal" gap="sm">
-          <Button>Default</Button>
-          <Button disabled>Disabled</Button>
-          <Button loading>Loading</Button>
-          <Button loading loadingText="Saving...">
-            Custom Loading
-          </Button>
-        </Stack>
-      </section>
-
-      {/* Full Width */}
-      <section className="space-y-sm">
-        <Heading level={3} size="sm" color="muted">
-          Full Width
-        </Heading>
-        <Stack direction="vertical" gap="sm" className="max-w-sm">
-          <Button fullWidth>Full Width Button</Button>
-          <Button fullWidth variant="outline">
-            Full Width Outline
-          </Button>
-          <Button fullWidth leftIcon="check" rightIcon="arrow-right">
-            With Icons
-          </Button>
-          <Button fullWidth loading>
-            Full Width Loading
-          </Button>
-        </Stack>
-      </section>
     </Stack>
   ),
 }

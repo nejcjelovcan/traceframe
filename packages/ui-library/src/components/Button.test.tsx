@@ -13,7 +13,7 @@ describe('Button', () => {
   it('applies variant classes', () => {
     render(<Button variant="destructive">Delete</Button>)
     const button = screen.getByRole('button')
-    expect(button.className).toContain('bg-interactive-destructive')
+    expect(button.className).toContain('bg-gradient-interactive-destructive')
   })
 
   it('applies size classes', () => {
@@ -320,6 +320,81 @@ describe('Button', () => {
         expect(icon).toBeDefined()
         unmount()
       })
+    })
+  })
+
+  describe('gradient backgrounds', () => {
+    it('applies gradient background to primary variant', () => {
+      render(<Button variant="primary">Primary</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('bg-gradient-interactive-primary')
+      expect(button.className).toContain('text-foreground-inverted')
+      expect(button.className).toContain('hover:opacity-90')
+    })
+
+    it('applies gradient background to secondary variant', () => {
+      render(<Button variant="secondary">Secondary</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('bg-gradient-interactive-secondary')
+      expect(button.className).toContain('text-foreground-inverted')
+      expect(button.className).toContain('hover:opacity-90')
+    })
+
+    it('applies gradient background to destructive variant', () => {
+      render(<Button variant="destructive">Destructive</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('bg-gradient-interactive-destructive')
+      expect(button.className).toContain('text-foreground-inverted')
+      expect(button.className).toContain('hover:opacity-90')
+    })
+  })
+
+  describe('interactive shadows', () => {
+    it('adds shadow classes to primary variant', () => {
+      render(<Button variant="primary">Primary</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('shadow-interactive')
+      expect(button.className).toContain('hover:shadow-interactive-hover')
+      expect(button.className).toContain('active:shadow-interactive-pressed')
+    })
+
+    it('adds shadow classes to secondary variant', () => {
+      render(<Button variant="secondary">Secondary</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('shadow-interactive')
+      expect(button.className).toContain('hover:shadow-interactive-hover')
+      expect(button.className).toContain('active:shadow-interactive-pressed')
+    })
+
+    it('adds shadow classes to destructive variant', () => {
+      render(<Button variant="destructive">Destructive</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('shadow-interactive')
+      expect(button.className).toContain('hover:shadow-interactive-hover')
+      expect(button.className).toContain('active:shadow-interactive-pressed')
+    })
+
+    it('does not add shadows to outline variant', () => {
+      render(<Button variant="outline">Outline</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).not.toContain('shadow-interactive')
+      expect(button.className).not.toContain('hover:shadow-interactive-hover')
+      expect(button.className).not.toContain('active:shadow-interactive-pressed')
+    })
+
+    it('does not add shadows to ghost variant', () => {
+      render(<Button variant="ghost">Ghost</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).not.toContain('shadow-interactive')
+      expect(button.className).not.toContain('hover:shadow-interactive-hover')
+      expect(button.className).not.toContain('active:shadow-interactive-pressed')
+    })
+
+    it('uses transition-all for smooth shadow transitions', () => {
+      render(<Button>Test</Button>)
+      const button = screen.getByRole('button')
+      expect(button.className).toContain('transition-all')
+      expect(button.className).not.toContain('transition-colors')
     })
   })
 })
