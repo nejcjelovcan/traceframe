@@ -43,5 +43,72 @@
     --spacing-lg: 1.5rem;
     --spacing-xl: 3rem;
     --spacing-2xl: 5rem;
+
+    /* Gradients */
+    --gradient-interactive-primary: linear-gradient(
+      180deg,
+      rgb(var(--palette-primary-500)),
+      rgb(var(--palette-primary-600))
+    );
+    --gradient-interactive-secondary: linear-gradient(
+      180deg,
+      rgb(var(--palette-secondary-500)),
+      rgb(var(--palette-secondary-600))
+    );
+    --gradient-interactive-destructive: linear-gradient(
+      180deg,
+      rgb(var(--palette-error-500)),
+      rgb(var(--palette-error-600))
+    );
+    --gradient-status-info: linear-gradient(
+      180deg,
+      rgb(var(--palette-primary-500)),
+      rgb(var(--palette-primary-600))
+    );
+    --gradient-status-success: linear-gradient(
+      180deg,
+      rgb(var(--palette-success-500)),
+      rgb(var(--palette-success-600))
+    );
+    --gradient-status-warning: linear-gradient(
+      180deg,
+      rgb(var(--palette-warning-400)),
+      rgb(var(--palette-warning-500))
+    );
+    --gradient-status-error: linear-gradient(
+      180deg,
+      rgb(var(--palette-error-500)),
+      rgb(var(--palette-error-600))
+    );
+    --gradient-accent-1: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-1-500)),
+      rgb(var(--palette-accent-1-600))
+    );
+    --gradient-accent-2: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-2-500)),
+      rgb(var(--palette-accent-2-600))
+    );
+    --gradient-accent-3: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-3-500)),
+      rgb(var(--palette-accent-3-600))
+    );
+    --gradient-accent-4: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-4-500)),
+      rgb(var(--palette-accent-4-600))
+    );
+    --gradient-accent-5: linear-gradient(
+      180deg,
+      rgb(var(--palette-accent-5-500)),
+      rgb(var(--palette-accent-5-600))
+    );
+    --gradient-surface-inverted: linear-gradient(
+      180deg,
+      rgb(var(--palette-neutral-700)),
+      rgb(var(--palette-neutral-800))
+    );
   }
 }

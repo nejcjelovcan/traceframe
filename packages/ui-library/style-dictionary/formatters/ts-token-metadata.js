@@ -272,6 +272,38 @@ function extractThemeShadows(tokens) {
   return values
 }
 
+/**
+ * Extract gradient metadata from theme tokens.
+ */
+function extractGradients(tokens) {
+  const gradientToken = tokens.gradient
+  if (!gradientToken) return null
+
+  const categories = {}
+
+  // Process nested gradient structure (e.g., gradient.interactive.primary)
+  for (const [category, categoryValue] of Object.entries(gradientToken)) {
+    if (category.startsWith('$') || typeof categoryValue !== 'object') continue
+
+    const variants = {}
+    for (const [variant, value] of Object.entries(categoryValue)) {
+      if (variant.startsWith('$') || typeof value !== 'object') continue
+
+      variants[variant] = {
+        value: value.$value || '',
+        description: value.$description || '',
+      }
+    }
+
+    categories[category] = {
+      description: categoryValue.$description || '',
+      variants,
+    }
+  }
+
+  return categories
+}
+
 export default function tsTokenMetadataFormatter({ dictionary, options }) {
   // Build token tree from allTokens
   const tokens = {}
@@ -324,6 +356,7 @@ export default function tsTokenMetadataFormatter({ dictionary, options }) {
   const fontSize = extractFontSize(rawTokens)
   const borderRadius = extractBorderRadius(rawTokens)
   const themeShadows = extractThemeShadows(rawTokens)
+  const gradients = extractGradients(rawTokens)
 
   if (shadows) {
     semantic.shadow = shadows
@@ -452,6 +485,29 @@ export const TOKEN_METADATA = {
       output += `      ${key}: {\n`
       output += `        value: ${JSON.stringify(data.value)},\n`
       output += `        description: ${JSON.stringify(data.description)},\n`
+      output += `      },\n`
+    }
+  }
+
+  output += `    },
+    gradient: {\n`
+
+  // Output gradient tokens
+  if (gradients) {
+    for (const [category, categoryData] of Object.entries(gradients)) {
+      output += `      ${category}: {\n`
+      output += `        description: ${JSON.stringify(categoryData.description)},\n`
+      output += `        variants: {\n`
+
+      for (const [variant, variantData] of Object.entries(categoryData.variants)) {
+        const key = variant.includes('-') || !isNaN(variant[0]) ? `'${variant}'` : variant
+        output += `          ${key}: {\n`
+        output += `            value: ${JSON.stringify(variantData.value)},\n`
+        output += `            description: ${JSON.stringify(variantData.description)},\n`
+        output += `          },\n`
+      }
+
+      output += `        },\n`
       output += `      },\n`
     }
   }
