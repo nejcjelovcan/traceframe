@@ -290,7 +290,6 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         options: [
           'outlined',
           'elevated',
-          'hero',
           'info',
           'success',
           'warning',

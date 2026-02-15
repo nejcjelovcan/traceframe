@@ -13,9 +13,6 @@ const cardVariants = cva('rounded-sm border-line', {
       outlined: 'bg-surface border-line-border',
       elevated: 'bg-surface border-line-border shadow-md',
 
-      // Hero variant for featured content
-      hero: 'bg-gradient-surface-inverted text-foreground-inverted border-line-border',
-
       // Status variants with proper semantic token structure
       info: 'bg-status-info-muted text-status-info-foreground border-line-status-info-border',
       success:
@@ -41,7 +38,7 @@ const cardVariants = cva('rounded-sm border-line', {
     },
   },
   compoundVariants: [
-    // Actionable + non-hero variants: interactive shadows
+    // Actionable variants: interactive shadows
     {
       actionable: true,
       variant: [
@@ -57,18 +54,6 @@ const cardVariants = cva('rounded-sm border-line', {
         'accent4',
         'accent5',
       ],
-      class: 'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
-    },
-    // Hero variant base shadow (when not actionable)
-    {
-      variant: 'hero',
-      actionable: false,
-      class: 'shadow-md',
-    },
-    // Hero + actionable: uses interactive shadows instead
-    {
-      variant: 'hero',
-      actionable: true,
       class: 'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
     },
 
