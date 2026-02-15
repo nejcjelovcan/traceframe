@@ -13,8 +13,6 @@ import { noNonSemanticSpacing } from './rules/no-non-semantic-spacing.js'
  */
 const TOKEN_EXCEPTIONS = [
   'packages/ui-library/src/styles/',
-  'packages/ui-library/src/tailwind-preset.ts',
-  'packages/ui-library/tailwind-preset.ts',
   'packages/ui-library/src/utils/semantic-token-utils.ts',
   'packages/ui-library/style-dictionary/',
   'packages/ui-library/src/stories/PaletteShowcase.stories.tsx',

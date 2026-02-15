@@ -7,8 +7,6 @@ import cssSemanticFormatter from '../style-dictionary/formatters/css-semantic.js
 import cssThemeFormatter from '../style-dictionary/formatters/css-theme.js'
 import cssTailwindThemeFormatter from '../style-dictionary/formatters/css-tailwind-theme.js'
 import tsTokenMetadataFormatter from '../style-dictionary/formatters/ts-token-metadata.js'
-import jsonTailwindFormatter from '../style-dictionary/formatters/json-tailwind.js'
-import jsonTailwindFontSizeFormatter from '../style-dictionary/formatters/json-tailwind-fontsize.js'
 import config from '../style-dictionary/config.js'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
@@ -39,15 +37,6 @@ StyleDictionary.registerFormat({
   format: tsTokenMetadataFormatter,
 })
 
-StyleDictionary.registerFormat({
-  name: 'json/tailwind',
-  format: jsonTailwindFormatter,
-})
-
-StyleDictionary.registerFormat({
-  name: 'json/tailwind-fontsize',
-  format: jsonTailwindFontSizeFormatter,
-})
 
 // Custom transform to handle RGB space-separated values
 StyleDictionary.registerTransform({
