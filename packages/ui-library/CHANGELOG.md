@@ -1,5 +1,11 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.1.1
+
+### Patch Changes
+
+- [#58](https://github.com/nejcjelovcan/traceframe/pull/58) [`3190694`](https://github.com/nejcjelovcan/traceframe/commit/31906942a3628f1ad1e5728d4ffd542b2992be27) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix font-resolver failing with ERR_PACKAGE_PATH_NOT_EXPORTED by simplifying to single-level require pattern
+
 ## 1.1.0
 
 ### Minor Changes
