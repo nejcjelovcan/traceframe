@@ -7,7 +7,7 @@
     /* Accent 1 emphasis color for icons and strong indicators */
     --color-accent-1-emphasis: rgb(var(--palette-accent-1-600));
     /* Accent 1 text color for readability on accent backgrounds */
-    --color-accent-1-foreground: rgb(var(--palette-accent-1-700));
+    --color-accent-1-foreground: rgb(var(--palette-accent-1-800));
     /* Accent 1 muted background for subtle indicators */
     --color-accent-1-muted: rgb(var(--palette-accent-1-100));
     /* Accent 2 base color for categorical data and visual distinction */
@@ -17,7 +17,7 @@
     /* Accent 2 emphasis color for icons and strong indicators */
     --color-accent-2-emphasis: rgb(var(--palette-accent-2-600));
     /* Accent 2 text color for readability on accent backgrounds */
-    --color-accent-2-foreground: rgb(var(--palette-accent-2-700));
+    --color-accent-2-foreground: rgb(var(--palette-accent-2-800));
     /* Accent 2 muted background for subtle indicators */
     --color-accent-2-muted: rgb(var(--palette-accent-2-100));
     /* Accent 3 base color for categorical data and visual distinction */
@@ -27,7 +27,7 @@
     /* Accent 3 emphasis color for icons and strong indicators */
     --color-accent-3-emphasis: rgb(var(--palette-accent-3-600));
     /* Accent 3 text color for readability on accent backgrounds */
-    --color-accent-3-foreground: rgb(var(--palette-accent-3-700));
+    --color-accent-3-foreground: rgb(var(--palette-accent-3-800));
     /* Accent 3 muted background for subtle indicators */
     --color-accent-3-muted: rgb(var(--palette-accent-3-100));
     /* Accent 4 base color for categorical data and visual distinction */
@@ -37,7 +37,7 @@
     /* Accent 4 emphasis color for icons and strong indicators */
     --color-accent-4-emphasis: rgb(var(--palette-accent-4-600));
     /* Accent 4 text color for readability on accent backgrounds */
-    --color-accent-4-foreground: rgb(var(--palette-accent-4-700));
+    --color-accent-4-foreground: rgb(var(--palette-accent-4-800));
     /* Accent 4 muted background for subtle indicators */
     --color-accent-4-muted: rgb(var(--palette-accent-4-100));
     /* Accent 5 base color for categorical data and visual distinction */
@@ -47,7 +47,7 @@
     /* Accent 5 emphasis color for icons and strong indicators */
     --color-accent-5-emphasis: rgb(var(--palette-accent-5-600));
     /* Accent 5 text color for readability on accent backgrounds */
-    --color-accent-5-foreground: rgb(var(--palette-accent-5-700));
+    --color-accent-5-foreground: rgb(var(--palette-accent-5-800));
     /* Accent 5 muted background for subtle indicators */
     --color-accent-5-muted: rgb(var(--palette-accent-5-100));
 
@@ -115,7 +115,7 @@
     /* Error status emphasis color for icons and strong indicators */
     --color-status-error-emphasis: rgb(var(--palette-error-600));
     /* Error status text color for readability on error backgrounds */
-    --color-status-error-foreground: rgb(var(--palette-error-700));
+    --color-status-error-foreground: rgb(var(--palette-error-800));
     /* Error status muted background for subtle error indicators */
     --color-status-error-muted: rgb(var(--palette-error-100));
     /* Info status color for informational messages, tips, and non-critical alerts */
@@ -125,7 +125,7 @@
     /* Info status emphasis color for icons and strong indicators */
     --color-status-info-emphasis: rgb(var(--palette-primary-600));
     /* Info status text color for readability on info backgrounds */
-    --color-status-info-foreground: rgb(var(--palette-primary-700));
+    --color-status-info-foreground: rgb(var(--palette-primary-800));
     /* Info status muted background for subtle info indicators */
     --color-status-info-muted: rgb(var(--palette-primary-100));
     /* Success status color for positive outcomes, completed actions, and confirmations */
@@ -135,7 +135,7 @@
     /* Success status emphasis color for icons and strong indicators */
     --color-status-success-emphasis: rgb(var(--palette-success-600));
     /* Success status text color for readability on success backgrounds */
-    --color-status-success-foreground: rgb(var(--palette-success-700));
+    --color-status-success-foreground: rgb(var(--palette-success-800));
     /* Success status muted background for subtle success indicators */
     --color-status-success-muted: rgb(var(--palette-success-100));
     /* Warning status color for cautions, pending states, and attention required */
@@ -145,7 +145,7 @@
     /* Warning status emphasis color for icons and strong indicators */
     --color-status-warning-emphasis: rgb(var(--palette-warning-600));
     /* Warning status text color for readability on warning backgrounds */
-    --color-status-warning-foreground: rgb(var(--palette-warning-700));
+    --color-status-warning-foreground: rgb(var(--palette-warning-800));
     /* Warning status muted background for subtle warning indicators */
     --color-status-warning-muted: rgb(var(--palette-warning-100));
 
