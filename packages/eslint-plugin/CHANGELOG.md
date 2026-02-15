@@ -1,5 +1,16 @@
 # @nejcjelovcan/eslint-plugin-traceframe
 
+## 0.2.0
+
+### Minor Changes
+
+- [#68](https://github.com/nejcjelovcan/traceframe/pull/68) [`0de93a2`](https://github.com/nejcjelovcan/traceframe/commit/0de93a25e036da3f2c8e95c75353deb6464a7718) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add border style, shadow, and gradient token detection and suggestion utilities for ESLint enforcement
+
+### Patch Changes
+
+- Updated dependencies [[`0de93a2`](https://github.com/nejcjelovcan/traceframe/commit/0de93a25e036da3f2c8e95c75353deb6464a7718)]:
+  - @nejcjelovcan/traceframe-ui-library@1.4.0
+
 ## 0.1.4
 
 ### Patch Changes
