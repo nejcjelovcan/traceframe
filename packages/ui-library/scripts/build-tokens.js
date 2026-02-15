@@ -5,6 +5,7 @@ import { dirname } from 'path'
 import cssPaletteFormatter from '../style-dictionary/formatters/css-palette.js'
 import cssSemanticFormatter from '../style-dictionary/formatters/css-semantic.js'
 import cssThemeFormatter from '../style-dictionary/formatters/css-theme.js'
+import cssTailwindThemeFormatter from '../style-dictionary/formatters/css-tailwind-theme.js'
 import tsTokenMetadataFormatter from '../style-dictionary/formatters/ts-token-metadata.js'
 import jsonTailwindFormatter from '../style-dictionary/formatters/json-tailwind.js'
 import jsonTailwindFontSizeFormatter from '../style-dictionary/formatters/json-tailwind-fontsize.js'
@@ -26,6 +27,11 @@ StyleDictionary.registerFormat({
 StyleDictionary.registerFormat({
   name: 'css/theme',
   format: cssThemeFormatter,
+})
+
+StyleDictionary.registerFormat({
+  name: 'css/tailwind-theme',
+  format: cssTailwindThemeFormatter,
 })
 
 StyleDictionary.registerFormat({
