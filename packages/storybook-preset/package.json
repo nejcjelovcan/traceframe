@@ -11,6 +11,10 @@
     "./preview": {
       "types": "./dist/preview.d.ts",
       "import": "./dist/preview.js"
+    },
+    "./plugin": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   },
   "files": [
@@ -29,6 +33,9 @@
     "build": "tsc --build",
     "clean": "rm -rf dist tsconfig.tsbuildinfo",
     "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ci": "vitest run --coverage",
     "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
     "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,js}\"",
@@ -46,8 +53,11 @@
     "@storybook/addon-themes": "^10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@vitest/ui": "^4.0.18",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vite": "^7",
+    "vitest": "^4"
   }
 }
