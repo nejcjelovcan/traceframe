@@ -14,6 +14,7 @@ describe('cn', () => {
   })
 
   it('merges conflicting Tailwind classes', () => {
+    // eslint-disable-next-line @nejcjelovcan/semantic-tokens/no-arbitrary-spacing
     expect(cn('px-2', 'px-4')).toBe('px-4')
     expect(cn('text-red-500', 'text-blue-500')).toBe('text-blue-500')
   })

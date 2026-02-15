@@ -1,5 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
-import type { Plugin } from 'vite'
 
 import { traceframeFontsPlugin } from './vite-fontsource-plugin'
 
@@ -22,8 +21,13 @@ describe('traceframeFontsPlugin', () => {
     const plugin = traceframeFontsPlugin()
     const resolveId = plugin.resolveId
     if (typeof resolveId === 'function') {
-      // Call with .call to provide proper context
-      const result = resolveId.call({} as any, 'virtual:traceframe-fonts', undefined, {} as any)
+      // Provide required arguments for TypeScript
+      const result = (resolveId as any).call(
+        undefined,
+        'virtual:traceframe-fonts',
+        undefined,
+        { isEntry: false }
+      )
       expect(result).toBe('\0virtual:traceframe-fonts')
     }
   })
@@ -32,15 +36,20 @@ describe('traceframeFontsPlugin', () => {
     const plugin = traceframeFontsPlugin()
     const resolveId = plugin.resolveId
     if (typeof resolveId === 'function') {
-      // Call with .call to provide proper context
-      const result = resolveId.call({} as any, 'some-other-module', undefined, {} as any)
+      // Provide required arguments for TypeScript
+      const result = (resolveId as any).call(
+        undefined,
+        'some-other-module',
+        undefined,
+        { isEntry: false }
+      )
       expect(result).toBeUndefined()
     }
   })
 
   it('excludes font packages from optimization', () => {
     const plugin = traceframeFontsPlugin()
-    const config: any = { optimizeDeps: {} }
+    const config: { optimizeDeps: { exclude?: string[] } } = { optimizeDeps: {} }
     // @ts-expect-error - config is partial for testing
     plugin.config?.(config, { command: 'serve', mode: 'development' })
 
