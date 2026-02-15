@@ -217,7 +217,7 @@ describe('traceframeFontsPlugin', () => {
 
       const result =
         typeof plugin.load === 'function'
-          ? plugin.load.call(context as any, '\0virtual:traceframe-fonts')
+          ? plugin.load.call(context as never, '\0virtual:traceframe-fonts')
           : undefined
 
       expect(result).toContain("import '/path/to/ibm-plex-mono/index.css'")
@@ -247,7 +247,7 @@ describe('traceframeFontsPlugin', () => {
 
       const result =
         typeof plugin.load === 'function'
-          ? plugin.load.call(context as any, '\0virtual:traceframe-fonts')
+          ? plugin.load.call(context as never, '\0virtual:traceframe-fonts')
           : undefined
 
       expect(result).toBe('// No font packages found')
@@ -263,7 +263,7 @@ describe('traceframeFontsPlugin', () => {
 
       const result =
         typeof plugin.load === 'function'
-          ? plugin.load.call(context as any, 'some-other-module')
+          ? plugin.load.call(context as never, 'some-other-module')
           : undefined
 
       expect(result).toBeUndefined()
@@ -288,7 +288,7 @@ describe('traceframeFontsPlugin', () => {
 
       const result =
         typeof plugin.load === 'function'
-          ? plugin.load.call(context as any, '\0virtual:traceframe-fonts')
+          ? plugin.load.call(context as never, '\0virtual:traceframe-fonts')
           : undefined
 
       expect(result).toContain("import '/path/to/ibm-plex-mono/index.css'")
