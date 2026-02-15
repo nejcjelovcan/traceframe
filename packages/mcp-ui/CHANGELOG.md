@@ -1,5 +1,12 @@
 # @nejcjelovcan/traceframe-mcp-ui
 
+## 0.2.5
+
+### Patch Changes
+
+- Updated dependencies [[`8ef0bec`](https://github.com/nejcjelovcan/traceframe/commit/8ef0bec2963fadd0ff7512b2bc2105df50bb44bb), [`f160511`](https://github.com/nejcjelovcan/traceframe/commit/f1605114a23e05448678a718834d5dbf5d362749), [`5666430`](https://github.com/nejcjelovcan/traceframe/commit/5666430d27ec4a4c61483f5c3736d94fd3ec3c34), [`aff9bdf`](https://github.com/nejcjelovcan/traceframe/commit/aff9bdfad182f525389495c0ad08a0edf23cfcef)]:
+  - @nejcjelovcan/traceframe-ui-library@1.0.0
+
 ## 0.2.4
 
 ### Patch Changes

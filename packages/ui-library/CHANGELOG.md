@@ -1,5 +1,34 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.0.0
+
+### Major Changes
+
+- [#45](https://github.com/nejcjelovcan/traceframe/pull/45) [`8ef0bec`](https://github.com/nejcjelovcan/traceframe/commit/8ef0bec2963fadd0ff7512b2bc2105df50bb44bb) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update CSS color format for Tailwind v4 compatibility
+
+  BREAKING CHANGE: CSS custom properties for colors no longer require rgb() wrapper.
+
+  Migration guide:
+  - Before: `color: rgb(var(--color-foreground))`
+  - After: `color: var(--color-foreground)`
+
+  The semantic color tokens (--color-surface, --color-foreground, etc.) now contain complete RGB values after the Tailwind v4 migration. If you have custom CSS that uses these variables with rgb() wrappers, remove the rgb() function calls.
+
+  This change affects:
+  - All semantic color variables (--color-surface, --color-foreground, --color-border, etc.)
+  - The .tf-inverted class implementation
+  - Any custom CSS using the semantic color tokens
+
+  The palette colors and Tailwind utility classes remain unchanged and work as before.
+
+- [#46](https://github.com/nejcjelovcan/traceframe/pull/46) [`5666430`](https://github.com/nejcjelovcan/traceframe/commit/5666430d27ec4a4c61483f5c3736d94fd3ec3c34) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - BREAKING: Remove Tailwind v3 JavaScript preset in favor of CSS-first v4 config. Consumers must now import @nejcjelovcan/traceframe-ui-library/theme.css instead of using the JavaScript preset.
+
+- [#42](https://github.com/nejcjelovcan/traceframe/pull/42) [`aff9bdf`](https://github.com/nejcjelovcan/traceframe/commit/aff9bdfad182f525389495c0ad08a0edf23cfcef) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Upgrade Tailwind CSS from v3 to v4, tailwind-merge from v2 to v3. Migrate to CSS-first configuration with @theme inline for design tokens. Rename deprecated utility classes (rounded -> rounded-sm, outline-none -> outline-hidden, shadow-sm -> shadow-xs, rounded-sm -> rounded-xs). Remove autoprefixer (built into v4). Remove <alpha-value> template from color tokens.
+
+### Patch Changes
+
+- [#40](https://github.com/nejcjelovcan/traceframe/pull/40) [`f160511`](https://github.com/nejcjelovcan/traceframe/commit/f1605114a23e05448678a718834d5dbf5d362749) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix foreground-muted contrast to meet WCAG AA standards
+
 ## 0.4.1
 
 ### Patch Changes
