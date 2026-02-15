@@ -168,7 +168,7 @@ describe('traceframeFontsPlugin', () => {
       expect(context.warn).toHaveBeenCalledTimes(1)
       expect(context.warn).toHaveBeenCalledWith(
         'Missing font packages: @fontsource/jetbrains-mono, @fontsource/space-mono. ' +
-        'These fonts will not be loaded. Install them in ui-library to fix.'
+          'These fonts will not be loaded. Install them in ui-library to fix.'
       )
     })
 
@@ -215,7 +215,10 @@ describe('traceframeFontsPlugin', () => {
         await plugin.buildStart.call(context as any, {} as any)
       }
 
-      const result = typeof plugin.load === 'function' ? plugin.load.call(context as any, '\0virtual:traceframe-fonts') : undefined
+      const result =
+        typeof plugin.load === 'function'
+          ? plugin.load.call(context as any, '\0virtual:traceframe-fonts')
+          : undefined
 
       expect(result).toContain("import '/path/to/ibm-plex-mono/index.css'")
       expect(result).toContain("import '/path/to/jetbrains-mono/index.css'")
@@ -242,7 +245,10 @@ describe('traceframeFontsPlugin', () => {
         await plugin.buildStart.call(context as any, {} as any)
       }
 
-      const result = typeof plugin.load === 'function' ? plugin.load.call(context as any, '\0virtual:traceframe-fonts') : undefined
+      const result =
+        typeof plugin.load === 'function'
+          ? plugin.load.call(context as any, '\0virtual:traceframe-fonts')
+          : undefined
 
       expect(result).toBe('// No font packages found')
     })
@@ -255,7 +261,10 @@ describe('traceframeFontsPlugin', () => {
         await plugin.buildStart.call(context as any, {} as any)
       }
 
-      const result = typeof plugin.load === 'function' ? plugin.load.call(context as any, 'some-other-module') : undefined
+      const result =
+        typeof plugin.load === 'function'
+          ? plugin.load.call(context as any, 'some-other-module')
+          : undefined
 
       expect(result).toBeUndefined()
     })
@@ -277,7 +286,10 @@ describe('traceframeFontsPlugin', () => {
         await plugin.buildStart.call(context as any, {} as any)
       }
 
-      const result = typeof plugin.load === 'function' ? plugin.load.call(context as any, '\0virtual:traceframe-fonts') : undefined
+      const result =
+        typeof plugin.load === 'function'
+          ? plugin.load.call(context as any, '\0virtual:traceframe-fonts')
+          : undefined
 
       expect(result).toContain("import '/path/to/ibm-plex-mono/index.css'")
       expect(result).not.toContain('jetbrains-mono')
@@ -287,7 +299,10 @@ describe('traceframeFontsPlugin', () => {
       expect(result).toContain("import '/path/to/space-grotesk/index.css'")
 
       // Should have exactly 3 import statements
-      const imports = typeof result === 'string' ? result.split('\n').filter((line: string) => line.startsWith('import')) : []
+      const imports =
+        typeof result === 'string'
+          ? result.split('\n').filter((line: string) => line.startsWith('import'))
+          : []
       expect(imports).toHaveLength(3)
     })
   })

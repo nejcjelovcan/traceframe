@@ -106,10 +106,7 @@ import { defineConfig } from 'vite'
 import { traceframeFontsPlugin } from '@nejcjelovcan/traceframe-storybook-preset/plugin'
 
 export default defineConfig({
-  plugins: [
-    react(),
-    traceframeFontsPlugin(),
-  ],
+  plugins: [react(), traceframeFontsPlugin()],
 })
 ```
 

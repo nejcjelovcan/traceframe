@@ -80,7 +80,7 @@ describe('resolveFontPackages', () => {
     const packages = await resolveFontPackages()
 
     expect(packages).toHaveLength(6)
-    expect(packages.map(p => p.name)).toEqual([
+    expect(packages.map((p) => p.name)).toEqual([
       '@fontsource/ibm-plex-mono',
       '@fontsource/jetbrains-mono',
       '@fontsource/space-mono',
@@ -119,7 +119,7 @@ describe('resolveFontPackages', () => {
     })
 
     const packages = await resolveFontPackages()
-    const jetbrainsMonoPackage = packages.find(p => p.name === '@fontsource/jetbrains-mono')
+    const jetbrainsMonoPackage = packages.find((p) => p.name === '@fontsource/jetbrains-mono')
 
     expect(jetbrainsMonoPackage).toBeDefined()
     expect(jetbrainsMonoPackage?.cssPath).toBeNull()
