@@ -1,15 +1,15 @@
 @layer base {
   /**
    * Palette: "Arctic"
-   * 
+   *
    * Trust the data. Clarity above all.
-   * 
+   *
    * A clean, precise palette inspired by crisp winter air and ice.
    * Low chroma values (0.06-0.10) create a restrained, professional feel.
    * Steel blue primary with teal accents for analytical interfaces.
    * Ideal for dashboards, analytics tools, and data-heavy applications.
-   * 
-   * Generated using OKLCH color space for perceptual uniformity.
+   *
+   * OKLCH color space ensures perceptual uniformity.
    * All RGB values are space-separated for alpha channel support.
    */
 

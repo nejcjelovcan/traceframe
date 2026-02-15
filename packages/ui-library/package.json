@@ -16,14 +16,13 @@
       "import": "./dist/vite/index.js"
     },
     "./styles.css": "./dist/styles.css",
-    "./theme.css": "./dist/styles/generated/tailwind-theme.css"
+    "./theme.css": "./dist/styles/tokens/theme-registration.css"
   },
   "scripts": {
     "dev": "tsc --watch --project tsconfig.build.json",
     "build": "pnpm generate:component-metadata && tsc --build tsconfig.build.json && pnpm build:css",
     "generate:component-metadata": "node scripts/generate-component-metadata.js",
     "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/styles.css",
-    "generate:tokens": "node scripts/build-tokens.js",
     "validate:token-definitions": "node scripts/validate-token-definitions.js",
     "clean": "rm -rf dist",
     "storybook": "storybook dev -p 6006",
@@ -85,7 +84,6 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "storybook": "^10",
-    "style-dictionary": "^4.1.0",
     "tailwindcss": "^4.1.18",
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",

@@ -1,0 +1,189 @@
+/**
+ * Theme Registration
+ *
+ * Registers all design token names with Tailwind v4's @theme inline directive.
+ * Tailwind generates utility classes for each registered token.
+ * Actual values come from cascading --token-* CSS variables defined in
+ * palettes/, modes/, and themes/ files.
+ */
+
+@theme inline {
+  /* ===== Colors ===== */
+  --color-shadow: var(--token-shadow-color);
+  --color-surface: var(--token-surface);
+  --color-surface-muted: var(--token-surface-muted);
+  --color-surface-subtle: var(--token-surface-subtle);
+  --color-surface-inverted: var(--token-surface-inverted);
+  --color-surface-inverted-muted: var(--token-surface-inverted-muted);
+  --color-foreground: var(--token-foreground);
+  --color-foreground-muted: var(--token-foreground-muted);
+  --color-foreground-inverted: var(--token-foreground-inverted);
+  --color-foreground-inverted-muted: var(--token-foreground-inverted-muted);
+  --color-border: var(--token-border);
+  --color-border-muted: var(--token-border-muted);
+  --color-border-inverted: var(--token-border-inverted);
+  --color-border-inverted-muted: var(--token-border-inverted-muted);
+  --color-ring: var(--token-ring);
+  --color-interactive-hover: var(--token-interactive-hover);
+  --color-interactive-active: var(--token-interactive-active);
+  --color-interactive-pressed: var(--token-interactive-pressed);
+  --color-interactive-primary: var(--token-interactive-primary);
+  --color-interactive-primary-hover: var(--token-interactive-primary-hover);
+  --color-interactive-primary-foreground: var(--token-interactive-primary-foreground);
+  --color-interactive-primary-border: var(--token-interactive-primary-border);
+  --color-interactive-secondary: var(--token-interactive-secondary);
+  --color-interactive-secondary-hover: var(--token-interactive-secondary-hover);
+  --color-interactive-secondary-foreground: var(--token-interactive-secondary-foreground);
+  --color-interactive-secondary-border: var(--token-interactive-secondary-border);
+  --color-interactive-destructive: var(--token-interactive-destructive);
+  --color-interactive-destructive-hover: var(--token-interactive-destructive-hover);
+  --color-interactive-destructive-foreground: var(--token-interactive-destructive-foreground);
+  --color-interactive-destructive-border: var(--token-interactive-destructive-border);
+  --color-status-info: var(--token-status-info);
+  --color-status-info-muted: var(--token-status-info-muted);
+  --color-status-info-foreground: var(--token-status-info-foreground);
+  --color-status-info-emphasis: var(--token-status-info-emphasis);
+  --color-status-info-border: var(--token-status-info-border);
+  --color-status-success: var(--token-status-success);
+  --color-status-success-muted: var(--token-status-success-muted);
+  --color-status-success-foreground: var(--token-status-success-foreground);
+  --color-status-success-emphasis: var(--token-status-success-emphasis);
+  --color-status-success-border: var(--token-status-success-border);
+  --color-status-warning: var(--token-status-warning);
+  --color-status-warning-muted: var(--token-status-warning-muted);
+  --color-status-warning-foreground: var(--token-status-warning-foreground);
+  --color-status-warning-emphasis: var(--token-status-warning-emphasis);
+  --color-status-warning-border: var(--token-status-warning-border);
+  --color-status-error: var(--token-status-error);
+  --color-status-error-muted: var(--token-status-error-muted);
+  --color-status-error-foreground: var(--token-status-error-foreground);
+  --color-status-error-emphasis: var(--token-status-error-emphasis);
+  --color-status-error-border: var(--token-status-error-border);
+  --color-disabled: var(--token-disabled);
+  --color-disabled-foreground: var(--token-disabled-foreground);
+  --color-tooltip: var(--token-tooltip);
+  --color-tooltip-foreground: var(--token-tooltip-foreground);
+  --color-accent-1: var(--token-accent-1);
+  --color-accent-1-muted: var(--token-accent-1-muted);
+  --color-accent-1-foreground: var(--token-accent-1-foreground);
+  --color-accent-1-emphasis: var(--token-accent-1-emphasis);
+  --color-accent-1-border: var(--token-accent-1-border);
+  --color-accent-2: var(--token-accent-2);
+  --color-accent-2-muted: var(--token-accent-2-muted);
+  --color-accent-2-foreground: var(--token-accent-2-foreground);
+  --color-accent-2-emphasis: var(--token-accent-2-emphasis);
+  --color-accent-2-border: var(--token-accent-2-border);
+  --color-accent-3: var(--token-accent-3);
+  --color-accent-3-muted: var(--token-accent-3-muted);
+  --color-accent-3-foreground: var(--token-accent-3-foreground);
+  --color-accent-3-emphasis: var(--token-accent-3-emphasis);
+  --color-accent-3-border: var(--token-accent-3-border);
+  --color-accent-4: var(--token-accent-4);
+  --color-accent-4-muted: var(--token-accent-4-muted);
+  --color-accent-4-foreground: var(--token-accent-4-foreground);
+  --color-accent-4-emphasis: var(--token-accent-4-emphasis);
+  --color-accent-4-border: var(--token-accent-4-border);
+  --color-accent-5: var(--token-accent-5);
+  --color-accent-5-muted: var(--token-accent-5-muted);
+  --color-accent-5-foreground: var(--token-accent-5-foreground);
+  --color-accent-5-emphasis: var(--token-accent-5-emphasis);
+  --color-accent-5-border: var(--token-accent-5-border);
+
+  /* ===== Spacing ===== */
+  --spacing-2xs: var(--token-spacing-2xs);
+  --spacing-xs: var(--token-spacing-xs);
+  --spacing-sm: var(--token-spacing-sm);
+  --spacing-md: var(--token-spacing-md);
+  --spacing-base: var(--token-spacing-base);
+  --spacing-lg: var(--token-spacing-lg);
+  --spacing-xl: var(--token-spacing-xl);
+  --spacing-2xl: var(--token-spacing-2xl);
+
+  /* ===== Border Radius ===== */
+  --radius-sm: var(--token-radius-sm);
+  --radius-md: var(--token-radius-md);
+  --radius-lg: var(--token-radius-lg);
+  --radius-xl: var(--token-radius-xl);
+
+  /* ===== Shadows ===== */
+  --shadow-sm: var(--token-shadow-sm);
+  --shadow-md: var(--token-shadow-md);
+  --shadow-lg: var(--token-shadow-lg);
+  --shadow-interactive: var(--token-shadow-interactive);
+  --shadow-interactive-hover: var(--token-shadow-interactive-hover);
+  --shadow-interactive-pressed: var(--token-shadow-interactive-pressed);
+  --shadow-highlight: var(--token-shadow-highlight);
+  --shadow-highlight-hover: var(--token-shadow-highlight-hover);
+  --shadow-highlight-pressed: var(--token-shadow-highlight-pressed);
+  --shadow-inset-sm: var(--token-shadow-inset-sm);
+  --shadow-inset-md: var(--token-shadow-inset-md);
+  --shadow-inset-underline: var(--token-shadow-inset-underline);
+
+  /* ===== Font Families ===== */
+  --font-sans: var(--token-font-sans);
+  --font-mono: var(--token-font-mono);
+
+  /* ===== Gradients ===== */
+  --gradient-interactive-primary: var(--token-gradient-interactive-primary);
+  --gradient-interactive-secondary: var(--token-gradient-interactive-secondary);
+  --gradient-interactive-destructive: var(--token-gradient-interactive-destructive);
+  --gradient-status-info: var(--token-gradient-status-info);
+  --gradient-status-success: var(--token-gradient-status-success);
+  --gradient-status-warning: var(--token-gradient-status-warning);
+  --gradient-status-error: var(--token-gradient-status-error);
+  --gradient-accent-1: var(--token-gradient-accent-1);
+  --gradient-accent-2: var(--token-gradient-accent-2);
+  --gradient-accent-3: var(--token-gradient-accent-3);
+  --gradient-accent-4: var(--token-gradient-accent-4);
+  --gradient-accent-5: var(--token-gradient-accent-5);
+  --gradient-surface-inverted: var(--token-gradient-surface-inverted);
+
+  /* ===== Border Styles ===== */
+  --border-style-line: var(--token-border-style-line);
+  --border-style-thick: var(--token-border-style-thick);
+  --border-style-highlight: var(--token-border-style-highlight);
+
+  /* ===== Sizing (width & height) ===== */
+  --width-size-xs: var(--token-size-xs);
+  --height-size-xs: var(--token-size-xs);
+  --width-size-sm: var(--token-size-sm);
+  --height-size-sm: var(--token-size-sm);
+  --width-size-md: var(--token-size-md);
+  --height-size-md: var(--token-size-md);
+  --width-size-lg: var(--token-size-lg);
+  --height-size-lg: var(--token-size-lg);
+  --width-size-xl: var(--token-size-xl);
+  --height-size-xl: var(--token-size-xl);
+
+  /* ===== Font Sizes (static values) ===== */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+
+  /* ===== Animations ===== */
+  --animate-collapsible-down: collapsible-down 200ms ease-out;
+  --animate-collapsible-up: collapsible-up 200ms ease-out;
+}
+
+@keyframes collapsible-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-collapsible-content-height);
+  }
+}
+
+@keyframes collapsible-up {
+  from {
+    height: var(--radix-collapsible-content-height);
+  }
+  to {
+    height: 0;
+  }
+}

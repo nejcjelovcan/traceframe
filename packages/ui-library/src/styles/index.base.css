@@ -1,58 +1,58 @@
 @layer base {
   body {
-    background-color: var(--color-surface);
-    color: var(--color-foreground);
+    background-color: var(--token-surface);
+    color: var(--token-foreground);
   }
 
   .tf-inverted {
-    --color-surface: var(--color-surface-inverted);
-    --color-surface-muted: var(--color-surface-inverted-muted);
-    --color-foreground: var(--color-foreground-inverted);
-    --color-foreground-muted: var(--color-foreground-inverted-muted);
-    --color-border: var(--color-border-inverted);
-    --color-border-muted: var(--color-border-inverted-muted);
-    color: var(--color-foreground);
+    --token-surface: var(--token-surface-inverted);
+    --token-surface-muted: var(--token-surface-inverted-muted);
+    --token-foreground: var(--token-foreground-inverted);
+    --token-foreground-muted: var(--token-foreground-inverted-muted);
+    --token-border: var(--token-border-inverted);
+    --token-border-muted: var(--token-border-inverted-muted);
+    color: var(--token-foreground);
   }
 }
 
 @layer utilities {
   .bg-gradient-interactive-primary {
-    background-image: var(--gradient-interactive-primary);
+    background-image: var(--token-gradient-interactive-primary);
   }
   .bg-gradient-interactive-secondary {
-    background-image: var(--gradient-interactive-secondary);
+    background-image: var(--token-gradient-interactive-secondary);
   }
   .bg-gradient-interactive-destructive {
-    background-image: var(--gradient-interactive-destructive);
+    background-image: var(--token-gradient-interactive-destructive);
   }
   .bg-gradient-status-info {
-    background-image: var(--gradient-status-info);
+    background-image: var(--token-gradient-status-info);
   }
   .bg-gradient-status-success {
-    background-image: var(--gradient-status-success);
+    background-image: var(--token-gradient-status-success);
   }
   .bg-gradient-status-warning {
-    background-image: var(--gradient-status-warning);
+    background-image: var(--token-gradient-status-warning);
   }
   .bg-gradient-status-error {
-    background-image: var(--gradient-status-error);
+    background-image: var(--token-gradient-status-error);
   }
   .bg-gradient-accent-1 {
-    background-image: var(--gradient-accent-1);
+    background-image: var(--token-gradient-accent-1);
   }
   .bg-gradient-accent-2 {
-    background-image: var(--gradient-accent-2);
+    background-image: var(--token-gradient-accent-2);
   }
   .bg-gradient-accent-3 {
-    background-image: var(--gradient-accent-3);
+    background-image: var(--token-gradient-accent-3);
   }
   .bg-gradient-accent-4 {
-    background-image: var(--gradient-accent-4);
+    background-image: var(--token-gradient-accent-4);
   }
   .bg-gradient-accent-5 {
-    background-image: var(--gradient-accent-5);
+    background-image: var(--token-gradient-accent-5);
   }
   .bg-gradient-surface-inverted {
-    background-image: var(--gradient-surface-inverted);
+    background-image: var(--token-gradient-surface-inverted);
   }
 }

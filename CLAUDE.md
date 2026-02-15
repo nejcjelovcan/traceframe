@@ -17,7 +17,7 @@ When using Git MCP tools, the working directory is automatically set via Session
 
 **ALWAYS use MCP tools instead of Bash for git, GitHub, and development operations.** Do NOT use `git` CLI commands or `gh` CLI via Bash when an equivalent MCP tool exists. This applies to all git operations (status, diff, log, add, commit, push, checkout, branch, etc.), all GitHub operations (creating PRs, reading PRs, adding comments, etc.), and all build/test/lint operations (use mcp-dev tools instead of `pnpm` CLI).
 
-**Only use Bash for:** operations without an MCP equivalent (e.g., `pnpm generate:tokens`).
+**Only use Bash for:** operations without an MCP equivalent.
 
 ## MCP Servers
 
@@ -515,4 +515,4 @@ Use `/refine` to propose new semantic tokens when:
 - The color should change between light/dark themes
 - The color represents a semantic concept (not just a visual preference)
 
-New semantic tokens are added to `packages/ui-library/tokens/semantic/light.json` and `dark.json` (source definitions), then regenerated with `pnpm generate:tokens`.
+New semantic tokens are added to the CSS source files in `packages/ui-library/src/styles/tokens/modes/light.css` and `dark.css`, then registered in `packages/ui-library/src/styles/tokens/theme-registration.css`. Update `packages/ui-library/src/styles/token-metadata.ts` with descriptions for MCP tools.

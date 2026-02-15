@@ -1,9 +1,9 @@
 /**
  * Semantic token utilities for linting and validation.
- * Derives all information from TOKEN_METADATA (the generated source of truth).
+ * Derives all information from TOKEN_METADATA (the source of truth for token descriptions).
  */
 
-import { TOKEN_METADATA } from '../styles/generated/token-metadata.js'
+import { TOKEN_METADATA } from '../styles/token-metadata.js'
 
 /**
  * All palette names from the token metadata.

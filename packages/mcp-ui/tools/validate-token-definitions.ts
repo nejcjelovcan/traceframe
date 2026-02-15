@@ -1,4 +1,4 @@
-import { readFile } from 'node:fs/promises'
+import { readFile, readdir } from 'node:fs/promises'
 import { dirname, join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
@@ -7,14 +7,14 @@ import { z } from 'zod'
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export const validateTokenDefinitionsDescription =
-  'Validate token definition files for structural consistency and description matching'
+  'Validate token definition CSS files for structural consistency'
 
 export const validateTokenDefinitionsInputSchema = {
   report: z.enum(['summary', 'detailed']).optional().describe('Output format (default: summary)'),
 }
 
 interface TokenMismatch {
-  type: 'missing_key' | 'extra_key' | 'description_mismatch'
+  type: 'missing_key' | 'extra_key'
   file: string
   sourceFile: string
   path: string
@@ -23,7 +23,7 @@ interface TokenMismatch {
 }
 
 interface ValidationResult {
-  category: 'semantic' | 'themes' | 'palettes'
+  category: 'modes' | 'themes' | 'palettes'
   sourceFile: string
   targetFile: string
   mismatches: TokenMismatch[]
@@ -41,147 +41,64 @@ interface ValidateTokenDefinitionsOutput {
   passed: boolean
 }
 
-type JsonValue = string | number | boolean | null | JsonObject | JsonValue[] | undefined
-interface JsonObject {
-  [key: string]: JsonValue
-}
-
 /**
- * Recursively get all keys in a nested object, returning them as dot-separated paths.
- * Only returns leaf keys (keys that don't have nested objects with non-$ keys).
+ * Extracts all CSS custom property names from a CSS file.
  */
-function getAllKeyPaths(obj: JsonObject, prefix = ''): string[] {
-  const paths: string[] = []
-
-  for (const key of Object.keys(obj)) {
-    const currentPath = prefix ? `${prefix}.${key}` : key
-    const value = obj[key]
-
-    if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
-      // Check if this object has any non-$ keys (i.e., nested structure)
-      const nonMetaKeys = Object.keys(value as JsonObject).filter((k) => !k.startsWith('$'))
-      if (nonMetaKeys.length > 0) {
-        // Has nested structure, recurse
-        paths.push(...getAllKeyPaths(value as JsonObject, currentPath))
-      } else {
-        // Leaf node (only has $value, $type, etc.)
-        paths.push(currentPath)
-      }
+function extractCssCustomProperties(content: string): string[] {
+  const properties: string[] = []
+  const regex = /^\s*(--[\w-]+)\s*:/gm
+  let match
+  while ((match = regex.exec(content)) !== null) {
+    if (match[1]) {
+      properties.push(match[1])
     }
   }
-
-  return paths
+  return properties
 }
 
 /**
- * Get the value at a given path in a nested object.
+ * Compare two CSS files and find structural mismatches (missing/extra custom properties).
  */
-function getValueAtPath(obj: JsonObject, path: string): JsonValue | undefined {
-  const parts = path.split('.')
-  let current: JsonValue = obj
-
-  for (const part of parts) {
-    if (current === null || typeof current !== 'object' || Array.isArray(current)) {
-      return undefined
-    }
-    current = (current as JsonObject)[part]
-  }
-
-  return current
-}
-
-/**
- * Get the $description value at a given path.
- */
-function getDescriptionAtPath(obj: JsonObject, path: string): string | undefined {
-  const value = getValueAtPath(obj, path)
-  if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
-    const desc = (value as JsonObject)['$description']
-    if (typeof desc === 'string') {
-      return desc
-    }
-  }
-  return undefined
-}
-
-/**
- * Compare two token files and find structural/description mismatches.
- */
-function compareTokenFiles(
-  source: JsonObject,
-  target: JsonObject,
+function compareCssFiles(
+  sourceProps: string[],
+  targetProps: string[],
   sourceFile: string,
-  targetFile: string,
-  checkDescriptions: boolean
+  targetFile: string
 ): TokenMismatch[] {
   const mismatches: TokenMismatch[] = []
 
-  const sourceKeys = new Set(getAllKeyPaths(source))
-  const targetKeys = new Set(getAllKeyPaths(target))
+  const sourceSet = new Set(sourceProps)
+  const targetSet = new Set(targetProps)
 
   // Find missing keys (in source but not in target)
-  for (const key of sourceKeys) {
-    if (!targetKeys.has(key)) {
+  for (const prop of sourceProps) {
+    if (!targetSet.has(prop)) {
       mismatches.push({
         type: 'missing_key',
         file: targetFile,
         sourceFile,
-        path: key,
-        expected: 'key exists',
-        actual: 'key missing',
+        path: prop,
+        expected: 'property exists',
+        actual: 'property missing',
       })
     }
   }
 
   // Find extra keys (in target but not in source)
-  for (const key of targetKeys) {
-    if (!sourceKeys.has(key)) {
+  for (const prop of targetProps) {
+    if (!sourceSet.has(prop)) {
       mismatches.push({
         type: 'extra_key',
         file: targetFile,
         sourceFile,
-        path: key,
-        expected: 'key not present',
-        actual: 'extra key',
+        path: prop,
+        expected: 'property not present',
+        actual: 'extra property',
       })
     }
   }
 
-  // Check descriptions if required
-  if (checkDescriptions) {
-    for (const key of sourceKeys) {
-      if (targetKeys.has(key)) {
-        const sourceDesc = getDescriptionAtPath(source, key)
-        const targetDesc = getDescriptionAtPath(target, key)
-
-        if (sourceDesc !== targetDesc) {
-          const mismatch: TokenMismatch = {
-            type: 'description_mismatch',
-            file: targetFile,
-            sourceFile,
-            path: key,
-          }
-          if (sourceDesc !== undefined) {
-            mismatch.expected = sourceDesc
-          }
-          if (targetDesc !== undefined) {
-            mismatch.actual = targetDesc
-          }
-          mismatches.push(mismatch)
-        }
-      }
-    }
-  }
-
   return mismatches
-}
-
-/**
- * Load and parse a JSON file.
- */
-async function loadJsonFile(filePath: string): Promise<JsonObject> {
-  const content = await readFile(filePath, 'utf-8')
-  return JSON.parse(content) as JsonObject
 }
 
 export async function validateTokenDefinitionsTool({
@@ -189,125 +106,85 @@ export async function validateTokenDefinitionsTool({
 }: {
   report?: 'summary' | 'detailed'
 } = {}): Promise<ValidateTokenDefinitionsOutput> {
-  const tokensDir = resolve(__dirname, '../../ui-library/tokens')
+  const stylesDir = resolve(__dirname, '../../ui-library/src/styles/tokens')
 
   const results: ValidationResult[] = []
 
-  // 1. Validate semantic tokens: light.json (source) vs dark.json (descriptions must match)
-  const semanticDir = join(tokensDir, 'semantic')
-  const lightJson = await loadJsonFile(join(semanticDir, 'light.json'))
-  const darkJson = await loadJsonFile(join(semanticDir, 'dark.json'))
+  // 1. Validate mode tokens: light.css (source) vs dark.css
+  const modesDir = join(stylesDir, 'modes')
+  const lightCss = await readFile(join(modesDir, 'light.css'), 'utf-8')
+  const darkCss = await readFile(join(modesDir, 'dark.css'), 'utf-8')
 
-  const semanticMismatches = compareTokenFiles(
-    lightJson,
-    darkJson,
-    'semantic/light.json',
-    'semantic/dark.json',
-    true // Check descriptions
-  )
+  const lightProps = extractCssCustomProperties(lightCss)
+  const darkProps = extractCssCustomProperties(darkCss)
+
+  const modeMismatches = compareCssFiles(lightProps, darkProps, 'modes/light.css', 'modes/dark.css')
 
   results.push({
-    category: 'semantic',
-    sourceFile: 'semantic/light.json',
-    targetFile: 'semantic/dark.json',
-    mismatches: semanticMismatches,
-    passed: semanticMismatches.length === 0,
+    category: 'modes',
+    sourceFile: 'modes/light.css',
+    targetFile: 'modes/dark.css',
+    mismatches: modeMismatches,
+    passed: modeMismatches.length === 0,
   })
 
-  // 2. Validate theme tokens: dusk.json (source) vs arctic.json, ember.json (structure only)
-  const themesDir = join(tokensDir, 'themes')
-  const duskThemeJson = await loadJsonFile(join(themesDir, 'dusk.json'))
-  const arcticThemeJson = await loadJsonFile(join(themesDir, 'arctic.json'))
-  const emberThemeJson = await loadJsonFile(join(themesDir, 'ember.json'))
+  // 2. Validate theme tokens: dusk.css (source) vs arctic.css, ember.css
+  const themesDir = join(stylesDir, 'themes')
+  const duskThemeCss = await readFile(join(themesDir, 'dusk.css'), 'utf-8')
+  const duskThemeProps = extractCssCustomProperties(duskThemeCss)
 
-  // Remove top-level $ keys for comparison (they're metadata, not structure)
-  const filterMetadataKeys = (obj: JsonObject): JsonObject => {
-    const filtered: JsonObject = {}
-    for (const key of Object.keys(obj)) {
-      if (!key.startsWith('$')) {
-        filtered[key] = obj[key]
-      }
-    }
-    return filtered
+  const themeFiles = (await readdir(themesDir)).filter(
+    (f) => f.endsWith('.css') && f !== 'dusk.css'
+  )
+
+  for (const themeFile of themeFiles) {
+    const themeCss = await readFile(join(themesDir, themeFile), 'utf-8')
+    const themeProps = extractCssCustomProperties(themeCss)
+
+    const themeMismatches = compareCssFiles(
+      duskThemeProps,
+      themeProps,
+      'themes/dusk.css',
+      `themes/${themeFile}`
+    )
+
+    results.push({
+      category: 'themes',
+      sourceFile: 'themes/dusk.css',
+      targetFile: `themes/${themeFile}`,
+      mismatches: themeMismatches,
+      passed: themeMismatches.length === 0,
+    })
   }
 
-  const duskThemeFiltered = filterMetadataKeys(duskThemeJson)
-  const arcticThemeFiltered = filterMetadataKeys(arcticThemeJson)
-  const emberThemeFiltered = filterMetadataKeys(emberThemeJson)
+  // 3. Validate palette tokens: palettes/dusk.css (source) vs arctic.css, ember.css
+  const palettesDir = join(stylesDir, 'palettes')
+  const duskPaletteCss = await readFile(join(palettesDir, 'dusk.css'), 'utf-8')
+  const duskPaletteProps = extractCssCustomProperties(duskPaletteCss)
 
-  const arcticThemeMismatches = compareTokenFiles(
-    duskThemeFiltered,
-    arcticThemeFiltered,
-    'themes/dusk.json',
-    'themes/arctic.json',
-    false // Don't check descriptions
+  const paletteFiles = (await readdir(palettesDir)).filter(
+    (f) => f.endsWith('.css') && f !== 'dusk.css'
   )
 
-  results.push({
-    category: 'themes',
-    sourceFile: 'themes/dusk.json',
-    targetFile: 'themes/arctic.json',
-    mismatches: arcticThemeMismatches,
-    passed: arcticThemeMismatches.length === 0,
-  })
+  for (const paletteFile of paletteFiles) {
+    const paletteCss = await readFile(join(palettesDir, paletteFile), 'utf-8')
+    const paletteProps = extractCssCustomProperties(paletteCss)
 
-  const emberThemeMismatches = compareTokenFiles(
-    duskThemeFiltered,
-    emberThemeFiltered,
-    'themes/dusk.json',
-    'themes/ember.json',
-    false // Don't check descriptions
-  )
+    const paletteMismatches = compareCssFiles(
+      duskPaletteProps,
+      paletteProps,
+      'palettes/dusk.css',
+      `palettes/${paletteFile}`
+    )
 
-  results.push({
-    category: 'themes',
-    sourceFile: 'themes/dusk.json',
-    targetFile: 'themes/ember.json',
-    mismatches: emberThemeMismatches,
-    passed: emberThemeMismatches.length === 0,
-  })
-
-  // 3. Validate palette tokens: palettes/dusk.json (source) vs arctic.json, ember.json (structure only)
-  const palettesDir = join(tokensDir, 'palettes')
-  const duskPaletteJson = await loadJsonFile(join(palettesDir, 'dusk.json'))
-  const arcticPaletteJson = await loadJsonFile(join(palettesDir, 'arctic.json'))
-  const emberPaletteJson = await loadJsonFile(join(palettesDir, 'ember.json'))
-
-  const duskPaletteFiltered = filterMetadataKeys(duskPaletteJson)
-  const arcticPaletteFiltered = filterMetadataKeys(arcticPaletteJson)
-  const emberPaletteFiltered = filterMetadataKeys(emberPaletteJson)
-
-  const arcticPaletteMismatches = compareTokenFiles(
-    duskPaletteFiltered,
-    arcticPaletteFiltered,
-    'palettes/dusk.json',
-    'palettes/arctic.json',
-    false // Don't check descriptions
-  )
-
-  results.push({
-    category: 'palettes',
-    sourceFile: 'palettes/dusk.json',
-    targetFile: 'palettes/arctic.json',
-    mismatches: arcticPaletteMismatches,
-    passed: arcticPaletteMismatches.length === 0,
-  })
-
-  const emberPaletteMismatches = compareTokenFiles(
-    duskPaletteFiltered,
-    emberPaletteFiltered,
-    'palettes/dusk.json',
-    'palettes/ember.json',
-    false // Don't check descriptions
-  )
-
-  results.push({
-    category: 'palettes',
-    sourceFile: 'palettes/dusk.json',
-    targetFile: 'palettes/ember.json',
-    mismatches: emberPaletteMismatches,
-    passed: emberPaletteMismatches.length === 0,
-  })
+    results.push({
+      category: 'palettes',
+      sourceFile: 'palettes/dusk.css',
+      targetFile: `palettes/${paletteFile}`,
+      mismatches: paletteMismatches,
+      passed: paletteMismatches.length === 0,
+    })
+  }
 
   // Calculate summary
   const allMismatches = results.flatMap((r) => r.mismatches)
@@ -331,7 +208,7 @@ export async function validateTokenDefinitionsTool({
   if (report === 'summary' && allMismatches.length > 0) {
     const detailedResults = results.map((r) => ({
       ...r,
-      mismatches: r.mismatches.slice(0, 3), // Show first 3 mismatches per result
+      mismatches: r.mismatches.slice(0, 3),
     }))
     output.results = detailedResults
   }

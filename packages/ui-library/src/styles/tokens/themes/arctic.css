@@ -1,0 +1,72 @@
+@layer base {
+  /**
+   * Theme: "arctic"
+   *
+   * Clean, precise, trustworthy. Inspired by crisp winter air and ice. Ideal for data-heavy applications, analytics tools, and interfaces where clarity and trust matter.
+   */
+
+  :root.arctic {
+    /* ===== THEME: ARCTIC ===== */
+
+    /* Typography */
+    --token-font-sans: 'IBM Plex Sans Variable', 'IBM Plex Sans', Inter, system-ui, sans-serif;
+    --token-font-mono: 'IBM Plex Mono', 'JetBrains Mono', Menlo, monospace;
+
+    /* Shadows */
+    --token-shadow-sm: 0 1px 2px 0 color-mix(in srgb, var(--token-shadow-color) 3%, transparent);
+    --token-shadow-md:
+      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent),
+      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 3%, transparent);
+    --token-shadow-lg:
+      0 6px 12px -3px color-mix(in srgb, var(--token-shadow-color) 7%, transparent),
+      0 3px 6px -3px color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-interactive: 0 1px 3px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-interactive-hover:
+      0 4px 8px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent),
+      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-interactive-pressed: 0 1px 2px 0
+      color-mix(in srgb, var(--token-shadow-color) 3%, transparent);
+    --token-shadow-highlight:
+      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent),
+      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 3%, transparent);
+    --token-shadow-highlight-hover:
+      0 6px 12px -2px color-mix(in srgb, var(--token-shadow-color) 8%, transparent),
+      0 3px 6px -2px color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-highlight-pressed: 0 1px 3px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-inset-sm: inset 0 2px 4px 0
+      color-mix(in srgb, var(--token-shadow-color) 3%, transparent);
+    --token-shadow-inset-md: inset 0 4px 8px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-inset-underline: inset 0 -2px 0 0;
+
+    /* Border Radius */
+    --token-radius-sm: 0.125rem;
+    --token-radius-md: 0.25rem;
+    --token-radius-lg: 0.375rem;
+    --token-radius-xl: 0.5rem;
+
+    /* Element Sizing */
+    --token-size-xs: 1.25rem;
+    --token-size-sm: 1.75rem;
+    --token-size-md: 2.25rem;
+    --token-size-lg: 2.75rem;
+    --token-size-xl: 3.25rem;
+
+    /* Custom Spacing */
+    --token-spacing-2xs: 0.125rem;
+    --token-spacing-xs: 0.25rem;
+    --token-spacing-sm: 0.375rem;
+    --token-spacing-md: 0.625rem;
+    --token-spacing-base: 0.875rem;
+    --token-spacing-lg: 1.5rem;
+    --token-spacing-xl: 3rem;
+    --token-spacing-2xl: 5rem;
+
+    /* Border Styles */
+    --token-border-style-line: 1px solid;
+    --token-border-style-thick: 2px solid;
+    --token-border-style-highlight: 2px dashed;
+  }
+}
