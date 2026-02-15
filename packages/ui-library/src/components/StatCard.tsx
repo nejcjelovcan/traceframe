@@ -20,7 +20,7 @@ const statCardValueVariants = cva('font-semibold', {
   },
 })
 
-const statCardLabelVariants = cva('text-foreground-muted', {
+const statCardLabelVariants = cva('', {
   variants: {
     size: {
       sm: 'text-xs',
@@ -164,6 +164,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
     },
     ref
   ) => {
+    const mutedClass = inverted ? 'text-foreground-inverted-muted' : 'text-foreground-muted'
     const trendInfo = trend ? getTrendInfo(trend, trendVariant) : null
     const iconSize = size === 'lg' ? 'lg' : size === 'sm' ? 'sm' : 'md'
     const iconElement =
@@ -189,20 +190,20 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
           ) : (
             <>
               <div>
-                <p className={statCardLabelVariants({ size })}>{label}</p>
+                <p className={cn(statCardLabelVariants({ size }), mutedClass)}>{label}</p>
                 {subtitle && (
-                  <p className={cn('text-xs text-foreground-muted mt-2xs', compact && 'hidden')}>
+                  <p className={cn('text-xs mt-2xs', mutedClass, compact && 'hidden')}>
                     {subtitle}
                   </p>
                 )}
               </div>
               <div className="mt-xs flex items-center gap-sm">
                 {iconElement && iconPosition === 'left' && (
-                  <span className="text-foreground-muted">{iconElement}</span>
+                  <span className={mutedClass}>{iconElement}</span>
                 )}
                 <span className={statCardValueVariants({ size })}>{value}</span>
                 {iconElement && iconPosition === 'right' && (
-                  <span className="text-foreground-muted">{iconElement}</span>
+                  <span className={mutedClass}>{iconElement}</span>
                 )}
                 {trend && trendInfo && (
                   <span
@@ -217,7 +218,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
                 )}
               </div>
               {description && (
-                <p className={cn('text-xs text-foreground-muted mt-sm', compact && 'hidden')}>
+                <p className={cn('text-xs mt-sm', mutedClass, compact && 'hidden')}>
                   {description}
                 </p>
               )}
