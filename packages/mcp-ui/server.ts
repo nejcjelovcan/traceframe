@@ -10,6 +10,8 @@ import {
   getDesignTokensTool,
   getDesignTokensDescription,
   getDesignTokensInputSchema,
+  TOKEN_TYPES,
+  type TokenType,
 } from './tools/get-design-tokens.js'
 import { getIconTool, getIconDescription, getIconInputSchema } from './tools/get-icon.js'
 import {
@@ -99,9 +101,8 @@ export function createServer(): McpServer {
     },
     async (args) => {
       const type =
-        typeof args.type === 'string' &&
-        ['colors', 'typography', 'spacing', 'all'].includes(args.type)
-          ? (args.type as 'colors' | 'typography' | 'spacing' | 'all')
+        typeof args.type === 'string' && (TOKEN_TYPES as readonly string[]).includes(args.type)
+          ? (args.type as TokenType)
           : undefined
       const result = await getDesignTokensTool({
         ...(type !== undefined ? { type } : {}),
