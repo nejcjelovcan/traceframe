@@ -12,6 +12,7 @@ export const TOKEN_TYPES = [
   'spacing',
   'shadows',
   'borders',
+  'radius',
   'gradients',
   'all',
 ] as const
@@ -25,7 +26,7 @@ export const getDesignTokensInputSchema = {
     .enum(TOKEN_TYPES)
     .optional()
     .describe(
-      'Filter by token type (optional). Options: colors, typography, sizing, spacing, shadows, borders, gradients, all. Defaults to all.'
+      'Filter by token type (optional). Options: colors, typography, sizing, spacing, shadows, borders, radius, gradients, all. Defaults to all.'
     ),
 }
 
@@ -33,7 +34,7 @@ export const getDesignTokensInputSchema = {
  * Description for the get_design_tokens tool.
  */
 export const getDesignTokensDescription =
-  'Get design tokens from ui-library with metadata. Returns semantic colors (theme-aware tokens for surfaces, text, borders, etc.), typography (font families and sizes), sizing (element height/width tokens), spacing values, shadows (elevation and interactive states), border styles (line, thick, highlight), and gradients (semantic with light/dark variants for emphasis surfaces; values shown are from light mode). Note: Palette colors are not exposed as UI code should only use semantic tokens.'
+  'Get design tokens from ui-library with metadata. Returns semantic colors (theme-aware tokens for surfaces, text, borders, etc.), typography (font families and sizes), sizing (element height/width tokens), spacing values, shadows (elevation and interactive states), border styles (line, thick, highlight), border radius (sm, md, lg, xl), and gradients (semantic with light/dark variants for emphasis surfaces; values shown are from light mode). Note: Palette colors are not exposed as UI code should only use semantic tokens.'
 
 /**
  * Input arguments for getDesignTokensTool function.
@@ -97,6 +98,10 @@ export async function getDesignTokensTool(
         tokens = { borders: allTokens.borders }
         summary = `Retrieved border style tokens: ${Object.keys(allTokens.borders).length} border styles`
         break
+      case 'radius':
+        tokens = { borderRadius: allTokens.borderRadius }
+        summary = `Retrieved border radius tokens: ${Object.keys(allTokens.borderRadius).length} border radius values`
+        break
       case 'gradients':
         tokens = { gradients: allTokens.gradients }
         summary = `Retrieved gradient tokens: ${Object.keys(allTokens.gradients).length} gradient categories (semantic with light/dark variants; values shown are from light mode)`
@@ -104,7 +109,7 @@ export async function getDesignTokensTool(
       case 'all':
       default:
         tokens = allTokens
-        summary = `Retrieved all design tokens: ${Object.keys(allTokens.colors.semantic).length} semantic color groups, ${Object.keys(allTokens.typography.fontSize).length} font sizes, ${Object.keys(allTokens.sizing).length} sizing values, ${Object.keys(allTokens.spacing).length} spacing values, ${Object.keys(allTokens.shadows).length} shadow values, ${Object.keys(allTokens.borders).length} border styles, ${Object.keys(allTokens.gradients).length} gradient categories`
+        summary = `Retrieved all design tokens: ${Object.keys(allTokens.colors.semantic).length} semantic color groups, ${Object.keys(allTokens.typography.fontSize).length} font sizes, ${Object.keys(allTokens.sizing).length} sizing values, ${Object.keys(allTokens.spacing).length} spacing values, ${Object.keys(allTokens.shadows).length} shadow values, ${Object.keys(allTokens.borders).length} border styles, ${Object.keys(allTokens.borderRadius).length} border radius values, ${Object.keys(allTokens.gradients).length} gradient categories`
         break
     }
 

@@ -79,6 +79,12 @@ vi.mock('../utils/design-tokens.js', () => ({
         },
       },
     },
+    borderRadius: {
+      sm: { value: '0.25rem', description: 'Small border radius' },
+      md: { value: '0.375rem', description: 'Medium border radius - default' },
+      lg: { value: '0.5rem', description: 'Large border radius' },
+      xl: { value: '0.75rem', description: 'Extra large border radius' },
+    },
   }),
 }))
 
@@ -90,6 +96,7 @@ describe('getDesignTokensTool', () => {
     expect(result.tokens.colors).toBeDefined()
     expect(result.tokens.typography).toBeDefined()
     expect(result.tokens.spacing).toBeDefined()
+    expect(result.tokens.borderRadius).toBeDefined()
     expect(result.summary).toContain('all design tokens')
   })
 
@@ -177,6 +184,18 @@ describe('getDesignTokensTool', () => {
     expect(result.tokens.borders?.thick.description).toBe('Thick border')
   })
 
+  it('filters to radius only', async () => {
+    const result = await getDesignTokensTool({ type: 'radius' })
+
+    expect(result.success).toBe(true)
+    expect(result.tokens.borderRadius).toBeDefined()
+    expect(result.tokens.colors).toBeUndefined()
+    expect(result.tokens.borders).toBeUndefined()
+    expect(result.summary).toContain('border radius tokens')
+    expect(result.tokens.borderRadius?.sm.value).toBe('0.25rem')
+    expect(result.tokens.borderRadius?.md.description).toBe('Medium border radius - default')
+  })
+
   it('filters to gradients only', async () => {
     const result = await getDesignTokensTool({ type: 'gradients' })
 
@@ -199,9 +218,11 @@ describe('getDesignTokensTool', () => {
     expect(result.tokens.sizing).toBeDefined()
     expect(result.tokens.shadows).toBeDefined()
     expect(result.tokens.borders).toBeDefined()
+    expect(result.tokens.borderRadius).toBeDefined()
     expect(result.tokens.gradients).toBeDefined()
     expect(result.summary).toContain('shadow values')
     expect(result.summary).toContain('border styles')
+    expect(result.summary).toContain('border radius values')
     expect(result.summary).toContain('gradient categories')
   })
 })

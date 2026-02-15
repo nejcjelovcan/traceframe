@@ -267,19 +267,19 @@ pnpm validate:token-definitions
 
 **Theme Tokens** (from active theme):
 
-| Category      | Tokens                                                                         | Usage                                     |
-| ------------- | ------------------------------------------------------------------------------ | ----------------------------------------- |
-| Font Family   | `font-sans`, `font-mono`                                                       | Typography                                |
-| Font Size     | `text-xs` to `text-4xl`                                                        | Text sizing with line-height              |
-| Border Radius | `rounded-sm`, `rounded-md`, `rounded-lg`                                       | Corner rounding                           |
-| Shadow        | `shadow-sm`, `shadow-md`, `shadow-lg`                                          | Static elevation                          |
-| Shadow        | `shadow-interactive`, `shadow-interactive-hover`, `shadow-interactive-pressed` | Interactive element shadow states         |
-| Shadow        | `shadow-highlight`, `shadow-highlight-hover`, `shadow-highlight-pressed`       | Prominent interactive element shadows     |
-| Shadow        | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                 | Inset shadows for pressed/active states   |
-| Border Style  | `border-line`, `border-thick`, `border-highlight`                              | Composite border styles (width + pattern) |
-| Gradient      | `bg-gradient-interactive-*`, `bg-gradient-status-*`, `bg-gradient-accent-*`    | Background gradients for emphasis         |
-| Sizing        | `h-size-xs` to `h-size-xl`                                                     | Element heights/widths                    |
-| Spacing       | `spacing-2xs` to `spacing-2xl`                                                 | Margins, padding, gaps                    |
+| Category      | Tokens                                                                                             | Usage                                     |
+| ------------- | -------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| Font Family   | `font-sans`, `font-mono`                                                                           | Typography                                |
+| Font Size     | `text-xs` to `text-4xl`                                                                            | Text sizing with line-height              |
+| Border Radius | `rounded-sm` (4px), `rounded-md` (6px, default), `rounded-lg` (8px), `rounded-xl` (12px)           | Corner rounding                           |
+| Shadow        | `shadow-sm`, `shadow-md`, `shadow-lg`                                                              | Static elevation                          |
+| Shadow        | `shadow-interactive`, `shadow-interactive-hover`, `shadow-interactive-pressed`                     | Interactive element shadow states         |
+| Shadow        | `shadow-highlight`, `shadow-highlight-hover`, `shadow-highlight-pressed`                           | Prominent interactive element shadows     |
+| Shadow        | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                                     | Inset shadows for pressed/active states   |
+| Border Style  | `border-line`, `border-thick`, `border-highlight`                                                  | Composite border styles (width + pattern) |
+| Gradient      | `bg-gradient-interactive-*`, `bg-gradient-status-*`, `bg-gradient-accent-*`                        | Background gradients for emphasis         |
+| Sizing        | `h-size-xs` (24px), `h-size-sm` (32px), `h-size-md` (40px), `h-size-lg` (48px), `h-size-xl` (56px) | Element heights/widths (buttons, inputs)  |
+| Spacing       | `spacing-2xs` to `spacing-2xl`                                                                     | Margins, padding, gaps                    |
 
 ### Full Documentation
 
