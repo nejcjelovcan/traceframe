@@ -7,20 +7,31 @@
  */
 
 import { fileHeader } from 'style-dictionary/utils'
+import { extractAllTokens } from '../utils/extract-tokens.js'
 
 /**
- * Extracts all tokens from the dictionary into a flat list.
+ * Extracts all tokens from the dictionary into a flat list, including nested tokens.
  * Groups tokens by their category (first path segment).
+ * Uses extractAllTokens to recursively discover nested tokens that Style Dictionary
+ * v4 doesn't enumerate in dictionary.allTokens.
  */
 function extractTokensByCategory(dictionary) {
   const tokensByCategory = {}
+  const seen = new Set()
 
   dictionary.allTokens.forEach((token) => {
-    const category = token.path[0]
-    if (!tokensByCategory[category]) {
-      tokensByCategory[category] = []
-    }
-    tokensByCategory[category].push(token)
+    const extracted = extractAllTokens(token)
+    extracted.forEach((t) => {
+      const pathKey = t.path.join('.')
+      if (seen.has(pathKey)) return
+      seen.add(pathKey)
+
+      const category = t.path[0]
+      if (!tokensByCategory[category]) {
+        tokensByCategory[category] = []
+      }
+      tokensByCategory[category].push(t)
+    })
   })
 
   return tokensByCategory
