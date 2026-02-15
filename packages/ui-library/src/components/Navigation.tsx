@@ -34,12 +34,13 @@ const navItemVariants = cva('rounded-md transition-colors', {
     {
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground font-medium',
+      className: 'text-foreground font-medium border-b-thick-interactive-primary-border pb-xs',
     },
     {
       orientation: 'vertical',
       active: true,
-      className: 'bg-surface-muted text-foreground font-medium',
+      className:
+        'bg-surface-muted text-foreground font-medium border-l-thick-interactive-primary-border -ml-[2px] pl-[calc(0.75rem+2px)]',
     },
   ],
   defaultVariants: {
