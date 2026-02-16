@@ -207,7 +207,13 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       icon ?? (variant === 'rich' && level ? levelIcons[level] : undefined)
 
     const iconEl = effectiveIcon ? (
-      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="shrink-0" style={{marginTop: 'calc(var(--token-spacing-xs) * 1.5)'}} />
+      <Icon
+        name={effectiveIcon}
+        size="sm"
+        aria-hidden="true"
+        className="shrink-0"
+        style={{ marginTop: 'calc(var(--token-spacing-xs) * 1.5)' }}
+      />
     ) : null
 
     // CLI variant renders flat lines
@@ -253,7 +259,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
               size="sm"
               aria-hidden="true"
               className="shrink-0 mx-xs text-foreground-muted transition-transform duration-200 [[data-state=open]>&]:rotate-90"
-              style={{marginTop: 'calc(var(--token-spacing-xs) * 1.6)'}}
+              style={{ marginTop: 'calc(var(--token-spacing-xs) * 1.6)' }}
             />
           </CollapsiblePrimitive.Trigger>
           <CollapsiblePrimitive.Content className="overflow-hidden border-t border-b border-border-muted bg-surface-muted px-sm py-xs data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down ">
