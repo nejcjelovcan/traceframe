@@ -52,13 +52,13 @@
     --token-accent-5-muted: rgb(var(--palette-accent-5-100));
 
     /* Primary border color for inputs, cards, and containers */
-    --token-border: rgb(var(--palette-neutral-200));
+    --token-border: rgb(var(--palette-neutral-300));
     /* Border color for inverted surfaces */
     --token-border-inverted: rgb(var(--palette-neutral-700));
     /* Subtle border for dividers within inverted containers */
     --token-border-inverted-muted: rgb(var(--palette-neutral-800));
     /* Subtle border for dividers, separators, and less prominent boundaries */
-    --token-border-muted: rgb(var(--palette-neutral-100));
+    --token-border-muted: rgb(var(--palette-neutral-200));
 
     /* Disabled background color for inactive interactive elements */
     --token-disabled: rgb(var(--palette-neutral-100));

@@ -188,14 +188,14 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
         variant === 'rich' ? (
           <time
             dateTime={toDateTimeAttr(timestamp)}
-            className="w-[4.5rem] shrink-0 select-none bg-surface-muted px-xs py-2xs text-foreground-muted"
+            className="w-[4.5rem] shrink-0 select-none bg-surface-muted pl-sm pr-2xs py-xs text-foreground-muted align-baseline border-r border-border-muted"
           >
             {formatTimestamp(timestamp)}
           </time>
         ) : (
           <time
             dateTime={toDateTimeAttr(timestamp)}
-            className="shrink-0 select-none text-foreground-muted"
+            className="shrink-0 select-none text-foreground-muted pr-xs"
           >
             {formatTimestamp(timestamp)}
           </time>
@@ -207,7 +207,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       icon ?? (variant === 'rich' && level ? levelIcons[level] : undefined)
 
     const iconEl = effectiveIcon ? (
-      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="mt-2xs shrink-0" />
+      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="shrink-0" style={{marginTop: 'calc(var(--token-spacing-xs) * 1.5)'}} />
     ) : null
 
     // CLI variant renders flat lines
@@ -230,12 +230,12 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       return (
         <div
           ref={ref}
-          className={cn('flex items-start gap-sm px-base py-xs', levelStyle, className)}
+          className={cn('flex items-stretch gap-sm', levelStyle, className)}
           {...props}
         >
           {timestampEl}
           {iconEl}
-          <span className="min-w-0 flex-1 break-words">{children}</span>
+          <span className="min-w-0 flex-1 break-words px-xs py-2xs pt-xs">{children}</span>
         </div>
       )
     }
@@ -244,18 +244,19 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
     return (
       <CollapsiblePrimitive.Root defaultOpen={defaultExpanded} asChild>
         <div ref={ref} className={cn(levelStyle, className)} {...props}>
-          <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm px-base py-xs text-left transition-colors hover:bg-surface-subtle">
+          <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm text-left transition-colors hover:bg-surface-subtle overflow-hidden">
             {timestampEl}
             {iconEl}
-            <span className="min-w-0 flex-1 break-words">{children}</span>
+            <span className="min-w-0 flex-1 break-words px-xs py-2xs pt-xs">{children}</span>
             <Icon
               name="chevron-right"
               size="sm"
               aria-hidden="true"
-              className="shrink-0 text-foreground-muted transition-transform duration-200 [[data-state=open]>&]:rotate-90"
+              className="shrink-0 mx-xs text-foreground-muted transition-transform duration-200 [[data-state=open]>&]:rotate-90"
+              style={{marginTop: 'calc(var(--token-spacing-xs) * 1.6)'}}
             />
           </CollapsiblePrimitive.Trigger>
-          <CollapsiblePrimitive.Content className="overflow-hidden border-t border-border-muted bg-surface-muted px-base py-xs data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
+          <CollapsiblePrimitive.Content className="overflow-hidden border-t border-b border-border-muted bg-surface-muted px-sm py-xs data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down ">
             {detail}
           </CollapsiblePrimitive.Content>
         </div>
