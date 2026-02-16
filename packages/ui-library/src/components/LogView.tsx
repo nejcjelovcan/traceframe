@@ -207,7 +207,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       icon ?? (variant === 'rich' && level ? levelIcons[level] : undefined)
 
     const iconEl = effectiveIcon ? (
-      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="mt-0.5 shrink-0" />
+      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="mt-2xs shrink-0" />
     ) : null
 
     // CLI variant renders flat lines
