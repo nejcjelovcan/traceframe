@@ -185,12 +185,21 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
 
     const timestampEl =
       showTimestamps && timestamp ? (
-        <time
-          dateTime={toDateTimeAttr(timestamp)}
-          className="shrink-0 select-none text-foreground-muted"
-        >
-          {formatTimestamp(timestamp)}
-        </time>
+        variant === 'rich' ? (
+          <time
+            dateTime={toDateTimeAttr(timestamp)}
+            className="w-[4.5rem] shrink-0 select-none bg-surface-muted px-xs py-2xs text-foreground-muted"
+          >
+            {formatTimestamp(timestamp)}
+          </time>
+        ) : (
+          <time
+            dateTime={toDateTimeAttr(timestamp)}
+            className="shrink-0 select-none text-foreground-muted"
+          >
+            {formatTimestamp(timestamp)}
+          </time>
+        )
       ) : null
 
     // Determine icon: explicit icon prop takes priority, then level-based icon for rich variant
@@ -198,7 +207,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
       icon ?? (variant === 'rich' && level ? levelIcons[level] : undefined)
 
     const iconEl = effectiveIcon ? (
-      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="shrink-0" />
+      <Icon name={effectiveIcon} size="sm" aria-hidden="true" className="mt-0.5 shrink-0" />
     ) : null
 
     // CLI variant renders flat lines
@@ -211,7 +220,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
         >
           {timestampEl}
           {iconEl}
-          <span className="min-w-0 flex-1">{children}</span>
+          <span className="min-w-0 flex-1 break-words">{children}</span>
         </div>
       )
     }
@@ -226,7 +235,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
         >
           {timestampEl}
           {iconEl}
-          <span className="min-w-0 flex-1">{children}</span>
+          <span className="min-w-0 flex-1 break-words">{children}</span>
         </div>
       )
     }
@@ -238,7 +247,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
           <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm px-base py-xs text-left transition-colors hover:bg-surface-subtle">
             {timestampEl}
             {iconEl}
-            <span className="min-w-0 flex-1">{children}</span>
+            <span className="min-w-0 flex-1 break-words">{children}</span>
             <Icon
               name="chevron-right"
               size="sm"
