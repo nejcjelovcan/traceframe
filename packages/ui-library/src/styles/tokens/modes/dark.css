@@ -52,7 +52,7 @@
     --token-accent-5-muted: rgb(var(--palette-accent-5-900));
 
     /* Primary border color for inputs, cards, and containers */
-    --token-border: rgb(var(--palette-neutral-700));
+    --token-border: rgb(var(--palette-neutral-600));
     /* Border color for inverted surfaces */
     --token-border-inverted: rgb(var(--palette-neutral-200));
     /* Subtle border for dividers within inverted containers */
