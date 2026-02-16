@@ -1,5 +1,16 @@
 # @nejcjelovcan/traceframe-mcp-ui
 
+## 0.3.0
+
+### Minor Changes
+
+- [#74](https://github.com/nejcjelovcan/traceframe/pull/74) [`6836a17`](https://github.com/nejcjelovcan/traceframe/commit/6836a174924ff660a3db15cba8bbc396cb21c12c) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Simplify tokens pipeline: replace Style Dictionary with CSS-first approach using Tailwind v4 @theme inline. CSS files are now the source of truth for token values, with hand-maintained TypeScript metadata for MCP tools.
+
+### Patch Changes
+
+- Updated dependencies [[`6d1810c`](https://github.com/nejcjelovcan/traceframe/commit/6d1810c0f4c7e7e91f76b36512be1d663181c3a3), [`6836a17`](https://github.com/nejcjelovcan/traceframe/commit/6836a174924ff660a3db15cba8bbc396cb21c12c), [`62ee2a9`](https://github.com/nejcjelovcan/traceframe/commit/62ee2a9c8d58a44dfc827cffa93104eca6613786), [`0b78a41`](https://github.com/nejcjelovcan/traceframe/commit/0b78a416ead10b72b7aada1f16a8fc63d81d8a4c)]:
+  - @nejcjelovcan/traceframe-ui-library@1.5.0
+
 ## 0.2.5
 
 ### Patch Changes
