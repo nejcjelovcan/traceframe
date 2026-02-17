@@ -75,9 +75,8 @@ export const TOKEN_METADATA = {
         DEFAULT: 'Primary surface color for backgrounds and containers',
         muted: 'Secondary surface for sidebars, alternating rows, and nested elements',
         subtle: 'Tertiary surface for hover states, wells, and recessed areas',
-        inverted: 'Inverted surface for dark backgrounds in light mode',
-        'inverted-muted':
-          'Secondary inverted surface for nested elements within inverted containers',
+        inverse: 'Inverse surface for dark backgrounds in light mode',
+        'inverse-muted': 'Secondary inverse surface for nested elements within inverse containers',
       },
     },
     foreground: {
@@ -85,8 +84,8 @@ export const TOKEN_METADATA = {
       variants: {
         DEFAULT: 'Primary text and icon color for headings and body text',
         muted: 'Secondary text for descriptions, placeholders, and less prominent content',
-        inverted: 'Text color on dark backgrounds like primary buttons',
-        'inverted-muted': 'Secondary text color on dark backgrounds',
+        inverse: 'Text color on dark backgrounds like primary buttons',
+        'inverse-muted': 'Secondary text color on dark backgrounds',
       },
     },
     border: {
@@ -94,8 +93,8 @@ export const TOKEN_METADATA = {
       variants: {
         DEFAULT: 'Primary border color for inputs, cards, and containers',
         muted: 'Subtle border for dividers, separators, and less prominent boundaries',
-        inverted: 'Border color for inverted surfaces',
-        'inverted-muted': 'Subtle border for dividers within inverted containers',
+        inverse: 'Border color for inverse surfaces',
+        'inverse-muted': 'Subtle border for dividers within inverse containers',
       },
     },
     ring: {
@@ -457,10 +456,10 @@ export const TOKEN_METADATA = {
       surface: {
         description: '',
         variants: {
-          inverted: {
+          inverse: {
             value:
               'linear-gradient(180deg, rgb(var(--palette-neutral-800)), rgb(var(--palette-neutral-900)))',
-            description: 'Inverted surface gradient for contrasting backgrounds',
+            description: 'Inverse surface gradient for contrasting backgrounds',
           },
         },
       },

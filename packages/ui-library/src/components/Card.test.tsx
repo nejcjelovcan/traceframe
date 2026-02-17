@@ -96,80 +96,35 @@ describe('Card', () => {
     expect(card.className).toContain('border-line-accent-5-border')
   })
 
-  it('applies inverted classes when inverted is true', () => {
-    render(<Card inverted>Inverted</Card>)
-    const card = screen.getByText('Inverted')
-    expect(card.className).toContain('bg-surface-inverted')
-    expect(card.className).toContain('text-foreground-inverted')
-  })
-
-  it('does not apply inverted classes when inverted is false', () => {
-    render(<Card>Normal</Card>)
-    const card = screen.getByText('Normal')
-    expect(card.className).not.toContain('bg-surface-inverted')
-  })
-
-  it('combines inverted with outlined variant', () => {
-    render(<Card inverted>Inverted Outlined</Card>)
-    const card = screen.getByText('Inverted Outlined')
-    expect(card.className).toContain('bg-surface-inverted')
-    expect(card.className).toContain('text-foreground-inverted')
-    expect(card.className).toContain('border-line-border')
-  })
-
-  it('combines inverted with elevated variant', () => {
-    render(
-      <Card variant="elevated" inverted>
-        Inverted Elevated
-      </Card>
+  it('works with inverse utility class', () => {
+    const { container } = render(
+      <div className="inverse">
+        <Card>Inverse Context</Card>
+      </div>
     )
-    const card = screen.getByText('Inverted Elevated')
-    expect(card.className).toContain('bg-surface-inverted')
-    expect(card.className).toContain('shadow-md')
+    const wrapper = container.firstChild as HTMLElement
+    expect(wrapper.className).toContain('inverse')
+    // Card itself should have standard classes, inverse mode handled via CSS variables
+    const card = screen.getByText('Inverse Context')
+    expect(card.className).toContain('bg-surface')
   })
 
-  it('applies filled/solid look for inverted info variant', () => {
-    render(
-      <Card variant="info" inverted>
-        Inverted Info
-      </Card>
+  it('works with nested inverse contexts', () => {
+    const { container } = render(
+      <div className="inverse">
+        <Card>
+          Outer inverse
+          <div className="inverse">
+            <Card>Inner double inverse</Card>
+          </div>
+        </Card>
+      </div>
     )
-    const card = screen.getByText('Inverted Info')
-    expect(card.className).toContain('bg-status-info-emphasis')
-    expect(card.className).toContain('text-foreground-inverted')
-  })
-
-  it('applies filled/solid look for inverted success variant', () => {
-    render(
-      <Card variant="success" inverted>
-        Inverted Success
-      </Card>
-    )
-    const card = screen.getByText('Inverted Success')
-    expect(card.className).toContain('bg-status-success-emphasis')
-    expect(card.className).toContain('text-foreground-inverted')
-  })
-
-  it('applies filled/solid look for inverted accent1 variant', () => {
-    render(
-      <Card variant="accent1" inverted>
-        Inverted Accent
-      </Card>
-    )
-    const card = screen.getByText('Inverted Accent')
-    expect(card.className).toContain('bg-accent-1-emphasis')
-    expect(card.className).toContain('text-foreground-inverted')
-  })
-
-  it('merges custom className with inverted', () => {
-    render(
-      <Card inverted className="custom-class">
-        Custom
-      </Card>
-    )
-    const card = screen.getByText('Custom')
-    expect(card.className).toContain('bg-surface-inverted')
-    expect(card.className).toContain('custom-class')
+    const outerWrapper = container.firstChild as HTMLElement
+    expect(outerWrapper.className).toContain('inverse')
+    const innerCard = screen.getByText('Inner double inverse')
+    // Card maintains standard classes, inverse handled via CSS
+    expect(innerCard.className).toContain('bg-surface')
   })
 
   it('applies base classes', () => {
@@ -463,28 +418,34 @@ describe('Card actionable variant', () => {
     })
   })
 
-  it('works with inverted prop', () => {
-    render(
-      <Card actionable inverted>
-        Actionable Inverted
-      </Card>
+  it('works with inverse utility class', () => {
+    const { container } = render(
+      <div className="inverse">
+        <Card actionable>Actionable Inverse</Card>
+      </div>
     )
-    const card = screen.getByText('Actionable Inverted')
+    const wrapper = container.firstChild as HTMLElement
+    expect(wrapper.className).toContain('inverse')
+    const card = screen.getByText('Actionable Inverse')
     expect(card.className).toContain('cursor-pointer')
     expect(card.className).toContain('shadow-interactive')
-    expect(card.className).toContain('bg-surface-inverted')
+    expect(card.className).toContain('bg-surface')
   })
 
-  it('combines actionable with inverted status variant', () => {
-    render(
-      <Card variant="info" actionable inverted>
-        Actionable Inverted Info
-      </Card>
+  it('combines actionable with status variant in inverse context', () => {
+    const { container } = render(
+      <div className="inverse">
+        <Card variant="info" actionable>
+          Actionable Inverse Info
+        </Card>
+      </div>
     )
-    const card = screen.getByText('Actionable Inverted Info')
+    const wrapper = container.firstChild as HTMLElement
+    expect(wrapper.className).toContain('inverse')
+    const card = screen.getByText('Actionable Inverse Info')
     expect(card.className).toContain('cursor-pointer')
     expect(card.className).toContain('shadow-interactive')
-    expect(card.className).toContain('bg-status-info-emphasis')
-    expect(card.className).toContain('text-foreground-inverted')
+    expect(card.className).toContain('bg-status-info-muted')
+    expect(card.className).toContain('text-status-info-foreground')
   })
 })

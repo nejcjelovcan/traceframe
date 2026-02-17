@@ -324,13 +324,6 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         defaultValue: 'false',
       },
       {
-        name: 'inverted',
-        description: 'Render with inverted colors (dark bg in light mode, light bg in dark mode)',
-        type: 'boolean',
-        required: false,
-        defaultValue: 'false',
-      },
-      {
         name: 'children',
         description: 'Card content (typically CardHeader, CardContent, CardFooter)',
         type: 'unknown',
@@ -1358,13 +1351,6 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         type: 'boolean',
         required: false,
         defaultValue: 'true',
-      },
-      {
-        name: 'inverted',
-        description: 'Render with inverted colors (dark bg in light mode, light bg in dark mode)',
-        type: 'boolean',
-        required: false,
-        defaultValue: 'false',
       },
     ],
   },

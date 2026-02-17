@@ -4,14 +4,140 @@
     color: var(--token-foreground);
   }
 
-  .tf-inverted {
-    --token-surface: var(--token-surface-inverted);
-    --token-surface-muted: var(--token-surface-inverted-muted);
-    --token-foreground: var(--token-foreground-inverted);
-    --token-foreground-muted: var(--token-foreground-inverted-muted);
-    --token-border: var(--token-border-inverted);
-    --token-border-muted: var(--token-border-inverted-muted);
+  /* Store light and dark values as separate variables */
+  :root {
+    /* Light mode storage */
+    --light-surface: rgb(var(--palette-surface));
+    --light-surface-muted: rgb(var(--palette-neutral-100));
+    --light-surface-subtle: rgb(var(--palette-neutral-200));
+    --light-foreground: rgb(var(--palette-neutral-900));
+    --light-foreground-muted: rgb(var(--palette-neutral-600));
+    --light-border: rgb(var(--palette-neutral-300));
+    --light-border-muted: rgb(var(--palette-neutral-200));
+    --light-interactive-hover: rgb(var(--palette-neutral-100));
+    --light-interactive-active: rgb(var(--palette-neutral-200));
+    --light-interactive-pressed: rgb(var(--palette-neutral-300));
+    --light-disabled: rgb(var(--palette-neutral-100));
+    --light-disabled-foreground: rgb(var(--palette-neutral-400));
+    --light-tooltip: rgb(var(--palette-neutral-900));
+    --light-tooltip-foreground: rgb(var(--palette-neutral-50));
+    --light-ring: rgb(var(--palette-primary-500));
+
+    /* Dark mode storage */
+    --dark-surface: rgb(var(--palette-neutral-950));
+    --dark-surface-muted: rgb(var(--palette-neutral-900));
+    --dark-surface-subtle: rgb(var(--palette-neutral-800));
+    --dark-foreground: rgb(var(--palette-neutral-50));
+    --dark-foreground-muted: rgb(var(--palette-neutral-400));
+    --dark-border: rgb(var(--palette-neutral-600));
+    --dark-border-muted: rgb(var(--palette-neutral-800));
+    --dark-interactive-hover: rgb(var(--palette-neutral-800));
+    --dark-interactive-active: rgb(var(--palette-neutral-700));
+    --dark-interactive-pressed: rgb(var(--palette-neutral-600));
+    --dark-disabled: rgb(var(--palette-neutral-800));
+    --dark-disabled-foreground: rgb(var(--palette-neutral-500));
+    --dark-tooltip: rgb(var(--palette-neutral-800));
+    --dark-tooltip-foreground: rgb(var(--palette-neutral-50));
+    --dark-ring: rgb(var(--palette-primary-400));
+  }
+
+  /* Inverse mode class - swaps the current theme colors */
+  .inverse {
+    /* In light mode, use dark values */
+    --token-surface: var(--dark-surface);
+    --token-surface-muted: var(--dark-surface-muted);
+    --token-surface-subtle: var(--dark-surface-subtle);
+    --token-foreground: var(--dark-foreground);
+    --token-foreground-muted: var(--dark-foreground-muted);
+    --token-border: var(--dark-border);
+    --token-border-muted: var(--dark-border-muted);
+    --token-interactive-hover: var(--dark-interactive-hover);
+    --token-interactive-active: var(--dark-interactive-active);
+    --token-interactive-pressed: var(--dark-interactive-pressed);
+    --token-disabled: var(--dark-disabled);
+    --token-disabled-foreground: var(--dark-disabled-foreground);
+    --token-tooltip: var(--dark-tooltip);
+    --token-tooltip-foreground: var(--dark-tooltip-foreground);
+    --token-ring: var(--dark-ring);
     color: var(--token-foreground);
+    background-color: var(--token-surface);
+  }
+
+  :root.dark .inverse {
+    /* In dark mode, use light values */
+    --token-surface: var(--light-surface);
+    --token-surface-muted: var(--light-surface-muted);
+    --token-surface-subtle: var(--light-surface-subtle);
+    --token-foreground: var(--light-foreground);
+    --token-foreground-muted: var(--light-foreground-muted);
+    --token-border: var(--light-border);
+    --token-border-muted: var(--light-border-muted);
+    --token-interactive-hover: var(--light-interactive-hover);
+    --token-interactive-active: var(--light-interactive-active);
+    --token-interactive-pressed: var(--light-interactive-pressed);
+    --token-disabled: var(--light-disabled);
+    --token-disabled-foreground: var(--light-disabled-foreground);
+    --token-tooltip: var(--light-tooltip);
+    --token-tooltip-foreground: var(--light-tooltip-foreground);
+    --token-ring: var(--light-ring);
+  }
+
+  /* Nested inverse (inverse within inverse) swaps back */
+  .inverse .inverse {
+    /* In light mode with double inverse, back to light values */
+    --token-surface: var(--light-surface);
+    --token-surface-muted: var(--light-surface-muted);
+    --token-surface-subtle: var(--light-surface-subtle);
+    --token-foreground: var(--light-foreground);
+    --token-foreground-muted: var(--light-foreground-muted);
+    --token-border: var(--light-border);
+    --token-border-muted: var(--light-border-muted);
+    --token-interactive-hover: var(--light-interactive-hover);
+    --token-interactive-active: var(--light-interactive-active);
+    --token-interactive-pressed: var(--light-interactive-pressed);
+    --token-disabled: var(--light-disabled);
+    --token-disabled-foreground: var(--light-disabled-foreground);
+    --token-tooltip: var(--light-tooltip);
+    --token-tooltip-foreground: var(--light-tooltip-foreground);
+    --token-ring: var(--light-ring);
+  }
+
+  :root.dark .inverse .inverse {
+    /* In dark mode with double inverse, back to dark values */
+    --token-surface: var(--dark-surface);
+    --token-surface-muted: var(--dark-surface-muted);
+    --token-surface-subtle: var(--dark-surface-subtle);
+    --token-foreground: var(--dark-foreground);
+    --token-foreground-muted: var(--dark-foreground-muted);
+    --token-border: var(--dark-border);
+    --token-border-muted: var(--dark-border-muted);
+    --token-interactive-hover: var(--dark-interactive-hover);
+    --token-interactive-active: var(--dark-interactive-active);
+    --token-interactive-pressed: var(--dark-interactive-pressed);
+    --token-disabled: var(--dark-disabled);
+    --token-disabled-foreground: var(--dark-disabled-foreground);
+    --token-tooltip: var(--dark-tooltip);
+    --token-tooltip-foreground: var(--dark-tooltip-foreground);
+    --token-ring: var(--dark-ring);
+  }
+
+  /* Legacy support for old inverse token names (will be removed) */
+  :root {
+    --token-surface-inverse: var(--dark-surface);
+    --token-surface-inverse-muted: var(--dark-surface-muted);
+    --token-foreground-inverse: var(--dark-foreground);
+    --token-foreground-inverse-muted: var(--dark-foreground-muted);
+    --token-border-inverse: var(--dark-border);
+    --token-border-inverse-muted: var(--dark-border-muted);
+  }
+
+  :root.dark {
+    --token-surface-inverse: var(--light-surface);
+    --token-surface-inverse-muted: var(--light-surface-muted);
+    --token-foreground-inverse: var(--light-foreground);
+    --token-foreground-inverse-muted: var(--light-foreground-muted);
+    --token-border-inverse: var(--light-border);
+    --token-border-inverse-muted: var(--light-border-muted);
   }
 }
 
@@ -52,7 +178,7 @@
   .bg-gradient-accent-5 {
     background-image: var(--token-gradient-accent-5);
   }
-  .bg-gradient-surface-inverted {
-    background-image: var(--token-gradient-surface-inverted);
+  .bg-gradient-surface-inverse {
+    background-image: var(--token-gradient-surface-inverse);
   }
 }

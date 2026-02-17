@@ -246,51 +246,40 @@ describe('StatCard', () => {
     })
   })
 
-  describe('inverted prop', () => {
-    it('passes inverted prop to Card', () => {
-      render(<StatCard label="Test" value={42} inverted data-testid="card" />)
+  describe('inverse mode', () => {
+    it('works with inverse utility class', () => {
+      const { container } = render(
+        <div className="inverse">
+          <StatCard label="Test" value={42} data-testid="card" />
+        </div>
+      )
+      const wrapper = container.firstChild as HTMLElement
+      expect(wrapper.className).toContain('inverse')
       const card = screen.getByTestId('card')
-      expect(card.className).toContain('bg-surface-inverted')
-      expect(card.className).toContain('text-foreground-inverted')
+      // Card maintains standard classes, inverse handled via CSS variables
+      expect(card.className).toContain('bg-surface')
     })
 
-    it('does not apply inverted classes when inverted is not set', () => {
-      render(<StatCard label="Test" value={42} data-testid="card" />)
-      const card = screen.getByTestId('card')
-      expect(card.className).not.toContain('bg-surface-inverted')
-    })
-
-    it('combines inverted with variant', () => {
-      render(<StatCard label="Test" value={42} variant="elevated" inverted data-testid="card" />)
-      const card = screen.getByTestId('card')
-      expect(card.className).toContain('bg-surface-inverted')
-      expect(card.className).toContain('shadow-md')
-    })
-
-    it('uses foreground-inverted-muted for label when inverted', () => {
-      render(<StatCard label="Test Label" value={42} inverted />)
+    it('uses standard muted classes for text elements', () => {
+      render(<StatCard label="Test Label" value={42} subtitle="Sub" description="Desc" />)
       const label = screen.getByText('Test Label')
-      expect(label.className).toContain('text-foreground-inverted-muted')
-      expect(label.className).not.toContain('text-foreground-muted')
-    })
-
-    it('uses foreground-muted for label when not inverted', () => {
-      render(<StatCard label="Test Label" value={42} />)
-      const label = screen.getByText('Test Label')
-      expect(label.className).toContain('text-foreground-muted')
-      expect(label.className).not.toContain('text-foreground-inverted-muted')
-    })
-
-    it('uses foreground-inverted-muted for subtitle when inverted', () => {
-      render(<StatCard label="Test" value={42} subtitle="Sub" inverted />)
       const subtitle = screen.getByText('Sub')
-      expect(subtitle.className).toContain('text-foreground-inverted-muted')
+      const description = screen.getByText('Desc')
+      expect(label.className).toContain('text-foreground-muted')
+      expect(subtitle.className).toContain('text-foreground-muted')
+      expect(description.className).toContain('text-foreground-muted')
     })
 
-    it('uses foreground-inverted-muted for description when inverted', () => {
-      render(<StatCard label="Test" value={42} description="Desc" inverted />)
-      const description = screen.getByText('Desc')
-      expect(description.className).toContain('text-foreground-inverted-muted')
+    it('works with variant in inverse context', () => {
+      const { container } = render(
+        <div className="inverse">
+          <StatCard label="Test" value={42} variant="elevated" data-testid="card" />
+        </div>
+      )
+      const wrapper = container.firstChild as HTMLElement
+      expect(wrapper.className).toContain('inverse')
+      const card = screen.getByTestId('card')
+      expect(card.className).toContain('shadow-md')
     })
   })
 
