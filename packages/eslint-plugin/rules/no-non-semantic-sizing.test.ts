@@ -62,6 +62,14 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
       ],
       filename: 'test-file.tsx',
     },
+    // Template literals in className
+    {
+      code: '<div className={`h-size-sm w-size-lg`} />',
+    },
+    // Template literals with semantic tokens in cn/clsx
+    {
+      code: 'cn(`h-size-md w-size-xl`)',
+    },
   ],
 
   invalid: [
@@ -219,6 +227,33 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
       errors: [
         {
           messageId: 'nonSemanticSizing',
+        },
+      ],
+    },
+    // Template literals in JSX className
+    {
+      code: '<div className={`h-12 w-16`} />',
+      errors: [
+        {
+          messageId: 'nonSemanticSizing',
+          data: {
+            className: 'h-12',
+            suggestion: 'h-size-lg',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'h-size-lg' },
+              output: '<div className={`h-size-lg w-16`} />',
+            },
+          ],
+        },
+        {
+          messageId: 'nonSemanticSizing',
+          data: {
+            className: 'w-16',
+            suggestion: 'nearest: w-size-xl (3.5rem) or w-size-lg (3rem)',
+          },
         },
       ],
     },

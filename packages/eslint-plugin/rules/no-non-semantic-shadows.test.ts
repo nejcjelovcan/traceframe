@@ -64,6 +64,14 @@ ruleTester.run('no-non-semantic-shadows', noNonSemanticShadows, {
       ],
       filename: 'test-file.tsx',
     },
+    // Template literals in className
+    {
+      code: '<div className={`shadow-sm`} />',
+    },
+    // Template literals with semantic tokens in cn/clsx
+    {
+      code: 'cn(`shadow-interactive shadow-lg`)',
+    },
   ],
 
   invalid: [
@@ -214,6 +222,31 @@ ruleTester.run('no-non-semantic-shadows', noNonSemanticShadows, {
               messageId: 'suggestSemantic',
               data: { replacement: 'shadow-inset-md' },
               output: 'cn("shadow", "shadow-inset-md")',
+            },
+          ],
+        },
+      ],
+    },
+    // Template literals in JSX className
+    {
+      code: '<div className={`shadow-xl`} />',
+      errors: [
+        {
+          messageId: 'nonSemanticShadow',
+          data: {
+            className: 'shadow-xl',
+            suggestion: 'shadow-lg or shadow-highlight',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'shadow-lg' },
+              output: '<div className={`shadow-lg`} />',
+            },
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'shadow-highlight' },
+              output: '<div className={`shadow-highlight`} />',
             },
           ],
         },
