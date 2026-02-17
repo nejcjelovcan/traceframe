@@ -781,7 +781,7 @@ function ShowcaseCard({
       defaultOpen={mode === 'accordion'}
       className={cn(width, inverse && 'inverse')}
     >
-      <CardHeader icon={icon}>{title}</CardHeader>
+      <CardHeader {...(icon && { icon })}>{title}</CardHeader>
       <CardContent>{children}</CardContent>
     </Card>
   )
