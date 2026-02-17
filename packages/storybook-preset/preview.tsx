@@ -17,6 +17,8 @@ export const decorators: readonly any[] = [
       'Ember Dark': 'ember dark',
       'Forge Light': 'forge light',
       'Forge Dark': 'forge dark',
+      'Mist Light': 'mist light',
+      'Mist Dark': 'mist dark',
     },
     defaultTheme: 'Dusk Light',
     parentSelector: 'html',

@@ -13,3 +13,5 @@ export const emberLight = { name: 'Ember Light' }
 export const emberDark = { name: 'Ember Dark' }
 export const forgeLight = { name: 'Forge Light' }
 export const forgeDark = { name: 'Forge Dark' }
+export const mistLight = { name: 'Mist Light' }
+export const mistDark = { name: 'Mist Dark' }

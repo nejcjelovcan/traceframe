@@ -12,10 +12,10 @@
  */
 
 export type Mode = 'light' | 'dark'
-export type Theme = 'dusk' | 'arctic' | 'ember' | 'forge'
+export type Theme = 'dusk' | 'arctic' | 'ember' | 'forge' | 'mist'
 
 export const MODES: readonly Mode[] = ['light', 'dark'] as const
-export const THEMES: readonly Theme[] = ['dusk', 'arctic', 'ember', 'forge'] as const
+export const THEMES: readonly Theme[] = ['dusk', 'arctic', 'ember', 'forge', 'mist'] as const
 
 export const MODE_LABELS: Record<Mode, string> = {
   light: 'Light',
@@ -27,6 +27,7 @@ export const THEME_LABELS: Record<Theme, string> = {
   arctic: 'Arctic',
   ember: 'Ember',
   forge: 'Forge',
+  mist: 'Mist',
 }
 
 export const THEME_DESCRIPTIONS: Record<Theme, string> = {
@@ -34,6 +35,7 @@ export const THEME_DESCRIPTIONS: Record<Theme, string> = {
   arctic: 'Clean, precise palette for analytical interfaces',
   ember: 'Warm, compact design-studio aesthetic for data-rich interfaces',
   forge: 'Precision warmth with graphite and oxidized bronze editorial restraint',
+  mist: 'Near-monochrome precision for dense, content-first interfaces',
 }
 
 /**
