@@ -644,7 +644,7 @@ export function getGradientSuggestion(className: string): string | undefined {
   const clean = stripModifiers(className)
 
   if (clean.startsWith('bg-gradient-to-')) {
-    return 'Use semantic gradients: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*'
+    return 'Use semantic gradients: bg-gradient-primary, bg-gradient-status-*, bg-gradient-accent-*'
   }
 
   if (clean.startsWith('from-') || clean.startsWith('via-') || clean.startsWith('to-')) {

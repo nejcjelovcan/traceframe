@@ -13,7 +13,7 @@ describe('Button', () => {
   it('applies variant classes', () => {
     render(<Button variant="destructive">Delete</Button>)
     const button = screen.getByRole('button')
-    expect(button.className).toContain('bg-gradient-interactive-destructive')
+    expect(button.className).toContain('bg-gradient-destructive')
   })
 
   it('applies size classes', () => {
@@ -327,7 +327,7 @@ describe('Button', () => {
     it('applies gradient background to primary variant', () => {
       render(<Button variant="primary">Primary</Button>)
       const button = screen.getByRole('button')
-      expect(button.className).toContain('bg-gradient-interactive-primary')
+      expect(button.className).toContain('bg-gradient-primary')
       expect(button.className).toContain('text-foreground-filled')
       expect(button.className).toContain('hover:opacity-90')
     })
@@ -335,7 +335,7 @@ describe('Button', () => {
     it('applies gradient background to secondary variant', () => {
       render(<Button variant="secondary">Secondary</Button>)
       const button = screen.getByRole('button')
-      expect(button.className).toContain('bg-gradient-interactive-secondary')
+      expect(button.className).toContain('bg-gradient-secondary')
       expect(button.className).toContain('text-foreground-filled')
       expect(button.className).toContain('hover:opacity-90')
     })
@@ -343,7 +343,7 @@ describe('Button', () => {
     it('applies gradient background to destructive variant', () => {
       render(<Button variant="destructive">Destructive</Button>)
       const button = screen.getByRole('button')
-      expect(button.className).toContain('bg-gradient-interactive-destructive')
+      expect(button.className).toContain('bg-gradient-destructive')
       expect(button.className).toContain('text-foreground-filled')
       expect(button.className).toContain('hover:opacity-90')
     })

@@ -374,78 +374,110 @@ export const TOKEN_METADATA = {
       },
     },
     gradient: {
-      interactive: {
-        description: '',
-        variants: {
-          primary: {
-            value:
-              'linear-gradient(180deg, var(--palette-primary-600), var(--palette-primary-700))',
-            description: 'Primary button and CTA gradient',
-          },
-          secondary: {
-            value:
-              'linear-gradient(180deg, var(--palette-secondary-600), var(--palette-secondary-700))',
-            description: 'Secondary button gradient',
-          },
-          destructive: {
-            value: 'linear-gradient(180deg, var(--palette-error-600), var(--palette-error-700))',
-            description: 'Destructive button gradient',
-          },
-        },
+      primary: {
+        value: 'linear-gradient(180deg, var(--palette-primary-600), var(--palette-primary-700))',
+        description: 'Primary button and CTA gradient',
       },
-      status: {
-        description: '',
-        variants: {
-          info: {
-            value:
-              'linear-gradient(180deg, var(--palette-primary-600), var(--palette-primary-700))',
-            description: 'Info status emphasis gradient',
-          },
-          success: {
-            value:
-              'linear-gradient(180deg, var(--palette-success-600), var(--palette-success-700))',
-            description: 'Success status emphasis gradient',
-          },
-          warning: {
-            value:
-              'linear-gradient(180deg, var(--palette-warning-500), var(--palette-warning-600))',
-            description: 'Warning status emphasis gradient',
-          },
-          error: {
-            value: 'linear-gradient(180deg, var(--palette-error-600), var(--palette-error-700))',
-            description: 'Error status emphasis gradient',
-          },
-        },
+      'primary-light': {
+        value: 'linear-gradient(180deg, var(--palette-primary-50), var(--palette-primary-100))',
+        description: 'Primary light gradient for cards and subtle backgrounds',
       },
-      accent: {
-        description: '',
-        variants: {
-          '1': {
-            value:
-              'linear-gradient(180deg, var(--palette-accent-1-600), var(--palette-accent-1-700))',
-            description: 'Accent 1 emphasis gradient',
-          },
-          '2': {
-            value:
-              'linear-gradient(180deg, var(--palette-accent-2-600), var(--palette-accent-2-700))',
-            description: 'Accent 2 emphasis gradient',
-          },
-          '3': {
-            value:
-              'linear-gradient(180deg, var(--palette-accent-3-600), var(--palette-accent-3-700))',
-            description: 'Accent 3 emphasis gradient',
-          },
-          '4': {
-            value:
-              'linear-gradient(180deg, var(--palette-accent-4-600), var(--palette-accent-4-700))',
-            description: 'Accent 4 emphasis gradient',
-          },
-          '5': {
-            value:
-              'linear-gradient(180deg, var(--palette-accent-5-600), var(--palette-accent-5-700))',
-            description: 'Accent 5 emphasis gradient',
-          },
-        },
+      secondary: {
+        value:
+          'linear-gradient(180deg, var(--palette-secondary-600), var(--palette-secondary-700))',
+        description: 'Secondary button gradient',
+      },
+      'secondary-light': {
+        value: 'linear-gradient(180deg, var(--palette-secondary-50), var(--palette-secondary-100))',
+        description: 'Secondary light gradient for cards and subtle backgrounds',
+      },
+      destructive: {
+        value: 'linear-gradient(180deg, var(--palette-error-600), var(--palette-error-700))',
+        description: 'Destructive button gradient',
+      },
+      'destructive-light': {
+        value: 'linear-gradient(180deg, var(--palette-error-50), var(--palette-error-100))',
+        description: 'Destructive light gradient for cards and subtle backgrounds',
+      },
+      surface: {
+        value: 'linear-gradient(180deg, var(--palette-neutral-700), var(--palette-neutral-800))',
+        description: 'Surface gradient',
+      },
+      'surface-light': {
+        value: 'linear-gradient(180deg, var(--palette-neutral-50), var(--palette-neutral-100))',
+        description: 'Surface light gradient for cards and subtle backgrounds',
+      },
+      'status-info': {
+        value: 'linear-gradient(180deg, var(--palette-primary-600), var(--palette-primary-700))',
+        description: 'Info status emphasis gradient',
+      },
+      'status-info-light': {
+        value: 'linear-gradient(180deg, var(--palette-primary-50), var(--palette-primary-100))',
+        description: 'Info status light gradient for cards and subtle backgrounds',
+      },
+      'status-success': {
+        value: 'linear-gradient(180deg, var(--palette-success-600), var(--palette-success-700))',
+        description: 'Success status emphasis gradient',
+      },
+      'status-success-light': {
+        value: 'linear-gradient(180deg, var(--palette-success-50), var(--palette-success-100))',
+        description: 'Success status light gradient for cards and subtle backgrounds',
+      },
+      'status-warning': {
+        value: 'linear-gradient(180deg, var(--palette-warning-500), var(--palette-warning-600))',
+        description: 'Warning status emphasis gradient',
+      },
+      'status-warning-light': {
+        value: 'linear-gradient(180deg, var(--palette-warning-50), var(--palette-warning-100))',
+        description: 'Warning status light gradient for cards and subtle backgrounds',
+      },
+      'status-error': {
+        value: 'linear-gradient(180deg, var(--palette-error-600), var(--palette-error-700))',
+        description: 'Error status emphasis gradient',
+      },
+      'status-error-light': {
+        value: 'linear-gradient(180deg, var(--palette-error-50), var(--palette-error-100))',
+        description: 'Error status light gradient for cards and subtle backgrounds',
+      },
+      'accent-1': {
+        value: 'linear-gradient(180deg, var(--palette-accent-1-600), var(--palette-accent-1-700))',
+        description: 'Accent 1 emphasis gradient',
+      },
+      'accent-1-light': {
+        value: 'linear-gradient(180deg, var(--palette-accent-1-50), var(--palette-accent-1-100))',
+        description: 'Accent 1 light gradient for cards and subtle backgrounds',
+      },
+      'accent-2': {
+        value: 'linear-gradient(180deg, var(--palette-accent-2-600), var(--palette-accent-2-700))',
+        description: 'Accent 2 emphasis gradient',
+      },
+      'accent-2-light': {
+        value: 'linear-gradient(180deg, var(--palette-accent-2-50), var(--palette-accent-2-100))',
+        description: 'Accent 2 light gradient for cards and subtle backgrounds',
+      },
+      'accent-3': {
+        value: 'linear-gradient(180deg, var(--palette-accent-3-600), var(--palette-accent-3-700))',
+        description: 'Accent 3 emphasis gradient',
+      },
+      'accent-3-light': {
+        value: 'linear-gradient(180deg, var(--palette-accent-3-50), var(--palette-accent-3-100))',
+        description: 'Accent 3 light gradient for cards and subtle backgrounds',
+      },
+      'accent-4': {
+        value: 'linear-gradient(180deg, var(--palette-accent-4-600), var(--palette-accent-4-700))',
+        description: 'Accent 4 emphasis gradient',
+      },
+      'accent-4-light': {
+        value: 'linear-gradient(180deg, var(--palette-accent-4-50), var(--palette-accent-4-100))',
+        description: 'Accent 4 light gradient for cards and subtle backgrounds',
+      },
+      'accent-5': {
+        value: 'linear-gradient(180deg, var(--palette-accent-5-600), var(--palette-accent-5-700))',
+        description: 'Accent 5 emphasis gradient',
+      },
+      'accent-5-light': {
+        value: 'linear-gradient(180deg, var(--palette-accent-5-50), var(--palette-accent-5-100))',
+        description: 'Accent 5 light gradient for cards and subtle backgrounds',
       },
     },
     borderStyle: {

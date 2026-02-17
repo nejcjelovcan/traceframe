@@ -417,10 +417,14 @@ describe('isNonSemanticGradientClass', () => {
   })
 
   it('does NOT flag semantic gradient tokens', () => {
-    expect(isNonSemanticGradientClass('bg-gradient-interactive-primary')).toBe(false)
-    expect(isNonSemanticGradientClass('bg-gradient-interactive-secondary')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-primary')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-secondary')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-destructive')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-surface')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-primary-light')).toBe(false)
     expect(isNonSemanticGradientClass('bg-gradient-status-success')).toBe(false)
     expect(isNonSemanticGradientClass('bg-gradient-accent-1')).toBe(false)
+    expect(isNonSemanticGradientClass('bg-gradient-accent-1-light')).toBe(false)
   })
 
   it('does NOT flag from/via/to with non-palette values', () => {
@@ -495,7 +499,7 @@ describe('getGradientSuggestion', () => {
   it('suggests semantic gradients for bg-gradient-to-*', () => {
     const suggestion = getGradientSuggestion('bg-gradient-to-r')
     expect(suggestion).toContain('semantic gradients')
-    expect(suggestion).toContain('bg-gradient-interactive-*')
+    expect(suggestion).toContain('bg-gradient-primary')
   })
 
   it('suggests semantic gradients for from-* classes', () => {

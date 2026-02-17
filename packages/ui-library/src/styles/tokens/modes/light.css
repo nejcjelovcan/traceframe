@@ -78,11 +78,23 @@
       var(--palette-accent-1-600),
       var(--palette-accent-1-700)
     );
+    /* Accent 1 light gradient for cards and subtle backgrounds */
+    --token-gradient-accent-1-light: linear-gradient(
+      180deg,
+      var(--palette-accent-1-50),
+      var(--palette-accent-1-100)
+    );
     /* Accent 2 emphasis gradient */
     --token-gradient-accent-2: linear-gradient(
       180deg,
       var(--palette-accent-2-600),
       var(--palette-accent-2-700)
+    );
+    /* Accent 2 light gradient for cards and subtle backgrounds */
+    --token-gradient-accent-2-light: linear-gradient(
+      180deg,
+      var(--palette-accent-2-50),
+      var(--palette-accent-2-100)
     );
     /* Accent 3 emphasis gradient */
     --token-gradient-accent-3: linear-gradient(
@@ -90,11 +102,23 @@
       var(--palette-accent-3-600),
       var(--palette-accent-3-700)
     );
+    /* Accent 3 light gradient for cards and subtle backgrounds */
+    --token-gradient-accent-3-light: linear-gradient(
+      180deg,
+      var(--palette-accent-3-50),
+      var(--palette-accent-3-100)
+    );
     /* Accent 4 emphasis gradient */
     --token-gradient-accent-4: linear-gradient(
       180deg,
       var(--palette-accent-4-600),
       var(--palette-accent-4-700)
+    );
+    /* Accent 4 light gradient for cards and subtle backgrounds */
+    --token-gradient-accent-4-light: linear-gradient(
+      180deg,
+      var(--palette-accent-4-50),
+      var(--palette-accent-4-100)
     );
     /* Accent 5 emphasis gradient */
     --token-gradient-accent-5: linear-gradient(
@@ -102,23 +126,47 @@
       var(--palette-accent-5-600),
       var(--palette-accent-5-700)
     );
+    /* Accent 5 light gradient for cards and subtle backgrounds */
+    --token-gradient-accent-5-light: linear-gradient(
+      180deg,
+      var(--palette-accent-5-50),
+      var(--palette-accent-5-100)
+    );
     /* Destructive button gradient */
-    --token-gradient-interactive-destructive: linear-gradient(
+    --token-gradient-destructive: linear-gradient(
       180deg,
       var(--palette-error-600),
       var(--palette-error-700)
     );
+    /* Destructive light gradient for cards and subtle backgrounds */
+    --token-gradient-destructive-light: linear-gradient(
+      180deg,
+      var(--palette-error-50),
+      var(--palette-error-100)
+    );
     /* Primary button and CTA gradient */
-    --token-gradient-interactive-primary: linear-gradient(
+    --token-gradient-primary: linear-gradient(
       180deg,
       var(--palette-primary-600),
       var(--palette-primary-700)
     );
+    /* Primary light gradient for cards and subtle backgrounds */
+    --token-gradient-primary-light: linear-gradient(
+      180deg,
+      var(--palette-primary-50),
+      var(--palette-primary-100)
+    );
     /* Secondary button gradient */
-    --token-gradient-interactive-secondary: linear-gradient(
+    --token-gradient-secondary: linear-gradient(
       180deg,
       var(--palette-secondary-600),
       var(--palette-secondary-700)
+    );
+    /* Secondary light gradient for cards and subtle backgrounds */
+    --token-gradient-secondary-light: linear-gradient(
+      180deg,
+      var(--palette-secondary-50),
+      var(--palette-secondary-100)
     );
     /* Error status emphasis gradient */
     --token-gradient-status-error: linear-gradient(
@@ -126,11 +174,23 @@
       var(--palette-error-600),
       var(--palette-error-700)
     );
+    /* Error status light gradient for cards and subtle backgrounds */
+    --token-gradient-status-error-light: linear-gradient(
+      180deg,
+      var(--palette-error-50),
+      var(--palette-error-100)
+    );
     /* Info status emphasis gradient */
     --token-gradient-status-info: linear-gradient(
       180deg,
       var(--palette-primary-600),
       var(--palette-primary-700)
+    );
+    /* Info status light gradient for cards and subtle backgrounds */
+    --token-gradient-status-info-light: linear-gradient(
+      180deg,
+      var(--palette-primary-50),
+      var(--palette-primary-100)
     );
     /* Success status emphasis gradient */
     --token-gradient-status-success: linear-gradient(
@@ -138,11 +198,35 @@
       var(--palette-success-600),
       var(--palette-success-700)
     );
+    /* Success status light gradient for cards and subtle backgrounds */
+    --token-gradient-status-success-light: linear-gradient(
+      180deg,
+      var(--palette-success-50),
+      var(--palette-success-100)
+    );
     /* Warning status emphasis gradient */
     --token-gradient-status-warning: linear-gradient(
       180deg,
       var(--palette-warning-500),
       var(--palette-warning-600)
+    );
+    /* Warning status light gradient for cards and subtle backgrounds */
+    --token-gradient-status-warning-light: linear-gradient(
+      180deg,
+      var(--palette-warning-50),
+      var(--palette-warning-100)
+    );
+    /* Surface gradient */
+    --token-gradient-surface: linear-gradient(
+      180deg,
+      var(--palette-neutral-700),
+      var(--palette-neutral-800)
+    );
+    /* Surface light gradient for cards and subtle backgrounds */
+    --token-gradient-surface-light: linear-gradient(
+      180deg,
+      var(--palette-neutral-50),
+      var(--palette-neutral-100)
     );
 
     /* Background color for active or selected states */

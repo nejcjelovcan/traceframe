@@ -26,13 +26,13 @@ ruleTester.run('no-non-semantic-gradients', noNonSemanticGradients, {
   valid: [
     // Semantic gradient tokens are allowed
     {
-      code: '<div className="bg-gradient-interactive-primary" />',
+      code: '<div className="bg-gradient-primary" />',
     },
     {
-      code: '<div className="bg-gradient-interactive-secondary" />',
+      code: '<div className="bg-gradient-secondary" />',
     },
     {
-      code: '<div className="bg-gradient-interactive-destructive" />',
+      code: '<div className="bg-gradient-destructive" />',
     },
     // Status gradients
     {
@@ -48,7 +48,7 @@ ruleTester.run('no-non-semantic-gradients', noNonSemanticGradients, {
     },
     // cn/clsx with semantic gradients
     {
-      code: 'cn("bg-gradient-interactive-primary", "text-foreground-filled")',
+      code: 'cn("bg-gradient-primary", "text-foreground-filled")',
     },
     // Files in exceptions are allowed
     {
@@ -62,7 +62,7 @@ ruleTester.run('no-non-semantic-gradients', noNonSemanticGradients, {
     },
     // Template literals in className
     {
-      code: '<div className={`bg-gradient-interactive-primary`} />',
+      code: '<div className={`bg-gradient-primary`} />',
     },
     // Template literals with semantic tokens in cn/clsx
     {

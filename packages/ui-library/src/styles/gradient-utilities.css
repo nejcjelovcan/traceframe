@@ -1,0 +1,112 @@
+/**
+ * Gradient utilities using Tailwind v4 @utility directive.
+ * Maps semantic gradient tokens to background-image utility classes.
+ */
+
+/* === Default (strong) gradients - for buttons, CTAs, emphasis badges === */
+
+@utility bg-gradient-primary {
+  background-image: var(--token-gradient-primary);
+}
+
+@utility bg-gradient-secondary {
+  background-image: var(--token-gradient-secondary);
+}
+
+@utility bg-gradient-destructive {
+  background-image: var(--token-gradient-destructive);
+}
+
+@utility bg-gradient-surface {
+  background-image: var(--token-gradient-surface);
+}
+
+@utility bg-gradient-status-info {
+  background-image: var(--token-gradient-status-info);
+}
+
+@utility bg-gradient-status-success {
+  background-image: var(--token-gradient-status-success);
+}
+
+@utility bg-gradient-status-warning {
+  background-image: var(--token-gradient-status-warning);
+}
+
+@utility bg-gradient-status-error {
+  background-image: var(--token-gradient-status-error);
+}
+
+@utility bg-gradient-accent-1 {
+  background-image: var(--token-gradient-accent-1);
+}
+
+@utility bg-gradient-accent-2 {
+  background-image: var(--token-gradient-accent-2);
+}
+
+@utility bg-gradient-accent-3 {
+  background-image: var(--token-gradient-accent-3);
+}
+
+@utility bg-gradient-accent-4 {
+  background-image: var(--token-gradient-accent-4);
+}
+
+@utility bg-gradient-accent-5 {
+  background-image: var(--token-gradient-accent-5);
+}
+
+/* === Light gradients - for cards, subtle backgrounds === */
+
+@utility bg-gradient-primary-light {
+  background-image: var(--token-gradient-primary-light);
+}
+
+@utility bg-gradient-secondary-light {
+  background-image: var(--token-gradient-secondary-light);
+}
+
+@utility bg-gradient-destructive-light {
+  background-image: var(--token-gradient-destructive-light);
+}
+
+@utility bg-gradient-surface-light {
+  background-image: var(--token-gradient-surface-light);
+}
+
+@utility bg-gradient-status-info-light {
+  background-image: var(--token-gradient-status-info-light);
+}
+
+@utility bg-gradient-status-success-light {
+  background-image: var(--token-gradient-status-success-light);
+}
+
+@utility bg-gradient-status-warning-light {
+  background-image: var(--token-gradient-status-warning-light);
+}
+
+@utility bg-gradient-status-error-light {
+  background-image: var(--token-gradient-status-error-light);
+}
+
+@utility bg-gradient-accent-1-light {
+  background-image: var(--token-gradient-accent-1-light);
+}
+
+@utility bg-gradient-accent-2-light {
+  background-image: var(--token-gradient-accent-2-light);
+}
+
+@utility bg-gradient-accent-3-light {
+  background-image: var(--token-gradient-accent-3-light);
+}
+
+@utility bg-gradient-accent-4-light {
+  background-image: var(--token-gradient-accent-4-light);
+}
+
+@utility bg-gradient-accent-5-light {
+  background-image: var(--token-gradient-accent-5-light);
+}

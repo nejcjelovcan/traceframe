@@ -104,12 +104,12 @@ export async function getDesignTokensTool(
         break
       case 'gradients':
         tokens = { gradients: allTokens.gradients }
-        summary = `Retrieved gradient tokens: ${Object.keys(allTokens.gradients).length} gradient categories (semantic with light/dark variants; values shown are from light mode)`
+        summary = `Retrieved gradient tokens: ${Object.keys(allTokens.gradients).length} gradient tokens (semantic with light/dark variants; values shown are from light mode)`
         break
       case 'all':
       default:
         tokens = allTokens
-        summary = `Retrieved all design tokens: ${Object.keys(allTokens.colors.semantic).length} semantic color groups, ${Object.keys(allTokens.typography.fontSize).length} font sizes, ${Object.keys(allTokens.sizing).length} sizing values, ${Object.keys(allTokens.spacing).length} spacing values, ${Object.keys(allTokens.shadows).length} shadow values, ${Object.keys(allTokens.borders).length} border styles, ${Object.keys(allTokens.borderRadius).length} border radius values, ${Object.keys(allTokens.gradients).length} gradient categories`
+        summary = `Retrieved all design tokens: ${Object.keys(allTokens.colors.semantic).length} semantic color groups, ${Object.keys(allTokens.typography.fontSize).length} font sizes, ${Object.keys(allTokens.sizing).length} sizing values, ${Object.keys(allTokens.spacing).length} spacing values, ${Object.keys(allTokens.shadows).length} shadow values, ${Object.keys(allTokens.borders).length} border styles, ${Object.keys(allTokens.borderRadius).length} border radius values, ${Object.keys(allTokens.gradients).length} gradient tokens`
         break
     }
 
