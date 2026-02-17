@@ -58,6 +58,13 @@ const cardVariants = cva('rounded-sm border-line', {
       class: 'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
     },
 
+    // Focus ring for actionable cards
+    {
+      actionable: true,
+      class:
+        'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+    },
+
     // Core variants: CSS variable override for full semantic token inversion
     {
       variant: 'outlined',
@@ -180,9 +187,20 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       const cardProps = actionable
         ? {
             ...props,
-            tabIndex: 0,
-            role: 'button',
-            'aria-pressed': false,
+            tabIndex: props.tabIndex ?? 0,
+            role: props.role ?? 'button',
+            'aria-pressed': props['aria-pressed'] ?? false,
+            onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
+              // Handle Enter/Space for activation
+              if ((e.key === 'Enter' || e.key === ' ') && props.onClick) {
+                e.preventDefault()
+                // Call onClick directly with the keyboard event
+                // The handler should be able to handle both mouse and keyboard events
+                props.onClick(e as any)
+              }
+              // Call provided onKeyDown if exists
+              props.onKeyDown?.(e)
+            },
           }
         : props
 
