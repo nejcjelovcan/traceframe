@@ -286,13 +286,14 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
     tier: 1,
     tierLabel: 'Tailwind + CVA',
     description:
-      'A container component for grouping related content with optional header and footer.',
+      'A container component for grouping related content with optional header and footer, now with accordion support.',
     usage:
       'Use for displaying grouped content like statistics, previews, form sections, or list items. Choose variant based on visual hierarchy needs.',
     accessibility: [
-      'Uses semantic `<div>` elements',
+      'Uses semantic `<div>` elements or `<button>` for accordion headers',
       'Header content should use appropriate heading levels',
-      'Consider adding `role="region"` and `aria-labelledby` for significant cards',
+      'Accordion mode follows WAI-ARIA Disclosure Pattern',
+      'Keyboard navigable with Enter/Space in accordion mode',
       'Icons in headers have `aria-hidden="true"` (they are decorative)',
     ],
     props: [
@@ -329,6 +330,32 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         type: 'boolean',
         required: false,
         defaultValue: 'false',
+      },
+      {
+        name: 'accordion',
+        description: 'Makes the card collapsible with header as trigger',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
+      },
+      {
+        name: 'defaultOpen',
+        description: 'Initial expanded state for uncontrolled accordion',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
+      },
+      {
+        name: 'open',
+        description: 'Controlled open state for accordion',
+        type: 'boolean',
+        required: false,
+      },
+      {
+        name: 'onOpenChange',
+        description: 'Callback when accordion open state changes',
+        type: 'unknown',
+        required: false,
       },
       {
         name: 'children',
