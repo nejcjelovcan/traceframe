@@ -14,15 +14,25 @@ type Story = StoryObj<typeof meta>
 const GradientShowcase = () => {
   const gradientCategories = [
     {
-      title: 'Interactive Gradients',
+      title: 'Core Gradients',
       gradients: [
-        { name: 'primary', label: 'Primary', className: 'bg-gradient-interactive-primary' },
-        { name: 'secondary', label: 'Secondary', className: 'bg-gradient-interactive-secondary' },
+        { name: 'primary', label: 'Primary', className: 'bg-gradient-primary' },
+        { name: 'secondary', label: 'Secondary', className: 'bg-gradient-secondary' },
+        { name: 'destructive', label: 'Destructive', className: 'bg-gradient-destructive' },
+        { name: 'surface', label: 'Surface', className: 'bg-gradient-surface' },
+      ],
+    },
+    {
+      title: 'Core Gradients (Light)',
+      gradients: [
+        { name: 'primary-light', label: 'Primary', className: 'bg-gradient-primary-light' },
+        { name: 'secondary-light', label: 'Secondary', className: 'bg-gradient-secondary-light' },
         {
-          name: 'destructive',
+          name: 'destructive-light',
           label: 'Destructive',
-          className: 'bg-gradient-interactive-destructive',
+          className: 'bg-gradient-destructive-light',
         },
+        { name: 'surface-light', label: 'Surface', className: 'bg-gradient-surface-light' },
       ],
     },
     {
@@ -35,6 +45,23 @@ const GradientShowcase = () => {
       ],
     },
     {
+      title: 'Status Gradients (Light)',
+      gradients: [
+        { name: 'info-light', label: 'Info', className: 'bg-gradient-status-info-light' },
+        {
+          name: 'success-light',
+          label: 'Success',
+          className: 'bg-gradient-status-success-light',
+        },
+        {
+          name: 'warning-light',
+          label: 'Warning',
+          className: 'bg-gradient-status-warning-light',
+        },
+        { name: 'error-light', label: 'Error', className: 'bg-gradient-status-error-light' },
+      ],
+    },
+    {
       title: 'Accent Gradients',
       gradients: [
         { name: 'accent-1', label: 'Accent 1', className: 'bg-gradient-accent-1' },
@@ -42,6 +69,16 @@ const GradientShowcase = () => {
         { name: 'accent-3', label: 'Accent 3', className: 'bg-gradient-accent-3' },
         { name: 'accent-4', label: 'Accent 4', className: 'bg-gradient-accent-4' },
         { name: 'accent-5', label: 'Accent 5', className: 'bg-gradient-accent-5' },
+      ],
+    },
+    {
+      title: 'Accent Gradients (Light)',
+      gradients: [
+        { name: 'accent-1-light', label: 'Accent 1', className: 'bg-gradient-accent-1-light' },
+        { name: 'accent-2-light', label: 'Accent 2', className: 'bg-gradient-accent-2-light' },
+        { name: 'accent-3-light', label: 'Accent 3', className: 'bg-gradient-accent-3-light' },
+        { name: 'accent-4-light', label: 'Accent 4', className: 'bg-gradient-accent-4-light' },
+        { name: 'accent-5-light', label: 'Accent 5', className: 'bg-gradient-accent-5-light' },
       ],
     },
   ]
@@ -71,16 +108,16 @@ const GradientShowcase = () => {
       <div className="mt-xl">
         <h3 className="text-lg font-semibold mb-md">Usage Example</h3>
         <div className="grid gap-md md:grid-cols-2">
-          <div className="p-lg rounded-lg bg-gradient-interactive-primary text-foreground-filled">
+          <div className="p-lg rounded-lg bg-gradient-primary text-foreground-filled">
             <h4 className="text-lg font-semibold mb-sm">Primary Button Style</h4>
             <p className="text-sm opacity-90">
               This shows how a gradient can be used for emphasis on primary actions.
             </p>
           </div>
-          <div className="inverse p-lg rounded-lg">
-            <h4 className="text-lg font-semibold mb-sm">Inverse Context</h4>
+          <div className="p-lg rounded-lg bg-gradient-primary-light">
+            <h4 className="text-lg font-semibold mb-sm">Light Gradient Card</h4>
             <p className="text-sm opacity-90">
-              Use the .inverse utility class for contrasting surface areas.
+              Light gradients are used for subtle card backgrounds and surfaces.
             </p>
           </div>
         </div>

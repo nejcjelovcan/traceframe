@@ -89,7 +89,7 @@ describe('StatCard', () => {
   it('inherits Card variant classes - info', () => {
     render(<StatCard label="Test" value={1} variant="info" data-testid="card" />)
     const card = screen.getByTestId('card')
-    expect(card.className).toContain('bg-status-info-muted')
+    expect(card.className).toContain('bg-gradient-status-info-light')
     expect(card.className).toContain('border-line-status-info-border')
   })
 
@@ -164,7 +164,7 @@ describe('StatCard', () => {
       render(<StatCard label="Test" value={42} size="lg" variant="info" data-testid="card" />)
       const card = screen.getByTestId('card')
       const value = screen.getByText('42')
-      expect(card.className).toContain('bg-status-info-muted')
+      expect(card.className).toContain('bg-gradient-status-info-light')
       expect(value.className).toContain('text-3xl')
     })
 
@@ -346,6 +346,8 @@ describe('StatCard', () => {
       const variants = [
         'outlined',
         'elevated',
+        'primary',
+        'secondary',
         'info',
         'success',
         'warning',
@@ -366,12 +368,16 @@ describe('StatCard', () => {
           expect(card.className).toContain('bg-surface')
         } else if (variant === 'elevated') {
           expect(card.className).toContain('shadow-md')
+        } else if (variant === 'primary') {
+          expect(card.className).toContain('bg-gradient-primary-light')
+        } else if (variant === 'secondary') {
+          expect(card.className).toContain('bg-gradient-secondary-light')
         } else if (variant.startsWith('accent')) {
-          // Card uses hyphenated class names like bg-accent-1-muted
+          // Card uses light gradient class names like bg-gradient-accent-1-light
           const variantNum = variant.slice(-1)
-          expect(card.className).toContain(`bg-accent-${variantNum}-muted`)
+          expect(card.className).toContain(`bg-gradient-accent-${variantNum}-light`)
         } else if (['info', 'success', 'warning', 'error'].includes(variant)) {
-          expect(card.className).toContain(`bg-status-${variant}-muted`)
+          expect(card.className).toContain(`bg-gradient-status-${variant}-light`)
         }
       })
     })

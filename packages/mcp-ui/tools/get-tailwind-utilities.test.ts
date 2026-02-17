@@ -374,13 +374,14 @@ describe('getTailwindUtilitiesTool', () => {
       expect(result.utilities.gradients!.length).toBeGreaterThan(0)
     })
 
-    it('includes interactive gradient utilities', () => {
+    it('includes core gradient utilities', () => {
       const result = getTailwindUtilitiesTool({ category: 'gradients' })
       const names = result.utilities.gradients!.map((e) => e.name)
 
-      expect(names).toContain('bg-gradient-interactive-primary')
-      expect(names).toContain('bg-gradient-interactive-secondary')
-      expect(names).toContain('bg-gradient-interactive-destructive')
+      expect(names).toContain('bg-gradient-primary')
+      expect(names).toContain('bg-gradient-secondary')
+      expect(names).toContain('bg-gradient-destructive')
+      expect(names).toContain('bg-gradient-surface')
     })
 
     it('includes status gradient utilities', () => {
@@ -399,6 +400,16 @@ describe('getTailwindUtilitiesTool', () => {
 
       expect(names).toContain('bg-gradient-accent-1')
       expect(names).toContain('bg-gradient-accent-2')
+    })
+
+    it('includes light gradient utilities', () => {
+      const result = getTailwindUtilitiesTool({ category: 'gradients' })
+      const names = result.utilities.gradients!.map((e) => e.name)
+
+      expect(names).toContain('bg-gradient-primary-light')
+      expect(names).toContain('bg-gradient-surface-light')
+      expect(names).toContain('bg-gradient-status-info-light')
+      expect(names).toContain('bg-gradient-accent-1-light')
     })
 
     it('each gradient entry has a CSS value', () => {

@@ -12,14 +12,14 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-gradient-interactive-primary text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-primary text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         secondary:
-          'bg-gradient-interactive-secondary text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-secondary text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         outline:
           'border border-border bg-transparent hover:bg-surface-subtle focus-visible:ring-ring',
         ghost: 'hover:bg-interactive-hover focus-visible:ring-ring',
         destructive:
-          'bg-gradient-interactive-destructive text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-destructive text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
       },
       size: {
         sm: 'h-size-sm px-md text-sm',

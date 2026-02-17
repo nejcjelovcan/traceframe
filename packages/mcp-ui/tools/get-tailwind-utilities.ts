@@ -298,16 +298,14 @@ function getGradientUtilities(): TokenEntry[] {
   const entries: TokenEntry[] = []
 
   if ('gradient' in TOKEN_METADATA.theme) {
-    for (const [category, categoryMeta] of Object.entries(TOKEN_METADATA.theme.gradient)) {
-      for (const [variant, variantMeta] of Object.entries(categoryMeta.variants)) {
-        const name = `bg-gradient-${category}-${variant}`
-        entries.push({
-          name,
-          value: variantMeta.value,
-          description: variantMeta.description,
-          classes: [name],
-        })
-      }
+    for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.gradient)) {
+      const className = `bg-gradient-${name}`
+      entries.push({
+        name: className,
+        value: meta.value,
+        description: meta.description,
+        classes: [className],
+      })
     }
   }
 

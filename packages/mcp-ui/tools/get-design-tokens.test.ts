@@ -64,20 +64,11 @@ vi.mock('../utils/design-tokens.js', () => ({
       highlight: { value: '2px dashed', description: 'Highlight border' },
     },
     gradients: {
-      interactive: {
-        description: 'Interactive gradients',
-        variants: {
-          primary: { value: 'gradient-primary', description: 'Primary gradient' },
-          secondary: { value: 'gradient-secondary', description: 'Secondary gradient' },
-        },
-      },
-      status: {
-        description: 'Status gradients',
-        variants: {
-          success: { value: 'gradient-success', description: 'Success gradient' },
-          error: { value: 'gradient-error', description: 'Error gradient' },
-        },
-      },
+      primary: { value: 'gradient-primary', description: 'Primary gradient' },
+      'primary-light': { value: 'gradient-primary-light', description: 'Primary light gradient' },
+      secondary: { value: 'gradient-secondary', description: 'Secondary gradient' },
+      'status-success': { value: 'gradient-success', description: 'Success gradient' },
+      'status-error': { value: 'gradient-error', description: 'Error gradient' },
     },
     borderRadius: {
       sm: { value: '0.25rem', description: 'Small border radius' },
@@ -203,9 +194,9 @@ describe('getDesignTokensTool', () => {
     expect(result.tokens.gradients).toBeDefined()
     expect(result.tokens.colors).toBeUndefined()
     expect(result.tokens.borders).toBeUndefined()
-    expect(result.summary).toContain('gradient categories')
-    expect(result.tokens.gradients?.interactive.description).toBe('Interactive gradients')
-    expect(result.tokens.gradients?.status.variants.success.value).toBe('gradient-success')
+    expect(result.summary).toContain('gradient tokens')
+    expect(result.tokens.gradients?.primary.description).toBe('Primary gradient')
+    expect(result.tokens.gradients?.['status-success'].value).toBe('gradient-success')
   })
 
   it('includes all new token types when type is all', async () => {
@@ -223,6 +214,6 @@ describe('getDesignTokensTool', () => {
     expect(result.summary).toContain('shadow values')
     expect(result.summary).toContain('border styles')
     expect(result.summary).toContain('border radius values')
-    expect(result.summary).toContain('gradient categories')
+    expect(result.summary).toContain('gradient tokens')
   })
 })

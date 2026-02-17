@@ -182,7 +182,7 @@ src/styles/tokens/
 │   ├── light.css       # Light mode mappings
 │   └── dark.css        # Dark mode mappings
 ├── themes/             # Complete theme definitions
-│   └── *.css           # Typography, spacing, shadows, borders, gradients
+│   └── *.css           # Typography, spacing, shadows, borders
 └── theme-registration.css  # Tailwind v4 @theme inline registration
 ```
 
@@ -274,9 +274,9 @@ pnpm validate:token-definitions
 <div className="border-thick" />
 <div className="border-line-status-error-border" />
 
-// Gradient tokens
-<button className="bg-gradient-interactive-primary text-white" />
-<div className="bg-gradient-status-success" />
+// Gradient tokens (strong for buttons, light for cards)
+<button className="bg-gradient-primary text-foreground-filled" />
+<div className="bg-gradient-status-info-light" />
 ```
 
 ### Token Categories
@@ -304,7 +304,7 @@ pnpm validate:token-definitions
 | Shadow        | `shadow-highlight`, `shadow-highlight-hover`, `shadow-highlight-pressed`                           | Prominent interactive element shadows     |
 | Shadow        | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                                     | Inset shadows for pressed/active states   |
 | Border Style  | `border-line`, `border-thick`, `border-highlight`                                                  | Composite border styles (width + pattern) |
-| Gradient      | `bg-gradient-interactive-*`, `bg-gradient-status-*`, `bg-gradient-accent-*`                        | Background gradients for emphasis         |
+| Gradient      | `bg-gradient-primary`, `bg-gradient-status-*`, `bg-gradient-accent-*`, plus `-light` variants      | Background gradients for emphasis         |
 | Sizing        | `h-size-xs` (24px), `h-size-sm` (32px), `h-size-md` (40px), `h-size-lg` (48px), `h-size-xl` (56px) | Element heights/widths (buttons, inputs)  |
 | Spacing       | `spacing-2xs` to `spacing-2xl`                                                                     | Margins, padding, gaps                    |
 

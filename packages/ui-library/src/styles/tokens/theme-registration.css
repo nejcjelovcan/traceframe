@@ -119,10 +119,11 @@
   --font-sans: var(--token-font-sans);
   --font-mono: var(--token-font-mono);
 
-  /* ===== Gradients ===== */
-  --gradient-interactive-primary: var(--token-gradient-interactive-primary);
-  --gradient-interactive-secondary: var(--token-gradient-interactive-secondary);
-  --gradient-interactive-destructive: var(--token-gradient-interactive-destructive);
+  /* ===== Gradients (default/strong) ===== */
+  --gradient-primary: var(--token-gradient-primary);
+  --gradient-secondary: var(--token-gradient-secondary);
+  --gradient-destructive: var(--token-gradient-destructive);
+  --gradient-surface: var(--token-gradient-surface);
   --gradient-status-info: var(--token-gradient-status-info);
   --gradient-status-success: var(--token-gradient-status-success);
   --gradient-status-warning: var(--token-gradient-status-warning);
@@ -132,6 +133,21 @@
   --gradient-accent-3: var(--token-gradient-accent-3);
   --gradient-accent-4: var(--token-gradient-accent-4);
   --gradient-accent-5: var(--token-gradient-accent-5);
+
+  /* ===== Gradients (light) ===== */
+  --gradient-primary-light: var(--token-gradient-primary-light);
+  --gradient-secondary-light: var(--token-gradient-secondary-light);
+  --gradient-destructive-light: var(--token-gradient-destructive-light);
+  --gradient-surface-light: var(--token-gradient-surface-light);
+  --gradient-status-info-light: var(--token-gradient-status-info-light);
+  --gradient-status-success-light: var(--token-gradient-status-success-light);
+  --gradient-status-warning-light: var(--token-gradient-status-warning-light);
+  --gradient-status-error-light: var(--token-gradient-status-error-light);
+  --gradient-accent-1-light: var(--token-gradient-accent-1-light);
+  --gradient-accent-2-light: var(--token-gradient-accent-2-light);
+  --gradient-accent-3-light: var(--token-gradient-accent-3-light);
+  --gradient-accent-4-light: var(--token-gradient-accent-4-light);
+  --gradient-accent-5-light: var(--token-gradient-accent-5-light);
 
   /* ===== Border Styles ===== */
   --border-style-line: var(--token-border-style-line);

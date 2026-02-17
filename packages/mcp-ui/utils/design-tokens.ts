@@ -67,19 +67,11 @@ export interface BorderStyleInfo {
 }
 
 /**
- * Gradient token variant info with value and description.
- */
-export interface GradientVariantInfo {
-  value: string
-  description: string
-}
-
-/**
- * Gradient token with description and variants.
+ * Gradient token info with value and description.
  */
 export interface GradientTokenInfo {
+  value: string
   description: string
-  variants: Record<string, GradientVariantInfo>
 }
 
 /**
@@ -191,17 +183,10 @@ export async function getDesignTokens(): Promise<DesignTokens> {
   // Gradient values from TOKEN_METADATA.theme.gradient
   const gradients: Record<string, GradientTokenInfo> = {}
   if ('theme' in TOKEN_METADATA && 'gradient' in TOKEN_METADATA.theme) {
-    for (const [category, categoryData] of Object.entries(TOKEN_METADATA.theme.gradient)) {
-      const variants: Record<string, GradientVariantInfo> = {}
-      for (const [variant, variantData] of Object.entries(categoryData.variants)) {
-        variants[variant] = {
-          value: variantData.value,
-          description: variantData.description,
-        }
-      }
-      gradients[category] = {
-        description: categoryData.description,
-        variants,
+    for (const [name, data] of Object.entries(TOKEN_METADATA.theme.gradient)) {
+      gradients[name] = {
+        value: data.value,
+        description: data.description,
       }
     }
   }
