@@ -68,7 +68,7 @@ Semantic tokens in `modes/light.css` and `modes/dark.css` reference palette vari
 --token-foreground: var(--palette-neutral-900);
 
 /* Gradients also reference palette vars directly */
---token-gradient-interactive-primary: linear-gradient(
+--token-gradient-primary: linear-gradient(
   180deg,
   var(--palette-primary-600),
   var(--palette-primary-700)

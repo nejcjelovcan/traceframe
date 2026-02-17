@@ -559,7 +559,7 @@ function isColorClass(value: string): boolean {
 /**
  * Check if a class uses non-semantic gradient patterns.
  * Non-semantic: bg-gradient-to-*, from-*, via-*, to-* (arbitrary gradient construction)
- * Semantic: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*
+ * Semantic: bg-gradient-primary, bg-gradient-primary-light, bg-gradient-status-*, bg-gradient-accent-*
  */
 export function isNonSemanticGradientClass(className: string): boolean {
   const clean = stripModifiers(className)

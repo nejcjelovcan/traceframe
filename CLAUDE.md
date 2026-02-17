@@ -388,8 +388,8 @@ Use the `get_design_tokens` MCP tool to query design tokens from ui-library. The
 The token system is CSS-based, with CSS files as the single source of truth (not JSON). Token structure in `packages/ui-library/src/styles/tokens/`:
 
 - `palettes/*.css` - Color palette definitions in OKLCH color space (arctic, dusk, ember)
-- `themes/*.css` - Theme-specific tokens (shadows, borders, gradients)
-- `modes/*.css` - Light/dark mode semantic tokens
+- `themes/*.css` - Theme-specific tokens (shadows, borders)
+- `modes/*.css` - Light/dark mode semantic tokens and gradients
 - `theme-registration.css` - Tailwind v4 `@theme inline` registration
 
 Token metadata in `packages/ui-library/src/styles/token-metadata.ts` provides descriptions for MCP tools, but the CSS files define the actual values.
@@ -404,7 +404,7 @@ Token metadata in `packages/ui-library/src/styles/token-metadata.ts` provides de
 | Spacing       | `spacing`    | Semantic spacing tokens (xs, sm, md, lg, xl, 2xl) plus custom values (18, 22) |
 | Shadows       | -            | Elevation, interactive states, highlight, and inset shadows (per theme)       |
 | Border Styles | -            | Composite border style tokens (width + line style, per theme)                 |
-| Gradients     | -            | Background gradient tokens for emphasis surfaces (per theme)                  |
+| Gradients     | -            | Background gradient tokens with strong and light variants (per mode)          |
 
 ### Color Palettes
 
@@ -467,16 +467,16 @@ Border style tokens combine width + line style and are consumed via custom Tailw
 
 **Custom color:** `border-line-*` accepts any color token, e.g., `border-line-status-error-border`, `border-highlight-accent-1-border`. Without a color suffix, they default to `--color-border`.
 
-### Gradient Tokens (Per Theme)
+### Gradient Tokens (Per Mode)
 
-Gradient tokens provide subtle background gradients for emphasis surfaces. They are theme-level tokens (vary by theme personality, not by light/dark mode) and are defined in CSS theme files (`src/styles/tokens/themes/*.css`). Consumed via `bg-gradient-*` Tailwind utilities.
+Gradient tokens provide background gradients for emphasis surfaces. Each gradient has a strong variant (for buttons/CTAs) and a light variant (for cards/subtle backgrounds). Defined in mode CSS files (`src/styles/tokens/modes/*.css`). Consumed via `bg-gradient-*` Tailwind utilities.
 
-| Category    | Tokens                                | Tailwind Classes                                                                                                  | Usage                       |
-| ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| Interactive | `primary`, `secondary`, `destructive` | `bg-gradient-interactive-primary`, `bg-gradient-interactive-secondary`, `bg-gradient-interactive-destructive`     | Buttons, CTAs               |
-| Status      | `info`, `success`, `warning`, `error` | `bg-gradient-status-info`, `bg-gradient-status-success`, `bg-gradient-status-warning`, `bg-gradient-status-error` | Status emphasis areas       |
-| Accent      | `1` through `5`                       | `bg-gradient-accent-1` through `bg-gradient-accent-5`                                                             | Data visualization emphasis |
-| Surface     | `inverted`                            | `bg-gradient-surface-inverted`                                                                                    | Dark background areas       |
+| Category | Tokens (strong)                                                   | Light variants                                                                            | Usage                       |
+| -------- | ----------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | --------------------------- |
+| Core     | `primary`, `secondary`, `destructive`                             | `primary-light`, `secondary-light`, `destructive-light`                                   | Buttons, CTAs, cards        |
+| Status   | `status-info`, `status-success`, `status-warning`, `status-error` | `status-info-light`, `status-success-light`, `status-warning-light`, `status-error-light` | Status emphasis areas       |
+| Accent   | `accent-1` through `accent-5`                                     | `accent-1-light` through `accent-5-light`                                                 | Data visualization emphasis |
+| Surface  | `surface`                                                         | `surface-light`                                                                           | Neutral background areas    |
 
 ### Using Tokens in Tailwind
 
@@ -512,10 +512,11 @@ Gradient tokens provide subtle background gradients for emphasis surfaces. They 
 <div className="border-line-status-error-border" />       // 1px solid with error border color
 <div className="border-b-line" />                         // Bottom border only
 
-// Gradient tokens
-<button className="bg-gradient-interactive-primary text-white" />
+// Gradient tokens (strong for buttons, light for cards)
+<button className="bg-gradient-primary text-foreground-filled" />
 <div className="bg-gradient-status-success" />
-<div className="bg-gradient-surface-inverted text-foreground-inverted" />
+<Card variant="info" />  // uses bg-gradient-status-info-light internally
+<Card variant="primary" />  // uses bg-gradient-primary-light internally
 ```
 
 ### When to Propose New Semantic Tokens
