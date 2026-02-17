@@ -6,6 +6,7 @@ const themeOptions: readonly ToggleGroupOption<Theme>[] = [
   { value: 'dusk', label: THEME_LABELS.dusk, icon: 'moon' },
   { value: 'arctic', label: THEME_LABELS.arctic, icon: 'database' },
   { value: 'ember', label: THEME_LABELS.ember, icon: 'chart' },
+  { value: 'forge', label: THEME_LABELS.forge, icon: 'settings' },
 ]
 
 export interface ThemeSwitcherProps {

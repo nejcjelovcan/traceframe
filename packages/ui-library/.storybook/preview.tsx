@@ -24,6 +24,8 @@ const preview: Preview = {
         'Arctic Dark': 'arctic dark',
         'Ember Light': 'ember light',
         'Ember Dark': 'ember dark',
+        'Forge Light': 'forge light',
+        'Forge Dark': 'forge dark',
       },
       defaultTheme: 'Dusk Light',
       parentSelector: 'html',

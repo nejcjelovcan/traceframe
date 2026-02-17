@@ -4,9 +4,11 @@
 @import './tokens/palettes/dusk.css';
 @import './tokens/palettes/arctic.css';
 @import './tokens/palettes/ember.css';
+@import './tokens/palettes/forge.css';
 @import './tokens/themes/dusk.css';
 @import './tokens/themes/arctic.css';
 @import './tokens/themes/ember.css';
+@import './tokens/themes/forge.css';
 @import './tokens/modes/light.css';
 @import './tokens/modes/dark.css';
 @import './border-utilities.css';
