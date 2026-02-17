@@ -1,13 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react-vite'
-
 import { Badge } from '../components/Badge.js'
 import { Button } from '../components/Button.js'
-import { Card, CardContent, CardFooter, CardHeader } from '../components/Card.js'
+import { Card, CardContent, CardHeader } from '../components/Card.js'
 import { Container } from '../components/Container.js'
 import { Heading } from '../components/Heading.js'
 import { Input } from '../components/Input.js'
-import { StatCard } from '../components/StatCard.js'
 import { Stack } from '../components/Stack.js'
+import { StatCard } from '../components/StatCard.js'
+
+import type { Meta, StoryObj } from '@storybook/react-vite'
+import type { FC } from 'react'
 
 const meta = {
   title: 'Foundation/Inverse Mode',
@@ -58,7 +59,7 @@ The old \`inverted\` prop on Card and other components has been removed. Replace
     },
   },
   decorators: [
-    (Story: any) => (
+    (Story: FC) => (
       <div className="min-h-screen bg-surface p-lg">
         <Story />
       </div>
