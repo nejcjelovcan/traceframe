@@ -170,63 +170,90 @@ To add Traceframe theme switching to your own Storybook, see [`@nejcjelovcan/tra
 
 ## Design Tokens
 
-Design tokens are managed via Style Dictionary and generated from source definitions in `tokens/`.
+Design tokens are defined directly in CSS files using CSS variables, with Tailwind v4 generating utility classes via the `@theme inline` directive.
 
 ### Token Architecture
 
 ```
-tokens/
-├── palettes/           # Color palettes (dusk, arctic)
-│   └── *.json          # 6 semantic + 5 accent palettes, 11 shades each
-├── semantic/           # Theme-aware semantic color tokens
-│   ├── light.json      # Light theme (surface, foreground, border, etc.)
-│   └── dark.json       # Dark theme
-└── themes/             # Complete theme definitions
-    └── *.json          # Fonts, font sizes, shadows, radii, sizing, spacing + palette reference
+src/styles/tokens/
+├── palettes/           # Color palettes (dusk, arctic, ember)
+│   └── *.css           # Palette color CSS variables
+├── modes/              # Light/dark mode semantic tokens
+│   ├── light.css       # Light mode mappings
+│   └── dark.css        # Dark mode mappings
+├── themes/             # Complete theme definitions
+│   └── *.css           # Typography, spacing, shadows, borders, gradients
+└── theme-registration.css  # Tailwind v4 @theme inline registration
 ```
 
 ### Theming System
 
 The token system has three layers:
 
-1. **Palettes** (`palettes/`) - Raw color definitions with 11 shades per color
-2. **Semantic tokens** (`semantic/`) - Theme-aware color mappings that reference palette values; enable light/dark mode switching
-3. **Themes** (`themes/`) - Non-color tokens (typography, sizing, spacing, shadows, border styles, gradients, radii) that reference semantic color variables
+1. **Palettes** (`palettes/`) - Raw color definitions with 11 shades per color, defined as CSS variables
+2. **Semantic tokens** (`modes/`) - Theme-aware color mappings that reference palette values; enable light/dark mode switching through `:root.light` and `:root.dark` selectors
+3. **Themes** (`themes/`) - Non-color tokens (typography, sizing, spacing, shadows, border styles, radii) that apply via theme class selectors (e.g., `:root.dusk`)
 
-Themes reference **semantic** color variables (not palettes directly), enabling:
+CSS files are now the source of truth, with tokens cascading through:
 
-- Swapping theme + palette combinations freely
-- Light/dark mode through semantic token changes
-- Automatic color adaptation in shadows and other theme values
+- `:root` - Base token definitions
+- `:root.light` / `:root.dark` - Mode-specific semantic color mappings
+- `:root.dusk` / `:root.arctic` / `:root.ember` - Theme-specific values
+
+The `theme-registration.css` file registers all tokens with Tailwind v4's `@theme inline` directive, which generates utility classes for each token.
 
 **Important:** Each theme should customize ALL token categories to create a distinct visual identity - not just colors. A "warm" theme might use larger radii and looser spacing, while a "data-focused" theme might use tighter spacing and sharper corners.
 
-Each theme file (`themes/*.json`) defines non-color tokens and declares its associated palette:
+Each theme file (`themes/*.css`) defines non-color tokens using CSS variables:
 
-```json
-{
-  "$palette": "dusk",
-  "$description": "Moody, sophisticated theme...",
-  "fontFamily": { "sans": {...}, "mono": {...} },
-  "fontSize": { "xs": {...}, "sm": {...}, ... },
-  "shadow": { "sm": {...}, "md": {...}, "lg": {...}, "interactive": {...}, "highlight": {...}, "inset": {...} },
-  "borderRadius": { "sm": {...}, "md": {...}, "lg": {...} },
-  "borderStyle": { "line": {...}, "thick": {...}, "highlight": {...} },
-  "gradient": { "interactive": {...}, "status": {...}, "accent": {...}, "surface": {...} },
-  "size": { "xs": {...}, "sm": {...}, "md": {...}, "lg": {...}, "xl": {...} },
-  "spacing": { "2xs": {...}, "xs": {...}, "sm": {...}, "md": {...}, "base": {...}, ... }
+```css
+@layer base {
+  :root.dusk {
+    /* Typography */
+    --token-font-sans: 'Inter Variable', Inter, system-ui, sans-serif;
+    --token-font-mono: 'JetBrains Mono', Menlo, monospace;
+
+    /* Shadows (using color-mix for theme-aware shadows) */
+    --token-shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--token-shadow-color) 8%, transparent);
+    --token-shadow-md: 0 4px 8px -1px color-mix(in srgb, var(--token-shadow-color) 12%, transparent);
+
+    /* Border styles */
+    --token-border-style-line: 1px solid;
+    --token-border-style-thick: 2px solid;
+    --token-border-style-highlight: 2px dashed;
+
+    /* Border radius */
+    --token-radius-sm: 0.25rem;
+    --token-radius-md: 0.5rem;
+    --token-radius-lg: 0.75rem;
+
+    /* Spacing (semantic scale) */
+    --token-spacing-xs: 0.25rem;
+    --token-spacing-sm: 0.5rem;
+    --token-spacing-md: 0.75rem;
+    /* ... */
+  }
 }
 ```
 
-### Token Generation
+### Working with Tokens
 
 ```bash
-# Regenerate tokens after editing source files
-pnpm generate:tokens
-
-# Validate token consistency across files
+# Validate token consistency across CSS files
 pnpm validate:token-definitions
+
+# Tokens are consumed directly from CSS - no build step required
+# Tailwind v4 reads theme-registration.css to generate utility classes
 ```
+
+#### Adding New Tokens
+
+1. Add the CSS variable to the appropriate file:
+   - Palette colors: `src/styles/tokens/palettes/*.css`
+   - Semantic mappings: `src/styles/tokens/modes/{light,dark}.css`
+   - Theme values: `src/styles/tokens/themes/*.css`
+2. Register the token in `theme-registration.css` if creating a new semantic token
+3. Update TypeScript metadata in `src/styles/token-metadata.ts` for MCP tool support
 
 ### Using Tokens in Components
 
@@ -280,15 +307,6 @@ pnpm validate:token-definitions
 | Gradient      | `bg-gradient-interactive-*`, `bg-gradient-status-*`, `bg-gradient-accent-*`                        | Background gradients for emphasis         |
 | Sizing        | `h-size-xs` (24px), `h-size-sm` (32px), `h-size-md` (40px), `h-size-lg` (48px), `h-size-xl` (56px) | Element heights/widths (buttons, inputs)  |
 | Spacing       | `spacing-2xs` to `spacing-2xl`                                                                     | Margins, padding, gaps                    |
-
-### Full Documentation
-
-See [STYLE_DICTIONARY.md](./STYLE_DICTIONARY.md) for:
-
-- Complete token system architecture
-- How to add new tokens or palettes
-- Build pipeline details
-- Troubleshooting guide
 
 ## Icons
 

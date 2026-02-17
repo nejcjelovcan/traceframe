@@ -61,6 +61,14 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
       ],
       filename: 'test-file.tsx',
     },
+    // Template literals in className
+    {
+      code: '<div className={`p-md gap-sm`} />',
+    },
+    // Template literals with semantic tokens in cn/clsx
+    {
+      code: 'cn(`p-lg gap-md`)',
+    },
   ],
 
   invalid: [
@@ -252,6 +260,40 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
       errors: [
         {
           messageId: 'nonSemanticSpacing',
+        },
+      ],
+    },
+    // Template literals in JSX className
+    {
+      code: '<div className={`p-4 gap-2`} />',
+      errors: [
+        {
+          messageId: 'nonSemanticSpacing',
+          data: {
+            className: 'p-4',
+            suggestion: 'p-base',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'p-base' },
+              output: '<div className={`p-base gap-2`} />',
+            },
+          ],
+        },
+        {
+          messageId: 'nonSemanticSpacing',
+          data: {
+            className: 'gap-2',
+            suggestion: 'gap-sm',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'gap-sm' },
+              output: '<div className={`p-4 gap-sm`} />',
+            },
+          ],
         },
       ],
     },
