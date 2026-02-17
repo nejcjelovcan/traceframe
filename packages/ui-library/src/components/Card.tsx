@@ -194,9 +194,21 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
               // Handle Enter/Space for activation
               if ((e.key === 'Enter' || e.key === ' ') && props.onClick) {
                 e.preventDefault()
-                // Call onClick directly with the keyboard event
-                // The handler should be able to handle both mouse and keyboard events
-                props.onClick(e as any)
+                // Create a synthetic click event from the keyboard event
+                const syntheticEvent = new MouseEvent('click', {
+                  bubbles: true,
+                  cancelable: true,
+                  view: window,
+                }) as unknown as React.MouseEvent<HTMLDivElement>
+                Object.defineProperty(syntheticEvent, 'currentTarget', {
+                  value: e.currentTarget,
+                  writable: false,
+                })
+                Object.defineProperty(syntheticEvent, 'target', {
+                  value: e.target,
+                  writable: false,
+                })
+                props.onClick(syntheticEvent)
               }
               // Call provided onKeyDown if exists
               props.onKeyDown?.(e)
