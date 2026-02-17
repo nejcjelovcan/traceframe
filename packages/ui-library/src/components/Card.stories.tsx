@@ -822,19 +822,19 @@ export const AccordionControlled: Story = {
         <div className="flex gap-base">
           <button
             onClick={() => setOpen(true)}
-            className="rounded bg-interactive-primary px-sm py-xs text-sm text-white hover:bg-interactive-primary-hover"
+            className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
           >
             Open
           </button>
           <button
             onClick={() => setOpen(false)}
-            className="rounded bg-interactive-secondary px-sm py-xs text-sm text-white hover:bg-interactive-secondary-hover"
+            className="rounded bg-interactive-secondary px-sm py-xs text-sm text-interactive-secondary-foreground hover:bg-interactive-secondary-hover"
           >
             Close
           </button>
           <button
             onClick={() => setOpen(!open)}
-            className="rounded bg-interactive-primary px-sm py-xs text-sm text-white hover:bg-interactive-primary-hover"
+            className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
           >
             Toggle
           </button>
@@ -959,9 +959,7 @@ export const AccordionMultiple: Story = {
           <p className="text-sm">No API keys configured.</p>
         </CardContent>
         <CardFooter>
-          <button className="text-sm text-interactive-accent hover:underline">
-            Generate Key
-          </button>
+          <button className="text-sm text-interactive-accent hover:underline">Generate Key</button>
         </CardFooter>
       </Card>
     </div>
@@ -999,7 +997,8 @@ export const AccordionErrorCase: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'This story demonstrates the error case when both accordion and actionable props are used. Check the console for the error message.',
+        story:
+          'This story demonstrates the error case when both accordion and actionable props are used. Check the console for the error message.',
       },
     },
   },
@@ -1007,7 +1006,7 @@ export const AccordionErrorCase: Story = {
     <Card accordion actionable className="w-80">
       <CardHeader>Invalid Configuration</CardHeader>
       <CardContent>
-        <p className="text-sm text-error-500">
+        <p className="text-sm text-status-error-foreground">
           ⚠️ Card cannot be both accordion and actionable.
         </p>
         <p className="text-sm mt-sm">

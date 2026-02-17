@@ -661,7 +661,9 @@ describe('Card accordion functionality', () => {
   it('works with header icon on right', () => {
     render(
       <Card accordion>
-        <CardHeader icon="settings" iconPosition="right">Settings</CardHeader>
+        <CardHeader icon="settings" iconPosition="right">
+          Settings
+        </CardHeader>
         <CardContent>Content</CardContent>
       </Card>
     )

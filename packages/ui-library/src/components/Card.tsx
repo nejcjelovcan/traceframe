@@ -1,6 +1,16 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { Children, cloneElement, createContext, forwardRef, isValidElement, useContext, useId, type HTMLAttributes, type ReactElement } from 'react'
+import {
+  Children,
+  cloneElement,
+  createContext,
+  forwardRef,
+  isValidElement,
+  useContext,
+  useId,
+  type HTMLAttributes,
+  type ReactElement,
+} from 'react'
 
 import { Icon } from '../icons/Icon.js'
 import { cn } from '../utils/cn.js'
@@ -150,21 +160,26 @@ export interface CardProps
 }
 
 export const Card = forwardRef<HTMLDivElement, CardProps>(
-  ({
-    className,
-    variant,
-    actionable,
-    inverted,
-    accordion,
-    defaultOpen = false,
-    open,
-    onOpenChange,
-    children,
-    ...props
-  }, ref) => {
+  (
+    {
+      className,
+      variant,
+      actionable,
+      inverted,
+      accordion,
+      defaultOpen = false,
+      open,
+      onOpenChange,
+      children,
+      ...props
+    },
+    ref
+  ) => {
     // Check for mutually exclusive props
     if (actionable && accordion) {
-      console.error('Card: Cannot be both actionable and accordion. Please use only one of these props.')
+      console.error(
+        'Card: Cannot be both actionable and accordion. Please use only one of these props.'
+      )
     }
 
     const baseClassName = cn(cardVariants({ variant, actionable, inverted }), className)
@@ -183,11 +198,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
 
       return (
         <CardContext.Provider value={{ isAccordion: false }}>
-          <div
-            className={baseClassName}
-            ref={ref}
-            {...cardProps}
-          >
+          <div className={baseClassName} ref={ref} {...cardProps}>
             {children}
           </div>
         </CardContext.Provider>
@@ -204,11 +215,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     return (
       <CollapsiblePrimitive.Root {...collapsibleProps}>
         <CardContext.Provider value={{ isAccordion: true, contentId }}>
-          <div
-            className={baseClassName}
-            ref={ref}
-            {...props}
-          >
+          <div className={baseClassName} ref={ref} {...props}>
             {children}
           </div>
         </CardContext.Provider>
