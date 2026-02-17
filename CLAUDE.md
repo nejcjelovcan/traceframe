@@ -387,7 +387,7 @@ Use the `get_design_tokens` MCP tool to query design tokens from ui-library. The
 
 The token system is CSS-based, with CSS files as the single source of truth (not JSON). Token structure in `packages/ui-library/src/styles/tokens/`:
 
-- `palettes/*.css` - Color palette definitions (arctic, dusk, ember)
+- `palettes/*.css` - Color palette definitions in OKLCH color space (arctic, dusk, ember)
 - `themes/*.css` - Theme-specific tokens (shadows, borders, gradients)
 - `modes/*.css` - Light/dark mode semantic tokens
 - `theme-registration.css` - Tailwind v4 `@theme inline` registration
@@ -398,7 +398,7 @@ Token metadata in `packages/ui-library/src/styles/token-metadata.ts` provides de
 
 | Type          | Filter       | Description                                                                   |
 | ------------- | ------------ | ----------------------------------------------------------------------------- |
-| Colors        | `colors`     | Palettes (primary, neutral, success, warning, error) with RGB/hex values      |
+| Colors        | `colors`     | Palettes (primary, neutral, success, warning, error) with OKLCH values        |
 | Semantic      | `colors`     | Theme-aware tokens (surface, foreground, border, ring) with light/dark values |
 | Typography    | `typography` | Font families (sans, mono) and font sizes with line heights                   |
 | Spacing       | `spacing`    | Semantic spacing tokens (xs, sm, md, lg, xl, 2xl) plus custom values (18, 22) |
@@ -531,3 +531,5 @@ New semantic tokens are added to CSS source files:
 1. Define the token in `packages/ui-library/src/styles/tokens/modes/light.css` and `dark.css`
 2. Register via `@theme inline` in `packages/ui-library/src/styles/tokens/theme-registration.css`
 3. Update `packages/ui-library/src/styles/token-metadata.ts` with descriptions for MCP tools
+
+**Important:** Semantic tokens reference palette variables with `var()` only -- never wrap in `rgb()`. Palette values are OKLCH (e.g., `oklch(58% 0.1 220)`), so `rgb(var(...))` is invalid. Correct: `--token-foreground: var(--palette-neutral-900);`

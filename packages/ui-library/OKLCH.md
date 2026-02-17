@@ -18,9 +18,12 @@ The Traceframe UI Library has migrated to OKLCH (Oklab Lightness Chroma Hue), a 
 ```
 packages/ui-library/src/
 ├── styles/tokens/palettes/
-│   ├── arctic.css      # Arctic palette with OKLCH values and RGB fallbacks
-│   ├── dusk.css        # Dusk palette with OKLCH values and RGB fallbacks
-│   └── ember.css       # Ember palette with OKLCH values and RGB fallbacks
+│   ├── arctic.css      # Arctic palette (OKLCH values)
+│   ├── dusk.css        # Dusk palette (OKLCH values)
+│   └── ember.css       # Ember palette (OKLCH values)
+├── styles/tokens/modes/
+│   ├── light.css       # Light mode semantic tokens (reference palette vars directly)
+│   └── dark.css        # Dark mode semantic tokens (reference palette vars directly)
 ├── styles/tokens/utilities/
 │   └── color-mixing.css # CSS utilities for color manipulation
 └── utils/
@@ -53,30 +56,35 @@ oklch(lightness chroma hue / alpha)
 --color-primary-500-50: oklch(58% 0.1 220 / 0.5);
 ```
 
-## Browser Support
+## How Tokens Reference Palettes
 
-The implementation includes automatic fallbacks for browsers without OKLCH support:
+Semantic tokens in `modes/light.css` and `modes/dark.css` reference palette variables directly using `var()`:
 
 ```css
-/* RGB fallback for older browsers */
-@supports not (color: oklch(0% 0 0)) {
-  :root {
-    --color-primary-500: 98 140 186; /* RGB fallback */
-  }
-}
+/* Palette defines the OKLCH value */
+--palette-neutral-900: oklch(20% 0.008 240);
 
-/* OKLCH for modern browsers */
-@supports (color: oklch(0% 0 0)) {
-  :root {
-    --color-primary-500: oklch(58% 0.1 220);
-  }
-}
+/* Semantic token references it directly (no rgb() wrapper) */
+--token-foreground: var(--palette-neutral-900);
+
+/* Gradients also reference palette vars directly */
+--token-gradient-interactive-primary: linear-gradient(
+  180deg,
+  var(--palette-primary-600),
+  var(--palette-primary-700)
+);
 ```
+
+> **Important:** Semantic tokens must NOT wrap palette references in `rgb()`. Since palette values are OKLCH, `rgb(oklch(...))` is invalid CSS.
+
+## Browser Support
+
+Palette values are defined as native OKLCH colors without fallbacks. Auto-generated RGB fallbacks for older browsers are planned (see TRA-80).
 
 ### Browser Compatibility
 
 - **Full Support**: Chrome 111+, Firefox 113+, Safari 15.4+
-- **Fallback**: All other browsers use RGB values
+- **No Fallback**: Older browsers will not render colors correctly until auto-generated RGB fallbacks are implemented
 
 ## CSS Utilities
 
@@ -208,48 +216,36 @@ When converting existing RGB colors to OKLCH:
 
 1. Use Chrome DevTools color picker in OKLCH mode
 2. Or use online converters like [oklch.com](https://oklch.com/)
-3. Keep the RGB values as fallbacks
 
 ### Example Migration
 
 Before:
 
 ```css
---color-primary-500: rgb(98, 140, 186);
+--palette-primary-500: rgb(98, 140, 186);
 ```
 
 After:
 
 ```css
-/* RGB fallback */
-@supports not (color: oklch(0% 0 0)) {
-  :root {
-    --color-primary-500: 98 140 186;
-  }
-}
-
-/* OKLCH value */
-@supports (color: oklch(0% 0 0)) {
-  :root {
-    --color-primary-500: oklch(58% 0.1 220);
-  }
-}
+--palette-primary-500: oklch(58% 0.1 220);
 ```
+
+No `@supports` wrappers or RGB fallbacks are needed. Palette files define OKLCH values directly.
 
 ## Performance Considerations
 
 - OKLCH calculations are performed natively by the browser
 - `color-mix()` is also native, requiring no JavaScript
-- Fallbacks only load for unsupported browsers
 - No runtime overhead for color conversions
 
 ## Best Practices
 
 1. **Use OKLCH for all new colors**: Define new colors directly in OKLCH
-2. **Maintain RGB fallbacks**: Always provide fallback values for compatibility
+2. **Reference palette vars with `var()` only**: Never wrap in `rgb()` or other color functions
 3. **Leverage color-mix()**: Use native color mixing instead of pre-calculating shades
 4. **Use utilities for variations**: Create color variations dynamically rather than defining each shade
-5. **Test in multiple browsers**: Verify both OKLCH and fallback implementations
+5. **Test in modern browsers**: OKLCH requires Chrome 111+, Firefox 113+, Safari 15.4+
 
 ## Resources
 

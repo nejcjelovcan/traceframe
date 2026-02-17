@@ -176,8 +176,8 @@ Design tokens are defined directly in CSS files using CSS variables, with Tailwi
 
 ```
 src/styles/tokens/
-├── palettes/           # Color palettes (dusk, arctic, ember)
-│   └── *.css           # Palette color CSS variables
+├── palettes/           # Color palettes in OKLCH (dusk, arctic, ember)
+│   └── *.css           # Palette color CSS variables (OKLCH values)
 ├── modes/              # Light/dark mode semantic tokens
 │   ├── light.css       # Light mode mappings
 │   └── dark.css        # Dark mode mappings
@@ -190,8 +190,8 @@ src/styles/tokens/
 
 The token system has three layers:
 
-1. **Palettes** (`palettes/`) - Raw color definitions with 11 shades per color, defined as CSS variables
-2. **Semantic tokens** (`modes/`) - Theme-aware color mappings that reference palette values; enable light/dark mode switching through `:root.light` and `:root.dark` selectors
+1. **Palettes** (`palettes/`) - Raw color definitions in OKLCH color space with 11 shades per color, defined as CSS variables (see [OKLCH.md](./OKLCH.md))
+2. **Semantic tokens** (`modes/`) - Theme-aware color mappings that reference palette values via `var()`; enable light/dark mode switching through `:root.light` and `:root.dark` selectors
 3. **Themes** (`themes/`) - Non-color tokens (typography, sizing, spacing, shadows, border styles, radii) that apply via theme class selectors (e.g., `:root.dusk`)
 
 CSS files are now the source of truth, with tokens cascading through:
