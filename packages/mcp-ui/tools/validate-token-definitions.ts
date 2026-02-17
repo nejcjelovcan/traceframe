@@ -128,13 +128,13 @@ export async function validateTokenDefinitionsTool({
     passed: modeMismatches.length === 0,
   })
 
-  // 2. Validate theme tokens: dusk.css (source) vs arctic.css, ember.css
+  // 2. Validate theme tokens: arctic.css (source) vs other themes
   const themesDir = join(stylesDir, 'themes')
-  const duskThemeCss = await readFile(join(themesDir, 'dusk.css'), 'utf-8')
-  const duskThemeProps = extractCssCustomProperties(duskThemeCss)
+  const arcticThemeCss = await readFile(join(themesDir, 'arctic.css'), 'utf-8')
+  const arcticThemeProps = extractCssCustomProperties(arcticThemeCss)
 
   const themeFiles = (await readdir(themesDir)).filter(
-    (f) => f.endsWith('.css') && f !== 'dusk.css'
+    (f) => f.endsWith('.css') && f !== 'arctic.css'
   )
 
   for (const themeFile of themeFiles) {
@@ -142,28 +142,28 @@ export async function validateTokenDefinitionsTool({
     const themeProps = extractCssCustomProperties(themeCss)
 
     const themeMismatches = compareCssFiles(
-      duskThemeProps,
+      arcticThemeProps,
       themeProps,
-      'themes/dusk.css',
+      'themes/arctic.css',
       `themes/${themeFile}`
     )
 
     results.push({
       category: 'themes',
-      sourceFile: 'themes/dusk.css',
+      sourceFile: 'themes/arctic.css',
       targetFile: `themes/${themeFile}`,
       mismatches: themeMismatches,
       passed: themeMismatches.length === 0,
     })
   }
 
-  // 3. Validate palette tokens: palettes/dusk.css (source) vs arctic.css, ember.css
+  // 3. Validate palette tokens: palettes/arctic.css (source) vs other palettes
   const palettesDir = join(stylesDir, 'palettes')
-  const duskPaletteCss = await readFile(join(palettesDir, 'dusk.css'), 'utf-8')
-  const duskPaletteProps = extractCssCustomProperties(duskPaletteCss)
+  const arcticPaletteCss = await readFile(join(palettesDir, 'arctic.css'), 'utf-8')
+  const arcticPaletteProps = extractCssCustomProperties(arcticPaletteCss)
 
   const paletteFiles = (await readdir(palettesDir)).filter(
-    (f) => f.endsWith('.css') && f !== 'dusk.css'
+    (f) => f.endsWith('.css') && f !== 'arctic.css'
   )
 
   for (const paletteFile of paletteFiles) {
@@ -171,15 +171,15 @@ export async function validateTokenDefinitionsTool({
     const paletteProps = extractCssCustomProperties(paletteCss)
 
     const paletteMismatches = compareCssFiles(
-      duskPaletteProps,
+      arcticPaletteProps,
       paletteProps,
-      'palettes/dusk.css',
+      'palettes/arctic.css',
       `palettes/${paletteFile}`
     )
 
     results.push({
       category: 'palettes',
-      sourceFile: 'palettes/dusk.css',
+      sourceFile: 'palettes/arctic.css',
       targetFile: `palettes/${paletteFile}`,
       mismatches: paletteMismatches,
       passed: paletteMismatches.length === 0,
