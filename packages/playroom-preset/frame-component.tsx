@@ -14,12 +14,8 @@ interface Props {
 }
 
 const THEME_MAP: Record<string, { mode: Mode; theme: Theme }> = {
-  'Dusk Light': { mode: 'light', theme: 'dusk' },
-  'Dusk Dark': { mode: 'dark', theme: 'dusk' },
   'Arctic Light': { mode: 'light', theme: 'arctic' },
   'Arctic Dark': { mode: 'dark', theme: 'arctic' },
-  'Ember Light': { mode: 'light', theme: 'ember' },
-  'Ember Dark': { mode: 'dark', theme: 'ember' },
   'Forge Light': { mode: 'light', theme: 'forge' },
   'Forge Dark': { mode: 'dark', theme: 'forge' },
   'Mist Light': { mode: 'light', theme: 'mist' },
@@ -31,10 +27,10 @@ function parseTheme(themeInput: ThemeValue | undefined): {
   theme: Theme
 } {
   if (!themeInput?.name) {
-    return { mode: 'light', theme: 'dusk' }
+    return { mode: 'light', theme: 'arctic' }
   }
 
-  return THEME_MAP[themeInput.name] ?? { mode: 'light', theme: 'dusk' }
+  return THEME_MAP[themeInput.name] ?? { mode: 'light', theme: 'arctic' }
 }
 
 export default function FrameComponent({ theme, children }: Props) {

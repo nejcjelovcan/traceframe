@@ -5,11 +5,11 @@ import { ThemeProvider, useTheme } from './ThemeProvider'
 
 describe('ThemeProvider', () => {
   beforeEach(() => {
-    document.documentElement.classList.remove('dark', 'light', 'dusk', 'arctic')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
   })
 
   afterEach(() => {
-    document.documentElement.classList.remove('dark', 'light', 'dusk', 'arctic')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
   })
 
   describe('mode', () => {
@@ -69,12 +69,12 @@ describe('ThemeProvider', () => {
   })
 
   describe('theme', () => {
-    it('defaults to dusk theme', () => {
+    it('defaults to arctic theme', () => {
       const { result } = renderHook(() => useTheme(), {
         wrapper: ({ children }) => <ThemeProvider>{children}</ThemeProvider>,
       })
 
-      expect(result.current.theme).toBe('dusk')
+      expect(result.current.theme).toBe('arctic')
     })
 
     it('respects defaultTheme prop', () => {
@@ -111,17 +111,17 @@ describe('ThemeProvider', () => {
 
     it('removes previous theme class when switching', () => {
       const { result } = renderHook(() => useTheme(), {
-        wrapper: ({ children }) => <ThemeProvider defaultTheme="dusk">{children}</ThemeProvider>,
+        wrapper: ({ children }) => <ThemeProvider defaultTheme="arctic">{children}</ThemeProvider>,
       })
 
-      expect(document.documentElement.classList.contains('dusk')).toBe(true)
+      expect(document.documentElement.classList.contains('arctic')).toBe(true)
 
       act(() => {
-        result.current.setTheme('arctic')
+        result.current.setTheme('forge')
       })
 
-      expect(document.documentElement.classList.contains('dusk')).toBe(false)
-      expect(document.documentElement.classList.contains('arctic')).toBe(true)
+      expect(document.documentElement.classList.contains('arctic')).toBe(false)
+      expect(document.documentElement.classList.contains('forge')).toBe(true)
     })
   })
 

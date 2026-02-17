@@ -7,7 +7,7 @@ export interface ThemeContextValue {
   mode: Mode
   /** Update the color mode */
   setMode: (mode: Mode) => void
-  /** Current color theme (dusk, arctic) */
+  /** Current color theme (arctic, forge, mist) */
   theme: Theme
   /** Update the color theme */
   setTheme: (theme: Theme) => void
@@ -20,7 +20,7 @@ export interface ThemeProviderProps {
   children: React.ReactNode
   /** Default color mode (default: 'light') */
   defaultMode?: Mode
-  /** Default color theme (default: 'dusk') */
+  /** Default color theme (default: 'arctic') */
   defaultTheme?: Theme
 }
 
@@ -28,13 +28,13 @@ export interface ThemeProviderProps {
  * ThemeProvider manages the application's color mode and theme.
  *
  * - Mode: light/dark - Controls semantic color mappings
- * - Theme: dusk/arctic - Controls the color palette
+ * - Theme: arctic/forge/mist - Controls the color palette
  *
  * Both are applied via CSS classes on the document root element.
  *
  * @example
  * ```tsx
- * <ThemeProvider defaultMode="light" defaultTheme="dusk">
+ * <ThemeProvider defaultMode="light" defaultTheme="arctic">
  *   <App />
  * </ThemeProvider>
  * ```
@@ -42,7 +42,7 @@ export interface ThemeProviderProps {
 export function ThemeProvider({
   children,
   defaultMode = 'light',
-  defaultTheme = 'dusk',
+  defaultTheme = 'arctic',
 }: ThemeProviderProps) {
   const [mode, setModeState] = useState<Mode>(defaultMode)
   const [theme, setThemeState] = useState<Theme>(defaultTheme)
