@@ -1,5 +1,7 @@
 import { Heading } from './Heading'
 import { Navigation, NavItem } from './Navigation'
+import { PageLayout, PageHeader } from './PageLayout'
+import { Stack } from './Stack'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -579,5 +581,124 @@ export const ComplexLayoutExample: Story = {
         </Navigation>
       </div>
     </div>
+  ),
+}
+
+export const ContextInheritance: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'Demonstrates how Navigation inherits variant and color from PageLayout context. The PageLayout has variant="filled" and color="accent-2", which the Navigation components automatically inherit without needing explicit props.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="filled"
+      color="accent-2"
+      header={
+        <PageHeader title="Context Inheritance Demo">
+          <Navigation orientation="horizontal">
+            <NavItem href="#" active>
+              Dashboard
+            </NavItem>
+            <NavItem href="#">Reports</NavItem>
+            <NavItem href="#">Settings</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={
+        <div className="w-64 p-base">
+          <Navigation orientation="vertical">
+            <NavItem href="#" icon="dashboard" active>
+              Overview
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Components
+            </NavItem>
+            <NavItem href="#" icon="hierarchy">
+              Dependencies
+            </NavItem>
+            <NavItem href="#" icon="alert-circle">
+              Issues
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+    >
+      <Stack gap="md">
+        <Heading level={1}>Context Inheritance</Heading>
+        <p className="text-foreground-muted">
+          The Navigation components in both the header and sidebar inherit the filled variant and
+          accent-2 color from the PageLayout, without needing explicit variant or color props.
+        </p>
+        <div className="rounded-lg border border-border bg-surface-subtle p-base">
+          <Heading level={2} className="mb-sm">
+            How it works:
+          </Heading>
+          <ol className="list-inside list-decimal space-y-xs text-sm text-foreground-muted">
+            <li>PageLayout provides variant and color via React Context</li>
+            <li>Navigation checks for context values when not explicitly set</li>
+            <li>Background gradients apply to PageLayout header/sidebar, not Navigation</li>
+            <li>Navigation adjusts text colors based on inherited variant</li>
+          </ol>
+        </div>
+      </Stack>
+    </PageLayout>
+  ),
+}
+
+export const ContextOverride: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'Shows that Navigation can still override the inherited context with explicit props. Here the PageLayout has variant="filled" but the header Navigation overrides with variant="subtle".',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="filled"
+      color="primary"
+      header={
+        <PageHeader title="Override Demo">
+          <Navigation orientation="horizontal" variant="subtle" color="secondary">
+            <NavItem href="#" active>
+              Dashboard
+            </NavItem>
+            <NavItem href="#">Reports</NavItem>
+            <NavItem href="#">Settings</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={
+        <div className="w-64 p-base">
+          <Navigation orientation="vertical">
+            <NavItem href="#" icon="dashboard" active>
+              Inherits Filled
+            </NavItem>
+            <NavItem href="#" icon="components">
+              From PageLayout
+            </NavItem>
+            <NavItem href="#" icon="hierarchy">
+              Context
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+    >
+      <Stack gap="md">
+        <Heading level={1}>Context Override</Heading>
+        <p className="text-foreground-muted">
+          The header Navigation explicitly sets variant="subtle" and color="secondary", overriding
+          the PageLayout context. The sidebar Navigation inherits the filled/primary from
+          PageLayout.
+        </p>
+      </Stack>
+    </PageLayout>
   ),
 }

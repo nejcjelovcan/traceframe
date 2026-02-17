@@ -78,6 +78,7 @@ export {
   PageHeader,
   pageLayoutVariants,
   sidebarVariants,
+  headerVariants,
   type PageLayoutProps,
   type PageHeaderProps,
 } from './components/PageLayout.js'

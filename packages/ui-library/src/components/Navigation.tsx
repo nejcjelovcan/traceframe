@@ -2,6 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { createContext, forwardRef, useContext, type HTMLAttributes, type ReactNode } from 'react'
 
+import { usePageLayoutContext } from './PageLayoutContext.js'
 import { Icon } from '../icons/Icon.js'
 import { type IconName } from '../icons/types.js'
 import { cn } from '../utils/cn.js'
@@ -241,24 +242,28 @@ export interface NavigationProps
 }
 
 const Navigation = forwardRef<HTMLElement, NavigationProps>(
-  (
-    {
-      className,
-      orientation = 'horizontal',
-      variant = 'default',
-      color = 'primary',
-      children,
-      ...props
-    },
-    ref
-  ) => {
+  ({ className, orientation = 'horizontal', variant, color, children, ...props }, ref) => {
+    const pageLayoutContext = usePageLayoutContext()
+
+    // Use explicit props if provided, otherwise inherit from PageLayout context
+    const effectiveVariant = variant ?? pageLayoutContext.variant ?? 'default'
+    const effectiveColor = color ?? pageLayoutContext.color ?? 'primary'
+
+    // When inheriting variant from context (filled/subtle), don't apply background to Navigation itself
+    const shouldApplyBackground = variant !== undefined || !pageLayoutContext.variant
+
+    const navClassName = shouldApplyBackground
+      ? navigationVariants({
+          orientation,
+          variant: effectiveVariant,
+          color: effectiveColor,
+          className,
+        })
+      : navigationVariants({ orientation, variant: 'default', className })
+
     return (
-      <NavigationContext.Provider value={{ orientation, variant }}>
-        <nav
-          ref={ref}
-          className={cn(navigationVariants({ orientation, variant, color, className }))}
-          {...props}
-        >
+      <NavigationContext.Provider value={{ orientation, variant: effectiveVariant }}>
+        <nav ref={ref} className={cn(navClassName)} {...props}>
           {children}
         </nav>
       </NavigationContext.Provider>
