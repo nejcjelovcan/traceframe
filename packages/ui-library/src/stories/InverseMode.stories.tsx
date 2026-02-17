@@ -19,10 +19,10 @@ const meta = {
         component: `
 ## Inverse Mode Architecture
 
-The new inverse mode provides a CSS-based approach to creating inverted color contexts using a simple \`.inverse\` utility class.
+The inverse mode provides a CSS-based approach to creating inverse color contexts using a simple \`.inverse\` utility class.
 
 ### Key Features:
-- **CSS Variable Swapping**: The \`.inverse\` class swaps CSS variables to create inverted contexts
+- **CSS Variable Swapping**: The \`.inverse\` class swaps CSS variables to create inverse contexts
 - **Nesting Support**: Nested inverse contexts (inverse within inverse) swap back to normal
 - **Component Agnostic**: Works with any component without requiring special props
 - **Performance Optimized**: Uses CSS variables for efficient color switching
@@ -31,21 +31,21 @@ The new inverse mode provides a CSS-based approach to creating inverted color co
 \`\`\`tsx
 // Apply inverse to any container
 <div className="inverse">
-  <Card>Appears with inverted colors</Card>
-  <Button>Also inverted</Button>
+  <Card>Appears with inverse colors</Card>
+  <Button>Also inverse</Button>
 </div>
 
 // Nested inverse swaps back
 <div className="inverse">
-  <Card>Inverted appearance</Card>
+  <Card>Inverse appearance</Card>
   <div className="inverse">
     <Card>Back to normal appearance</Card>
   </div>
 </div>
 \`\`\`
 
-### Migration from inverted prop:
-The old \`inverted\` prop on Card and other components has been removed. Replace it with the \`.inverse\` utility class:
+### Migration from old inverted prop:
+The old \`inverted\` prop on Card and other components has been removed. Use the \`.inverse\` utility class instead:
 
 \`\`\`tsx
 // Old way (deprecated)
@@ -102,7 +102,7 @@ export const BasicInverse: Story = {
           <div className="grid grid-cols-3 gap-md">
             <Card>
               <CardHeader>Inverse Card</CardHeader>
-              <CardContent>Inverted colors via CSS variables</CardContent>
+              <CardContent>Inverse colors via CSS variables</CardContent>
             </Card>
             <Card variant="info">
               <CardHeader>Info Card</CardHeader>
@@ -133,7 +133,7 @@ export const NestedInverse: Story = {
               <Card>
                 <CardHeader>Level 1: First Inverse</CardHeader>
                 <CardContent>
-                  <p className="mb-md">This card has inverted colors.</p>
+                  <p className="mb-md">This card has inverse colors.</p>
 
                   <div className="inverse p-md rounded-md">
                     <Card>

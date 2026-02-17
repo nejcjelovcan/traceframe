@@ -44,12 +44,6 @@ const GradientShowcase = () => {
         { name: 'accent-5', label: 'Accent 5', className: 'bg-gradient-accent-5' },
       ],
     },
-    {
-      title: 'Surface Gradients',
-      gradients: [
-        { name: 'inverted', label: 'Inverted', className: 'bg-gradient-surface-inverted' },
-      ],
-    },
   ]
 
   return (
@@ -77,16 +71,16 @@ const GradientShowcase = () => {
       <div className="mt-xl">
         <h3 className="text-lg font-semibold mb-md">Usage Example</h3>
         <div className="grid gap-md md:grid-cols-2">
-          <div className="p-lg rounded-lg bg-gradient-interactive-primary text-foreground-inverted">
+          <div className="p-lg rounded-lg bg-gradient-interactive-primary text-foreground-filled">
             <h4 className="text-lg font-semibold mb-sm">Primary Button Style</h4>
             <p className="text-sm opacity-90">
               This shows how a gradient can be used for emphasis on primary actions.
             </p>
           </div>
-          <div className="p-lg rounded-lg bg-gradient-surface-inverted text-foreground-inverted">
-            <h4 className="text-lg font-semibold mb-sm">Inverted Card</h4>
+          <div className="inverse p-lg rounded-lg">
+            <h4 className="text-lg font-semibold mb-sm">Inverse Context</h4>
             <p className="text-sm opacity-90">
-              Perfect for cards that need to stand out from the regular surface.
+              Use the .inverse utility class for contrasting surface areas.
             </p>
           </div>
         </div>

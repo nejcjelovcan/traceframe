@@ -85,14 +85,14 @@ const foregroundTokens = [
   { name: 'foreground', cssVar: '--color-foreground', description: 'Primary text' },
   { name: 'foreground-muted', cssVar: '--color-foreground-muted', description: 'Secondary text' },
   {
-    name: 'foreground-inverted',
-    cssVar: '--color-foreground-inverted',
-    description: 'Text on dark bg',
+    name: 'foreground-filled',
+    cssVar: '--color-foreground-filled',
+    description: 'Text on filled bg',
   },
   {
-    name: 'foreground-inverted-muted',
-    cssVar: '--color-foreground-inverted-muted',
-    description: 'Muted on dark bg',
+    name: 'foreground-filled-muted',
+    cssVar: '--color-foreground-filled-muted',
+    description: 'Muted on filled bg',
   },
 ]
 
@@ -463,10 +463,10 @@ const ButtonVariantsExample = () => (
   <div className="space-y-sm">
     <div className="text-xs font-medium text-foreground-muted mb-md">Button Tokens</div>
     <div className="flex flex-wrap gap-md">
-      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-primary text-foreground-inverted hover:bg-interactive-primary-hover transition-colors">
+      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-primary text-foreground-filled hover:bg-interactive-primary-hover transition-colors">
         Primary Action
       </button>
-      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-destructive text-foreground-inverted hover:bg-interactive-destructive-hover transition-colors">
+      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-destructive text-foreground-filled hover:bg-interactive-destructive-hover transition-colors">
         Destructive
       </button>
       <button className="px-base py-sm rounded-md text-sm font-medium text-interactive-accent hover:text-interactive-accent-hover transition-colors">
@@ -554,13 +554,13 @@ const AccentTagsExample = () => (
     </div>
     {/* Solid variants */}
     <div className="flex flex-wrap gap-sm mt-md">
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-inverted">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-filled">
         Solid Accent 1
       </span>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-2-emphasis text-foreground-inverted">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-2-emphasis text-foreground-filled">
         Solid Accent 2
       </span>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-inverted">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-filled">
         Solid Accent 3
       </span>
     </div>
@@ -620,21 +620,21 @@ const TextHierarchyExample = () => (
         <code className="text-xs bg-surface-subtle px-xs rounded-sm">foreground-muted</code>
       </p>
     </div>
-    {/* Inverted */}
+    {/* Foreground on filled backgrounds */}
     <div className="bg-interactive-primary rounded-lg p-base space-y-sm">
-      <Heading level={3} className="text-foreground-inverted">
-        Inverted Heading
+      <Heading level={3} className="text-foreground-filled">
+        Filled Background
       </Heading>
-      <p className="text-sm text-foreground-inverted">
-        On dark backgrounds use{' '}
+      <p className="text-sm text-foreground-filled">
+        On filled backgrounds use{' '}
         <code className="text-xs bg-interactive-primary-hover px-xs rounded-sm">
-          foreground-inverted
+          foreground-filled
         </code>
       </p>
-      <p className="text-sm text-foreground-inverted-muted">
-        Secondary uses{' '}
+      <p className="text-sm text-foreground-filled-muted">
+        Secondary text uses{' '}
         <code className="text-xs bg-interactive-primary-hover px-xs rounded-sm">
-          foreground-inverted-muted
+          foreground-filled-muted
         </code>
       </p>
     </div>

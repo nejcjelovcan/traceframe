@@ -124,7 +124,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-info">Emphasis Info</Badge>)
     const badge = screen.getByText('Emphasis Info')
     expect(badge.className).toContain('bg-gradient-status-info')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     // Verify no border classes are applied
     expect(badge.className).not.toMatch(/border-/)
   })
@@ -133,7 +133,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-success">Emphasis Success</Badge>)
     const badge = screen.getByText('Emphasis Success')
     expect(badge.className).toContain('bg-gradient-status-success')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     // Verify no border classes are applied
     expect(badge.className).not.toMatch(/border-/)
   })
@@ -142,7 +142,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-warning">Emphasis Warning</Badge>)
     const badge = screen.getByText('Emphasis Warning')
     expect(badge.className).toContain('bg-gradient-status-warning')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     // Verify no border classes are applied
     expect(badge.className).not.toMatch(/border-/)
   })
@@ -151,7 +151,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-error">Emphasis Error</Badge>)
     const badge = screen.getByText('Emphasis Error')
     expect(badge.className).toContain('bg-gradient-status-error')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     // Verify no border classes are applied
     expect(badge.className).not.toMatch(/border-/)
   })
@@ -160,7 +160,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-accent1">Emphasis Accent 1</Badge>)
     const badge = screen.getByText('Emphasis Accent 1')
     expect(badge.className).toContain('bg-gradient-accent-1')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     expect(badge.className).not.toMatch(/border-/)
   })
 
@@ -168,7 +168,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-accent2">Emphasis Accent 2</Badge>)
     const badge = screen.getByText('Emphasis Accent 2')
     expect(badge.className).toContain('bg-gradient-accent-2')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     expect(badge.className).not.toMatch(/border-/)
   })
 
@@ -176,7 +176,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-accent3">Emphasis Accent 3</Badge>)
     const badge = screen.getByText('Emphasis Accent 3')
     expect(badge.className).toContain('bg-gradient-accent-3')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     expect(badge.className).not.toMatch(/border-/)
   })
 
@@ -184,7 +184,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-accent4">Emphasis Accent 4</Badge>)
     const badge = screen.getByText('Emphasis Accent 4')
     expect(badge.className).toContain('bg-gradient-accent-4')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     expect(badge.className).not.toMatch(/border-/)
   })
 
@@ -192,7 +192,7 @@ describe('Badge', () => {
     render(<Badge variant="emphasis-accent5">Emphasis Accent 5</Badge>)
     const badge = screen.getByText('Emphasis Accent 5')
     expect(badge.className).toContain('bg-gradient-accent-5')
-    expect(badge.className).toContain('text-foreground-inverse')
+    expect(badge.className).toContain('text-foreground-filled')
     expect(badge.className).not.toMatch(/border-/)
   })
 

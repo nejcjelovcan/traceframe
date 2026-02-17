@@ -421,7 +421,6 @@ describe('isNonSemanticGradientClass', () => {
     expect(isNonSemanticGradientClass('bg-gradient-interactive-secondary')).toBe(false)
     expect(isNonSemanticGradientClass('bg-gradient-status-success')).toBe(false)
     expect(isNonSemanticGradientClass('bg-gradient-accent-1')).toBe(false)
-    expect(isNonSemanticGradientClass('bg-gradient-surface-inverse')).toBe(false)
   })
 
   it('does NOT flag from/via/to with non-palette values', () => {

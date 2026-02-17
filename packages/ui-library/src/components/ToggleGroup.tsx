@@ -73,13 +73,13 @@ const toggleGroupItemVariants = cva(
         default: cn(
           'border border-border bg-surface text-foreground',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-inverse data-[state=on]:border-interactive-primary',
+          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:border-interactive-primary',
           'data-[state=on]:hover:bg-interactive-primary-hover'
         ),
         solid: cn(
           'bg-surface-muted text-foreground',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-inverse',
+          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled',
           'data-[state=on]:hover:bg-interactive-primary-hover'
         ),
         ghost: cn(

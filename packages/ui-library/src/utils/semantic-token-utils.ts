@@ -187,7 +187,7 @@ export function getSuggestion(className: string): string | undefined {
       const shade = rest.replace('neutral-', '')
       if (['900'].includes(shade)) return `${modifier}text-foreground`
       if (['400', '500', '600'].includes(shade)) return `${modifier}text-foreground-muted`
-      if (['50', '100'].includes(shade)) return `${modifier}text-foreground-inverse`
+      if (['50', '100'].includes(shade)) return `${modifier}text-foreground-filled`
     }
     if (rest.startsWith('error-')) return `${modifier}text-status-error-foreground`
     if (rest.startsWith('success-')) return `${modifier}text-status-success-foreground`
@@ -559,7 +559,7 @@ function isColorClass(value: string): boolean {
 /**
  * Check if a class uses non-semantic gradient patterns.
  * Non-semantic: bg-gradient-to-*, from-*, via-*, to-* (arbitrary gradient construction)
- * Semantic: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*, bg-gradient-surface-inverse
+ * Semantic: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*
  */
 export function isNonSemanticGradientClass(className: string): boolean {
   const clean = stripModifiers(className)
@@ -644,7 +644,7 @@ export function getGradientSuggestion(className: string): string | undefined {
   const clean = stripModifiers(className)
 
   if (clean.startsWith('bg-gradient-to-')) {
-    return 'Use semantic gradients: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*, or bg-gradient-surface-inverse'
+    return 'Use semantic gradients: bg-gradient-interactive-*, bg-gradient-status-*, bg-gradient-accent-*'
   }
 
   if (clean.startsWith('from-') || clean.startsWith('via-') || clean.startsWith('to-')) {

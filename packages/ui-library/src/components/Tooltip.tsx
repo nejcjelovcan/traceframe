@@ -42,10 +42,10 @@ const tooltipContentVariants = cva(
       variant: {
         default: 'bg-tooltip text-tooltip-foreground',
         light: 'border border-border bg-surface text-foreground',
-        info: 'bg-status-info text-foreground-inverted',
-        success: 'bg-status-success text-foreground-inverted',
-        warning: 'bg-status-warning text-foreground-inverted',
-        error: 'bg-status-error text-foreground-inverted',
+        info: 'bg-status-info text-foreground-filled',
+        success: 'bg-status-success text-foreground-filled',
+        warning: 'bg-status-warning text-foreground-filled',
+        error: 'bg-status-error text-foreground-filled',
       },
       size: {
         sm: 'px-xs py-2xs text-xs',

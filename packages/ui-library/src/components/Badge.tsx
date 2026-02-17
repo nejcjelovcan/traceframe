@@ -28,7 +28,7 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       accent4: 'bg-accent-4-muted text-accent-4-foreground border-accent-4-border',
       accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-border',
 
-      // Outline variants (ghost style with surface background for inverted contexts)
+      // Outline variants (ghost style with surface background for inverse contexts)
       'outline-default': 'bg-surface border-thick-border text-foreground',
       'outline-info': 'bg-surface border-thick-status-info text-status-info-foreground',
       'outline-success': 'bg-surface border-thick-status-success text-status-success-foreground',
@@ -43,17 +43,17 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5-foreground',
 
       // Emphasis variants using gradient backgrounds (no border)
-      'emphasis-info': 'bg-gradient-status-info text-foreground-inverse',
-      'emphasis-success': 'bg-gradient-status-success text-foreground-inverse',
-      'emphasis-warning': 'bg-gradient-status-warning text-foreground-inverse',
-      'emphasis-error': 'bg-gradient-status-error text-foreground-inverse',
+      'emphasis-info': 'bg-gradient-status-info text-foreground-filled',
+      'emphasis-success': 'bg-gradient-status-success text-foreground-filled',
+      'emphasis-warning': 'bg-gradient-status-warning text-foreground-filled',
+      'emphasis-error': 'bg-gradient-status-error text-foreground-filled',
 
       // Emphasis accent variants using gradient backgrounds (no border)
-      'emphasis-accent1': 'bg-gradient-accent-1 text-foreground-inverse',
-      'emphasis-accent2': 'bg-gradient-accent-2 text-foreground-inverse',
-      'emphasis-accent3': 'bg-gradient-accent-3 text-foreground-inverse',
-      'emphasis-accent4': 'bg-gradient-accent-4 text-foreground-inverse',
-      'emphasis-accent5': 'bg-gradient-accent-5 text-foreground-inverse',
+      'emphasis-accent1': 'bg-gradient-accent-1 text-foreground-filled',
+      'emphasis-accent2': 'bg-gradient-accent-2 text-foreground-filled',
+      'emphasis-accent3': 'bg-gradient-accent-3 text-foreground-filled',
+      'emphasis-accent4': 'bg-gradient-accent-4 text-foreground-filled',
+      'emphasis-accent5': 'bg-gradient-accent-5 text-foreground-filled',
     },
     size: {
       xs: 'px-xs py-2xs text-xs leading-none', // Tight inline badges

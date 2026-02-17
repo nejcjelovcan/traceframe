@@ -13,16 +13,12 @@
   --color-surface: var(--token-surface);
   --color-surface-muted: var(--token-surface-muted);
   --color-surface-subtle: var(--token-surface-subtle);
-  --color-surface-inverse: var(--token-surface-inverse);
-  --color-surface-inverse-muted: var(--token-surface-inverse-muted);
   --color-foreground: var(--token-foreground);
   --color-foreground-muted: var(--token-foreground-muted);
-  --color-foreground-inverse: var(--token-foreground-inverse);
-  --color-foreground-inverse-muted: var(--token-foreground-inverse-muted);
+  --color-foreground-filled: var(--token-foreground-filled);
+  --color-foreground-filled-muted: var(--token-foreground-filled-muted);
   --color-border: var(--token-border);
   --color-border-muted: var(--token-border-muted);
-  --color-border-inverse: var(--token-border-inverse);
-  --color-border-inverse-muted: var(--token-border-inverse-muted);
   --color-ring: var(--token-ring);
   --color-interactive-hover: var(--token-interactive-hover);
   --color-interactive-active: var(--token-interactive-active);
@@ -136,7 +132,6 @@
   --gradient-accent-3: var(--token-gradient-accent-3);
   --gradient-accent-4: var(--token-gradient-accent-4);
   --gradient-accent-5: var(--token-gradient-accent-5);
-  --gradient-surface-inverse: var(--token-gradient-surface-inverse);
 
   /* ===== Border Styles ===== */
   --border-style-line: var(--token-border-style-line);

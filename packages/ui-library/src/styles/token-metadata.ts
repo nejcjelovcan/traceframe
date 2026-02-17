@@ -75,8 +75,6 @@ export const TOKEN_METADATA = {
         DEFAULT: 'Primary surface color for backgrounds and containers',
         muted: 'Secondary surface for sidebars, alternating rows, and nested elements',
         subtle: 'Tertiary surface for hover states, wells, and recessed areas',
-        inverse: 'Inverse surface for dark backgrounds in light mode',
-        'inverse-muted': 'Secondary inverse surface for nested elements within inverse containers',
       },
     },
     foreground: {
@@ -84,8 +82,8 @@ export const TOKEN_METADATA = {
       variants: {
         DEFAULT: 'Primary text and icon color for headings and body text',
         muted: 'Secondary text for descriptions, placeholders, and less prominent content',
-        inverse: 'Text color on dark backgrounds like primary buttons',
-        'inverse-muted': 'Secondary text color on dark backgrounds',
+        filled: 'Text color on filled/emphasis backgrounds like primary buttons and badges',
+        'filled-muted': 'Secondary text color on filled/emphasis backgrounds',
       },
     },
     border: {
@@ -93,8 +91,6 @@ export const TOKEN_METADATA = {
       variants: {
         DEFAULT: 'Primary border color for inputs, cards, and containers',
         muted: 'Subtle border for dividers, separators, and less prominent boundaries',
-        inverse: 'Border color for inverse surfaces',
-        'inverse-muted': 'Subtle border for dividers within inverse containers',
       },
     },
     ring: {
@@ -450,16 +446,6 @@ export const TOKEN_METADATA = {
             value:
               'linear-gradient(180deg, rgb(var(--palette-accent-5-600)), rgb(var(--palette-accent-5-700)))',
             description: 'Accent 5 emphasis gradient',
-          },
-        },
-      },
-      surface: {
-        description: '',
-        variants: {
-          inverse: {
-            value:
-              'linear-gradient(180deg, rgb(var(--palette-neutral-800)), rgb(var(--palette-neutral-900)))',
-            description: 'Inverse surface gradient for contrasting backgrounds',
           },
         },
       },
