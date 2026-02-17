@@ -771,7 +771,7 @@ type CardMode = 'static' | 'actionable' | 'accordion'
 function ShowcaseCard({
   mode,
   inverse,
-  size,
+  size = 'default' as CardSize,
   variant,
   icon,
   title,
@@ -780,7 +780,7 @@ function ShowcaseCard({
 }: {
   mode: CardMode
   inverse: boolean
-  size: CardSize
+  size?: CardSize
   variant?: CardProps['variant']
   icon?: IconName
   title: string
