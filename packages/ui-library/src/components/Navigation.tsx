@@ -29,77 +29,77 @@ const navigationVariants = cva('transition-colors', {
     },
   },
   compoundVariants: [
-    // Filled variant with gradient backgrounds and borders
+    // Filled variant with solid backgrounds and borders
     {
       variant: 'filled',
       color: 'primary',
-      className: 'bg-gradient-primary border-line-interactive-primary-border',
+      className: 'bg-interactive-primary border-line-interactive-primary-border',
     },
     {
       variant: 'filled',
       color: 'secondary',
-      className: 'bg-gradient-secondary border-line-interactive-secondary-border',
+      className: 'bg-interactive-secondary border-line-interactive-secondary-border',
     },
     {
       variant: 'filled',
       color: 'accent-1',
-      className: 'bg-gradient-accent-1 border-line-accent-1-border',
+      className: 'bg-accent-1-emphasis border-line-accent-1-border',
     },
     {
       variant: 'filled',
       color: 'accent-2',
-      className: 'bg-gradient-accent-2 border-line-accent-2-border',
+      className: 'bg-accent-2-emphasis border-line-accent-2-border',
     },
     {
       variant: 'filled',
       color: 'accent-3',
-      className: 'bg-gradient-accent-3 border-line-accent-3-border',
+      className: 'bg-accent-3-emphasis border-line-accent-3-border',
     },
     {
       variant: 'filled',
       color: 'accent-4',
-      className: 'bg-gradient-accent-4 border-line-accent-4-border',
+      className: 'bg-accent-4-emphasis border-line-accent-4-border',
     },
     {
       variant: 'filled',
       color: 'accent-5',
-      className: 'bg-gradient-accent-5 border-line-accent-5-border',
+      className: 'bg-accent-5-emphasis border-line-accent-5-border',
     },
-    // Subtle variant with light gradient backgrounds and subtle borders
+    // Subtle variant with muted backgrounds and subtle borders
     {
       variant: 'subtle',
       color: 'primary',
-      className: 'bg-gradient-primary-light border-line-interactive-primary-border/50',
+      className: 'bg-interactive-primary-muted border-line-interactive-primary-border/50',
     },
     {
       variant: 'subtle',
       color: 'secondary',
-      className: 'bg-gradient-secondary-light border-line-interactive-secondary-border/50',
+      className: 'bg-interactive-secondary-muted border-line-interactive-secondary-border/50',
     },
     {
       variant: 'subtle',
       color: 'accent-1',
-      className: 'bg-gradient-accent-1-light border-line-accent-1-border/50',
+      className: 'bg-accent-1-muted border-line-accent-1-border/50',
     },
     {
       variant: 'subtle',
       color: 'accent-2',
-      className: 'bg-gradient-accent-2-light border-line-accent-2-border/50',
+      className: 'bg-accent-2-muted border-line-accent-2-border/50',
     },
     {
       variant: 'subtle',
       color: 'accent-3',
-      className: 'bg-gradient-accent-3-light border-line-accent-3-border/50',
+      className: 'bg-accent-3-muted border-line-accent-3-border/50',
     },
     {
       variant: 'subtle',
       color: 'accent-4',
-      className: 'bg-gradient-accent-4-light border-line-accent-4-border/50',
+      className: 'bg-accent-4-muted border-line-accent-4-border/50',
     },
     {
       variant: 'subtle',
       color: 'accent-5',
-      className: 'bg-gradient-accent-5-light border-line-accent-5-border/50',
+      className: 'bg-accent-5-muted border-line-accent-5-border/50',
     },
   ],
   defaultVariants: {
