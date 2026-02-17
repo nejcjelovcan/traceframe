@@ -75,38 +75,26 @@ const surfaceTokens = [
   },
   { name: 'surface-muted', cssVar: '--color-surface-muted', description: 'Secondary background' },
   { name: 'surface-subtle', cssVar: '--color-surface-subtle', description: 'Tertiary background' },
-  { name: 'surface-inverted', cssVar: '--color-surface-inverted', description: 'Inverted surface' },
-  {
-    name: 'surface-inverted-muted',
-    cssVar: '--color-surface-inverted-muted',
-    description: 'Inverted secondary',
-  },
 ]
 
 const foregroundTokens = [
   { name: 'foreground', cssVar: '--color-foreground', description: 'Primary text' },
   { name: 'foreground-muted', cssVar: '--color-foreground-muted', description: 'Secondary text' },
   {
-    name: 'foreground-inverted',
-    cssVar: '--color-foreground-inverted',
-    description: 'Text on dark bg',
+    name: 'foreground-filled',
+    cssVar: '--color-foreground-filled',
+    description: 'Text on filled bg',
   },
   {
-    name: 'foreground-inverted-muted',
-    cssVar: '--color-foreground-inverted-muted',
-    description: 'Muted on dark bg',
+    name: 'foreground-filled-muted',
+    cssVar: '--color-foreground-filled-muted',
+    description: 'Muted on filled bg',
   },
 ]
 
 const borderTokens = [
   { name: 'border', cssVar: '--color-border', description: 'Primary borders' },
   { name: 'border-muted', cssVar: '--color-border-muted', description: 'Subtle borders' },
-  { name: 'border-inverted', cssVar: '--color-border-inverted', description: 'Inverted border' },
-  {
-    name: 'border-inverted-muted',
-    cssVar: '--color-border-inverted-muted',
-    description: 'Inverted subtle',
-  },
   { name: 'ring', cssVar: '--color-ring', description: 'Focus ring' },
 ]
 
@@ -606,13 +594,13 @@ const AccentTagsExample = () => (
     </Stack>
     {/* Solid variants */}
     <Stack direction="horizontal" gap="sm" wrap={true}>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-inverted">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-filled">
         Solid Accent 1
       </span>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-2-emphasis text-foreground-inverted">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-2-emphasis text-foreground-filled">
         Solid Accent 2
       </span>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-inverted">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-filled">
         Solid Accent 3
       </span>
     </Stack>
@@ -672,21 +660,21 @@ const TextHierarchyExample = () => (
         <code className="text-xs bg-surface-subtle px-xs rounded-sm">foreground-muted</code>
       </p>
     </Stack>
-    {/* Inverted */}
+    {/* Foreground on filled backgrounds */}
     <Stack gap="sm" className="bg-interactive-primary rounded-lg p-base">
-      <Heading level={3} className="text-foreground-inverted">
-        Inverted Heading
+      <Heading level={3} className="text-foreground-filled">
+        Filled Background
       </Heading>
-      <p className="text-sm text-foreground-inverted">
-        On dark backgrounds use{' '}
+      <p className="text-sm text-foreground-filled">
+        On filled backgrounds use{' '}
         <code className="text-xs bg-interactive-primary-hover px-xs rounded-sm">
-          foreground-inverted
+          foreground-filled
         </code>
       </p>
-      <p className="text-sm text-foreground-inverted-muted">
-        Secondary uses{' '}
+      <p className="text-sm text-foreground-filled-muted">
+        Secondary text uses{' '}
         <code className="text-xs bg-interactive-primary-hover px-xs rounded-sm">
-          foreground-inverted-muted
+          foreground-filled-muted
         </code>
       </p>
     </Stack>

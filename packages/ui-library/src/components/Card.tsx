@@ -33,10 +33,6 @@ const cardVariants = cva('rounded-sm border-line', {
       true: 'cursor-pointer transition-shadow',
       false: '',
     },
-    inverted: {
-      true: '',
-      false: '',
-    },
   },
   compoundVariants: [
     // Actionable variants: interactive shadows
@@ -64,72 +60,10 @@ const cardVariants = cva('rounded-sm border-line', {
       class:
         'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
     },
-
-    // Core variants: CSS variable override for full semantic token inversion
-    {
-      variant: 'outlined',
-      inverted: true,
-      class: 'bg-surface-inverted text-foreground-inverted border-line-border',
-    },
-    {
-      variant: 'elevated',
-      inverted: true,
-      class: 'bg-surface-inverted text-foreground-inverted border-line-border',
-    },
-
-    // Status variants: filled/solid look with emphasis background and inverted text
-    {
-      variant: 'info',
-      inverted: true,
-      class: 'bg-status-info-emphasis text-foreground-inverted border-line-status-info',
-    },
-    {
-      variant: 'success',
-      inverted: true,
-      class: 'bg-status-success-emphasis text-foreground-inverted border-line-status-success',
-    },
-    {
-      variant: 'warning',
-      inverted: true,
-      class: 'bg-status-warning-emphasis text-foreground-inverted border-line-status-warning',
-    },
-    {
-      variant: 'error',
-      inverted: true,
-      class: 'bg-status-error-emphasis text-foreground-inverted border-line-status-error',
-    },
-
-    // Accent variants: filled/solid look with emphasis background and inverted text
-    {
-      variant: 'accent1',
-      inverted: true,
-      class: 'bg-accent-1-emphasis text-foreground-inverted border-line-accent-1',
-    },
-    {
-      variant: 'accent2',
-      inverted: true,
-      class: 'bg-accent-2-emphasis text-foreground-inverted border-line-accent-2',
-    },
-    {
-      variant: 'accent3',
-      inverted: true,
-      class: 'bg-accent-3-emphasis text-foreground-inverted border-line-accent-3',
-    },
-    {
-      variant: 'accent4',
-      inverted: true,
-      class: 'bg-accent-4-emphasis text-foreground-inverted border-line-accent-4',
-    },
-    {
-      variant: 'accent5',
-      inverted: true,
-      class: 'bg-accent-5-emphasis text-foreground-inverted border-line-accent-5',
-    },
   ],
   defaultVariants: {
     variant: 'outlined',
     actionable: false,
-    inverted: false,
   },
 })
 
@@ -162,7 +96,6 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       className,
       variant,
       actionable,
-      inverted,
       accordion,
       defaultOpen = false,
       open,
@@ -179,7 +112,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       )
     }
 
-    const baseClassName = cn(cardVariants({ variant, actionable, inverted }), className)
+    const baseClassName = cn(cardVariants({ variant, actionable }), className)
     const contentId = useId()
 
     // If not accordion mode, render normal card with proper focus for actionable
@@ -300,7 +233,8 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
           <button
             className={cn(
               'flex w-full items-center gap-sm border-b border-inherit px-base py-md font-medium text-left',
-              'hover:bg-surface-subtle transition-colors',
+              'rounded-t-sm',
+              'hover:bg-foreground/5 transition-colors',
               'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className

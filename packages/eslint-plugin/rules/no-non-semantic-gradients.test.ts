@@ -42,17 +42,13 @@ ruleTester.run('no-non-semantic-gradients', noNonSemanticGradients, {
     {
       code: '<div className="bg-gradient-accent-1 bg-gradient-accent-2" />',
     },
-    // Surface inverted
-    {
-      code: '<div className="bg-gradient-surface-inverted" />',
-    },
     // Non-gradient classes
     {
       code: '<div className="flex items-center bg-surface text-foreground" />',
     },
     // cn/clsx with semantic gradients
     {
-      code: 'cn("bg-gradient-interactive-primary", "text-foreground-inverted")',
+      code: 'cn("bg-gradient-interactive-primary", "text-foreground-filled")',
     },
     // Files in exceptions are allowed
     {

@@ -328,7 +328,7 @@ describe('Button', () => {
       render(<Button variant="primary">Primary</Button>)
       const button = screen.getByRole('button')
       expect(button.className).toContain('bg-gradient-interactive-primary')
-      expect(button.className).toContain('text-foreground-inverted')
+      expect(button.className).toContain('text-foreground-filled')
       expect(button.className).toContain('hover:opacity-90')
     })
 
@@ -336,7 +336,7 @@ describe('Button', () => {
       render(<Button variant="secondary">Secondary</Button>)
       const button = screen.getByRole('button')
       expect(button.className).toContain('bg-gradient-interactive-secondary')
-      expect(button.className).toContain('text-foreground-inverted')
+      expect(button.className).toContain('text-foreground-filled')
       expect(button.className).toContain('hover:opacity-90')
     })
 
@@ -344,7 +344,7 @@ describe('Button', () => {
       render(<Button variant="destructive">Destructive</Button>)
       const button = screen.getByRole('button')
       expect(button.className).toContain('bg-gradient-interactive-destructive')
-      expect(button.className).toContain('text-foreground-inverted')
+      expect(button.className).toContain('text-foreground-filled')
       expect(button.className).toContain('hover:opacity-90')
     })
   })

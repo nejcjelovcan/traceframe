@@ -116,7 +116,7 @@ function getTrendInfo(
 export interface StatCardProps
   extends
     Omit<HTMLAttributes<HTMLDivElement>, 'children'>,
-    Pick<CardProps, 'variant' | 'inverted'>,
+    Pick<CardProps, 'variant'>,
     VariantProps<typeof statCardValueVariants>,
     VariantProps<typeof statCardVariants> {
   /** Primary label for the statistic */
@@ -146,7 +146,6 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
     {
       className,
       variant,
-      inverted,
       size,
       loading,
       compact,
@@ -164,7 +163,7 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
     },
     ref
   ) => {
-    const mutedClass = inverted ? 'text-foreground-inverted-muted' : 'text-foreground-muted'
+    const mutedClass = 'text-foreground-muted'
     const trendInfo = trend ? getTrendInfo(trend, trendVariant) : null
     const iconSize = size === 'lg' ? 'lg' : size === 'sm' ? 'sm' : 'md'
     const iconElement =
@@ -173,7 +172,6 @@ export const StatCard = forwardRef<HTMLDivElement, StatCardProps>(
     return (
       <Card
         variant={variant}
-        inverted={inverted}
         className={cn(statCardVariants({ loading, compact }), className)}
         ref={ref}
         {...props}

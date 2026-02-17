@@ -401,13 +401,6 @@ describe('getTailwindUtilitiesTool', () => {
       expect(names).toContain('bg-gradient-accent-2')
     })
 
-    it('includes surface inverted gradient', () => {
-      const result = getTailwindUtilitiesTool({ category: 'gradients' })
-      const names = result.utilities.gradients!.map((e) => e.name)
-
-      expect(names).toContain('bg-gradient-surface-inverted')
-    })
-
     it('each gradient entry has a CSS value', () => {
       const result = getTailwindUtilitiesTool({ category: 'gradients' })
       for (const entry of result.utilities.gradients!) {

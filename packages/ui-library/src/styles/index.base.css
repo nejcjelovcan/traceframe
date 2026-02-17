@@ -4,14 +4,11 @@
     color: var(--token-foreground);
   }
 
-  .tf-inverted {
-    --token-surface: var(--token-surface-inverted);
-    --token-surface-muted: var(--token-surface-inverted-muted);
-    --token-foreground: var(--token-foreground-inverted);
-    --token-foreground-muted: var(--token-foreground-inverted-muted);
-    --token-border: var(--token-border-inverted);
-    --token-border-muted: var(--token-border-inverted-muted);
+  /* Inverse mode: applies swapped background and text color.
+     Token values are swapped via combined selectors in light.css/dark.css. */
+  .inverse {
     color: var(--token-foreground);
+    background-color: var(--token-surface);
   }
 }
 
@@ -51,8 +48,5 @@
   }
   .bg-gradient-accent-5 {
     background-image: var(--token-gradient-accent-5);
-  }
-  .bg-gradient-surface-inverted {
-    background-image: var(--token-gradient-surface-inverted);
   }
 }

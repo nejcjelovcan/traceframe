@@ -3,7 +3,10 @@ import { useState } from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from './Card'
 import { Heading } from './Heading'
 import { ToggleGroup } from './ToggleGroup'
+import { cn } from '../utils/cn'
 
+import type { CardProps } from './Card'
+import type { IconName } from '../icons/types'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Card> = {
@@ -87,13 +90,6 @@ A container component for grouping related content with optional header and foot
     },
     actionable: {
       description: 'Makes the card clickable with interactive shadow states',
-      control: 'boolean',
-      table: {
-        defaultValue: { summary: 'false' },
-      },
-    },
-    inverted: {
-      description: 'Render with inverted colors (dark bg in light mode, light bg in dark mode)',
       control: 'boolean',
       table: {
         defaultValue: { summary: 'false' },
@@ -345,165 +341,118 @@ export const AccentVariants: Story = {
   ),
 }
 
-export const InvertedOutlined: Story = {
+export const AllInverse: Story = {
+  name: 'All Inverse Variants',
   render: () => (
-    <Card inverted className="w-80">
-      <CardHeader>Inverted Card</CardHeader>
-      <CardContent>
-        <p>Dark background with light text in light mode, and vice versa in dark mode.</p>
-      </CardContent>
-    </Card>
-  ),
-}
+    <div className="space-y-lg p-base">
+      <section>
+        <Heading level={3} size="base" className="mb-base">
+          Core Variants
+        </Heading>
+        <div className="flex flex-wrap gap-base">
+          <Card variant="outlined" className="inverse w-56">
+            <CardHeader>Outlined</CardHeader>
+            <CardContent>
+              <p className="text-sm">Default card in inverse mode.</p>
+            </CardContent>
+          </Card>
+          <Card variant="elevated" className="inverse w-56">
+            <CardHeader>Elevated</CardHeader>
+            <CardContent>
+              <p className="text-sm">Elevated card in inverse mode.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-export const InvertedElevated: Story = {
-  render: () => (
-    <Card variant="elevated" inverted className="w-80">
-      <CardHeader>Inverted Elevated</CardHeader>
-      <CardContent>
-        <p>Inverted colors with shadow for extra emphasis.</p>
-      </CardContent>
-    </Card>
-  ),
-}
+      <section>
+        <Heading level={3} size="base" className="mb-base">
+          Status Variants
+        </Heading>
+        <div className="flex flex-wrap gap-base">
+          <Card variant="info" className="inverse w-56">
+            <CardHeader icon="info-circle">Info</CardHeader>
+            <CardContent>
+              <p className="text-sm">Info card in inverse mode.</p>
+            </CardContent>
+          </Card>
+          <Card variant="success" className="inverse w-56">
+            <CardHeader icon="check">Success</CardHeader>
+            <CardContent>
+              <p className="text-sm">Success card in inverse mode.</p>
+            </CardContent>
+          </Card>
+          <Card variant="warning" className="inverse w-56">
+            <CardHeader icon="alert-circle">Warning</CardHeader>
+            <CardContent>
+              <p className="text-sm">Warning card in inverse mode.</p>
+            </CardContent>
+          </Card>
+          <Card variant="error" className="inverse w-56">
+            <CardHeader icon="alert-circle">Error</CardHeader>
+            <CardContent>
+              <p className="text-sm">Error card in inverse mode.</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-export const InvertedFull: Story = {
-  name: 'Inverted with Header, Content, Footer',
-  render: () => (
-    <Card inverted className="w-80">
-      <CardHeader icon="package">Inverted Full Card</CardHeader>
-      <CardContent>
-        <ul className="space-y-sm text-sm">
-          <li>All children inherit inverted colors</li>
-          <li>Headers, content, and footers adapt</li>
-          <li>Icons and muted text work correctly</li>
-        </ul>
-      </CardContent>
-      <CardFooter>
-        <span className="text-sm text-foreground-muted">Footer text</span>
-      </CardFooter>
-    </Card>
-  ),
-}
+      <section>
+        <Heading level={3} size="base" className="mb-base">
+          Accent Variants
+        </Heading>
+        <div className="flex flex-wrap gap-base">
+          <Card variant="accent1" className="inverse w-48">
+            <CardHeader>Accent 1</CardHeader>
+            <CardContent>
+              <p className="text-sm">Arctic Blue</p>
+            </CardContent>
+          </Card>
+          <Card variant="accent2" className="inverse w-48">
+            <CardHeader>Accent 2</CardHeader>
+            <CardContent>
+              <p className="text-sm">Lavender Dusk</p>
+            </CardContent>
+          </Card>
+          <Card variant="accent3" className="inverse w-48">
+            <CardHeader>Accent 3</CardHeader>
+            <CardContent>
+              <p className="text-sm">Dusty Rose</p>
+            </CardContent>
+          </Card>
+          <Card variant="accent4" className="inverse w-48">
+            <CardHeader>Accent 4</CardHeader>
+            <CardContent>
+              <p className="text-sm">Fresh Lime</p>
+            </CardContent>
+          </Card>
+          <Card variant="accent5" className="inverse w-48">
+            <CardHeader>Accent 5</CardHeader>
+            <CardContent>
+              <p className="text-sm">Terracotta</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-export const InvertedStatusVariants: Story = {
-  name: 'Inverted Status Variants',
-  render: () => (
-    <div className="flex flex-wrap gap-base">
-      <Card variant="info" inverted className="w-56">
-        <CardHeader icon="info-circle">Info</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid info background with white text.</p>
-        </CardContent>
-      </Card>
-      <Card variant="success" inverted className="w-56">
-        <CardHeader icon="check">Success</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid success background with white text.</p>
-        </CardContent>
-      </Card>
-      <Card variant="warning" inverted className="w-56">
-        <CardHeader icon="alert-circle">Warning</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid warning background with white text.</p>
-        </CardContent>
-      </Card>
-      <Card variant="error" inverted className="w-56">
-        <CardHeader icon="alert-circle">Error</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid error background with white text.</p>
-        </CardContent>
-      </Card>
-    </div>
-  ),
-}
-
-export const InvertedAccentVariants: Story = {
-  name: 'Inverted Accent Variants',
-  render: () => (
-    <div className="flex flex-wrap gap-base">
-      <Card variant="accent1" inverted className="w-48">
-        <CardHeader>Accent 1</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid accent background.</p>
-        </CardContent>
-      </Card>
-      <Card variant="accent2" inverted className="w-48">
-        <CardHeader>Accent 2</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid accent background.</p>
-        </CardContent>
-      </Card>
-      <Card variant="accent3" inverted className="w-48">
-        <CardHeader>Accent 3</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid accent background.</p>
-        </CardContent>
-      </Card>
-      <Card variant="accent4" inverted className="w-48">
-        <CardHeader>Accent 4</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid accent background.</p>
-        </CardContent>
-      </Card>
-      <Card variant="accent5" inverted className="w-48">
-        <CardHeader>Accent 5</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid accent background.</p>
-        </CardContent>
-      </Card>
-    </div>
-  ),
-}
-
-export const InvertedComparison: Story = {
-  name: 'Normal vs Inverted',
-  render: () => (
-    <div className="space-y-base">
-      <div className="flex flex-wrap gap-base">
-        <Card variant="outlined" className="w-64">
-          <CardHeader>Normal Outlined</CardHeader>
+      <section>
+        <Heading level={3} size="base" className="mb-base">
+          Full Composition
+        </Heading>
+        <Card className="inverse w-80">
+          <CardHeader icon="package">Inverse Full Card</CardHeader>
           <CardContent>
-            <p className="text-sm">Standard appearance.</p>
-            <p className="text-sm text-foreground-muted">Muted text color.</p>
+            <ul className="space-y-sm text-sm">
+              <li>All children inherit colors</li>
+              <li>Headers, content, and footers adapt</li>
+              <li>Icons and muted text work correctly</li>
+            </ul>
           </CardContent>
+          <CardFooter>
+            <span className="text-sm text-foreground-muted">Footer text</span>
+          </CardFooter>
         </Card>
-        <Card variant="outlined" inverted className="w-64">
-          <CardHeader>Inverted Outlined</CardHeader>
-          <CardContent>
-            <p className="text-sm">Inverted appearance.</p>
-            <p className="text-sm text-foreground-muted">Muted text adapts.</p>
-          </CardContent>
-        </Card>
-      </div>
-      <div className="flex flex-wrap gap-base">
-        <Card variant="info" className="w-64">
-          <CardHeader icon="info-circle">Normal Info</CardHeader>
-          <CardContent>
-            <p className="text-sm">Muted background.</p>
-          </CardContent>
-        </Card>
-        <Card variant="info" inverted className="w-64">
-          <CardHeader icon="info-circle">Inverted Info</CardHeader>
-          <CardContent>
-            <p className="text-sm">Solid filled background.</p>
-          </CardContent>
-        </Card>
-      </div>
-      <div className="flex flex-wrap gap-base">
-        <Card variant="accent1" className="w-64">
-          <CardHeader>Normal Accent 1</CardHeader>
-          <CardContent>
-            <p className="text-sm">Muted background.</p>
-          </CardContent>
-        </Card>
-        <Card variant="accent1" inverted className="w-64">
-          <CardHeader>Inverted Accent 1</CardHeader>
-          <CardContent>
-            <p className="text-sm">Solid filled background.</p>
-          </CardContent>
-        </Card>
-      </div>
+      </section>
     </div>
   ),
 }
@@ -579,29 +528,268 @@ export const InteractiveComparison: Story = {
   ),
 }
 
-export const AllVariants: Story = {
-  name: 'Core Variants',
-  render: () => (
-    <div className="flex flex-wrap gap-base">
-      <Card variant="outlined" className="w-56">
-        <CardHeader>Outlined</CardHeader>
-        <CardContent>
-          <p className="text-sm">Default background with light border.</p>
-        </CardContent>
-      </Card>
-      <Card variant="elevated" className="w-56">
-        <CardHeader>Elevated</CardHeader>
-        <CardContent>
-          <p className="text-sm">Background with shadow for emphasis.</p>
-        </CardContent>
-      </Card>
-    </div>
-  ),
+export const AllAccordion: Story = {
+  name: 'All Accordion',
+  parameters: {
+    layout: 'padded',
+  },
+  render: () => {
+    const [controlledOpen, setControlledOpen] = useState(false)
+
+    return (
+      <div className="space-y-lg p-base">
+        {/* Basic & Default Open */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Basic Usage
+          </Heading>
+          <div className="flex flex-wrap gap-base">
+            <Card accordion className="w-80">
+              <CardHeader>Collapsed by Default</CardHeader>
+              <CardContent>
+                <p>Click the header to expand this card.</p>
+                <ul className="mt-sm space-y-xs text-sm">
+                  <li>Enable notifications</li>
+                  <li>Auto-save interval: 5 minutes</li>
+                  <li>Debug mode: Off</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card accordion defaultOpen={true} className="w-80">
+              <CardHeader>Expanded by Default</CardHeader>
+              <CardContent>
+                <p>This accordion starts in the expanded state.</p>
+              </CardContent>
+              <CardFooter>
+                <button className="text-sm text-interactive-accent hover:underline">Save</button>
+              </CardFooter>
+            </Card>
+          </div>
+        </section>
+
+        {/* Controlled */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Controlled
+          </Heading>
+          <div className="space-y-base">
+            <div className="flex gap-base">
+              <button
+                onClick={() => setControlledOpen(true)}
+                className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
+              >
+                Open
+              </button>
+              <button
+                onClick={() => setControlledOpen(false)}
+                className="rounded bg-interactive-secondary px-sm py-xs text-sm text-interactive-secondary-foreground hover:bg-interactive-secondary-hover"
+              >
+                Close
+              </button>
+              <button
+                onClick={() => setControlledOpen(!controlledOpen)}
+                className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
+              >
+                Toggle
+              </button>
+            </div>
+            <Card accordion open={controlledOpen} onOpenChange={setControlledOpen} className="w-80">
+              <CardHeader>Controlled Accordion</CardHeader>
+              <CardContent>
+                <p>This accordion is controlled by external state.</p>
+                <p className="mt-sm text-sm text-foreground-muted">
+                  Current state: {controlledOpen ? 'Open' : 'Closed'}
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* With Icons */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            With Header Icons
+          </Heading>
+          <div className="flex flex-wrap gap-base">
+            <Card accordion className="w-80">
+              <CardHeader icon="settings">Left Icon</CardHeader>
+              <CardContent>
+                <p className="text-sm">Icon on the left with chevron on the right.</p>
+              </CardContent>
+            </Card>
+            <Card accordion className="w-80">
+              <CardHeader icon="filter" iconPosition="right">
+                Right Icon
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm">Icon and chevron both on the right.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* All Variants */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            All Variants
+          </Heading>
+          <div className="flex flex-wrap gap-base">
+            <Card variant="outlined" accordion className="w-64">
+              <CardHeader>Outlined</CardHeader>
+              <CardContent>
+                <p className="text-sm">Collapsible outlined card.</p>
+              </CardContent>
+            </Card>
+            <Card variant="elevated" accordion className="w-64">
+              <CardHeader>Elevated</CardHeader>
+              <CardContent>
+                <p className="text-sm">Collapsible elevated card.</p>
+              </CardContent>
+            </Card>
+            <Card variant="info" accordion className="w-64">
+              <CardHeader icon="info-circle">Info</CardHeader>
+              <CardContent>
+                <p className="text-sm">Collapsible info card.</p>
+              </CardContent>
+            </Card>
+            <Card variant="success" accordion className="w-64">
+              <CardHeader icon="check">Success</CardHeader>
+              <CardContent>
+                <p className="text-sm">Collapsible success card.</p>
+              </CardContent>
+            </Card>
+            <Card variant="warning" accordion className="w-64">
+              <CardHeader icon="alert-circle">Warning</CardHeader>
+              <CardContent>
+                <p className="text-sm">Collapsible warning card.</p>
+              </CardContent>
+            </Card>
+            <Card variant="error" accordion className="w-64">
+              <CardHeader icon="alert-circle">Error</CardHeader>
+              <CardContent>
+                <p className="text-sm">Collapsible error card.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Multiple Cards Group */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Multiple Cards
+          </Heading>
+          <div className="w-96 space-y-base">
+            <Card accordion defaultOpen={true}>
+              <CardHeader icon="users">User Preferences</CardHeader>
+              <CardContent>
+                <ul className="space-y-xs text-sm">
+                  <li>Theme: Auto</li>
+                  <li>Language: English</li>
+                  <li>Timezone: UTC</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card accordion>
+              <CardHeader icon="info-circle">Notifications</CardHeader>
+              <CardContent>
+                <ul className="space-y-xs text-sm">
+                  <li>Email: Enabled</li>
+                  <li>Push: Disabled</li>
+                  <li>SMS: Disabled</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card accordion>
+              <CardHeader icon="lock">Security</CardHeader>
+              <CardContent>
+                <ul className="space-y-xs text-sm">
+                  <li>Two-factor: Enabled</li>
+                  <li>Session timeout: 30 minutes</li>
+                  <li>Login alerts: Enabled</li>
+                </ul>
+              </CardContent>
+            </Card>
+            <Card accordion>
+              <CardHeader icon="settings">API Keys</CardHeader>
+              <CardContent>
+                <p className="text-sm">No API keys configured.</p>
+              </CardContent>
+              <CardFooter>
+                <button className="text-sm text-interactive-accent hover:underline">
+                  Generate Key
+                </button>
+              </CardFooter>
+            </Card>
+          </div>
+        </section>
+
+        {/* Inverse */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Inverse
+          </Heading>
+          <div className="flex flex-wrap gap-base">
+            <Card accordion className="inverse w-64">
+              <CardHeader>Inverse Accordion</CardHeader>
+              <CardContent>
+                <p className="text-sm">Dark theme accordion card.</p>
+              </CardContent>
+            </Card>
+            <Card variant="info" accordion className="inverse w-64">
+              <CardHeader icon="info-circle">Info Inverse</CardHeader>
+              <CardContent>
+                <p className="text-sm">Solid info background.</p>
+              </CardContent>
+            </Card>
+            <Card variant="accent1" accordion className="inverse w-64">
+              <CardHeader>Accent Inverse</CardHeader>
+              <CardContent>
+                <p className="text-sm">Solid accent background.</p>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      </div>
+    )
+  },
+}
+
+type CardMode = 'static' | 'actionable' | 'accordion'
+
+function ShowcaseCard({
+  mode,
+  inverse,
+  variant,
+  icon,
+  title,
+  children,
+  width = 'w-64',
+}: {
+  mode: CardMode
+  inverse: boolean
+  variant?: CardProps['variant']
+  icon?: IconName
+  title: string
+  children: React.ReactNode
+  width?: string
+}) {
+  return (
+    <Card
+      variant={variant}
+      actionable={mode === 'actionable'}
+      accordion={mode === 'accordion'}
+      defaultOpen={mode === 'accordion'}
+      className={cn(width, inverse && 'inverse')}
+    >
+      <CardHeader {...(icon && { icon })}>{title}</CardHeader>
+      <CardContent>{children}</CardContent>
+    </Card>
+  )
 }
 
 function ShowcaseContent() {
-  const [inverted, setInverted] = useState(false)
-  const [actionable, setActionable] = useState(false)
+  const [mode, setMode] = useState<CardMode>('static')
+  const [inverse, setInverse] = useState(false)
 
   return (
     <div className="space-y-lg p-base">
@@ -614,25 +802,26 @@ function ShowcaseContent() {
           type="single"
           variant="solid"
           size="sm"
-          aria-label="Inverted mode"
+          aria-label="Card mode"
           options={[
-            { value: 'off', label: 'Normal' },
-            { value: 'on', label: 'Inverted' },
+            { value: 'static', label: 'Static' },
+            { value: 'actionable', label: 'Actionable' },
+            { value: 'accordion', label: 'Accordion' },
           ]}
-          value={inverted ? 'on' : 'off'}
-          onChange={(val) => setInverted(val === 'on')}
+          value={mode}
+          onChange={(val) => setMode(val as CardMode)}
         />
         <ToggleGroup
           type="single"
           variant="solid"
           size="sm"
-          aria-label="Actionable mode"
+          aria-label="Inverse mode"
           options={[
-            { value: 'off', label: 'Static' },
-            { value: 'on', label: 'Actionable' },
+            { value: 'off', label: 'Normal' },
+            { value: 'on', label: 'Inverse' },
           ]}
-          value={actionable ? 'on' : 'off'}
-          onChange={(val) => setActionable(val === 'on')}
+          value={inverse ? 'on' : 'off'}
+          onChange={(val) => setInverse(val === 'on')}
         />
       </div>
 
@@ -642,18 +831,12 @@ function ShowcaseContent() {
           Core Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card variant="outlined" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader>Outlined</CardHeader>
-            <CardContent>
-              <p className="text-sm">Standard card with neutral background and border.</p>
-            </CardContent>
-          </Card>
-          <Card variant="elevated" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader>Elevated</CardHeader>
-            <CardContent>
-              <p className="text-sm">Card with shadow for visual hierarchy.</p>
-            </CardContent>
-          </Card>
+          <ShowcaseCard mode={mode} inverse={inverse} variant="outlined" title="Outlined">
+            <p className="text-sm">Standard card with neutral background and border.</p>
+          </ShowcaseCard>
+          <ShowcaseCard mode={mode} inverse={inverse} variant="elevated" title="Elevated">
+            <p className="text-sm">Card with shadow for visual hierarchy.</p>
+          </ShowcaseCard>
         </div>
       </section>
 
@@ -663,30 +846,42 @@ function ShowcaseContent() {
           Status Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card variant="info" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader icon="info-circle">Info</CardHeader>
-            <CardContent>
-              <p className="text-sm">Informational content that needs attention.</p>
-            </CardContent>
-          </Card>
-          <Card variant="success" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader icon="check">Success</CardHeader>
-            <CardContent>
-              <p className="text-sm">Positive outcome or successful operation.</p>
-            </CardContent>
-          </Card>
-          <Card variant="warning" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader icon="alert-circle">Warning</CardHeader>
-            <CardContent>
-              <p className="text-sm">Caution required, potential issues ahead.</p>
-            </CardContent>
-          </Card>
-          <Card variant="error" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader icon="alert-circle">Error</CardHeader>
-            <CardContent>
-              <p className="text-sm">Critical issue that needs immediate attention.</p>
-            </CardContent>
-          </Card>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="info"
+            icon="info-circle"
+            title="Info"
+          >
+            <p className="text-sm">Informational content that needs attention.</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="success"
+            icon="check"
+            title="Success"
+          >
+            <p className="text-sm">Positive outcome or successful operation.</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="warning"
+            icon="alert-circle"
+            title="Warning"
+          >
+            <p className="text-sm">Caution required, potential issues ahead.</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="error"
+            icon="alert-circle"
+            title="Error"
+          >
+            <p className="text-sm">Critical issue that needs immediate attention.</p>
+          </ShowcaseCard>
         </div>
       </section>
 
@@ -696,36 +891,51 @@ function ShowcaseContent() {
           Accent Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card variant="accent1" inverted={inverted} actionable={actionable} className="w-56">
-            <CardHeader>Accent 1</CardHeader>
-            <CardContent>
-              <p className="text-sm">Arctic Blue</p>
-            </CardContent>
-          </Card>
-          <Card variant="accent2" inverted={inverted} actionable={actionable} className="w-56">
-            <CardHeader>Accent 2</CardHeader>
-            <CardContent>
-              <p className="text-sm">Lavender Dusk</p>
-            </CardContent>
-          </Card>
-          <Card variant="accent3" inverted={inverted} actionable={actionable} className="w-56">
-            <CardHeader>Accent 3</CardHeader>
-            <CardContent>
-              <p className="text-sm">Dusty Rose</p>
-            </CardContent>
-          </Card>
-          <Card variant="accent4" inverted={inverted} actionable={actionable} className="w-56">
-            <CardHeader>Accent 4</CardHeader>
-            <CardContent>
-              <p className="text-sm">Fresh Lime</p>
-            </CardContent>
-          </Card>
-          <Card variant="accent5" inverted={inverted} actionable={actionable} className="w-56">
-            <CardHeader>Accent 5</CardHeader>
-            <CardContent>
-              <p className="text-sm">Terracotta</p>
-            </CardContent>
-          </Card>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="accent1"
+            title="Accent 1"
+            width="w-56"
+          >
+            <p className="text-sm">Arctic Blue</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="accent2"
+            title="Accent 2"
+            width="w-56"
+          >
+            <p className="text-sm">Lavender Dusk</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="accent3"
+            title="Accent 3"
+            width="w-56"
+          >
+            <p className="text-sm">Dusty Rose</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="accent4"
+            title="Accent 4"
+            width="w-56"
+          >
+            <p className="text-sm">Fresh Lime</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="accent5"
+            title="Accent 5"
+            width="w-56"
+          >
+            <p className="text-sm">Terracotta</p>
+          </ShowcaseCard>
         </div>
       </section>
 
@@ -735,30 +945,25 @@ function ShowcaseContent() {
           Compositions
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <Card inverted={inverted} actionable={actionable} className="w-64">
-            <CardContent>
-              <p className="text-sm">Content only - no header or footer.</p>
-            </CardContent>
-          </Card>
-          <Card inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader icon="file">Header + Content</CardHeader>
-            <CardContent>
-              <p className="text-sm">Header with content, no footer.</p>
-            </CardContent>
-          </Card>
-          <Card variant="elevated" inverted={inverted} actionable={actionable} className="w-64">
-            <CardHeader icon="chart">Full Card</CardHeader>
-            <CardContent>
-              <ul className="space-y-xs text-sm">
-                <li>Item one</li>
-                <li>Item two</li>
-                <li>Item three</li>
-              </ul>
-            </CardContent>
-            <CardFooter>
-              <span className="text-sm">Footer content</span>
-            </CardFooter>
-          </Card>
+          <ShowcaseCard mode={mode} inverse={inverse} title="Content Only">
+            <p className="text-sm">Content only - no header or footer.</p>
+          </ShowcaseCard>
+          <ShowcaseCard mode={mode} inverse={inverse} icon="file" title="Header + Content">
+            <p className="text-sm">Header with content, no footer.</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            variant="elevated"
+            icon="chart"
+            title="Full Card"
+          >
+            <ul className="space-y-xs text-sm">
+              <li>Item one</li>
+              <li>Item two</li>
+              <li>Item three</li>
+            </ul>
+          </ShowcaseCard>
         </div>
       </section>
     </div>
@@ -772,247 +977,9 @@ export const Showcase: Story = {
     docs: {
       description: {
         story:
-          'A comprehensive showcase of all Card features. Use the toggles to switch between normal/inverted modes and static/actionable states.',
+          'A comprehensive showcase of all Card features. Use the toggles to switch between normal/inverse modes and static/actionable states.',
       },
     },
   },
   render: () => <ShowcaseContent />,
-}
-
-// Accordion stories
-export const AccordionBasic: Story = {
-  name: 'Accordion - Basic',
-  render: () => (
-    <Card accordion className="w-80">
-      <CardHeader>Advanced Settings</CardHeader>
-      <CardContent>
-        <p>These are the advanced settings that can be expanded or collapsed.</p>
-        <ul className="mt-sm space-y-xs text-sm">
-          <li>• Enable notifications</li>
-          <li>• Auto-save interval: 5 minutes</li>
-          <li>• Debug mode: Off</li>
-        </ul>
-      </CardContent>
-    </Card>
-  ),
-}
-
-export const AccordionDefaultOpen: Story = {
-  name: 'Accordion - Default Open',
-  render: () => (
-    <Card accordion defaultOpen={true} className="w-80">
-      <CardHeader>Expanded by Default</CardHeader>
-      <CardContent>
-        <p>This accordion starts in the expanded state.</p>
-      </CardContent>
-      <CardFooter>
-        <button className="text-sm text-interactive-accent hover:underline">Save</button>
-      </CardFooter>
-    </Card>
-  ),
-}
-
-export const AccordionControlled: Story = {
-  name: 'Accordion - Controlled',
-  render: () => {
-    const [open, setOpen] = useState(false)
-
-    return (
-      <div className="space-y-base">
-        <div className="flex gap-base">
-          <button
-            onClick={() => setOpen(true)}
-            className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
-          >
-            Open
-          </button>
-          <button
-            onClick={() => setOpen(false)}
-            className="rounded bg-interactive-secondary px-sm py-xs text-sm text-interactive-secondary-foreground hover:bg-interactive-secondary-hover"
-          >
-            Close
-          </button>
-          <button
-            onClick={() => setOpen(!open)}
-            className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
-          >
-            Toggle
-          </button>
-        </div>
-        <Card accordion open={open} onOpenChange={setOpen} className="w-80">
-          <CardHeader>Controlled Accordion</CardHeader>
-          <CardContent>
-            <p>This accordion is controlled by external state.</p>
-            <p className="mt-sm text-sm text-foreground-muted">
-              Current state: {open ? 'Open' : 'Closed'}
-            </p>
-          </CardContent>
-        </Card>
-      </div>
-    )
-  },
-}
-
-export const AccordionWithIcon: Story = {
-  name: 'Accordion - With Header Icon',
-  render: () => (
-    <div className="space-y-base">
-      <Card accordion className="w-80">
-        <CardHeader icon="settings">Settings</CardHeader>
-        <CardContent>
-          <p>Icon on the left with chevron on the right.</p>
-        </CardContent>
-      </Card>
-      <Card accordion className="w-80">
-        <CardHeader icon="filter" iconPosition="right">
-          Filters
-        </CardHeader>
-        <CardContent>
-          <p>Icon and chevron both on the right.</p>
-        </CardContent>
-      </Card>
-    </div>
-  ),
-}
-
-export const AccordionAllVariants: Story = {
-  name: 'Accordion - All Variants',
-  render: () => (
-    <div className="flex flex-wrap gap-base">
-      <Card variant="outlined" accordion className="w-64">
-        <CardHeader>Outlined</CardHeader>
-        <CardContent>
-          <p className="text-sm">Collapsible outlined card.</p>
-        </CardContent>
-      </Card>
-      <Card variant="elevated" accordion className="w-64">
-        <CardHeader>Elevated</CardHeader>
-        <CardContent>
-          <p className="text-sm">Collapsible elevated card.</p>
-        </CardContent>
-      </Card>
-      <Card variant="info" accordion className="w-64">
-        <CardHeader icon="info-circle">Info</CardHeader>
-        <CardContent>
-          <p className="text-sm">Collapsible info card.</p>
-        </CardContent>
-      </Card>
-      <Card variant="success" accordion className="w-64">
-        <CardHeader icon="check">Success</CardHeader>
-        <CardContent>
-          <p className="text-sm">Collapsible success card.</p>
-        </CardContent>
-      </Card>
-      <Card variant="warning" accordion className="w-64">
-        <CardHeader icon="alert-circle">Warning</CardHeader>
-        <CardContent>
-          <p className="text-sm">Collapsible warning card.</p>
-        </CardContent>
-      </Card>
-      <Card variant="error" accordion className="w-64">
-        <CardHeader icon="alert-circle">Error</CardHeader>
-        <CardContent>
-          <p className="text-sm">Collapsible error card.</p>
-        </CardContent>
-      </Card>
-    </div>
-  ),
-}
-
-export const AccordionMultiple: Story = {
-  name: 'Accordion - Multiple Cards',
-  render: () => (
-    <div className="w-96 space-y-base">
-      <Card accordion defaultOpen={true}>
-        <CardHeader icon="users">User Preferences</CardHeader>
-        <CardContent>
-          <ul className="space-y-xs text-sm">
-            <li>Theme: Auto</li>
-            <li>Language: English</li>
-            <li>Timezone: UTC</li>
-          </ul>
-        </CardContent>
-      </Card>
-      <Card accordion>
-        <CardHeader icon="info-circle">Notifications</CardHeader>
-        <CardContent>
-          <ul className="space-y-xs text-sm">
-            <li>Email: Enabled</li>
-            <li>Push: Disabled</li>
-            <li>SMS: Disabled</li>
-          </ul>
-        </CardContent>
-      </Card>
-      <Card accordion>
-        <CardHeader icon="lock">Security</CardHeader>
-        <CardContent>
-          <ul className="space-y-xs text-sm">
-            <li>Two-factor: Enabled</li>
-            <li>Session timeout: 30 minutes</li>
-            <li>Login alerts: Enabled</li>
-          </ul>
-        </CardContent>
-      </Card>
-      <Card accordion>
-        <CardHeader icon="settings">API Keys</CardHeader>
-        <CardContent>
-          <p className="text-sm">No API keys configured.</p>
-        </CardContent>
-        <CardFooter>
-          <button className="text-sm text-interactive-accent hover:underline">Generate Key</button>
-        </CardFooter>
-      </Card>
-    </div>
-  ),
-}
-
-export const AccordionInverted: Story = {
-  name: 'Accordion - Inverted',
-  render: () => (
-    <div className="flex flex-wrap gap-base">
-      <Card inverted accordion className="w-64">
-        <CardHeader>Inverted Accordion</CardHeader>
-        <CardContent>
-          <p className="text-sm">Dark theme accordion card.</p>
-        </CardContent>
-      </Card>
-      <Card variant="info" inverted accordion className="w-64">
-        <CardHeader icon="info-circle">Info Inverted</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid info background.</p>
-        </CardContent>
-      </Card>
-      <Card variant="accent1" inverted accordion className="w-64">
-        <CardHeader>Accent Inverted</CardHeader>
-        <CardContent>
-          <p className="text-sm">Solid accent background.</p>
-        </CardContent>
-      </Card>
-    </div>
-  ),
-}
-
-export const AccordionErrorCase: Story = {
-  name: 'Accordion - Error Case',
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'This story demonstrates the error case when both accordion and actionable props are used. Check the console for the error message.',
-      },
-    },
-  },
-  render: () => (
-    <Card accordion actionable className="w-80">
-      <CardHeader>Invalid Configuration</CardHeader>
-      <CardContent>
-        <p className="text-sm text-status-error-foreground">
-          ⚠️ Card cannot be both accordion and actionable.
-        </p>
-        <p className="text-sm mt-sm">
-          This will log an error to the console. The accordion functionality takes precedence.
-        </p>
-      </CardContent>
-    </Card>
-  ),
 }
