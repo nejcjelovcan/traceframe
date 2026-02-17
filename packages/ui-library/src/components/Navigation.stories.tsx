@@ -21,6 +21,14 @@ A navigation component that supports both horizontal (header) and vertical (side
 - \`horizontal\` - For header navigation (inline, gap-4)
 - \`vertical\` - For sidebar navigation (stacked, with hover backgrounds)
 
+**Variants:**
+- \`default\` - Standard navigation with minimal styling
+- \`filled\` - Strong gradient background with prominent active states
+- \`subtle\` - Light gradient background with soft active states
+
+**Colors (for filled/subtle variants):**
+- \`primary\`, \`secondary\`, \`accent-1\` through \`accent-5\`
+
 **Features:**
 - Active state styling with \`active\` prop
 - Icon support via \`icon\` prop (uses Icon component)
@@ -37,6 +45,22 @@ A navigation component that supports both horizontal (header) and vertical (side
       options: ['horizontal', 'vertical'],
       table: {
         defaultValue: { summary: 'horizontal' },
+      },
+    },
+    variant: {
+      description: 'Visual variant of the navigation',
+      control: 'radio',
+      options: ['default', 'filled', 'subtle'],
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
+    color: {
+      description: 'Color scheme for filled and subtle variants',
+      control: 'select',
+      options: ['primary', 'secondary', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5'],
+      table: {
+        defaultValue: { summary: 'primary' },
       },
     },
   },
@@ -237,6 +261,323 @@ export const SidebarExample: Story = {
           Settings
         </NavItem>
       </Navigation>
+    </div>
+  ),
+}
+
+export const FilledPrimaryHorizontal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Filled variant with primary color gradient background for prominent navigation areas.',
+      },
+    },
+  },
+  render: () => (
+    <Navigation orientation="horizontal" variant="filled" color="primary">
+      <NavItem href="#" icon="dashboard" active>
+        Dashboard
+      </NavItem>
+      <NavItem href="#" icon="file-description">
+        Reports
+      </NavItem>
+      <NavItem href="#" icon="toggle">
+        Settings
+      </NavItem>
+      <NavItem href="#" icon="user">
+        Profile
+      </NavItem>
+    </Navigation>
+  ),
+}
+
+export const FilledSecondaryVertical: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Filled variant with secondary color for alternative navigation sections.',
+      },
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-64">
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <Navigation orientation="vertical" variant="filled" color="secondary">
+      <NavItem href="#" icon="dashboard" active>
+        Overview
+      </NavItem>
+      <NavItem href="#" icon="components">
+        Components
+      </NavItem>
+      <NavItem href="#" icon="hierarchy">
+        Dependencies
+      </NavItem>
+      <NavItem href="#" icon="alert-circle">
+        Issues
+      </NavItem>
+      <NavItem href="#" icon="toggle">
+        Settings
+      </NavItem>
+    </Navigation>
+  ),
+}
+
+export const SubtlePrimaryHorizontal: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Subtle variant with light gradient background for softer navigation styling.',
+      },
+    },
+  },
+  render: () => (
+    <Navigation orientation="horizontal" variant="subtle" color="primary">
+      <NavItem href="#" active>
+        Overview
+      </NavItem>
+      <NavItem href="#">Analytics</NavItem>
+      <NavItem href="#">Reports</NavItem>
+      <NavItem href="#">Team</NavItem>
+      <NavItem href="#">Settings</NavItem>
+    </Navigation>
+  ),
+}
+
+export const SubtleAccentVertical: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Subtle variant with accent color for themed sidebar navigation.',
+      },
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-64">
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <Navigation orientation="vertical" variant="subtle" color="accent-1">
+      <NavItem href="#" icon="folder" active>
+        Projects
+      </NavItem>
+      <NavItem href="#" icon="git-branch">
+        Branches
+      </NavItem>
+      <NavItem href="#" icon="git-commit">
+        Commits
+      </NavItem>
+      <NavItem href="#" icon="git-pull-request">
+        Pull Requests
+      </NavItem>
+      <NavItem href="#" icon="tag">
+        Releases
+      </NavItem>
+    </Navigation>
+  ),
+}
+
+export const FilledColorShowcase: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Showcase of all available colors in filled variant.',
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-base">
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Primary</p>
+        <Navigation orientation="horizontal" variant="filled" color="primary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Secondary</p>
+        <Navigation orientation="horizontal" variant="filled" color="secondary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Accent 1</p>
+        <Navigation orientation="horizontal" variant="filled" color="accent-1">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Accent 2</p>
+        <Navigation orientation="horizontal" variant="filled" color="accent-2">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Accent 3</p>
+        <Navigation orientation="horizontal" variant="filled" color="accent-3">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+    </div>
+  ),
+}
+
+export const SubtleColorShowcase: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Showcase of all available colors in subtle variant.',
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-base">
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Primary</p>
+        <Navigation orientation="horizontal" variant="subtle" color="primary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Secondary</p>
+        <Navigation orientation="horizontal" variant="subtle" color="secondary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Accent 1</p>
+        <Navigation orientation="horizontal" variant="subtle" color="accent-1">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Accent 2</p>
+        <Navigation orientation="horizontal" variant="subtle" color="accent-2">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <p className="mb-sm text-sm text-foreground-muted">Accent 3</p>
+        <Navigation orientation="horizontal" variant="subtle" color="accent-3">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+    </div>
+  ),
+}
+
+export const ComplexLayoutExample: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story: 'Complex layout combining different navigation variants for different sections.',
+      },
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div className="w-64 border-r border-border bg-surface">
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <div className="space-y-lg p-base">
+      <div>
+        <Heading level={3} size="sm" color="muted" className="mb-md uppercase tracking-wider">
+          Workspace
+        </Heading>
+        <Navigation orientation="vertical" variant="filled" color="primary">
+          <NavItem href="#" icon="dashboard" active>
+            Dashboard
+          </NavItem>
+          <NavItem href="#" icon="package">
+            Packages
+          </NavItem>
+          <NavItem href="#" icon="components">
+            Components
+          </NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <Heading level={3} size="sm" color="muted" className="mb-md uppercase tracking-wider">
+          Analytics
+        </Heading>
+        <Navigation orientation="vertical" variant="subtle" color="accent-1">
+          <NavItem href="#" icon="chart">
+            Metrics
+          </NavItem>
+          <NavItem href="#" icon="trending-up">
+            Trends
+          </NavItem>
+          <NavItem href="#" icon="file-description">
+            Reports
+          </NavItem>
+        </Navigation>
+      </div>
+      <div>
+        <Heading level={3} size="sm" color="muted" className="mb-md uppercase tracking-wider">
+          Settings
+        </Heading>
+        <Navigation orientation="vertical">
+          <NavItem href="#" icon="user">
+            Profile
+          </NavItem>
+          <NavItem href="#" icon="toggle">
+            Preferences
+          </NavItem>
+          <NavItem href="#" icon="shield">
+            Security
+          </NavItem>
+        </Navigation>
+      </div>
     </div>
   ),
 }

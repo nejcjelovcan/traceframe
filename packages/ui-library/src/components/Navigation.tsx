@@ -29,21 +29,77 @@ const navigationVariants = cva('transition-colors', {
   },
   compoundVariants: [
     // Filled variant with gradient backgrounds and borders
-    { variant: 'filled', color: 'primary', className: 'bg-gradient-primary border-line-interactive-primary-border' },
-    { variant: 'filled', color: 'secondary', className: 'bg-gradient-secondary border-line-interactive-secondary-border' },
-    { variant: 'filled', color: 'accent-1', className: 'bg-gradient-accent-1 border-line-accent-1-border' },
-    { variant: 'filled', color: 'accent-2', className: 'bg-gradient-accent-2 border-line-accent-2-border' },
-    { variant: 'filled', color: 'accent-3', className: 'bg-gradient-accent-3 border-line-accent-3-border' },
-    { variant: 'filled', color: 'accent-4', className: 'bg-gradient-accent-4 border-line-accent-4-border' },
-    { variant: 'filled', color: 'accent-5', className: 'bg-gradient-accent-5 border-line-accent-5-border' },
+    {
+      variant: 'filled',
+      color: 'primary',
+      className: 'bg-gradient-primary border-line-interactive-primary-border',
+    },
+    {
+      variant: 'filled',
+      color: 'secondary',
+      className: 'bg-gradient-secondary border-line-interactive-secondary-border',
+    },
+    {
+      variant: 'filled',
+      color: 'accent-1',
+      className: 'bg-gradient-accent-1 border-line-accent-1-border',
+    },
+    {
+      variant: 'filled',
+      color: 'accent-2',
+      className: 'bg-gradient-accent-2 border-line-accent-2-border',
+    },
+    {
+      variant: 'filled',
+      color: 'accent-3',
+      className: 'bg-gradient-accent-3 border-line-accent-3-border',
+    },
+    {
+      variant: 'filled',
+      color: 'accent-4',
+      className: 'bg-gradient-accent-4 border-line-accent-4-border',
+    },
+    {
+      variant: 'filled',
+      color: 'accent-5',
+      className: 'bg-gradient-accent-5 border-line-accent-5-border',
+    },
     // Subtle variant with light gradient backgrounds and subtle borders
-    { variant: 'subtle', color: 'primary', className: 'bg-gradient-primary-light border-line-interactive-primary-border/50' },
-    { variant: 'subtle', color: 'secondary', className: 'bg-gradient-secondary-light border-line-interactive-secondary-border/50' },
-    { variant: 'subtle', color: 'accent-1', className: 'bg-gradient-accent-1-light border-line-accent-1-border/50' },
-    { variant: 'subtle', color: 'accent-2', className: 'bg-gradient-accent-2-light border-line-accent-2-border/50' },
-    { variant: 'subtle', color: 'accent-3', className: 'bg-gradient-accent-3-light border-line-accent-3-border/50' },
-    { variant: 'subtle', color: 'accent-4', className: 'bg-gradient-accent-4-light border-line-accent-4-border/50' },
-    { variant: 'subtle', color: 'accent-5', className: 'bg-gradient-accent-5-light border-line-accent-5-border/50' },
+    {
+      variant: 'subtle',
+      color: 'primary',
+      className: 'bg-gradient-primary-light border-line-interactive-primary-border/50',
+    },
+    {
+      variant: 'subtle',
+      color: 'secondary',
+      className: 'bg-gradient-secondary-light border-line-interactive-secondary-border/50',
+    },
+    {
+      variant: 'subtle',
+      color: 'accent-1',
+      className: 'bg-gradient-accent-1-light border-line-accent-1-border/50',
+    },
+    {
+      variant: 'subtle',
+      color: 'accent-2',
+      className: 'bg-gradient-accent-2-light border-line-accent-2-border/50',
+    },
+    {
+      variant: 'subtle',
+      color: 'accent-3',
+      className: 'bg-gradient-accent-3-light border-line-accent-3-border/50',
+    },
+    {
+      variant: 'subtle',
+      color: 'accent-4',
+      className: 'bg-gradient-accent-4-light border-line-accent-4-border/50',
+    },
+    {
+      variant: 'subtle',
+      color: 'accent-5',
+      className: 'bg-gradient-accent-5-light border-line-accent-5-border/50',
+    },
   ],
   defaultVariants: {
     orientation: 'horizontal',
@@ -157,14 +213,21 @@ const navItemVariants = cva('rounded-md transition-colors', {
 
 type Orientation = 'horizontal' | 'vertical'
 type Variant = 'default' | 'filled' | 'subtle'
-type Color = 'primary' | 'secondary' | 'accent-1' | 'accent-2' | 'accent-3' | 'accent-4' | 'accent-5'
+type Color =
+  | 'primary'
+  | 'secondary'
+  | 'accent-1'
+  | 'accent-2'
+  | 'accent-3'
+  | 'accent-4'
+  | 'accent-5'
 
 const NavigationContext = createContext<{
   orientation: Orientation
   variant: Variant
 }>({
   orientation: 'horizontal',
-  variant: 'default'
+  variant: 'default',
 })
 
 export interface NavigationProps
@@ -178,7 +241,17 @@ export interface NavigationProps
 }
 
 const Navigation = forwardRef<HTMLElement, NavigationProps>(
-  ({ className, orientation = 'horizontal', variant = 'default', color = 'primary', children, ...props }, ref) => {
+  (
+    {
+      className,
+      orientation = 'horizontal',
+      variant = 'default',
+      color = 'primary',
+      children,
+      ...props
+    },
+    ref
+  ) => {
     return (
       <NavigationContext.Provider value={{ orientation, variant }}>
         <nav
