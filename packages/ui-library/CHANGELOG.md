@@ -1,5 +1,13 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.8.0
+
+### Minor Changes
+
+- [#91](https://github.com/nejcjelovcan/traceframe/pull/91) [`5c64afb`](https://github.com/nejcjelovcan/traceframe/commit/5c64afb5789d5af45e86cc291ee1acaecfa1f187) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add forge and mist themes, remove dusk and ember themes, set arctic as default theme
+
+- [#92](https://github.com/nejcjelovcan/traceframe/pull/92) [`0a6a2bf`](https://github.com/nejcjelovcan/traceframe/commit/0a6a2bf00e17f01f3e9b28bd4d2db8b5f6086dfa) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add variant and color props to PageLayout for coordinated backgrounds with Navigation. Replace gradient backgrounds with solid semantic color tokens (emphasis for filled, muted for subtle). Add interactive-primary-muted and interactive-secondary-muted tokens.
+
 ## 1.7.0
 
 ### Minor Changes

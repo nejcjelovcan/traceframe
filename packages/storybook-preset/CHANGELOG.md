@@ -1,5 +1,16 @@
 # @nejcjelovcan/traceframe-storybook-preset
 
+## 1.3.0
+
+### Minor Changes
+
+- [#91](https://github.com/nejcjelovcan/traceframe/pull/91) [`5c64afb`](https://github.com/nejcjelovcan/traceframe/commit/5c64afb5789d5af45e86cc291ee1acaecfa1f187) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add forge and mist themes, remove dusk and ember themes, set arctic as default theme
+
+### Patch Changes
+
+- Updated dependencies [[`5c64afb`](https://github.com/nejcjelovcan/traceframe/commit/5c64afb5789d5af45e86cc291ee1acaecfa1f187), [`0a6a2bf`](https://github.com/nejcjelovcan/traceframe/commit/0a6a2bf00e17f01f3e9b28bd4d2db8b5f6086dfa)]:
+  - @nejcjelovcan/traceframe-ui-library@1.8.0
+
 ## 1.2.1
 
 ### Patch Changes
