@@ -195,6 +195,7 @@ The token system has three layers:
 3. **Themes** (`themes/`) - Non-color tokens (typography, sizing, spacing, shadows, border styles, radii) that apply via theme class selectors (e.g., `:root.dusk`)
 
 CSS files are now the source of truth, with tokens cascading through:
+
 - `:root` - Base token definitions
 - `:root.light` / `:root.dark` - Mode-specific semantic color mappings
 - `:root.dusk` / `:root.arctic` / `:root.ember` - Theme-specific values
@@ -248,9 +249,9 @@ pnpm validate:token-definitions
 #### Adding New Tokens
 
 1. Add the CSS variable to the appropriate file:
-   * Palette colors: `src/styles/tokens/palettes/*.css`
-   * Semantic mappings: `src/styles/tokens/modes/{light,dark}.css`
-   * Theme values: `src/styles/tokens/themes/*.css`
+   - Palette colors: `src/styles/tokens/palettes/*.css`
+   - Semantic mappings: `src/styles/tokens/modes/{light,dark}.css`
+   - Theme values: `src/styles/tokens/themes/*.css`
 2. Register the token in `theme-registration.css` if creating a new semantic token
 3. Update TypeScript metadata in `src/styles/token-metadata.ts` for MCP tool support
 
@@ -306,7 +307,6 @@ pnpm validate:token-definitions
 | Gradient      | `bg-gradient-interactive-*`, `bg-gradient-status-*`, `bg-gradient-accent-*`                        | Background gradients for emphasis         |
 | Sizing        | `h-size-xs` (24px), `h-size-sm` (32px), `h-size-md` (40px), `h-size-lg` (48px), `h-size-xl` (56px) | Element heights/widths (buttons, inputs)  |
 | Spacing       | `spacing-2xs` to `spacing-2xl`                                                                     | Margins, padding, gaps                    |
-
 
 ## Icons
 
