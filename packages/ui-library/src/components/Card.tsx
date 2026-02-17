@@ -1,16 +1,6 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { cva, type VariantProps } from 'class-variance-authority'
-import {
-  Children,
-  cloneElement,
-  createContext,
-  forwardRef,
-  isValidElement,
-  useContext,
-  useId,
-  type HTMLAttributes,
-  type ReactElement,
-} from 'react'
+import { createContext, forwardRef, useContext, useId, type HTMLAttributes } from 'react'
 
 import { Icon } from '../icons/Icon.js'
 import { cn } from '../utils/cn.js'
@@ -256,7 +246,8 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
 
     if (isAccordion) {
       // Extract only the props that are valid for button elements
-      const { onClick, onKeyDown, onKeyUp, onFocus, onBlur, id, ...otherProps } = props as any
+      const { onClick, onKeyDown, onKeyUp, onFocus, onBlur, id } =
+        props as React.ButtonHTMLAttributes<HTMLButtonElement>
       const buttonProps = {
         onClick,
         onKeyDown,
@@ -276,7 +267,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
               'disabled:cursor-not-allowed disabled:opacity-50',
               className
             )}
-            ref={ref as any}
+            ref={ref as React.Ref<HTMLButtonElement>}
             aria-controls={contentId}
             {...buttonProps}
           >

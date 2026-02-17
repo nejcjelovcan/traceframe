@@ -924,7 +924,7 @@ export const AccordionMultiple: Story = {
   render: () => (
     <div className="w-96 space-y-base">
       <Card accordion defaultOpen={true}>
-        <CardHeader icon="user">User Preferences</CardHeader>
+        <CardHeader icon="users">User Preferences</CardHeader>
         <CardContent>
           <ul className="space-y-xs text-sm">
             <li>Theme: Auto</li>
@@ -934,7 +934,7 @@ export const AccordionMultiple: Story = {
         </CardContent>
       </Card>
       <Card accordion>
-        <CardHeader icon="bell">Notifications</CardHeader>
+        <CardHeader icon="info-circle">Notifications</CardHeader>
         <CardContent>
           <ul className="space-y-xs text-sm">
             <li>Email: Enabled</li>
@@ -944,7 +944,7 @@ export const AccordionMultiple: Story = {
         </CardContent>
       </Card>
       <Card accordion>
-        <CardHeader icon="shield">Security</CardHeader>
+        <CardHeader icon="lock">Security</CardHeader>
         <CardContent>
           <ul className="space-y-xs text-sm">
             <li>Two-factor: Enabled</li>
@@ -954,7 +954,7 @@ export const AccordionMultiple: Story = {
         </CardContent>
       </Card>
       <Card accordion>
-        <CardHeader icon="key">API Keys</CardHeader>
+        <CardHeader icon="settings">API Keys</CardHeader>
         <CardContent>
           <p className="text-sm">No API keys configured.</p>
         </CardContent>
