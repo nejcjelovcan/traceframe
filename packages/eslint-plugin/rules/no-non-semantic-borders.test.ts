@@ -68,6 +68,14 @@ ruleTester.run('no-non-semantic-borders', noNonSemanticBorders, {
       ],
       filename: 'test-file.tsx',
     },
+    // Template literals in className
+    {
+      code: '<div className={`border-line`} />',
+    },
+    // Template literals with semantic tokens in cn/clsx
+    {
+      code: 'cn(`border-line border-thick`)',
+    },
   ],
 
   invalid: [
@@ -146,6 +154,31 @@ ruleTester.run('no-non-semantic-borders', noNonSemanticBorders, {
               messageId: 'suggestSemantic',
               data: { replacement: 'border-highlight' },
               output: 'cn("border-highlight")',
+            },
+          ],
+        },
+      ],
+    },
+    // Template literals in JSX className
+    {
+      code: '<div className={`border-2`} />',
+      errors: [
+        {
+          messageId: 'nonSemanticBorder',
+          data: {
+            className: 'border-2',
+            suggestion: 'border-thick or border-highlight',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'border-thick' },
+              output: '<div className={`border-thick`} />',
+            },
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'border-highlight' },
+              output: '<div className={`border-highlight`} />',
             },
           ],
         },
