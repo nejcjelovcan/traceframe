@@ -14,20 +14,26 @@ const cardVariants = cva('rounded-sm border-line', {
       outlined: 'bg-surface border-line-border',
       elevated: 'bg-surface border-line-border shadow-md',
 
-      // Status variants with proper semantic token structure
-      info: 'bg-status-info-muted text-status-info-foreground border-line-status-info-border',
-      success:
-        'bg-status-success-muted text-status-success-foreground border-line-status-success-border',
-      warning:
-        'bg-status-warning-muted text-status-warning-foreground border-line-status-warning-border',
-      error: 'bg-status-error-muted text-status-error-foreground border-line-status-error-border',
+      // Primary/secondary variants with light gradient backgrounds
+      primary: 'bg-gradient-primary-light text-foreground border-line-interactive-primary-border',
+      secondary:
+        'bg-gradient-secondary-light text-foreground border-line-interactive-secondary-border',
 
-      // Accent variants for categorization and data visualization (accent 1-5)
-      accent1: 'bg-accent-1-muted text-accent-1-foreground border-line-accent-1-border',
-      accent2: 'bg-accent-2-muted text-accent-2-foreground border-line-accent-2-border',
-      accent3: 'bg-accent-3-muted text-accent-3-foreground border-line-accent-3-border',
-      accent4: 'bg-accent-4-muted text-accent-4-foreground border-line-accent-4-border',
-      accent5: 'bg-accent-5-muted text-accent-5-foreground border-line-accent-5-border',
+      // Status variants with light gradient backgrounds
+      info: 'bg-gradient-status-info-light text-status-info-foreground border-line-status-info-border',
+      success:
+        'bg-gradient-status-success-light text-status-success-foreground border-line-status-success-border',
+      warning:
+        'bg-gradient-status-warning-light text-status-warning-foreground border-line-status-warning-border',
+      error:
+        'bg-gradient-status-error-light text-status-error-foreground border-line-status-error-border',
+
+      // Accent variants with light gradient backgrounds
+      accent1: 'bg-gradient-accent-1-light text-accent-1-foreground border-line-accent-1-border',
+      accent2: 'bg-gradient-accent-2-light text-accent-2-foreground border-line-accent-2-border',
+      accent3: 'bg-gradient-accent-3-light text-accent-3-foreground border-line-accent-3-border',
+      accent4: 'bg-gradient-accent-4-light text-accent-4-foreground border-line-accent-4-border',
+      accent5: 'bg-gradient-accent-5-light text-accent-5-foreground border-line-accent-5-border',
     },
     actionable: {
       true: 'cursor-pointer transition-shadow',
@@ -41,6 +47,8 @@ const cardVariants = cva('rounded-sm border-line', {
       variant: [
         'outlined',
         'elevated',
+        'primary',
+        'secondary',
         'info',
         'success',
         'warning',
@@ -67,13 +75,16 @@ const cardVariants = cva('rounded-sm border-line', {
   },
 })
 
-// Context for accordion state
+type CardSize = 'default' | 'sm'
+
+// Context for accordion state and size
 interface CardContextValue {
   isAccordion: boolean
   contentId?: string
+  size: CardSize
 }
 
-const CardContext = createContext<CardContextValue>({ isAccordion: false })
+const CardContext = createContext<CardContextValue>({ isAccordion: false, size: 'default' })
 
 // Card
 export interface CardProps
@@ -82,6 +93,8 @@ export interface CardProps
   actionable?: boolean
   /** Makes the card collapsible with header as trigger */
   accordion?: boolean
+  /** Card size - 'sm' uses smaller padding and header font */
+  size?: CardSize
   /** Initial open state for uncontrolled accordion */
   defaultOpen?: boolean
   /** Controlled open state for accordion */
@@ -97,6 +110,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       variant,
       actionable,
       accordion,
+      size = 'default',
       defaultOpen = false,
       open,
       onOpenChange,
@@ -158,7 +172,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
         : props
 
       return (
-        <CardContext.Provider value={{ isAccordion: false }}>
+        <CardContext.Provider value={{ isAccordion: false, size }}>
           <div className={baseClassName} ref={ref} {...cardProps}>
             {children}
           </div>
@@ -175,7 +189,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
 
     return (
       <CollapsiblePrimitive.Root {...collapsibleProps}>
-        <CardContext.Provider value={{ isAccordion: true, contentId }}>
+        <CardContext.Provider value={{ isAccordion: true, contentId, size }}>
           <div className={baseClassName} ref={ref} {...props}>
             {children}
           </div>
@@ -197,7 +211,8 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
   ({ className, icon, iconPosition = 'left', children, ...props }, ref) => {
-    const { isAccordion, contentId } = useContext(CardContext)
+    const { isAccordion, contentId, size } = useContext(CardContext)
+    const isSmall = size === 'sm'
 
     const baseContent = (
       <>
@@ -232,8 +247,9 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
         <CollapsiblePrimitive.Trigger asChild>
           <button
             className={cn(
-              'flex w-full items-center gap-sm border-b border-inherit px-base py-md font-medium text-left',
-              'rounded-t-sm',
+              'flex w-full items-center gap-sm font-medium text-left',
+              isSmall ? 'px-sm py-xs text-sm' : 'px-base py-md',
+              'rounded-t-sm last:rounded-b-sm',
               'hover:bg-foreground/5 transition-colors',
               'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
               'disabled:cursor-not-allowed disabled:opacity-50',
@@ -252,7 +268,8 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
     return (
       <div
         className={cn(
-          'flex items-center gap-sm border-b border-inherit px-base py-md font-medium',
+          'flex items-center gap-sm font-medium',
+          isSmall ? 'px-sm py-xs text-sm' : 'px-base py-md',
           className
         )}
         ref={ref}
@@ -271,26 +288,36 @@ export type CardContentProps = HTMLAttributes<HTMLDivElement>
 
 export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
   ({ className, children, ...props }, ref) => {
-    const { isAccordion, contentId } = useContext(CardContext)
-
-    const content = (
-      <div className={cn('px-base py-base', className)} ref={ref} {...props}>
-        {children}
-      </div>
-    )
+    const { isAccordion, contentId, size } = useContext(CardContext)
+    const padding = size === 'sm' ? 'px-sm py-xs' : 'px-base py-base'
 
     if (isAccordion) {
       return (
         <CollapsiblePrimitive.Content
           id={contentId}
-          className="overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up"
+          className="overflow-hidden border-t border-inherit data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up"
         >
-          {content}
+          <div className={cn(padding, 'text-foreground', className)} ref={ref} {...props}>
+            {children}
+          </div>
         </CollapsiblePrimitive.Content>
       )
     }
 
-    return content
+    return (
+      <div
+        className={cn(
+          'border-t border-inherit first:border-t-0',
+          padding,
+          'text-foreground',
+          className
+        )}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </div>
+    )
   }
 )
 
@@ -301,30 +328,31 @@ export type CardFooterProps = HTMLAttributes<HTMLDivElement>
 
 export const CardFooter = forwardRef<HTMLDivElement, CardFooterProps>(
   ({ className, children, ...props }, ref) => {
-    const { isAccordion } = useContext(CardContext)
+    const { isAccordion, size } = useContext(CardContext)
+    const padding = size === 'sm' ? 'px-sm py-xs' : 'px-base py-md'
 
-    const footer = (
+    if (isAccordion) {
+      return (
+        <CollapsiblePrimitive.Content className="overflow-hidden border-t border-inherit data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up">
+          <div className={cn('flex justify-end', padding, className)} ref={ref} {...props}>
+            {children}
+          </div>
+        </CollapsiblePrimitive.Content>
+      )
+    }
+
+    return (
       <div
-        className={cn('flex justify-end border-t border-inherit px-base py-md', className)}
+        className={cn('flex justify-end border-t border-inherit', padding, className)}
         ref={ref}
         {...props}
       >
         {children}
       </div>
     )
-
-    if (isAccordion) {
-      return (
-        <CollapsiblePrimitive.Content className="overflow-hidden data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up">
-          {footer}
-        </CollapsiblePrimitive.Content>
-      )
-    }
-
-    return footer
   }
 )
 
 CardFooter.displayName = 'CardFooter'
 
-export { cardVariants }
+export { cardVariants, type CardSize }

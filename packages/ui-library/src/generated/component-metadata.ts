@@ -305,6 +305,8 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         options: [
           'outlined',
           'elevated',
+          'primary',
+          'secondary',
           'info',
           'success',
           'warning',
@@ -330,6 +332,14 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         type: 'boolean',
         required: false,
         defaultValue: 'false',
+      },
+      {
+        name: 'size',
+        description: 'Card size - sm uses smaller padding and header font',
+        type: 'select',
+        required: false,
+        options: ['default', 'sm'],
+        defaultValue: 'default',
       },
       {
         name: 'defaultOpen',

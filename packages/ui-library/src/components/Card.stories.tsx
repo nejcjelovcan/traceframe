@@ -5,7 +5,7 @@ import { Heading } from './Heading'
 import { ToggleGroup } from './ToggleGroup'
 import { cn } from '../utils/cn'
 
-import type { CardProps } from './Card'
+import type { CardProps, CardSize } from './Card'
 import type { IconName } from '../icons/types'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -32,6 +32,8 @@ A container component for grouping related content with optional header and foot
 **Variant Guide:**
 - \`outlined\` (default) - Standard cards, list items
 - \`elevated\` - Featured or highlighted content with shadow
+- \`primary\` - Primary emphasis cards, branded content
+- \`secondary\` - Secondary emphasis cards, alternative branding
 - \`info\` - Informational callouts
 - \`success\` - Success states, positive feedback
 - \`warning\` - Warning states, caution indicators
@@ -74,6 +76,8 @@ A container component for grouping related content with optional header and foot
       options: [
         'outlined',
         'elevated',
+        'primary',
+        'secondary',
         'info',
         'success',
         'warning',
@@ -100,6 +104,14 @@ A container component for grouping related content with optional header and foot
       control: 'boolean',
       table: {
         defaultValue: { summary: 'false' },
+      },
+    },
+    size: {
+      description: 'Card size - sm uses smaller padding and header font',
+      control: 'select',
+      options: ['default', 'sm'],
+      table: {
+        defaultValue: { summary: 'default' },
       },
     },
     defaultOpen: {
@@ -759,6 +771,7 @@ type CardMode = 'static' | 'actionable' | 'accordion'
 function ShowcaseCard({
   mode,
   inverse,
+  size,
   variant,
   icon,
   title,
@@ -767,6 +780,7 @@ function ShowcaseCard({
 }: {
   mode: CardMode
   inverse: boolean
+  size: CardSize
   variant?: CardProps['variant']
   icon?: IconName
   title: string
@@ -779,6 +793,7 @@ function ShowcaseCard({
       actionable={mode === 'actionable'}
       accordion={mode === 'accordion'}
       defaultOpen={mode === 'accordion'}
+      size={size}
       className={cn(width, inverse && 'inverse')}
     >
       <CardHeader {...(icon && { icon })}>{title}</CardHeader>
@@ -790,6 +805,7 @@ function ShowcaseCard({
 function ShowcaseContent() {
   const [mode, setMode] = useState<CardMode>('static')
   const [inverse, setInverse] = useState(false)
+  const [size, setSize] = useState<CardSize>('default')
 
   return (
     <div className="space-y-lg p-base">
@@ -823,6 +839,18 @@ function ShowcaseContent() {
           value={inverse ? 'on' : 'off'}
           onChange={(val) => setInverse(val === 'on')}
         />
+        <ToggleGroup
+          type="single"
+          variant="solid"
+          size="sm"
+          aria-label="Card size"
+          options={[
+            { value: 'default', label: 'Default' },
+            { value: 'sm', label: 'Small' },
+          ]}
+          value={size}
+          onChange={(val) => setSize(val as CardSize)}
+        />
       </div>
 
       {/* Core Variants Section */}
@@ -831,11 +859,35 @@ function ShowcaseContent() {
           Core Variants
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <ShowcaseCard mode={mode} inverse={inverse} variant="outlined" title="Outlined">
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            size={size}
+            variant="outlined"
+            title="Outlined"
+          >
             <p className="text-sm">Standard card with neutral background and border.</p>
           </ShowcaseCard>
-          <ShowcaseCard mode={mode} inverse={inverse} variant="elevated" title="Elevated">
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            size={size}
+            variant="elevated"
+            title="Elevated"
+          >
             <p className="text-sm">Card with shadow for visual hierarchy.</p>
+          </ShowcaseCard>
+          <ShowcaseCard mode={mode} inverse={inverse} size={size} variant="primary" title="Primary">
+            <p className="text-sm">Primary emphasis with branded gradient.</p>
+          </ShowcaseCard>
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            size={size}
+            variant="secondary"
+            title="Secondary"
+          >
+            <p className="text-sm">Secondary emphasis with alternative gradient.</p>
           </ShowcaseCard>
         </div>
       </section>
@@ -945,15 +997,22 @@ function ShowcaseContent() {
           Compositions
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <ShowcaseCard mode={mode} inverse={inverse} title="Content Only">
+          <ShowcaseCard mode={mode} inverse={inverse} size={size} title="Content Only">
             <p className="text-sm">Content only - no header or footer.</p>
           </ShowcaseCard>
-          <ShowcaseCard mode={mode} inverse={inverse} icon="file" title="Header + Content">
+          <ShowcaseCard
+            mode={mode}
+            inverse={inverse}
+            size={size}
+            icon="file"
+            title="Header + Content"
+          >
             <p className="text-sm">Header with content, no footer.</p>
           </ShowcaseCard>
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
+            size={size}
             variant="elevated"
             icon="chart"
             title="Full Card"

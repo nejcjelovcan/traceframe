@@ -25,10 +25,26 @@ describe('Card', () => {
     expect(card.className).toContain('shadow-md')
   })
 
+  it('applies primary variant classes', () => {
+    render(<Card variant="primary">Primary</Card>)
+    const card = screen.getByText('Primary')
+    expect(card.className).toContain('bg-gradient-primary-light')
+    expect(card.className).toContain('text-foreground')
+    expect(card.className).toContain('border-line-interactive-primary-border')
+  })
+
+  it('applies secondary variant classes', () => {
+    render(<Card variant="secondary">Secondary</Card>)
+    const card = screen.getByText('Secondary')
+    expect(card.className).toContain('bg-gradient-secondary-light')
+    expect(card.className).toContain('text-foreground')
+    expect(card.className).toContain('border-line-interactive-secondary-border')
+  })
+
   it('applies info variant classes', () => {
     render(<Card variant="info">Info</Card>)
     const card = screen.getByText('Info')
-    expect(card.className).toContain('bg-status-info-muted')
+    expect(card.className).toContain('bg-gradient-status-info-light')
     expect(card.className).toContain('text-status-info-foreground')
     expect(card.className).toContain('border-line-status-info-border')
   })
@@ -36,7 +52,7 @@ describe('Card', () => {
   it('applies success variant classes', () => {
     render(<Card variant="success">Success</Card>)
     const card = screen.getByText('Success')
-    expect(card.className).toContain('bg-status-success-muted')
+    expect(card.className).toContain('bg-gradient-status-success-light')
     expect(card.className).toContain('text-status-success-foreground')
     expect(card.className).toContain('border-line-status-success-border')
   })
@@ -44,7 +60,7 @@ describe('Card', () => {
   it('applies warning variant classes', () => {
     render(<Card variant="warning">Warning</Card>)
     const card = screen.getByText('Warning')
-    expect(card.className).toContain('bg-status-warning-muted')
+    expect(card.className).toContain('bg-gradient-status-warning-light')
     expect(card.className).toContain('text-status-warning-foreground')
     expect(card.className).toContain('border-line-status-warning-border')
   })
@@ -52,7 +68,7 @@ describe('Card', () => {
   it('applies error variant classes', () => {
     render(<Card variant="error">Error</Card>)
     const card = screen.getByText('Error')
-    expect(card.className).toContain('bg-status-error-muted')
+    expect(card.className).toContain('bg-gradient-status-error-light')
     expect(card.className).toContain('text-status-error-foreground')
     expect(card.className).toContain('border-line-status-error-border')
   })
@@ -60,7 +76,7 @@ describe('Card', () => {
   it('applies accent1 variant classes', () => {
     render(<Card variant="accent1">Accent1</Card>)
     const card = screen.getByText('Accent1')
-    expect(card.className).toContain('bg-accent-1-muted')
+    expect(card.className).toContain('bg-gradient-accent-1-light')
     expect(card.className).toContain('text-accent-1-foreground')
     expect(card.className).toContain('border-line-accent-1-border')
   })
@@ -68,7 +84,7 @@ describe('Card', () => {
   it('applies accent2 variant classes', () => {
     render(<Card variant="accent2">Accent2</Card>)
     const card = screen.getByText('Accent2')
-    expect(card.className).toContain('bg-accent-2-muted')
+    expect(card.className).toContain('bg-gradient-accent-2-light')
     expect(card.className).toContain('text-accent-2-foreground')
     expect(card.className).toContain('border-line-accent-2-border')
   })
@@ -76,7 +92,7 @@ describe('Card', () => {
   it('applies accent3 variant classes', () => {
     render(<Card variant="accent3">Accent3</Card>)
     const card = screen.getByText('Accent3')
-    expect(card.className).toContain('bg-accent-3-muted')
+    expect(card.className).toContain('bg-gradient-accent-3-light')
     expect(card.className).toContain('text-accent-3-foreground')
     expect(card.className).toContain('border-line-accent-3-border')
   })
@@ -84,7 +100,7 @@ describe('Card', () => {
   it('applies accent4 variant classes', () => {
     render(<Card variant="accent4">Accent4</Card>)
     const card = screen.getByText('Accent4')
-    expect(card.className).toContain('bg-accent-4-muted')
+    expect(card.className).toContain('bg-gradient-accent-4-light')
     expect(card.className).toContain('text-accent-4-foreground')
     expect(card.className).toContain('border-line-accent-4-border')
   })
@@ -92,7 +108,7 @@ describe('Card', () => {
   it('applies accent5 variant classes', () => {
     render(<Card variant="accent5">Accent5</Card>)
     const card = screen.getByText('Accent5')
-    expect(card.className).toContain('bg-accent-5-muted')
+    expect(card.className).toContain('bg-gradient-accent-5-light')
     expect(card.className).toContain('text-accent-5-foreground')
     expect(card.className).toContain('border-line-accent-5-border')
   })
@@ -162,8 +178,6 @@ describe('CardHeader', () => {
   it('applies header classes', () => {
     render(<CardHeader data-testid="header">Header</CardHeader>)
     const header = screen.getByTestId('header')
-    expect(header.className).toContain('border-b')
-    expect(header.className).toContain('border-inherit')
     expect(header.className).toContain('px-base')
     expect(header.className).toContain('py-md')
     expect(header.className).toContain('font-medium')
@@ -448,7 +462,7 @@ describe('Card actionable variant', () => {
     const card = screen.getByText('Actionable Inverse Info')
     expect(card.className).toContain('cursor-pointer')
     expect(card.className).toContain('shadow-interactive')
-    expect(card.className).toContain('bg-status-info-muted')
+    expect(card.className).toContain('bg-gradient-status-info-light')
     expect(card.className).toContain('text-status-info-foreground')
   })
 
