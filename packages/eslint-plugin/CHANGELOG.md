@@ -1,5 +1,20 @@
 # @nejcjelovcan/eslint-plugin-traceframe
 
+## 0.3.0
+
+### Minor Changes
+
+- [#84](https://github.com/nejcjelovcan/traceframe/pull/84) [`7952ba5`](https://github.com/nejcjelovcan/traceframe/commit/7952ba50d1a0b15d4b0dab4680906bd9b1499958) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add ESLint rules for typography and border radius token enforcement
+
+- [#80](https://github.com/nejcjelovcan/traceframe/pull/80) [`babf40f`](https://github.com/nejcjelovcan/traceframe/commit/babf40fc915c6d5bcfcb633a84ca32d02cf46d51) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Refactor inverse
+
+- [#79](https://github.com/nejcjelovcan/traceframe/pull/79) [`27e8b16`](https://github.com/nejcjelovcan/traceframe/commit/27e8b16c30c9dba9431c1d713f71803f26ecc267) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Switch from RGB to OKLCH palettes. So much color, woohoo!
+
+### Patch Changes
+
+- Updated dependencies [[`7952ba5`](https://github.com/nejcjelovcan/traceframe/commit/7952ba50d1a0b15d4b0dab4680906bd9b1499958), [`babf40f`](https://github.com/nejcjelovcan/traceframe/commit/babf40fc915c6d5bcfcb633a84ca32d02cf46d51), [`750e385`](https://github.com/nejcjelovcan/traceframe/commit/750e385cd7e9483762850e4cd0b3326ca2f1c49e), [`750e385`](https://github.com/nejcjelovcan/traceframe/commit/750e385cd7e9483762850e4cd0b3326ca2f1c49e), [`27e8b16`](https://github.com/nejcjelovcan/traceframe/commit/27e8b16c30c9dba9431c1d713f71803f26ecc267)]:
+  - @nejcjelovcan/traceframe-ui-library@1.6.0
+
 ## 0.2.0
 
 ### Minor Changes
