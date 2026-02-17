@@ -178,7 +178,9 @@
 
       /* ===== Root Colors ===== */
 
-      --palette-surface: oklch(98.5% 0.006 240); /* Surface color - cool white with subtle blue undertone */
+      --palette-surface: oklch(
+        98.5% 0.006 240
+      ); /* Surface color - cool white with subtle blue undertone */
 
       /* ===== Core Palettes ===== */
 
@@ -187,9 +189,9 @@
       --palette-error-100: oklch(95% 0.05 10);
       --palette-error-200: oklch(90% 0.07 10);
       --palette-error-300: oklch(82% 0.09 10);
-      --palette-error-400: oklch(70% 0.10 10);
-      --palette-error-500: oklch(58% 0.10 10);
-      --palette-error-600: oklch(48% 0.10 10);
+      --palette-error-400: oklch(70% 0.1 10);
+      --palette-error-500: oklch(58% 0.1 10);
+      --palette-error-600: oklch(48% 0.1 10);
       --palette-error-700: oklch(38% 0.09 10);
       --palette-error-800: oklch(28% 0.08 10);
       --palette-error-900: oklch(20% 0.06 10);
@@ -198,13 +200,13 @@
       /* Neutral palette */
       --palette-neutral-50: oklch(98% 0.006 240);
       --palette-neutral-100: oklch(95% 0.008 240);
-      --palette-neutral-200: oklch(90% 0.010 240);
+      --palette-neutral-200: oklch(90% 0.01 240);
       --palette-neutral-300: oklch(82% 0.012 240);
       --palette-neutral-400: oklch(70% 0.012 240);
       --palette-neutral-500: oklch(58% 0.012 240);
       --palette-neutral-600: oklch(48% 0.012 240);
       --palette-neutral-700: oklch(38% 0.011 240);
-      --palette-neutral-800: oklch(28% 0.010 240);
+      --palette-neutral-800: oklch(28% 0.01 240);
       --palette-neutral-900: oklch(20% 0.008 240);
       --palette-neutral-950: oklch(10% 0.006 240);
 
@@ -214,8 +216,8 @@
       --palette-primary-200: oklch(90% 0.05 220);
       --palette-primary-300: oklch(82% 0.06 220);
       --palette-primary-400: oklch(70% 0.08 220);
-      --palette-primary-500: oklch(58% 0.10 220);
-      --palette-primary-600: oklch(48% 0.10 220);
+      --palette-primary-500: oklch(58% 0.1 220);
+      --palette-primary-600: oklch(48% 0.1 220);
       --palette-primary-700: oklch(38% 0.09 220);
       --palette-primary-800: oklch(28% 0.08 220);
       --palette-primary-900: oklch(20% 0.06 220);
@@ -238,12 +240,12 @@
       --palette-warning-50: oklch(98% 0.04 70);
       --palette-warning-100: oklch(95% 0.06 70);
       --palette-warning-200: oklch(90% 0.08 70);
-      --palette-warning-300: oklch(82% 0.10 70);
+      --palette-warning-300: oklch(82% 0.1 70);
       --palette-warning-400: oklch(70% 0.12 70);
       --palette-warning-500: oklch(58% 0.12 70);
       --palette-warning-600: oklch(48% 0.12 70);
       --palette-warning-700: oklch(38% 0.11 70);
-      --palette-warning-800: oklch(28% 0.10 70);
+      --palette-warning-800: oklch(28% 0.1 70);
       --palette-warning-900: oklch(20% 0.08 70);
       --palette-warning-950: oklch(10% 0.05 70);
 
@@ -254,9 +256,9 @@
       --palette-accent-1-100: oklch(95% 0.04 260);
       --palette-accent-1-200: oklch(90% 0.06 260);
       --palette-accent-1-300: oklch(82% 0.08 260);
-      --palette-accent-1-400: oklch(70% 0.10 260);
-      --palette-accent-1-500: oklch(58% 0.10 260);
-      --palette-accent-1-600: oklch(48% 0.10 260);
+      --palette-accent-1-400: oklch(70% 0.1 260);
+      --palette-accent-1-500: oklch(58% 0.1 260);
+      --palette-accent-1-600: oklch(48% 0.1 260);
       --palette-accent-1-700: oklch(38% 0.09 260);
       --palette-accent-1-800: oklch(28% 0.08 260);
       --palette-accent-1-900: oklch(20% 0.06 260);
@@ -280,9 +282,9 @@
       --palette-accent-3-100: oklch(95% 0.04 290);
       --palette-accent-3-200: oklch(90% 0.06 290);
       --palette-accent-3-300: oklch(82% 0.08 290);
-      --palette-accent-3-400: oklch(70% 0.10 290);
-      --palette-accent-3-500: oklch(58% 0.10 290);
-      --palette-accent-3-600: oklch(48% 0.10 290);
+      --palette-accent-3-400: oklch(70% 0.1 290);
+      --palette-accent-3-500: oklch(58% 0.1 290);
+      --palette-accent-3-600: oklch(48% 0.1 290);
       --palette-accent-3-700: oklch(38% 0.09 290);
       --palette-accent-3-800: oklch(28% 0.08 290);
       --palette-accent-3-900: oklch(20% 0.06 290);

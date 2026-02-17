@@ -60,50 +60,146 @@
 
     /* Primary palette intermediate shades */
     --color-primary-50-generated: color-mix(in oklch, var(--palette-primary-100), white 50%);
-    --color-primary-200-generated: color-mix(in oklch, var(--palette-primary-100), var(--palette-primary-300) 50%);
-    --color-primary-400-generated: color-mix(in oklch, var(--palette-primary-300), var(--palette-primary-500) 50%);
-    --color-primary-600-generated: color-mix(in oklch, var(--palette-primary-500), var(--palette-primary-700) 50%);
-    --color-primary-800-generated: color-mix(in oklch, var(--palette-primary-700), var(--palette-primary-900) 50%);
+    --color-primary-200-generated: color-mix(
+      in oklch,
+      var(--palette-primary-100),
+      var(--palette-primary-300) 50%
+    );
+    --color-primary-400-generated: color-mix(
+      in oklch,
+      var(--palette-primary-300),
+      var(--palette-primary-500) 50%
+    );
+    --color-primary-600-generated: color-mix(
+      in oklch,
+      var(--palette-primary-500),
+      var(--palette-primary-700) 50%
+    );
+    --color-primary-800-generated: color-mix(
+      in oklch,
+      var(--palette-primary-700),
+      var(--palette-primary-900) 50%
+    );
     --color-primary-950-generated: color-mix(in oklch, var(--palette-primary-900), black 50%);
 
     /* Secondary palette intermediate shades */
     --color-secondary-50-generated: color-mix(in oklch, var(--palette-secondary-100), white 50%);
-    --color-secondary-200-generated: color-mix(in oklch, var(--palette-secondary-100), var(--palette-secondary-300) 50%);
-    --color-secondary-400-generated: color-mix(in oklch, var(--palette-secondary-300), var(--palette-secondary-500) 50%);
-    --color-secondary-600-generated: color-mix(in oklch, var(--palette-secondary-500), var(--palette-secondary-700) 50%);
-    --color-secondary-800-generated: color-mix(in oklch, var(--palette-secondary-700), var(--palette-secondary-900) 50%);
+    --color-secondary-200-generated: color-mix(
+      in oklch,
+      var(--palette-secondary-100),
+      var(--palette-secondary-300) 50%
+    );
+    --color-secondary-400-generated: color-mix(
+      in oklch,
+      var(--palette-secondary-300),
+      var(--palette-secondary-500) 50%
+    );
+    --color-secondary-600-generated: color-mix(
+      in oklch,
+      var(--palette-secondary-500),
+      var(--palette-secondary-700) 50%
+    );
+    --color-secondary-800-generated: color-mix(
+      in oklch,
+      var(--palette-secondary-700),
+      var(--palette-secondary-900) 50%
+    );
     --color-secondary-950-generated: color-mix(in oklch, var(--palette-secondary-900), black 50%);
 
     /* Success palette intermediate shades */
     --color-success-50-generated: color-mix(in oklch, var(--palette-success-100), white 50%);
-    --color-success-200-generated: color-mix(in oklch, var(--palette-success-100), var(--palette-success-300) 50%);
-    --color-success-400-generated: color-mix(in oklch, var(--palette-success-300), var(--palette-success-500) 50%);
-    --color-success-600-generated: color-mix(in oklch, var(--palette-success-500), var(--palette-success-700) 50%);
-    --color-success-800-generated: color-mix(in oklch, var(--palette-success-700), var(--palette-success-900) 50%);
+    --color-success-200-generated: color-mix(
+      in oklch,
+      var(--palette-success-100),
+      var(--palette-success-300) 50%
+    );
+    --color-success-400-generated: color-mix(
+      in oklch,
+      var(--palette-success-300),
+      var(--palette-success-500) 50%
+    );
+    --color-success-600-generated: color-mix(
+      in oklch,
+      var(--palette-success-500),
+      var(--palette-success-700) 50%
+    );
+    --color-success-800-generated: color-mix(
+      in oklch,
+      var(--palette-success-700),
+      var(--palette-success-900) 50%
+    );
     --color-success-950-generated: color-mix(in oklch, var(--palette-success-900), black 50%);
 
     /* Warning palette intermediate shades */
     --color-warning-50-generated: color-mix(in oklch, var(--palette-warning-100), white 50%);
-    --color-warning-200-generated: color-mix(in oklch, var(--palette-warning-100), var(--palette-warning-300) 50%);
-    --color-warning-400-generated: color-mix(in oklch, var(--palette-warning-300), var(--palette-warning-500) 50%);
-    --color-warning-600-generated: color-mix(in oklch, var(--palette-warning-500), var(--palette-warning-700) 50%);
-    --color-warning-800-generated: color-mix(in oklch, var(--palette-warning-700), var(--palette-warning-900) 50%);
+    --color-warning-200-generated: color-mix(
+      in oklch,
+      var(--palette-warning-100),
+      var(--palette-warning-300) 50%
+    );
+    --color-warning-400-generated: color-mix(
+      in oklch,
+      var(--palette-warning-300),
+      var(--palette-warning-500) 50%
+    );
+    --color-warning-600-generated: color-mix(
+      in oklch,
+      var(--palette-warning-500),
+      var(--palette-warning-700) 50%
+    );
+    --color-warning-800-generated: color-mix(
+      in oklch,
+      var(--palette-warning-700),
+      var(--palette-warning-900) 50%
+    );
     --color-warning-950-generated: color-mix(in oklch, var(--palette-warning-900), black 50%);
 
     /* Error palette intermediate shades */
     --color-error-50-generated: color-mix(in oklch, var(--palette-error-100), white 50%);
-    --color-error-200-generated: color-mix(in oklch, var(--palette-error-100), var(--palette-error-300) 50%);
-    --color-error-400-generated: color-mix(in oklch, var(--palette-error-300), var(--palette-error-500) 50%);
-    --color-error-600-generated: color-mix(in oklch, var(--palette-error-500), var(--palette-error-700) 50%);
-    --color-error-800-generated: color-mix(in oklch, var(--palette-error-700), var(--palette-error-900) 50%);
+    --color-error-200-generated: color-mix(
+      in oklch,
+      var(--palette-error-100),
+      var(--palette-error-300) 50%
+    );
+    --color-error-400-generated: color-mix(
+      in oklch,
+      var(--palette-error-300),
+      var(--palette-error-500) 50%
+    );
+    --color-error-600-generated: color-mix(
+      in oklch,
+      var(--palette-error-500),
+      var(--palette-error-700) 50%
+    );
+    --color-error-800-generated: color-mix(
+      in oklch,
+      var(--palette-error-700),
+      var(--palette-error-900) 50%
+    );
     --color-error-950-generated: color-mix(in oklch, var(--palette-error-900), black 50%);
 
     /* Neutral palette intermediate shades */
     --color-neutral-50-generated: color-mix(in oklch, var(--palette-neutral-100), white 50%);
-    --color-neutral-200-generated: color-mix(in oklch, var(--palette-neutral-100), var(--palette-neutral-300) 50%);
-    --color-neutral-400-generated: color-mix(in oklch, var(--palette-neutral-300), var(--palette-neutral-500) 50%);
-    --color-neutral-600-generated: color-mix(in oklch, var(--palette-neutral-500), var(--palette-neutral-700) 50%);
-    --color-neutral-800-generated: color-mix(in oklch, var(--palette-neutral-700), var(--palette-neutral-900) 50%);
+    --color-neutral-200-generated: color-mix(
+      in oklch,
+      var(--palette-neutral-100),
+      var(--palette-neutral-300) 50%
+    );
+    --color-neutral-400-generated: color-mix(
+      in oklch,
+      var(--palette-neutral-300),
+      var(--palette-neutral-500) 50%
+    );
+    --color-neutral-600-generated: color-mix(
+      in oklch,
+      var(--palette-neutral-500),
+      var(--palette-neutral-700) 50%
+    );
+    --color-neutral-800-generated: color-mix(
+      in oklch,
+      var(--palette-neutral-700),
+      var(--palette-neutral-900) 50%
+    );
     --color-neutral-950-generated: color-mix(in oklch, var(--palette-neutral-900), black 50%);
 
     /* ===== Opacity Utilities ===== */

@@ -45,12 +45,12 @@ oklch(lightness chroma hue / alpha)
 
 ```css
 /* Solid colors */
---color-primary-500: oklch(58% 0.10 220);  /* Steel blue */
---color-success-500: oklch(58% 0.08 160);  /* Green */
---color-error-500: oklch(58% 0.10 10);     /* Red */
+--color-primary-500: oklch(58% 0.1 220); /* Steel blue */
+--color-success-500: oklch(58% 0.08 160); /* Green */
+--color-error-500: oklch(58% 0.1 10); /* Red */
 
 /* With transparency */
---color-primary-500-50: oklch(58% 0.10 220 / 0.5);
+--color-primary-500-50: oklch(58% 0.1 220 / 0.5);
 ```
 
 ## Browser Support
@@ -68,7 +68,7 @@ The implementation includes automatic fallbacks for browsers without OKLCH suppo
 /* OKLCH for modern browsers */
 @supports (color: oklch(0% 0 0)) {
   :root {
-    --color-primary-500: oklch(58% 0.10 220);
+    --color-primary-500: oklch(58% 0.1 220);
   }
 }
 ```
@@ -147,37 +147,33 @@ import {
   rotateHue,
   mixColors,
   createColorScale,
-} from '@nejcjelovcan/traceframe-ui-library/utils/color';
+} from '@nejcjelovcan/traceframe-ui-library/utils/color'
 
 // Parse OKLCH string
-const color = parseOKLCH('oklch(58% 0.10 220)');
+const color = parseOKLCH('oklch(58% 0.10 220)')
 // { l: 0.58, c: 0.10, h: 220 }
 
 // Format back to string
-const colorString = formatOKLCH(color);
+const colorString = formatOKLCH(color)
 // "oklch(58.0% 0.100 220.0)"
 
 // Adjust lightness (make lighter)
-const lighter = adjustLightness(color, 0.2);
+const lighter = adjustLightness(color, 0.2)
 // "oklch(78.0% 0.100 220.0)"
 
 // Adjust saturation
-const muted = adjustChroma(color, -0.05);
+const muted = adjustChroma(color, -0.05)
 // "oklch(58.0% 0.050 220.0)"
 
 // Rotate hue
-const shifted = rotateHue(color, 30);
+const shifted = rotateHue(color, 30)
 // "oklch(58.0% 0.100 250.0)"
 
 // Mix two colors
-const mixed = mixColors(
-  'oklch(58% 0.10 220)',
-  'oklch(58% 0.08 160)',
-  0.5
-);
+const mixed = mixColors('oklch(58% 0.10 220)', 'oklch(58% 0.08 160)', 0.5)
 
 // Create a color scale
-const scale = createColorScale('oklch(58% 0.10 220)', 11);
+const scale = createColorScale('oklch(58% 0.10 220)', 11)
 // Returns array of 11 colors from light to dark
 ```
 
@@ -185,22 +181,22 @@ const scale = createColorScale('oklch(58% 0.10 220)', 11);
 
 ```typescript
 // Check if color is light or dark
-import { isLight, getContrastingColor } from '@nejcjelovcan/traceframe-ui-library/utils/color';
+import { isLight, getContrastingColor } from '@nejcjelovcan/traceframe-ui-library/utils/color'
 
-const backgroundColor = 'oklch(90% 0.05 220)';
-const textColor = getContrastingColor(backgroundColor);
+const backgroundColor = 'oklch(90% 0.05 220)'
+const textColor = getContrastingColor(backgroundColor)
 // Returns dark text for light backgrounds
 
 // Set opacity
-import { setAlpha } from '@nejcjelovcan/traceframe-ui-library/utils/color';
+import { setAlpha } from '@nejcjelovcan/traceframe-ui-library/utils/color'
 
-const transparent = setAlpha('oklch(58% 0.10 220)', 0.5);
+const transparent = setAlpha('oklch(58% 0.10 220)', 0.5)
 // "oklch(58.0% 0.100 220.0 / 0.50)"
 
 // RGB to OKLCH conversion (approximate)
-import { rgbToOKLCH } from '@nejcjelovcan/traceframe-ui-library/utils/color';
+import { rgbToOKLCH } from '@nejcjelovcan/traceframe-ui-library/utils/color'
 
-const oklch = rgbToOKLCH(98, 140, 186);
+const oklch = rgbToOKLCH(98, 140, 186)
 // { l: 0.58, c: 0.10, h: 220 }
 ```
 
@@ -217,11 +213,13 @@ When converting existing RGB colors to OKLCH:
 ### Example Migration
 
 Before:
+
 ```css
 --color-primary-500: rgb(98, 140, 186);
 ```
 
 After:
+
 ```css
 /* RGB fallback */
 @supports not (color: oklch(0% 0 0)) {
@@ -233,7 +231,7 @@ After:
 /* OKLCH value */
 @supports (color: oklch(0% 0 0)) {
   :root {
-    --color-primary-500: oklch(58% 0.10 220);
+    --color-primary-500: oklch(58% 0.1 220);
   }
 }
 ```

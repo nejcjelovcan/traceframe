@@ -223,14 +223,14 @@
 
       /* Success palette */
       --palette-success-50: oklch(98% 0.06 160);
-      --palette-success-100: oklch(95% 0.10 160);
+      --palette-success-100: oklch(95% 0.1 160);
       --palette-success-200: oklch(90% 0.11 160);
       --palette-success-300: oklch(82% 0.12 160);
       --palette-success-400: oklch(70% 0.12 160);
       --palette-success-500: oklch(58% 0.12 160);
       --palette-success-600: oklch(48% 0.12 160);
       --palette-success-700: oklch(38% 0.11 160);
-      --palette-success-800: oklch(28% 0.10 160);
+      --palette-success-800: oklch(28% 0.1 160);
       --palette-success-900: oklch(20% 0.09 160);
       --palette-success-950: oklch(10% 0.07 160);
 
@@ -251,7 +251,7 @@
 
       /* Accent 1 palette - Sky Blue */
       --palette-accent-1-50: oklch(98% 0.07 205);
-      --palette-accent-1-100: oklch(95% 0.10 205);
+      --palette-accent-1-100: oklch(95% 0.1 205);
       --palette-accent-1-200: oklch(90% 0.12 205);
       --palette-accent-1-300: oklch(82% 0.13 205);
       --palette-accent-1-400: oklch(70% 0.13 205);
@@ -285,12 +285,12 @@
       --palette-accent-3-600: oklch(48% 0.14 345);
       --palette-accent-3-700: oklch(38% 0.13 345);
       --palette-accent-3-800: oklch(28% 0.12 345);
-      --palette-accent-3-900: oklch(20% 0.10 345);
+      --palette-accent-3-900: oklch(20% 0.1 345);
       --palette-accent-3-950: oklch(10% 0.07 345);
 
       /* Accent 4 palette - Electric Lime */
       --palette-accent-4-50: oklch(98% 0.065 110);
-      --palette-accent-4-100: oklch(95% 0.10 110);
+      --palette-accent-4-100: oklch(95% 0.1 110);
       --palette-accent-4-200: oklch(90% 0.12 110);
       --palette-accent-4-300: oklch(82% 0.13 110);
       --palette-accent-4-400: oklch(70% 0.13 110);
@@ -316,7 +316,7 @@
 
       /* Secondary palette - Sky Blue */
       --palette-secondary-50: oklch(98% 0.07 205);
-      --palette-secondary-100: oklch(95% 0.10 205);
+      --palette-secondary-100: oklch(95% 0.1 205);
       --palette-secondary-200: oklch(90% 0.12 205);
       --palette-secondary-300: oklch(82% 0.13 205);
       --palette-secondary-400: oklch(70% 0.13 205);
