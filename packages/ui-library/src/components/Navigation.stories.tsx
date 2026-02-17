@@ -285,7 +285,7 @@ export const FilledPrimaryHorizontal: Story = {
       <NavItem href="#" icon="toggle">
         Settings
       </NavItem>
-      <NavItem href="#" icon="user">
+      <NavItem href="#" icon="users">
         Profile
       </NavItem>
     </Navigation>
@@ -372,13 +372,13 @@ export const SubtleAccentVertical: Story = {
       <NavItem href="#" icon="git-branch">
         Branches
       </NavItem>
-      <NavItem href="#" icon="git-commit">
+      <NavItem href="#" icon="git-branch">
         Commits
       </NavItem>
       <NavItem href="#" icon="git-pull-request">
         Pull Requests
       </NavItem>
-      <NavItem href="#" icon="tag">
+      <NavItem href="#" icon="hash">
         Releases
       </NavItem>
     </Navigation>
@@ -554,7 +554,7 @@ export const ComplexLayoutExample: Story = {
           <NavItem href="#" icon="chart">
             Metrics
           </NavItem>
-          <NavItem href="#" icon="trending-up">
+          <NavItem href="#" icon="chart">
             Trends
           </NavItem>
           <NavItem href="#" icon="file-description">
@@ -567,13 +567,13 @@ export const ComplexLayoutExample: Story = {
           Settings
         </Heading>
         <Navigation orientation="vertical">
-          <NavItem href="#" icon="user">
+          <NavItem href="#" icon="users">
             Profile
           </NavItem>
           <NavItem href="#" icon="toggle">
             Preferences
           </NavItem>
-          <NavItem href="#" icon="shield">
+          <NavItem href="#" icon="lock">
             Security
           </NavItem>
         </Navigation>
