@@ -1,5 +1,15 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 1.7.0
+
+### Minor Changes
+
+- [#87](https://github.com/nejcjelovcan/traceframe/pull/87) [`9f0102e`](https://github.com/nejcjelovcan/traceframe/commit/9f0102efebdb6619333bed052c61a059d9c56d6f) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add primary, secondary, and small size Card variants; use light gradient backgrounds for status and accent cards; fix CardContent text color to always default to foreground; fix double border on collapsed accordion and header-only cards
+
+- [#90](https://github.com/nejcjelovcan/traceframe/pull/90) [`8c2531e`](https://github.com/nejcjelovcan/traceframe/commit/8c2531e0a49ca4fd66dea408c16944166f59d632) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add filled and subtle variants to Navigation component with gradient backgrounds and color options
+
+- [#90](https://github.com/nejcjelovcan/traceframe/pull/90) [`8c2531e`](https://github.com/nejcjelovcan/traceframe/commit/8c2531e0a49ca4fd66dea408c16944166f59d632) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Refactor Card component with gradient backgrounds, add primary/secondary variants and size prop
+
 ## 1.6.0
 
 ### Minor Changes
