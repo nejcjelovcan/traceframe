@@ -3,12 +3,14 @@
  * ESLint plugin with custom rules for Traceframe code quality
  */
 
+import { noNonSemanticBorderRadius } from './rules/no-non-semantic-border-radius.js'
 import { noNonSemanticBorders } from './rules/no-non-semantic-borders.js'
 import { noNonSemanticColors } from './rules/no-non-semantic-colors.js'
 import { noNonSemanticGradients } from './rules/no-non-semantic-gradients.js'
 import { noNonSemanticShadows } from './rules/no-non-semantic-shadows.js'
 import { noNonSemanticSizing } from './rules/no-non-semantic-sizing.js'
 import { noNonSemanticSpacing } from './rules/no-non-semantic-spacing.js'
+import { noNonSemanticTypography } from './rules/no-non-semantic-typography.js'
 
 /**
  * File patterns that intentionally use non-semantic tokens.
@@ -22,12 +24,14 @@ const TOKEN_EXCEPTIONS = [
 ]
 
 export const rules = {
+  'no-non-semantic-border-radius': noNonSemanticBorderRadius,
   'no-non-semantic-borders': noNonSemanticBorders,
   'no-non-semantic-colors': noNonSemanticColors,
   'no-non-semantic-gradients': noNonSemanticGradients,
   'no-non-semantic-shadows': noNonSemanticShadows,
   'no-non-semantic-sizing': noNonSemanticSizing,
   'no-non-semantic-spacing': noNonSemanticSpacing,
+  'no-non-semantic-typography': noNonSemanticTypography,
 }
 
 export const configs = {
@@ -77,6 +81,18 @@ export const configs = {
         },
       ],
       '@nejcjelovcan/traceframe/no-non-semantic-gradients': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-typography': [
+        'warn',
+        {
+          exceptions: TOKEN_EXCEPTIONS,
+        },
+      ],
+      '@nejcjelovcan/traceframe/no-non-semantic-border-radius': [
         'warn',
         {
           exceptions: TOKEN_EXCEPTIONS,
