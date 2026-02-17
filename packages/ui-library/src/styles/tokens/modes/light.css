@@ -183,14 +183,14 @@
     /* Info status emphasis gradient */
     --token-gradient-status-info: linear-gradient(
       180deg,
-      var(--palette-primary-600),
-      var(--palette-primary-700)
+      var(--palette-info-600),
+      var(--palette-info-700)
     );
     /* Info status light gradient for cards and subtle backgrounds */
     --token-gradient-status-info-light: linear-gradient(
       180deg,
-      var(--palette-primary-50),
-      var(--palette-primary-100)
+      var(--palette-info-50),
+      var(--palette-info-100)
     );
     /* Success status emphasis gradient */
     --token-gradient-status-success: linear-gradient(
@@ -274,15 +274,15 @@
     /* Error status muted background for subtle error indicators */
     --token-status-error-muted: var(--palette-error-100);
     /* Info status color for informational messages, tips, and non-critical alerts */
-    --token-status-info: var(--palette-primary-500);
+    --token-status-info: var(--palette-info-500);
     /* Info status border color for info containers and alerts */
-    --token-status-info-border: var(--palette-primary-300);
+    --token-status-info-border: var(--palette-info-300);
     /* Info status emphasis color for icons and strong indicators */
-    --token-status-info-emphasis: var(--palette-primary-600);
+    --token-status-info-emphasis: var(--palette-info-600);
     /* Info status text color for readability on info backgrounds */
-    --token-status-info-foreground: var(--palette-primary-700);
+    --token-status-info-foreground: var(--palette-info-700);
     /* Info status muted background for subtle info indicators */
-    --token-status-info-muted: var(--palette-primary-100);
+    --token-status-info-muted: var(--palette-info-100);
     /* Success status color for positive outcomes, completed actions, and confirmations */
     --token-status-success: var(--palette-success-500);
     /* Success status border color for success containers and alerts */

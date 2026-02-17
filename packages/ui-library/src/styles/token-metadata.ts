@@ -31,6 +31,11 @@ export const TOKEN_METADATA = {
       usage: 'Errors, destructive actions, critical alerts',
       shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
     },
+    info: {
+      description: '',
+      usage: 'Informational messages, tips, neutral alerts',
+      shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
+    },
     'accent-1': {
       description: '',
       usage: '',

@@ -36,6 +36,19 @@
     --palette-error-900: oklch(20% 0.06 10);
     --palette-error-950: oklch(10% 0.04 10);
 
+    /* Info palette */
+    --palette-info-50: oklch(98% 0.02 210);
+    --palette-info-100: oklch(95% 0.04 210);
+    --palette-info-200: oklch(90% 0.06 210);
+    --palette-info-300: oklch(82% 0.08 210);
+    --palette-info-400: oklch(70% 0.1 210);
+    --palette-info-500: oklch(58% 0.12 210);
+    --palette-info-600: oklch(48% 0.12 210);
+    --palette-info-700: oklch(38% 0.11 210);
+    --palette-info-800: oklch(28% 0.1 210);
+    --palette-info-900: oklch(20% 0.08 210);
+    --palette-info-950: oklch(10% 0.05 210);
+
     /* Neutral palette */
     --palette-neutral-50: oklch(98% 0.006 240);
     --palette-neutral-100: oklch(95% 0.008 240);
