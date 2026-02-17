@@ -1,5 +1,6 @@
-import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import { render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 
 import { Card, CardContent, CardFooter, CardHeader, CardProps } from './Card'
 
@@ -332,6 +333,8 @@ describe('Card composition', () => {
 })
 
 describe('Card actionable variant', () => {
+  const user = userEvent.setup()
+
   it('applies cursor-pointer when actionable=true', () => {
     render(<Card actionable>Actionable</Card>)
     const card = screen.getByText('Actionable')
@@ -447,5 +450,483 @@ describe('Card actionable variant', () => {
     expect(card.className).toContain('shadow-interactive')
     expect(card.className).toContain('bg-status-info-muted')
     expect(card.className).toContain('text-status-info-foreground')
+  })
+
+  it('adds keyboard accessibility for actionable cards', () => {
+    render(<Card actionable>Accessible</Card>)
+    const card = screen.getByText('Accessible')
+    expect(card.getAttribute('tabIndex')).toBe('0')
+    expect(card.getAttribute('role')).toBe('button')
+    expect(card.getAttribute('aria-pressed')).toBe('false')
+  })
+
+  it('applies focus ring styles for actionable cards', () => {
+    render(<Card actionable>Focusable</Card>)
+    const card = screen.getByRole('button')
+    expect(card.className).toContain('focus-visible:outline-hidden')
+    expect(card.className).toContain('focus-visible:ring-2')
+    expect(card.className).toContain('focus-visible:ring-ring')
+    expect(card.className).toContain('focus-visible:ring-offset-2')
+    expect(card.className).toContain('focus-visible:ring-offset-surface')
+  })
+
+  it('triggers onClick when Enter key is pressed', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable onClick={onClick}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('triggers onClick when Space key is pressed', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable onClick={onClick}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard(' ')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('preserves custom onKeyDown handler', async () => {
+    const onClick = vi.fn()
+    const onKeyDown = vi.fn()
+    render(
+      <Card actionable onClick={onClick} onKeyDown={onKeyDown}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+
+    expect(onClick).toHaveBeenCalled()
+    expect(onKeyDown).toHaveBeenCalled()
+  })
+
+  it('does not crash when Enter/Space pressed without onClick', async () => {
+    render(<Card actionable>No Handler</Card>)
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+    await user.keyboard(' ')
+
+    // Should not throw
+    expect(card).toBeDefined()
+  })
+
+  it('does not trigger onClick for other keys', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable onClick={onClick}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Escape}')
+    await user.keyboard('a')
+    await user.keyboard('{Tab}')
+
+    expect(onClick).not.toHaveBeenCalled()
+  })
+
+  it('respects custom tabIndex prop', () => {
+    render(
+      <Card actionable tabIndex={-1}>
+        Custom TabIndex
+      </Card>
+    )
+    const card = screen.getByRole('button')
+    expect(card.getAttribute('tabIndex')).toBe('-1')
+  })
+
+  it('respects custom role prop', () => {
+    render(
+      <Card actionable role="article">
+        Custom Role
+      </Card>
+    )
+    const card = screen.getByRole('article')
+    expect(card).toBeDefined()
+  })
+
+  it('respects custom aria-pressed prop', () => {
+    render(
+      <Card actionable aria-pressed="true">
+        Custom Pressed
+      </Card>
+    )
+    const card = screen.getByRole('button')
+    expect(card.getAttribute('aria-pressed')).toBe('true')
+  })
+
+  it('focus ring works with all card variants', () => {
+    const variants = [
+      'outlined',
+      'elevated',
+      'info',
+      'success',
+      'warning',
+      'error',
+      'accent1',
+      'accent2',
+      'accent3',
+      'accent4',
+      'accent5',
+    ] as CardProps['variant'][]
+
+    variants.forEach((variant) => {
+      const { container } = render(
+        <Card variant={variant} actionable>
+          Actionable {variant}
+        </Card>
+      )
+      const card = container.firstChild as HTMLElement
+      expect(card.className).toContain('focus-visible:ring-2')
+      expect(card.className).toContain('focus-visible:ring-ring')
+    })
+  })
+
+  it('keyboard activation works with inverse cards', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable className="inverse" onClick={onClick}>
+        Inverse Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+})
+
+describe('Card accordion functionality', () => {
+  const user = userEvent.setup()
+
+  it('renders as accordion when accordion prop is true', () => {
+    render(
+      <Card accordion>
+        <CardHeader>Accordion Header</CardHeader>
+        <CardContent>Accordion Content</CardContent>
+      </Card>
+    )
+    expect(screen.getByText('Accordion Header')).toBeDefined()
+  })
+
+  it('collapses content by default', () => {
+    const { container } = render(
+      <Card accordion>
+        <CardHeader>Header</CardHeader>
+        <CardContent data-testid="content">Content</CardContent>
+      </Card>
+    )
+    // Check that the collapsible wrapper has closed state
+    const collapsibleWrapper = container.querySelector('[data-state="closed"]')
+    expect(collapsibleWrapper).toBeDefined()
+    // Content should not be visible when collapsed
+    expect(screen.queryByText('Content')).toBeNull()
+  })
+
+  it('expands when defaultOpen is true', () => {
+    const { container } = render(
+      <Card accordion defaultOpen={true}>
+        <CardHeader>Header</CardHeader>
+        <CardContent data-testid="content">Content</CardContent>
+      </Card>
+    )
+    // Check that the collapsible wrapper has open state
+    const collapsibleWrapper = container.querySelector('[data-state="open"]')
+    expect(collapsibleWrapper).toBeDefined()
+    // Content should be visible
+    expect(collapsibleWrapper?.hasAttribute('hidden')).toBe(false)
+    // Content text should be findable
+    expect(screen.getByText('Content')).toBeDefined()
+  })
+
+  it('toggles content when header is clicked', async () => {
+    const { container } = render(
+      <Card accordion>
+        <CardHeader>Click Me</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button', { name: /Click Me/i })
+
+    // Initially closed - content not visible
+    expect(screen.queryByText('Content')).toBeNull()
+
+    // Click to open
+    await user.click(header)
+    await waitFor(() => {
+      expect(screen.getByText('Content')).toBeDefined()
+    })
+
+    // Verify state changed to open
+    const collapsibleWrapper = container.querySelector('[data-state]')
+    expect(collapsibleWrapper?.getAttribute('data-state')).toBe('open')
+
+    // Click to close
+    await user.click(header)
+    await waitFor(() => {
+      expect(screen.queryByText('Content')).toBeNull()
+    })
+  })
+
+  it('works in controlled mode', async () => {
+    const onOpenChange = vi.fn()
+    const { rerender, container } = render(
+      <Card accordion open={false} onOpenChange={onOpenChange}>
+        <CardHeader>Controlled</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button', { name: /Controlled/i })
+
+    // Initially closed
+    let collapsibleWrapper = container.querySelector('[data-state]')
+    expect(collapsibleWrapper?.getAttribute('data-state')).toBe('closed')
+
+    // Click header - should call onOpenChange
+    await user.click(header)
+    expect(onOpenChange).toHaveBeenCalledWith(true)
+
+    // Rerender with open state
+    rerender(
+      <Card accordion open={true} onOpenChange={onOpenChange}>
+        <CardHeader>Controlled</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    await waitFor(() => {
+      collapsibleWrapper = container.querySelector('[data-state]')
+      expect(collapsibleWrapper?.getAttribute('data-state')).toBe('open')
+    })
+    expect(screen.getByText('Content')).toBeDefined()
+  })
+
+  it('shows chevron icon in accordion header', () => {
+    render(
+      <Card accordion>
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+    const chevron = header.querySelector('svg.shrink-0')
+    expect(chevron).toBeDefined()
+    const className = chevron?.getAttribute('class') || ''
+    expect(className).toContain('transition-transform')
+  })
+
+  it('rotates chevron when expanded', async () => {
+    render(
+      <Card accordion>
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+    const chevron = header.querySelector('svg.shrink-0')
+
+    // Chevron should have the rotation class (always present, activated by parent state)
+    expect(chevron).toBeDefined()
+    const className = chevron?.getAttribute('class') || ''
+    expect(className).toContain('[[data-state=open]>&]:rotate-90')
+
+    // Click to expand
+    await user.click(header)
+
+    // Parent button should have open state which triggers the rotation
+    expect(header.getAttribute('aria-expanded')).toBe('true')
+  })
+
+  it('works with header icon on left', () => {
+    render(
+      <Card accordion>
+        <CardHeader icon="settings">Settings</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+    const icons = header.querySelectorAll('svg')
+
+    // Should have 2 icons: settings icon and chevron
+    expect(icons.length).toBe(2)
+  })
+
+  it('works with header icon on right', () => {
+    render(
+      <Card accordion>
+        <CardHeader icon="settings" iconPosition="right">
+          Settings
+        </CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+    const icons = header.querySelectorAll('svg')
+
+    // Should have 2 icons: settings icon and chevron
+    expect(icons.length).toBe(2)
+  })
+
+  it('collapses footer along with content', async () => {
+    const { container } = render(
+      <Card accordion>
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+        <CardFooter>Footer</CardFooter>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+
+    // Initially collapsed - footer should be hidden
+    let footerWrapper = container.querySelectorAll('[data-state]')[1] // Second collapsible is footer
+    expect(footerWrapper?.getAttribute('data-state')).toBe('closed')
+
+    // Click to expand
+    await user.click(header)
+    await waitFor(() => {
+      footerWrapper = container.querySelectorAll('[data-state]')[1]
+      expect(footerWrapper?.getAttribute('data-state')).toBe('open')
+    })
+    // Footer text should now be visible
+    expect(screen.getByText('Footer')).toBeDefined()
+  })
+
+  it('header is keyboard accessible', async () => {
+    const { container } = render(
+      <Card accordion>
+        <CardHeader>Keyboard Test</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+
+    // Focus header
+    header.focus()
+    expect(document.activeElement).toBe(header)
+
+    // Press Enter to expand
+    await user.keyboard('{Enter}')
+    await waitFor(() => {
+      const collapsibleWrapper = container.querySelector('[data-state]')
+      expect(collapsibleWrapper?.getAttribute('data-state')).toBe('open')
+    })
+    expect(screen.getByText('Content')).toBeDefined()
+
+    // Press Space to collapse
+    await user.keyboard(' ')
+    await waitFor(() => {
+      const collapsibleWrapper = container.querySelector('[data-state]')
+      expect(collapsibleWrapper?.getAttribute('data-state')).toBe('closed')
+    })
+  })
+
+  it('sets proper ARIA attributes', () => {
+    render(
+      <Card accordion>
+        <CardHeader>ARIA Test</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+
+    // Should have aria-controls pointing to content
+    expect(header.getAttribute('aria-controls')).toBeDefined()
+
+    // Should have aria-expanded (handled by Radix)
+    expect(header.getAttribute('aria-expanded')).toBe('false')
+  })
+
+  it('logs error when both actionable and accordion are true', () => {
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
+
+    render(
+      <Card actionable accordion>
+        <CardHeader>Invalid</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    expect(consoleSpy).toHaveBeenCalledWith(
+      'Card: Cannot be both actionable and accordion. Please use only one of these props.'
+    )
+
+    consoleSpy.mockRestore()
+  })
+
+  it('works with all card variants', () => {
+    const variants = [
+      'outlined',
+      'elevated',
+      'info',
+      'success',
+      'warning',
+      'error',
+      'accent1',
+      'accent2',
+      'accent3',
+      'accent4',
+      'accent5',
+    ] as CardProps['variant'][]
+
+    variants.forEach((variant) => {
+      const { container } = render(
+        <Card variant={variant} accordion>
+          <CardHeader>Header</CardHeader>
+          <CardContent>Content</CardContent>
+        </Card>
+      )
+
+      const button = container.querySelector('button')
+      expect(button).toBeDefined()
+    })
+  })
+
+  it('maintains focus after toggling', async () => {
+    render(
+      <Card accordion>
+        <CardHeader>Focus Test</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    const header = screen.getByRole('button')
+
+    // Click to expand
+    await user.click(header)
+
+    // Focus should remain on header
+    expect(document.activeElement).toBe(header)
   })
 })

@@ -117,7 +117,7 @@ Themes control more than just colors -- each theme defines its own typography (f
 
 The token system has three layers:
 
-1. **Palettes** -- Raw color values (primary, secondary, neutral, success, warning, error) with 11 shades each (50--950)
+1. **Palettes** -- Raw color values in OKLCH color space (primary, secondary, neutral, success, warning, error) with 11 shades each (50--950)
 2. **Semantic tokens** -- Theme-aware mappings (surface, foreground, border, interactive, status, accent) that adapt to light/dark mode
 3. **Themes** -- Complete visual identity including typography, spacing, sizing, shadows, and border radii
 

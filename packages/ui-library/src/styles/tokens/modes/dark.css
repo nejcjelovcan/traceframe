@@ -3,236 +3,236 @@
   :root.light .inverse,
   :root.dark .inverse .inverse {
     /* Accent 1 base color for categorical data and visual distinction */
-    --token-accent-1: rgb(var(--palette-accent-1-400));
+    --token-accent-1: var(--palette-accent-1-400);
     /* Accent 1 border color for containers and elements */
-    --token-accent-1-border: rgb(var(--palette-accent-1-800));
+    --token-accent-1-border: var(--palette-accent-1-800);
     /* Accent 1 emphasis color for icons and strong indicators */
-    --token-accent-1-emphasis: rgb(var(--palette-accent-1-500));
+    --token-accent-1-emphasis: var(--palette-accent-1-500);
     /* Accent 1 text color for readability on accent backgrounds */
-    --token-accent-1-foreground: rgb(var(--palette-accent-1-300));
+    --token-accent-1-foreground: var(--palette-accent-1-300);
     /* Accent 1 muted background for subtle indicators */
-    --token-accent-1-muted: rgb(var(--palette-accent-1-900));
+    --token-accent-1-muted: var(--palette-accent-1-900);
     /* Accent 2 base color for categorical data and visual distinction */
-    --token-accent-2: rgb(var(--palette-accent-2-400));
+    --token-accent-2: var(--palette-accent-2-400);
     /* Accent 2 border color for containers and elements */
-    --token-accent-2-border: rgb(var(--palette-accent-2-800));
+    --token-accent-2-border: var(--palette-accent-2-800);
     /* Accent 2 emphasis color for icons and strong indicators */
-    --token-accent-2-emphasis: rgb(var(--palette-accent-2-500));
+    --token-accent-2-emphasis: var(--palette-accent-2-500);
     /* Accent 2 text color for readability on accent backgrounds */
-    --token-accent-2-foreground: rgb(var(--palette-accent-2-300));
+    --token-accent-2-foreground: var(--palette-accent-2-300);
     /* Accent 2 muted background for subtle indicators */
-    --token-accent-2-muted: rgb(var(--palette-accent-2-900));
+    --token-accent-2-muted: var(--palette-accent-2-900);
     /* Accent 3 base color for categorical data and visual distinction */
-    --token-accent-3: rgb(var(--palette-accent-3-400));
+    --token-accent-3: var(--palette-accent-3-400);
     /* Accent 3 border color for containers and elements */
-    --token-accent-3-border: rgb(var(--palette-accent-3-800));
+    --token-accent-3-border: var(--palette-accent-3-800);
     /* Accent 3 emphasis color for icons and strong indicators */
-    --token-accent-3-emphasis: rgb(var(--palette-accent-3-500));
+    --token-accent-3-emphasis: var(--palette-accent-3-500);
     /* Accent 3 text color for readability on accent backgrounds */
-    --token-accent-3-foreground: rgb(var(--palette-accent-3-300));
+    --token-accent-3-foreground: var(--palette-accent-3-300);
     /* Accent 3 muted background for subtle indicators */
-    --token-accent-3-muted: rgb(var(--palette-accent-3-900));
+    --token-accent-3-muted: var(--palette-accent-3-900);
     /* Accent 4 base color for categorical data and visual distinction */
-    --token-accent-4: rgb(var(--palette-accent-4-400));
+    --token-accent-4: var(--palette-accent-4-400);
     /* Accent 4 border color for containers and elements */
-    --token-accent-4-border: rgb(var(--palette-accent-4-800));
+    --token-accent-4-border: var(--palette-accent-4-800);
     /* Accent 4 emphasis color for icons and strong indicators */
-    --token-accent-4-emphasis: rgb(var(--palette-accent-4-500));
+    --token-accent-4-emphasis: var(--palette-accent-4-500);
     /* Accent 4 text color for readability on accent backgrounds */
-    --token-accent-4-foreground: rgb(var(--palette-accent-4-300));
+    --token-accent-4-foreground: var(--palette-accent-4-300);
     /* Accent 4 muted background for subtle indicators */
-    --token-accent-4-muted: rgb(var(--palette-accent-4-900));
+    --token-accent-4-muted: var(--palette-accent-4-900);
     /* Accent 5 base color for categorical data and visual distinction */
-    --token-accent-5: rgb(var(--palette-accent-5-400));
+    --token-accent-5: var(--palette-accent-5-400);
     /* Accent 5 border color for containers and elements */
-    --token-accent-5-border: rgb(var(--palette-accent-5-800));
+    --token-accent-5-border: var(--palette-accent-5-800);
     /* Accent 5 emphasis color for icons and strong indicators */
-    --token-accent-5-emphasis: rgb(var(--palette-accent-5-500));
+    --token-accent-5-emphasis: var(--palette-accent-5-500);
     /* Accent 5 text color for readability on accent backgrounds */
-    --token-accent-5-foreground: rgb(var(--palette-accent-5-300));
+    --token-accent-5-foreground: var(--palette-accent-5-300);
     /* Accent 5 muted background for subtle indicators */
-    --token-accent-5-muted: rgb(var(--palette-accent-5-900));
+    --token-accent-5-muted: var(--palette-accent-5-900);
 
     /* Primary border color for inputs, cards, and containers */
-    --token-border: rgb(var(--palette-neutral-600));
+    --token-border: var(--palette-neutral-600);
     /* Subtle border for dividers, separators, and less prominent boundaries */
-    --token-border-muted: rgb(var(--palette-neutral-800));
+    --token-border-muted: var(--palette-neutral-800);
 
     /* Disabled background color for inactive interactive elements */
-    --token-disabled: rgb(var(--palette-neutral-800));
+    --token-disabled: var(--palette-neutral-800);
     /* Disabled text and icon color for inactive elements */
-    --token-disabled-foreground: rgb(var(--palette-neutral-500));
+    --token-disabled-foreground: var(--palette-neutral-500);
 
     /* Primary text and icon color for headings and body text */
-    --token-foreground: rgb(var(--palette-neutral-50));
+    --token-foreground: var(--palette-neutral-50);
     /* Text color on filled/emphasis backgrounds like primary buttons and badges */
-    --token-foreground-filled: rgb(var(--palette-neutral-950));
+    --token-foreground-filled: var(--palette-neutral-950);
     /* Secondary text color on filled/emphasis backgrounds */
-    --token-foreground-filled-muted: rgb(var(--palette-neutral-800));
+    --token-foreground-filled-muted: var(--palette-neutral-800);
     /* Secondary text for descriptions, placeholders, and less prominent content */
-    --token-foreground-muted: rgb(var(--palette-neutral-400));
+    --token-foreground-muted: var(--palette-neutral-400);
 
     /* Accent 1 emphasis gradient */
     --token-gradient-accent-1: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-1-300)),
-      rgb(var(--palette-accent-1-400))
+      var(--palette-accent-1-300),
+      var(--palette-accent-1-400)
     );
     /* Accent 2 emphasis gradient */
     --token-gradient-accent-2: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-2-300)),
-      rgb(var(--palette-accent-2-400))
+      var(--palette-accent-2-300),
+      var(--palette-accent-2-400)
     );
     /* Accent 3 emphasis gradient */
     --token-gradient-accent-3: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-3-300)),
-      rgb(var(--palette-accent-3-400))
+      var(--palette-accent-3-300),
+      var(--palette-accent-3-400)
     );
     /* Accent 4 emphasis gradient */
     --token-gradient-accent-4: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-4-300)),
-      rgb(var(--palette-accent-4-400))
+      var(--palette-accent-4-300),
+      var(--palette-accent-4-400)
     );
     /* Accent 5 emphasis gradient */
     --token-gradient-accent-5: linear-gradient(
       180deg,
-      rgb(var(--palette-accent-5-300)),
-      rgb(var(--palette-accent-5-400))
+      var(--palette-accent-5-300),
+      var(--palette-accent-5-400)
     );
     /* Destructive button gradient */
     --token-gradient-interactive-destructive: linear-gradient(
       180deg,
-      rgb(var(--palette-error-300)),
-      rgb(var(--palette-error-400))
+      var(--palette-error-300),
+      var(--palette-error-400)
     );
     /* Primary button and CTA gradient */
     --token-gradient-interactive-primary: linear-gradient(
       180deg,
-      rgb(var(--palette-primary-300)),
-      rgb(var(--palette-primary-400))
+      var(--palette-primary-300),
+      var(--palette-primary-400)
     );
     /* Secondary button gradient */
     --token-gradient-interactive-secondary: linear-gradient(
       180deg,
-      rgb(var(--palette-secondary-300)),
-      rgb(var(--palette-secondary-400))
+      var(--palette-secondary-300),
+      var(--palette-secondary-400)
     );
     /* Error status emphasis gradient */
     --token-gradient-status-error: linear-gradient(
       180deg,
-      rgb(var(--palette-error-300)),
-      rgb(var(--palette-error-400))
+      var(--palette-error-300),
+      var(--palette-error-400)
     );
     /* Info status emphasis gradient */
     --token-gradient-status-info: linear-gradient(
       180deg,
-      rgb(var(--palette-primary-300)),
-      rgb(var(--palette-primary-400))
+      var(--palette-primary-300),
+      var(--palette-primary-400)
     );
     /* Success status emphasis gradient */
     --token-gradient-status-success: linear-gradient(
       180deg,
-      rgb(var(--palette-success-300)),
-      rgb(var(--palette-success-400))
+      var(--palette-success-300),
+      var(--palette-success-400)
     );
     /* Warning status emphasis gradient */
     --token-gradient-status-warning: linear-gradient(
       180deg,
-      rgb(var(--palette-warning-200)),
-      rgb(var(--palette-warning-300))
+      var(--palette-warning-200),
+      var(--palette-warning-300)
     );
 
     /* Background color for active or selected states */
-    --token-interactive-active: rgb(var(--palette-neutral-700));
+    --token-interactive-active: var(--palette-neutral-700);
     /* Destructive action button background color */
-    --token-interactive-destructive: rgb(var(--palette-error-500));
+    --token-interactive-destructive: var(--palette-error-500);
     /* Border color for destructive buttons and outlined destructive elements */
-    --token-interactive-destructive-border: rgb(var(--palette-error-400));
+    --token-interactive-destructive-border: var(--palette-error-400);
     /* Text and icon color on destructive buttons */
-    --token-interactive-destructive-foreground: rgb(var(--palette-neutral-50));
+    --token-interactive-destructive-foreground: var(--palette-neutral-50);
     /* Destructive button background on hover */
-    --token-interactive-destructive-hover: rgb(var(--palette-error-700));
+    --token-interactive-destructive-hover: var(--palette-error-700);
     /* Background color for hover states on neutral interactive elements */
-    --token-interactive-hover: rgb(var(--palette-neutral-800));
+    --token-interactive-hover: var(--palette-neutral-800);
     /* Background color for pressed or clicking states */
-    --token-interactive-pressed: rgb(var(--palette-neutral-600));
+    --token-interactive-pressed: var(--palette-neutral-600);
     /* Primary button and CTA background color */
-    --token-interactive-primary: rgb(var(--palette-primary-500));
+    --token-interactive-primary: var(--palette-primary-500);
     /* Border color for primary buttons and outlined primary elements */
-    --token-interactive-primary-border: rgb(var(--palette-primary-400));
+    --token-interactive-primary-border: var(--palette-primary-400);
     /* Text and icon color on primary buttons */
-    --token-interactive-primary-foreground: rgb(var(--palette-primary-950));
+    --token-interactive-primary-foreground: var(--palette-primary-950);
     /* Primary button background on hover */
-    --token-interactive-primary-hover: rgb(var(--palette-primary-600));
+    --token-interactive-primary-hover: var(--palette-primary-600);
     /* Secondary button and accent background color */
-    --token-interactive-secondary: rgb(var(--palette-secondary-500));
+    --token-interactive-secondary: var(--palette-secondary-500);
     /* Border color for secondary buttons and outlined secondary elements */
-    --token-interactive-secondary-border: rgb(var(--palette-secondary-400));
+    --token-interactive-secondary-border: var(--palette-secondary-400);
     /* Text and icon color on secondary buttons */
-    --token-interactive-secondary-foreground: rgb(var(--palette-neutral-50));
+    --token-interactive-secondary-foreground: var(--palette-neutral-50);
     /* Secondary button background on hover */
-    --token-interactive-secondary-hover: rgb(var(--palette-secondary-600));
+    --token-interactive-secondary-hover: var(--palette-secondary-600);
 
     /* Focus ring color for accessibility outlines and focus states */
-    --token-ring: rgb(var(--palette-primary-400));
+    --token-ring: var(--palette-primary-400);
 
     /* Error status color for failures, critical issues, and destructive actions */
-    --token-status-error: rgb(var(--palette-error-400));
+    --token-status-error: var(--palette-error-400);
     /* Error status border color for error containers and alerts */
-    --token-status-error-border: rgb(var(--palette-error-800));
+    --token-status-error-border: var(--palette-error-800);
     /* Error status emphasis color for icons and strong indicators */
-    --token-status-error-emphasis: rgb(var(--palette-error-500));
+    --token-status-error-emphasis: var(--palette-error-500);
     /* Error status text color for readability on error backgrounds */
-    --token-status-error-foreground: rgb(var(--palette-error-300));
+    --token-status-error-foreground: var(--palette-error-300);
     /* Error status muted background for subtle error indicators */
-    --token-status-error-muted: rgb(var(--palette-error-900));
+    --token-status-error-muted: var(--palette-error-900);
     /* Info status color for informational messages, tips, and non-critical alerts */
-    --token-status-info: rgb(var(--palette-primary-400));
+    --token-status-info: var(--palette-primary-400);
     /* Info status border color for info containers and alerts */
-    --token-status-info-border: rgb(var(--palette-primary-800));
+    --token-status-info-border: var(--palette-primary-800);
     /* Info status emphasis color for icons and strong indicators */
-    --token-status-info-emphasis: rgb(var(--palette-primary-500));
+    --token-status-info-emphasis: var(--palette-primary-500);
     /* Info status text color for readability on info backgrounds */
-    --token-status-info-foreground: rgb(var(--palette-primary-300));
+    --token-status-info-foreground: var(--palette-primary-300);
     /* Info status muted background for subtle info indicators */
-    --token-status-info-muted: rgb(var(--palette-primary-900));
+    --token-status-info-muted: var(--palette-primary-900);
     /* Success status color for positive outcomes, completed actions, and confirmations */
-    --token-status-success: rgb(var(--palette-success-400));
+    --token-status-success: var(--palette-success-400);
     /* Success status border color for success containers and alerts */
-    --token-status-success-border: rgb(var(--palette-success-800));
+    --token-status-success-border: var(--palette-success-800);
     /* Success status emphasis color for icons and strong indicators */
-    --token-status-success-emphasis: rgb(var(--palette-success-500));
+    --token-status-success-emphasis: var(--palette-success-500);
     /* Success status text color for readability on success backgrounds */
-    --token-status-success-foreground: rgb(var(--palette-success-300));
+    --token-status-success-foreground: var(--palette-success-300);
     /* Success status muted background for subtle success indicators */
-    --token-status-success-muted: rgb(var(--palette-success-900));
+    --token-status-success-muted: var(--palette-success-900);
     /* Warning status color for cautions, pending states, and attention required */
-    --token-status-warning: rgb(var(--palette-warning-400));
+    --token-status-warning: var(--palette-warning-400);
     /* Warning status border color for warning containers and alerts */
-    --token-status-warning-border: rgb(var(--palette-warning-800));
+    --token-status-warning-border: var(--palette-warning-800);
     /* Warning status emphasis color for icons and strong indicators */
-    --token-status-warning-emphasis: rgb(var(--palette-warning-500));
+    --token-status-warning-emphasis: var(--palette-warning-500);
     /* Warning status text color for readability on warning backgrounds */
-    --token-status-warning-foreground: rgb(var(--palette-warning-300));
+    --token-status-warning-foreground: var(--palette-warning-300);
     /* Warning status muted background for subtle warning indicators */
-    --token-status-warning-muted: rgb(var(--palette-warning-900));
+    --token-status-warning-muted: var(--palette-warning-900);
 
     /* Primary surface color for backgrounds and containers */
-    --token-surface: rgb(var(--palette-neutral-950));
+    --token-surface: var(--palette-neutral-950);
     /* Secondary surface for sidebars, alternating rows, and nested elements */
-    --token-surface-muted: rgb(var(--palette-neutral-900));
+    --token-surface-muted: var(--palette-neutral-900);
     /* Tertiary surface for hover states, wells, and recessed areas */
-    --token-surface-subtle: rgb(var(--palette-neutral-800));
+    --token-surface-subtle: var(--palette-neutral-800);
 
     /* Tooltip background color for contextual help and hints */
-    --token-tooltip: rgb(var(--palette-neutral-800));
+    --token-tooltip: var(--palette-neutral-800);
     /* Tooltip text color for readability on dark tooltip backgrounds */
-    --token-tooltip-foreground: rgb(var(--palette-neutral-50));
+    --token-tooltip-foreground: var(--palette-neutral-50);
 
     /* Primary shadow color for elevation effects */
-    --token-shadow-color: rgb(var(--palette-neutral-950));
+    --token-shadow-color: var(--palette-neutral-950);
   }
 }

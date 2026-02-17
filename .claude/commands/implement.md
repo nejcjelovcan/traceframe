@@ -121,9 +121,11 @@ Radix handles behavior and accessibility; we add styling with Tailwind + CVA.
    - Use `get_design_tokens` MCP tool to check available tokens
    - If a new semantic token was proposed in the refined issue -> implement it first
    - Files to modify for new tokens:
-     - `packages/ui-library/tokens/semantic/light.json` - Light theme token values
-     - `packages/ui-library/tokens/semantic/dark.json` - Dark theme token values
-     - Run `pnpm --filter ui-library generate:tokens` to regenerate CSS and metadata
+     - `packages/ui-library/src/styles/tokens/modes/light.css` - Light mode semantic token values
+     - `packages/ui-library/src/styles/tokens/modes/dark.css` - Dark mode semantic token values
+     - `packages/ui-library/src/styles/tokens/theme-registration.css` - Register via `@theme inline`
+     - `packages/ui-library/src/styles/token-metadata.ts` - Add descriptions for MCP tools
+     - **Important:** Palette values are OKLCH. Reference them with `var()` only, never `rgb()`
 
 3. **Are the required icons available?**
    - Use `search_icons` to find icons by concept
@@ -215,12 +217,12 @@ import { forwardRef, type ComponentPropsWithoutRef, type ComponentRef } from 're
 import { cn } from '../utils/cn'
 
 const tooltipContentVariants = cva(
-  'z-50 rounded px-2 py-1 text-xs shadow-md animate-in fade-in-0',
+  'z-50 rounded px-2 py-1 text-xs shadow-md animate-in fade-in-0 bg-tooltip text-tooltip-foreground',
   {
     variants: {
       variant: {
-        default: 'bg-neutral-900 text-white',
-        light: 'bg-white text-neutral-900 border',
+        default: '',
+        light: 'bg-surface text-foreground border-line',
       },
     },
     defaultVariants: { variant: 'default' },

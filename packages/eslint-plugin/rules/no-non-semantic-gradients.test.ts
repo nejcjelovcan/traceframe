@@ -60,6 +60,14 @@ ruleTester.run('no-non-semantic-gradients', noNonSemanticGradients, {
       ],
       filename: 'test-file.tsx',
     },
+    // Template literals in className
+    {
+      code: '<div className={`bg-gradient-interactive-primary`} />',
+    },
+    // Template literals with semantic tokens in cn/clsx
+    {
+      code: 'cn(`bg-gradient-status-success bg-gradient-accent-1`)',
+    },
   ],
 
   invalid: [
@@ -117,6 +125,30 @@ ruleTester.run('no-non-semantic-gradients', noNonSemanticGradients, {
     // cn/clsx function calls
     {
       code: 'cn("bg-gradient-to-b", "from-primary-500")',
+      errors: [
+        {
+          messageId: 'nonSemanticGradient',
+        },
+        {
+          messageId: 'nonSemanticGradient',
+        },
+      ],
+    },
+    // Template literals in JSX className
+    {
+      code: '<div className={`bg-gradient-to-r from-primary-500`} />',
+      errors: [
+        {
+          messageId: 'nonSemanticGradient',
+        },
+        {
+          messageId: 'nonSemanticGradient',
+        },
+      ],
+    },
+    // Template literals in cn/clsx function calls
+    {
+      code: 'cn(`bg-gradient-to-t via-error-600`)',
       errors: [
         {
           messageId: 'nonSemanticGradient',

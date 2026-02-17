@@ -654,5 +654,144 @@ export function getGradientSuggestion(className: string): string | undefined {
   return undefined
 }
 
+/**
+ * Check if a Tailwind class uses non-semantic typography values.
+ * Non-semantic: arbitrary font sizes, families, line heights, letter spacing, or oversized text
+ * Semantic: text-xs through text-4xl, font-sans, font-mono, standard line-height and tracking utilities
+ */
+export function isNonSemanticTypographyClass(className: string): boolean {
+  const clean = stripModifiers(className)
+
+  // Check for arbitrary font size values
+  if (/^text-\[.+\]$/.test(clean)) return true
+
+  // Check for non-standard text sizes (5xl and above)
+  if (/^text-(5|6|7|8|9)xl$/.test(clean)) return true
+
+  // Check for arbitrary font family
+  if (/^font-\[.+\]$/.test(clean)) return true
+
+  // Check for arbitrary line height
+  if (/^leading-\[.+\]$/.test(clean)) return true
+
+  // Check for arbitrary letter spacing
+  if (/^tracking-\[.+\]$/.test(clean)) return true
+
+  return false
+}
+
+/**
+ * Get suggestion for semantic typography replacement.
+ */
+export function getTypographySuggestion(className: string): string | undefined {
+  const clean = stripModifiers(className)
+
+  if (/^text-\[.+\]$/.test(clean)) {
+    return 'Use semantic font sizes: text-xs through text-4xl'
+  }
+
+  if (/^text-(5|6|7|8|9)xl$/.test(clean)) {
+    return 'Use text-4xl for maximum size, or consider if this is truly needed'
+  }
+
+  if (/^font-\[.+\]$/.test(clean)) {
+    return 'Use font-sans or font-mono'
+  }
+
+  if (/^leading-\[.+\]$/.test(clean)) {
+    return 'Use standard line-height utilities: leading-none, leading-tight, leading-snug, leading-normal, leading-relaxed, or leading-loose'
+  }
+
+  if (/^tracking-\[.+\]$/.test(clean)) {
+    return 'Use standard letter-spacing utilities: tracking-tighter through tracking-widest'
+  }
+
+  return undefined
+}
+
+/**
+ * Check if a Tailwind class uses non-semantic border radius values.
+ * Non-semantic: arbitrary values, rounded-2xl, rounded-3xl
+ * Semantic: rounded-sm, rounded-md, rounded-lg, rounded-xl, rounded-none, rounded-full
+ */
+export function isNonSemanticBorderRadiusClass(className: string): boolean {
+  const clean = stripModifiers(className)
+
+  // Check for rounded classes
+  if (!clean.startsWith('rounded')) return false
+
+  // Extract the value part after 'rounded'
+  const valuePart = clean.replace(/^rounded/, '')
+
+  // No suffix means default (rounded-md) - allowed
+  if (valuePart === '') return false
+
+  // Check for directional prefixes (-t, -r, -b, -l, -tl, -tr, -br, -bl)
+  const directionMatch = valuePart.match(/^-(tl|tr|br|bl|t|r|b|l)(-|$)/)
+  const actualValue = directionMatch ? valuePart.slice(directionMatch[0].length - 1) : valuePart
+
+  // If just the direction with no value, it's default (allowed)
+  if (actualValue === '') return false
+
+  // Remove the dash prefix if present
+  const value = actualValue.startsWith('-') ? actualValue.slice(1) : actualValue
+
+  // Allowed semantic values
+  const allowedValues = ['none', 'sm', 'md', 'lg', 'xl', 'full']
+  if (allowedValues.includes(value)) return false
+
+  // Check for arbitrary values [...]
+  if (/^\[.+\]$/.test(value)) return true
+
+  // Check for non-semantic sizes (2xl, 3xl, or numeric)
+  if (/^(2|3)xl$/.test(value) || /^\d+$/.test(value)) return true
+
+  return false
+}
+
+/**
+ * Get suggestion for semantic border radius replacement.
+ */
+export function getBorderRadiusSuggestion(className: string): string | undefined {
+  const clean = stripModifiers(className)
+
+  // Check if it's a rounded class
+  if (!clean.startsWith('rounded')) return undefined
+
+  // Extract the value part after 'rounded'
+  const afterRounded = clean.slice(7) // 'rounded' is 7 chars
+
+  // Check for directional prefixes (-t, -r, -b, -l, -tl, -tr, -br, -bl)
+  let direction = ''
+  let value = afterRounded
+
+  const directionMatch = afterRounded.match(/^-(tl|tr|br|bl|t|r|b|l)(.*)$/)
+  if (directionMatch) {
+    direction = `-${directionMatch[1]}`
+    value = directionMatch[2] || ''
+  }
+
+  // Remove leading dash from value if present
+  if (value.startsWith('-')) {
+    value = value.slice(1)
+  }
+
+  // Check for arbitrary values [...]
+  if (/^\[.+\]$/.test(value)) {
+    return `Use semantic border radius: rounded${direction}-sm, rounded${direction}-md, rounded${direction}-lg, or rounded${direction}-xl`
+  }
+
+  // Check for oversized values
+  if (value === '2xl') {
+    return `rounded${direction}-xl (0.75rem) or rounded${direction}-full for pills/circles`
+  }
+
+  if (value === '3xl') {
+    return `rounded${direction}-xl (0.75rem) or rounded${direction}-full for pills/circles`
+  }
+
+  return undefined
+}
+
 // Re-export TOKEN_METADATA for convenience
 export { TOKEN_METADATA }

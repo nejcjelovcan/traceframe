@@ -17,7 +17,7 @@ const meta: Meta<typeof Card> = {
     docs: {
       description: {
         component: `
-A container component for grouping related content with optional header and footer.
+A container component for grouping related content with optional header and footer, now with accordion support.
 
 **Tier:** 1 (Tailwind + CVA)
 
@@ -42,15 +42,25 @@ A container component for grouping related content with optional header and foot
 - \`actionable\` - Makes the card clickable with interactive shadow states
 - Works with all variants for hover/active feedback
 - Adds cursor-pointer and smooth shadow transitions
+- Cannot be used with \`accordion\` prop
+
+**Accordion Prop:**
+- \`accordion\` - Makes the card collapsible with header as trigger
+- \`defaultOpen\` - Initial expanded state for uncontrolled accordion
+- \`open\` & \`onOpenChange\` - For controlled accordion mode
+- Shows chevron icon in header that rotates when expanded
+- Cannot be used with \`actionable\` prop
 
 **Icon Support:**
 - \`CardHeader\` accepts an \`icon\` prop with any icon name from ui-library
 - \`iconPosition\` can be \`left\` (default) or \`right\`
+- In accordion mode, a chevron icon is automatically added
 
 **Accessibility:**
-- Uses semantic \`<div>\` elements
+- Uses semantic \`<div>\` elements or \`<button>\` for accordion headers
 - Header content should use appropriate heading levels
-- Consider adding \`role="region"\` and \`aria-labelledby\` for significant cards
+- Accordion mode follows WAI-ARIA Disclosure Pattern
+- Keyboard navigable with Enter/Space in accordion mode
 - Icons in headers have \`aria-hidden="true"\` (they are decorative)
         `.trim(),
       },
@@ -84,6 +94,28 @@ A container component for grouping related content with optional header and foot
       table: {
         defaultValue: { summary: 'false' },
       },
+    },
+    accordion: {
+      description: 'Makes the card collapsible with header as trigger',
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+    defaultOpen: {
+      description: 'Initial expanded state for uncontrolled accordion',
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
+    open: {
+      description: 'Controlled open state for accordion',
+      control: 'boolean',
+    },
+    onOpenChange: {
+      description: 'Callback when accordion open state changes',
+      action: 'onOpenChange',
     },
     children: {
       description: 'Card content (typically CardHeader, CardContent, CardFooter)',
@@ -750,4 +782,242 @@ export const Showcase: Story = {
     },
   },
   render: () => <ShowcaseContent />,
+}
+
+// Accordion stories
+export const AccordionBasic: Story = {
+  name: 'Accordion - Basic',
+  render: () => (
+    <Card accordion className="w-80">
+      <CardHeader>Advanced Settings</CardHeader>
+      <CardContent>
+        <p>These are the advanced settings that can be expanded or collapsed.</p>
+        <ul className="mt-sm space-y-xs text-sm">
+          <li>• Enable notifications</li>
+          <li>• Auto-save interval: 5 minutes</li>
+          <li>• Debug mode: Off</li>
+        </ul>
+      </CardContent>
+    </Card>
+  ),
+}
+
+export const AccordionDefaultOpen: Story = {
+  name: 'Accordion - Default Open',
+  render: () => (
+    <Card accordion defaultOpen={true} className="w-80">
+      <CardHeader>Expanded by Default</CardHeader>
+      <CardContent>
+        <p>This accordion starts in the expanded state.</p>
+      </CardContent>
+      <CardFooter>
+        <button className="text-sm text-interactive-accent hover:underline">Save</button>
+      </CardFooter>
+    </Card>
+  ),
+}
+
+export const AccordionControlled: Story = {
+  name: 'Accordion - Controlled',
+  render: () => {
+    const [open, setOpen] = useState(false)
+
+    return (
+      <div className="space-y-base">
+        <div className="flex gap-base">
+          <button
+            onClick={() => setOpen(true)}
+            className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
+          >
+            Open
+          </button>
+          <button
+            onClick={() => setOpen(false)}
+            className="rounded bg-interactive-secondary px-sm py-xs text-sm text-interactive-secondary-foreground hover:bg-interactive-secondary-hover"
+          >
+            Close
+          </button>
+          <button
+            onClick={() => setOpen(!open)}
+            className="rounded bg-interactive-primary px-sm py-xs text-sm text-interactive-primary-foreground hover:bg-interactive-primary-hover"
+          >
+            Toggle
+          </button>
+        </div>
+        <Card accordion open={open} onOpenChange={setOpen} className="w-80">
+          <CardHeader>Controlled Accordion</CardHeader>
+          <CardContent>
+            <p>This accordion is controlled by external state.</p>
+            <p className="mt-sm text-sm text-foreground-muted">
+              Current state: {open ? 'Open' : 'Closed'}
+            </p>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  },
+}
+
+export const AccordionWithIcon: Story = {
+  name: 'Accordion - With Header Icon',
+  render: () => (
+    <div className="space-y-base">
+      <Card accordion className="w-80">
+        <CardHeader icon="settings">Settings</CardHeader>
+        <CardContent>
+          <p>Icon on the left with chevron on the right.</p>
+        </CardContent>
+      </Card>
+      <Card accordion className="w-80">
+        <CardHeader icon="filter" iconPosition="right">
+          Filters
+        </CardHeader>
+        <CardContent>
+          <p>Icon and chevron both on the right.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
+export const AccordionAllVariants: Story = {
+  name: 'Accordion - All Variants',
+  render: () => (
+    <div className="flex flex-wrap gap-base">
+      <Card variant="outlined" accordion className="w-64">
+        <CardHeader>Outlined</CardHeader>
+        <CardContent>
+          <p className="text-sm">Collapsible outlined card.</p>
+        </CardContent>
+      </Card>
+      <Card variant="elevated" accordion className="w-64">
+        <CardHeader>Elevated</CardHeader>
+        <CardContent>
+          <p className="text-sm">Collapsible elevated card.</p>
+        </CardContent>
+      </Card>
+      <Card variant="info" accordion className="w-64">
+        <CardHeader icon="info-circle">Info</CardHeader>
+        <CardContent>
+          <p className="text-sm">Collapsible info card.</p>
+        </CardContent>
+      </Card>
+      <Card variant="success" accordion className="w-64">
+        <CardHeader icon="check">Success</CardHeader>
+        <CardContent>
+          <p className="text-sm">Collapsible success card.</p>
+        </CardContent>
+      </Card>
+      <Card variant="warning" accordion className="w-64">
+        <CardHeader icon="alert-circle">Warning</CardHeader>
+        <CardContent>
+          <p className="text-sm">Collapsible warning card.</p>
+        </CardContent>
+      </Card>
+      <Card variant="error" accordion className="w-64">
+        <CardHeader icon="alert-circle">Error</CardHeader>
+        <CardContent>
+          <p className="text-sm">Collapsible error card.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
+export const AccordionMultiple: Story = {
+  name: 'Accordion - Multiple Cards',
+  render: () => (
+    <div className="w-96 space-y-base">
+      <Card accordion defaultOpen={true}>
+        <CardHeader icon="users">User Preferences</CardHeader>
+        <CardContent>
+          <ul className="space-y-xs text-sm">
+            <li>Theme: Auto</li>
+            <li>Language: English</li>
+            <li>Timezone: UTC</li>
+          </ul>
+        </CardContent>
+      </Card>
+      <Card accordion>
+        <CardHeader icon="info-circle">Notifications</CardHeader>
+        <CardContent>
+          <ul className="space-y-xs text-sm">
+            <li>Email: Enabled</li>
+            <li>Push: Disabled</li>
+            <li>SMS: Disabled</li>
+          </ul>
+        </CardContent>
+      </Card>
+      <Card accordion>
+        <CardHeader icon="lock">Security</CardHeader>
+        <CardContent>
+          <ul className="space-y-xs text-sm">
+            <li>Two-factor: Enabled</li>
+            <li>Session timeout: 30 minutes</li>
+            <li>Login alerts: Enabled</li>
+          </ul>
+        </CardContent>
+      </Card>
+      <Card accordion>
+        <CardHeader icon="settings">API Keys</CardHeader>
+        <CardContent>
+          <p className="text-sm">No API keys configured.</p>
+        </CardContent>
+        <CardFooter>
+          <button className="text-sm text-interactive-accent hover:underline">Generate Key</button>
+        </CardFooter>
+      </Card>
+    </div>
+  ),
+}
+
+export const AccordionInverse: Story = {
+  name: 'Accordion - Inverse',
+  render: () => (
+    <div className="flex flex-wrap gap-base">
+      <Card accordion className="inverse w-64">
+        <CardHeader>Inverse Accordion</CardHeader>
+        <CardContent>
+          <p className="text-sm">Dark theme accordion card.</p>
+        </CardContent>
+      </Card>
+      <Card variant="info" accordion className="inverse w-64">
+        <CardHeader icon="info-circle">Info Inverse</CardHeader>
+        <CardContent>
+          <p className="text-sm">Solid info background.</p>
+        </CardContent>
+      </Card>
+      <Card variant="accent1" accordion className="inverse w-64">
+        <CardHeader>Accent Inverse</CardHeader>
+        <CardContent>
+          <p className="text-sm">Solid accent background.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
+export const AccordionErrorCase: Story = {
+  name: 'Accordion - Error Case',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'This story demonstrates the error case when both accordion and actionable props are used. Check the console for the error message.',
+      },
+    },
+  },
+  render: () => (
+    <Card accordion actionable className="w-80">
+      <CardHeader>Invalid Configuration</CardHeader>
+      <CardContent>
+        <p className="text-sm text-status-error-foreground">
+          ⚠️ Card cannot be both accordion and actionable.
+        </p>
+        <p className="text-sm mt-sm">
+          This will log an error to the console. The accordion functionality takes precedence.
+        </p>
+      </CardContent>
+    </Card>
+  ),
 }

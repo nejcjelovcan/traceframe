@@ -54,18 +54,18 @@ This workspace uses domain-specific MCP servers plus external integrations:
 
 ### mcp-ui Tools
 
-| Tool                     | Use Instead Of  | Purpose                                           |
-| ------------------------ | --------------- | ------------------------------------------------- |
-| `run_or_open_playroom`   | `pnpm playroom` | Start Playroom or open browser if already running |
-| `stop_playroom`          | -               | Stop a running Playroom process                   |
-| `list_components`        | -               | List all ui-library components with summaries     |
-| `get_component`          | -               | Get detailed component info (props, usage, a11y)  |
-| `get_design_tokens`      | -               | Get design tokens (colors, typography, spacing)   |
-| `get_tailwind_utilities` | -               | Get Tailwind CSS utility classes by category      |
-| `search_icons`           | -               | Search icons by name, description, or aliases     |
-| `list_icons`             | -               | List all icons with optional category filter      |
-| `get_icon`               | -               | Get full metadata for a specific icon             |
-| `validate_tokens`        | -               | Validate design token definitions                 |
+| Tool                     | Use Instead Of  | Purpose                                                         |
+| ------------------------ | --------------- | --------------------------------------------------------------- |
+| `run_or_open_playroom`   | `pnpm playroom` | Start Playroom or open browser if already running               |
+| `stop_playroom`          | -               | Stop a running Playroom process                                 |
+| `list_components`        | -               | List all ui-library components with summaries                   |
+| `get_component`          | -               | Get detailed component info (props, usage, a11y)                |
+| `get_design_tokens`      | -               | Get design tokens from CSS source (colors, typography, spacing) |
+| `get_tailwind_utilities` | -               | Get Tailwind CSS utility classes by category                    |
+| `search_icons`           | -               | Search icons by name, description, or aliases                   |
+| `list_icons`             | -               | List all icons with optional category filter                    |
+| `get_icon`               | -               | Get full metadata for a specific icon                           |
+| `validate_tokens`        | -               | Validate CSS token definitions                                  |
 
 ### Package Names
 
@@ -381,13 +381,24 @@ See `packages/ui-library/ICONS.md` for full reference, accessibility guidelines,
 
 ## Design Tokens
 
-Use the `get_design_tokens` MCP tool to query design tokens from ui-library.
+Use the `get_design_tokens` MCP tool to query design tokens from ui-library. The tool retrieves tokens from CSS source files, which are the source of truth for the token system.
+
+### CSS Token Architecture
+
+The token system is CSS-based, with CSS files as the single source of truth (not JSON). Token structure in `packages/ui-library/src/styles/tokens/`:
+
+- `palettes/*.css` - Color palette definitions in OKLCH color space (arctic, dusk, ember)
+- `themes/*.css` - Theme-specific tokens (shadows, borders, gradients)
+- `modes/*.css` - Light/dark mode semantic tokens
+- `theme-registration.css` - Tailwind v4 `@theme inline` registration
+
+Token metadata in `packages/ui-library/src/styles/token-metadata.ts` provides descriptions for MCP tools, but the CSS files define the actual values.
 
 ### Token Types
 
 | Type          | Filter       | Description                                                                   |
 | ------------- | ------------ | ----------------------------------------------------------------------------- |
-| Colors        | `colors`     | Palettes (primary, neutral, success, warning, error) with RGB/hex values      |
+| Colors        | `colors`     | Palettes (primary, neutral, success, warning, error) with OKLCH values        |
 | Semantic      | `colors`     | Theme-aware tokens (surface, foreground, border, ring) with light/dark values |
 | Typography    | `typography` | Font families (sans, mono) and font sizes with line heights                   |
 | Spacing       | `spacing`    | Semantic spacing tokens (xs, sm, md, lg, xl, 2xl) plus custom values (18, 22) |
@@ -433,7 +444,7 @@ Use the `get_design_tokens` MCP tool to query design tokens from ui-library.
 
 ### Shadow Tokens (Per Theme)
 
-Shadow tokens are defined per theme in `tokens/themes/*.json` and vary by theme personality.
+Shadow tokens are defined per theme in `src/styles/tokens/themes/*.css` and vary by theme personality.
 
 | Category    | Tokens                                                    | Tailwind Classes                                                               | Usage                             |
 | ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
@@ -444,7 +455,7 @@ Shadow tokens are defined per theme in `tokens/themes/*.json` and vary by theme 
 
 ### Border Style Tokens (Per Theme)
 
-Border style tokens combine width + line style and are consumed via custom Tailwind utilities (using `@utility` directives). They are defined per theme in `tokens/themes/*.json`.
+Border style tokens combine width + line style and are consumed via custom Tailwind utilities (using `@utility` directives). They are defined per theme in `src/styles/tokens/themes/*.css`.
 
 | Token       | Value        | Tailwind Class     | Usage                                        |
 | ----------- | ------------ | ------------------ | -------------------------------------------- |
@@ -458,7 +469,7 @@ Border style tokens combine width + line style and are consumed via custom Tailw
 
 ### Gradient Tokens (Per Theme)
 
-Gradient tokens provide subtle background gradients for emphasis surfaces. They are theme-level tokens (vary by theme personality, not by light/dark mode). Consumed via `bg-gradient-*` Tailwind utilities.
+Gradient tokens provide subtle background gradients for emphasis surfaces. They are theme-level tokens (vary by theme personality, not by light/dark mode) and are defined in CSS theme files (`src/styles/tokens/themes/*.css`). Consumed via `bg-gradient-*` Tailwind utilities.
 
 | Category    | Tokens                                | Tailwind Classes                                                                                                  | Usage                       |
 | ----------- | ------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | --------------------------- |
@@ -515,4 +526,10 @@ Use `/refine` to propose new semantic tokens when:
 - The color should change between light/dark themes
 - The color represents a semantic concept (not just a visual preference)
 
-New semantic tokens are added to the CSS source files in `packages/ui-library/src/styles/tokens/modes/light.css` and `dark.css`, then registered in `packages/ui-library/src/styles/tokens/theme-registration.css`. Update `packages/ui-library/src/styles/token-metadata.ts` with descriptions for MCP tools.
+New semantic tokens are added to CSS source files:
+
+1. Define the token in `packages/ui-library/src/styles/tokens/modes/light.css` and `dark.css`
+2. Register via `@theme inline` in `packages/ui-library/src/styles/tokens/theme-registration.css`
+3. Update `packages/ui-library/src/styles/token-metadata.ts` with descriptions for MCP tools
+
+**Important:** Semantic tokens reference palette variables with `var()` only -- never wrap in `rgb()`. Palette values are OKLCH (e.g., `oklch(58% 0.1 220)`), so `rgb(var(...))` is invalid. Correct: `--token-foreground: var(--palette-neutral-900);`
