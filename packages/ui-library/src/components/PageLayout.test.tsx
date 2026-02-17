@@ -159,7 +159,7 @@ describe('PageLayout', () => {
         </PageLayout>
       )
       const header = screen.getByText('Header').parentElement
-      expect(header?.className).toContain('bg-gradient-primary')
+      expect(header?.className).toContain('bg-interactive-primary')
     })
 
     it('applies subtle variant to header', () => {
@@ -169,7 +169,7 @@ describe('PageLayout', () => {
         </PageLayout>
       )
       const header = screen.getByText('Header').parentElement
-      expect(header?.className).toContain('bg-gradient-secondary-light')
+      expect(header?.className).toContain('bg-interactive-secondary-muted')
     })
 
     it('applies filled variant to sidebar', () => {
@@ -179,7 +179,7 @@ describe('PageLayout', () => {
         </PageLayout>
       )
       const sidebar = screen.getByText('Sidebar').parentElement
-      expect(sidebar?.className).toContain('bg-gradient-accent-1')
+      expect(sidebar?.className).toContain('bg-accent-1-emphasis')
     })
 
     it('applies subtle variant to sidebar', () => {
@@ -189,7 +189,7 @@ describe('PageLayout', () => {
         </PageLayout>
       )
       const sidebar = screen.getByText('Sidebar').parentElement
-      expect(sidebar?.className).toContain('bg-gradient-accent-2-light')
+      expect(sidebar?.className).toContain('bg-accent-2-muted')
     })
 
     it('provides variant and color via context', () => {
@@ -228,7 +228,7 @@ describe('PageLayout', () => {
       )
       // Navigation should not have the background class when inheriting from context
       const nav = screen.getByRole('navigation')
-      expect(nav.className).not.toContain('bg-gradient-primary')
+      expect(nav.className).not.toContain('bg-interactive-primary')
     })
 
     it('Navigation can override inherited context', () => {
@@ -247,7 +247,7 @@ describe('PageLayout', () => {
       )
       // Navigation should have its own variant classes when explicitly set
       const nav = screen.getByRole('navigation')
-      expect(nav.className).toContain('bg-gradient-secondary-light')
+      expect(nav.className).toContain('bg-interactive-secondary-muted')
     })
 
     it('PageHeader applies filled text color when variant is filled', () => {
