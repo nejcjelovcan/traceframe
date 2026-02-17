@@ -233,7 +233,8 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
           <button
             className={cn(
               'flex w-full items-center gap-sm border-b border-inherit px-base py-md font-medium text-left',
-              'hover:bg-surface-subtle transition-colors',
+              'rounded-t-sm',
+              'hover:bg-foreground/5 transition-colors',
               'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className
