@@ -476,7 +476,7 @@ export const SubtleVariant: Story = {
     docs: {
       description: {
         story:
-          'The subtle variant provides a lighter gradient background. Navigation components automatically inherit this context.',
+          'The subtle variant provides a muted background. Navigation components automatically inherit this context.',
       },
     },
   },

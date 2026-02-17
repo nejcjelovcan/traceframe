@@ -25,8 +25,8 @@ A navigation component that supports both horizontal (header) and vertical (side
 
 **Variants:**
 - \`default\` - Standard navigation with minimal styling
-- \`filled\` - Strong gradient background with prominent active states
-- \`subtle\` - Light gradient background with soft active states
+- \`filled\` - Strong emphasis background with prominent active states
+- \`subtle\` - Muted background with soft active states
 
 **Colors (for filled/subtle variants):**
 - \`primary\`, \`secondary\`, \`accent-1\` through \`accent-5\`
@@ -272,7 +272,7 @@ export const FilledPrimaryHorizontal: Story = {
     docs: {
       description: {
         story:
-          'Filled variant with primary color gradient background for prominent navigation areas.',
+          'Filled variant with primary color emphasis background for prominent navigation areas.',
       },
     },
   },
@@ -334,7 +334,7 @@ export const SubtlePrimaryHorizontal: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Subtle variant with light gradient background for softer navigation styling.',
+        story: 'Subtle variant with muted background for softer navigation styling.',
       },
     },
   },
@@ -641,7 +641,7 @@ export const ContextInheritance: Story = {
           <ol className="list-inside list-decimal space-y-xs text-sm text-foreground-muted">
             <li>PageLayout provides variant and color via React Context</li>
             <li>Navigation checks for context values when not explicitly set</li>
-            <li>Background gradients apply to PageLayout header/sidebar, not Navigation</li>
+            <li>Background colors apply to PageLayout header/sidebar, not Navigation</li>
             <li>Navigation adjusts text colors based on inherited variant</li>
           </ol>
         </div>
