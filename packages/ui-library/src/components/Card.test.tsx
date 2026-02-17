@@ -378,6 +378,8 @@ describe('Card composition', () => {
 })
 
 describe('Card actionable variant', () => {
+  const user = userEvent.setup()
+
   it('applies cursor-pointer when actionable=true', () => {
     render(<Card actionable>Actionable</Card>)
     const card = screen.getByText('Actionable')
@@ -495,6 +497,164 @@ describe('Card actionable variant', () => {
     expect(card.getAttribute('tabIndex')).toBe('0')
     expect(card.getAttribute('role')).toBe('button')
     expect(card.getAttribute('aria-pressed')).toBe('false')
+  })
+
+  it('applies focus ring styles for actionable cards', () => {
+    render(<Card actionable>Focusable</Card>)
+    const card = screen.getByRole('button')
+    expect(card.className).toContain('focus-visible:outline-hidden')
+    expect(card.className).toContain('focus-visible:ring-2')
+    expect(card.className).toContain('focus-visible:ring-ring')
+    expect(card.className).toContain('focus-visible:ring-offset-2')
+    expect(card.className).toContain('focus-visible:ring-offset-surface')
+  })
+
+  it('triggers onClick when Enter key is pressed', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable onClick={onClick}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('triggers onClick when Space key is pressed', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable onClick={onClick}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard(' ')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
+  })
+
+  it('preserves custom onKeyDown handler', async () => {
+    const onClick = vi.fn()
+    const onKeyDown = vi.fn()
+    render(
+      <Card actionable onClick={onClick} onKeyDown={onKeyDown}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+
+    expect(onClick).toHaveBeenCalled()
+    expect(onKeyDown).toHaveBeenCalled()
+  })
+
+  it('does not crash when Enter/Space pressed without onClick', async () => {
+    render(<Card actionable>No Handler</Card>)
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+    await user.keyboard(' ')
+
+    // Should not throw
+    expect(card).toBeDefined()
+  })
+
+  it('does not trigger onClick for other keys', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable onClick={onClick}>
+        Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Escape}')
+    await user.keyboard('a')
+    await user.keyboard('{Tab}')
+
+    expect(onClick).not.toHaveBeenCalled()
+  })
+
+  it('respects custom tabIndex prop', () => {
+    render(
+      <Card actionable tabIndex={-1}>
+        Custom TabIndex
+      </Card>
+    )
+    const card = screen.getByRole('button')
+    expect(card.getAttribute('tabIndex')).toBe('-1')
+  })
+
+  it('respects custom role prop', () => {
+    render(
+      <Card actionable role="article">
+        Custom Role
+      </Card>
+    )
+    const card = screen.getByRole('article')
+    expect(card).toBeDefined()
+  })
+
+  it('respects custom aria-pressed prop', () => {
+    render(
+      <Card actionable aria-pressed="true">
+        Custom Pressed
+      </Card>
+    )
+    const card = screen.getByRole('button')
+    expect(card.getAttribute('aria-pressed')).toBe('true')
+  })
+
+  it('focus ring works with all card variants', () => {
+    const variants = [
+      'outlined',
+      'elevated',
+      'info',
+      'success',
+      'warning',
+      'error',
+      'accent1',
+      'accent2',
+      'accent3',
+      'accent4',
+      'accent5',
+    ] as CardProps['variant'][]
+
+    variants.forEach((variant) => {
+      const { container } = render(
+        <Card variant={variant} actionable>
+          Actionable {variant}
+        </Card>
+      )
+      const card = container.firstChild as HTMLElement
+      expect(card.className).toContain('focus-visible:ring-2')
+      expect(card.className).toContain('focus-visible:ring-ring')
+    })
+  })
+
+  it('keyboard activation works with inverted cards', async () => {
+    const onClick = vi.fn()
+    render(
+      <Card actionable inverted onClick={onClick}>
+        Inverted Clickable
+      </Card>
+    )
+    const card = screen.getByRole('button')
+
+    card.focus()
+    await user.keyboard('{Enter}')
+
+    expect(onClick).toHaveBeenCalledTimes(1)
   })
 })
 

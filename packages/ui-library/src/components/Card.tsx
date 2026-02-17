@@ -58,6 +58,13 @@ const cardVariants = cva('rounded-sm border-line', {
       class: 'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
     },
 
+    // Focus ring for actionable cards
+    {
+      actionable: true,
+      class:
+        'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+    },
+
     // Core variants: CSS variable override for full semantic token inversion
     {
       variant: 'outlined',
@@ -180,9 +187,40 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       const cardProps = actionable
         ? {
             ...props,
-            tabIndex: 0,
-            role: 'button',
-            'aria-pressed': false,
+            tabIndex: props.tabIndex ?? 0,
+            role: props.role ?? 'button',
+            'aria-pressed': props['aria-pressed'] ?? false,
+            onKeyDown: (e: React.KeyboardEvent<HTMLDivElement>) => {
+              // Handle Enter/Space for activation
+              if ((e.key === 'Enter' || e.key === ' ') && props.onClick) {
+                e.preventDefault()
+                // Create a synthetic React mouse event that works in both browser and test environments
+                // We cast the keyboard event to a mouse event since onClick expects it,
+                // but the handler should be able to handle both event types
+                const syntheticEvent = {
+                  ...e,
+                  type: 'click',
+                  detail: 1,
+                  button: 0,
+                  buttons: 1,
+                  clientX: 0,
+                  clientY: 0,
+                  pageX: 0,
+                  pageY: 0,
+                  screenX: 0,
+                  screenY: 0,
+                  movementX: 0,
+                  movementY: 0,
+                  offsetX: 0,
+                  offsetY: 0,
+                  relatedTarget: null,
+                  getModifierState: e.getModifierState,
+                } as unknown as React.MouseEvent<HTMLDivElement>
+                props.onClick(syntheticEvent)
+              }
+              // Call provided onKeyDown if exists
+              props.onKeyDown?.(e)
+            },
           }
         : props
 
