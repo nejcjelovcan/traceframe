@@ -218,9 +218,11 @@ Add a "Design Token Proposal" section to the implementation plan:
 | DEFAULT | `<palette-shade>` | `<palette-shade>` |
 
 **Files to modify:**
-- `packages/ui-library/tokens/semantic/light.json` - Add light theme token values
-- `packages/ui-library/tokens/semantic/dark.json` - Add dark theme token values
-- Run `pnpm --filter ui-library generate:tokens` to regenerate CSS and metadata
+- `packages/ui-library/src/styles/tokens/modes/light.css` - Add light mode semantic token values
+- `packages/ui-library/src/styles/tokens/modes/dark.css` - Add dark mode semantic token values
+- `packages/ui-library/src/styles/tokens/theme-registration.css` - Register via `@theme inline`
+- `packages/ui-library/src/styles/token-metadata.ts` - Add descriptions for MCP tools
+- **Important:** Palette values are OKLCH. Reference them with `var()` only, never `rgb()`
 ```
 
 #### Step 5b: Propose New Icons (If Needed)
@@ -367,9 +369,11 @@ Before proposing new code, check:
 | DEFAULT | `<value>` | `<value>` |
 
 **Files to modify:**
-- `packages/ui-library/tokens/semantic/light.json` - Light theme values
-- `packages/ui-library/tokens/semantic/dark.json` - Dark theme values
-- Run `pnpm --filter ui-library generate:tokens` to regenerate
+- `packages/ui-library/src/styles/tokens/modes/light.css` - Light mode values
+- `packages/ui-library/src/styles/tokens/modes/dark.css` - Dark mode values
+- `packages/ui-library/src/styles/tokens/theme-registration.css` - Register via `@theme inline`
+- `packages/ui-library/src/styles/token-metadata.ts` - Add descriptions for MCP tools
+- **Important:** Palette values are OKLCH. Reference them with `var()` only, never `rgb()`
 
 ### Files to Create/Modify
 
@@ -522,11 +526,11 @@ get_issue(id: "TRA-42", includeRelations: true)
 
 **Key files to reference:**
 - `packages/ui-library/README.md` - Component patterns
-- `packages/ui-library/src/styles/generated/token-metadata.ts` - Token metadata (auto-generated)
-- `packages/ui-library/tokens/semantic/light.json` - Semantic token definitions (light theme)
-- `packages/ui-library/tokens/semantic/dark.json` - Semantic token definitions (dark theme)
-- `packages/ui-library/tokens/themes/arctic.json` - Theme token values (arctic)
-- `packages/ui-library/src/tailwind-preset.ts` - Tailwind preset config
+- `packages/ui-library/src/styles/token-metadata.ts` - Token metadata for MCP tools
+- `packages/ui-library/src/styles/tokens/modes/light.css` - Semantic token definitions (light mode)
+- `packages/ui-library/src/styles/tokens/modes/dark.css` - Semantic token definitions (dark mode)
+- `packages/ui-library/src/styles/tokens/palettes/arctic.css` - Palette values in OKLCH (arctic theme)
+- `packages/ui-library/src/styles/tokens/theme-registration.css` - Tailwind v4 `@theme inline` registration
 - `packages/ui-library/src/components/Button.tsx` - Example component
 
 **MCP tools for design system discovery:**

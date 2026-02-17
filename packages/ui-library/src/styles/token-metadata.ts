@@ -384,17 +384,16 @@ export const TOKEN_METADATA = {
         variants: {
           primary: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-primary-600)), rgb(var(--palette-primary-700)))',
+              'linear-gradient(180deg, var(--palette-primary-600), var(--palette-primary-700))',
             description: 'Primary button and CTA gradient',
           },
           secondary: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-secondary-600)), rgb(var(--palette-secondary-700)))',
+              'linear-gradient(180deg, var(--palette-secondary-600), var(--palette-secondary-700))',
             description: 'Secondary button gradient',
           },
           destructive: {
-            value:
-              'linear-gradient(180deg, rgb(var(--palette-error-600)), rgb(var(--palette-error-700)))',
+            value: 'linear-gradient(180deg, var(--palette-error-600), var(--palette-error-700))',
             description: 'Destructive button gradient',
           },
         },
@@ -404,22 +403,21 @@ export const TOKEN_METADATA = {
         variants: {
           info: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-primary-600)), rgb(var(--palette-primary-700)))',
+              'linear-gradient(180deg, var(--palette-primary-600), var(--palette-primary-700))',
             description: 'Info status emphasis gradient',
           },
           success: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-success-600)), rgb(var(--palette-success-700)))',
+              'linear-gradient(180deg, var(--palette-success-600), var(--palette-success-700))',
             description: 'Success status emphasis gradient',
           },
           warning: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-warning-500)), rgb(var(--palette-warning-600)))',
+              'linear-gradient(180deg, var(--palette-warning-500), var(--palette-warning-600))',
             description: 'Warning status emphasis gradient',
           },
           error: {
-            value:
-              'linear-gradient(180deg, rgb(var(--palette-error-600)), rgb(var(--palette-error-700)))',
+            value: 'linear-gradient(180deg, var(--palette-error-600), var(--palette-error-700))',
             description: 'Error status emphasis gradient',
           },
         },
@@ -429,27 +427,27 @@ export const TOKEN_METADATA = {
         variants: {
           '1': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-1-600)), rgb(var(--palette-accent-1-700)))',
+              'linear-gradient(180deg, var(--palette-accent-1-600), var(--palette-accent-1-700))',
             description: 'Accent 1 emphasis gradient',
           },
           '2': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-2-600)), rgb(var(--palette-accent-2-700)))',
+              'linear-gradient(180deg, var(--palette-accent-2-600), var(--palette-accent-2-700))',
             description: 'Accent 2 emphasis gradient',
           },
           '3': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-3-600)), rgb(var(--palette-accent-3-700)))',
+              'linear-gradient(180deg, var(--palette-accent-3-600), var(--palette-accent-3-700))',
             description: 'Accent 3 emphasis gradient',
           },
           '4': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-4-600)), rgb(var(--palette-accent-4-700)))',
+              'linear-gradient(180deg, var(--palette-accent-4-600), var(--palette-accent-4-700))',
             description: 'Accent 4 emphasis gradient',
           },
           '5': {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-accent-5-600)), rgb(var(--palette-accent-5-700)))',
+              'linear-gradient(180deg, var(--palette-accent-5-600), var(--palette-accent-5-700))',
             description: 'Accent 5 emphasis gradient',
           },
         },
@@ -459,7 +457,7 @@ export const TOKEN_METADATA = {
         variants: {
           inverted: {
             value:
-              'linear-gradient(180deg, rgb(var(--palette-neutral-800)), rgb(var(--palette-neutral-900)))',
+              'linear-gradient(180deg, var(--palette-neutral-800), var(--palette-neutral-900))',
             description: 'Inverted surface gradient for contrasting backgrounds',
           },
         },
