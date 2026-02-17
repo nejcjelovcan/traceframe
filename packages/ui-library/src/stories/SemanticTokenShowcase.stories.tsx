@@ -1,4 +1,6 @@
+import { Grid } from '../components/Grid'
 import { Heading } from '../components/Heading'
+import { Stack } from '../components/Stack'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -26,21 +28,21 @@ interface TokenSwatchProps {
 }
 
 const TokenSwatch = ({ name, cssVar, description, showBorder = false }: TokenSwatchProps) => (
-  <div className="flex items-center gap-md group">
+  <Stack direction="horizontal" align="center" gap="md" className="group">
     <div
       className={`w-size-md h-size-md rounded-md shadow-xs flex-shrink-0 transition-transform group-hover:scale-110 ${
         showBorder ? 'ring-1 ring-border' : ''
       }`}
-      style={{ backgroundColor: `rgb(var(${cssVar}))` }}
+      style={{ backgroundColor: `var(${cssVar})` }}
       title={cssVar}
     />
-    <div className="min-w-0">
+    <Stack gap="xs" className="min-w-0">
       <div className="font-mono text-xs text-foreground truncate">{name}</div>
       {description && (
         <div className="text-[10px] text-foreground-muted truncate">{description}</div>
       )}
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 )
 
 interface TokenGroupProps {
@@ -50,23 +52,17 @@ interface TokenGroupProps {
 }
 
 const TokenGroup = ({ title, tokens, columns = 2 }: TokenGroupProps) => {
-  const gridCols = {
-    1: 'grid-cols-1',
-    2: 'grid-cols-1 sm:grid-cols-2',
-    3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
-  }
-
   return (
-    <div className="bg-surface rounded-lg border border-border p-base">
-      <Heading level={3} size="sm" className="mb-md pb-sm border-b border-border-muted">
+    <Stack gap="md" className="bg-surface rounded-lg border border-border p-base">
+      <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
         {title}
       </Heading>
-      <div className={`grid ${gridCols[columns]} gap-md`}>
+      <Grid cols={columns > 1 ? { sm: columns as 2 | 3 } : 1} gap="md">
         {tokens.map((token) => (
           <TokenSwatch key={token.cssVar} {...token} />
         ))}
-      </div>
-    </div>
+      </Grid>
+    </Stack>
   )
 }
 
@@ -79,6 +75,12 @@ const surfaceTokens = [
   },
   { name: 'surface-muted', cssVar: '--color-surface-muted', description: 'Secondary background' },
   { name: 'surface-subtle', cssVar: '--color-surface-subtle', description: 'Tertiary background' },
+  { name: 'surface-inverted', cssVar: '--color-surface-inverted', description: 'Inverted surface' },
+  {
+    name: 'surface-inverted-muted',
+    cssVar: '--color-surface-inverted-muted',
+    description: 'Inverted secondary',
+  },
 ]
 
 const foregroundTokens = [
@@ -99,6 +101,12 @@ const foregroundTokens = [
 const borderTokens = [
   { name: 'border', cssVar: '--color-border', description: 'Primary borders' },
   { name: 'border-muted', cssVar: '--color-border-muted', description: 'Subtle borders' },
+  { name: 'border-inverted', cssVar: '--color-border-inverted', description: 'Inverted border' },
+  {
+    name: 'border-inverted-muted',
+    cssVar: '--color-border-inverted-muted',
+    description: 'Inverted subtle',
+  },
   { name: 'ring', cssVar: '--color-ring', description: 'Focus ring' },
 ]
 
@@ -121,6 +129,36 @@ const interactiveTokens = [
     description: 'Primary hover',
   },
   {
+    name: 'interactive-primary-foreground',
+    cssVar: '--color-interactive-primary-foreground',
+    description: 'Primary text',
+  },
+  {
+    name: 'interactive-primary-border',
+    cssVar: '--color-interactive-primary-border',
+    description: 'Primary border',
+  },
+  {
+    name: 'interactive-secondary',
+    cssVar: '--color-interactive-secondary',
+    description: 'Secondary action',
+  },
+  {
+    name: 'interactive-secondary-hover',
+    cssVar: '--color-interactive-secondary-hover',
+    description: 'Secondary hover',
+  },
+  {
+    name: 'interactive-secondary-foreground',
+    cssVar: '--color-interactive-secondary-foreground',
+    description: 'Secondary text',
+  },
+  {
+    name: 'interactive-secondary-border',
+    cssVar: '--color-interactive-secondary-border',
+    description: 'Secondary border',
+  },
+  {
     name: 'interactive-destructive',
     cssVar: '--color-interactive-destructive',
     description: 'Destructive action',
@@ -130,11 +168,15 @@ const interactiveTokens = [
     cssVar: '--color-interactive-destructive-hover',
     description: 'Destructive hover',
   },
-  { name: 'interactive-accent', cssVar: '--color-interactive-accent', description: 'Accent/links' },
   {
-    name: 'interactive-accent-hover',
-    cssVar: '--color-interactive-accent-hover',
-    description: 'Accent hover',
+    name: 'interactive-destructive-foreground',
+    cssVar: '--color-interactive-destructive-foreground',
+    description: 'Destructive text',
+  },
+  {
+    name: 'interactive-destructive-border',
+    cssVar: '--color-interactive-destructive-border',
+    description: 'Destructive border',
   },
 ]
 
@@ -144,6 +186,15 @@ const disabledTokens = [
     name: 'disabled-foreground',
     cssVar: '--color-disabled-foreground',
     description: 'Disabled text',
+  },
+]
+
+const tooltipTokens = [
+  { name: 'tooltip', cssVar: '--color-tooltip', description: 'Tooltip background' },
+  {
+    name: 'tooltip-foreground',
+    cssVar: '--color-tooltip-foreground',
+    description: 'Tooltip text',
   },
 ]
 
@@ -250,152 +301,155 @@ const accent5Tokens = [
 export const AllTokens: Story = {
   render: () => (
     <div className="min-h-screen bg-surface-muted p-lg">
-      <div className="max-w-7xl mx-auto space-y-lg">
+      <Stack gap="lg" className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-lg">
-          <Heading level={1} size="3xl" className="mb-sm">
+        <Stack gap="sm" className="text-center">
+          <Heading level={1} size="3xl">
             Semantic Tokens
           </Heading>
-          <p className="text-foreground-muted max-w-2xl mx-auto">
+          <p className="text-foreground-muted mx-auto">
             Theme-aware tokens that adapt between light and dark modes. Use these instead of palette
             colors for consistent, meaningful color application.
           </p>
-        </div>
+        </Stack>
 
         {/* Core Tokens */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-base">
+        <Grid cols={{ lg: 3 }} gap="base">
           <TokenGroup title="Surface (Backgrounds)" tokens={surfaceTokens} columns={1} />
           <TokenGroup title="Foreground (Text)" tokens={foregroundTokens} columns={1} />
           <TokenGroup title="Border & Ring" tokens={borderTokens} columns={1} />
-        </div>
+        </Grid>
 
-        {/* Interactive & Disabled */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-base">
-          <TokenGroup title="Interactive States" tokens={interactiveTokens} columns={2} />
+        {/* Interactive States */}
+        <TokenGroup title="Interactive States" tokens={interactiveTokens} columns={3} />
+
+        {/* Disabled & Tooltip */}
+        <Grid cols={{ lg: 2 }} gap="base">
           <TokenGroup title="Disabled States" tokens={disabledTokens} columns={1} />
-        </div>
+          <TokenGroup title="Tooltip" tokens={tooltipTokens} columns={1} />
+        </Grid>
 
         {/* Status Tokens - Compact Grid */}
-        <div className="bg-surface rounded-lg border border-border p-base">
-          <Heading level={3} size="sm" className="mb-base pb-sm border-b border-border-muted">
+        <Stack gap="base" className="bg-surface rounded-lg border border-border p-base">
+          <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
             Status Tokens
           </Heading>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-base">
-            <div className="space-y-sm">
-              <div className="text-xs font-medium text-foreground-muted mb-sm">Info</div>
+          <Grid cols={{ sm: 2, lg: 4 }} gap="base">
+            <Stack gap="sm">
+              <div className="text-xs font-medium text-foreground-muted">Info</div>
               {statusInfoTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </div>
-            <div className="space-y-sm">
-              <div className="text-xs font-medium text-foreground-muted mb-sm">Success</div>
+            </Stack>
+            <Stack gap="sm">
+              <div className="text-xs font-medium text-foreground-muted">Success</div>
               {statusSuccessTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </div>
-            <div className="space-y-sm">
-              <div className="text-xs font-medium text-foreground-muted mb-sm">Warning</div>
+            </Stack>
+            <Stack gap="sm">
+              <div className="text-xs font-medium text-foreground-muted">Warning</div>
               {statusWarningTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </div>
-            <div className="space-y-sm">
-              <div className="text-xs font-medium text-foreground-muted mb-sm">Error</div>
+            </Stack>
+            <Stack gap="sm">
+              <div className="text-xs font-medium text-foreground-muted">Error</div>
               {statusErrorTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </div>
-          </div>
-        </div>
+            </Stack>
+          </Grid>
+        </Stack>
 
         {/* Accent & Data Tokens - Compact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-base">
-          <div className="bg-surface rounded-lg border border-border p-base">
-            <Heading level={3} size="sm" className="mb-base pb-sm border-b border-border-muted">
+        <Grid cols={{ lg: 2 }} gap="base">
+          <Stack gap="base" className="bg-surface rounded-lg border border-border p-base">
+            <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
               Accent Tokens (Categorization)
             </Heading>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-base">
-              <div className="space-y-sm">
-                <div className="text-xs font-medium text-foreground-muted mb-sm">Accent 1</div>
+            <Grid cols={{ sm: 3 }} gap="base">
+              <Stack gap="sm">
+                <div className="text-xs font-medium text-foreground-muted">Accent 1</div>
                 {accent1Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </div>
-              <div className="space-y-sm">
-                <div className="text-xs font-medium text-foreground-muted mb-sm">Accent 2</div>
+              </Stack>
+              <Stack gap="sm">
+                <div className="text-xs font-medium text-foreground-muted">Accent 2</div>
                 {accent2Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </div>
-              <div className="space-y-sm">
-                <div className="text-xs font-medium text-foreground-muted mb-sm">Accent 3</div>
+              </Stack>
+              <Stack gap="sm">
+                <div className="text-xs font-medium text-foreground-muted">Accent 3</div>
                 {accent3Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </div>
-            </div>
-          </div>
+              </Stack>
+            </Grid>
+          </Stack>
 
-          <div className="bg-surface rounded-lg border border-border p-base">
-            <Heading level={3} size="sm" className="mb-base pb-sm border-b border-border-muted">
+          <Stack gap="base" className="bg-surface rounded-lg border border-border p-base">
+            <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
               Accent 4-5 Tokens (Data Visualization)
             </Heading>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-base">
-              <div className="space-y-sm">
-                <div className="text-xs font-medium text-foreground-muted mb-sm">Accent 4</div>
+            <Grid cols={{ sm: 2 }} gap="base">
+              <Stack gap="sm">
+                <div className="text-xs font-medium text-foreground-muted">Accent 4</div>
                 {accent4Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </div>
-              <div className="space-y-sm">
-                <div className="text-xs font-medium text-foreground-muted mb-sm">Accent 5</div>
+              </Stack>
+              <Stack gap="sm">
+                <div className="text-xs font-medium text-foreground-muted">Accent 5</div>
                 {accent5Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </div>
-            </div>
-          </div>
-        </div>
+              </Stack>
+            </Grid>
+          </Stack>
+        </Grid>
 
         {/* Token Structure Legend */}
-        <div className="bg-surface rounded-lg border border-border p-base">
-          <Heading level={3} size="sm" className="mb-md">
+        <Stack gap="md" className="bg-surface rounded-lg border border-border p-base">
+          <Heading level={3} size="sm">
             Token Variant Structure
           </Heading>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-base text-xs">
-            <div className="flex items-center gap-sm">
+          <Grid cols={{ sm: 2, md: 5 }} gap="base" className="text-xs">
+            <Stack direction="horizontal" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info" />
               <span className="text-foreground-muted">
                 <strong>base</strong> - Primary color
               </span>
-            </div>
-            <div className="flex items-center gap-sm">
+            </Stack>
+            <Stack direction="horizontal" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-muted" />
               <span className="text-foreground-muted">
                 <strong>muted</strong> - Subtle bg
               </span>
-            </div>
-            <div className="flex items-center gap-sm">
+            </Stack>
+            <Stack direction="horizontal" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-foreground" />
               <span className="text-foreground-muted">
                 <strong>foreground</strong> - Text
               </span>
-            </div>
-            <div className="flex items-center gap-sm">
+            </Stack>
+            <Stack direction="horizontal" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-emphasis" />
               <span className="text-foreground-muted">
                 <strong>emphasis</strong> - Strong
               </span>
-            </div>
-            <div className="flex items-center gap-sm">
+            </Stack>
+            <Stack direction="horizontal" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-border" />
               <span className="text-foreground-muted">
                 <strong>border</strong> - Borders
               </span>
-            </div>
-          </div>
-        </div>
-      </div>
+            </Stack>
+          </Grid>
+        </Stack>
+      </Stack>
     </div>
   ),
   parameters: {
@@ -409,24 +463,24 @@ export const AllTokens: Story = {
 
 /** Interactive example showing surface layering */
 const SurfaceLayersExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">Surface Layering</div>
-    <div className="bg-surface-muted p-base rounded-lg">
-      <div className="text-xs text-foreground-muted mb-sm">surface-muted (page bg)</div>
-      <div className="bg-surface p-base rounded-lg shadow-xs">
-        <div className="text-xs text-foreground-muted mb-sm">surface (card)</div>
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">Surface Layering</div>
+    <Stack gap="sm" className="bg-surface-muted p-base rounded-lg">
+      <div className="text-xs text-foreground-muted">surface-muted (page bg)</div>
+      <Stack gap="sm" className="bg-surface p-base rounded-lg shadow-xs">
+        <div className="text-xs text-foreground-muted">surface (card)</div>
         <div className="bg-surface-subtle p-md rounded-sm">
           <div className="text-xs text-foreground-muted">surface-subtle (well/hover)</div>
         </div>
-      </div>
-    </div>
-  </div>
+      </Stack>
+    </Stack>
+  </Stack>
 )
 
 /** Interactive list item showing hover/active/pressed states */
 const InteractiveStatesExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">
       Interactive States (hover over items)
     </div>
     <div className="bg-surface rounded-lg border border-border overflow-hidden">
@@ -444,7 +498,7 @@ const InteractiveStatesExample = () => (
       </div>
     </div>
     {/* Real interactive example */}
-    <div className="text-xs text-foreground-muted mt-base mb-sm">Try hovering and clicking:</div>
+    <div className="text-xs text-foreground-muted">Try hovering and clicking:</div>
     <div className="bg-surface rounded-lg border border-border overflow-hidden">
       {['Item 1', 'Item 2', 'Item 3'].map((item) => (
         <button
@@ -455,22 +509,22 @@ const InteractiveStatesExample = () => (
         </button>
       ))}
     </div>
-  </div>
+  </Stack>
 )
 
 /** Button variants showing primary, destructive, accent */
 const ButtonVariantsExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">Button Tokens</div>
-    <div className="flex flex-wrap gap-md">
-      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-primary text-foreground-inverted hover:bg-interactive-primary-hover transition-colors">
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">Button Tokens</div>
+    <Stack direction="horizontal" gap="md" wrap={true}>
+      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-primary text-interactive-primary-foreground hover:bg-interactive-primary-hover transition-colors">
         Primary Action
       </button>
-      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-destructive text-foreground-inverted hover:bg-interactive-destructive-hover transition-colors">
-        Destructive
+      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-secondary text-interactive-secondary-foreground hover:bg-interactive-secondary-hover transition-colors">
+        Secondary
       </button>
-      <button className="px-base py-sm rounded-md text-sm font-medium text-interactive-accent hover:text-interactive-accent-hover transition-colors">
-        Accent Link
+      <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-destructive text-interactive-destructive-foreground hover:bg-interactive-destructive-hover transition-colors">
+        Destructive
       </button>
       <button
         className="px-base py-sm rounded-md text-sm font-medium bg-disabled text-disabled-foreground cursor-not-allowed"
@@ -478,17 +532,17 @@ const ButtonVariantsExample = () => (
       >
         Disabled
       </button>
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 )
 
 /** Status badges showing all status token variants */
 const StatusBadgesExample = () => (
-  <div className="space-y-base">
-    <div className="text-xs font-medium text-foreground-muted mb-md">Status Badges</div>
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-base">
+  <Stack gap="base">
+    <div className="text-xs font-medium text-foreground-muted">Status Badges</div>
+    <Grid cols={{ sm: 2, md: 4 }} gap="base">
       {/* Info */}
-      <div className="space-y-sm">
+      <Stack gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-info-muted text-status-info-foreground border border-status-info-border">
           Info Badge
         </span>
@@ -496,9 +550,9 @@ const StatusBadgesExample = () => (
           <div className="text-sm font-medium text-status-info-foreground">Info Alert</div>
           <div className="text-xs text-status-info-foreground/80">Using status-info tokens</div>
         </div>
-      </div>
+      </Stack>
       {/* Success */}
-      <div className="space-y-sm">
+      <Stack gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-success-muted text-status-success-foreground border border-status-success-border">
           Success
         </span>
@@ -508,9 +562,9 @@ const StatusBadgesExample = () => (
             Using status-success tokens
           </div>
         </div>
-      </div>
+      </Stack>
       {/* Warning */}
-      <div className="space-y-sm">
+      <Stack gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-warning-muted text-status-warning-foreground border border-status-warning-border">
           Warning
         </span>
@@ -520,9 +574,9 @@ const StatusBadgesExample = () => (
             Using status-warning tokens
           </div>
         </div>
-      </div>
+      </Stack>
       {/* Error */}
-      <div className="space-y-sm">
+      <Stack gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-error-muted text-status-error-foreground border border-status-error-border">
           Error
         </span>
@@ -530,18 +584,16 @@ const StatusBadgesExample = () => (
           <div className="text-sm font-medium text-status-error-foreground">Error Alert</div>
           <div className="text-xs text-status-error-foreground/80">Using status-error tokens</div>
         </div>
-      </div>
-    </div>
-  </div>
+      </Stack>
+    </Grid>
+  </Stack>
 )
 
 /** Accent tokens used for categorization tags */
 const AccentTagsExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">
-      Accent Tags (Categorization)
-    </div>
-    <div className="flex flex-wrap gap-sm">
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">Accent Tags (Categorization)</div>
+    <Stack direction="horizontal" gap="sm" wrap={true}>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-muted text-accent-1-foreground border border-accent-1-border">
         Category A
       </span>
@@ -551,9 +603,9 @@ const AccentTagsExample = () => (
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-muted text-accent-3-foreground border border-accent-3-border">
         Category C
       </span>
-    </div>
+    </Stack>
     {/* Solid variants */}
-    <div className="flex flex-wrap gap-sm mt-md">
+    <Stack direction="horizontal" gap="sm" wrap={true}>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-inverted">
         Solid Accent 1
       </span>
@@ -563,14 +615,14 @@ const AccentTagsExample = () => (
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-inverted">
         Solid Accent 3
       </span>
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 )
 
 /** Accent tokens for chart legend */
 const DataVisualizationExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">Data Visualization</div>
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">Data Visualization</div>
     {/* Simple bar chart mockup */}
     <div className="bg-surface rounded-lg border border-border p-base">
       <div className="flex items-end gap-sm h-24 mb-base">
@@ -582,34 +634,34 @@ const DataVisualizationExample = () => (
         <div className="flex-1 bg-accent-5 rounded-t" style={{ height: '85%' }} />
       </div>
       {/* Legend */}
-      <div className="flex gap-base text-xs">
-        <div className="flex items-center gap-sm">
+      <Stack direction="horizontal" gap="base" className="text-xs">
+        <Stack direction="horizontal" align="center" gap="sm">
           <div className="w-3 h-3 rounded-sm bg-accent-4" />
           <span className="text-foreground-muted">Series A (accent-4)</span>
-        </div>
-        <div className="flex items-center gap-sm">
+        </Stack>
+        <Stack direction="horizontal" align="center" gap="sm">
           <div className="w-3 h-3 rounded-sm bg-accent-5" />
           <span className="text-foreground-muted">Series B (accent-5)</span>
-        </div>
-      </div>
+        </Stack>
+      </Stack>
     </div>
     {/* Data badges */}
-    <div className="flex flex-wrap gap-sm mt-md">
+    <Stack direction="horizontal" gap="sm" wrap={true}>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-4-muted text-accent-4-foreground border border-accent-4-border">
         Dataset 1
       </span>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-5-muted text-accent-5-foreground border border-accent-5-border">
         Dataset 2
       </span>
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 )
 
 /** Text hierarchy example */
 const TextHierarchyExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">Text Hierarchy</div>
-    <div className="bg-surface rounded-lg border border-border p-base space-y-sm">
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">Text Hierarchy</div>
+    <Stack gap="sm" className="bg-surface rounded-lg border border-border p-base">
       <Heading level={3}>Primary Heading</Heading>
       <p className="text-sm text-foreground">
         Primary body text uses{' '}
@@ -619,9 +671,9 @@ const TextHierarchyExample = () => (
         Secondary text uses{' '}
         <code className="text-xs bg-surface-subtle px-xs rounded-sm">foreground-muted</code>
       </p>
-    </div>
+    </Stack>
     {/* Inverted */}
-    <div className="bg-interactive-primary rounded-lg p-base space-y-sm">
+    <Stack gap="sm" className="bg-interactive-primary rounded-lg p-base">
       <Heading level={3} className="text-foreground-inverted">
         Inverted Heading
       </Heading>
@@ -637,17 +689,15 @@ const TextHierarchyExample = () => (
           foreground-inverted-muted
         </code>
       </p>
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 )
 
 /** Focus ring example */
 const FocusRingExample = () => (
-  <div className="space-y-sm">
-    <div className="text-xs font-medium text-foreground-muted mb-md">
-      Focus States (tab through)
-    </div>
-    <div className="flex flex-wrap gap-md">
+  <Stack gap="sm">
+    <div className="text-xs font-medium text-foreground-muted">Focus States (tab through)</div>
+    <Stack direction="horizontal" gap="md" wrap={true}>
       <button className="px-base py-sm rounded-md text-sm font-medium bg-surface border border-border text-foreground hover:bg-interactive-hover focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface transition-colors">
         Focus me
       </button>
@@ -656,27 +706,27 @@ const FocusRingExample = () => (
         placeholder="Or focus this input"
         className="px-md py-sm rounded-md text-sm bg-surface border border-border text-foreground placeholder:text-foreground-muted focus:outline-hidden focus:ring-2 focus:ring-ring focus:border-ring transition-colors"
       />
-    </div>
-  </div>
+    </Stack>
+  </Stack>
 )
 
 export const TokensInUse: Story = {
   render: () => (
     <div className="min-h-screen bg-surface-muted p-lg">
-      <div className="max-w-5xl mx-auto space-y-lg">
+      <Stack gap="lg" className="max-w-5xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-lg">
-          <Heading level={1} size="3xl" className="mb-sm">
+        <Stack gap="sm" className="text-center">
+          <Heading level={1} size="3xl">
             Tokens in Use
           </Heading>
-          <p className="text-foreground-muted max-w-2xl mx-auto">
+          <p className="text-foreground-muted mx-auto">
             Interactive examples showing how semantic tokens create consistent, theme-aware UI
             patterns.
           </p>
-        </div>
+        </Stack>
 
         {/* Examples Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+        <Grid cols={{ lg: 2 }} gap="lg">
           <div className="bg-surface rounded-lg border border-border p-base">
             <SurfaceLayersExample />
           </div>
@@ -701,8 +751,8 @@ export const TokensInUse: Story = {
           <div className="bg-surface rounded-lg border border-border p-base lg:col-span-2">
             <FocusRingExample />
           </div>
-        </div>
-      </div>
+        </Grid>
+      </Stack>
     </div>
   ),
   parameters: {

@@ -12,324 +12,162 @@
    * where beauty and information density coexist.
    *
    * OKLCH color space ensures perceptual uniformity.
-   * Fallbacks provided for browsers without OKLCH support.
    */
 
-  /* RGB fallbacks for browsers without OKLCH support */
-  @supports not (color: oklch(0% 0 0)) {
-    :root.ember {
-      /* ===== PALETTE: EMBER ===== */
+  :root.ember {
+    /* ===== PALETTE: EMBER ===== */
 
-      /* ===== Root Colors ===== */
+    /* ===== Root Colors ===== */
 
-      --palette-surface: 254 252 250; /* Surface color - warm parchment white with subtle terracotta undertone */
+    --palette-surface: oklch(
+      98.5% 0.005 25
+    ); /* Surface color - warm parchment white with subtle terracotta undertone */
 
-      /* ===== Core Palettes ===== */
+    /* ===== Core Palettes ===== */
 
-      /* Error palette */
-      --palette-error-50: 255 244 242;
-      --palette-error-100: 255 232 227;
-      --palette-error-200: 255 212 204;
-      --palette-error-300: 248 184 172;
-      --palette-error-400: 230 148 132;
-      --palette-error-500: 204 114 96;
-      --palette-error-600: 172 86 70;
-      --palette-error-700: 138 64 48;
-      --palette-error-800: 106 44 32;
-      --palette-error-900: 76 30 20;
-      --palette-error-950: 42 15 10;
+    /* Error palette */
+    --palette-error-50: oklch(98% 0.06 15);
+    --palette-error-100: oklch(95% 0.1 15);
+    --palette-error-200: oklch(90% 0.12 15);
+    --palette-error-300: oklch(82% 0.13 15);
+    --palette-error-400: oklch(70% 0.14 15);
+    --palette-error-500: oklch(58% 0.14 15);
+    --palette-error-600: oklch(48% 0.14 15);
+    --palette-error-700: oklch(38% 0.13 15);
+    --palette-error-800: oklch(28% 0.12 15);
+    --palette-error-900: oklch(20% 0.1 15);
+    --palette-error-950: oklch(10% 0.07 15);
 
-      /* Neutral palette */
-      --palette-neutral-50: 252 250 249;
-      --palette-neutral-100: 246 243 241;
-      --palette-neutral-200: 234 229 226;
-      --palette-neutral-300: 216 209 204;
-      --palette-neutral-400: 180 172 166;
-      --palette-neutral-500: 144 134 128;
-      --palette-neutral-600: 114 103 97;
-      --palette-neutral-700: 86 76 70;
-      --palette-neutral-800: 63 53 48;
-      --palette-neutral-900: 45 36 32;
-      --palette-neutral-950: 25 18 15;
+    /* Neutral palette */
+    --palette-neutral-50: oklch(98% 0.005 25);
+    --palette-neutral-100: oklch(95% 0.008 25);
+    --palette-neutral-200: oklch(90% 0.01 25);
+    --palette-neutral-300: oklch(82% 0.012 25);
+    --palette-neutral-400: oklch(70% 0.012 25);
+    --palette-neutral-500: oklch(58% 0.012 25);
+    --palette-neutral-600: oklch(48% 0.012 25);
+    --palette-neutral-700: oklch(38% 0.011 25);
+    --palette-neutral-800: oklch(28% 0.01 25);
+    --palette-neutral-900: oklch(20% 0.008 25);
+    --palette-neutral-950: oklch(10% 0.006 25);
 
-      /* Primary palette */
-      --palette-primary-50: 255 248 240;
-      --palette-primary-100: 255 239 222;
-      --palette-primary-200: 253 224 198;
-      --palette-primary-300: 244 201 168;
-      --palette-primary-400: 225 170 128;
-      --palette-primary-500: 200 138 92;
-      --palette-primary-600: 170 108 64;
-      --palette-primary-700: 138 82 42;
-      --palette-primary-800: 106 60 26;
-      --palette-primary-900: 78 42 14;
-      --palette-primary-950: 44 22 6;
+    /* Primary palette - Copper */
+    --palette-primary-50: oklch(98% 0.05 38);
+    --palette-primary-100: oklch(95% 0.08 38);
+    --palette-primary-200: oklch(90% 0.1 38);
+    --palette-primary-300: oklch(82% 0.11 38);
+    --palette-primary-400: oklch(70% 0.12 38);
+    --palette-primary-500: oklch(58% 0.12 38);
+    --palette-primary-600: oklch(48% 0.12 38);
+    --palette-primary-700: oklch(38% 0.11 38);
+    --palette-primary-800: oklch(28% 0.1 38);
+    --palette-primary-900: oklch(20% 0.08 38);
+    --palette-primary-950: oklch(10% 0.06 38);
 
-      /* Success palette */
-      --palette-success-50: 239 252 245;
-      --palette-success-100: 222 248 234;
-      --palette-success-200: 194 239 217;
-      --palette-success-300: 153 222 192;
-      --palette-success-400: 106 196 160;
-      --palette-success-500: 64 164 128;
-      --palette-success-600: 42 134 102;
-      --palette-success-700: 28 106 80;
-      --palette-success-800: 19 80 59;
-      --palette-success-900: 12 58 42;
-      --palette-success-950: 6 32 23;
+    /* Success palette */
+    --palette-success-50: oklch(98% 0.04 150);
+    --palette-success-100: oklch(95% 0.06 150);
+    --palette-success-200: oklch(90% 0.08 150);
+    --palette-success-300: oklch(82% 0.09 150);
+    --palette-success-400: oklch(70% 0.1 150);
+    --palette-success-500: oklch(58% 0.1 150);
+    --palette-success-600: oklch(48% 0.1 150);
+    --palette-success-700: oklch(38% 0.09 150);
+    --palette-success-800: oklch(28% 0.08 150);
+    --palette-success-900: oklch(20% 0.06 150);
+    --palette-success-950: oklch(10% 0.04 150);
 
-      /* Warning palette */
-      --palette-warning-50: 255 251 238;
-      --palette-warning-100: 255 246 216;
-      --palette-warning-200: 252 235 184;
-      --palette-warning-300: 244 218 142;
-      --palette-warning-400: 228 192 98;
-      --palette-warning-500: 204 164 60;
-      --palette-warning-600: 172 136 38;
-      --palette-warning-700: 140 108 24;
-      --palette-warning-800: 108 82 14;
-      --palette-warning-900: 78 60 8;
-      --palette-warning-950: 44 34 3;
+    /* Warning palette - Golden */
+    --palette-warning-50: oklch(98% 0.06 55);
+    --palette-warning-100: oklch(95% 0.09 55);
+    --palette-warning-200: oklch(90% 0.11 55);
+    --palette-warning-300: oklch(82% 0.12 55);
+    --palette-warning-400: oklch(70% 0.13 55);
+    --palette-warning-500: oklch(58% 0.13 55);
+    --palette-warning-600: oklch(48% 0.13 55);
+    --palette-warning-700: oklch(38% 0.12 55);
+    --palette-warning-800: oklch(28% 0.11 55);
+    --palette-warning-900: oklch(20% 0.09 55);
+    --palette-warning-950: oklch(10% 0.06 55);
 
-      /* ===== Presentational Palettes ===== */
+    /* ===== Presentational Palettes ===== */
 
-      /* Accent 1 palette */
-      --palette-accent-1-50: 243 246 255;
-      --palette-accent-1-100: 230 237 255;
-      --palette-accent-1-200: 210 222 255;
-      --palette-accent-1-300: 180 200 248;
-      --palette-accent-1-400: 138 168 230;
-      --palette-accent-1-500: 100 136 204;
-      --palette-accent-1-600: 72 108 172;
-      --palette-accent-1-700: 50 82 138;
-      --palette-accent-1-800: 34 60 106;
-      --palette-accent-1-900: 22 42 76;
-      --palette-accent-1-950: 10 22 42;
+    /* Accent 1 palette - Cerulean */
+    --palette-accent-1-50: oklch(98% 0.04 230);
+    --palette-accent-1-100: oklch(95% 0.07 230);
+    --palette-accent-1-200: oklch(90% 0.09 230);
+    --palette-accent-1-300: oklch(82% 0.1 230);
+    --palette-accent-1-400: oklch(70% 0.11 230);
+    --palette-accent-1-500: oklch(58% 0.11 230);
+    --palette-accent-1-600: oklch(48% 0.11 230);
+    --palette-accent-1-700: oklch(38% 0.1 230);
+    --palette-accent-1-800: oklch(28% 0.09 230);
+    --palette-accent-1-900: oklch(20% 0.07 230);
+    --palette-accent-1-950: oklch(10% 0.05 230);
 
-      /* Accent 2 palette */
-      --palette-accent-2-50: 255 243 250;
-      --palette-accent-2-100: 255 230 244;
-      --palette-accent-2-200: 255 212 234;
-      --palette-accent-2-300: 248 184 216;
-      --palette-accent-2-400: 228 148 192;
-      --palette-accent-2-500: 200 114 164;
-      --palette-accent-2-600: 168 86 136;
-      --palette-accent-2-700: 134 62 108;
-      --palette-accent-2-800: 102 44 82;
-      --palette-accent-2-900: 74 30 58;
-      --palette-accent-2-950: 42 14 32;
+    /* Accent 2 palette - Fuchsia */
+    --palette-accent-2-50: oklch(98% 0.05 330);
+    --palette-accent-2-100: oklch(95% 0.08 330);
+    --palette-accent-2-200: oklch(90% 0.1 330);
+    --palette-accent-2-300: oklch(82% 0.11 330);
+    --palette-accent-2-400: oklch(70% 0.12 330);
+    --palette-accent-2-500: oklch(58% 0.12 330);
+    --palette-accent-2-600: oklch(48% 0.12 330);
+    --palette-accent-2-700: oklch(38% 0.11 330);
+    --palette-accent-2-800: oklch(28% 0.1 330);
+    --palette-accent-2-900: oklch(20% 0.08 330);
+    --palette-accent-2-950: oklch(10% 0.06 330);
 
-      /* Accent 3 palette */
-      --palette-accent-3-50: 244 252 240;
-      --palette-accent-3-100: 234 248 226;
-      --palette-accent-3-200: 216 240 204;
-      --palette-accent-3-300: 190 226 172;
-      --palette-accent-3-400: 156 204 132;
-      --palette-accent-3-500: 122 176 98;
-      --palette-accent-3-600: 96 148 74;
-      --palette-accent-3-700: 72 118 54;
-      --palette-accent-3-800: 52 90 38;
-      --palette-accent-3-900: 36 66 26;
-      --palette-accent-3-950: 18 38 12;
+    /* Accent 3 palette - Chartreuse */
+    --palette-accent-3-50: oklch(98% 0.04 120);
+    --palette-accent-3-100: oklch(95% 0.06 120);
+    --palette-accent-3-200: oklch(90% 0.08 120);
+    --palette-accent-3-300: oklch(82% 0.09 120);
+    --palette-accent-3-400: oklch(70% 0.1 120);
+    --palette-accent-3-500: oklch(58% 0.1 120);
+    --palette-accent-3-600: oklch(48% 0.1 120);
+    --palette-accent-3-700: oklch(38% 0.09 120);
+    --palette-accent-3-800: oklch(28% 0.08 120);
+    --palette-accent-3-900: oklch(20% 0.06 120);
+    --palette-accent-3-950: oklch(10% 0.04 120);
 
-      /* Accent 4 palette */
-      --palette-accent-4-50: 248 244 255;
-      --palette-accent-4-100: 242 234 255;
-      --palette-accent-4-200: 228 218 255;
-      --palette-accent-4-300: 208 192 248;
-      --palette-accent-4-400: 178 158 228;
-      --palette-accent-4-500: 148 124 200;
-      --palette-accent-4-600: 120 96 168;
-      --palette-accent-4-700: 94 72 136;
-      --palette-accent-4-800: 70 52 104;
-      --palette-accent-4-900: 50 36 76;
-      --palette-accent-4-950: 28 18 42;
+    /* Accent 4 palette - Plum */
+    --palette-accent-4-50: oklch(98% 0.04 285);
+    --palette-accent-4-100: oklch(95% 0.07 285);
+    --palette-accent-4-200: oklch(90% 0.09 285);
+    --palette-accent-4-300: oklch(82% 0.1 285);
+    --palette-accent-4-400: oklch(70% 0.11 285);
+    --palette-accent-4-500: oklch(58% 0.11 285);
+    --palette-accent-4-600: oklch(48% 0.11 285);
+    --palette-accent-4-700: oklch(38% 0.1 285);
+    --palette-accent-4-800: oklch(28% 0.09 285);
+    --palette-accent-4-900: oklch(20% 0.07 285);
+    --palette-accent-4-950: oklch(10% 0.05 285);
 
-      /* Accent 5 palette */
-      --palette-accent-5-50: 240 250 255;
-      --palette-accent-5-100: 224 244 255;
-      --palette-accent-5-200: 200 234 252;
-      --palette-accent-5-300: 166 218 244;
-      --palette-accent-5-400: 122 194 228;
-      --palette-accent-5-500: 82 164 204;
-      --palette-accent-5-600: 56 136 172;
-      --palette-accent-5-700: 38 108 140;
-      --palette-accent-5-800: 24 82 108;
-      --palette-accent-5-900: 14 60 78;
-      --palette-accent-5-950: 6 34 44;
+    /* Accent 5 palette - Aqua */
+    --palette-accent-5-50: oklch(98% 0.03 195);
+    --palette-accent-5-100: oklch(95% 0.06 195);
+    --palette-accent-5-200: oklch(90% 0.08 195);
+    --palette-accent-5-300: oklch(82% 0.09 195);
+    --palette-accent-5-400: oklch(70% 0.1 195);
+    --palette-accent-5-500: oklch(58% 0.1 195);
+    --palette-accent-5-600: oklch(48% 0.1 195);
+    --palette-accent-5-700: oklch(38% 0.09 195);
+    --palette-accent-5-800: oklch(28% 0.08 195);
+    --palette-accent-5-900: oklch(20% 0.06 195);
+    --palette-accent-5-950: oklch(10% 0.04 195);
 
-      /* Secondary palette */
-      --palette-secondary-50: 238 253 250;
-      --palette-secondary-100: 218 248 242;
-      --palette-secondary-200: 189 238 228;
-      --palette-secondary-300: 148 222 208;
-      --palette-secondary-400: 97 196 180;
-      --palette-secondary-500: 52 164 148;
-      --palette-secondary-600: 28 134 120;
-      --palette-secondary-700: 16 106 94;
-      --palette-secondary-800: 8 80 70;
-      --palette-secondary-900: 4 58 50;
-      --palette-secondary-950: 2 32 27;
-    }
-  }
-
-  /* OKLCH values for modern browsers */
-  @supports (color: oklch(0% 0 0)) {
-    :root.ember {
-      /* ===== PALETTE: EMBER ===== */
-
-      /* ===== Root Colors ===== */
-
-      --palette-surface: oklch(
-        98.5% 0.005 25
-      ); /* Surface color - warm parchment white with subtle terracotta undertone */
-
-      /* ===== Core Palettes ===== */
-
-      /* Error palette */
-      --palette-error-50: oklch(98% 0.06 15);
-      --palette-error-100: oklch(95% 0.1 15);
-      --palette-error-200: oklch(90% 0.12 15);
-      --palette-error-300: oklch(82% 0.13 15);
-      --palette-error-400: oklch(70% 0.14 15);
-      --palette-error-500: oklch(58% 0.14 15);
-      --palette-error-600: oklch(48% 0.14 15);
-      --palette-error-700: oklch(38% 0.13 15);
-      --palette-error-800: oklch(28% 0.12 15);
-      --palette-error-900: oklch(20% 0.1 15);
-      --palette-error-950: oklch(10% 0.07 15);
-
-      /* Neutral palette */
-      --palette-neutral-50: oklch(98% 0.005 25);
-      --palette-neutral-100: oklch(95% 0.008 25);
-      --palette-neutral-200: oklch(90% 0.01 25);
-      --palette-neutral-300: oklch(82% 0.012 25);
-      --palette-neutral-400: oklch(70% 0.012 25);
-      --palette-neutral-500: oklch(58% 0.012 25);
-      --palette-neutral-600: oklch(48% 0.012 25);
-      --palette-neutral-700: oklch(38% 0.011 25);
-      --palette-neutral-800: oklch(28% 0.01 25);
-      --palette-neutral-900: oklch(20% 0.008 25);
-      --palette-neutral-950: oklch(10% 0.006 25);
-
-      /* Primary palette - Copper */
-      --palette-primary-50: oklch(98% 0.05 38);
-      --palette-primary-100: oklch(95% 0.08 38);
-      --palette-primary-200: oklch(90% 0.1 38);
-      --palette-primary-300: oklch(82% 0.11 38);
-      --palette-primary-400: oklch(70% 0.12 38);
-      --palette-primary-500: oklch(58% 0.12 38);
-      --palette-primary-600: oklch(48% 0.12 38);
-      --palette-primary-700: oklch(38% 0.11 38);
-      --palette-primary-800: oklch(28% 0.1 38);
-      --palette-primary-900: oklch(20% 0.08 38);
-      --palette-primary-950: oklch(10% 0.06 38);
-
-      /* Success palette */
-      --palette-success-50: oklch(98% 0.04 150);
-      --palette-success-100: oklch(95% 0.06 150);
-      --palette-success-200: oklch(90% 0.08 150);
-      --palette-success-300: oklch(82% 0.09 150);
-      --palette-success-400: oklch(70% 0.1 150);
-      --palette-success-500: oklch(58% 0.1 150);
-      --palette-success-600: oklch(48% 0.1 150);
-      --palette-success-700: oklch(38% 0.09 150);
-      --palette-success-800: oklch(28% 0.08 150);
-      --palette-success-900: oklch(20% 0.06 150);
-      --palette-success-950: oklch(10% 0.04 150);
-
-      /* Warning palette - Golden */
-      --palette-warning-50: oklch(98% 0.06 55);
-      --palette-warning-100: oklch(95% 0.09 55);
-      --palette-warning-200: oklch(90% 0.11 55);
-      --palette-warning-300: oklch(82% 0.12 55);
-      --palette-warning-400: oklch(70% 0.13 55);
-      --palette-warning-500: oklch(58% 0.13 55);
-      --palette-warning-600: oklch(48% 0.13 55);
-      --palette-warning-700: oklch(38% 0.12 55);
-      --palette-warning-800: oklch(28% 0.11 55);
-      --palette-warning-900: oklch(20% 0.09 55);
-      --palette-warning-950: oklch(10% 0.06 55);
-
-      /* ===== Presentational Palettes ===== */
-
-      /* Accent 1 palette - Cerulean */
-      --palette-accent-1-50: oklch(98% 0.04 230);
-      --palette-accent-1-100: oklch(95% 0.07 230);
-      --palette-accent-1-200: oklch(90% 0.09 230);
-      --palette-accent-1-300: oklch(82% 0.1 230);
-      --palette-accent-1-400: oklch(70% 0.11 230);
-      --palette-accent-1-500: oklch(58% 0.11 230);
-      --palette-accent-1-600: oklch(48% 0.11 230);
-      --palette-accent-1-700: oklch(38% 0.1 230);
-      --palette-accent-1-800: oklch(28% 0.09 230);
-      --palette-accent-1-900: oklch(20% 0.07 230);
-      --palette-accent-1-950: oklch(10% 0.05 230);
-
-      /* Accent 2 palette - Fuchsia */
-      --palette-accent-2-50: oklch(98% 0.05 330);
-      --palette-accent-2-100: oklch(95% 0.08 330);
-      --palette-accent-2-200: oklch(90% 0.1 330);
-      --palette-accent-2-300: oklch(82% 0.11 330);
-      --palette-accent-2-400: oklch(70% 0.12 330);
-      --palette-accent-2-500: oklch(58% 0.12 330);
-      --palette-accent-2-600: oklch(48% 0.12 330);
-      --palette-accent-2-700: oklch(38% 0.11 330);
-      --palette-accent-2-800: oklch(28% 0.1 330);
-      --palette-accent-2-900: oklch(20% 0.08 330);
-      --palette-accent-2-950: oklch(10% 0.06 330);
-
-      /* Accent 3 palette - Chartreuse */
-      --palette-accent-3-50: oklch(98% 0.04 120);
-      --palette-accent-3-100: oklch(95% 0.06 120);
-      --palette-accent-3-200: oklch(90% 0.08 120);
-      --palette-accent-3-300: oklch(82% 0.09 120);
-      --palette-accent-3-400: oklch(70% 0.1 120);
-      --palette-accent-3-500: oklch(58% 0.1 120);
-      --palette-accent-3-600: oklch(48% 0.1 120);
-      --palette-accent-3-700: oklch(38% 0.09 120);
-      --palette-accent-3-800: oklch(28% 0.08 120);
-      --palette-accent-3-900: oklch(20% 0.06 120);
-      --palette-accent-3-950: oklch(10% 0.04 120);
-
-      /* Accent 4 palette - Plum */
-      --palette-accent-4-50: oklch(98% 0.04 285);
-      --palette-accent-4-100: oklch(95% 0.07 285);
-      --palette-accent-4-200: oklch(90% 0.09 285);
-      --palette-accent-4-300: oklch(82% 0.1 285);
-      --palette-accent-4-400: oklch(70% 0.11 285);
-      --palette-accent-4-500: oklch(58% 0.11 285);
-      --palette-accent-4-600: oklch(48% 0.11 285);
-      --palette-accent-4-700: oklch(38% 0.1 285);
-      --palette-accent-4-800: oklch(28% 0.09 285);
-      --palette-accent-4-900: oklch(20% 0.07 285);
-      --palette-accent-4-950: oklch(10% 0.05 285);
-
-      /* Accent 5 palette - Aqua */
-      --palette-accent-5-50: oklch(98% 0.03 195);
-      --palette-accent-5-100: oklch(95% 0.06 195);
-      --palette-accent-5-200: oklch(90% 0.08 195);
-      --palette-accent-5-300: oklch(82% 0.09 195);
-      --palette-accent-5-400: oklch(70% 0.1 195);
-      --palette-accent-5-500: oklch(58% 0.1 195);
-      --palette-accent-5-600: oklch(48% 0.1 195);
-      --palette-accent-5-700: oklch(38% 0.09 195);
-      --palette-accent-5-800: oklch(28% 0.08 195);
-      --palette-accent-5-900: oklch(20% 0.06 195);
-      --palette-accent-5-950: oklch(10% 0.04 195);
-
-      /* Secondary palette - Jade */
-      --palette-secondary-50: oklch(98% 0.04 170);
-      --palette-secondary-100: oklch(95% 0.07 170);
-      --palette-secondary-200: oklch(90% 0.09 170);
-      --palette-secondary-300: oklch(82% 0.1 170);
-      --palette-secondary-400: oklch(70% 0.11 170);
-      --palette-secondary-500: oklch(58% 0.11 170);
-      --palette-secondary-600: oklch(48% 0.11 170);
-      --palette-secondary-700: oklch(38% 0.1 170);
-      --palette-secondary-800: oklch(28% 0.09 170);
-      --palette-secondary-900: oklch(20% 0.07 170);
-      --palette-secondary-950: oklch(10% 0.05 170);
-    }
+    /* Secondary palette - Jade */
+    --palette-secondary-50: oklch(98% 0.04 170);
+    --palette-secondary-100: oklch(95% 0.07 170);
+    --palette-secondary-200: oklch(90% 0.09 170);
+    --palette-secondary-300: oklch(82% 0.1 170);
+    --palette-secondary-400: oklch(70% 0.11 170);
+    --palette-secondary-500: oklch(58% 0.11 170);
+    --palette-secondary-600: oklch(48% 0.11 170);
+    --palette-secondary-700: oklch(38% 0.1 170);
+    --palette-secondary-800: oklch(28% 0.09 170);
+    --palette-secondary-900: oklch(20% 0.07 170);
+    --palette-secondary-950: oklch(10% 0.05 170);
   }
 }
