@@ -64,38 +64,36 @@ npm install @nejcjelovcan/traceframe-ui-library
 
 ## Consumer Setup
 
-### 1. Configure Tailwind
-
-The library exports a Tailwind preset with all design tokens (colors, typography, spacing, sizing, shadows, animations, dark mode):
-
-```typescript
-// tailwind.config.ts
-import type { Config } from 'tailwindcss'
-import traceframePreset from '@nejcjelovcan/traceframe-ui-library/tailwind-preset'
-
-const config: Config = {
-  presets: [traceframePreset],
-  content: [
-    './src/**/*.{ts,tsx}',
-    // CRITICAL: Include ui-library dist so Tailwind generates classes used by components
-    './node_modules/@nejcjelovcan/traceframe-ui-library/dist/**/*.js',
-  ],
-}
-
-export default config
-```
-
-### 2. Import Fonts and Styles
+### 1. Import Fonts and Styles
 
 In your app entry point (e.g., `main.tsx`):
 
 ```typescript
 import '@nejcjelovcan/traceframe-ui-library/fonts'
 import '@nejcjelovcan/traceframe-ui-library/styles.css'
-import './index.css' // Your Tailwind CSS entry (@tailwind base/components/utilities)
+import './index.css' // Your Tailwind CSS entry
 ```
 
 The `fonts` import loads variable web fonts (IBM Plex Sans, Inter, Space Grotesk, IBM Plex Mono, JetBrains Mono, Space Mono). The `styles.css` import loads all design token CSS variables and Tailwind utilities.
+
+For Tailwind v4 consumers, you can also import the theme registration CSS to get all design tokens registered:
+
+```css
+@import '@nejcjelovcan/traceframe-ui-library/theme.css';
+```
+
+### 2. Configure Vite (Optional)
+
+The library provides a Vite plugin for automatic font source configuration:
+
+```typescript
+// vite.config.ts
+import { traceframeVitePlugin } from '@nejcjelovcan/traceframe-ui-library/vite-plugin'
+
+export default defineConfig({
+  plugins: [traceframeVitePlugin()],
+})
+```
 
 ### 3. Wrap with ThemeProvider
 
@@ -123,12 +121,14 @@ import { Button, Icon, Badge } from '@nejcjelovcan/traceframe-ui-library'
 
 ### Exports
 
-| Subpath             | Description                                     |
-| ------------------- | ----------------------------------------------- |
-| `.`                 | All components, utilities, types                |
-| `./fonts`           | Side-effect import that loads web fonts         |
-| `./styles.css`      | Compiled CSS with tokens and Tailwind utilities |
-| `./tailwind-preset` | Tailwind preset with all design tokens          |
+| Subpath         | Description                                              |
+| --------------- | -------------------------------------------------------- |
+| `.`             | All components, utilities, types                         |
+| `./fonts`       | Side-effect import that loads web fonts                  |
+| `./styles.css`  | Compiled CSS with tokens and Tailwind utilities          |
+| `./theme.css`   | Tailwind v4 theme registration CSS (design token @theme) |
+| `./vite-plugin` | Vite plugin for font source configuration                |
+| `./utils/color` | OKLCH color utilities (parse, mix, scale, convert)       |
 
 ## Local Development
 
@@ -145,7 +145,7 @@ pnpm test         # Run tests
 | ---------- | -------------------------------------------------------------------------------------------------------------- |
 | Primitives | `Badge`, `Button`, `Card` (+ `CardHeader`, `CardContent`, `CardFooter`), `Heading`, `Input`, `Link`, `Spinner` |
 | Layout     | `Container`, `Grid`, `Stack`, `PageLayout` (+ `PageHeader`)                                                    |
-| Data       | `DataTable`, `BarChart`, `StatCard`                                                                            |
+| Data       | `DataTable`, `BarChart`, `StatCard`, `LogView` (+ `LogEntry`, `LogPrompt`)                                     |
 | Feedback   | `EmptyState`, `ErrorState`                                                                                     |
 | Selection  | `Select`, `SearchInput`, `ToggleGroup`                                                                         |
 | Behavioral | `Collapsible` (+ trigger/content/header), `Tooltip` (+ provider/trigger/content), `Navigation` (+ `NavItem`)   |
@@ -440,7 +440,6 @@ packages/ui-library/
 ├── .storybook/
 │   ├── main.ts
 │   └── preview.ts
-├── tailwind.config.ts
 ├── postcss.config.js
 ├── tsconfig.json
 ├── vitest.config.ts
@@ -453,4 +452,4 @@ All runtime dependencies are bundled -- consumers only need to install peer depe
 
 **Peer:** `react@^19`, `react-dom@^19`
 
-**Bundled runtime:** Radix UI primitives (collapsible, select, toggle-group, tooltip), Tabler Icons, TanStack Virtual, CVA, clsx, tailwind-merge, Fontsource variable fonts
+**Bundled runtime:** Radix UI primitives (collapsible, select, slot, toggle-group, tooltip), Tabler Icons, TanStack Virtual, CVA, clsx, tailwind-merge, Fontsource variable fonts

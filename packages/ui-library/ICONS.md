@@ -1,6 +1,6 @@
 # Icons
 
-Standardized icon system for elementex applications.
+Standardized icon system for Traceframe applications.
 
 ## Usage
 
@@ -50,27 +50,28 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 
 ### Actions
 
-| Name            | Use Case                             |
-| --------------- | ------------------------------------ |
-| `search`        | Search inputs and actions            |
-| `search-off`    | "No results found" empty states      |
-| `close`         | Close buttons, dismiss, clear        |
-| `check`         | Success states, selected items       |
-| `copy`          | Copy-to-clipboard actions            |
-| `plus`          | Add/create actions, increment        |
-| `minus`         | Remove actions, decrement, collapse  |
-| `trash`         | Destructive delete actions           |
-| `settings`      | Settings, preferences, configuration |
-| `menu`          | Hamburger menu, sidebar toggles      |
-| `filter`        | Filtering, faceted search            |
-| `link`          | Hyperlinks, URL references           |
-| `upload`        | File upload, data import             |
-| `download`      | File download, data export           |
-| `eye-off`       | Toggle visibility off, hide content  |
-| `lock`          | Locked/protected content, security   |
-| `help`          | Help tooltips, documentation links   |
-| `bookmark`      | Saved/favorited items                |
-| `dots-vertical` | Vertical "more" menu (kebab)         |
+| Name            | Use Case                                |
+| --------------- | --------------------------------------- |
+| `search`        | Search inputs and actions               |
+| `search-off`    | "No results found" empty states         |
+| `close`         | Close buttons, dismiss, clear           |
+| `check`         | Success states, selected items          |
+| `copy`          | Copy-to-clipboard actions               |
+| `plus`          | Add/create actions, increment           |
+| `minus`         | Remove actions, decrement, collapse     |
+| `trash`         | Destructive delete actions              |
+| `settings`      | Settings, preferences, configuration    |
+| `menu`          | Hamburger menu, sidebar toggles         |
+| `filter`        | Filtering, faceted search               |
+| `link`          | Hyperlinks, URL references              |
+| `upload`        | File upload, data import                |
+| `download`      | File download, data export              |
+| `external-link` | Links opening in new tab, external URLs |
+| `eye-off`       | Toggle visibility off, hide content     |
+| `lock`          | Locked/protected content, security      |
+| `help`          | Help tooltips, documentation links      |
+| `bookmark`      | Saved/favorited items                   |
+| `dots-vertical` | Vertical "more" menu (kebab)            |
 
 ### Status & Feedback
 
@@ -139,6 +140,7 @@ Larger sizes (`xl`, `2xl`) automatically use a lighter stroke (1.5) for better a
 
 | Name         | Use Case                          |
 | ------------ | --------------------------------- |
+| `dashboard`  | Dashboard/overview pages          |
 | `database`   | Data-related features, storage    |
 | `chart`      | Statistics, analytics, metrics    |
 | `users`      | User counts, team metrics         |
@@ -235,7 +237,7 @@ For meaningful icons (e.g., icon-only buttons), provide an `aria-label`:
 
 - Use semantic names (not Tabler icon names)
 - Prefer existing icons over adding new ones
-- Domain icons for elementex-specific concepts only
+- Domain icons for Traceframe-specific concepts only
 - Core icons for general UI patterns
 - **Do NOT import directly from `@tabler/icons-react`** - always use the `Icon` component
 
