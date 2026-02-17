@@ -1,0 +1,186 @@
+@layer base {
+  /**
+   * Palette: "Forge"
+   *
+   * Where precision meets warmth, every detail is deliberate.
+   *
+   * A restrained, editorial palette grounded in graphite neutrals
+   * and oxidized bronze. Medium-low chroma values (0.04-0.10)
+   * create tension between craft and system: warm enough to feel
+   * intentional, muted enough to stay professional.
+   * Bone-white surfaces and patina-teal accents complete the
+   * material language of aged metal and fine paper.
+   *
+   * OKLCH color space ensures perceptual uniformity.
+   */
+
+  :root.forge {
+    /* ===== PALETTE: FORGE ===== */
+
+    /* ===== Root Colors ===== */
+
+    --palette-surface: oklch(
+      98% 0.008 75
+    ); /* Surface color - bone white with subtle warm undertone */
+
+    /* ===== Core Palettes ===== */
+
+    /* Error palette */
+    --palette-error-50: oklch(98% 0.05 12);
+    --palette-error-100: oklch(95% 0.08 12);
+    --palette-error-200: oklch(90% 0.1 12);
+    --palette-error-300: oklch(82% 0.11 12);
+    --palette-error-400: oklch(70% 0.12 12);
+    --palette-error-500: oklch(58% 0.12 12);
+    --palette-error-600: oklch(48% 0.12 12);
+    --palette-error-700: oklch(38% 0.11 12);
+    --palette-error-800: oklch(28% 0.1 12);
+    --palette-error-900: oklch(20% 0.08 12);
+    --palette-error-950: oklch(10% 0.05 12);
+
+    /* Info palette */
+    --palette-info-50: oklch(98% 0.03 220);
+    --palette-info-100: oklch(95% 0.05 220);
+    --palette-info-200: oklch(90% 0.07 220);
+    --palette-info-300: oklch(82% 0.09 220);
+    --palette-info-400: oklch(70% 0.1 220);
+    --palette-info-500: oklch(58% 0.11 220);
+    --palette-info-600: oklch(48% 0.11 220);
+    --palette-info-700: oklch(38% 0.1 220);
+    --palette-info-800: oklch(28% 0.09 220);
+    --palette-info-900: oklch(20% 0.07 220);
+    --palette-info-950: oklch(10% 0.05 220);
+
+    /* Neutral palette - Graphite */
+    --palette-neutral-50: oklch(98% 0.004 55);
+    --palette-neutral-100: oklch(95% 0.006 55);
+    --palette-neutral-200: oklch(90% 0.008 55);
+    --palette-neutral-300: oklch(82% 0.009 55);
+    --palette-neutral-400: oklch(70% 0.01 55);
+    --palette-neutral-500: oklch(58% 0.01 55);
+    --palette-neutral-600: oklch(48% 0.01 55);
+    --palette-neutral-700: oklch(38% 0.009 55);
+    --palette-neutral-800: oklch(28% 0.008 55);
+    --palette-neutral-900: oklch(20% 0.006 55);
+    --palette-neutral-950: oklch(10% 0.004 55);
+
+    /* Primary palette - Oxidized Bronze */
+    --palette-primary-50: oklch(98% 0.04 50);
+    --palette-primary-100: oklch(95% 0.06 50);
+    --palette-primary-200: oklch(90% 0.08 50);
+    --palette-primary-300: oklch(82% 0.09 50);
+    --palette-primary-400: oklch(70% 0.1 50);
+    --palette-primary-500: oklch(58% 0.1 50);
+    --palette-primary-600: oklch(48% 0.1 50);
+    --palette-primary-700: oklch(38% 0.09 50);
+    --palette-primary-800: oklch(28% 0.08 50);
+    --palette-primary-900: oklch(20% 0.06 50);
+    --palette-primary-950: oklch(10% 0.04 50);
+
+    /* Success palette */
+    --palette-success-50: oklch(98% 0.03 155);
+    --palette-success-100: oklch(95% 0.05 155);
+    --palette-success-200: oklch(90% 0.07 155);
+    --palette-success-300: oklch(82% 0.08 155);
+    --palette-success-400: oklch(70% 0.09 155);
+    --palette-success-500: oklch(58% 0.09 155);
+    --palette-success-600: oklch(48% 0.09 155);
+    --palette-success-700: oklch(38% 0.08 155);
+    --palette-success-800: oklch(28% 0.07 155);
+    --palette-success-900: oklch(20% 0.06 155);
+    --palette-success-950: oklch(10% 0.04 155);
+
+    /* Warning palette */
+    --palette-warning-50: oklch(98% 0.05 62);
+    --palette-warning-100: oklch(95% 0.07 62);
+    --palette-warning-200: oklch(90% 0.09 62);
+    --palette-warning-300: oklch(82% 0.1 62);
+    --palette-warning-400: oklch(70% 0.11 62);
+    --palette-warning-500: oklch(58% 0.11 62);
+    --palette-warning-600: oklch(48% 0.11 62);
+    --palette-warning-700: oklch(38% 0.1 62);
+    --palette-warning-800: oklch(28% 0.09 62);
+    --palette-warning-900: oklch(20% 0.07 62);
+    --palette-warning-950: oklch(10% 0.05 62);
+
+    /* ===== Presentational Palettes ===== */
+
+    /* Accent 1 palette - Slate Blue */
+    --palette-accent-1-50: oklch(98% 0.03 245);
+    --palette-accent-1-100: oklch(95% 0.05 245);
+    --palette-accent-1-200: oklch(90% 0.07 245);
+    --palette-accent-1-300: oklch(82% 0.08 245);
+    --palette-accent-1-400: oklch(70% 0.09 245);
+    --palette-accent-1-500: oklch(58% 0.09 245);
+    --palette-accent-1-600: oklch(48% 0.09 245);
+    --palette-accent-1-700: oklch(38% 0.08 245);
+    --palette-accent-1-800: oklch(28% 0.07 245);
+    --palette-accent-1-900: oklch(20% 0.06 245);
+    --palette-accent-1-950: oklch(10% 0.04 245);
+
+    /* Accent 2 palette - Muted Rose */
+    --palette-accent-2-50: oklch(98% 0.04 345);
+    --palette-accent-2-100: oklch(95% 0.06 345);
+    --palette-accent-2-200: oklch(90% 0.08 345);
+    --palette-accent-2-300: oklch(82% 0.09 345);
+    --palette-accent-2-400: oklch(70% 0.1 345);
+    --palette-accent-2-500: oklch(58% 0.1 345);
+    --palette-accent-2-600: oklch(48% 0.1 345);
+    --palette-accent-2-700: oklch(38% 0.09 345);
+    --palette-accent-2-800: oklch(28% 0.08 345);
+    --palette-accent-2-900: oklch(20% 0.06 345);
+    --palette-accent-2-950: oklch(10% 0.04 345);
+
+    /* Accent 3 palette - Sage */
+    --palette-accent-3-50: oklch(98% 0.03 130);
+    --palette-accent-3-100: oklch(95% 0.05 130);
+    --palette-accent-3-200: oklch(90% 0.07 130);
+    --palette-accent-3-300: oklch(82% 0.08 130);
+    --palette-accent-3-400: oklch(70% 0.09 130);
+    --palette-accent-3-500: oklch(58% 0.09 130);
+    --palette-accent-3-600: oklch(48% 0.09 130);
+    --palette-accent-3-700: oklch(38% 0.08 130);
+    --palette-accent-3-800: oklch(28% 0.07 130);
+    --palette-accent-3-900: oklch(20% 0.05 130);
+    --palette-accent-3-950: oklch(10% 0.04 130);
+
+    /* Accent 4 palette - Muted Plum */
+    --palette-accent-4-50: oklch(98% 0.03 290);
+    --palette-accent-4-100: oklch(95% 0.05 290);
+    --palette-accent-4-200: oklch(90% 0.07 290);
+    --palette-accent-4-300: oklch(82% 0.08 290);
+    --palette-accent-4-400: oklch(70% 0.09 290);
+    --palette-accent-4-500: oklch(58% 0.09 290);
+    --palette-accent-4-600: oklch(48% 0.09 290);
+    --palette-accent-4-700: oklch(38% 0.08 290);
+    --palette-accent-4-800: oklch(28% 0.07 290);
+    --palette-accent-4-900: oklch(20% 0.06 290);
+    --palette-accent-4-950: oklch(10% 0.04 290);
+
+    /* Accent 5 palette - Verdigris */
+    --palette-accent-5-50: oklch(98% 0.03 175);
+    --palette-accent-5-100: oklch(95% 0.05 175);
+    --palette-accent-5-200: oklch(90% 0.07 175);
+    --palette-accent-5-300: oklch(82% 0.08 175);
+    --palette-accent-5-400: oklch(70% 0.09 175);
+    --palette-accent-5-500: oklch(58% 0.09 175);
+    --palette-accent-5-600: oklch(48% 0.09 175);
+    --palette-accent-5-700: oklch(38% 0.08 175);
+    --palette-accent-5-800: oklch(28% 0.07 175);
+    --palette-accent-5-900: oklch(20% 0.05 175);
+    --palette-accent-5-950: oklch(10% 0.04 175);
+
+    /* Secondary palette - Patina */
+    --palette-secondary-50: oklch(98% 0.03 200);
+    --palette-secondary-100: oklch(95% 0.05 200);
+    --palette-secondary-200: oklch(90% 0.07 200);
+    --palette-secondary-300: oklch(82% 0.08 200);
+    --palette-secondary-400: oklch(70% 0.09 200);
+    --palette-secondary-500: oklch(58% 0.09 200);
+    --palette-secondary-600: oklch(48% 0.09 200);
+    --palette-secondary-700: oklch(38% 0.08 200);
+    --palette-secondary-800: oklch(28% 0.07 200);
+    --palette-secondary-900: oklch(20% 0.05 200);
+    --palette-secondary-950: oklch(10% 0.04 200);
+  }
+}

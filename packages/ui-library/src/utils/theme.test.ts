@@ -5,11 +5,11 @@ import { applyMode, applyTheme, MODES, THEMES } from './theme'
 describe('theme utilities', () => {
   beforeEach(() => {
     // Reset document classes
-    document.documentElement.classList.remove('dark', 'light', 'dusk', 'arctic', 'ember')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
   })
 
   afterEach(() => {
-    document.documentElement.classList.remove('dark', 'light', 'dusk', 'arctic', 'ember')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
   })
 
   describe('MODES constant', () => {
@@ -22,9 +22,9 @@ describe('theme utilities', () => {
 
   describe('THEMES constant', () => {
     it('contains all theme options', () => {
-      expect(THEMES).toContain('dusk')
       expect(THEMES).toContain('arctic')
-      expect(THEMES).toContain('ember')
+      expect(THEMES).toContain('forge')
+      expect(THEMES).toContain('mist')
       expect(THEMES.length).toBe(3)
     })
   })
@@ -51,17 +51,17 @@ describe('theme utilities', () => {
 
   describe('applyTheme', () => {
     it('adds theme class to document', () => {
-      applyTheme('dusk')
-      expect(document.documentElement.classList.contains('dusk')).toBe(true)
+      applyTheme('arctic')
+      expect(document.documentElement.classList.contains('arctic')).toBe(true)
     })
 
     it('removes all other theme classes when applying a new theme', () => {
-      document.documentElement.classList.add('dusk')
+      document.documentElement.classList.add('arctic')
 
-      applyTheme('arctic')
+      applyTheme('forge')
 
-      expect(document.documentElement.classList.contains('arctic')).toBe(true)
-      expect(document.documentElement.classList.contains('dusk')).toBe(false)
+      expect(document.documentElement.classList.contains('forge')).toBe(true)
+      expect(document.documentElement.classList.contains('arctic')).toBe(false)
     })
 
     it('works for all themes', () => {

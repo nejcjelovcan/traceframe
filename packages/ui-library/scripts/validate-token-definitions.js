@@ -2,8 +2,8 @@
 /**
  * Validates token consistency across CSS source files:
  * 1. All CSS custom properties in light.css must exist in dark.css (modes)
- * 2. All CSS custom properties in dusk.css must exist in all other palette CSS files
- * 3. All CSS custom properties in dusk.css must exist in all other theme CSS files
+ * 2. All CSS custom properties in arctic.css must exist in all other palette CSS files
+ * 3. All CSS custom properties in arctic.css must exist in all other theme CSS files
  * 4. Shadow token format validation (inset shadows must include 'inset' keyword)
  */
 
@@ -96,32 +96,32 @@ function main() {
     console.log('Mode tokens: OK\n')
   }
 
-  // 2. Validate palette tokens: dusk.css as source of truth
-  console.log('Validating palette tokens (dusk.css as source of truth)...\n')
+  // 2. Validate palette tokens: arctic.css as source of truth
+  console.log('Validating palette tokens (arctic.css as source of truth)...\n')
 
-  const duskPaletteCss = readFileSync(join(stylesDir, 'palettes', 'dusk.css'), 'utf-8')
-  const duskPaletteProps = extractCssCustomProperties(duskPaletteCss)
+  const arcticPaletteCss = readFileSync(join(stylesDir, 'palettes', 'arctic.css'), 'utf-8')
+  const arcticPaletteProps = extractCssCustomProperties(arcticPaletteCss)
 
   const paletteFiles = readdirSync(join(stylesDir, 'palettes')).filter(
-    (f) => f.endsWith('.css') && f !== 'dusk.css'
+    (f) => f.endsWith('.css') && f !== 'arctic.css'
   )
 
   for (const paletteFile of paletteFiles) {
     const paletteCss = readFileSync(join(stylesDir, 'palettes', paletteFile), 'utf-8')
     const paletteProps = extractCssCustomProperties(paletteCss)
 
-    const paletteResult = validateProperties('dusk.css', duskPaletteProps, paletteFile, paletteProps)
+    const paletteResult = validateProperties('arctic.css', arcticPaletteProps, paletteFile, paletteProps)
 
     if (paletteResult.missing.length > 0) {
       hasErrors = true
-      console.log(`Missing in ${paletteFile} (defined in dusk.css):`)
+      console.log(`Missing in ${paletteFile} (defined in arctic.css):`)
       paletteResult.missing.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
 
     if (paletteResult.extra.length > 0) {
       hasErrors = true
-      console.log(`Extra in ${paletteFile} (not in dusk.css):`)
+      console.log(`Extra in ${paletteFile} (not in arctic.css):`)
       paletteResult.extra.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
@@ -133,32 +133,32 @@ function main() {
 
   console.log()
 
-  // 3. Validate theme tokens: dusk.css as source of truth
-  console.log('Validating theme tokens (dusk.css as source of truth)...\n')
+  // 3. Validate theme tokens: arctic.css as source of truth
+  console.log('Validating theme tokens (arctic.css as source of truth)...\n')
 
-  const duskThemeCss = readFileSync(join(stylesDir, 'themes', 'dusk.css'), 'utf-8')
-  const duskThemeProps = extractCssCustomProperties(duskThemeCss)
+  const arcticThemeCss = readFileSync(join(stylesDir, 'themes', 'arctic.css'), 'utf-8')
+  const arcticThemeProps = extractCssCustomProperties(arcticThemeCss)
 
   const themeFiles = readdirSync(join(stylesDir, 'themes')).filter(
-    (f) => f.endsWith('.css') && f !== 'dusk.css'
+    (f) => f.endsWith('.css') && f !== 'arctic.css'
   )
 
   for (const themeFile of themeFiles) {
     const themeCss = readFileSync(join(stylesDir, 'themes', themeFile), 'utf-8')
     const themeProps = extractCssCustomProperties(themeCss)
 
-    const themeResult = validateProperties('dusk.css', duskThemeProps, themeFile, themeProps)
+    const themeResult = validateProperties('arctic.css', arcticThemeProps, themeFile, themeProps)
 
     if (themeResult.missing.length > 0) {
       hasErrors = true
-      console.log(`Missing in ${themeFile} (defined in dusk.css):`)
+      console.log(`Missing in ${themeFile} (defined in arctic.css):`)
       themeResult.missing.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }
 
     if (themeResult.extra.length > 0) {
       hasErrors = true
-      console.log(`Extra in ${themeFile} (not in dusk.css):`)
+      console.log(`Extra in ${themeFile} (not in arctic.css):`)
       themeResult.extra.forEach((prop) => console.log(`  - ${prop}`))
       console.log()
     }

@@ -9,14 +9,14 @@ import '@nejcjelovcan/traceframe-ui-library/styles.css'
 export const decorators: readonly any[] = [
   withThemeByClassName({
     themes: {
-      'Dusk Light': 'dusk light',
-      'Dusk Dark': 'dusk dark',
       'Arctic Light': 'arctic light',
       'Arctic Dark': 'arctic dark',
-      'Ember Light': 'ember light',
-      'Ember Dark': 'ember dark',
+      'Forge Light': 'forge light',
+      'Forge Dark': 'forge dark',
+      'Mist Light': 'mist light',
+      'Mist Dark': 'mist dark',
     },
-    defaultTheme: 'Dusk Light',
+    defaultTheme: 'Arctic Light',
     parentSelector: 'html',
   }),
   (Story: React.ComponentType) => (

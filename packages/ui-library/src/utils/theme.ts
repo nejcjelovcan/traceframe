@@ -2,20 +2,20 @@
  * Theme utilities for managing color modes and themes.
  *
  * Mode: light/dark - Controls semantic color mappings (light vs dark backgrounds)
- * Theme: dusk/arctic - Controls the color palette
+ * Theme: arctic/forge/mist - Controls the color palette
  *
  * Both are applied via CSS classes on the document root:
  * - Mode: 'light' or 'dark' class
- * - Theme: 'dusk' or 'arctic' class
+ * - Theme: 'arctic', 'forge', or 'mist' class
  *
- * Example: <html class="light dusk"> or <html class="dark arctic">
+ * Example: <html class="light arctic"> or <html class="dark forge">
  */
 
 export type Mode = 'light' | 'dark'
-export type Theme = 'dusk' | 'arctic' | 'ember'
+export type Theme = 'arctic' | 'forge' | 'mist'
 
 export const MODES: readonly Mode[] = ['light', 'dark'] as const
-export const THEMES: readonly Theme[] = ['dusk', 'arctic', 'ember'] as const
+export const THEMES: readonly Theme[] = ['arctic', 'forge', 'mist'] as const
 
 export const MODE_LABELS: Record<Mode, string> = {
   light: 'Light',
@@ -23,15 +23,15 @@ export const MODE_LABELS: Record<Mode, string> = {
 }
 
 export const THEME_LABELS: Record<Theme, string> = {
-  dusk: 'Dusk',
   arctic: 'Arctic',
-  ember: 'Ember',
+  forge: 'Forge',
+  mist: 'Mist',
 }
 
 export const THEME_DESCRIPTIONS: Record<Theme, string> = {
-  dusk: 'Modern, slightly whimsical with warm accents',
   arctic: 'Clean, precise palette for analytical interfaces',
-  ember: 'Warm, compact design-studio aesthetic for data-rich interfaces',
+  forge: 'Precision warmth with graphite and oxidized bronze editorial restraint',
+  mist: 'Near-monochrome precision for dense, content-first interfaces',
 }
 
 /**

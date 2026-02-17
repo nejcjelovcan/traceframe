@@ -1,0 +1,72 @@
+@layer base {
+  /**
+   * Theme: "forge"
+   *
+   * Precision warmth. Restrained graphite base with oxidized bronze accents creates tension between craft and system. Instrument Sans brings utilitarian clarity with editorial poise; sharp radii and defined shadows reinforce deliberate, confident design. Built for interfaces where every pixel is intentional.
+   */
+
+  :root.forge {
+    /* ===== THEME: FORGE ===== */
+
+    /* Typography */
+    --token-font-sans: 'Instrument Sans Variable', 'Instrument Sans', Inter, system-ui, sans-serif;
+    --token-font-mono: 'IBM Plex Mono', 'JetBrains Mono', Menlo, monospace;
+
+    /* Shadows */
+    --token-shadow-sm: 0 1px 2px 0 color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-md:
+      0 3px 6px -1px color-mix(in srgb, var(--token-shadow-color) 7%, transparent),
+      0 1px 3px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-lg:
+      0 8px 16px -3px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),
+      0 3px 6px -3px color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+    --token-shadow-interactive: 0 1px 3px 0
+      color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+    --token-shadow-interactive-hover:
+      0 4px 10px -1px color-mix(in srgb, var(--token-shadow-color) 8%, transparent),
+      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-interactive-pressed: 0 1px 2px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-highlight:
+      0 3px 6px -1px color-mix(in srgb, var(--token-shadow-color) 7%, transparent),
+      0 1px 3px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-highlight-hover:
+      0 6px 14px -2px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),
+      0 3px 6px -2px color-mix(in srgb, var(--token-shadow-color) 7%, transparent);
+    --token-shadow-highlight-pressed: 0 1px 3px 0
+      color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+    --token-shadow-inset-sm: inset 0 2px 4px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-inset-md: inset 0 4px 8px 0
+      color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+    --token-shadow-inset-underline: inset 0 -2px 0 0;
+
+    /* Border Radius */
+    --token-radius-sm: 0.125rem;
+    --token-radius-md: 0.1875rem;
+    --token-radius-lg: 0.3125rem;
+    --token-radius-xl: 0.4375rem;
+
+    /* Element Sizing */
+    --token-size-xs: 1.375rem;
+    --token-size-sm: 1.875rem;
+    --token-size-md: 2.375rem;
+    --token-size-lg: 2.875rem;
+    --token-size-xl: 3.375rem;
+
+    /* Custom Spacing */
+    --token-spacing-2xs: 0.125rem;
+    --token-spacing-xs: 0.25rem;
+    --token-spacing-sm: 0.4375rem;
+    --token-spacing-md: 0.6875rem;
+    --token-spacing-base: 0.9375rem;
+    --token-spacing-lg: 1.75rem;
+    --token-spacing-xl: 3.5rem;
+    --token-spacing-2xl: 6.5rem;
+
+    /* Border Styles */
+    --token-border-style-line: 1px solid;
+    --token-border-style-thick: 2px solid;
+    --token-border-style-highlight: 2px dashed;
+  }
+}
