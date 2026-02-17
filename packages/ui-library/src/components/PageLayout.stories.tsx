@@ -83,6 +83,22 @@ A full-page layout component with header, sidebar, main content, and footer slot
       description: 'Text for the skip navigation link (enables skip link when provided)',
       control: 'text',
     },
+    variant: {
+      description: 'Visual variant for header and sidebar backgrounds',
+      control: 'select',
+      options: ['default', 'filled', 'subtle'],
+      table: {
+        defaultValue: { summary: 'default' },
+      },
+    },
+    color: {
+      description: 'Color scheme for filled and subtle variants',
+      control: 'select',
+      options: ['primary', 'secondary', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5'],
+      table: {
+        defaultValue: { summary: 'primary' },
+      },
+    },
   },
 }
 
@@ -378,6 +394,160 @@ export const WithSkipLink: Story = {
             <li>This allows keyboard users to skip past navigation</li>
           </ol>
         </div>
+      </Stack>
+    </PageLayout>
+  ),
+}
+
+export const FilledHeaderVariant: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates the filled variant with primary color on the header. The Navigation inherits the variant context and adjusts its text colors accordingly.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="filled"
+      color="primary"
+      header={
+        <PageHeader title="Traceframe">
+          <Navigation orientation="horizontal">
+            <NavItem href="#" active>
+              Dashboard
+            </NavItem>
+            <NavItem href="#">Reports</NavItem>
+            <NavItem href="#">Settings</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={<SampleSidebar />}
+    >
+      <SampleContent />
+    </PageLayout>
+  ),
+}
+
+export const FilledSidebarVariant: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Shows the filled variant applied to the sidebar with accent-1 color. The Navigation component inherits the variant and displays appropriate text colors.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="filled"
+      color="accent-1"
+      header={<SampleHeader />}
+      sidebar={
+        <div className="w-64 p-base">
+          <Navigation orientation="vertical">
+            <NavItem href="#" icon="dashboard" active>
+              Overview
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Components
+            </NavItem>
+            <NavItem href="#" icon="hierarchy">
+              Dependencies
+            </NavItem>
+            <NavItem href="#" icon="alert-circle">
+              Issues
+            </NavItem>
+            <NavItem href="#" icon="toggle">
+              Settings
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+    >
+      <SampleContent />
+    </PageLayout>
+  ),
+}
+
+export const SubtleVariant: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'The subtle variant provides a muted background. Navigation components automatically inherit this context.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="subtle"
+      color="secondary"
+      header={
+        <PageHeader title="Traceframe">
+          <Navigation orientation="horizontal">
+            <NavItem href="#" active>
+              Dashboard
+            </NavItem>
+            <NavItem href="#">Reports</NavItem>
+            <NavItem href="#">Settings</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={
+        <div className="w-64 p-base">
+          <Navigation orientation="vertical">
+            <NavItem href="#" icon="dashboard" active>
+              Overview
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Components
+            </NavItem>
+            <NavItem href="#" icon="hierarchy">
+              Dependencies
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+    >
+      <SampleContent />
+    </PageLayout>
+  ),
+}
+
+export const MixedVariants: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates that Navigation components can override the inherited context by providing their own variant/color props.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="filled"
+      color="primary"
+      header={
+        <PageHeader title="Traceframe">
+          <Navigation orientation="horizontal" variant="subtle" color="secondary">
+            <NavItem href="#" active>
+              Dashboard
+            </NavItem>
+            <NavItem href="#">Reports</NavItem>
+            <NavItem href="#">Settings</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={<SampleSidebar />}
+    >
+      <Stack gap="md">
+        <Heading level={1}>Mixed Variants</Heading>
+        <p className="text-foreground-muted">
+          The PageLayout has variant="filled" and color="primary", but the Navigation in the header
+          explicitly overrides with variant="subtle" and color="secondary".
+        </p>
       </Stack>
     </PageLayout>
   ),

@@ -251,6 +251,8 @@
     --token-interactive-primary-foreground: var(--palette-neutral-50);
     /* Primary button background on hover */
     --token-interactive-primary-hover: var(--palette-primary-700);
+    /* Muted primary background for subtle containers and indicators */
+    --token-interactive-primary-muted: var(--palette-primary-100);
     /* Secondary button and accent background color */
     --token-interactive-secondary: var(--palette-secondary-300);
     /* Border color for secondary buttons and outlined secondary elements */
@@ -259,6 +261,8 @@
     --token-interactive-secondary-foreground: var(--palette-secondary-900);
     /* Secondary button background on hover */
     --token-interactive-secondary-hover: var(--palette-secondary-400);
+    /* Muted secondary background for subtle containers and indicators */
+    --token-interactive-secondary-muted: var(--palette-secondary-100);
 
     /* Focus ring color for accessibility outlines and focus states */
     --token-ring: var(--palette-primary-500);

@@ -1,7 +1,9 @@
 import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
-import { PageLayout } from './PageLayout'
+import { Navigation, NavItem } from './Navigation'
+import { PageLayout, PageHeader } from './PageLayout'
+import { usePageLayoutContext } from './PageLayoutContext'
 
 describe('PageLayout', () => {
   it('renders children in main content area', () => {
@@ -146,6 +148,116 @@ describe('PageLayout', () => {
       const main = screen.getByRole('main')
       expect(main.getAttribute('id')).toBe('main-content')
       expect(main.getAttribute('tabIndex')).toBe('-1')
+    })
+  })
+
+  describe('variant and color props', () => {
+    it('applies filled variant to header', () => {
+      render(
+        <PageLayout variant="filled" color="primary" header={<div>Header</div>}>
+          Content
+        </PageLayout>
+      )
+      const header = screen.getByText('Header').parentElement
+      expect(header?.className).toContain('bg-interactive-primary')
+    })
+
+    it('applies subtle variant to header', () => {
+      render(
+        <PageLayout variant="subtle" color="secondary" header={<div>Header</div>}>
+          Content
+        </PageLayout>
+      )
+      const header = screen.getByText('Header').parentElement
+      expect(header?.className).toContain('bg-interactive-secondary-muted')
+    })
+
+    it('applies filled variant to sidebar', () => {
+      render(
+        <PageLayout variant="filled" color="accent-1" sidebar={<div>Sidebar</div>}>
+          Content
+        </PageLayout>
+      )
+      const sidebar = screen.getByText('Sidebar').parentElement
+      expect(sidebar?.className).toContain('bg-accent-1-emphasis')
+    })
+
+    it('applies subtle variant to sidebar', () => {
+      render(
+        <PageLayout variant="subtle" color="accent-2" sidebar={<div>Sidebar</div>}>
+          Content
+        </PageLayout>
+      )
+      const sidebar = screen.getByText('Sidebar').parentElement
+      expect(sidebar?.className).toContain('bg-accent-2-muted')
+    })
+
+    it('provides variant and color via context', () => {
+      const TestComponent = () => {
+        const context = usePageLayoutContext()
+        return (
+          <div>
+            {context.variant}-{context.color}
+          </div>
+        )
+      }
+
+      render(
+        <PageLayout variant="filled" color="primary">
+          <TestComponent />
+        </PageLayout>
+      )
+      expect(screen.getByText('filled-primary')).toBeDefined()
+    })
+  })
+
+  describe('context inheritance with Navigation', () => {
+    it('Navigation inherits variant from PageLayout', () => {
+      render(
+        <PageLayout
+          variant="filled"
+          color="primary"
+          header={
+            <Navigation orientation="horizontal">
+              <NavItem href="#">Test</NavItem>
+            </Navigation>
+          }
+        >
+          Content
+        </PageLayout>
+      )
+      // Navigation should not have the background class when inheriting from context
+      const nav = screen.getByRole('navigation')
+      expect(nav.className).not.toContain('bg-interactive-primary')
+    })
+
+    it('Navigation can override inherited context', () => {
+      render(
+        <PageLayout
+          variant="filled"
+          color="primary"
+          header={
+            <Navigation orientation="horizontal" variant="subtle" color="secondary">
+              <NavItem href="#">Test</NavItem>
+            </Navigation>
+          }
+        >
+          Content
+        </PageLayout>
+      )
+      // Navigation should have its own variant classes when explicitly set
+      const nav = screen.getByRole('navigation')
+      expect(nav.className).toContain('bg-interactive-secondary-muted')
+    })
+
+    it('PageHeader applies filled text color when variant is filled', () => {
+      render(
+        <PageLayout variant="filled" color="primary" header={<PageHeader title="Test" />}>
+          Content
+        </PageLayout>
+      )
+      const header = screen.getByText('Test').parentElement
+      expect(header?.className).toContain('text-foreground-filled')
     })
   })
 })

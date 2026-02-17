@@ -27,10 +27,12 @@
   --color-interactive-primary-hover: var(--token-interactive-primary-hover);
   --color-interactive-primary-foreground: var(--token-interactive-primary-foreground);
   --color-interactive-primary-border: var(--token-interactive-primary-border);
+  --color-interactive-primary-muted: var(--token-interactive-primary-muted);
   --color-interactive-secondary: var(--token-interactive-secondary);
   --color-interactive-secondary-hover: var(--token-interactive-secondary-hover);
   --color-interactive-secondary-foreground: var(--token-interactive-secondary-foreground);
   --color-interactive-secondary-border: var(--token-interactive-secondary-border);
+  --color-interactive-secondary-muted: var(--token-interactive-secondary-muted);
   --color-interactive-destructive: var(--token-interactive-destructive);
   --color-interactive-destructive-hover: var(--token-interactive-destructive-hover);
   --color-interactive-destructive-foreground: var(--token-interactive-destructive-foreground);
