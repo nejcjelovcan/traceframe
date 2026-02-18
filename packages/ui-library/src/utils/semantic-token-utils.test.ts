@@ -190,37 +190,42 @@ describe('isNonSemanticSizingClass', () => {
 
 describe('getSpacingSuggestion', () => {
   it('provides exact match suggestions', () => {
-    expect(getSpacingSuggestion('p-4')).toBe('p-base')
-    expect(getSpacingSuggestion('gap-2')).toBe('gap-sm')
-    expect(getSpacingSuggestion('mx-8')).toBe('mx-lg')
-    expect(getSpacingSuggestion('py-1')).toBe('py-xs')
-    expect(getSpacingSuggestion('m-3')).toBe('m-md')
-    expect(getSpacingSuggestion('gap-x-16')).toBe('gap-x-xl')
-    expect(getSpacingSuggestion('p-0.5')).toBe('p-2xs')
+    // Arctic theme values - updated to match generated metadata
+    expect(getSpacingSuggestion('p-3.5')).toBe('p-base')      // base = 0.875rem = 3.5
+    expect(getSpacingSuggestion('gap-1.5')).toBe('gap-sm')    // sm = 0.375rem = 1.5
+    expect(getSpacingSuggestion('mx-6')).toBe('mx-lg')        // lg = 1.5rem = 6
+    expect(getSpacingSuggestion('py-1')).toBe('py-xs')        // xs = 0.25rem = 1
+    expect(getSpacingSuggestion('m-2.5')).toBe('m-md')        // md = 0.625rem = 2.5
+    expect(getSpacingSuggestion('gap-x-12')).toBe('gap-x-xl') // xl = 3rem = 12
+    expect(getSpacingSuggestion('p-0.5')).toBe('p-2xs')       // 2xs = 0.125rem = 0.5
   })
 
   it('provides exact match suggestions with modifiers', () => {
-    expect(getSpacingSuggestion('hover:p-4')).toBe('hover:p-base')
-    expect(getSpacingSuggestion('dark:gap-2')).toBe('dark:gap-sm')
+    // Arctic theme values
+    expect(getSpacingSuggestion('hover:p-3.5')).toBe('hover:p-base')  // base = 0.875rem = 3.5
+    expect(getSpacingSuggestion('dark:gap-1.5')).toBe('dark:gap-sm')  // sm = 0.375rem = 1.5
   })
 
   it('provides exact match suggestions for negative margins', () => {
-    expect(getSpacingSuggestion('-m-4')).toBe('-m-base')
-    expect(getSpacingSuggestion('-mx-2')).toBe('-mx-sm')
+    // Arctic theme values
+    expect(getSpacingSuggestion('-m-3.5')).toBe('-m-base')  // base = 0.875rem = 3.5
+    expect(getSpacingSuggestion('-mx-1.5')).toBe('-mx-sm')  // sm = 0.375rem = 1.5
   })
 
   it('provides nearest match suggestions for non-exact values', () => {
-    const suggestion = getSpacingSuggestion('p-5')
+    const suggestion = getSpacingSuggestion('p-4')
     expect(suggestion).toBeDefined()
     expect(suggestion).toMatch(/^nearest:/)
+    // p-4 = 1rem, between base (0.875rem) and lg (1.5rem)
     expect(suggestion).toContain('p-base')
+    expect(suggestion).toContain('p-lg')
   })
 
   it('provides nearest match suggestions for values between tokens', () => {
-    const suggestion = getSpacingSuggestion('p-6')
+    const suggestion = getSpacingSuggestion('p-5')
     expect(suggestion).toBeDefined()
     expect(suggestion).toMatch(/^nearest:/)
-    // p-6 = 1.5rem, between base (1rem) and lg (2rem)
+    // p-5 = 1.25rem, between base (0.875rem) and lg (1.5rem)
     expect(suggestion).toContain('p-base')
     expect(suggestion).toContain('p-lg')
   })
@@ -233,27 +238,30 @@ describe('getSpacingSuggestion', () => {
 
 describe('getSizingSuggestion', () => {
   it('provides exact match suggestions', () => {
-    expect(getSizingSuggestion('h-8')).toBe('h-size-sm')
-    expect(getSizingSuggestion('w-10')).toBe('w-size-md')
-    expect(getSizingSuggestion('h-6')).toBe('h-size-xs')
-    expect(getSizingSuggestion('w-12')).toBe('w-size-lg')
-    expect(getSizingSuggestion('h-14')).toBe('h-size-xl')
+    // Arctic theme values
+    expect(getSizingSuggestion('h-5')).toBe('h-size-xs')   // size-xs = 1.25rem = 5
+    expect(getSizingSuggestion('w-7')).toBe('w-size-sm')   // size-sm = 1.75rem = 7
+    expect(getSizingSuggestion('h-9')).toBe('h-size-md')   // size-md = 2.25rem = 9
+    expect(getSizingSuggestion('w-11')).toBe('w-size-lg')  // size-lg = 2.75rem = 11
+    expect(getSizingSuggestion('h-13')).toBe('h-size-xl')  // size-xl = 3.25rem = 13
   })
 
   it('provides exact match suggestions for min/max', () => {
-    expect(getSizingSuggestion('min-h-8')).toBe('min-h-size-sm')
-    expect(getSizingSuggestion('max-w-12')).toBe('max-w-size-lg')
+    // Arctic theme values
+    expect(getSizingSuggestion('min-h-7')).toBe('min-h-size-sm')  // size-sm = 1.75rem = 7
+    expect(getSizingSuggestion('max-w-11')).toBe('max-w-size-lg') // size-lg = 2.75rem = 11
   })
 
   it('provides exact match suggestions with modifiers', () => {
-    expect(getSizingSuggestion('hover:h-8')).toBe('hover:h-size-sm')
+    // Arctic theme: size-sm = 1.75rem = 7
+    expect(getSizingSuggestion('hover:h-7')).toBe('hover:h-size-sm')
   })
 
   it('provides nearest match suggestions for non-exact values', () => {
-    const suggestion = getSizingSuggestion('h-9')
+    const suggestion = getSizingSuggestion('h-8')
     expect(suggestion).toBeDefined()
     expect(suggestion).toMatch(/^nearest:/)
-    // h-9 = 2.25rem, between size-sm (2rem) and size-md (2.5rem)
+    // h-8 = 2rem, between size-sm (1.75rem) and size-md (2.25rem)
     expect(suggestion).toContain('h-size-sm')
     expect(suggestion).toContain('h-size-md')
   })
@@ -266,24 +274,26 @@ describe('getSizingSuggestion', () => {
 
 describe('SPACING_MAP', () => {
   it('contains all expected token mappings', () => {
+    // Values from arctic theme (auto-generated from CSS)
     expect(SPACING_MAP.get('0.5')).toEqual({ semantic: '2xs', rem: '0.125rem' })
     expect(SPACING_MAP.get('1')).toEqual({ semantic: 'xs', rem: '0.25rem' })
-    expect(SPACING_MAP.get('2')).toEqual({ semantic: 'sm', rem: '0.5rem' })
-    expect(SPACING_MAP.get('3')).toEqual({ semantic: 'md', rem: '0.75rem' })
-    expect(SPACING_MAP.get('4')).toEqual({ semantic: 'base', rem: '1rem' })
-    expect(SPACING_MAP.get('8')).toEqual({ semantic: 'lg', rem: '2rem' })
-    expect(SPACING_MAP.get('16')).toEqual({ semantic: 'xl', rem: '4rem' })
-    expect(SPACING_MAP.get('32')).toEqual({ semantic: '2xl', rem: '8rem' })
+    expect(SPACING_MAP.get('1.5')).toEqual({ semantic: 'sm', rem: '0.375rem' })
+    expect(SPACING_MAP.get('2.5')).toEqual({ semantic: 'md', rem: '0.625rem' })
+    expect(SPACING_MAP.get('3.5')).toEqual({ semantic: 'base', rem: '0.875rem' })
+    expect(SPACING_MAP.get('6')).toEqual({ semantic: 'lg', rem: '1.5rem' })
+    expect(SPACING_MAP.get('12')).toEqual({ semantic: 'xl', rem: '3rem' })
+    expect(SPACING_MAP.get('20')).toEqual({ semantic: '2xl', rem: '5rem' })
   })
 })
 
 describe('SIZING_MAP', () => {
   it('contains all expected token mappings', () => {
-    expect(SIZING_MAP.get('6')).toEqual({ semantic: 'size-xs', rem: '1.5rem' })
-    expect(SIZING_MAP.get('8')).toEqual({ semantic: 'size-sm', rem: '2rem' })
-    expect(SIZING_MAP.get('10')).toEqual({ semantic: 'size-md', rem: '2.5rem' })
-    expect(SIZING_MAP.get('12')).toEqual({ semantic: 'size-lg', rem: '3rem' })
-    expect(SIZING_MAP.get('14')).toEqual({ semantic: 'size-xl', rem: '3.5rem' })
+    // Values from arctic theme (auto-generated from CSS)
+    expect(SIZING_MAP.get('5')).toEqual({ semantic: 'size-xs', rem: '1.25rem' })
+    expect(SIZING_MAP.get('7')).toEqual({ semantic: 'size-sm', rem: '1.75rem' })
+    expect(SIZING_MAP.get('9')).toEqual({ semantic: 'size-md', rem: '2.25rem' })
+    expect(SIZING_MAP.get('11')).toEqual({ semantic: 'size-lg', rem: '2.75rem' })
+    expect(SIZING_MAP.get('13')).toEqual({ semantic: 'size-xl', rem: '3.25rem' })
   })
 })
 
