@@ -91,14 +91,28 @@ describe('Grid', () => {
   })
 
   describe('responsive column counts', () => {
-    it('applies responsive column object correctly', () => {
+    it('applies responsive column object with default breakpoint', () => {
+      render(
+        <Grid cols={{ default: 1, sm: 2, md: 3, lg: 4, xl: 5 }} data-testid="grid">
+          Content
+        </Grid>
+      )
+      const grid = screen.getByTestId('grid')
+      expect(grid.className).toContain('grid-cols-1')
+      expect(grid.className).toContain('sm:grid-cols-2')
+      expect(grid.className).toContain('md:grid-cols-3')
+      expect(grid.className).toContain('lg:grid-cols-4')
+      expect(grid.className).toContain('xl:grid-cols-5')
+    })
+
+    it('applies responsive column object without default breakpoint', () => {
       render(
         <Grid cols={{ sm: 1, md: 2, lg: 3, xl: 4 }} data-testid="grid">
           Content
         </Grid>
       )
       const grid = screen.getByTestId('grid')
-      expect(grid.className).toContain('grid-cols-1')
+      expect(grid.className).toContain('grid-cols-1') // Falls back to default
       expect(grid.className).toContain('sm:grid-cols-1')
       expect(grid.className).toContain('md:grid-cols-2')
       expect(grid.className).toContain('lg:grid-cols-3')

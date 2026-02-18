@@ -49,14 +49,7 @@ export {
 export { Input, inputVariants, inputWrapperVariants, type InputProps } from './components/Input.js'
 export { SearchInput, type SearchInputProps } from './components/SearchInput.js'
 export { ErrorState, type ErrorStateProps } from './components/ErrorState.js'
-export {
-  Grid,
-  gridVariants,
-  type ColCount,
-  type ColsValue,
-  type GridProps,
-  type ResponsiveCols,
-} from './components/Grid.js'
+export { Grid, gridVariants, type ColCount, type GridProps } from './components/Grid.js'
 export { Link, type LinkProps } from './components/Link.js'
 export {
   LogView,
@@ -83,7 +76,16 @@ export {
   type PageHeaderProps,
 } from './components/PageLayout.js'
 export { Spinner, spinnerVariants, type SpinnerProps } from './components/Spinner.js'
-export { Flex, flexVariants, type FlexProps } from './components/Flex.js'
+export {
+  Flex,
+  flexVariants,
+  type FlexProps,
+  type DirectionValue,
+  type GapValue,
+  type AlignValue,
+  type JustifyValue,
+  type WrapValue,
+} from './components/Flex.js'
 export { StatCard, type StatCardProps } from './components/StatCard.js'
 export {
   ToggleGroup,
@@ -131,8 +133,12 @@ export {
   type IconSize,
 } from './icons/index.js'
 
+// Types
+export { type ResponsiveValue, isResponsiveValue } from './types/responsive.js'
+
 // Utilities
 export { cn } from './utils/cn.js'
+export { generateResponsiveClasses } from './utils/responsive.js'
 export {
   applyMode,
   applyTheme,
