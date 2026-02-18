@@ -65,10 +65,10 @@ export const pageLayoutSnippets: Snippet[] = [
     </div>
   }
 >
-  <Stack gap="base">
+  <Flex gap="base">
     <h1 className="text-2xl font-bold">Dashboard</h1>
     <p className="text-foreground-muted">Welcome to your project.</p>
-  </Stack>
+  </Flex>
 </PageLayout>`,
   },
   {
@@ -117,10 +117,10 @@ export const pageLayoutSnippets: Snippet[] = [
     </div>
   }
 >
-  <Stack gap="lg">
+  <Flex gap="lg">
     <h1 className="text-2xl font-bold">Filled Primary Layout</h1>
     <p className="text-foreground-muted">Header and sidebar use filled variant with primary color for cohesive theming.</p>
-  </Stack>
+  </Flex>
 </PageLayout>`,
   },
   {
@@ -148,10 +148,10 @@ export const pageLayoutSnippets: Snippet[] = [
     </div>
   }
 >
-  <Stack gap="lg">
+  <Flex gap="lg">
     <h1 className="text-2xl font-bold">Subtle Secondary Layout</h1>
     <p className="text-foreground-muted">Softer visual treatment using subtle variant with secondary color.</p>
-  </Stack>
+  </Flex>
 </PageLayout>`,
   },
   {
@@ -170,7 +170,7 @@ export const pageLayoutSnippets: Snippet[] = [
     </PageHeader>
   }
 >
-  <Stack gap="lg">
+  <Flex gap="lg">
     <Grid cols={3} gap="md">
       <Card variant="accent1">
         <CardHeader icon="components">Accent 1</CardHeader>
@@ -185,7 +185,7 @@ export const pageLayoutSnippets: Snippet[] = [
         <CardContent>Additional variety</CardContent>
       </Card>
     </Grid>
-  </Stack>
+  </Flex>
 </PageLayout>`,
   },
 ]

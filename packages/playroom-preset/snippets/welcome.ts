@@ -15,15 +15,15 @@ export const welcomeSnippets: Snippet[] = [
     </PageHeader>
   }
 >
-  <Stack gap="lg">
+  <Flex gap="lg">
     <div>
       <h1 className="text-2xl font-bold mb-sm">Welcome to Traceframe Playroom</h1>
       <p className="text-foreground-muted">
-        Explore and experiment with UI components. Use the snippets menu (⌃⌥Space or Ctrl+Alt+Space) to load examples.
+        Explore and experiment with UI components. Use the snippets menu (⌘K) to load examples.
       </p>
     </div>
 
-    <Grid cols={3} gap="md">
+    <Grid cols={{sm: 3}} gap="md">
       <Card>
         <CardHeader icon="components">Components</CardHeader>
         <CardContent>
@@ -46,12 +46,12 @@ export const welcomeSnippets: Snippet[] = [
 
     <div className="mt-md">
       <h2 className="text-lg font-semibold mb-sm">Quick Start Tips</h2>
-      <Stack gap="sm">
+      <Flex gap="sm">
         <div className="flex items-start gap-sm">
           <Icon name="chevron-right" size="sm" className="mt-xs text-status-info-foreground" />
           <div>
             <strong className="text-sm">Load Snippets:</strong>
-            <span className="text-sm text-foreground-muted ml-xs">Press ⌃⌥Space (Mac) or Ctrl+Alt+Space (PC) to open the snippets menu</span>
+            <span className="text-sm text-foreground-muted ml-xs">Press ⌘K to open the snippets menu</span>
           </div>
         </div>
         <div className="flex items-start gap-sm">
@@ -68,19 +68,19 @@ export const welcomeSnippets: Snippet[] = [
             <span className="text-sm text-foreground-muted ml-xs">Add more viewports using the viewport controls</span>
           </div>
         </div>
-      </Stack>
+      </Flex>
     </div>
 
     <div className="mt-md pt-md border-t border-border">
       <h2 className="text-lg font-semibold mb-sm">Featured Components</h2>
-      <Grid cols={4} gap="sm">
+      <Grid cols={{default:2, md:4}} gap="sm">
         <Button variant="primary" size="sm">Primary</Button>
         <Button variant="secondary" size="sm">Secondary</Button>
         <Badge variant="info">Info Badge</Badge>
         <Badge variant="success">Success</Badge>
       </Grid>
     </div>
-  </Stack>
+  </Flex>
 </PageLayout>`,
   },
 ]

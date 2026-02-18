@@ -49,10 +49,10 @@ export const headingSnippets: Snippet[] = [
     group: 'Heading',
     name: 'Section with Content',
     code: `
-<Stack gap="md">
+<Flex gap="md">
   <Heading level={2}>Section Title</Heading>
   <p>Section content goes here.</p>
-</Stack>
+</Flex>
     `.trim(),
   },
 ]

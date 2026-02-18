@@ -25,8 +25,8 @@
   "scripts": {
     "dev": "tsc --watch --project tsconfig.build.json",
     "build": "pnpm generate:component-metadata && pnpm generate:token-metadata && tsc --build tsconfig.build.json && pnpm build:css",
-    "generate:component-metadata": "node scripts/generate-component-metadata.js",
-    "generate:token-metadata": "node scripts/generate-token-metadata.js",
+    "generate:component-metadata": "node scripts/generate-component-metadata.js && prettier --write src/styles/token-metadata.generated.ts",
+    "generate:token-metadata": "node scripts/generate-token-metadata.js && prettier --write src/styles/token-metadata.generated.ts",
     "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/styles.css",
     "validate:token-definitions": "node scripts/validate-token-definitions.js",
     "clean": "rm -rf dist",

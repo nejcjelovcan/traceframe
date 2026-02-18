@@ -1,4 +1,5 @@
 const path = require('path')
+const welcome = require('./dist/snippets/welcome').welcomeSnippets[0].code
 
 /**
  * @typedef {Object} PlayroomPresetOptions
@@ -12,6 +13,9 @@ const path = require('path')
  * @property {number[]} [widths] - Override viewport widths
  * @property {string[]} [typeScriptFiles] - Additional TypeScript file patterns for autocomplete
  * @property {string} [iframeSandbox] - Override iframe sandbox
+ * @property {number[]} [defaultVisibleWidths] - Override default visible widths
+ * @property {string[]} [defaultVisibleThemes] - Override default visible themes
+ * @property {string} [exampleCode] - Override example code
  */
 
 const distDir = path.join(__dirname, 'dist')
@@ -38,10 +42,13 @@ function createPlayroomConfig(options) {
     outputPath: options.outputPath || './dist/playroom',
     baseUrl: options.baseUrl || '/',
     title: options.title || 'Playroom',
-    widths: options.widths || [320, 768, 1024, 1440],
+    widths: options.widths || [320, 640, 768, 1024, 1280, 1536],
     port: options.port || 9000,
     iframeSandbox: options.iframeSandbox || 'allow-scripts allow-same-origin',
     typeScriptFiles: [path.join(uiLibraryDist, '**/*.d.ts'), ...(options.typeScriptFiles || [])],
+    defaultVisibleWidths: options.defaultVisibleThemes ?? [1024],
+    defaultVisibleThemes: options.defaultVisibleWidths ?? ['arctic', 'arcticDark'],
+    exampleCode: options.exampleCode ?? welcome,
     webpackConfig: function () {
       return {
         resolve: {

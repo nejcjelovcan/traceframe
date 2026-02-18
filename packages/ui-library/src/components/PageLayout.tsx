@@ -408,11 +408,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             {sidebarPosition === 'left' && sidebarElement}
 
             {/* Main content - skip link target */}
-            <main
-              id="main-content"
-              tabIndex={-1}
-              className="flex-1 overflow-y-auto focus:outline-hidden"
-            >
+            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-hidden">
               {contentWidth === 'contained' ? (
                 <Container className="py-lg">{children}</Container>
               ) : (
