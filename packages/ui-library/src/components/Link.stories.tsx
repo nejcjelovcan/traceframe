@@ -1,7 +1,7 @@
+import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { Link } from './Link'
-import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

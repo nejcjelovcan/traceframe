@@ -1,8 +1,8 @@
 import * as React from 'react'
 
+import { Flex } from './Flex'
 import { Heading } from './Heading'
 import { Select } from './Select'
-import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

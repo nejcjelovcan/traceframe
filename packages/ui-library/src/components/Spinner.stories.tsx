@@ -1,5 +1,5 @@
-import { Spinner } from './Spinner'
 import { Flex } from './Flex'
+import { Spinner } from './Spinner'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

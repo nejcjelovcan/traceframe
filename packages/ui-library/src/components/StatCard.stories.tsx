@@ -1,6 +1,6 @@
+import { Flex } from './Flex.js'
 import { Grid } from './Grid.js'
 import { Heading } from './Heading.js'
-import { Flex } from './Flex.js'
 import { StatCard } from './StatCard.js'
 import { Icon } from '../icons/index.js'
 

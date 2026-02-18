@@ -1,6 +1,6 @@
 import { Button } from './Button.js'
-import { Heading } from './Heading.js'
 import { Flex } from './Flex.js'
+import { Heading } from './Heading.js'
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from './Tooltip.js'
 import { Icon } from '../icons/index.js'
 

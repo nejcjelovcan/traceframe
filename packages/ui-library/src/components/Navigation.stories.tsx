@@ -1,7 +1,7 @@
+import { Flex } from './Flex'
 import { Heading } from './Heading'
 import { Navigation, NavItem } from './Navigation'
 import { PageLayout, PageHeader } from './PageLayout'
-import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { SearchInput } from './SearchInput'
 import { Flex } from './Flex'
+import { SearchInput } from './SearchInput'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

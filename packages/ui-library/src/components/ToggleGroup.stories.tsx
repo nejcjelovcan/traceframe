@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
-import { Heading } from './Heading'
 import { Flex } from './Flex'
+import { Heading } from './Heading'
 import { ToggleGroup, type ToggleGroupOption } from './ToggleGroup'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
