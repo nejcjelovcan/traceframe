@@ -82,6 +82,27 @@ describe('LogView', () => {
     const log = screen.getByRole('log')
     expect(log.style.maxHeight).toBe('300px')
   })
+
+  it('applies minHeight to scroll container', () => {
+    render(
+      <LogView minHeight="200px">
+        <LogEntry>Entry</LogEntry>
+      </LogView>
+    )
+    const log = screen.getByRole('log')
+    expect(log.style.minHeight).toBe('200px')
+  })
+
+  it('applies both minHeight and maxHeight when provided', () => {
+    render(
+      <LogView minHeight="200px" maxHeight="400px">
+        <LogEntry>Entry</LogEntry>
+      </LogView>
+    )
+    const log = screen.getByRole('log')
+    expect(log.style.minHeight).toBe('200px')
+    expect(log.style.maxHeight).toBe('400px')
+  })
 })
 
 describe('LogEntry', () => {

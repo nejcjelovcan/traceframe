@@ -58,6 +58,10 @@ A compound component for displaying sequential log output - from plain CLI/termi
       description: 'Max height of the scroll area (CSS value)',
       control: 'text',
     },
+    minHeight: {
+      description: 'Min height of the scroll area (CSS value)',
+      control: 'text',
+    },
   },
 }
 
@@ -311,6 +315,53 @@ export const WithoutTimestamps: Story = {
       <LogEntry level="info">Compiling files</LogEntry>
       <LogEntry level="success">Build complete</LogEntry>
     </LogView>
+  ),
+}
+
+// ---------------------------------------------------------------------------
+// Constrained Height
+// ---------------------------------------------------------------------------
+
+export const ConstrainedHeight: Story = {
+  name: 'Constrained Height',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates minHeight and maxHeight props together. With few entries, the view maintains minimum height. With many entries, it scrolls at max height.',
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-lg">
+      <div>
+        <Heading level={3} size="sm" className="mb-sm">
+          Few entries (maintains min height of 200px)
+        </Heading>
+        <LogView variant="cli" minHeight="200px" maxHeight="400px">
+          <LogEntry timestamp="10:30:00">Only a couple entries here</LogEntry>
+          <LogEntry timestamp="10:30:01" level="info">
+            The container maintains its minimum height
+          </LogEntry>
+        </LogView>
+      </div>
+      <div>
+        <Heading level={3} size="sm" className="mb-sm">
+          Many entries (scrolls at max height of 400px)
+        </Heading>
+        <LogView variant="cli" minHeight="200px" maxHeight="400px">
+          {Array.from({ length: 20 }, (_, i) => (
+            <LogEntry
+              key={i}
+              timestamp={`10:30:${String(i).padStart(2, '0')}`}
+              level={i % 4 === 0 ? 'success' : i % 3 === 0 ? 'warning' : 'info'}
+            >
+              Log entry {i + 1} - This list has many items and will scroll
+            </LogEntry>
+          ))}
+        </LogView>
+      </div>
+    </div>
   ),
 }
 

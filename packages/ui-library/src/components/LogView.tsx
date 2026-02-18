@@ -105,6 +105,8 @@ export interface LogViewProps
   autoScroll?: boolean
   /** Max height of the scroll area (CSS value) */
   maxHeight?: string
+  /** Min height of the scroll area (CSS value) */
+  minHeight?: string
 }
 
 export const LogView = forwardRef<HTMLDivElement, LogViewProps>(
@@ -115,6 +117,7 @@ export const LogView = forwardRef<HTMLDivElement, LogViewProps>(
       showTimestamps = true,
       autoScroll = true,
       maxHeight,
+      minHeight,
       children,
       ...props
     },
@@ -131,7 +134,7 @@ export const LogView = forwardRef<HTMLDivElement, LogViewProps>(
             aria-live="polite"
             onScroll={handleScroll}
             className="flex-1 overflow-y-auto"
-            style={maxHeight ? { maxHeight } : undefined}
+            style={maxHeight || minHeight ? { maxHeight, minHeight } : undefined}
           >
             {children}
           </div>
