@@ -243,6 +243,116 @@ describe('CardHeader', () => {
     const icon = header.querySelector('svg')
     expect(icon?.getAttribute('aria-hidden')).toBe('true')
   })
+
+  it('renders rightContent', () => {
+    render(
+      <CardHeader data-testid="header" rightContent={<span data-testid="right">v1.2.3</span>}>
+        Package Version
+      </CardHeader>
+    )
+    expect(screen.getByTestId('right')).toBeDefined()
+    expect(screen.getByText('v1.2.3')).toBeDefined()
+  })
+
+  it('renders rightContent as any React node', () => {
+    render(
+      <CardHeader data-testid="header" rightContent={<a href="#">View all</a>}>
+        Recent Activity
+      </CardHeader>
+    )
+    expect(screen.getByText('View all')).toBeDefined()
+  })
+
+  it('rightContent does not shrink', () => {
+    render(
+      <CardHeader data-testid="header" rightContent={<span data-testid="right">Status</span>}>
+        Header
+      </CardHeader>
+    )
+    const rightWrapper = screen.getByTestId('right').parentElement
+    expect(rightWrapper?.className).toContain('shrink-0')
+  })
+
+  it('truncates text by default', () => {
+    render(<CardHeader data-testid="header">Very Long Header Text That Should Truncate</CardHeader>)
+    const header = screen.getByTestId('header')
+    const titleSpan = header.querySelector('span')
+    expect(titleSpan?.className).toContain('truncate')
+    expect(titleSpan?.className).toContain('min-w-0')
+  })
+
+  it('sets title attribute on truncated string children', () => {
+    render(<CardHeader data-testid="header">Long Title Text</CardHeader>)
+    const header = screen.getByTestId('header')
+    const titleSpan = header.querySelector('span')
+    expect(titleSpan?.getAttribute('title')).toBe('Long Title Text')
+  })
+
+  it('does not set title attribute when children is not a string', () => {
+    render(
+      <CardHeader data-testid="header">
+        <em>Complex children</em>
+      </CardHeader>
+    )
+    const header = screen.getByTestId('header')
+    const titleSpan = header.querySelector(':scope > span')
+    expect(titleSpan?.hasAttribute('title')).toBe(false)
+  })
+
+  it('does not truncate when truncate is false', () => {
+    render(
+      <CardHeader data-testid="header" truncate={false}>
+        Full Header Text
+      </CardHeader>
+    )
+    const header = screen.getByTestId('header')
+    const titleSpan = header.querySelector('span')
+    expect(titleSpan?.className).not.toContain('truncate')
+    expect(titleSpan?.hasAttribute('title')).toBe(false)
+  })
+
+  it('renders icon, title, rightContent, and chevron in correct order in accordion mode', () => {
+    render(
+      <Card accordion>
+        <CardHeader icon="settings" rightContent={<span data-testid="right">Extra</span>}>
+          Title
+        </CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+    const button = screen.getByRole('button')
+    const children = Array.from(button.children)
+    // Order: icon (svg), title (span), rightContent wrapper (div), chevron (svg)
+    expect(children[0]?.tagName).toBe('svg') // left icon
+    expect(children[1]?.tagName).toBe('SPAN') // title
+    expect(children[2]?.tagName).toBe('DIV') // rightContent wrapper
+    expect(children[3]?.tagName).toBe('svg') // chevron
+  })
+
+  it('icon has shrink-0 class', () => {
+    render(
+      <CardHeader data-testid="header" icon="info-circle">
+        With Icon
+      </CardHeader>
+    )
+    const header = screen.getByTestId('header')
+    const icon = header.querySelector('svg')
+    expect(icon?.getAttribute('class')).toContain('shrink-0')
+  })
+
+  it('works with rightContent in sm size', () => {
+    render(
+      <Card size="sm">
+        <CardHeader data-testid="header" rightContent={<span>Status</span>}>
+          Small Header
+        </CardHeader>
+      </Card>
+    )
+    const header = screen.getByTestId('header')
+    expect(header.className).toContain('px-sm')
+    expect(header.className).toContain('py-xs')
+    expect(screen.getByText('Status')).toBeDefined()
+  })
 })
 
 describe('CardContent', () => {

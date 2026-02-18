@@ -1,6 +1,13 @@
 import * as CollapsiblePrimitive from '@radix-ui/react-collapsible'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { createContext, forwardRef, useContext, useId, type HTMLAttributes } from 'react'
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  useId,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react'
 
 import { Icon } from '../icons/Icon.js'
 import { cn } from '../utils/cn.js'
@@ -207,18 +214,36 @@ export interface CardHeaderProps extends HTMLAttributes<HTMLDivElement> {
   icon?: IconName
   /** Icon position relative to header text */
   iconPosition?: 'left' | 'right'
+  /** Content to display on the right side of the header */
+  rightContent?: ReactNode
+  /** Whether to truncate the main text when space is limited (default: true) */
+  truncate?: boolean
 }
 
 export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
-  ({ className, icon, iconPosition = 'left', children, ...props }, ref) => {
+  (
+    { className, icon, iconPosition = 'left', rightContent, truncate = true, children, ...props },
+    ref
+  ) => {
     const { isAccordion, contentId, size } = useContext(CardContext)
     const isSmall = size === 'sm'
+    const titleText = typeof children === 'string' ? children : undefined
 
     const baseContent = (
       <>
-        {icon && iconPosition === 'left' && <Icon name={icon} size="sm" aria-hidden="true" />}
-        <span className="flex-1">{children}</span>
-        {icon && iconPosition === 'right' && <Icon name={icon} size="sm" aria-hidden="true" />}
+        {icon && iconPosition === 'left' && (
+          <Icon name={icon} size="sm" className="shrink-0" aria-hidden="true" />
+        )}
+        <span
+          className={cn('flex-1 min-w-0', truncate && 'truncate')}
+          {...(truncate && titleText ? { title: titleText } : {})}
+        >
+          {children}
+        </span>
+        {icon && iconPosition === 'right' && (
+          <Icon name={icon} size="sm" className="shrink-0" aria-hidden="true" />
+        )}
+        {rightContent && <div className="shrink-0">{rightContent}</div>}
         {isAccordion && (
           <Icon
             name="chevron-right"
