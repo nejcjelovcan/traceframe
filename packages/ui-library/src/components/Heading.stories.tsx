@@ -1,5 +1,5 @@
-import { Heading } from './Heading'
 import { Flex } from './Flex'
+import { Heading } from './Heading'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

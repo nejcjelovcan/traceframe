@@ -1,9 +1,9 @@
 import { Button } from './Button'
 import { Container } from './Container'
 import { DataTable, type Column } from './DataTable'
+import { Flex } from './Flex'
 import { Heading } from './Heading'
 import { Input } from './Input'
-import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 

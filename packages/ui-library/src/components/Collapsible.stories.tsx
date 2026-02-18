@@ -2,9 +2,9 @@ import { useState } from 'react'
 
 import { Button } from './Button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible'
+import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
-import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
