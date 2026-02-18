@@ -244,6 +244,106 @@ export const WithIcon: Story = {
   ),
 }
 
+export const WithRightContent: Story = {
+  name: 'With Right Content',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      <Card className="w-80">
+        <CardHeader rightContent="v1.2.3">Package Version</CardHeader>
+        <CardContent>
+          <p>Right content as plain text.</p>
+        </CardContent>
+      </Card>
+      <Card className="w-80">
+        <CardHeader
+          rightContent={
+            <a href="#" className="text-sm text-interactive-accent hover:underline">
+              View all
+            </a>
+          }
+        >
+          Recent Activity
+        </CardHeader>
+        <CardContent>
+          <p>Right content as a link.</p>
+        </CardContent>
+      </Card>
+      <Card className="w-80">
+        <CardHeader
+          icon="package"
+          rightContent={<span className="text-sm text-foreground-muted">Active</span>}
+        >
+          Very Long Package Name That Should Truncate When Space Is Limited
+        </CardHeader>
+        <CardContent>
+          <p>Icon + truncated title + right content.</p>
+        </CardContent>
+      </Card>
+      <Card className="w-80">
+        <CardHeader truncate={false} rightContent="Status">
+          Full Header Text Without Truncation
+        </CardHeader>
+        <CardContent>
+          <p>Truncation disabled.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
+export const RightContentAccordion: Story = {
+  name: 'Right Content in Accordion',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      <Card accordion defaultOpen className="w-80">
+        <CardHeader
+          icon="settings"
+          rightContent={<span className="text-xs text-foreground-muted">3 items</span>}
+        >
+          Configuration
+        </CardHeader>
+        <CardContent>
+          <p>Accordion with icon and right content.</p>
+        </CardContent>
+      </Card>
+      <Card accordion className="w-80">
+        <CardHeader
+          rightContent={<span className="text-xs text-foreground-muted">Updated 2h ago</span>}
+        >
+          A Very Long Section Title That Needs To Be Truncated
+        </CardHeader>
+        <CardContent>
+          <p>Truncated title with right content in accordion.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
+export const RightContentSizes: Story = {
+  name: 'Right Content Sizes',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      <Card className="w-80">
+        <CardHeader rightContent={<span className="text-sm text-foreground-muted">Default</span>}>
+          Default Size
+        </CardHeader>
+        <CardContent>
+          <p>Default size with right content.</p>
+        </CardContent>
+      </Card>
+      <Card size="sm" className="w-80">
+        <CardHeader rightContent={<span className="text-xs text-foreground-muted">Small</span>}>
+          Small Size
+        </CardHeader>
+        <CardContent>
+          <p>Small size with right content.</p>
+        </CardContent>
+      </Card>
+    </div>
+  ),
+}
+
 export const HeaderAndContent: Story = {
   render: () => (
     <Card className="w-80">
