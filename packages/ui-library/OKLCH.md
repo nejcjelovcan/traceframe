@@ -19,8 +19,8 @@ The Traceframe UI Library has migrated to OKLCH (Oklab Lightness Chroma Hue), a 
 packages/ui-library/src/
 ├── styles/tokens/palettes/
 │   ├── arctic.css      # Arctic palette (OKLCH values)
-│   ├── dusk.css        # Dusk palette (OKLCH values)
-│   └── ember.css       # Ember palette (OKLCH values)
+│   ├── forge.css       # Forge palette (OKLCH values)
+│   └── mist.css        # Mist palette (OKLCH values)
 ├── styles/tokens/modes/
 │   ├── light.css       # Light mode semantic tokens (reference palette vars directly)
 │   └── dark.css        # Dark mode semantic tokens (reference palette vars directly)
@@ -76,6 +76,23 @@ Semantic tokens in `modes/light.css` and `modes/dark.css` reference palette vari
 ```
 
 > **Important:** Semantic tokens must NOT wrap palette references in `rgb()`. Since palette values are OKLCH, `rgb(oklch(...))` is invalid CSS.
+
+## Derived Shades via color-mix()
+
+Each palette color group defines **5 key shades** (100, 300, 500, 700, 900) with explicit OKLCH values, and **6 derived shades** (50, 200, 400, 600, 800, 950) via `color-mix()` in OKLCH space. This reduces maintenance from 143 hand-tuned values to 65 explicit values per palette, while preserving all 11 shade CSS custom property names.
+
+### Derivation formulas
+
+| Shade | Formula                                                               |
+| ----- | --------------------------------------------------------------------- |
+| 50    | `color-mix(in oklch, var(--palette-X-100), white 50%)`                |
+| 200   | `color-mix(in oklch, var(--palette-X-100), var(--palette-X-300) 50%)` |
+| 400   | `color-mix(in oklch, var(--palette-X-300), var(--palette-X-500) 50%)` |
+| 600   | `color-mix(in oklch, var(--palette-X-500), var(--palette-X-700) 50%)` |
+| 800   | `color-mix(in oklch, var(--palette-X-700), var(--palette-X-900) 50%)` |
+| 950   | `color-mix(in oklch, var(--palette-X-900), black 50%)`                |
+
+OKLCH's perceptual uniformity means `color-mix()` produces near-identical results to hand-tuned intermediate values (chroma differs by ~0.005-0.01 at most).
 
 ## Browser Support
 

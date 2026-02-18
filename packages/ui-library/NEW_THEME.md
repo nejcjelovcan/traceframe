@@ -26,19 +26,19 @@ Applied via CSS classes on the document root:
 - **Palette** defines raw color variables (`--palette-*`) in OKLCH color space. Each theme has its own palette with unique hues and chroma levels.
 - **Theme** defines structural tokens (`--token-*`) like typography, shadows, border radius, spacing, and sizing. These shape the theme's visual personality independent of color.
 - **Mode** maps palette variables to semantic tokens (`--token-surface`, `--token-foreground`, etc.). Mode files are **shared across all themes** -- you do not create per-theme mode files.
-- **Validation** uses `dusk.css` as the source of truth. Every palette and theme file must define exactly the same set of CSS custom properties as the corresponding dusk file.
+- **Validation** uses `arctic.css` as the source of truth. Every palette and theme file must define exactly the same set of CSS custom properties as the corresponding arctic file.
 
 ## Step 1: Define Your Theme Concept
 
 Start with a personality. The concept drives every subsequent decision:
 
-| Decision        | Restrained (Arctic-style) | Balanced (Ember-style) | Dramatic (Dusk-style)  |
-| --------------- | ------------------------- | ---------------------- | ---------------------- |
-| Color chroma    | Low (0.02-0.10)           | Medium (0.04-0.12)     | High (0.07-0.16)       |
-| Shadow opacity  | Subtle (3-8%)             | Moderate (5-12%)       | Bold (8-16%)           |
-| Border radius   | Sharp (0.125-0.5rem)      | In between             | Rounded (0.25-0.75rem) |
-| Spacing density | Standard                  | Tight                  | Spacious               |
-| Font character  | Technical/neutral         | Geometric/distinctive  | Modern/versatile       |
+| Decision        | Restrained (Arctic-style) | Editorial (Forge-style) | Minimal (Mist-style)   |
+| --------------- | ------------------------- | ----------------------- | ---------------------- |
+| Color chroma    | Low (0.02-0.10)           | Medium-low (0.04-0.10)  | Ultra-low (0.015-0.07) |
+| Shadow opacity  | Subtle (3-8%)             | Moderate (5-12%)        | Minimal (3-8%)         |
+| Border radius   | Sharp (0.125-0.5rem)      | In between              | Rounded (0.25-0.75rem) |
+| Spacing density | Standard                  | Tight                   | Standard               |
+| Font character  | Technical/neutral         | Geometric/distinctive   | Content-first/receding |
 
 Write a short tagline and description that captures the mood. These will appear in the theme metadata.
 
@@ -46,7 +46,7 @@ Write a short tagline and description that captures the mood. These will appear 
 
 **File:** `src/styles/tokens/palettes/<name>.css`
 
-A palette defines 13 color groups, each with 11 shades (50-950), plus a surface color. All colors use [OKLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) format: `oklch(lightness chroma hue)`.
+A palette defines 13 color groups, each with **5 key shades** (100, 300, 500, 700, 900) as explicit OKLCH values, plus **6 derived shades** (50, 200, 400, 600, 800, 950) generated via `color-mix()`. All colors use [OKLCH](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/oklch) format: `oklch(lightness chroma hue)`.
 
 ### File Structure
 
@@ -61,6 +61,10 @@ A palette defines 13 color groups, each with 11 shades (50-950), plus a surface 
    * intended use cases, and design philosophy.>
    *
    * OKLCH color space ensures perceptual uniformity.
+   *
+   * Each color group defines 5 key shades (100, 300, 500, 700, 900)
+   * and derives 6 intermediate shades (50, 200, 400, 600, 800, 950)
+   * via color-mix() in OKLCH space.
    */
 
   :root.<name > {
@@ -72,52 +76,51 @@ A palette defines 13 color groups, each with 11 shades (50-950), plus a surface 
 
     /* ===== Core Palettes ===== */
 
-    /* Error palette */
-    --palette-error-50: oklch(98% /* chroma */ /* hue */);
-    --palette-error-100: oklch(95% /* ... */);
-    /* ... through 950 */
+    /* Error palette - key shades */
+    --palette-error-100: oklch(95% /* chroma */ /* hue */);
+    --palette-error-300: oklch(82% /* ... */);
+    --palette-error-500: oklch(58% /* ... */);
+    --palette-error-700: oklch(38% /* ... */);
+    --palette-error-900: oklch(20% /* ... */);
 
-    /* Info palette */
-    /* ... */
+    /* Error palette - derived shades */
+    --palette-error-50: color-mix(in oklch, var(--palette-error-100), white 50%);
+    --palette-error-200: color-mix(
+      in oklch,
+      var(--palette-error-100),
+      var(--palette-error-300) 50%
+    );
+    --palette-error-400: color-mix(
+      in oklch,
+      var(--palette-error-300),
+      var(--palette-error-500) 50%
+    );
+    --palette-error-600: color-mix(
+      in oklch,
+      var(--palette-error-500),
+      var(--palette-error-700) 50%
+    );
+    --palette-error-800: color-mix(
+      in oklch,
+      var(--palette-error-700),
+      var(--palette-error-900) 50%
+    );
+    --palette-error-950: color-mix(in oklch, var(--palette-error-900), black 50%);
 
-    /* Neutral palette */
-    /* ... */
-
-    /* Primary palette */
-    /* ... */
-
-    /* Success palette */
-    /* ... */
-
-    /* Warning palette */
-    /* ... */
+    /* Info, Neutral, Primary, Success, Warning palettes... */
+    /* (same key + derived pattern for each) */
 
     /* ===== Presentational Palettes ===== */
 
-    /* Accent 1 palette - <Color Name> */
-    /* ... */
-
-    /* Accent 2 palette - <Color Name> */
-    /* ... */
-
-    /* Accent 3 palette - <Color Name> */
-    /* ... */
-
-    /* Accent 4 palette - <Color Name> */
-    /* ... */
-
-    /* Accent 5 palette - <Color Name> */
-    /* ... */
-
-    /* Secondary palette - <Color Name> */
-    /* ... */
+    /* Accent 1-5 palettes, Secondary palette... */
+    /* (same key + derived pattern for each) */
   }
 }
 ```
 
 ### Required Color Groups
 
-Every palette must define these 13 groups, each with shades 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950 (11 shades = 143 color variables total, plus the surface color):
+Every palette must define these 13 groups. Each group has 5 explicit key shades + 6 derived shades = 11 shade variables (65 explicit OKLCH values + 78 derived + 1 surface = 144 properties total):
 
 | Group                             | Variable Prefix            | Purpose                                                                                                              |
 | --------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------------------------------- |
@@ -152,15 +155,15 @@ Each OKLCH color has a **hue** (0-360 degrees on the color wheel):
 
 **How existing themes use hue:**
 
-| Group     | Arctic               | Dusk                 | Ember           |
-| --------- | -------------------- | -------------------- | --------------- |
-| Primary   | 220 (steel blue)     | 260 (deep purple)    | 38 (copper)     |
-| Secondary | 180 (teal)           | 205 (sky blue)       | 170 (jade)      |
-| Neutral   | 240 (cool blue-gray) | 30 (warm brown-gray) | 25 (warm stone) |
-| Error     | 10                   | 10                   | 15              |
-| Info      | 210                  | 230                  | 190             |
-| Success   | 160                  | 160                  | 150             |
-| Warning   | 70                   | 40                   | 55              |
+| Group     | Arctic               | Forge                | Mist                 |
+| --------- | -------------------- | -------------------- | -------------------- |
+| Primary   | 220 (steel blue)     | 50 (oxidized bronze) | 180 (sage teal)      |
+| Secondary | 180 (teal)           | 200 (patina)         | 275 (dusty lavender) |
+| Neutral   | 240 (cool blue-gray) | 55 (graphite)        | 230 (cool blue-gray) |
+| Error     | 10                   | 12                   | 12                   |
+| Info      | 210                  | 220                  | 215                  |
+| Success   | 160                  | 155                  | 155                  |
+| Warning   | 70                   | 62                   | 65                   |
 
 **Guidelines for hue selection:**
 
@@ -171,19 +174,21 @@ Each OKLCH color has a **hue** (0-360 degrees on the color wheel):
 
 ### Shade Scale Pattern
 
-Every color group follows a consistent lightness scale:
+You only need to define the **5 key shades** (100, 300, 500, 700, 900). The 6 intermediate shades are derived automatically via `color-mix()`.
+
+**Key shade lightness scale:**
 
 ```
-Shade:      50    100   200   300   400   500   600   700   800   900   950
-Lightness: ~98%  ~95%  ~90%  ~82%  ~70%  ~58%  ~48%  ~38%  ~28%  ~20%  ~10%
+Shade:      100   300   500   700   900
+Lightness: ~95%  ~82%  ~58%  ~38%  ~20%
 ```
 
-**Chroma** (color intensity) should peak around shades 400-600 and taper toward the extremes:
+**Chroma** (color intensity) for key shades should peak at 500 and taper toward extremes:
 
 ```
-Low chroma theme (Arctic-style):      0.02  0.03  0.05  0.06  0.08  0.10  0.10  0.09  0.08  0.06  0.04
-Medium chroma theme (Ember-style):    0.05  0.08  0.10  0.11  0.12  0.12  0.12  0.11  0.10  0.08  0.06
-High chroma theme (Dusk-style):       0.07  0.11  0.13  0.14  0.14  0.14  0.14  0.14  0.13  0.11  0.08
+Low chroma theme (Arctic-style):      0.03  0.06  0.10  0.09  0.06
+Medium chroma theme (Forge-style):    0.06  0.09  0.10  0.09  0.06
+Ultra-low chroma theme (Mist-style):  0.02  0.04  0.07  0.06  0.04
 ```
 
 Chroma is the single strongest lever for theme personality:
@@ -197,14 +202,14 @@ Chroma is the single strongest lever for theme personality:
 The surface color is the base background. Subtle tinting with the theme's hue gives visual cohesion:
 
 ```css
-/* Pure white (Dusk) */
---palette-surface: oklch(100% 0 0);
-
 /* Cool-tinted white (Arctic - blue undertone) */
 --palette-surface: oklch(98.5% 0.006 240);
 
-/* Warm-tinted white (Ember - terracotta undertone) */
---palette-surface: oklch(98.5% 0.005 25);
+/* Warm-tinted white (Forge - bone white) */
+--palette-surface: oklch(98% 0.008 75);
+
+/* Near-white (Mist - faintest cool tint) */
+--palette-surface: oklch(99% 0.003 230);
 ```
 
 Use very low chroma (0.003-0.008) for the tint. The hue should match or complement your neutral hue.
@@ -294,8 +299,8 @@ The font stack should include the variable font name first, then the static font
 | Theme  | Sans          | Mono           | Character                           |
 | ------ | ------------- | -------------- | ----------------------------------- |
 | Arctic | IBM Plex Sans | IBM Plex Mono  | Technical, humanist, great for data |
-| Dusk   | Inter         | JetBrains Mono | Modern, versatile, highly legible   |
-| Ember  | Space Grotesk | Space Mono     | Geometric, distinctive, compact     |
+| Forge  | Space Grotesk | Space Mono     | Geometric, distinctive, compact     |
+| Mist   | Inter         | JetBrains Mono | Modern, versatile, highly legible   |
 
 If you introduce new fonts, you'll need to add them as dependencies and register imports (see Step 4).
 
@@ -322,19 +327,19 @@ Shadows use `color-mix()` with the `--token-shadow-color` variable (which resolv
 
 **Shadow opacity ranges across themes:**
 
-| Token                 | Arctic (subtle) | Ember (moderate) | Dusk (dramatic) |
-| --------------------- | --------------- | ---------------- | --------------- |
-| `shadow-sm`           | 3%              | 4-6%             | 8%              |
-| `shadow-md`           | 3-5%            | 6-9%             | 8-12%           |
-| `shadow-lg`           | 4-7%            | 8-12%            | 10-15%          |
-| `interactive`         | 4%              | 7%               | 10%             |
-| `interactive-hover`   | 4-6%            | 7-10%            | 10-14%          |
-| `interactive-pressed` | 3%              | 5%               | 8%              |
-| `highlight`           | 3-5%            | 6-9%             | 8-12%           |
-| `highlight-hover`     | 5-8%            | 8-12%            | 12-16%          |
-| `highlight-pressed`   | 4%              | 7%               | 10%             |
-| `inset-sm`            | 3%              | 5%               | 8%              |
-| `inset-md`            | 4%              | 7%               | 10%             |
+| Token                 | Arctic (subtle) | Forge (moderate) | Mist (minimal) |
+| --------------------- | --------------- | ---------------- | -------------- |
+| `shadow-sm`           | 3%              | 4-6%             | 3%             |
+| `shadow-md`           | 3-5%            | 6-9%             | 3-5%           |
+| `shadow-lg`           | 4-7%            | 8-12%            | 4-7%           |
+| `interactive`         | 4%              | 7%               | 4%             |
+| `interactive-hover`   | 4-6%            | 7-10%            | 4-6%           |
+| `interactive-pressed` | 3%              | 5%               | 3%             |
+| `highlight`           | 3-5%            | 6-9%             | 3-5%           |
+| `highlight-hover`     | 5-8%            | 8-12%            | 5-8%           |
+| `highlight-pressed`   | 4%              | 7%               | 4%             |
+| `inset-sm`            | 3%              | 5%               | 3%             |
+| `inset-md`            | 4%              | 7%               | 4%             |
 
 There are 12 shadow tokens in total. The three categories serve different purposes:
 
@@ -347,7 +352,7 @@ There are 12 shadow tokens in total. The three categories serve different purpos
 
 Controls how rounded corners feel:
 
-| Token       | Arctic (sharp) | Ember (between) | Dusk (rounded) |
+| Token       | Arctic (sharp) | Forge (between) | Mist (rounded) |
 | ----------- | -------------- | --------------- | -------------- |
 | `radius-sm` | 0.125rem (2px) | 0.1875rem (3px) | 0.25rem (4px)  |
 | `radius-md` | 0.25rem (4px)  | 0.3125rem (5px) | 0.375rem (6px) |
@@ -358,7 +363,7 @@ Controls how rounded corners feel:
 
 Controls button/input heights and similar interactive element dimensions:
 
-| Token     | Arctic         | Ember (most compact) | Dusk (most spacious) |
+| Token     | Arctic         | Forge (most compact) | Mist (most spacious) |
 | --------- | -------------- | -------------------- | -------------------- |
 | `size-xs` | 1.25rem (20px) | 1.25rem (20px)       | 1.5rem (24px)        |
 | `size-sm` | 1.75rem (28px) | 1.625rem (26px)      | 2rem (32px)          |
@@ -370,7 +375,7 @@ Controls button/input heights and similar interactive element dimensions:
 
 Controls padding, gaps, and margins throughout the interface:
 
-| Token          | Arctic          | Ember (tightest) | Dusk (most spacious) |
+| Token          | Arctic          | Forge (tightest) | Mist (most spacious) |
 | -------------- | --------------- | ---------------- | -------------------- |
 | `spacing-2xs`  | 0.125rem (2px)  | 0.0625rem (1px)  | 0.125rem (2px)       |
 | `spacing-xs`   | 0.25rem (4px)   | 0.1875rem (3px)  | 0.25rem (4px)        |
@@ -404,13 +409,13 @@ After creating the palette and theme CSS files, register the theme in these file
 Add imports for your palette and theme (order: palettes together, themes together):
 
 ```css
-@import './tokens/palettes/dusk.css';
 @import './tokens/palettes/arctic.css';
-@import './tokens/palettes/ember.css';
+@import './tokens/palettes/forge.css';
+@import './tokens/palettes/mist.css';
 @import './tokens/palettes/<name>.css'; /* ADD */
-@import './tokens/themes/dusk.css';
 @import './tokens/themes/arctic.css';
-@import './tokens/themes/ember.css';
+@import './tokens/themes/forge.css';
+@import './tokens/themes/mist.css';
 @import './tokens/themes/<name>.css'; /* ADD */
 ```
 
@@ -421,21 +426,21 @@ Add imports for your palette and theme (order: palettes together, themes togethe
 Add your theme to the type, array, labels, and descriptions:
 
 ```typescript
-export type Theme = 'dusk' | 'arctic' | 'ember' | '<name>'
+export type Theme = 'arctic' | 'forge' | 'mist' | '<name>'
 
-export const THEMES: readonly Theme[] = ['dusk', 'arctic', 'ember', '<name>'] as const
+export const THEMES: readonly Theme[] = ['arctic', 'forge', 'mist', '<name>'] as const
 
 export const THEME_LABELS: Record<Theme, string> = {
-  dusk: 'Dusk',
   arctic: 'Arctic',
-  ember: 'Ember',
+  forge: 'Forge',
+  mist: 'Mist',
   <name>: '<Label>',
 }
 
 export const THEME_DESCRIPTIONS: Record<Theme, string> = {
-  dusk: 'Modern, slightly whimsical with warm accents',
   arctic: 'Clean, precise palette for analytical interfaces',
-  ember: 'Warm, compact design-studio aesthetic for data-rich interfaces',
+  forge: 'Precision warmth with graphite and oxidized bronze editorial restraint',
+  mist: 'Near-monochrome precision for dense, content-first interfaces',
   <name>: '<Short description of the theme>',
 }
 ```
@@ -448,9 +453,9 @@ Add an entry to the `themeOptions` array. Choose an icon from the ui-library ico
 
 ```typescript
 const themeOptions: readonly ToggleGroupOption<Theme>[] = [
-  { value: 'dusk', label: THEME_LABELS.dusk, icon: 'moon' },
   { value: 'arctic', label: THEME_LABELS.arctic, icon: 'database' },
-  { value: 'ember', label: THEME_LABELS.ember, icon: 'chart' },
+  { value: 'forge', label: THEME_LABELS.forge, icon: 'chart' },
+  { value: 'mist', label: THEME_LABELS.mist, icon: 'cloud' },
   { value: '<name>', label: THEME_LABELS.<name>, icon: '<icon-name>' },
 ]
 ```
@@ -464,16 +469,16 @@ Add Light and Dark entries to the themes object:
 ```typescript
 withThemeByClassName({
   themes: {
-    'Dusk Light': 'dusk light',
-    'Dusk Dark': 'dusk dark',
     'Arctic Light': 'arctic light',
     'Arctic Dark': 'arctic dark',
-    'Ember Light': 'ember light',
-    'Ember Dark': 'ember dark',
+    'Forge Light': 'forge light',
+    'Forge Dark': 'forge dark',
+    'Mist Light': 'mist light',
+    'Mist Dark': 'mist dark',
     '<Label> Light': '<name> light',    // ADD
     '<Label> Dark': '<name> dark',      // ADD
   },
-  defaultTheme: 'Dusk Light',
+  defaultTheme: 'Arctic Light',
   parentSelector: 'html',
 }),
 ```
@@ -486,7 +491,7 @@ Update the cleanup calls and assertions to include the new theme:
 
 ```typescript
 // In beforeEach and afterEach:
-document.documentElement.classList.remove('dark', 'light', 'dusk', 'arctic', 'ember', '<name>')
+document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist', '<name>')
 
 // In THEMES constant test:
 expect(THEMES).toContain('<name>')
@@ -527,7 +532,7 @@ Run these in order:
 
 ### Token validation
 
-Checks that your palette and theme files have the same CSS custom properties as `dusk.css`:
+Checks that your palette and theme files have the same CSS custom properties as `arctic.css`:
 
 ```bash
 pnpm --filter ui-library validate:token-definitions
@@ -535,8 +540,8 @@ pnpm --filter ui-library validate:token-definitions
 
 This validates:
 
-- All palette properties in `dusk.css` exist in your new palette file (and vice versa)
-- All theme properties in `dusk.css` exist in your new theme file (and vice versa)
+- All palette properties in `arctic.css` exist in your new palette file (and vice versa)
+- All theme properties in `arctic.css` exist in your new theme file (and vice versa)
 - Inset shadow tokens contain the `inset` keyword
 - Non-inset shadow tokens don't accidentally contain `inset`
 
@@ -568,7 +573,7 @@ Switch to your new theme using the Storybook toolbar dropdown. Check both light 
 
 ## Checklist
 
-- [ ] Palette file: `src/styles/tokens/palettes/<name>.css` with all 143 colors + surface
+- [ ] Palette file: `src/styles/tokens/palettes/<name>.css` with 65 key shades + 78 derived + surface
 - [ ] Theme file: `src/styles/tokens/themes/<name>.css` with all 30 structural tokens
 - [ ] `src/styles/index.css` -- imports added
 - [ ] `src/utils/theme.ts` -- type, array, labels, descriptions updated
