@@ -1,5 +1,18 @@
 # @nejcjelovcan/traceframe-playroom-preset
 
+## 0.4.0
+
+### Minor Changes
+
+- [#98](https://github.com/nejcjelovcan/traceframe/pull/98) [`760810b`](https://github.com/nejcjelovcan/traceframe/commit/760810be0c0cb32c450fbb5fcda6b3e15b4b5c0d) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update Playroom snippets with new examples for Navigation, PageLayout, LogView, and Card components. Add welcome snippet for better onboarding experience and configure single viewport display by default.
+
+- [`35ac47c`](https://github.com/nejcjelovcan/traceframe/commit/35ac47c05642c64d63eeba5d968dc6ef8185476e) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update playroom preset, remove PageLayout overflow, add 2xl to responsive values
+
+### Patch Changes
+
+- Updated dependencies [[`ba9565e`](https://github.com/nejcjelovcan/traceframe/commit/ba9565ead720bc330340eeeba37e3463c600e16e), [`7d8a579`](https://github.com/nejcjelovcan/traceframe/commit/7d8a57968eb82907a7d8afa0edd186e8739df61a), [`d0c5e13`](https://github.com/nejcjelovcan/traceframe/commit/d0c5e13ba4dfbdc0764cb5332f492544426ee1c1), [`35ac47c`](https://github.com/nejcjelovcan/traceframe/commit/35ac47c05642c64d63eeba5d968dc6ef8185476e), [`dfb8bfd`](https://github.com/nejcjelovcan/traceframe/commit/dfb8bfdb5dc0f0309a3e67a06f51a5e53b28de5b), [`9c41cac`](https://github.com/nejcjelovcan/traceframe/commit/9c41cac64ef670d1ac0f50422b679cd2568c3653)]:
+  - @nejcjelovcan/traceframe-ui-library@2.0.0
+
 ## 0.3.0
 
 ### Minor Changes
