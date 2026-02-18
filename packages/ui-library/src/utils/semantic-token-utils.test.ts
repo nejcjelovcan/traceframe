@@ -191,25 +191,25 @@ describe('isNonSemanticSizingClass', () => {
 describe('getSpacingSuggestion', () => {
   it('provides exact match suggestions', () => {
     // Arctic theme values - updated to match generated metadata
-    expect(getSpacingSuggestion('p-3.5')).toBe('p-base')      // base = 0.875rem = 3.5
-    expect(getSpacingSuggestion('gap-1.5')).toBe('gap-sm')    // sm = 0.375rem = 1.5
-    expect(getSpacingSuggestion('mx-6')).toBe('mx-lg')        // lg = 1.5rem = 6
-    expect(getSpacingSuggestion('py-1')).toBe('py-xs')        // xs = 0.25rem = 1
-    expect(getSpacingSuggestion('m-2.5')).toBe('m-md')        // md = 0.625rem = 2.5
+    expect(getSpacingSuggestion('p-3.5')).toBe('p-base') // base = 0.875rem = 3.5
+    expect(getSpacingSuggestion('gap-1.5')).toBe('gap-sm') // sm = 0.375rem = 1.5
+    expect(getSpacingSuggestion('mx-6')).toBe('mx-lg') // lg = 1.5rem = 6
+    expect(getSpacingSuggestion('py-1')).toBe('py-xs') // xs = 0.25rem = 1
+    expect(getSpacingSuggestion('m-2.5')).toBe('m-md') // md = 0.625rem = 2.5
     expect(getSpacingSuggestion('gap-x-12')).toBe('gap-x-xl') // xl = 3rem = 12
-    expect(getSpacingSuggestion('p-0.5')).toBe('p-2xs')       // 2xs = 0.125rem = 0.5
+    expect(getSpacingSuggestion('p-0.5')).toBe('p-2xs') // 2xs = 0.125rem = 0.5
   })
 
   it('provides exact match suggestions with modifiers', () => {
     // Arctic theme values
-    expect(getSpacingSuggestion('hover:p-3.5')).toBe('hover:p-base')  // base = 0.875rem = 3.5
-    expect(getSpacingSuggestion('dark:gap-1.5')).toBe('dark:gap-sm')  // sm = 0.375rem = 1.5
+    expect(getSpacingSuggestion('hover:p-3.5')).toBe('hover:p-base') // base = 0.875rem = 3.5
+    expect(getSpacingSuggestion('dark:gap-1.5')).toBe('dark:gap-sm') // sm = 0.375rem = 1.5
   })
 
   it('provides exact match suggestions for negative margins', () => {
     // Arctic theme values
-    expect(getSpacingSuggestion('-m-3.5')).toBe('-m-base')  // base = 0.875rem = 3.5
-    expect(getSpacingSuggestion('-mx-1.5')).toBe('-mx-sm')  // sm = 0.375rem = 1.5
+    expect(getSpacingSuggestion('-m-3.5')).toBe('-m-base') // base = 0.875rem = 3.5
+    expect(getSpacingSuggestion('-mx-1.5')).toBe('-mx-sm') // sm = 0.375rem = 1.5
   })
 
   it('provides nearest match suggestions for non-exact values', () => {
@@ -239,16 +239,16 @@ describe('getSpacingSuggestion', () => {
 describe('getSizingSuggestion', () => {
   it('provides exact match suggestions', () => {
     // Arctic theme values
-    expect(getSizingSuggestion('h-5')).toBe('h-size-xs')   // size-xs = 1.25rem = 5
-    expect(getSizingSuggestion('w-7')).toBe('w-size-sm')   // size-sm = 1.75rem = 7
-    expect(getSizingSuggestion('h-9')).toBe('h-size-md')   // size-md = 2.25rem = 9
-    expect(getSizingSuggestion('w-11')).toBe('w-size-lg')  // size-lg = 2.75rem = 11
-    expect(getSizingSuggestion('h-13')).toBe('h-size-xl')  // size-xl = 3.25rem = 13
+    expect(getSizingSuggestion('h-5')).toBe('h-size-xs') // size-xs = 1.25rem = 5
+    expect(getSizingSuggestion('w-7')).toBe('w-size-sm') // size-sm = 1.75rem = 7
+    expect(getSizingSuggestion('h-9')).toBe('h-size-md') // size-md = 2.25rem = 9
+    expect(getSizingSuggestion('w-11')).toBe('w-size-lg') // size-lg = 2.75rem = 11
+    expect(getSizingSuggestion('h-13')).toBe('h-size-xl') // size-xl = 3.25rem = 13
   })
 
   it('provides exact match suggestions for min/max', () => {
     // Arctic theme values
-    expect(getSizingSuggestion('min-h-7')).toBe('min-h-size-sm')  // size-sm = 1.75rem = 7
+    expect(getSizingSuggestion('min-h-7')).toBe('min-h-size-sm') // size-sm = 1.75rem = 7
     expect(getSizingSuggestion('max-w-11')).toBe('max-w-size-lg') // size-lg = 2.75rem = 11
   })
 

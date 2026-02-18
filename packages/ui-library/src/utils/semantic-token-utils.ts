@@ -266,12 +266,12 @@ export const SPACING_MAP: ReadonlyMap<string, { semantic: string; rem: string }>
     '4rem': '16',
     '8rem': '32',
     // Arctic theme values
-    '0.375rem': '1.5',  // sm in arctic
-    '0.625rem': '2.5',  // md in arctic
-    '0.875rem': '3.5',  // base in arctic
-    '1.5rem': '6',      // lg in arctic
-    '3rem': '12',       // xl in arctic
-    '5rem': '20',       // 2xl in arctic
+    '0.375rem': '1.5', // sm in arctic
+    '0.625rem': '2.5', // md in arctic
+    '0.875rem': '3.5', // base in arctic
+    '1.5rem': '6', // lg in arctic
+    '3rem': '12', // xl in arctic
+    '5rem': '20', // 2xl in arctic
   }
   const map = new Map<string, { semantic: string; rem: string }>()
   for (const [name, data] of Object.entries(TOKEN_METADATA.theme.spacing)) {
@@ -298,11 +298,11 @@ export const SIZING_MAP: ReadonlyMap<string, { semantic: string; rem: string }> 
     '3rem': '12',
     '3.5rem': '14',
     // Arctic theme values
-    '1.25rem': '5',   // xs in arctic
-    '1.75rem': '7',   // sm in arctic
-    '2.25rem': '9',   // md in arctic
-    '2.75rem': '11',  // lg in arctic
-    '3.25rem': '13',  // xl in arctic
+    '1.25rem': '5', // xs in arctic
+    '1.75rem': '7', // sm in arctic
+    '2.25rem': '9', // md in arctic
+    '2.75rem': '11', // lg in arctic
+    '3.25rem': '13', // xl in arctic
   }
   const map = new Map<string, { semantic: string; rem: string }>()
   for (const [name, data] of Object.entries(TOKEN_METADATA.theme.size)) {

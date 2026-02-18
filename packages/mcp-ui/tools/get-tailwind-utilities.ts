@@ -223,10 +223,11 @@ function getTypographyUtilities(): TokenEntry[] {
   }
 
   for (const [name, meta] of Object.entries(TOKEN_METADATA.theme.fontSize)) {
+    const fontMeta = meta as { value: string; lineHeight?: string; description?: string }
     entries.push({
       name: `text-${name}`,
-      value: `${meta.value} / ${meta.lineHeight}`,
-      description: meta.description,
+      value: fontMeta.lineHeight ? `${fontMeta.value} / ${fontMeta.lineHeight}` : fontMeta.value,
+      description: fontMeta.description || '',
       classes: [`text-${name}`],
     })
   }
