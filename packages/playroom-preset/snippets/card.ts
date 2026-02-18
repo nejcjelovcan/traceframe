@@ -113,6 +113,28 @@ export const cardSnippets: Snippet[] = [
 </Card>`,
   },
 
+  // Primary & Secondary Variants
+  {
+    group: 'Card',
+    name: 'Primary Gradient',
+    code: `<Card variant="primary">
+  <CardHeader icon="star">Featured</CardHeader>
+  <CardContent>
+    <p>Primary gradient background for emphasis.</p>
+  </CardContent>
+</Card>`,
+  },
+  {
+    group: 'Card',
+    name: 'Secondary Gradient',
+    code: `<Card variant="secondary">
+  <CardHeader icon="palette">Alternative</CardHeader>
+  <CardContent>
+    <p>Secondary gradient for complementary emphasis.</p>
+  </CardContent>
+</Card>`,
+  },
+
   // Accent Variants
   {
     group: 'Card',
@@ -144,8 +166,28 @@ export const cardSnippets: Snippet[] = [
   </CardContent>
 </Card>`,
   },
+  {
+    group: 'Card',
+    name: 'Accent 4',
+    code: `<Card variant="accent4" className="w-64">
+  <CardHeader>Category D</CardHeader>
+  <CardContent>
+    <p>Accent 4</p>
+  </CardContent>
+</Card>`,
+  },
+  {
+    group: 'Card',
+    name: 'Accent 5',
+    code: `<Card variant="accent5" className="w-64">
+  <CardHeader>Category E</CardHeader>
+  <CardContent>
+    <p>Accent 5</p>
+  </CardContent>
+</Card>`,
+  },
 
-  // Data Variants
+  // Data Variants (Deprecated - Use Accent Variants)
   {
     group: 'Card',
     name: 'Data 1',

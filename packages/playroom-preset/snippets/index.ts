@@ -21,10 +21,13 @@ import { stackSnippets } from './stack'
 import { statCardSnippets } from './stat-card'
 import { toggleGroupSnippets } from './toggle-group'
 import { tooltipSnippets } from './tooltip'
+import { welcomeSnippets } from './welcome'
 
 export type { Snippet } from './types'
 
 const allSnippets = [
+  // Welcome snippet comes first for easy access
+  ...welcomeSnippets,
   ...badgeSnippets,
   ...barChartSnippets,
   ...buttonSnippets,

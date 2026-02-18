@@ -92,4 +92,100 @@ export const pageLayoutSnippets: Snippet[] = [
   <p className="mt-base text-foreground-muted">Documentation content here.</p>
 </PageLayout>`,
   },
+  {
+    group: 'PageLayout',
+    name: 'Filled Primary Theme',
+    code: `<PageLayout
+  variant="filled"
+  color="primary"
+  header={
+    <PageHeader title="Filled Primary">
+      <Navigation orientation="horizontal" variant="filled" color="primary">
+        <NavItem href="#" active>Dashboard</NavItem>
+        <NavItem href="#">Analytics</NavItem>
+        <NavItem href="#">Settings</NavItem>
+      </Navigation>
+    </PageHeader>
+  }
+  sidebar={
+    <div className="w-64 p-base">
+      <Navigation orientation="vertical" variant="filled" color="primary">
+        <NavItem href="#" icon="dashboard" active>Overview</NavItem>
+        <NavItem href="#" icon="package">Packages</NavItem>
+        <NavItem href="#" icon="components">Components</NavItem>
+      </Navigation>
+    </div>
+  }
+>
+  <Stack gap="lg">
+    <h1 className="text-2xl font-bold">Filled Primary Layout</h1>
+    <p className="text-foreground-muted">Header and sidebar use filled variant with primary color for cohesive theming.</p>
+  </Stack>
+</PageLayout>`,
+  },
+  {
+    group: 'PageLayout',
+    name: 'Subtle Secondary Theme',
+    code: `<PageLayout
+  variant="subtle"
+  color="secondary"
+  header={
+    <PageHeader title="Subtle Secondary">
+      <Navigation orientation="horizontal" variant="subtle" color="secondary">
+        <NavItem href="#" active>Home</NavItem>
+        <NavItem href="#">Projects</NavItem>
+        <NavItem href="#">Team</NavItem>
+      </Navigation>
+    </PageHeader>
+  }
+  sidebar={
+    <div className="w-64 p-base">
+      <Navigation orientation="vertical" variant="subtle" color="secondary">
+        <NavItem href="#" icon="folder" active>Projects</NavItem>
+        <NavItem href="#" icon="user">Team Members</NavItem>
+        <NavItem href="#" icon="chart">Reports</NavItem>
+      </Navigation>
+    </div>
+  }
+>
+  <Stack gap="lg">
+    <h1 className="text-2xl font-bold">Subtle Secondary Layout</h1>
+    <p className="text-foreground-muted">Softer visual treatment using subtle variant with secondary color.</p>
+  </Stack>
+</PageLayout>`,
+  },
+  {
+    group: 'PageLayout',
+    name: 'Mixed Accent Themes',
+    code: `<PageLayout
+  variant="subtle"
+  color="accent-1"
+  header={
+    <PageHeader title="Multi-Accent Design">
+      <Navigation orientation="horizontal" variant="subtle" color="accent-1">
+        <NavItem href="#" active>Section A</NavItem>
+        <NavItem href="#">Section B</NavItem>
+        <NavItem href="#">Section C</NavItem>
+      </Navigation>
+    </PageHeader>
+  }
+>
+  <Stack gap="lg">
+    <Grid cols={3} gap="md">
+      <Card variant="accent1">
+        <CardHeader icon="components">Accent 1</CardHeader>
+        <CardContent>Matches header theme</CardContent>
+      </Card>
+      <Card variant="accent2">
+        <CardHeader icon="palette">Accent 2</CardHeader>
+        <CardContent>Complementary color</CardContent>
+      </Card>
+      <Card variant="accent3">
+        <CardHeader icon="code">Accent 3</CardHeader>
+        <CardContent>Additional variety</CardContent>
+      </Card>
+    </Grid>
+  </Stack>
+</PageLayout>`,
+  },
 ]

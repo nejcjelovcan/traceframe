@@ -16,8 +16,48 @@ export const navigationSnippets: Snippet[] = [
     code: `<Navigation orientation="horizontal">
   <NavItem href="#" icon="dashboard" active>Dashboard</NavItem>
   <NavItem href="#" icon="file-description">Reports</NavItem>
-  <NavItem href="#" icon="toggle">Settings</NavItem>
+  <NavItem href="#" icon="settings">Settings</NavItem>
 </Navigation>`,
+  },
+  {
+    group: 'Navigation',
+    name: 'Horizontal Filled Primary',
+    code: `<Navigation orientation="horizontal" variant="filled" color="primary">
+  <NavItem href="#" icon="dashboard" active>Dashboard</NavItem>
+  <NavItem href="#" icon="components">Components</NavItem>
+  <NavItem href="#" icon="settings">Settings</NavItem>
+</Navigation>`,
+  },
+  {
+    group: 'Navigation',
+    name: 'Horizontal Filled Secondary',
+    code: `<Navigation orientation="horizontal" variant="filled" color="secondary">
+  <NavItem href="#" active>Overview</NavItem>
+  <NavItem href="#">Analytics</NavItem>
+  <NavItem href="#">Reports</NavItem>
+  <NavItem href="#">Settings</NavItem>
+</Navigation>`,
+  },
+  {
+    group: 'Navigation',
+    name: 'Horizontal Subtle Accent',
+    code: `<Stack gap="md">
+  <Navigation orientation="horizontal" variant="subtle" color="accent-1">
+    <NavItem href="#" active>Accent 1</NavItem>
+    <NavItem href="#">Tab 2</NavItem>
+    <NavItem href="#">Tab 3</NavItem>
+  </Navigation>
+  <Navigation orientation="horizontal" variant="subtle" color="accent-2">
+    <NavItem href="#" active>Accent 2</NavItem>
+    <NavItem href="#">Tab 2</NavItem>
+    <NavItem href="#">Tab 3</NavItem>
+  </Navigation>
+  <Navigation orientation="horizontal" variant="subtle" color="accent-3">
+    <NavItem href="#" active>Accent 3</NavItem>
+    <NavItem href="#">Tab 2</NavItem>
+    <NavItem href="#">Tab 3</NavItem>
+  </Navigation>
+</Stack>`,
   },
   {
     group: 'Navigation',
@@ -27,8 +67,48 @@ export const navigationSnippets: Snippet[] = [
   <NavItem href="#" icon="components">Components</NavItem>
   <NavItem href="#" icon="hierarchy">Dependencies</NavItem>
   <NavItem href="#" icon="alert-circle">Issues</NavItem>
-  <NavItem href="#" icon="toggle">Settings</NavItem>
+  <NavItem href="#" icon="settings">Settings</NavItem>
 </Navigation>`,
+  },
+  {
+    group: 'Navigation',
+    name: 'Vertical Filled Primary',
+    code: `<div className="w-64">
+  <Navigation orientation="vertical" variant="filled" color="primary">
+    <NavItem href="#" icon="dashboard" active>Dashboard</NavItem>
+    <NavItem href="#" icon="package">Packages</NavItem>
+    <NavItem href="#" icon="components">Components</NavItem>
+    <NavItem href="#" icon="chart">Analytics</NavItem>
+    <NavItem href="#" icon="settings">Settings</NavItem>
+  </Navigation>
+</div>`,
+  },
+  {
+    group: 'Navigation',
+    name: 'Vertical Subtle Secondary',
+    code: `<div className="w-64">
+  <Navigation orientation="vertical" variant="subtle" color="secondary">
+    <NavItem href="#" icon="dashboard" active>Overview</NavItem>
+    <NavItem href="#" icon="search">Search</NavItem>
+    <NavItem href="#" icon="file-description">Documents</NavItem>
+    <NavItem href="#" icon="user">Profile</NavItem>
+  </Navigation>
+</div>`,
+  },
+  {
+    group: 'Navigation',
+    name: 'Vertical Subtle Accent Mix',
+    code: `<div className="w-64 space-y-md">
+  <Navigation orientation="vertical" variant="subtle" color="accent-1">
+    <NavItem href="#" active>Category A</NavItem>
+    <NavItem href="#">Item A1</NavItem>
+    <NavItem href="#">Item A2</NavItem>
+  </Navigation>
+  <Navigation orientation="vertical" variant="subtle" color="accent-2">
+    <NavItem href="#">Category B</NavItem>
+    <NavItem href="#">Item B1</NavItem>
+  </Navigation>
+</div>`,
   },
   {
     group: 'Navigation',
