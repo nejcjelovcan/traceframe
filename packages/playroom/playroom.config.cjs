@@ -8,4 +8,6 @@ module.exports = createPlayroomConfig({
     '../ui-library/src/icons/**/*.{ts,tsx}',
     '!**/*.{test,stories}.*',
   ],
+  // Default to single viewport (desktop) instead of showing all
+  widths: [1024],
 })

@@ -1,3 +1,4 @@
+import { welcomeSnippets } from './welcome'
 import { badgeSnippets } from './badge'
 import { barChartSnippets } from './bar-chart'
 import { buttonSnippets } from './button'
@@ -25,6 +26,8 @@ import { tooltipSnippets } from './tooltip'
 export type { Snippet } from './types'
 
 const allSnippets = [
+  // Welcome snippet comes first for easy access
+  ...welcomeSnippets,
   ...badgeSnippets,
   ...barChartSnippets,
   ...buttonSnippets,
