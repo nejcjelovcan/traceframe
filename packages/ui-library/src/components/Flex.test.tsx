@@ -169,4 +169,147 @@ describe('Flex', () => {
     expect(flex.className).toContain('justify-between')
     expect(flex.className).toContain('flex-wrap')
   })
+
+  describe('responsive props', () => {
+    it('applies responsive direction', () => {
+      render(
+        <Flex direction={{ default: 'col', md: 'row' }} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('flex-col')
+      expect(flex.className).toContain('md:flex-row')
+    })
+
+    it('applies responsive gap', () => {
+      render(
+        <Flex gap={{ default: 'sm', sm: 'md', lg: 'lg' }} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('gap-sm')
+      expect(flex.className).toContain('sm:gap-md')
+      expect(flex.className).toContain('lg:gap-lg')
+    })
+
+    it('applies responsive align', () => {
+      render(
+        <Flex align={{ default: 'start', md: 'center', xl: 'end' }} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('items-start')
+      expect(flex.className).toContain('md:items-center')
+      expect(flex.className).toContain('xl:items-end')
+    })
+
+    it('applies responsive justify', () => {
+      render(
+        <Flex justify={{ sm: 'center', lg: 'between' }} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      // When no default is specified in responsive object, no base class is added
+      expect(flex.className).not.toContain('justify-start')
+      expect(flex.className).toContain('sm:justify-center')
+      expect(flex.className).toContain('lg:justify-between')
+    })
+
+    it('applies responsive justify with default', () => {
+      render(
+        <Flex justify={{ default: 'start', sm: 'center', lg: 'between' }} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('justify-start')
+      expect(flex.className).toContain('sm:justify-center')
+      expect(flex.className).toContain('lg:justify-between')
+    })
+
+    it('applies responsive wrap', () => {
+      render(
+        <Flex wrap={{ default: false, md: true }} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('flex-nowrap')
+      expect(flex.className).toContain('md:flex-wrap')
+    })
+
+    it('combines responsive and static props', () => {
+      render(
+        <Flex direction={{ default: 'col', lg: 'row' }} gap="md" align="center" data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('flex-col')
+      expect(flex.className).toContain('lg:flex-row')
+      expect(flex.className).toContain('gap-md')
+      expect(flex.className).toContain('items-center')
+    })
+
+    it('handles all responsive props together', () => {
+      render(
+        <Flex
+          direction={{ default: 'col', md: 'row' }}
+          gap={{ default: 'xs', sm: 'sm', md: 'md', lg: 'lg', xl: 'xl' }}
+          align={{ default: 'start', lg: 'center' }}
+          justify={{ default: 'start', md: 'between', xl: 'evenly' }}
+          wrap={{ default: false, lg: true }}
+          data-testid="flex"
+        >
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+
+      // Direction
+      expect(flex.className).toContain('flex-col')
+      expect(flex.className).toContain('md:flex-row')
+
+      // Gap
+      expect(flex.className).toContain('gap-xs')
+      expect(flex.className).toContain('sm:gap-sm')
+      expect(flex.className).toContain('md:gap-md')
+      expect(flex.className).toContain('lg:gap-lg')
+      expect(flex.className).toContain('xl:gap-xl')
+
+      // Align
+      expect(flex.className).toContain('items-start')
+      expect(flex.className).toContain('lg:items-center')
+
+      // Justify
+      expect(flex.className).toContain('justify-start')
+      expect(flex.className).toContain('md:justify-between')
+      expect(flex.className).toContain('xl:justify-evenly')
+
+      // Wrap
+      expect(flex.className).toContain('flex-nowrap')
+      expect(flex.className).toContain('lg:flex-wrap')
+    })
+
+    it('fallback to static props when not responsive', () => {
+      render(
+        <Flex direction="row" gap="lg" align="end" justify="around" wrap={true} data-testid="flex">
+          Content
+        </Flex>
+      )
+      const flex = screen.getByTestId('flex')
+      expect(flex.className).toContain('flex-row')
+      expect(flex.className).toContain('gap-lg')
+      expect(flex.className).toContain('items-end')
+      expect(flex.className).toContain('justify-around')
+      expect(flex.className).toContain('flex-wrap')
+
+      // Should not contain responsive classes
+      expect(flex.className).not.toMatch(/sm:|md:|lg:|xl:/)
+    })
+  })
 })
