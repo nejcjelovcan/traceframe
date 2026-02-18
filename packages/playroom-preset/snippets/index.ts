@@ -1,4 +1,3 @@
-import { welcomeSnippets } from './welcome'
 import { badgeSnippets } from './badge'
 import { barChartSnippets } from './bar-chart'
 import { buttonSnippets } from './button'
@@ -22,6 +21,7 @@ import { stackSnippets } from './stack'
 import { statCardSnippets } from './stat-card'
 import { toggleGroupSnippets } from './toggle-group'
 import { tooltipSnippets } from './tooltip'
+import { welcomeSnippets } from './welcome'
 
 export type { Snippet } from './types'
 

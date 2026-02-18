@@ -48,21 +48,21 @@ export const welcomeSnippets: Snippet[] = [
       <h2 className="text-lg font-semibold mb-sm">Quick Start Tips</h2>
       <Stack gap="sm">
         <div className="flex items-start gap-sm">
-          <Icon name="chevron-right" size="sm" className="mt-1 text-primary-600" />
+          <Icon name="chevron-right" size="sm" className="mt-xs text-status-info-foreground" />
           <div>
             <strong className="text-sm">Load Snippets:</strong>
             <span className="text-sm text-foreground-muted ml-xs">Press ⌃⌥Space (Mac) or Ctrl+Alt+Space (PC) to open the snippets menu</span>
           </div>
         </div>
         <div className="flex items-start gap-sm">
-          <Icon name="chevron-right" size="sm" className="mt-1 text-primary-600" />
+          <Icon name="chevron-right" size="sm" className="mt-xs text-status-info-foreground" />
           <div>
             <strong className="text-sm">Change Themes:</strong>
             <span className="text-sm text-foreground-muted ml-xs">Use the theme selector in the toolbar to switch between themes</span>
           </div>
         </div>
         <div className="flex items-start gap-sm">
-          <Icon name="chevron-right" size="sm" className="mt-1 text-primary-600" />
+          <Icon name="chevron-right" size="sm" className="mt-xs text-status-info-foreground" />
           <div>
             <strong className="text-sm">Responsive Preview:</strong>
             <span className="text-sm text-foreground-muted ml-xs">Add more viewports using the viewport controls</span>
