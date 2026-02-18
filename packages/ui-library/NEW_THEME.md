@@ -32,13 +32,13 @@ Applied via CSS classes on the document root:
 
 Start with a personality. The concept drives every subsequent decision:
 
-| Decision        | Restrained (Arctic-style) | Editorial (Forge-style) | Minimal (Mist-style)    |
-| --------------- | ------------------------- | ----------------------- | ----------------------- |
-| Color chroma    | Low (0.02-0.10)           | Medium-low (0.04-0.10)  | Ultra-low (0.015-0.07)  |
-| Shadow opacity  | Subtle (3-8%)             | Moderate (5-12%)        | Minimal (3-8%)          |
-| Border radius   | Sharp (0.125-0.5rem)      | In between              | Rounded (0.25-0.75rem)  |
-| Spacing density | Standard                  | Tight                   | Standard                |
-| Font character  | Technical/neutral         | Geometric/distinctive   | Content-first/receding  |
+| Decision        | Restrained (Arctic-style) | Editorial (Forge-style) | Minimal (Mist-style)   |
+| --------------- | ------------------------- | ----------------------- | ---------------------- |
+| Color chroma    | Low (0.02-0.10)           | Medium-low (0.04-0.10)  | Ultra-low (0.015-0.07) |
+| Shadow opacity  | Subtle (3-8%)             | Moderate (5-12%)        | Minimal (3-8%)         |
+| Border radius   | Sharp (0.125-0.5rem)      | In between              | Rounded (0.25-0.75rem) |
+| Spacing density | Standard                  | Tight                   | Standard               |
+| Font character  | Technical/neutral         | Geometric/distinctive   | Content-first/receding |
 
 Write a short tagline and description that captures the mood. These will appear in the theme metadata.
 
@@ -85,10 +85,26 @@ A palette defines 13 color groups, each with **5 key shades** (100, 300, 500, 70
 
     /* Error palette - derived shades */
     --palette-error-50: color-mix(in oklch, var(--palette-error-100), white 50%);
-    --palette-error-200: color-mix(in oklch, var(--palette-error-100), var(--palette-error-300) 50%);
-    --palette-error-400: color-mix(in oklch, var(--palette-error-300), var(--palette-error-500) 50%);
-    --palette-error-600: color-mix(in oklch, var(--palette-error-500), var(--palette-error-700) 50%);
-    --palette-error-800: color-mix(in oklch, var(--palette-error-700), var(--palette-error-900) 50%);
+    --palette-error-200: color-mix(
+      in oklch,
+      var(--palette-error-100),
+      var(--palette-error-300) 50%
+    );
+    --palette-error-400: color-mix(
+      in oklch,
+      var(--palette-error-300),
+      var(--palette-error-500) 50%
+    );
+    --palette-error-600: color-mix(
+      in oklch,
+      var(--palette-error-500),
+      var(--palette-error-700) 50%
+    );
+    --palette-error-800: color-mix(
+      in oklch,
+      var(--palette-error-700),
+      var(--palette-error-900) 50%
+    );
     --palette-error-950: color-mix(in oklch, var(--palette-error-900), black 50%);
 
     /* Info, Neutral, Primary, Success, Warning palettes... */
@@ -139,15 +155,15 @@ Each OKLCH color has a **hue** (0-360 degrees on the color wheel):
 
 **How existing themes use hue:**
 
-| Group     | Arctic               | Forge                   | Mist                    |
-| --------- | -------------------- | ----------------------- | ----------------------- |
-| Primary   | 220 (steel blue)     | 50 (oxidized bronze)    | 180 (sage teal)         |
-| Secondary | 180 (teal)           | 200 (patina)            | 275 (dusty lavender)    |
-| Neutral   | 240 (cool blue-gray) | 55 (graphite)           | 230 (cool blue-gray)    |
-| Error     | 10                   | 12                      | 12                      |
-| Info      | 210                  | 220                     | 215                     |
-| Success   | 160                  | 155                     | 155                     |
-| Warning   | 70                   | 62                      | 65                      |
+| Group     | Arctic               | Forge                | Mist                 |
+| --------- | -------------------- | -------------------- | -------------------- |
+| Primary   | 220 (steel blue)     | 50 (oxidized bronze) | 180 (sage teal)      |
+| Secondary | 180 (teal)           | 200 (patina)         | 275 (dusty lavender) |
+| Neutral   | 240 (cool blue-gray) | 55 (graphite)        | 230 (cool blue-gray) |
+| Error     | 10                   | 12                   | 12                   |
+| Info      | 210                  | 220                  | 215                  |
+| Success   | 160                  | 155                  | 155                  |
+| Warning   | 70                   | 62                   | 65                   |
 
 **Guidelines for hue selection:**
 

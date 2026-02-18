@@ -83,14 +83,14 @@ Each palette color group defines **5 key shades** (100, 300, 500, 700, 900) with
 
 ### Derivation formulas
 
-| Shade | Formula                                                          |
-| ----- | ---------------------------------------------------------------- |
-| 50    | `color-mix(in oklch, var(--palette-X-100), white 50%)`           |
+| Shade | Formula                                                               |
+| ----- | --------------------------------------------------------------------- |
+| 50    | `color-mix(in oklch, var(--palette-X-100), white 50%)`                |
 | 200   | `color-mix(in oklch, var(--palette-X-100), var(--palette-X-300) 50%)` |
 | 400   | `color-mix(in oklch, var(--palette-X-300), var(--palette-X-500) 50%)` |
 | 600   | `color-mix(in oklch, var(--palette-X-500), var(--palette-X-700) 50%)` |
 | 800   | `color-mix(in oklch, var(--palette-X-700), var(--palette-X-900) 50%)` |
-| 950   | `color-mix(in oklch, var(--palette-X-900), black 50%)`           |
+| 950   | `color-mix(in oklch, var(--palette-X-900), black 50%)`                |
 
 OKLCH's perceptual uniformity means `color-mix()` produces near-identical results to hand-tuned intermediate values (chroma differs by ~0.005-0.01 at most).
 
