@@ -1,6 +1,6 @@
+import { Flex } from '../components/Flex'
 import { Grid } from '../components/Grid'
 import { Heading } from '../components/Heading'
-import { Stack } from '../components/Stack'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -28,7 +28,7 @@ interface TokenSwatchProps {
 }
 
 const TokenSwatch = ({ name, cssVar, description, showBorder = false }: TokenSwatchProps) => (
-  <Stack direction="horizontal" align="center" gap="md" className="group">
+  <Flex direction="row" align="center" gap="md" className="group">
     <div
       className={`w-size-md h-size-md rounded-md shadow-xs flex-shrink-0 transition-transform group-hover:scale-110 ${
         showBorder ? 'ring-1 ring-border' : ''
@@ -36,13 +36,13 @@ const TokenSwatch = ({ name, cssVar, description, showBorder = false }: TokenSwa
       style={{ backgroundColor: `var(${cssVar})` }}
       title={cssVar}
     />
-    <Stack gap="xs" className="min-w-0">
+    <Flex gap="xs" className="min-w-0">
       <div className="font-mono text-xs text-foreground truncate">{name}</div>
       {description && (
         <div className="text-[10px] text-foreground-muted truncate">{description}</div>
       )}
-    </Stack>
-  </Stack>
+    </Flex>
+  </Flex>
 )
 
 interface TokenGroupProps {
@@ -53,7 +53,7 @@ interface TokenGroupProps {
 
 const TokenGroup = ({ title, tokens, columns = 2 }: TokenGroupProps) => {
   return (
-    <Stack gap="md" className="bg-surface rounded-lg border border-border p-base">
+    <Flex gap="md" className="bg-surface rounded-lg border border-border p-base">
       <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
         {title}
       </Heading>
@@ -62,7 +62,7 @@ const TokenGroup = ({ title, tokens, columns = 2 }: TokenGroupProps) => {
           <TokenSwatch key={token.cssVar} {...token} />
         ))}
       </Grid>
-    </Stack>
+    </Flex>
   )
 }
 
@@ -289,9 +289,9 @@ const accent5Tokens = [
 export const AllTokens: Story = {
   render: () => (
     <div className="min-h-screen bg-surface-muted p-lg">
-      <Stack gap="lg" className="max-w-7xl mx-auto">
+      <Flex gap="lg" className="max-w-7xl mx-auto">
         {/* Header */}
-        <Stack gap="sm" className="text-center">
+        <Flex gap="sm" className="text-center">
           <Heading level={1} size="3xl">
             Semantic Tokens
           </Heading>
@@ -299,7 +299,7 @@ export const AllTokens: Story = {
             Theme-aware tokens that adapt between light and dark modes. Use these instead of palette
             colors for consistent, meaningful color application.
           </p>
-        </Stack>
+        </Flex>
 
         {/* Core Tokens */}
         <Grid cols={{ lg: 3 }} gap="base">
@@ -318,126 +318,126 @@ export const AllTokens: Story = {
         </Grid>
 
         {/* Status Tokens - Compact Grid */}
-        <Stack gap="base" className="bg-surface rounded-lg border border-border p-base">
+        <Flex gap="base" className="bg-surface rounded-lg border border-border p-base">
           <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
             Status Tokens
           </Heading>
           <Grid cols={{ sm: 2, lg: 4 }} gap="base">
-            <Stack gap="sm">
+            <Flex gap="sm">
               <div className="text-xs font-medium text-foreground-muted">Info</div>
               {statusInfoTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </Stack>
-            <Stack gap="sm">
+            </Flex>
+            <Flex gap="sm">
               <div className="text-xs font-medium text-foreground-muted">Success</div>
               {statusSuccessTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </Stack>
-            <Stack gap="sm">
+            </Flex>
+            <Flex gap="sm">
               <div className="text-xs font-medium text-foreground-muted">Warning</div>
               {statusWarningTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </Stack>
-            <Stack gap="sm">
+            </Flex>
+            <Flex gap="sm">
               <div className="text-xs font-medium text-foreground-muted">Error</div>
               {statusErrorTokens.map((t) => (
                 <TokenSwatch key={t.cssVar} {...t} />
               ))}
-            </Stack>
+            </Flex>
           </Grid>
-        </Stack>
+        </Flex>
 
         {/* Accent & Data Tokens - Compact Grid */}
         <Grid cols={{ lg: 2 }} gap="base">
-          <Stack gap="base" className="bg-surface rounded-lg border border-border p-base">
+          <Flex gap="base" className="bg-surface rounded-lg border border-border p-base">
             <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
               Accent Tokens (Categorization)
             </Heading>
             <Grid cols={{ sm: 3 }} gap="base">
-              <Stack gap="sm">
+              <Flex gap="sm">
                 <div className="text-xs font-medium text-foreground-muted">Accent 1</div>
                 {accent1Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </Stack>
-              <Stack gap="sm">
+              </Flex>
+              <Flex gap="sm">
                 <div className="text-xs font-medium text-foreground-muted">Accent 2</div>
                 {accent2Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </Stack>
-              <Stack gap="sm">
+              </Flex>
+              <Flex gap="sm">
                 <div className="text-xs font-medium text-foreground-muted">Accent 3</div>
                 {accent3Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </Stack>
+              </Flex>
             </Grid>
-          </Stack>
+          </Flex>
 
-          <Stack gap="base" className="bg-surface rounded-lg border border-border p-base">
+          <Flex gap="base" className="bg-surface rounded-lg border border-border p-base">
             <Heading level={3} size="sm" className="pb-sm border-b border-border-muted">
               Accent 4-5 Tokens (Data Visualization)
             </Heading>
             <Grid cols={{ sm: 2 }} gap="base">
-              <Stack gap="sm">
+              <Flex gap="sm">
                 <div className="text-xs font-medium text-foreground-muted">Accent 4</div>
                 {accent4Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </Stack>
-              <Stack gap="sm">
+              </Flex>
+              <Flex gap="sm">
                 <div className="text-xs font-medium text-foreground-muted">Accent 5</div>
                 {accent5Tokens.map((t) => (
                   <TokenSwatch key={t.cssVar} {...t} />
                 ))}
-              </Stack>
+              </Flex>
             </Grid>
-          </Stack>
+          </Flex>
         </Grid>
 
         {/* Token Structure Legend */}
-        <Stack gap="md" className="bg-surface rounded-lg border border-border p-base">
+        <Flex gap="md" className="bg-surface rounded-lg border border-border p-base">
           <Heading level={3} size="sm">
             Token Variant Structure
           </Heading>
           <Grid cols={{ sm: 2, md: 5 }} gap="base" className="text-xs">
-            <Stack direction="horizontal" align="center" gap="sm">
+            <Flex direction="row" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info" />
               <span className="text-foreground-muted">
                 <strong>base</strong> - Primary color
               </span>
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="sm">
+            </Flex>
+            <Flex direction="row" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-muted" />
               <span className="text-foreground-muted">
                 <strong>muted</strong> - Subtle bg
               </span>
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="sm">
+            </Flex>
+            <Flex direction="row" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-foreground" />
               <span className="text-foreground-muted">
                 <strong>foreground</strong> - Text
               </span>
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="sm">
+            </Flex>
+            <Flex direction="row" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-emphasis" />
               <span className="text-foreground-muted">
                 <strong>emphasis</strong> - Strong
               </span>
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="sm">
+            </Flex>
+            <Flex direction="row" align="center" gap="sm">
               <div className="w-size-xs h-size-xs rounded-sm bg-status-info-border" />
               <span className="text-foreground-muted">
                 <strong>border</strong> - Borders
               </span>
-            </Stack>
+            </Flex>
           </Grid>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
     </div>
   ),
   parameters: {
@@ -451,23 +451,23 @@ export const AllTokens: Story = {
 
 /** Interactive example showing surface layering */
 const SurfaceLayersExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">Surface Layering</div>
-    <Stack gap="sm" className="bg-surface-muted p-base rounded-lg">
+    <Flex gap="sm" className="bg-surface-muted p-base rounded-lg">
       <div className="text-xs text-foreground-muted">surface-muted (page bg)</div>
-      <Stack gap="sm" className="bg-surface p-base rounded-lg shadow-xs">
+      <Flex gap="sm" className="bg-surface p-base rounded-lg shadow-xs">
         <div className="text-xs text-foreground-muted">surface (card)</div>
         <div className="bg-surface-subtle p-md rounded-sm">
           <div className="text-xs text-foreground-muted">surface-subtle (well/hover)</div>
         </div>
-      </Stack>
-    </Stack>
-  </Stack>
+      </Flex>
+    </Flex>
+  </Flex>
 )
 
 /** Interactive list item showing hover/active/pressed states */
 const InteractiveStatesExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">
       Interactive States (hover over items)
     </div>
@@ -497,14 +497,14 @@ const InteractiveStatesExample = () => (
         </button>
       ))}
     </div>
-  </Stack>
+  </Flex>
 )
 
 /** Button variants showing primary, destructive, accent */
 const ButtonVariantsExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">Button Tokens</div>
-    <Stack direction="horizontal" gap="md" wrap={true}>
+    <Flex direction="row" gap="md" wrap={true}>
       <button className="px-base py-sm rounded-md text-sm font-medium bg-interactive-primary text-interactive-primary-foreground hover:bg-interactive-primary-hover transition-colors">
         Primary Action
       </button>
@@ -520,17 +520,17 @@ const ButtonVariantsExample = () => (
       >
         Disabled
       </button>
-    </Stack>
-  </Stack>
+    </Flex>
+  </Flex>
 )
 
 /** Status badges showing all status token variants */
 const StatusBadgesExample = () => (
-  <Stack gap="base">
+  <Flex gap="base">
     <div className="text-xs font-medium text-foreground-muted">Status Badges</div>
     <Grid cols={{ sm: 2, md: 4 }} gap="base">
       {/* Info */}
-      <Stack gap="sm">
+      <Flex gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-info-muted text-status-info-foreground border border-status-info-border">
           Info Badge
         </span>
@@ -538,9 +538,9 @@ const StatusBadgesExample = () => (
           <div className="text-sm font-medium text-status-info-foreground">Info Alert</div>
           <div className="text-xs text-status-info-foreground/80">Using status-info tokens</div>
         </div>
-      </Stack>
+      </Flex>
       {/* Success */}
-      <Stack gap="sm">
+      <Flex gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-success-muted text-status-success-foreground border border-status-success-border">
           Success
         </span>
@@ -550,9 +550,9 @@ const StatusBadgesExample = () => (
             Using status-success tokens
           </div>
         </div>
-      </Stack>
+      </Flex>
       {/* Warning */}
-      <Stack gap="sm">
+      <Flex gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-warning-muted text-status-warning-foreground border border-status-warning-border">
           Warning
         </span>
@@ -562,9 +562,9 @@ const StatusBadgesExample = () => (
             Using status-warning tokens
           </div>
         </div>
-      </Stack>
+      </Flex>
       {/* Error */}
-      <Stack gap="sm">
+      <Flex gap="sm">
         <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-status-error-muted text-status-error-foreground border border-status-error-border">
           Error
         </span>
@@ -572,16 +572,16 @@ const StatusBadgesExample = () => (
           <div className="text-sm font-medium text-status-error-foreground">Error Alert</div>
           <div className="text-xs text-status-error-foreground/80">Using status-error tokens</div>
         </div>
-      </Stack>
+      </Flex>
     </Grid>
-  </Stack>
+  </Flex>
 )
 
 /** Accent tokens used for categorization tags */
 const AccentTagsExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">Accent Tags (Categorization)</div>
-    <Stack direction="horizontal" gap="sm" wrap={true}>
+    <Flex direction="row" gap="sm" wrap={true}>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-muted text-accent-1-foreground border border-accent-1-border">
         Category A
       </span>
@@ -591,9 +591,9 @@ const AccentTagsExample = () => (
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-muted text-accent-3-foreground border border-accent-3-border">
         Category C
       </span>
-    </Stack>
+    </Flex>
     {/* Solid variants */}
-    <Stack direction="horizontal" gap="sm" wrap={true}>
+    <Flex direction="row" gap="sm" wrap={true}>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-filled">
         Solid Accent 1
       </span>
@@ -603,13 +603,13 @@ const AccentTagsExample = () => (
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-filled">
         Solid Accent 3
       </span>
-    </Stack>
-  </Stack>
+    </Flex>
+  </Flex>
 )
 
 /** Accent tokens for chart legend */
 const DataVisualizationExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">Data Visualization</div>
     {/* Simple bar chart mockup */}
     <div className="bg-surface rounded-lg border border-border p-base">
@@ -622,34 +622,34 @@ const DataVisualizationExample = () => (
         <div className="flex-1 bg-accent-5 rounded-t" style={{ height: '85%' }} />
       </div>
       {/* Legend */}
-      <Stack direction="horizontal" gap="base" className="text-xs">
-        <Stack direction="horizontal" align="center" gap="sm">
+      <Flex direction="row" gap="base" className="text-xs">
+        <Flex direction="row" align="center" gap="sm">
           <div className="w-3 h-3 rounded-sm bg-accent-4" />
           <span className="text-foreground-muted">Series A (accent-4)</span>
-        </Stack>
-        <Stack direction="horizontal" align="center" gap="sm">
+        </Flex>
+        <Flex direction="row" align="center" gap="sm">
           <div className="w-3 h-3 rounded-sm bg-accent-5" />
           <span className="text-foreground-muted">Series B (accent-5)</span>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
     </div>
     {/* Data badges */}
-    <Stack direction="horizontal" gap="sm" wrap={true}>
+    <Flex direction="row" gap="sm" wrap={true}>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-4-muted text-accent-4-foreground border border-accent-4-border">
         Dataset 1
       </span>
       <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-5-muted text-accent-5-foreground border border-accent-5-border">
         Dataset 2
       </span>
-    </Stack>
-  </Stack>
+    </Flex>
+  </Flex>
 )
 
 /** Text hierarchy example */
 const TextHierarchyExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">Text Hierarchy</div>
-    <Stack gap="sm" className="bg-surface rounded-lg border border-border p-base">
+    <Flex gap="sm" className="bg-surface rounded-lg border border-border p-base">
       <Heading level={3}>Primary Heading</Heading>
       <p className="text-sm text-foreground">
         Primary body text uses{' '}
@@ -659,9 +659,9 @@ const TextHierarchyExample = () => (
         Secondary text uses{' '}
         <code className="text-xs bg-surface-subtle px-xs rounded-sm">foreground-muted</code>
       </p>
-    </Stack>
+    </Flex>
     {/* Foreground on filled backgrounds */}
-    <Stack gap="sm" className="bg-interactive-primary rounded-lg p-base">
+    <Flex gap="sm" className="bg-interactive-primary rounded-lg p-base">
       <Heading level={3} className="text-foreground-filled">
         Filled Background
       </Heading>
@@ -677,15 +677,15 @@ const TextHierarchyExample = () => (
           foreground-filled-muted
         </code>
       </p>
-    </Stack>
-  </Stack>
+    </Flex>
+  </Flex>
 )
 
 /** Focus ring example */
 const FocusRingExample = () => (
-  <Stack gap="sm">
+  <Flex gap="sm">
     <div className="text-xs font-medium text-foreground-muted">Focus States (tab through)</div>
-    <Stack direction="horizontal" gap="md" wrap={true}>
+    <Flex direction="row" gap="md" wrap={true}>
       <button className="px-base py-sm rounded-md text-sm font-medium bg-surface border border-border text-foreground hover:bg-interactive-hover focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface transition-colors">
         Focus me
       </button>
@@ -694,16 +694,16 @@ const FocusRingExample = () => (
         placeholder="Or focus this input"
         className="px-md py-sm rounded-md text-sm bg-surface border border-border text-foreground placeholder:text-foreground-muted focus:outline-hidden focus:ring-2 focus:ring-ring focus:border-ring transition-colors"
       />
-    </Stack>
-  </Stack>
+    </Flex>
+  </Flex>
 )
 
 export const TokensInUse: Story = {
   render: () => (
     <div className="min-h-screen bg-surface-muted p-lg">
-      <Stack gap="lg" className="max-w-5xl mx-auto">
+      <Flex gap="lg" className="max-w-5xl mx-auto">
         {/* Header */}
-        <Stack gap="sm" className="text-center">
+        <Flex gap="sm" className="text-center">
           <Heading level={1} size="3xl">
             Tokens in Use
           </Heading>
@@ -711,7 +711,7 @@ export const TokensInUse: Story = {
             Interactive examples showing how semantic tokens create consistent, theme-aware UI
             patterns.
           </p>
-        </Stack>
+        </Flex>
 
         {/* Examples Grid */}
         <Grid cols={{ lg: 2 }} gap="lg">
@@ -740,7 +740,7 @@ export const TokensInUse: Story = {
             <FocusRingExample />
           </div>
         </Grid>
-      </Stack>
+      </Flex>
     </div>
   ),
   parameters: {

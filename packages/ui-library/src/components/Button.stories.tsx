@@ -1,7 +1,7 @@
 import { Button } from './Button'
+import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
-import { Stack } from './Stack'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -165,9 +165,9 @@ export const Loading: Story = {
 
 export const FullWidth: Story = {
   render: () => (
-    <Stack className="w-96">
+    <Flex className="w-96">
       <Button fullWidth>Full Width Button</Button>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -204,7 +204,7 @@ export const IconOnly: Story = {
 
 export const IconOnlyVariants: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="sm">
+    <Flex direction="row" gap="sm">
       <Button leftIcon="close" iconOnly variant="primary" aria-label="Close">
         Close
       </Button>
@@ -220,7 +220,7 @@ export const IconOnlyVariants: Story = {
       <Button leftIcon="close" iconOnly variant="destructive" aria-label="Delete">
         Delete
       </Button>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -234,31 +234,31 @@ export const InteractiveShadows: Story = {
     },
   },
   render: () => (
-    <Stack gap="lg">
-      <Stack gap="sm">
+    <Flex gap="lg">
+      <Flex gap="sm">
         <p className="text-xs text-foreground-muted">Variants with interactive shadows</p>
-        <Stack direction="horizontal" gap="sm">
+        <Flex direction="row" gap="sm">
           <Button variant="primary">Primary</Button>
           <Button variant="secondary">Secondary</Button>
           <Button variant="destructive">Destructive</Button>
-        </Stack>
-      </Stack>
-      <Stack gap="sm">
+        </Flex>
+      </Flex>
+      <Flex gap="sm">
         <p className="text-xs text-foreground-muted">
           Minimal variants without shadows (design intent)
         </p>
-        <Stack direction="horizontal" gap="sm">
+        <Flex direction="row" gap="sm">
           <Button variant="outline">Outline (no shadow)</Button>
           <Button variant="ghost">Ghost (no shadow)</Button>
-        </Stack>
-      </Stack>
-    </Stack>
+        </Flex>
+      </Flex>
+    </Flex>
   ),
 }
 
 export const IconOnlySizes: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="sm">
+    <Flex direction="row" gap="sm">
       <Button leftIcon="close" iconOnly size="sm" variant="outline" aria-label="Close">
         Close
       </Button>
@@ -268,14 +268,14 @@ export const IconOnlySizes: Story = {
       <Button leftIcon="close" iconOnly size="lg" variant="outline" aria-label="Close">
         Close
       </Button>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const IconsWithVariants: Story = {
   render: () => (
-    <Stack gap="md">
-      <Stack direction="horizontal" gap="sm">
+    <Flex gap="md">
+      <Flex direction="row" gap="sm">
         <Button variant="primary" leftIcon="check">
           Confirm
         </Button>
@@ -291,8 +291,8 @@ export const IconsWithVariants: Story = {
         <Button variant="destructive" leftIcon="close">
           Delete
         </Button>
-      </Stack>
-      <Stack direction="horizontal" gap="sm">
+      </Flex>
+      <Flex direction="row" gap="sm">
         <Button variant="primary" rightIcon="arrow-right">
           Continue
         </Button>
@@ -302,14 +302,14 @@ export const IconsWithVariants: Story = {
         <Button variant="ghost" rightIcon="external">
           External Link
         </Button>
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
 export const IconsWithSizes: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="sm">
+    <Flex direction="row" gap="sm">
       <Button size="sm" leftIcon="search">
         Small
       </Button>
@@ -319,7 +319,7 @@ export const IconsWithSizes: Story = {
       <Button size="lg" leftIcon="search">
         Large
       </Button>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -333,7 +333,7 @@ export const AsChild: Story = {
     },
   },
   render: () => (
-    <Stack direction="horizontal" gap="sm">
+    <Flex direction="row" gap="sm">
       <Button asChild variant="outline" rightIcon="external">
         <a href="https://linear.app" target="_blank" rel="noopener noreferrer">
           View Issue
@@ -345,13 +345,13 @@ export const AsChild: Story = {
       <Button asChild variant="ghost">
         <a href="/settings">Settings</a>
       </Button>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const Showcase: Story = {
   render: () => (
-    <Stack gap="xl" className="p-lg">
+    <Flex gap="xl" className="p-lg">
       {/* Section 1: All Variants × All Sizes Grid */}
       <section className="space-y-base">
         <Heading level={2} size="lg">
@@ -409,26 +409,26 @@ export const Showcase: Story = {
           States (hover, active, disabled, loading)
         </Heading>
         <Grid cols={5} gap="base">
-          <Stack gap="sm">
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Default</p>
             <Button>Default</Button>
-          </Stack>
-          <Stack gap="sm">
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Hover (see on hover)</p>
             <Button>Hover Me</Button>
-          </Stack>
-          <Stack gap="sm">
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Active (see on click)</p>
             <Button>Click Me</Button>
-          </Stack>
-          <Stack gap="sm">
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Disabled</p>
             <Button disabled>Disabled</Button>
-          </Stack>
-          <Stack gap="sm">
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Loading</p>
             <Button loading>Loading</Button>
-          </Stack>
+          </Flex>
         </Grid>
         <Grid cols={5} gap="base">
           {(['primary', 'secondary', 'outline', 'ghost', 'destructive'] as const).map((variant) => (
@@ -446,9 +446,9 @@ export const Showcase: Story = {
         </Heading>
 
         <Grid cols={3} gap="base">
-          <Stack gap="sm">
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Left Icon</p>
-            <Stack gap="sm">
+            <Flex gap="sm">
               <Button leftIcon="search">Search</Button>
               <Button leftIcon="check" variant="secondary">
                 Confirm
@@ -456,11 +456,11 @@ export const Showcase: Story = {
               <Button leftIcon="copy" variant="outline">
                 Copy
               </Button>
-            </Stack>
-          </Stack>
-          <Stack gap="sm">
+            </Flex>
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Right Icon</p>
-            <Stack gap="sm">
+            <Flex gap="sm">
               <Button rightIcon="arrow-right">Continue</Button>
               <Button rightIcon="chevron-down" variant="secondary">
                 Options
@@ -468,11 +468,11 @@ export const Showcase: Story = {
               <Button rightIcon="external" variant="outline">
                 External
               </Button>
-            </Stack>
-          </Stack>
-          <Stack gap="sm">
+            </Flex>
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Both Icons</p>
-            <Stack gap="sm">
+            <Flex gap="sm">
               <Button leftIcon="package" rightIcon="external">
                 View Package
               </Button>
@@ -482,8 +482,8 @@ export const Showcase: Story = {
               <Button leftIcon="database" rightIcon="arrow-right" variant="outline">
                 Export Data
               </Button>
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </Grid>
       </section>
 
@@ -494,9 +494,9 @@ export const Showcase: Story = {
         </Heading>
 
         <Grid cols={3} gap="lg">
-          <Stack gap="sm">
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Icon Only</p>
-            <Stack gap="sm">
+            <Flex gap="sm">
               <Button iconOnly leftIcon="search" aria-label="Search">
                 Search
               </Button>
@@ -512,11 +512,11 @@ export const Showcase: Story = {
               <Button iconOnly leftIcon="close" variant="destructive" aria-label="Delete">
                 Delete
               </Button>
-            </Stack>
-          </Stack>
-          <Stack gap="sm">
+            </Flex>
+          </Flex>
+          <Flex gap="sm">
             <p className="text-xs text-foreground-muted">Full Width</p>
-            <Stack gap="sm">
+            <Flex gap="sm">
               <Button fullWidth>Full Width</Button>
               <Button fullWidth variant="outline">
                 Full Outline
@@ -524,10 +524,10 @@ export const Showcase: Story = {
               <Button fullWidth loading>
                 Full Loading
               </Button>
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </Grid>
       </section>
-    </Stack>
+    </Flex>
   ),
 }

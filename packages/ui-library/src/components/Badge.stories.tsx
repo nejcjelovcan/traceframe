@@ -1,6 +1,6 @@
 import { Badge } from './Badge'
+import { Flex } from './Flex'
 import { Heading } from './Heading'
-import { Stack } from './Stack'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -267,7 +267,7 @@ export const AllVariants: Story = {
 export const Showcase: Story = {
   parameters: { layout: 'padded' },
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       {/* All variants */}
       <section>
         <Heading level={3} className="mb-base">
@@ -394,6 +394,6 @@ export const Showcase: Story = {
           </Badge>
         </div>
       </section>
-    </Stack>
+    </Flex>
   ),
 }

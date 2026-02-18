@@ -1,15 +1,15 @@
 import { Badge } from './Badge'
 import { Button } from './Button'
 import { Card, CardContent } from './Card'
+import { Flex } from './Flex'
 import { Input } from './Input'
-import { Stack } from './Stack'
 import { StatCard } from './StatCard'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Stack> = {
-  title: 'Components/Stack',
-  component: Stack,
+const meta: Meta<typeof Flex> = {
+  title: 'Components/Flex',
+  component: Flex,
   parameters: {
     layout: 'centered',
     docs: {
@@ -19,27 +19,27 @@ A flexbox layout component for arranging items in a row or column with consisten
 
 **Tier:** 1 (Tailwind + CVA)
 
-**Usage:** Use for linear layouts like form fields, button groups, navigation items, or any content that flows in a single direction. Prefer Stack over manual flex utilities for consistency.
+**Usage:** Use for linear layouts like form fields, button groups, navigation items, or any content that flows in a single direction. Prefer Flex over manual flex utilities for consistency.
 
 **Common Patterns:**
 \`\`\`tsx
 // Form layout
-<Stack gap="sm">
+<Flex gap="sm">
   <Input />
   <Button>Submit</Button>
-</Stack>
+</Flex>
 
 // Horizontal button group
-<Stack direction="horizontal" gap="xs">
+<Flex direction="row" gap="xs">
   <Button>Cancel</Button>
   <Button>Save</Button>
-</Stack>
+</Flex>
 
 // Tag cloud with wrapping
-<Stack direction="horizontal" gap="xs" wrap>
+<Flex direction="row" gap="xs" wrap>
   <Badge>Tag 1</Badge>
   <Badge>Tag 2</Badge>
-</Stack>
+</Flex>
 \`\`\`
 
 **Accessibility:**
@@ -53,11 +53,11 @@ A flexbox layout component for arranging items in a row or column with consisten
   tags: ['autodocs'],
   argTypes: {
     direction: {
-      description: 'Stack direction: vertical (column) or horizontal (row)',
+      description: 'Flex direction: col (column) or row',
       control: 'select',
-      options: ['vertical', 'horizontal'],
+      options: ['col', 'row'],
       table: {
-        defaultValue: { summary: 'vertical' },
+        defaultValue: { summary: 'col' },
       },
     },
     gap: {
@@ -92,7 +92,7 @@ A flexbox layout component for arranging items in a row or column with consisten
       },
     },
     children: {
-      description: 'Items to arrange in the stack',
+      description: 'Items to arrange in the flex container',
     },
   },
 }
@@ -102,46 +102,46 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    direction: 'vertical',
+    direction: 'col',
     gap: 'sm',
     align: 'stretch',
     justify: 'start',
     wrap: false,
   },
   render: (args) => (
-    <Stack {...args} className="w-64">
+    <Flex {...args} className="w-64">
       <Button>Item 1</Button>
       <Button>Item 2</Button>
       <Button>Item 3</Button>
-    </Stack>
+    </Flex>
   ),
 }
 
-export const Vertical: Story = {
+export const Column: Story = {
   render: () => (
-    <Stack direction="vertical" gap="sm" className="w-64">
+    <Flex direction="col" gap="sm" className="w-64">
       <Input placeholder="you@example.com" />
       <Input type="password" placeholder="Enter password" />
       <Button variant="primary" className="self-end">
         Sign In
       </Button>
-    </Stack>
+    </Flex>
   ),
 }
 
-export const Horizontal: Story = {
+export const Row: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="sm" align="center">
+    <Flex direction="row" gap="sm" align="center">
       <Button>Left</Button>
       <Button>Center</Button>
       <Button>Right</Button>
-    </Stack>
+    </Flex>
   ),
 }
 
-export const HorizontalWithWrap: Story = {
+export const RowWithWrap: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="xs" wrap className="max-w-xs">
+    <Flex direction="row" gap="xs" wrap className="max-w-xs">
       <Button size="sm">React</Button>
       <Button size="sm">TypeScript</Button>
       <Button size="sm">Tailwind</Button>
@@ -150,62 +150,58 @@ export const HorizontalWithWrap: Story = {
       <Button size="sm">Effect</Button>
       <Button size="sm">Node.js</Button>
       <Button size="sm">pnpm</Button>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const GapSizes: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="lg" align="start">
+    <Flex direction="row" gap="lg" align="start">
       {(['none', '2xs', 'xs', 'sm', 'md', 'base', 'lg', 'xl', '2xl'] as const).map((gap) => (
-        <Stack key={gap} gap="xs" align="center">
+        <Flex key={gap} gap="xs" align="center">
           <Badge variant="secondary">{gap}</Badge>
-          <Stack gap={gap} className="rounded-sm border border-border p-sm">
+          <Flex gap={gap} className="rounded-sm border border-border p-sm">
             <Button size="sm">A</Button>
             <Button size="sm">B</Button>
             <Button size="sm">C</Button>
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
       ))}
-    </Stack>
+    </Flex>
   ),
 }
 
 export const AlignmentVariations: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="sm">
+    <Flex direction="row" gap="sm">
       {(['start', 'center', 'end', 'stretch'] as const).map((align) => (
-        <Stack key={align} gap="xs" align="center">
+        <Flex key={align} gap="xs" align="center">
           <Badge>{align}</Badge>
-          <Stack align={align} gap="xs" className="w-36 rounded-sm border border-border p-sm">
+          <Flex align={align} gap="xs" className="w-36 rounded-sm border border-border p-sm">
             <Button size="sm">Short</Button>
             <Button size="sm">Medium text</Button>
             <Button size="sm">Lg</Button>
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
       ))}
-    </Stack>
+    </Flex>
   ),
 }
 
 export const JustifyVariations: Story = {
   render: () => (
-    <Stack gap="sm">
+    <Flex gap="sm">
       {(['start', 'center', 'end', 'between', 'around', 'evenly'] as const).map((justify) => (
-        <Stack key={justify} gap="xs">
+        <Flex key={justify} gap="xs">
           <Badge className="self-start">{justify}</Badge>
-          <Stack
-            direction="horizontal"
-            justify={justify}
-            className="rounded-sm border border-border p-sm"
-          >
+          <Flex direction="row" justify={justify} className="rounded-sm border border-border p-sm">
             <Button size="sm">A</Button>
             <Button size="sm">B</Button>
             <Button size="sm">C</Button>
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
       ))}
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -213,37 +209,37 @@ export const FormLayout: Story = {
   render: () => (
     <Card className="w-80">
       <CardContent>
-        <Stack gap="sm">
+        <Flex gap="sm">
           <Input placeholder="John Doe" />
           <Input type="email" placeholder="john@example.com" />
-          <Stack direction="horizontal" justify="end" gap="xs">
+          <Flex direction="row" justify="end" gap="xs">
             <Button variant="outline">Cancel</Button>
             <Button variant="primary">Submit</Button>
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
       </CardContent>
     </Card>
   ),
 }
 
-export const NestedStacks: Story = {
+export const NestedFlexContainers: Story = {
   render: () => (
-    <Stack gap="md" className="w-96">
-      <Stack direction="horizontal" justify="between" align="center">
+    <Flex gap="md" className="w-96">
+      <Flex direction="row" justify="between" align="center">
         <Input placeholder="Search..." leftIcon="search" size="sm" className="w-48" />
-        <Stack direction="horizontal" gap="xs">
+        <Flex direction="row" gap="xs">
           <Button variant="outline" size="sm" leftIcon="package">
             Export
           </Button>
           <Button variant="primary" size="sm">
             New
           </Button>
-        </Stack>
-      </Stack>
-      <Stack direction="horizontal" gap="sm">
+        </Flex>
+      </Flex>
+      <Flex direction="row" gap="sm">
         <StatCard label="Total Users" value="1,234" trend="+12%" icon="users" className="flex-1" />
         <StatCard label="Active" value="892" trend="-3%" icon="chart" className="flex-1" />
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }

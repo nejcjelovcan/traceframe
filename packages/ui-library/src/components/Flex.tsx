@@ -3,11 +3,11 @@ import { forwardRef, type HTMLAttributes } from 'react'
 
 import { cn } from '../utils/cn.js'
 
-const stackVariants = cva('flex', {
+const flexVariants = cva('flex', {
   variants: {
     direction: {
-      vertical: 'flex-col',
-      horizontal: 'flex-row',
+      col: 'flex-col',
+      row: 'flex-row',
     },
     gap: {
       none: 'gap-0',
@@ -41,7 +41,7 @@ const stackVariants = cva('flex', {
     },
   },
   defaultVariants: {
-    direction: 'vertical',
+    direction: 'col',
     gap: 'sm',
     align: 'stretch',
     justify: 'start',
@@ -49,14 +49,14 @@ const stackVariants = cva('flex', {
   },
 })
 
-export interface StackProps
-  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof stackVariants> {}
+export interface FlexProps
+  extends HTMLAttributes<HTMLDivElement>, VariantProps<typeof flexVariants> {}
 
-export const Stack = forwardRef<HTMLDivElement, StackProps>(
+export const Flex = forwardRef<HTMLDivElement, FlexProps>(
   ({ className, direction, gap, align, justify, wrap, ...props }, ref) => {
     return (
       <div
-        className={cn(stackVariants({ direction, gap, align, justify, wrap, className }))}
+        className={cn(flexVariants({ direction, gap, align, justify, wrap, className }))}
         ref={ref}
         {...props}
       />
@@ -64,6 +64,6 @@ export const Stack = forwardRef<HTMLDivElement, StackProps>(
   }
 )
 
-Stack.displayName = 'Stack'
+Flex.displayName = 'Flex'
 
-export { stackVariants }
+export { flexVariants }

@@ -1,10 +1,10 @@
 import { Button } from './Button'
 import { Card, CardContent } from './Card'
 import { ErrorState } from './ErrorState'
+import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { Link } from './Link'
-import { Stack } from './Stack'
 import { Icon } from '../icons/index'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -166,7 +166,7 @@ export const SizeLarge: Story = {
 
 export const AllSizes: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       <div className="border-b pb-base">
         <Heading level={4} color="muted" className="mb-base">
           Small (sm)
@@ -202,7 +202,7 @@ export const AllSizes: Story = {
           onRetry={() => alert('Retry clicked!')}
         />
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -229,7 +229,7 @@ export const WithCustomIconElement: Story = {
 
 export const IconCustomization: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       <div className="border-b pb-base">
         <Heading level={4} color="muted" className="mb-base">
           Default icon (alert-circle)
@@ -265,7 +265,7 @@ export const IconCustomization: Story = {
           }
         />
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -306,7 +306,7 @@ export const WithButtonAction: Story = {
 
 export const ActionVsOnRetry: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       <div className="border-b pb-base">
         <Heading level={4} color="muted" className="mb-base">
           With onRetry (default button)
@@ -344,7 +344,7 @@ export const ActionVsOnRetry: Story = {
           }
         />
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -354,7 +354,7 @@ export const Showcase: Story = {
     layout: 'padded',
   },
   render: () => (
-    <Stack gap="xl">
+    <Flex gap="xl">
       {/* Size Variants */}
       <section>
         <Heading level={2} className="mb-lg">
@@ -621,6 +621,6 @@ export const Showcase: Story = {
           </Card>
         </Grid>
       </section>
-    </Stack>
+    </Flex>
   ),
 }

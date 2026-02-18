@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
+import { Flex } from './Flex'
 import { Heading } from './Heading'
-import { Stack } from './Stack'
 import { ToggleGroup, type ToggleGroupOption } from './ToggleGroup'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -194,7 +194,7 @@ export const ShowcaseStory: Story = {
     const [activeTab, setActiveTab] = useState<TabValue>('overview')
 
     return (
-      <Stack gap="xl" className="p-lg">
+      <Flex gap="xl" className="p-lg">
         {/* Header */}
         <div className="text-center">
           <Heading level={1} className="mb-sm">
@@ -208,8 +208,8 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Appearance Variants
           </Heading>
-          <Stack gap="lg">
-            <Stack direction="horizontal" align="center" gap="lg">
+          <Flex gap="lg">
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Default:</span>
               <ToggleGroup
                 variant="default"
@@ -218,8 +218,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Default variant"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Solid:</span>
               <ToggleGroup
                 variant="solid"
@@ -228,8 +228,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Solid variant"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Ghost:</span>
               <ToggleGroup
                 variant="ghost"
@@ -238,8 +238,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Ghost variant"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Tabs:</span>
               <ToggleGroup
                 variant="tabs"
@@ -248,8 +248,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setActiveTab(value)}
                 aria-label="Tabs variant"
               />
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </section>
 
         {/* Sizes Section */}
@@ -257,8 +257,8 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Size Variants
           </Heading>
-          <Stack gap="lg">
-            <Stack direction="horizontal" align="center" gap="lg">
+          <Flex gap="lg">
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Small:</span>
               <ToggleGroup
                 size="sm"
@@ -267,8 +267,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Small size"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Medium:</span>
               <ToggleGroup
                 size="md"
@@ -277,8 +277,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Medium size"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Large:</span>
               <ToggleGroup
                 size="lg"
@@ -287,8 +287,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Large size"
               />
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </section>
 
         {/* Indicators Section */}
@@ -296,8 +296,8 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Selection Indicators
           </Heading>
-          <Stack gap="lg">
-            <Stack direction="horizontal" align="center" gap="lg">
+          <Flex gap="lg">
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Background:</span>
               <ToggleGroup
                 indicator="background"
@@ -306,8 +306,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Background indicator"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Underline:</span>
               <ToggleGroup
                 indicator="underline"
@@ -317,8 +317,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Underline indicator"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Dot:</span>
               <ToggleGroup
                 indicator="dot"
@@ -328,8 +328,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Dot indicator"
               />
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </section>
 
         {/* Multi-Select Section */}
@@ -337,8 +337,8 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Multiple Selection
           </Heading>
-          <Stack gap="lg">
-            <Stack direction="horizontal" align="center" gap="lg">
+          <Flex gap="lg">
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Default:</span>
               <ToggleGroup
                 type="multiple"
@@ -347,8 +347,8 @@ export const ShowcaseStory: Story = {
                 onChange={setMultiValue}
                 aria-label="Multi-select default"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Solid:</span>
               <ToggleGroup
                 type="multiple"
@@ -358,8 +358,8 @@ export const ShowcaseStory: Story = {
                 onChange={setMultiValue}
                 aria-label="Multi-select solid"
               />
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </section>
 
         {/* Display Modes Section */}
@@ -367,8 +367,8 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Display Modes
           </Heading>
-          <Stack gap="lg">
-            <Stack direction="horizontal" align="center" gap="lg">
+          <Flex gap="lg">
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Text + Icon:</span>
               <ToggleGroup
                 displayMode="text"
@@ -377,8 +377,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setViewMode(value)}
                 aria-label="Text with icons"
               />
-            </Stack>
-            <Stack direction="horizontal" align="center" gap="lg">
+            </Flex>
+            <Flex direction="row" align="center" gap="lg">
               <span className="w-24 text-sm text-foreground-muted">Icon Only:</span>
               <ToggleGroup
                 displayMode="icon"
@@ -387,8 +387,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setViewMode(value)}
                 aria-label="Icon only"
               />
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </section>
 
         {/* Orientation Section */}
@@ -396,8 +396,8 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Orientations
           </Heading>
-          <Stack direction="horizontal" gap="xl">
-            <Stack>
+          <Flex direction="row" gap="xl">
+            <Flex direction="col" gap="sm">
               <span className="text-sm text-foreground-muted mb-sm block">Horizontal:</span>
               <ToggleGroup
                 orientation="horizontal"
@@ -406,8 +406,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Horizontal orientation"
               />
-            </Stack>
-            <Stack>
+            </Flex>
+            <Flex direction="col" gap="sm">
               <span className="text-sm text-foreground-muted mb-sm block">Vertical:</span>
               <ToggleGroup
                 orientation="vertical"
@@ -416,8 +416,8 @@ export const ShowcaseStory: Story = {
                 onChange={(value) => value && setSingleValue(value)}
                 aria-label="Vertical orientation"
               />
-            </Stack>
-          </Stack>
+            </Flex>
+          </Flex>
         </section>
 
         {/* Real-World Examples */}
@@ -425,7 +425,7 @@ export const ShowcaseStory: Story = {
           <Heading level={2} size="lg" className="mb-base">
             Real-World Examples
           </Heading>
-          <Stack gap="lg" className="p-lg bg-surface-subtle rounded-lg">
+          <Flex gap="lg" className="p-lg bg-surface-subtle rounded-lg">
             <div>
               <p className="text-sm text-foreground-muted mb-sm">
                 View Switcher (Icon only, solid)
@@ -461,9 +461,9 @@ export const ShowcaseStory: Story = {
                 aria-label="Filter by type"
               />
             </div>
-          </Stack>
+          </Flex>
         </section>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -486,7 +486,7 @@ export const AppearanceVariants: Story = {
   render: () => {
     const [value, setValue] = useState<FilterValue>('all')
     return (
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div>
           <p className="mb-sm text-sm text-foreground-muted">Default (Outline)</p>
           <ToggleGroup
@@ -527,7 +527,7 @@ export const AppearanceVariants: Story = {
             aria-label="Tabs variant"
           />
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -536,7 +536,7 @@ export const WithIndicators: Story = {
   render: () => {
     const [value, setValue] = useState<FilterValue>('all')
     return (
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div>
           <p className="mb-sm text-sm text-foreground-muted">Background Indicator (Default)</p>
           <ToggleGroup
@@ -569,7 +569,7 @@ export const WithIndicators: Story = {
             aria-label="Dot indicator"
           />
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -578,7 +578,7 @@ export const MultiSelect: Story = {
   render: () => {
     const [values, setValues] = useState<FilterValue[]>(['all', 'external'])
     return (
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div>
           <p className="mb-sm text-sm text-foreground-muted">
             Multiple Selection Enabled - Selected: {values.join(', ')}
@@ -613,7 +613,7 @@ export const MultiSelect: Story = {
             aria-label="Multi-select ghost"
           />
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -622,8 +622,8 @@ export const Vertical: Story = {
   render: () => {
     const [value, setValue] = useState<FilterValue>('all')
     return (
-      <Stack direction="horizontal" gap="lg">
-        <Stack>
+      <Flex direction="row" gap="lg">
+        <Flex direction="col" gap="sm">
           <p className="mb-sm text-sm text-foreground-muted">Vertical Default</p>
           <ToggleGroup
             orientation="vertical"
@@ -632,8 +632,8 @@ export const Vertical: Story = {
             onChange={(value) => value && setValue(value)}
             aria-label="Vertical default"
           />
-        </Stack>
-        <Stack>
+        </Flex>
+        <Flex direction="col" gap="sm">
           <p className="mb-sm text-sm text-foreground-muted">Vertical Solid</p>
           <ToggleGroup
             orientation="vertical"
@@ -643,8 +643,8 @@ export const Vertical: Story = {
             onChange={(value) => value && setValue(value)}
             aria-label="Vertical solid"
           />
-        </Stack>
-        <Stack>
+        </Flex>
+        <Flex direction="col" gap="sm">
           <p className="mb-sm text-sm text-foreground-muted">Vertical Ghost</p>
           <ToggleGroup
             orientation="vertical"
@@ -654,8 +654,8 @@ export const Vertical: Story = {
             onChange={(value) => value && setValue(value)}
             aria-label="Vertical ghost"
           />
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
     )
   },
 }
@@ -675,7 +675,7 @@ export const RealWorldExamples: Story = {
     ]
 
     return (
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div className="p-base bg-surface-subtle rounded-lg">
           <Heading level={3} className="mb-base">
             View Switcher
@@ -729,7 +729,7 @@ export const RealWorldExamples: Story = {
             aria-label="Toggle features"
           />
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -738,7 +738,7 @@ export const DifferentSizes: Story = {
   render: () => {
     const [value, setValue] = useState<FilterValue>('all')
     return (
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div>
           <p className="mb-sm text-sm text-foreground-muted">Small (sm)</p>
           <ToggleGroup
@@ -769,7 +769,7 @@ export const DifferentSizes: Story = {
             size="lg"
           />
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -778,7 +778,7 @@ export const IconOnlyMode: Story = {
   render: () => {
     const [value, setValue] = useState<ViewMode>('grid')
     return (
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div>
           <p className="mb-sm text-sm text-foreground-muted">Icon Only Display</p>
           <ToggleGroup
@@ -791,7 +791,7 @@ export const IconOnlyMode: Story = {
         </div>
         <div>
           <p className="mb-sm text-sm text-foreground-muted">Icon Only - All Sizes</p>
-          <Stack gap="md">
+          <Flex gap="md">
             <ToggleGroup
               displayMode="icon"
               options={viewModeOptions}
@@ -816,9 +816,9 @@ export const IconOnlyMode: Story = {
               aria-label="Icon only large"
               size="lg"
             />
-          </Stack>
+          </Flex>
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -837,8 +837,8 @@ export const Accessibility: Story = {
     ]
 
     return (
-      <Stack gap="lg">
-        <Stack direction="horizontal" gap="base" className="mb-base">
+      <Flex gap="lg">
+        <Flex direction="row" gap="base" className="mb-base">
           <button
             className="px-md py-xs bg-interactive-primary text-foreground-filled rounded-sm text-sm"
             onClick={() => setDisabled(!disabled)}
@@ -857,7 +857,7 @@ export const Accessibility: Story = {
           >
             Roving Focus: {rovingFocus ? 'ON' : 'OFF'}
           </button>
-        </Stack>
+        </Flex>
 
         <div>
           <p className="mb-sm text-sm text-foreground-muted">
@@ -884,7 +884,7 @@ export const Accessibility: Story = {
             <li>{rovingFocus ? 'Roving tabindex enabled' : 'Static tabindex'}</li>
           </ul>
         </div>
-      </Stack>
+      </Flex>
     )
   },
 }
