@@ -1,61 +1,61 @@
 import type { Snippet } from './types'
 
-export const stackSnippets: Snippet[] = [
+export const flexSnippets: Snippet[] = [
   // Vertical (default)
   {
-    group: 'Stack',
+    group: 'Flex',
     name: 'Vertical gap-sm',
     code: `
-<Stack gap="sm">
+<Flex gap="sm">
   
-</Stack>
+</Flex>
     `.trim(),
   },
   {
-    group: 'Stack',
+    group: 'Flex',
     name: 'Vertical gap-base',
     code: `
-<Stack gap="base">
+<Flex gap="base">
   
-</Stack>
+</Flex>
     `.trim(),
   },
   {
-    group: 'Stack',
+    group: 'Flex',
     name: 'Vertical gap-lg',
     code: `
-<Stack gap="lg">
+<Flex gap="lg">
   
-</Stack>
+</Flex>
     `.trim(),
   },
 
   // Horizontal
   {
-    group: 'Stack',
+    group: 'Flex',
     name: 'Horizontal gap-sm',
     code: `
-<Stack direction="horizontal" gap="sm">
+<Flex direction="horizontal" gap="sm">
   
-</Stack>
+</Flex>
     `.trim(),
   },
   {
-    group: 'Stack',
+    group: 'Flex',
     name: 'Horizontal gap-base',
     code: `
-<Stack direction="horizontal" gap="base">
+<Flex direction="horizontal" gap="base">
   
-</Stack>
+</Flex>
     `.trim(),
   },
   {
-    group: 'Stack',
+    group: 'Flex',
     name: 'Horizontal gap-lg',
     code: `
-<Stack direction="horizontal" gap="lg">
+<Flex direction="horizontal" gap="lg">
   
-</Stack>
+</Flex>
     `.trim(),
   },
 ]

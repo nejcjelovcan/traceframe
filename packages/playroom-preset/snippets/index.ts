@@ -7,6 +7,7 @@ import { containerSnippets } from './container'
 import { dataTableSnippets } from './data-table'
 import { emptyStateSnippets } from './empty-state'
 import { errorStateSnippets } from './error-state'
+import { flexSnippets } from './flex'
 import { gridSnippets } from './grid'
 import { headingSnippets } from './heading'
 import { inputSnippets } from './input'
@@ -17,7 +18,6 @@ import { pageLayoutSnippets } from './page-layout'
 import { searchInputSnippets } from './search-input'
 import { selectSnippets } from './select'
 import { spinnerSnippets } from './spinner'
-import { stackSnippets } from './stack'
 import { statCardSnippets } from './stat-card'
 import { toggleGroupSnippets } from './toggle-group'
 import { tooltipSnippets } from './tooltip'
@@ -37,6 +37,7 @@ const allSnippets = [
   ...dataTableSnippets,
   ...emptyStateSnippets,
   ...errorStateSnippets,
+  ...flexSnippets,
   ...gridSnippets,
   ...headingSnippets,
   ...inputSnippets,
@@ -47,7 +48,6 @@ const allSnippets = [
   ...searchInputSnippets,
   ...selectSnippets,
   ...spinnerSnippets,
-  ...stackSnippets,
   ...statCardSnippets,
   ...toggleGroupSnippets,
   ...tooltipSnippets,

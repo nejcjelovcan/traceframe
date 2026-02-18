@@ -79,11 +79,11 @@ export const badgeSnippets: Snippet[] = [
     group: 'Badge',
     name: 'Status Row',
     code: `
-<Stack direction="row" gap="2">
+<Flex direction="row" gap="2">
   <Badge variant="success">Active</Badge>
   <Badge variant="warning">Pending</Badge>
   <Badge variant="error">Failed</Badge>
-</Stack>
+</Flex>
     `.trim(),
   },
 ]

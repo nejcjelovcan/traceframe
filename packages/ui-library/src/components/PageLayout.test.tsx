@@ -76,10 +76,10 @@ describe('PageLayout', () => {
   })
 
   describe('main content behavior', () => {
-    it('main content is scrollable', () => {
+    it('main content fills available space', () => {
       render(<PageLayout>Content</PageLayout>)
       const main = screen.getByRole('main')
-      expect(main.className).toContain('overflow-y-auto')
+      expect(main.className).toContain('flex-1')
     })
   })
 

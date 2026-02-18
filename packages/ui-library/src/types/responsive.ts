@@ -10,6 +10,7 @@ export type ResponsiveValue<T> =
       md?: T
       lg?: T
       xl?: T
+      '2xl'?: T
     }
 
 /**

@@ -90,17 +90,17 @@ export const inputSnippets: Snippet[] = [
     group: 'Input',
     name: 'Form Field with Label',
     code: `
-<Stack gap="1">
+<Flex gap="1">
   <label className="text-sm font-medium">Email address</label>
   <Input type="email" placeholder="name@example.com" />
-</Stack>
+</Flex>
     `.trim(),
   },
   {
     group: 'Input',
     name: 'Form Field with Error',
     code: `
-<Stack gap="1">
+<Flex gap="1">
   <label className="text-sm font-medium">Email address</label>
   <Input
     type="email"
@@ -109,7 +109,7 @@ export const inputSnippets: Snippet[] = [
     placeholder="name@example.com"
     helperText="Please enter a valid email address"
   />
-</Stack>
+</Flex>
     `.trim(),
   },
 ]

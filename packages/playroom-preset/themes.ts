@@ -5,9 +5,9 @@
  * Playroom expects named exports - the export name becomes the theme key.
  */
 
-export const arcticLight = { name: 'Arctic Light' }
+export const arctic = { name: 'Arctic' }
 export const arcticDark = { name: 'Arctic Dark' }
-export const forgeLight = { name: 'Forge Light' }
+export const forge = { name: 'Forge' }
 export const forgeDark = { name: 'Forge Dark' }
-export const mistLight = { name: 'Mist Light' }
+export const mist = { name: 'Mist' }
 export const mistDark = { name: 'Mist Dark' }

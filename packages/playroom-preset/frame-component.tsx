@@ -14,11 +14,11 @@ interface Props {
 }
 
 const THEME_MAP: Record<string, { mode: Mode; theme: Theme }> = {
-  'Arctic Light': { mode: 'light', theme: 'arctic' },
+  Arctic: { mode: 'light', theme: 'arctic' },
   'Arctic Dark': { mode: 'dark', theme: 'arctic' },
-  'Forge Light': { mode: 'light', theme: 'forge' },
+  Forge: { mode: 'light', theme: 'forge' },
   'Forge Dark': { mode: 'dark', theme: 'forge' },
-  'Mist Light': { mode: 'light', theme: 'mist' },
+  Mist: { mode: 'light', theme: 'mist' },
   'Mist Dark': { mode: 'dark', theme: 'mist' },
 }
 
@@ -38,7 +38,7 @@ export default function FrameComponent({ theme, children }: Props) {
 
   return (
     <ThemeProvider defaultMode={mode} defaultTheme={colorTheme}>
-      <div className="min-h-screen bg-surface text-foreground p-base">{children}</div>
+      {children}
     </ThemeProvider>
   )
 }

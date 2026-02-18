@@ -41,7 +41,7 @@ export const navigationSnippets: Snippet[] = [
   {
     group: 'Navigation',
     name: 'Horizontal Subtle Accent',
-    code: `<Stack gap="md">
+    code: `<Flex gap="md">
   <Navigation orientation="horizontal" variant="subtle" color="accent-1">
     <NavItem href="#" active>Accent 1</NavItem>
     <NavItem href="#">Tab 2</NavItem>
@@ -57,7 +57,7 @@ export const navigationSnippets: Snippet[] = [
     <NavItem href="#">Tab 2</NavItem>
     <NavItem href="#">Tab 3</NavItem>
   </Navigation>
-</Stack>`,
+</Flex>`,
   },
   {
     group: 'Navigation',

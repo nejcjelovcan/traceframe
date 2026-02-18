@@ -73,30 +73,30 @@ export const buttonSnippets: Snippet[] = [
     group: 'Button',
     name: 'Form Actions',
     code: `
-<Stack direction="row" gap="sm">
+<Flex direction="row" gap="sm">
   <Button variant="primary" leftIcon="check">Save Changes</Button>
   <Button variant="secondary">Cancel</Button>
-</Stack>
+</Flex>
     `.trim(),
   },
   {
     group: 'Button',
     name: 'Destructive Action',
     code: `
-<Stack direction="row" gap="sm">
+<Flex direction="row" gap="sm">
   <Button variant="destructive" leftIcon="close">Delete Item</Button>
   <Button variant="outline">Cancel</Button>
-</Stack>
+</Flex>
     `.trim(),
   },
   {
     group: 'Button',
     name: 'Navigation',
     code: `
-<Stack direction="row" gap="sm">
+<Flex direction="row" gap="sm">
   <Button variant="ghost" leftIcon="arrow-left">Back</Button>
   <Button rightIcon="arrow-right">Next Step</Button>
-</Stack>
+</Flex>
     `.trim(),
   },
 ]

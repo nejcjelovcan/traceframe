@@ -230,7 +230,7 @@ export const cardSnippets: Snippet[] = [
   {
     group: 'Card',
     name: 'Card Grid',
-    code: `<Stack direction="row" wrap gap="sm">
+    code: `<Flex direction="row" wrap gap="sm">
   <Card variant="accent1">
     <CardHeader>Components</CardHeader>
     <CardContent>
@@ -249,6 +249,6 @@ export const cardSnippets: Snippet[] = [
       <p className="text-2xl font-bold">156</p>
     </CardContent>
   </Card>
-</Stack>`,
+</Flex>`,
   },
 ]
