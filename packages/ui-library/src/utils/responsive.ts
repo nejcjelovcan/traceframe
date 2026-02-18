@@ -1,5 +1,6 @@
-import type { ResponsiveValue } from '../types/responsive.js'
 import { isResponsiveValue } from '../types/responsive.js'
+
+import type { ResponsiveValue } from '../types/responsive.js'
 
 /**
  * Breakpoint keys in order of priority (mobile-first)

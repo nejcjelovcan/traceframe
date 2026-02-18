@@ -1,9 +1,10 @@
 import { cva, type VariantProps } from 'class-variance-authority'
 import { forwardRef, type HTMLAttributes } from 'react'
 
-import type { ResponsiveValue } from '../types/responsive.js'
 import { cn } from '../utils/cn.js'
 import { generateResponsiveClasses } from '../utils/responsive.js'
+
+import type { ResponsiveValue } from '../types/responsive.js'
 
 const gridVariants = cva('grid', {
   variants: {

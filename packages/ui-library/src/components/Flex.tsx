@@ -1,10 +1,11 @@
-import { cva, type VariantProps } from 'class-variance-authority'
+import { cva } from 'class-variance-authority'
 import { forwardRef, type HTMLAttributes } from 'react'
 
-import type { ResponsiveValue } from '../types/responsive.js'
+import { isResponsiveValue } from '../types/responsive.js'
 import { cn } from '../utils/cn.js'
 import { generateResponsiveClasses } from '../utils/responsive.js'
-import { isResponsiveValue } from '../types/responsive.js'
+
+import type { ResponsiveValue } from '../types/responsive.js'
 
 const flexVariants = cva('flex', {
   variants: {
