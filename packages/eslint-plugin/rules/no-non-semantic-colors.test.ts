@@ -59,6 +59,23 @@ ruleTester.run('no-non-semantic-colors', noNonSemanticColors, {
       ],
       filename: 'test-file.tsx',
     },
+    // Allowed palette colors (e.g., for palette documentation)
+    {
+      code: '<div className="bg-arctic-500" />',
+      options: [
+        {
+          allowedPalettes: ['arctic'],
+        },
+      ],
+    },
+    {
+      code: '<div className="text-dusk-700 border-ember-400" />',
+      options: [
+        {
+          allowedPalettes: ['dusk', 'ember'],
+        },
+      ],
+    },
   ],
 
   invalid: [
@@ -245,6 +262,86 @@ ruleTester.run('no-non-semantic-colors', noNonSemanticColors, {
             className: 'bg-[#123456]',
             suggestion: 'a semantic token',
           },
+        },
+      ],
+    },
+    // Active states
+    {
+      code: '<div className="active:bg-neutral-200" />',
+      errors: [
+        {
+          messageId: 'nonSemanticColor',
+          data: {
+            className: 'active:bg-neutral-200',
+            suggestion: 'active:bg-surface-subtle',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'active:bg-surface-subtle' },
+              output: '<div className="active:bg-surface-subtle" />',
+            },
+          ],
+        },
+      ],
+    },
+    // Focus states
+    {
+      code: '<div className="focus:border-primary-500" />',
+      errors: [
+        {
+          messageId: 'nonSemanticColor',
+          data: {
+            className: 'focus:border-primary-500',
+            suggestion: 'focus:border-status-info-border',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'focus:border-status-info-border' },
+              output: '<div className="focus:border-status-info-border" />',
+            },
+          ],
+        },
+      ],
+    },
+    // Disabled states
+    {
+      code: '<div className="disabled:text-neutral-400" />',
+      errors: [
+        {
+          messageId: 'nonSemanticColor',
+          data: {
+            className: 'disabled:text-neutral-400',
+            suggestion: 'disabled:text-foreground-muted',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'disabled:text-foreground-muted' },
+              output: '<div className="disabled:text-foreground-muted" />',
+            },
+          ],
+        },
+      ],
+    },
+    // Group hover states
+    {
+      code: '<div className="group-hover:bg-neutral-50" />',
+      errors: [
+        {
+          messageId: 'nonSemanticColor',
+          data: {
+            className: 'group-hover:bg-neutral-50',
+            suggestion: 'group-hover:bg-surface-muted',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'group-hover:bg-surface-muted' },
+              output: '<div className="group-hover:bg-surface-muted" />',
+            },
+          ],
         },
       ],
     },
