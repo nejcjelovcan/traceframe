@@ -1,5 +1,4 @@
 ---
-"@nejcjelovcan/traceframe-playroom": minor
 "@nejcjelovcan/traceframe-playroom-preset": minor
 ---
 
