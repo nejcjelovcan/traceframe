@@ -216,9 +216,9 @@ describe('getSpacingSuggestion', () => {
     const suggestion = getSpacingSuggestion('p-4')
     expect(suggestion).toBeDefined()
     expect(suggestion).toMatch(/^nearest:/)
-    // p-4 = 1rem, between base (0.875rem) and lg (1.5rem)
+    // p-4 = 1rem, closest tokens are base (0.875rem) and md (0.625rem)
     expect(suggestion).toContain('p-base')
-    expect(suggestion).toContain('p-lg')
+    expect(suggestion).toContain('p-md')
   })
 
   it('provides nearest match suggestions for values between tokens', () => {
