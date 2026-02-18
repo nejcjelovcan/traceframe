@@ -875,6 +875,7 @@ function ShowcaseCard({
   variant,
   icon,
   title,
+  rightContent,
   children,
   width = 'w-64',
 }: {
@@ -884,6 +885,7 @@ function ShowcaseCard({
   variant?: CardProps['variant']
   icon?: IconName
   title: string
+  rightContent?: React.ReactNode
   children: React.ReactNode
   width?: string
 }) {
@@ -896,7 +898,9 @@ function ShowcaseCard({
       size={size}
       className={cn(width, inverse && 'inverse')}
     >
-      <CardHeader {...(icon && { icon })}>{title}</CardHeader>
+      <CardHeader {...(icon && { icon })} rightContent={rightContent}>
+        {title}
+      </CardHeader>
       <CardContent>{children}</CardContent>
     </Card>
   )
@@ -1097,17 +1101,25 @@ function ShowcaseContent() {
           Compositions
         </Heading>
         <div className="flex flex-wrap gap-base">
-          <ShowcaseCard mode={mode} inverse={inverse} size={size} title="Content Only">
-            <p className="text-sm">Content only - no header or footer.</p>
-          </ShowcaseCard>
+          <Card
+            actionable={mode === 'actionable'}
+            accordion={mode === 'accordion'}
+            defaultOpen={mode === 'accordion'}
+            size={size}
+            className={cn('w-64', inverse && 'inverse')}
+          >
+            <CardContent>
+              <p className="text-sm">Content only - no header or footer.</p>
+            </CardContent>
+          </Card>
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
             size={size}
             icon="file"
-            title="Header + Content"
+            title="A Long Header Title That Truncates Nicely"
           >
-            <p className="text-sm">Header with content, no footer.</p>
+            <p className="text-sm">Header with truncated title and content.</p>
           </ShowcaseCard>
           <ShowcaseCard
             mode={mode}
@@ -1116,6 +1128,7 @@ function ShowcaseContent() {
             variant="elevated"
             icon="chart"
             title="Full Card"
+            rightContent={<span className="text-xs text-foreground-muted">3 items</span>}
           >
             <ul className="space-y-xs text-sm">
               <li>Item one</li>
