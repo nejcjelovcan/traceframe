@@ -1,6 +1,6 @@
 import { Button } from './Button.js'
 import { Heading } from './Heading.js'
-import { Stack } from './Stack.js'
+import { Flex } from './Flex.js'
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from './Tooltip.js'
 import { Icon } from '../icons/index.js'
 
@@ -337,7 +337,7 @@ export const Variants: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="lg">
+    <Flex direction="row" gap="lg">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline" size="sm">
@@ -362,7 +362,7 @@ export const Sizes: Story = {
         </TooltipTrigger>
         <TooltipContent size="lg">Large tooltip text (sm)</TooltipContent>
       </Tooltip>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -370,7 +370,7 @@ export const StatusTooltips: Story = {
   name: 'Status Tooltips (Contextual)',
   render: () => (
     <div className="flex flex-col gap-lg">
-      <Stack direction="horizontal" align="center" gap="base">
+      <Flex direction="row" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
             <button className="rounded-sm p-xs hover:bg-interactive-hover">
@@ -380,9 +380,9 @@ export const StatusTooltips: Story = {
           <TooltipContent variant="info">Learn more about this feature</TooltipContent>
         </Tooltip>
         <span className="text-sm text-foreground-muted">Info context</span>
-      </Stack>
+      </Flex>
 
-      <Stack direction="horizontal" align="center" gap="base">
+      <Flex direction="row" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
             <button className="rounded-sm p-xs hover:bg-interactive-hover">
@@ -392,9 +392,9 @@ export const StatusTooltips: Story = {
           <TooltipContent variant="success">Successfully validated</TooltipContent>
         </Tooltip>
         <span className="text-sm text-foreground-muted">Success context</span>
-      </Stack>
+      </Flex>
 
-      <Stack direction="horizontal" align="center" gap="base">
+      <Flex direction="row" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
             <button className="rounded-sm p-xs hover:bg-interactive-hover">
@@ -404,9 +404,9 @@ export const StatusTooltips: Story = {
           <TooltipContent variant="warning">This action requires caution</TooltipContent>
         </Tooltip>
         <span className="text-sm text-foreground-muted">Warning context</span>
-      </Stack>
+      </Flex>
 
-      <Stack direction="horizontal" align="center" gap="base">
+      <Flex direction="row" align="center" gap="base">
         <Tooltip>
           <TooltipTrigger asChild>
             <button className="rounded-sm p-xs hover:bg-interactive-hover">
@@ -416,7 +416,7 @@ export const StatusTooltips: Story = {
           <TooltipContent variant="error">This will permanently delete the item</TooltipContent>
         </Tooltip>
         <span className="text-sm text-foreground-muted">Error/Destructive context</span>
-      </Stack>
+      </Flex>
     </div>
   ),
 }
@@ -539,7 +539,7 @@ export const RichContent: Story = {
 
 export const InteractiveTriggers: Story = {
   render: () => (
-    <Stack direction="horizontal" align="center" gap="lg">
+    <Flex direction="row" align="center" gap="lg">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="primary">Primary Button</Button>
@@ -571,13 +571,13 @@ export const InteractiveTriggers: Story = {
         </TooltipTrigger>
         <TooltipContent>Custom element trigger</TooltipContent>
       </Tooltip>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const WithoutArrow: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="lg">
+    <Flex direction="row" gap="lg">
       <Tooltip>
         <TooltipTrigger asChild>
           <Button variant="outline">Default (with arrow)</Button>
@@ -591,13 +591,13 @@ export const WithoutArrow: Story = {
         </TooltipTrigger>
         <TooltipContent showArrow={false}>Tooltip without arrow</TooltipContent>
       </Tooltip>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const CollisionDetection: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Radix automatically repositions tooltips when they would overflow the viewport. Try hovering
         near the edges.
@@ -623,7 +623,7 @@ export const CollisionDetection: Story = {
           </TooltipContent>
         </Tooltip>
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -669,7 +669,7 @@ export const CustomDelay: Story = {
 
 export const KeyboardAccessible: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Tab to focus the button, then press Escape to dismiss the tooltip.
       </p>
@@ -683,6 +683,6 @@ export const KeyboardAccessible: Story = {
           <span className="opacity-90">Press Escape to dismiss</span>
         </TooltipContent>
       </Tooltip>
-    </Stack>
+    </Flex>
   ),
 }

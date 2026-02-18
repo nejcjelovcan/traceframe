@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import { SearchInput } from './SearchInput'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -73,24 +73,24 @@ export const WithValue: Story = {
   render: () => {
     const [value, setValue] = useState('Button component')
     return (
-      <Stack className="w-64">
+      <Flex className="w-64">
         <SearchInput
           value={value}
           onChange={(e) => setValue(e.target.value)}
           placeholder="Search..."
         />
-      </Stack>
+      </Flex>
     )
   },
 }
 
 export const Sizes: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <SearchInput size="sm" placeholder="Small search" />
       <SearchInput size="md" placeholder="Medium search" />
       <SearchInput size="lg" placeholder="Large search" />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -120,7 +120,7 @@ export const Interactive: Story = {
     }
 
     return (
-      <Stack gap="md" className="w-72">
+      <Flex gap="md" className="w-72">
         <SearchInput
           value={value}
           onChange={(e) => setValue(e.target.value)}
@@ -137,7 +137,7 @@ export const Interactive: Story = {
             </ul>
           </div>
         )}
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -146,18 +146,18 @@ export const AllVariants: Story = {
   render: () => {
     const [value, setValue] = useState('Example search')
     return (
-      <Stack gap="lg" className="w-72">
-        <Stack gap="sm">
+      <Flex gap="lg" className="w-72">
+        <Flex gap="sm">
           <span className="text-sm font-medium text-foreground-muted">Sizes</span>
-          <Stack gap="sm">
+          <Flex gap="sm">
             <SearchInput size="sm" placeholder="Small" />
             <SearchInput size="md" placeholder="Medium" />
             <SearchInput size="lg" placeholder="Large" />
-          </Stack>
-        </Stack>
-        <Stack gap="sm">
+          </Flex>
+        </Flex>
+        <Flex gap="sm">
           <span className="text-sm font-medium text-foreground-muted">States</span>
-          <Stack gap="sm">
+          <Flex gap="sm">
             <SearchInput placeholder="Empty (no clear button)" />
             <SearchInput
               value={value}
@@ -165,9 +165,9 @@ export const AllVariants: Story = {
               placeholder="With value"
             />
             <SearchInput placeholder="Disabled" disabled />
-          </Stack>
-        </Stack>
-      </Stack>
+          </Flex>
+        </Flex>
+      </Flex>
     )
   },
 }

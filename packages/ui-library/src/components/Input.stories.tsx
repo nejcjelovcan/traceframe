@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { Heading } from './Heading'
 import { Input } from './Input'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -104,47 +104,47 @@ export const Default: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input size="sm" placeholder="Small input" />
       <Input size="md" placeholder="Medium input" />
       <Input size="lg" placeholder="Large input" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const Variants: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input variant="default" placeholder="Default variant" />
       <Input variant="error" placeholder="Error variant" />
       <Input variant="success" placeholder="Success variant" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const States: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input placeholder="Default state" />
       <Input placeholder="Disabled state" disabled />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const WithLabel: Story = {
   render: () => (
-    <Stack gap="sm" className="w-64">
+    <Flex gap="sm" className="w-64">
       <label htmlFor="email-input" className="text-sm font-medium text-foreground">
         Email address
       </label>
       <Input id="email-input" type="email" placeholder="name@example.com" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const WithError: Story = {
   render: () => (
-    <Stack gap="sm" className="w-64">
+    <Flex gap="sm" className="w-64">
       <label htmlFor="error-input" className="text-sm font-medium text-foreground">
         Email address
       </label>
@@ -159,19 +159,19 @@ export const WithError: Story = {
       <p id="error-message" className="text-sm text-status-error-foreground">
         Please enter a valid email address
       </p>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const InputTypes: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input type="text" placeholder="Text input" />
       <Input type="email" placeholder="Email input" />
       <Input type="password" placeholder="Password input" />
       <Input type="number" placeholder="Number input" />
       <Input type="search" placeholder="Search input" />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -206,17 +206,17 @@ export const WithBothIcons: Story = {
 
 export const IconsWithSizes: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input size="sm" leftIcon="search" placeholder="Small with icon" />
       <Input size="md" leftIcon="search" placeholder="Medium with icon" />
       <Input size="lg" leftIcon="search" placeholder="Large with icon" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const IconsWithError: Story = {
   render: () => (
-    <Stack gap="sm" className="w-64">
+    <Flex gap="sm" className="w-64">
       <label htmlFor="error-icon-input" className="text-sm font-medium text-foreground">
         Email address
       </label>
@@ -232,32 +232,32 @@ export const IconsWithError: Story = {
       <p id="error-icon-message" className="text-sm text-status-error-foreground">
         Please enter a valid email address
       </p>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const IconsDisabled: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input leftIcon="search" placeholder="Disabled with icon" disabled />
       <Input leftIcon="package" rightIcon="check" placeholder="Disabled both icons" disabled />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const WithHelperText: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input placeholder="Default helper" helperText="This is a helpful hint" />
       <Input variant="error" placeholder="Error helper" helperText="This field is required" />
       <Input variant="success" placeholder="Success helper" helperText="Valid input" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const WithStatusIcons: Story = {
   render: () => (
-    <Stack gap="md" className="w-64">
+    <Flex gap="md" className="w-64">
       <Input
         variant="error"
         showStatusIcon
@@ -270,20 +270,20 @@ export const WithStatusIcons: Story = {
         placeholder="Success with icon"
         helperText="Valid input"
       />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const FullWidthControl: Story = {
   render: () => (
-    <Stack gap="md" className="max-w-md">
+    <Flex gap="md" className="max-w-md">
       <Input fullWidth placeholder="Full width (default)" />
       <Input fullWidth={false} placeholder="Auto width" />
-      <Stack direction="horizontal" gap="sm">
+      <Flex direction="row" gap="sm">
         <Input fullWidth={false} placeholder="Inline 1" />
         <Input fullWidth={false} placeholder="Inline 2" />
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
@@ -293,29 +293,29 @@ export const Showcase: Story = {
     const isEmailValid = email.includes('@') && email.includes('.')
 
     return (
-      <Stack gap="lg" className="w-96 p-lg">
+      <Flex gap="lg" className="w-96 p-lg">
         {/* Sizes */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             Sizes
           </Heading>
           <Input size="sm" placeholder="Small input" />
           <Input size="md" placeholder="Medium input (default)" />
           <Input size="lg" placeholder="Large input" />
-        </Stack>
+        </Flex>
 
         {/* Validation Variants */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             Validation States
           </Heading>
           <Input variant="default" placeholder="Default state" helperText="Neutral helper text" />
           <Input variant="error" placeholder="Error state" helperText="This field has an error" />
           <Input variant="success" placeholder="Success state" helperText="Valid input confirmed" />
-        </Stack>
+        </Flex>
 
         {/* Status Icons */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             Automatic Status Icons
           </Heading>
@@ -331,10 +331,10 @@ export const Showcase: Story = {
             placeholder="Success with icon"
             helperText="Check icon appears automatically"
           />
-        </Stack>
+        </Flex>
 
         {/* Icons */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             Icons
           </Heading>
@@ -348,27 +348,27 @@ export const Showcase: Story = {
             placeholder="File validated"
             helperText="Combines left icon with status icon"
           />
-        </Stack>
+        </Flex>
 
         {/* Width Control */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             Width Control
           </Heading>
           <Input fullWidth placeholder="Full width (default)" />
           <Input fullWidth={false} placeholder="Auto width" />
-          <Stack gap="sm" className="flex">
+          <Flex gap="sm" className="flex">
             <Input fullWidth={false} size="sm" placeholder="Inline" />
             <Input fullWidth={false} size="sm" placeholder="Inputs" />
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
 
         {/* Interactive Example */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             Interactive Form Example
           </Heading>
-          <Stack gap="sm">
+          <Flex gap="sm">
             <label htmlFor="email" className="text-sm font-medium">
               Email Address
             </label>
@@ -390,21 +390,21 @@ export const Showcase: Story = {
               }
               aria-invalid={email !== '' && !isEmailValid}
             />
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
 
         {/* States */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             States
           </Heading>
           <Input placeholder="Enabled state" />
           <Input placeholder="Disabled state" disabled />
           <Input leftIcon="search" rightIcon="check" placeholder="Disabled with icons" disabled />
-        </Stack>
+        </Flex>
 
         {/* All Combined */}
-        <Stack gap="md">
+        <Flex gap="md">
           <Heading level={3} size="sm">
             All Features Combined
           </Heading>
@@ -417,8 +417,8 @@ export const Showcase: Story = {
             helperText="Combines size, variant, icons, and helper text"
             fullWidth
           />
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
     )
   },
 }

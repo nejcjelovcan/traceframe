@@ -1,6 +1,6 @@
 import { Grid } from './Grid.js'
 import { Heading } from './Heading.js'
-import { Stack } from './Stack.js'
+import { Flex } from './Flex.js'
 import { StatCard } from './StatCard.js'
 import { Icon } from '../icons/index.js'
 
@@ -230,7 +230,7 @@ export const CompactMode: Story = {
 
 export const ManualTrendControl: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="base">
+    <Flex direction="row" gap="base">
       <StatCard
         label="Positive"
         value="100"
@@ -252,7 +252,7 @@ export const ManualTrendControl: Story = {
         trendVariant="neutral"
         className="w-40"
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -294,12 +294,12 @@ export const DashboardGrid: Story = {
 
 export const LongValues: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="base">
+    <Flex direction="row" gap="base">
       <StatCard label="Short" value={42} className="w-48" />
       <StatCard label="Medium" value={1234} className="w-48" />
       <StatCard label="Long" value={1234567} className="w-48" />
       <StatCard label="Formatted" value="$1,234,567.89" className="w-48" />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -329,17 +329,17 @@ export const SizeLarge: Story = {
 
 export const AllSizes: Story = {
   render: () => (
-    <Stack direction="horizontal" align="end" gap="base">
+    <Flex direction="row" align="end" gap="base">
       <StatCard size="sm" label="Small" value={42} trend="+5" className="w-40" />
       <StatCard size="md" label="Medium (default)" value={42} trend="+5" className="w-48" />
       <StatCard size="lg" label="Large" value={42} trend="+5" className="w-56" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const SizesWithIcons: Story = {
   render: () => (
-    <Stack direction="horizontal" align="end" gap="base">
+    <Flex direction="row" align="end" gap="base">
       <StatCard
         size="sm"
         label="Components"
@@ -361,29 +361,29 @@ export const SizesWithIcons: Story = {
         customIcon={<Icon name="package" size="lg" />}
         className="w-56"
       />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const SizesWithVariants: Story = {
   render: () => (
-    <Stack gap="md">
-      <Stack direction="horizontal" align="end" gap="base">
+    <Flex gap="md">
+      <Flex direction="row" align="end" gap="base">
         <StatCard size="sm" variant="outlined" label="Outlined SM" value={42} className="w-40" />
         <StatCard size="md" variant="outlined" label="Outlined MD" value={42} className="w-48" />
         <StatCard size="lg" variant="outlined" label="Outlined LG" value={42} className="w-56" />
-      </Stack>
-      <Stack direction="horizontal" align="end" gap="base">
+      </Flex>
+      <Flex direction="row" align="end" gap="base">
         <StatCard size="sm" variant="elevated" label="Elevated SM" value={42} className="w-40" />
         <StatCard size="md" variant="elevated" label="Elevated MD" value={42} className="w-48" />
         <StatCard size="lg" variant="elevated" label="Elevated LG" value={42} className="w-56" />
-      </Stack>
-      <Stack direction="horizontal" align="end" gap="base">
+      </Flex>
+      <Flex direction="row" align="end" gap="base">
         <StatCard size="sm" variant="info" label="Info SM" value={42} className="w-40" />
         <StatCard size="md" variant="info" label="Info MD" value={42} className="w-48" />
         <StatCard size="lg" variant="info" label="Info LG" value={42} className="w-56" />
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
@@ -397,27 +397,27 @@ export const LoadingState: Story = {
 
 export const LoadingStates: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="base">
+    <Flex direction="row" gap="base">
       <StatCard variant="outlined" label="Loading" value={0} loading className="w-48" />
       <StatCard variant="elevated" label="Loading" value={0} loading size="sm" className="w-48" />
       <StatCard variant="info" label="Loading" value={0} loading size="lg" className="w-48" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const TrendWithIcons: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="base">
+    <Flex direction="row" gap="base">
       <StatCard label="Revenue" value="$12,450" trend="+15%" className="w-48" />
       <StatCard label="Expenses" value="$8,200" trend="-8%" className="w-48" />
       <StatCard label="Status" value="Stable" trend="unchanged" className="w-48" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const TrendWithoutIcons: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="base">
+    <Flex direction="row" gap="base">
       <StatCard
         label="Revenue"
         value="$12,450"
@@ -439,7 +439,7 @@ export const TrendWithoutIcons: Story = {
         showTrendIcon={false}
         className="w-48"
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -470,7 +470,7 @@ export const MixedStates: Story = {
 
 function ShowcaseContent() {
   return (
-    <Stack gap="lg" className="bg-surface p-lg">
+    <Flex gap="lg" className="bg-surface p-lg">
       {/* Title */}
       <div className="flex items-center gap-base">
         <Heading level={2} size="lg">
@@ -515,7 +515,7 @@ function ShowcaseContent() {
         <Heading level={3} className="mb-base">
           Size Variants
         </Heading>
-        <Stack direction="horizontal" align="end" gap="base">
+        <Flex direction="row" align="end" gap="base">
           <StatCard
             size="sm"
             label="Small"
@@ -540,7 +540,7 @@ function ShowcaseContent() {
             icon="chart"
             className="w-56"
           />
-        </Stack>
+        </Flex>
       </section>
 
       {/* Icon Positioning */}
@@ -548,7 +548,7 @@ function ShowcaseContent() {
         <Heading level={3} className="mb-base">
           Icon Positioning
         </Heading>
-        <Stack direction="horizontal" gap="base">
+        <Flex direction="row" gap="base">
           <StatCard
             label="Left Icon"
             value={100}
@@ -564,7 +564,7 @@ function ShowcaseContent() {
             className="w-48"
           />
           <StatCard label="No Icon" value={300} className="w-48" />
-        </Stack>
+        </Flex>
       </section>
 
       {/* Trend Variations */}
@@ -572,7 +572,7 @@ function ShowcaseContent() {
         <Heading level={3} className="mb-base">
           Trend Indicators
         </Heading>
-        <Stack direction="horizontal" gap="base">
+        <Flex direction="row" gap="base">
           <StatCard label="Auto Positive" value={100} trend="+25%" className="w-40" />
           <StatCard label="Auto Negative" value={50} trend="-10%" className="w-40" />
           <StatCard
@@ -596,7 +596,7 @@ function ShowcaseContent() {
             trendVariant="neutral"
             className="w-40"
           />
-        </Stack>
+        </Flex>
       </section>
 
       {/* Compact Mode */}
@@ -604,7 +604,7 @@ function ShowcaseContent() {
         <Heading level={3} className="mb-base">
           Compact vs Normal
         </Heading>
-        <Stack direction="horizontal" gap="base">
+        <Flex direction="row" gap="base">
           <StatCard
             compact
             label="Compact"
@@ -621,7 +621,7 @@ function ShowcaseContent() {
             description="Visible description text"
             className="w-48"
           />
-        </Stack>
+        </Flex>
       </section>
 
       {/* Loading States */}
@@ -629,11 +629,11 @@ function ShowcaseContent() {
         <Heading level={3} className="mb-base">
           Loading States
         </Heading>
-        <Stack direction="horizontal" gap="base">
+        <Flex direction="row" gap="base">
           <StatCard loading variant="outlined" label="" value={0} size="sm" className="w-40" />
           <StatCard loading variant="elevated" label="" value={0} size="md" className="w-48" />
           <StatCard loading variant="info" label="" value={0} size="lg" className="w-56" />
-        </Stack>
+        </Flex>
       </section>
 
       {/* Rich Content Examples */}
@@ -689,7 +689,7 @@ function ShowcaseContent() {
           <StatCard label="Support" value={12} trend="-5" />
         </Grid>
       </section>
-    </Stack>
+    </Flex>
   )
 }
 

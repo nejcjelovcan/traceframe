@@ -1,5 +1,5 @@
 import { Spinner } from './Spinner'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -72,29 +72,29 @@ export const Large: Story = {
 
 export const AllSizes: Story = {
   render: () => (
-    <Stack gap="lg" align="center">
-      <Stack align="center" gap="sm">
+    <Flex gap="lg" align="center">
+      <Flex align="center" gap="sm">
         <Spinner size="sm" />
         <span className="text-sm text-foreground-muted">Small</span>
-      </Stack>
-      <Stack align="center" gap="sm">
+      </Flex>
+      <Flex align="center" gap="sm">
         <Spinner size="md" />
         <span className="text-sm text-foreground-muted">Medium</span>
-      </Stack>
-      <Stack align="center" gap="sm">
+      </Flex>
+      <Flex align="center" gap="sm">
         <Spinner size="lg" />
         <span className="text-sm text-foreground-muted">Large</span>
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
 export const WithTextLabel: Story = {
   render: () => (
-    <Stack gap="md" direction="horizontal" align="center">
+    <Flex gap="md" direction="row" align="center">
       <Spinner size="sm" />
       <span className="text-foreground">Loading data...</span>
-    </Stack>
+    </Flex>
   ),
 }
 

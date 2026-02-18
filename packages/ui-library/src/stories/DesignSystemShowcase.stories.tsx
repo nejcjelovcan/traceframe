@@ -22,7 +22,7 @@ import {
   SearchInput,
   Select,
   Spinner,
-  Stack,
+  Flex,
   StatCard,
   ThemeSwitcher,
   ToggleGroup,
@@ -50,7 +50,7 @@ and consistent visual patterns across the system.
 - **Data Display**: Cards, Charts, Tables, Stats
 - **Feedback**: Badges, Spinners, Empty States, Error States
 - **Forms**: Inputs, Search, Select
-- **Layout**: Containers, Grid, Stack, Page Layout
+- **Layout**: Containers, Grid, Flex, Page Layout
 - **Navigation**: Links, Collapsible sections
 - **Overlays**: Tooltips
 - **Utilities**: Theme Switcher, Icons
@@ -138,12 +138,12 @@ const DesignSystemShowcase = () => {
             title="Actions"
             description="Interactive elements that trigger actions or navigate users"
           >
-            <Stack direction="vertical" gap="lg">
+            <Flex direction="col" gap="lg">
               <div>
                 <Heading level={4} color="muted" className="mb-md">
                   Buttons
                 </Heading>
-                <Stack direction="horizontal" gap="md">
+                <Flex direction="row" gap="md">
                   <Button variant="primary">Primary Button</Button>
                   <Button variant="destructive">Destructive</Button>
                   <Button variant="outline">Outline</Button>
@@ -152,30 +152,30 @@ const DesignSystemShowcase = () => {
                   <Button size="sm">Small</Button>
                   <Button size="lg">Large</Button>
                   <Button disabled>Disabled</Button>
-                </Stack>
+                </Flex>
               </div>
 
               <div>
                 <Heading level={4} color="muted" className="mb-md">
                   Links & Toggle Groups
                 </Heading>
-                <Stack direction="vertical" gap="md">
-                  <Stack direction="horizontal" gap="md">
+                <Flex direction="col" gap="md">
+                  <Flex direction="row" gap="md">
                     <Link href="#">Default Link</Link>
                     <Link href="#">Muted Link</Link>
                     <Link href="#" external>
                       External Link
                     </Link>
-                  </Stack>
+                  </Flex>
                   <ToggleGroup
                     value={toggleValue}
                     onChange={(value) => value && setToggleValue(value)}
                     options={toggleOptions}
                     aria-label="View mode toggle"
                   />
-                </Stack>
+                </Flex>
               </div>
-            </Stack>
+            </Flex>
           </ShowcaseSection>
 
           {/* Forms Section */}
@@ -184,7 +184,7 @@ const DesignSystemShowcase = () => {
             description="Input components for collecting and selecting data"
           >
             <Grid cols={{ sm: 1, md: 2 }} gap="lg">
-              <Stack direction="vertical" gap="md">
+              <Flex direction="col" gap="md">
                 <div>
                   <label className="block text-sm font-medium text-foreground-muted mb-sm">
                     Text Input
@@ -201,8 +201,8 @@ const DesignSystemShowcase = () => {
                     placeholder="Search components..."
                   />
                 </div>
-              </Stack>
-              <Stack direction="vertical" gap="md">
+              </Flex>
+              <Flex direction="col" gap="md">
                 <div>
                   <label className="block text-sm font-medium text-foreground-muted mb-sm">
                     Select Dropdown
@@ -222,13 +222,13 @@ const DesignSystemShowcase = () => {
                   <label className="block text-sm font-medium text-foreground-muted mb-sm">
                     Input States
                   </label>
-                  <Stack direction="vertical" gap="sm">
+                  <Flex direction="col" gap="sm">
                     <Input placeholder="Normal state" />
                     <Input placeholder="Error state" className="border-error" />
                     <Input placeholder="Disabled state" disabled />
-                  </Stack>
+                  </Flex>
                 </div>
-              </Stack>
+              </Flex>
             </Grid>
           </ShowcaseSection>
 
@@ -238,41 +238,41 @@ const DesignSystemShowcase = () => {
             description="Components that provide status, progress, and state information"
           >
             <Grid cols={{ sm: 1, md: 2 }} gap="lg">
-              <Stack direction="vertical" gap="md">
+              <Flex direction="col" gap="md">
                 <div>
                   <Heading level={4} color="muted" className="mb-md">
                     Badges
                   </Heading>
-                  <Stack direction="horizontal" gap="sm" wrap>
+                  <Flex direction="row" gap="sm" wrap>
                     <Badge variant="default">Default</Badge>
                     <Badge variant="secondary">Secondary</Badge>
                     <Badge variant="error">Error</Badge>
                     <Badge variant="success">Success</Badge>
                     <Badge variant="warning">Warning</Badge>
-                  </Stack>
+                  </Flex>
                 </div>
                 <div>
                   <Heading level={4} color="muted" className="mb-md">
                     Loading States
                   </Heading>
-                  <Stack direction="horizontal" gap="md" align="center">
+                  <Flex direction="row" gap="md" align="center">
                     <Spinner size="sm" />
                     <Spinner size="md" />
                     <Spinner size="lg" />
-                  </Stack>
+                  </Flex>
                 </div>
-              </Stack>
-              <Stack direction="vertical" gap="md">
+              </Flex>
+              <Flex direction="col" gap="md">
                 <div>
                   <Heading level={4} color="muted" className="mb-md">
                     State Messages
                   </Heading>
-                  <Stack direction="vertical" gap="sm">
+                  <Flex direction="col" gap="sm">
                     <EmptyState title="No items found" icon="search" />
                     <ErrorState title="Something went wrong" />
-                  </Stack>
+                  </Flex>
                 </div>
-              </Stack>
+              </Flex>
             </Grid>
           </ShowcaseSection>
 
@@ -281,7 +281,7 @@ const DesignSystemShowcase = () => {
             title="Data Display"
             description="Components for presenting and organizing information"
           >
-            <Stack direction="vertical" gap="lg">
+            <Flex direction="col" gap="lg">
               <Grid cols={{ sm: 1, md: 3 }} gap="base">
                 <StatCard title="Total Users" value="1,234" label="Total Users" icon="users" />
                 <StatCard title="Revenue" value="$45,678" label="Revenue" icon="chart" />
@@ -316,7 +316,7 @@ const DesignSystemShowcase = () => {
                   </CardContent>
                 </Card>
               </Grid>
-            </Stack>
+            </Flex>
           </ShowcaseSection>
 
           {/* Interactive Elements Section */}
@@ -324,7 +324,7 @@ const DesignSystemShowcase = () => {
             title="Interactive Elements"
             description="Components with interactive behaviors and state management"
           >
-            <Stack direction="vertical" gap="lg">
+            <Flex direction="col" gap="lg">
               <div>
                 <Heading level={4} color="muted" className="mb-md">
                   Collapsible Content
@@ -351,7 +351,7 @@ const DesignSystemShowcase = () => {
                 <Heading level={4} color="muted" className="mb-md">
                   Tooltips
                 </Heading>
-                <Stack direction="horizontal" gap="md">
+                <Flex direction="row" gap="md">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
@@ -368,9 +368,9 @@ const DesignSystemShowcase = () => {
                       <TooltipContent>Tooltips provide additional context</TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
-                </Stack>
+                </Flex>
               </div>
-            </Stack>
+            </Flex>
           </ShowcaseSection>
 
           {/* Footer */}

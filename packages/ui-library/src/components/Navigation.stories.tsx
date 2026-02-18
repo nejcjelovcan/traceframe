@@ -1,7 +1,7 @@
 import { Heading } from './Heading'
 import { Navigation, NavItem } from './Navigation'
 import { PageLayout, PageHeader } from './PageLayout'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -628,7 +628,7 @@ export const ContextInheritance: Story = {
         </div>
       }
     >
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={1}>Context Inheritance</Heading>
         <p className="text-foreground-muted">
           The Navigation components in both the header and sidebar inherit the filled variant and
@@ -645,7 +645,7 @@ export const ContextInheritance: Story = {
             <li>Navigation adjusts text colors based on inherited variant</li>
           </ol>
         </div>
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }
@@ -691,14 +691,14 @@ export const ContextOverride: Story = {
         </div>
       }
     >
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={1}>Context Override</Heading>
         <p className="text-foreground-muted">
           The header Navigation explicitly sets variant="subtle" and color="secondary", overriding
           the PageLayout context. The sidebar Navigation inherits the filled/primary from
           PageLayout.
         </p>
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }

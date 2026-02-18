@@ -4,7 +4,7 @@ import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { Navigation, NavItem } from './Navigation'
 import { PageLayout, PageHeader } from './PageLayout'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -147,7 +147,7 @@ const SampleFooter = () => (
 )
 
 const SampleContent = () => (
-  <Stack gap="lg">
+  <Flex gap="lg">
     <div>
       <Heading level={1}>Dashboard</Heading>
       <p className="mt-xs text-foreground-muted">Welcome to your project overview.</p>
@@ -162,7 +162,7 @@ const SampleContent = () => (
         </Card>
       ))}
     </Grid>
-  </Stack>
+  </Flex>
 )
 
 export const Default: Story = {
@@ -264,13 +264,13 @@ export const RightSidebar: Story = {
       }
       sidebarPosition="right"
     >
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={1}>Documentation</Heading>
         <p className="text-foreground-muted">
           This demonstrates a right-positioned sidebar, commonly used for table of contents
           navigation.
         </p>
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }
@@ -291,7 +291,7 @@ export const MobileView: Story = {
 export const LongScrollableContent: Story = {
   render: () => (
     <PageLayout header={<SampleHeader />} sidebar={<SampleSidebar />} footer={<SampleFooter />}>
-      <Stack gap="lg">
+      <Flex gap="lg">
         <Heading level={1}>Long Content Example</Heading>
         {Array.from({ length: 20 }).map((_, i) => (
           <Card key={i}>
@@ -305,7 +305,7 @@ export const LongScrollableContent: Story = {
             </CardContent>
           </Card>
         ))}
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }
@@ -313,7 +313,7 @@ export const LongScrollableContent: Story = {
 export const DashboardLayout: Story = {
   render: () => (
     <PageLayout header={<SampleHeader />} sidebar={<SampleSidebar />}>
-      <Stack gap="lg">
+      <Flex gap="lg">
         <div>
           <Heading level={1}>Project Dashboard</Heading>
           <p className="mt-xs text-foreground-muted">Overview of your codebase health.</p>
@@ -339,7 +339,7 @@ export const DashboardLayout: Story = {
             <Heading level={2} className="mb-base">
               Recent Activity
             </Heading>
-            <Stack gap="md">
+            <Flex gap="md">
               {[
                 'Added new Button component',
                 'Updated dependency versions',
@@ -354,10 +354,10 @@ export const DashboardLayout: Story = {
                   <span className="text-sm">{activity}</span>
                 </div>
               ))}
-            </Stack>
+            </Flex>
           </CardContent>
         </Card>
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }
@@ -378,7 +378,7 @@ export const WithSkipLink: Story = {
       footer={<SampleFooter />}
       skipLinkText="Skip to main content"
     >
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={1}>Skip Link Demo</Heading>
         <p className="text-foreground-muted">
           Press <kbd className="rounded-sm border bg-surface-muted px-xs py-2xs text-sm">Tab</kbd>{' '}
@@ -394,7 +394,7 @@ export const WithSkipLink: Story = {
             <li>This allows keyboard users to skip past navigation</li>
           </ol>
         </div>
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }
@@ -542,13 +542,13 @@ export const MixedVariants: Story = {
       }
       sidebar={<SampleSidebar />}
     >
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={1}>Mixed Variants</Heading>
         <p className="text-foreground-muted">
           The PageLayout has variant="filled" and color="primary", but the Navigation in the header
           explicitly overrides with variant="subtle" and color="secondary".
         </p>
-      </Stack>
+      </Flex>
     </PageLayout>
   ),
 }

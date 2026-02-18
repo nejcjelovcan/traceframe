@@ -4,7 +4,7 @@ import { Button } from './Button'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from './Collapsible'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -102,51 +102,51 @@ export const Controlled: Story = {
   render: () => {
     const [open, setOpen] = useState(false)
     return (
-      <Stack gap="md">
-        <Stack direction="horizontal" gap="sm" align="center">
+      <Flex gap="md">
+        <Flex direction="row" gap="sm" align="center">
           <Button onClick={() => setOpen(!open)} size="sm">
             {open ? 'Close' : 'Open'} Externally
           </Button>
           <span className="text-sm text-foreground-muted">State: {open ? 'open' : 'closed'}</span>
-        </Stack>
+        </Flex>
         <Collapsible open={open} onOpenChange={setOpen}>
           <CollapsibleTrigger>Controlled Section</CollapsibleTrigger>
           <CollapsibleContent>
             This section is controlled. Toggle with the button above or click the trigger.
           </CollapsibleContent>
         </Collapsible>
-      </Stack>
+      </Flex>
     )
   },
 }
 
 export const Sizes: Story = {
   render: () => (
-    <Stack gap="lg">
-      <Stack gap="sm">
+    <Flex gap="lg">
+      <Flex gap="sm">
         <p className="mb-sm text-sm font-medium text-foreground-muted">Small</p>
         <Collapsible>
           <CollapsibleTrigger size="sm">Small Trigger</CollapsibleTrigger>
           <CollapsibleContent size="sm">Small content</CollapsibleContent>
         </Collapsible>
-      </Stack>
+      </Flex>
 
-      <Stack gap="sm">
+      <Flex gap="sm">
         <p className="mb-sm text-sm font-medium text-foreground-muted">Medium (default)</p>
         <Collapsible>
           <CollapsibleTrigger size="md">Medium Trigger</CollapsibleTrigger>
           <CollapsibleContent size="md">Medium content</CollapsibleContent>
         </Collapsible>
-      </Stack>
+      </Flex>
 
-      <Stack gap="sm">
+      <Flex gap="sm">
         <p className="mb-sm text-sm font-medium text-foreground-muted">Large</p>
         <Collapsible>
           <CollapsibleTrigger size="lg">Large Trigger</CollapsibleTrigger>
           <CollapsibleContent size="lg">Large content</CollapsibleContent>
         </Collapsible>
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
@@ -224,7 +224,7 @@ export const NestedCollapsibles: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       <div>
         Default Variant
         <Collapsible>
@@ -256,7 +256,7 @@ export const Variants: Story = {
           <CollapsibleContent>Filled content with background color</CollapsibleContent>
         </Collapsible>
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -291,17 +291,17 @@ export const Showcase: Story = {
     const [expandAll, setExpandAll] = useState(false)
 
     return (
-      <Stack gap="lg">
-        <Stack direction="horizontal" gap="sm" align="center" justify="between">
+      <Flex gap="lg">
+        <Flex direction="row" gap="sm" align="center" justify="between">
           <Heading level={2} size="2xl">
             Collapsible Component Showcase
           </Heading>
           <Button onClick={() => setExpandAll(!expandAll)} size="sm">
             {expandAll ? 'Collapse All' : 'Expand All'}
           </Button>
-        </Stack>
+        </Flex>
 
-        <Stack gap="lg">
+        <Flex gap="lg">
           <section>
             <Heading level={3} className="mb-base">
               Visual Variants
@@ -319,8 +319,8 @@ export const Showcase: Story = {
               ))}
             </Grid>
           </section>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
     )
   },
 }

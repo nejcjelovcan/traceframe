@@ -83,7 +83,7 @@ export {
   type PageHeaderProps,
 } from './components/PageLayout.js'
 export { Spinner, spinnerVariants, type SpinnerProps } from './components/Spinner.js'
-export { Stack, stackVariants, type StackProps } from './components/Stack.js'
+export { Flex, flexVariants, type FlexProps } from './components/Flex.js'
 export { StatCard, type StatCardProps } from './components/StatCard.js'
 export {
   ToggleGroup,

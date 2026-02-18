@@ -1,6 +1,6 @@
 import { BarChart, type BarChartDataItem } from './BarChart'
 import { Heading } from './Heading'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -291,7 +291,7 @@ export const EmptyData: Story = {
 
 export const AllVariants: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       <div>
         <Heading level={3} className="mb-base">
           Horizontal + Default Colors
@@ -351,7 +351,7 @@ export const AllVariants: Story = {
           ariaLabel="Vertical semantic"
         />
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -371,12 +371,12 @@ export const KeyboardNavigation: Story = {
   },
   decorators: [
     (Story) => (
-      <Stack gap="md">
+      <Flex gap="md">
         <p className="text-sm text-foreground-muted">
           Use Tab to navigate between bars. Tooltips appear on focus. Press Enter to click.
         </p>
         <Story />
-      </Stack>
+      </Flex>
     ),
   ],
 }

@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from '../components/Card.js'
 import { Container } from '../components/Container.js'
 import { Heading } from '../components/Heading.js'
 import { Input } from '../components/Input.js'
-import { Stack } from '../components/Stack.js'
+import { Flex } from '../components/Flex.js'
 import { StatCard } from '../components/StatCard.js'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -74,7 +74,7 @@ export const BasicInverse: Story = {
   name: 'Basic Inverse Context',
   render: () => (
     <Container>
-      <Stack gap="lg">
+      <Flex gap="lg">
         <section>
           <Heading level={2} className="mb-md">
             Normal Context
@@ -114,7 +114,7 @@ export const BasicInverse: Story = {
             </Card>
           </div>
         </section>
-      </Stack>
+      </Flex>
     </Container>
   ),
 }
@@ -123,7 +123,7 @@ export const NestedInverse: Story = {
   name: 'Nested Inverse (Double Negative)',
   render: () => (
     <Container>
-      <Stack gap="lg">
+      <Flex gap="lg">
         <Card>
           <CardHeader>Level 0: Normal Context</CardHeader>
           <CardContent>
@@ -152,7 +152,7 @@ export const NestedInverse: Story = {
             </div>
           </CardContent>
         </Card>
-      </Stack>
+      </Flex>
     </Container>
   ),
 }
@@ -166,7 +166,7 @@ export const ComponentsInInverse: Story = {
           <Heading level={3} className="mb-md">
             Normal Context
           </Heading>
-          <Stack gap="md">
+          <Flex gap="md">
             <div className="flex gap-sm">
               <Button variant="primary">Primary</Button>
               <Button variant="secondary">Secondary</Button>
@@ -183,14 +183,14 @@ export const ComponentsInInverse: Story = {
             <Input placeholder="Normal input field" />
 
             <StatCard label="Revenue" value="$12,345" trend="+15%" icon="chart" />
-          </Stack>
+          </Flex>
         </div>
 
         <div className="inverse p-lg rounded-md">
           <Heading level={3} className="mb-md">
             Inverse Context
           </Heading>
-          <Stack gap="md">
+          <Flex gap="md">
             <div className="flex gap-sm">
               <Button variant="primary">Primary</Button>
               <Button variant="secondary">Secondary</Button>
@@ -207,7 +207,7 @@ export const ComponentsInInverse: Story = {
             <Input placeholder="Inverse input field" />
 
             <StatCard label="Revenue" value="$12,345" trend="+15%" icon="chart" />
-          </Stack>
+          </Flex>
         </div>
       </div>
     </Container>
@@ -222,7 +222,7 @@ export const DashboardExample: Story = {
         <Heading level={3} className="mb-lg">
           Dashboard
         </Heading>
-        <Stack gap="sm">
+        <Flex gap="sm">
           <Button variant="ghost" className="w-full justify-start">
             Overview
           </Button>
@@ -235,12 +235,12 @@ export const DashboardExample: Story = {
           <Button variant="ghost" className="w-full justify-start">
             Settings
           </Button>
-        </Stack>
+        </Flex>
 
         <Card className="mt-lg">
           <CardHeader>Quick Stats</CardHeader>
           <CardContent>
-            <Stack gap="xs">
+            <Flex gap="xs">
               <div className="flex justify-between">
                 <span className="text-sm">Active Users</span>
                 <span className="font-semibold">1,234</span>
@@ -249,7 +249,7 @@ export const DashboardExample: Story = {
                 <span className="text-sm">Revenue</span>
                 <span className="font-semibold">$45.6k</span>
               </div>
-            </Stack>
+            </Flex>
           </CardContent>
         </Card>
       </aside>
@@ -268,7 +268,7 @@ export const DashboardExample: Story = {
         <Card>
           <CardHeader>Recent Activity</CardHeader>
           <CardContent>
-            <Stack gap="sm">
+            <Flex gap="sm">
               <div className="flex items-center justify-between p-sm hover:bg-surface-subtle rounded">
                 <div>
                   <div className="font-medium">New user registration</div>
@@ -283,7 +283,7 @@ export const DashboardExample: Story = {
                 </div>
                 <Badge variant="info">Payment</Badge>
               </div>
-            </Stack>
+            </Flex>
           </CardContent>
         </Card>
       </main>
@@ -295,7 +295,7 @@ export const TokenSwapping: Story = {
   name: 'Token Swapping Demonstration',
   render: () => (
     <Container>
-      <Stack gap="lg">
+      <Flex gap="lg">
         <Card>
           <CardHeader>CSS Variable Token Swapping</CardHeader>
           <CardContent>
@@ -350,7 +350,7 @@ export const TokenSwapping: Story = {
             </div>
           </div>
         </div>
-      </Stack>
+      </Flex>
     </Container>
   ),
 }

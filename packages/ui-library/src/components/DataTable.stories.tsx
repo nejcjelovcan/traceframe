@@ -5,7 +5,7 @@ import { Button } from './Button'
 import { DataTable, type Column, type SortState } from './DataTable'
 import { EmptyState } from './EmptyState'
 import { Heading } from './Heading'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 import { Icon } from '../icons/index.js'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -126,11 +126,11 @@ export const CustomEmptyState: Story = {
       columns={basicColumns}
       data={[]}
       emptyState={
-        <Stack align="center" gap="sm">
+        <Flex align="center" gap="sm">
           <span className="text-2xl">📭</span>
           <span className="text-foreground-muted">No components found</span>
           <span className="text-sm text-foreground-muted">Try adjusting your filters</span>
-        </Stack>
+        </Flex>
       }
     />
   ),
@@ -196,34 +196,34 @@ export const AllFeatures: Story = {
 
 export const SizeSmall: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Small size variant with compact padding and smaller text.
       </p>
       <DataTable columns={basicColumns} data={sampleData} size="sm" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const SizeMedium: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Medium size variant (default) with balanced padding.
       </p>
       <DataTable columns={basicColumns} data={sampleData} size="md" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const SizeLarge: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Large size variant with comfortable padding and larger text.
       </p>
       <DataTable columns={basicColumns} data={sampleData} size="lg" />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -231,32 +231,32 @@ export const SizeLarge: Story = {
 
 export const VariantDefault: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">Default variant with minimal borders.</p>
       <DataTable columns={basicColumns} data={sampleData} variant="default" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const VariantStriped: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Striped variant with alternating row backgrounds for easier data scanning.
       </p>
       <DataTable columns={basicColumns} data={sampleData} variant="striped" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const VariantBordered: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Bordered variant with full grid lines on all cells.
       </p>
       <DataTable columns={basicColumns} data={sampleData} variant="bordered" />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -264,23 +264,23 @@ export const VariantBordered: Story = {
 
 export const SmallStriped: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Combination of small size and striped variant for compact data tables.
       </p>
       <DataTable columns={basicColumns} data={sampleData} size="sm" variant="striped" />
-    </Stack>
+    </Flex>
   ),
 }
 
 export const LargeBordered: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Combination of large size and bordered variant for enhanced readability.
       </p>
       <DataTable columns={basicColumns} data={sampleData} size="lg" variant="bordered" />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -363,12 +363,12 @@ export const MixedSortable: Story = {
 
 export const WithKeyboardNavigation: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Use Tab to navigate between sortable headers, then press Enter or Space to sort.
       </p>
       <SortableTableDemo columns={sortableColumns} />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -412,7 +412,7 @@ export const LargeDataset: Story = {
   render: () => {
     const largeData = generateLargeData(5000)
     return (
-      <Stack gap="base">
+      <Flex gap="base">
         <p className="text-sm text-foreground-muted">
           Rendering 5,000 rows with virtualization. Only visible rows are rendered in the DOM.
         </p>
@@ -423,14 +423,14 @@ export const LargeDataset: Story = {
           maxHeight={400}
           getRowKey={(row) => row.id}
         />
-      </Stack>
+      </Flex>
     )
   },
 }
 
 export const CustomRowHeight: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Virtualized table with custom row height of 60px.
       </p>
@@ -442,7 +442,7 @@ export const CustomRowHeight: Story = {
         rowHeight={60}
         getRowKey={(row) => row.id}
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -450,7 +450,7 @@ export const WithGetRowKey: Story = {
   render: () => {
     const getRowKey = (row: VirtualizedRow) => `custom-key-${row.id}`
     return (
-      <Stack gap="base">
+      <Flex gap="base">
         <p className="text-sm text-foreground-muted">
           Virtualized table with custom getRowKey function for stable row identity.
         </p>
@@ -461,7 +461,7 @@ export const WithGetRowKey: Story = {
           maxHeight={400}
           getRowKey={getRowKey}
         />
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -501,7 +501,7 @@ const VirtualizedSortableDemo = () => {
   }
 
   return (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Virtualized table with 1,000 rows and sortable columns.
       </p>
@@ -514,7 +514,7 @@ const VirtualizedSortableDemo = () => {
         onSort={handleSort}
         getRowKey={(row) => row.id}
       />
-    </Stack>
+    </Flex>
   )
 }
 
@@ -524,7 +524,7 @@ export const VirtualizedWithSorting: Story = {
 
 export const VirtualizedWithRowClick: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Virtualized table with row click handler. Click any row to see an alert.
       </p>
@@ -536,7 +536,7 @@ export const VirtualizedWithRowClick: Story = {
         getRowKey={(row) => row.id}
         onRowClick={(row) => alert(`Clicked row: ${row.name}`)}
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -775,16 +775,16 @@ const ShowcaseTableDemo = () => {
   })
 
   return (
-    <Stack gap="base">
-      <Stack
-        direction="horizontal"
+    <Flex gap="base">
+      <Flex
+        direction="row"
         gap="base"
         wrap
         className="rounded-lg border border-border bg-surface-muted p-base"
       >
-        <Stack gap="sm">
+        <Flex gap="sm">
           <label className="text-sm font-medium text-foreground-muted">Size Variant</label>
-          <Stack direction="horizontal" gap="sm">
+          <Flex direction="row" gap="sm">
             {(['sm', 'md', 'lg'] as const).map((size) => (
               <Button
                 key={size}
@@ -795,12 +795,12 @@ const ShowcaseTableDemo = () => {
                 {size.toUpperCase()}
               </Button>
             ))}
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
 
-        <Stack gap="sm">
+        <Flex gap="sm">
           <label className="text-sm font-medium text-foreground-muted">Visual Variant</label>
-          <Stack direction="horizontal" gap="sm">
+          <Flex direction="row" gap="sm">
             {(['default', 'striped', 'bordered'] as const).map((variant) => (
               <Button
                 key={variant}
@@ -812,12 +812,12 @@ const ShowcaseTableDemo = () => {
                 {variant}
               </Button>
             ))}
-          </Stack>
-        </Stack>
+          </Flex>
+        </Flex>
 
-        <Stack gap="sm">
+        <Flex gap="sm">
           <label className="text-sm font-medium text-foreground-muted">Options</label>
-          <Stack direction="horizontal" gap="sm">
+          <Flex direction="row" gap="sm">
             <Button
               size="sm"
               variant={showEmpty ? 'secondary' : 'outline'}
@@ -832,9 +832,9 @@ const ShowcaseTableDemo = () => {
             >
               Virtualize (200 rows)
             </Button>
-          </Stack>
-        </Stack>
-      </Stack>
+          </Flex>
+        </Flex>
+      </Flex>
 
       <div>
         <Heading level={3} size="sm" className="mb-sm">
@@ -871,7 +871,7 @@ const ShowcaseTableDemo = () => {
         }
         getRowKey={(row) => row.id}
       />
-    </Stack>
+    </Flex>
   )
 }
 
@@ -949,7 +949,7 @@ const getRowKey = (row: TreeRow): number => row.id
 
 export const TreeData: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Basic two-level tree data with expand/collapse toggles.
       </p>
@@ -959,7 +959,7 @@ export const TreeData: Story = {
         getSubRows={getSubRows}
         getRowKey={getRowKey}
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -1023,7 +1023,7 @@ const getNestedRowKey = (row: NestedTreeRow): number => row.id
 
 export const NestedTree: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Multi-level nested tree structure with custom icons.
       </p>
@@ -1034,7 +1034,7 @@ export const NestedTree: Story = {
         getRowKey={getNestedRowKey}
         defaultExpandedRows={new Set([1])}
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -1042,19 +1042,19 @@ const ControlledExpandDemo = () => {
   const [expandedRows, setExpandedRows] = useState<Set<string | number>>(new Set())
 
   return (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Controlled expand state with external controls. Expanded:{' '}
         {expandedRows.size === 0 ? 'none' : Array.from(expandedRows).join(', ')}
       </p>
-      <Stack direction="horizontal" gap="sm">
+      <Flex direction="row" gap="sm">
         <Button size="sm" onClick={() => setExpandedRows(new Set([1, 2]))}>
           Expand All
         </Button>
         <Button size="sm" variant="outline" onClick={() => setExpandedRows(new Set())}>
           Collapse All
         </Button>
-      </Stack>
+      </Flex>
       <DataTable
         columns={treeColumns}
         data={treeData}
@@ -1063,7 +1063,7 @@ const ControlledExpandDemo = () => {
         expandedRows={expandedRows}
         onExpandChange={setExpandedRows}
       />
-    </Stack>
+    </Flex>
   )
 }
 
@@ -1073,7 +1073,7 @@ export const ControlledExpand: Story = {
 
 export const DefaultExpanded: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Pre-expanded rows using defaultExpandedRows prop (uncontrolled mode).
       </p>
@@ -1084,7 +1084,7 @@ export const DefaultExpanded: Story = {
         getRowKey={getRowKey}
         defaultExpandedRows={new Set([1, 2])}
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -1119,7 +1119,7 @@ const TreeWithSortingDemo = () => {
   })
 
   return (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Sortable tree table. Sorting applies to the current level; children stay under their parent.
       </p>
@@ -1132,7 +1132,7 @@ const TreeWithSortingDemo = () => {
         onSort={handleSort}
         defaultExpandedRows={new Set([1])}
       />
-    </Stack>
+    </Flex>
   )
 }
 
@@ -1168,7 +1168,7 @@ const largeTreeData = generateLargeTreeData()
 
 export const VirtualizedTree: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <p className="text-sm text-foreground-muted">
         Virtualized tree with 50 categories, each with 5 children (300 total rows when fully
         expanded).
@@ -1182,7 +1182,7 @@ export const VirtualizedTree: Story = {
         maxHeight={400}
         defaultExpandedRows={new Set([1, 2, 3])}
       />
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -1289,7 +1289,7 @@ const getPropsRowKey = (row: PropRow, index: number): string => `${row.kind}-${r
 
 export const PropsTable: Story = {
   render: () => (
-    <Stack gap="base">
+    <Flex gap="base">
       <Heading level={3} size="sm">
         Button Props
       </Heading>
@@ -1306,7 +1306,7 @@ export const PropsTable: Story = {
         variant="striped"
         defaultExpandedRows={new Set(['prop-variant-0'])}
       />
-    </Stack>
+    </Flex>
   ),
   parameters: {
     docs: {

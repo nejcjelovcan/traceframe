@@ -1,7 +1,7 @@
 import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { Link } from './Link'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -104,7 +104,7 @@ export const Default: Story = {
 
 export const Variants: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <div>
         <span className="text-foreground-muted mr-sm">Default:</span>
         <Link href="/packages">View packages</Link>
@@ -121,38 +121,38 @@ export const Variants: Story = {
           Create new project
         </Link>
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const Sizes: Story = {
   render: () => (
-    <Stack gap="md">
-      <Stack direction="horizontal" align="center" gap="base">
+    <Flex gap="md">
+      <Flex direction="row" align="center" gap="base">
         <span className="text-foreground-muted">Small:</span>
         <Link href="/small" size="sm">
           Small link text
         </Link>
-      </Stack>
-      <Stack direction="horizontal" align="center" gap="base">
+      </Flex>
+      <Flex direction="row" align="center" gap="base">
         <span className="text-foreground-muted">Medium:</span>
         <Link href="/medium" size="md">
           Medium link text
         </Link>
-      </Stack>
-      <Stack direction="horizontal" align="center" gap="base">
+      </Flex>
+      <Flex direction="row" align="center" gap="base">
         <span className="text-foreground-muted">Large:</span>
         <Link href="/large" size="lg">
           Large link text
         </Link>
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
 export const WithIcons: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <div>
         <Link href="/next" icon="arrow-right">
           Continue to next step
@@ -173,13 +173,13 @@ export const WithIcons: Story = {
           View files
         </Link>
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const External: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <div>
         <span className="text-foreground-muted">Auto external icon: </span>
         <Link href="https://github.com" external>
@@ -198,13 +198,13 @@ export const External: Story = {
           NPM Package
         </Link>
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const InlineUsage: Story = {
   render: () => (
-    <Stack gap="base" className="max-w-prose">
+    <Flex gap="base" className="max-w-prose">
       <p className="text-foreground">
         Links can be used <Link href="/inline">inline within text</Link> like this. They maintain
         proper alignment with surrounding text.
@@ -231,7 +231,7 @@ export const InlineUsage: Story = {
         </Link>{' '}
         scale appropriately.
       </p>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -245,7 +245,7 @@ export const AsChild: Story = {
     },
   },
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <div>
         <span className="text-foreground-muted mr-sm">asChild with button:</span>
         <Link asChild variant="default">
@@ -270,13 +270,13 @@ export const AsChild: Story = {
           </button>
         </Link>
       </div>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const AllVariants: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       {/* Variants Grid */}
       <section>
         <Heading level={3} className="mb-base">
@@ -475,6 +475,6 @@ export const AllVariants: Story = {
           </table>
         </div>
       </section>
-    </Stack>
+    </Flex>
   ),
 }

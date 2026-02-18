@@ -1,5 +1,5 @@
 import { Heading } from './Heading'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -115,20 +115,20 @@ export const TightTracking: Story = {
 
 export const AllLevels: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <Heading level={1}>Heading Level 1 (h1 - 2xl)</Heading>
       <Heading level={2}>Heading Level 2 (h2 - xl)</Heading>
       <Heading level={3}>Heading Level 3 (h3 - lg)</Heading>
       <Heading level={4}>Heading Level 4 (h4 - base)</Heading>
       <Heading level={5}>Heading Level 5 (h5 - sm)</Heading>
       <Heading level={6}>Heading Level 6 (h6 - xs)</Heading>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const AllSizes: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <Heading level={1} size="4xl">
         Size 4xl
       </Heading>
@@ -153,27 +153,27 @@ export const AllSizes: Story = {
       <Heading level={1} size="xs">
         Size xs
       </Heading>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const ColorVariants: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <Heading level={2} color="default">
         Default color
       </Heading>
       <Heading level={2} color="muted">
         Muted color
       </Heading>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const LevelSizeIndependence: Story = {
   name: 'Level/Size Independence',
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <Heading level={1} size="sm">
         h1 rendered at sm size
       </Heading>
@@ -183,46 +183,46 @@ export const LevelSizeIndependence: Story = {
       <Heading level={3} size="2xl">
         h3 rendered at 2xl size
       </Heading>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const AllVariants: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       <section>
         <Heading level={3} className="mb-sm">
           Default Levels
         </Heading>
-        <Stack gap="sm">
+        <Flex gap="sm">
           <Heading level={1}>Heading Level 1</Heading>
           <Heading level={2}>Heading Level 2</Heading>
           <Heading level={3}>Heading Level 3</Heading>
           <Heading level={4}>Heading Level 4</Heading>
           <Heading level={5}>Heading Level 5</Heading>
           <Heading level={6}>Heading Level 6</Heading>
-        </Stack>
+        </Flex>
       </section>
 
       <section>
         <Heading level={3} className="mb-sm">
           Color Variants
         </Heading>
-        <Stack gap="sm">
+        <Flex gap="sm">
           <Heading level={2} color="default">
             Default color
           </Heading>
           <Heading level={2} color="muted">
             Muted color
           </Heading>
-        </Stack>
+        </Flex>
       </section>
 
       <section>
         <Heading level={3} className="mb-sm">
           Size Overrides
         </Heading>
-        <Stack gap="sm">
+        <Flex gap="sm">
           <Heading level={3} size="4xl">
             h3 at 4xl
           </Heading>
@@ -232,8 +232,8 @@ export const AllVariants: Story = {
           <Heading level={3} size="sm">
             h3 at sm
           </Heading>
-        </Stack>
+        </Flex>
       </section>
-    </Stack>
+    </Flex>
   ),
 }

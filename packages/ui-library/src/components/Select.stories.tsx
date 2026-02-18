@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { Heading } from './Heading'
 import { Select } from './Select'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -137,8 +137,8 @@ export const Default: Story = {
 
 export const Sizes: Story = {
   render: () => (
-    <Stack gap="md" align="start">
-      <Stack direction="horizontal" align="center" gap="base">
+    <Flex gap="md" align="start">
+      <Flex direction="row" align="center" gap="base">
         <span className="w-size-lg text-sm text-foreground-muted">sm</span>
         <Select.Root>
           <Select.Trigger size="sm" aria-label="Small select">
@@ -149,9 +149,9 @@ export const Sizes: Story = {
             <Select.Item value="2">Option 2</Select.Item>
           </Select.Content>
         </Select.Root>
-      </Stack>
+      </Flex>
 
-      <Stack direction="horizontal" align="center" gap="base">
+      <Flex direction="row" align="center" gap="base">
         <span className="w-size-lg text-sm text-foreground-muted">md</span>
         <Select.Root>
           <Select.Trigger size="md" aria-label="Medium select">
@@ -162,9 +162,9 @@ export const Sizes: Story = {
             <Select.Item value="2">Option 2</Select.Item>
           </Select.Content>
         </Select.Root>
-      </Stack>
+      </Flex>
 
-      <Stack direction="horizontal" align="center" gap="base">
+      <Flex direction="row" align="center" gap="base">
         <span className="w-size-lg text-sm text-foreground-muted">lg</span>
         <Select.Root>
           <Select.Trigger size="lg" aria-label="Large select">
@@ -175,8 +175,8 @@ export const Sizes: Story = {
             <Select.Item value="2">Option 2</Select.Item>
           </Select.Content>
         </Select.Root>
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
@@ -319,7 +319,7 @@ export const WithGroups: Story = {
 
 export const WithPlaceholder: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <Select.Root>
         <Select.Trigger aria-label="Filter by package">
           <Select.Value placeholder="Filter by package..." />
@@ -341,7 +341,7 @@ export const WithPlaceholder: Story = {
           <Select.Item value="lodash">lodash</Select.Item>
         </Select.Content>
       </Select.Root>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -350,7 +350,7 @@ export const Controlled: Story = {
     const [value, setValue] = React.useState('react')
 
     return (
-      <Stack gap="md">
+      <Flex gap="md">
         <Select.Root value={value} onValueChange={setValue}>
           <Select.Trigger aria-label="Controlled select">
             <Select.Value />
@@ -362,7 +362,7 @@ export const Controlled: Story = {
           </Select.Content>
         </Select.Root>
         <p className="text-sm text-foreground-muted">Selected: {value}</p>
-      </Stack>
+      </Flex>
     )
   },
 }
@@ -382,7 +382,7 @@ export const LoadingState: Story = {
 
 export const EmptyState: Story = {
   render: () => (
-    <Stack direction="horizontal" gap="base">
+    <Flex direction="row" gap="base">
       <Select.Root>
         <Select.Trigger aria-label="Empty select">
           <Select.Value placeholder="No results..." />
@@ -400,13 +400,13 @@ export const EmptyState: Story = {
           {/* Custom empty state */}
         </Select.Content>
       </Select.Root>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const WithIcons: Story = {
   render: () => (
-    <Stack gap="md">
+    <Flex gap="md">
       <Select.Root>
         <Select.Trigger leftIcon="package" aria-label="Package select">
           <Select.Value placeholder="Select a package..." />
@@ -441,14 +441,14 @@ export const WithIcons: Story = {
           <Select.Item value="bob">Bob Johnson</Select.Item>
         </Select.Content>
       </Select.Root>
-    </Stack>
+    </Flex>
   ),
 }
 
 export const StatusValidation: Story = {
   render: () => (
-    <Stack gap="md">
-      <Stack gap="sm">
+    <Flex gap="md">
+      <Flex gap="sm">
         <label className="text-sm font-medium text-foreground">Error State</label>
         <Select.Root>
           <Select.Trigger variant="error" leftIcon="alert-circle" aria-label="Error select">
@@ -464,9 +464,9 @@ export const StatusValidation: Story = {
           </Select.Content>
         </Select.Root>
         <p className="text-xs text-status-error">Please select a valid option</p>
-      </Stack>
+      </Flex>
 
-      <Stack gap="sm">
+      <Flex gap="sm">
         <label className="text-sm font-medium text-foreground">Success State</label>
         <Select.Root defaultValue="valid">
           <Select.Trigger variant="success" leftIcon="check" aria-label="Success select">
@@ -482,20 +482,20 @@ export const StatusValidation: Story = {
           </Select.Content>
         </Select.Root>
         <p className="text-xs text-status-success">Selection confirmed</p>
-      </Stack>
-    </Stack>
+      </Flex>
+    </Flex>
   ),
 }
 
 export const Showcase: Story = {
   render: () => (
-    <Stack gap="lg">
+    <Flex gap="lg">
       {/* Variants */}
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={3} size="sm">
           Variants
         </Heading>
-        <Stack direction="horizontal" wrap align="start" gap="base">
+        <Flex direction="row" wrap align="start" gap="base">
           <Select.Root defaultValue="default">
             <Select.Trigger variant="default" aria-label="Default variant">
               <Select.Value />
@@ -553,15 +553,15 @@ export const Showcase: Story = {
               <Select.Item value="option2">Option 2</Select.Item>
             </Select.Content>
           </Select.Root>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
 
       {/* Sizes */}
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={3} size="sm">
           Sizes
         </Heading>
-        <Stack direction="horizontal" align="center" gap="base">
+        <Flex direction="row" align="center" gap="base">
           <Select.Root defaultValue="xs">
             <Select.Trigger size="xs" aria-label="Extra small">
               <Select.Value />
@@ -597,15 +597,15 @@ export const Showcase: Story = {
               <Select.Item value="lg">Large</Select.Item>
             </Select.Content>
           </Select.Root>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
 
       {/* With Icons */}
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={3} size="sm">
           With Icons
         </Heading>
-        <Stack direction="horizontal" wrap align="start" gap="base">
+        <Flex direction="row" wrap align="start" gap="base">
           <Select.Root defaultValue="react">
             <Select.Trigger leftIcon="package" aria-label="With left icon">
               <Select.Value />
@@ -642,15 +642,15 @@ export const Showcase: Story = {
               <Select.Item value="option1">Option 1</Select.Item>
             </Select.Content>
           </Select.Root>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
 
       {/* Density */}
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={3} size="sm">
           Density
         </Heading>
-        <Stack direction="horizontal" wrap align="start" gap="base">
+        <Flex direction="row" wrap align="start" gap="base">
           <Select.Root defaultValue="compact">
             <Select.Trigger density="compact" aria-label="Compact density">
               <Select.Value />
@@ -692,15 +692,15 @@ export const Showcase: Story = {
               </Select.Item>
             </Select.Content>
           </Select.Root>
-        </Stack>
-      </Stack>
+        </Flex>
+      </Flex>
 
       {/* States */}
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={3} size="sm">
           States
         </Heading>
-        <Stack direction="horizontal" wrap align="start" gap="base">
+        <Flex direction="row" wrap align="start" gap="base">
           <Select.Root>
             <Select.Trigger aria-label="Default state">
               <Select.Value placeholder="Default" />
@@ -727,8 +727,8 @@ export const Showcase: Story = {
               <Select.Item value="selected">Selected</Select.Item>
             </Select.Content>
           </Select.Root>
-        </Stack>
-      </Stack>
-    </Stack>
+        </Flex>
+      </Flex>
+    </Flex>
   ),
 }

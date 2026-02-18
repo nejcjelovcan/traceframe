@@ -3,7 +3,7 @@ import { Card, CardContent } from './Card.js'
 import { EmptyState } from './EmptyState.js'
 import { Grid } from './Grid.js'
 import { Heading } from './Heading.js'
-import { Stack } from './Stack.js'
+import { Flex } from './Flex.js'
 import { Icon } from '../icons/index.js'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -168,7 +168,7 @@ export const Showcase: Story = {
     layout: 'padded',
   },
   render: () => (
-    <Stack gap="xl" className="max-w-4xl">
+    <Flex gap="xl" className="max-w-4xl">
       {/* Size Variants */}
       <section>
         <Heading level={2} size="lg" className="mb-base">
@@ -349,6 +349,6 @@ export const Showcase: Story = {
           </Card>
         </Grid>
       </section>
-    </Stack>
+    </Flex>
   ),
 }

@@ -3,7 +3,7 @@ import { Container } from './Container'
 import { DataTable, type Column } from './DataTable'
 import { Heading } from './Heading'
 import { Input } from './Input'
-import { Stack } from './Stack'
+import { Flex } from './Flex'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -157,7 +157,7 @@ export const FullWidth: Story = {
 
 export const AllSizes: Story = {
   render: () => (
-    <Stack gap="md" className="py-base">
+    <Flex gap="md" className="py-base">
       {(
         [
           ['sm', '640px'],
@@ -178,13 +178,13 @@ export const AllSizes: Story = {
           </Container>
         </div>
       ))}
-    </Stack>
+    </Flex>
   ),
 }
 
 export const PaddingVariants: Story = {
   render: () => (
-    <Stack gap="md" className="bg-surface-subtle py-base">
+    <Flex gap="md" className="bg-surface-subtle py-base">
       <Container size="lg" padding="none">
         <ContentBox>
           <p className="text-sm font-medium">padding: none (0px)</p>
@@ -205,7 +205,7 @@ export const PaddingVariants: Story = {
           <p className="text-sm font-medium">padding: lg (24px)</p>
         </ContentBox>
       </Container>
-    </Stack>
+    </Flex>
   ),
 }
 
@@ -269,18 +269,18 @@ export const FullWidthTable: Story = {
 export const FormLayout: Story = {
   render: () => (
     <Container size="sm" padding="lg">
-      <Stack gap="md">
+      <Flex gap="md">
         <Heading level={2}>Settings</Heading>
-        <Stack gap="xs">
+        <Flex gap="xs">
           <span className="text-sm font-medium">Project Name</span>
           <Input placeholder="My Project" />
-        </Stack>
-        <Stack gap="xs">
+        </Flex>
+        <Flex gap="xs">
           <span className="text-sm font-medium">Description</span>
           <Input placeholder="Describe your project..." />
-        </Stack>
+        </Flex>
         <Button variant="primary">Save Changes</Button>
-      </Stack>
+      </Flex>
     </Container>
   ),
 }
