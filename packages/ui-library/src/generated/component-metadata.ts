@@ -915,6 +915,12 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         type: 'text',
         required: false,
       },
+      {
+        name: 'minHeight',
+        description: 'Min height of the scroll area (CSS value)',
+        type: 'text',
+        required: false,
+      },
     ],
     subcomponents: ['LogView', 'LogEntry', 'LogPrompt'],
   },
