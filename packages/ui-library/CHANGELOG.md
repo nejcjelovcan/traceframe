@@ -1,5 +1,44 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 2.0.0
+
+### Major Changes
+
+- [#99](https://github.com/nejcjelovcan/traceframe/pull/99) [`ba9565e`](https://github.com/nejcjelovcan/traceframe/commit/ba9565ead720bc330340eeeba37e3463c600e16e) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - BREAKING CHANGE: Rename Stack to Flex component and update direction prop values
+  - Renamed `Stack` component to `Flex`
+  - Renamed `StackProps` to `FlexProps`
+  - Renamed `stackVariants` to `flexVariants`
+  - Changed direction prop values from `vertical`/`horizontal` to `col`/`row`
+  - Updated all exports and usages throughout the codebase
+
+  Migration guide:
+  - Replace all imports of `Stack` with `Flex`
+  - Update `direction="vertical"` to `direction="col"`
+  - Update `direction="horizontal"` to `direction="row"`
+
+- [#100](https://github.com/nejcjelovcan/traceframe/pull/100) [`d0c5e13`](https://github.com/nejcjelovcan/traceframe/commit/d0c5e13ba4dfbdc0764cb5332f492544426ee1c1) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Unify responsive props in Grid and Flex components with breaking changes
+
+  BREAKING CHANGES:
+  - Grid: `ResponsiveCols` type replaced with `ResponsiveValue<ColCount>`
+  - Grid: `ColsValue` type removed, use `ResponsiveValue<ColCount>` instead
+  - Grid: Now supports `default` breakpoint in responsive cols
+
+  NEW FEATURES:
+  - Flex: All variant props now accept responsive values (direction, gap, align, justify, wrap)
+  - New generic `ResponsiveValue<T>` type for consistent responsive prop pattern
+  - New `generateResponsiveClasses` utility for responsive class generation
+  - Both components maintain backward compatibility for static values
+
+### Minor Changes
+
+- [#94](https://github.com/nejcjelovcan/traceframe/pull/94) [`7d8a579`](https://github.com/nejcjelovcan/traceframe/commit/7d8a57968eb82907a7d8afa0edd186e8739df61a) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add auto-generated token metadata with generate-token-metadata script
+
+- [`35ac47c`](https://github.com/nejcjelovcan/traceframe/commit/35ac47c05642c64d63eeba5d968dc6ef8185476e) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update playroom preset, remove PageLayout overflow, add 2xl to responsive values
+
+- [`dfb8bfd`](https://github.com/nejcjelovcan/traceframe/commit/dfb8bfdb5dc0f0309a3e67a06f51a5e53b28de5b) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add rightContent and truncate props to CardHeader component
+
+- [#96](https://github.com/nejcjelovcan/traceframe/pull/96) [`9c41cac`](https://github.com/nejcjelovcan/traceframe/commit/9c41cac64ef670d1ac0f50422b679cd2568c3653) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add automated token metadata generation for MCP tools. The generate-token-metadata script extracts design tokens from CSS source files and generates TypeScript metadata with descriptions, enabling better tooling support and documentation.
+
 ## 1.8.0
 
 ### Minor Changes
