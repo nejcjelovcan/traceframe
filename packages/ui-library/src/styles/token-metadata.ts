@@ -6,4 +6,4 @@
  * To update token descriptions, edit the CSS comments in the source files and run:
  * pnpm generate:token-metadata
  */
-export { TOKEN_METADATA } from './token-metadata.generated'
+export { TOKEN_METADATA } from './token-metadata.generated.js'
