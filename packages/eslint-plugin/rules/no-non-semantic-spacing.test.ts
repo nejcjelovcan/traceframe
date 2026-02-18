@@ -80,15 +80,9 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'p-4',
-            suggestion: 'p-base',
+            suggestion: 'nearest: p-base (0.875rem) or p-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'p-base' },
-              output: '<div className="p-base" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -100,15 +94,9 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'gap-2',
-            suggestion: 'gap-sm',
+            suggestion: 'nearest: gap-sm (0.375rem) or gap-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'gap-sm' },
-              output: '<div className="gap-sm" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -120,15 +108,9 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'mx-8',
-            suggestion: 'mx-lg',
+            suggestion: 'nearest: mx-lg (1.5rem) or mx-xl (3rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'mx-lg' },
-              output: '<div className="mx-lg" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -140,43 +122,25 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'p-4',
-            suggestion: 'p-base',
+            suggestion: 'nearest: p-base (0.875rem) or p-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'p-base' },
-              output: '<div className="p-base gap-2 mt-8" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'gap-2',
-            suggestion: 'gap-sm',
+            suggestion: 'nearest: gap-sm (0.375rem) or gap-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'gap-sm' },
-              output: '<div className="p-4 gap-sm mt-8" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'mt-8',
-            suggestion: 'mt-lg',
+            suggestion: 'nearest: mt-lg (1.5rem) or mt-xl (3rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'mt-lg' },
-              output: '<div className="p-4 gap-2 mt-lg" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -188,15 +152,9 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: '-m-2',
-            suggestion: '-m-sm',
+            suggestion: 'nearest: -m-sm (0.375rem) or -m-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: '-m-sm' },
-              output: '<div className="-m-sm" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -208,15 +166,9 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'hover:p-4',
-            suggestion: 'hover:p-base',
+            suggestion: 'nearest: p-base (0.875rem) or p-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'hover:p-base' },
-              output: '<div className="hover:p-base" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -228,29 +180,17 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'p-4',
-            suggestion: 'p-base',
+            suggestion: 'nearest: p-base (0.875rem) or p-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'p-base' },
-              output: 'cn("p-base", "gap-2")',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'gap-2',
-            suggestion: 'gap-sm',
+            suggestion: 'nearest: gap-sm (0.375rem) or gap-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'gap-sm' },
-              output: 'cn("p-4", "gap-sm")',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -271,29 +211,17 @@ ruleTester.run('no-non-semantic-spacing', noNonSemanticSpacing, {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'p-4',
-            suggestion: 'p-base',
+            suggestion: 'nearest: p-base (0.875rem) or p-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'p-base' },
-              output: '<div className={`p-base gap-2`} />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSpacing',
           data: {
             className: 'gap-2',
-            suggestion: 'gap-sm',
+            suggestion: 'nearest: gap-sm (0.375rem) or gap-md (0.625rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'gap-sm' },
-              output: '<div className={`p-4 gap-sm`} />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },

@@ -478,13 +478,15 @@ export function Component() {
     const result = await validateTokensTool({ path: tempDir, report: 'detailed' })
 
     const p4 = result.violations.find((v) => v.className === 'p-4')
-    expect(p4?.suggestion).toBe('p-base')
+    expect(p4?.suggestion).toContain('p-base')
+    expect(p4?.suggestion).toContain('p-md')
 
     const gap2 = result.violations.find((v) => v.className === 'gap-2')
-    expect(gap2?.suggestion).toBe('gap-sm')
+    expect(gap2?.suggestion).toContain('gap-sm')
+    expect(gap2?.suggestion).toContain('gap-md')
 
     const mx8 = result.violations.find((v) => v.className === 'mx-8')
-    expect(mx8?.suggestion).toBe('mx-lg')
+    expect(mx8?.suggestion).toContain('mx-lg')
   })
 
   it('should provide sizing suggestions with exact matches', async () => {
@@ -502,13 +504,15 @@ export function Component() {
     const result = await validateTokensTool({ path: tempDir, report: 'detailed' })
 
     const h8 = result.violations.find((v) => v.className === 'h-8')
-    expect(h8?.suggestion).toBe('h-size-sm')
+    expect(h8?.suggestion).toContain('h-size-sm')
+    expect(h8?.suggestion).toContain('h-size-md')
 
     const w10 = result.violations.find((v) => v.className === 'w-10')
-    expect(w10?.suggestion).toBe('w-size-md')
+    expect(w10?.suggestion).toContain('w-size-md')
 
     const minH6 = result.violations.find((v) => v.className === 'min-h-6')
-    expect(minH6?.suggestion).toBe('min-h-size-xs')
+    expect(minH6?.suggestion).toContain('min-h-size-xs')
+    expect(minH6?.suggestion).toContain('min-h-size-sm')
   })
 
   it('should provide nearest-match suggestions for non-exact spacing values', async () => {
@@ -572,7 +576,7 @@ export function Component() {
     expect(result.summary.bySeverity).toEqual({ error: 2, warning: 4 })
   })
 
-  it('should autofix exact-match spacing violations', async () => {
+  it('should NOT autofix nearest-match spacing violations', async () => {
     const testFile = join(tempDir, 'component.tsx')
     await writeFile(testFile, '<div className="p-4 gap-2" />', 'utf-8')
 
@@ -580,11 +584,12 @@ export function Component() {
 
     const { readFile } = await import('node:fs/promises')
     const content = await readFile(testFile, 'utf-8')
-    expect(content).toContain('p-base')
-    expect(content).toContain('gap-sm')
+    // These should remain unchanged since they're not exact matches
+    expect(content).toContain('p-4')
+    expect(content).toContain('gap-2')
   })
 
-  it('should autofix exact-match sizing violations', async () => {
+  it('should NOT autofix nearest-match sizing violations', async () => {
     const testFile = join(tempDir, 'component.tsx')
     await writeFile(testFile, '<div className="h-8 w-10" />', 'utf-8')
 
@@ -592,8 +597,9 @@ export function Component() {
 
     const { readFile } = await import('node:fs/promises')
     const content = await readFile(testFile, 'utf-8')
-    expect(content).toContain('h-size-sm')
-    expect(content).toContain('w-size-md')
+    // These should remain unchanged since they're not exact matches
+    expect(content).toContain('h-8')
+    expect(content).toContain('w-10')
   })
 
   it('should NOT autofix nearest-match suggestions', async () => {
@@ -649,6 +655,7 @@ export function Component() {
     expect(classNames).toContain('-mx-4')
 
     const m2 = result.violations.find((v) => v.className === '-m-2')
-    expect(m2?.suggestion).toBe('-m-sm')
+    expect(m2?.suggestion).toContain('-m-sm')
+    expect(m2?.suggestion).toContain('-m-md')
   })
 })

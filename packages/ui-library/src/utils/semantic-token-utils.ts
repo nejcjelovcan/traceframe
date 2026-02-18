@@ -254,7 +254,9 @@ export const SIZING_PREFIXES = ['h', 'min-h', 'max-h', 'w', 'min-w', 'max-w'] as
  * Derived from TOKEN_METADATA.theme.spacing.
  */
 export const SPACING_MAP: ReadonlyMap<string, { semantic: string; rem: string }> = (() => {
+  // Updated to support both standard and arctic theme values
   const remToNumeric: Record<string, string> = {
+    // Standard Tailwind values
     '0.125rem': '0.5',
     '0.25rem': '1',
     '0.5rem': '2',
@@ -263,6 +265,13 @@ export const SPACING_MAP: ReadonlyMap<string, { semantic: string; rem: string }>
     '2rem': '8',
     '4rem': '16',
     '8rem': '32',
+    // Arctic theme values
+    '0.375rem': '1.5', // sm in arctic
+    '0.625rem': '2.5', // md in arctic
+    '0.875rem': '3.5', // base in arctic
+    '1.5rem': '6', // lg in arctic
+    '3rem': '12', // xl in arctic
+    '5rem': '20', // 2xl in arctic
   }
   const map = new Map<string, { semantic: string; rem: string }>()
   for (const [name, data] of Object.entries(TOKEN_METADATA.theme.spacing)) {
@@ -280,12 +289,20 @@ export const SPACING_MAP: ReadonlyMap<string, { semantic: string; rem: string }>
  * Uses `size-` prefix in Tailwind (configured in tailwind-preset.ts).
  */
 export const SIZING_MAP: ReadonlyMap<string, { semantic: string; rem: string }> = (() => {
+  // Updated to support both standard and arctic theme values
   const remToNumeric: Record<string, string> = {
+    // Standard values
     '1.5rem': '6',
     '2rem': '8',
     '2.5rem': '10',
     '3rem': '12',
     '3.5rem': '14',
+    // Arctic theme values
+    '1.25rem': '5', // xs in arctic
+    '1.75rem': '7', // sm in arctic
+    '2.25rem': '9', // md in arctic
+    '2.75rem': '11', // lg in arctic
+    '3.25rem': '13', // xl in arctic
   }
   const map = new Map<string, { semantic: string; rem: string }>()
   for (const [name, data] of Object.entries(TOKEN_METADATA.theme.size)) {

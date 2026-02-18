@@ -81,15 +81,9 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'h-8',
-            suggestion: 'h-size-sm',
+            suggestion: 'nearest: h-size-sm (1.75rem) or h-size-md (2.25rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'h-size-sm' },
-              output: '<div className="h-size-sm" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -101,15 +95,9 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'w-10',
-            suggestion: 'w-size-md',
+            suggestion: 'nearest: w-size-md (2.25rem) or w-size-lg (2.75rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'w-size-md' },
-              output: '<div className="w-size-md" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -121,15 +109,9 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'min-h-10',
-            suggestion: 'min-h-size-md',
+            suggestion: 'nearest: min-h-size-md (2.25rem) or min-h-size-lg (2.75rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'min-h-size-md' },
-              output: '<div className="min-h-size-md" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -141,29 +123,17 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'h-8',
-            suggestion: 'h-size-sm',
+            suggestion: 'nearest: h-size-sm (1.75rem) or h-size-md (2.25rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'h-size-sm' },
-              output: '<div className="h-size-sm w-10" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'w-10',
-            suggestion: 'w-size-md',
+            suggestion: 'nearest: w-size-md (2.25rem) or w-size-lg (2.75rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'w-size-md' },
-              output: '<div className="h-8 w-size-md" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -175,15 +145,9 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'hover:h-10',
-            suggestion: 'hover:h-size-md',
+            suggestion: 'nearest: h-size-md (2.25rem) or h-size-lg (2.75rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'hover:h-size-md' },
-              output: '<div className="hover:h-size-md" />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
@@ -195,38 +159,37 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'h-8',
-            suggestion: 'h-size-sm',
+            suggestion: 'nearest: h-size-sm (1.75rem) or h-size-md (2.25rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'h-size-sm' },
-              output: 'cn("h-size-sm", "w-10")',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'w-10',
-            suggestion: 'w-size-md',
+            suggestion: 'nearest: w-size-md (2.25rem) or w-size-lg (2.75rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'w-size-md' },
-              output: 'cn("h-8", "w-size-md")',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
       ],
     },
-    // No exact match - nearest suggestion (no autofix)
+    // Exact match for h-9
     {
       code: '<div className="h-9" />',
       errors: [
         {
           messageId: 'nonSemanticSizing',
+          data: {
+            className: 'h-9',
+            suggestion: 'h-size-md',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestSemantic',
+              data: { replacement: 'h-size-md' },
+              output: '<div className="h-size-md" />',
+            },
+          ],
         },
       ],
     },
@@ -238,21 +201,15 @@ ruleTester.run('no-non-semantic-sizing', noNonSemanticSizing, {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'h-12',
-            suggestion: 'h-size-lg',
+            suggestion: 'nearest: h-size-lg (2.75rem) or h-size-xl (3.25rem)',
           },
-          suggestions: [
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'h-size-lg' },
-              output: '<div className={`h-size-lg w-16`} />',
-            },
-          ],
+          // No suggestions since it's a nearest match
         },
         {
           messageId: 'nonSemanticSizing',
           data: {
             className: 'w-16',
-            suggestion: 'nearest: w-size-xl (3.5rem) or w-size-lg (3rem)',
+            suggestion: 'nearest: w-size-xl (3.25rem) or w-size-lg (2.75rem)',
           },
         },
       ],
