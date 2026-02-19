@@ -1,0 +1,386 @@
+@layer base {
+  /**
+   * Palette: "Aura"
+   *
+   * Luminous depth for refined, immersive interfaces.
+   *
+   * An ethereal, luminous palette built on deep indigo and aqua-cyan.
+   * Medium chroma values (0.04-0.09) create a sophisticated, luminous feel
+   * without being loud. Violet-gray neutrals echo the primary hue.
+   * Ideal for creative tools, design systems, and immersive applications.
+   *
+   * OKLCH color space ensures perceptual uniformity.
+   *
+   * Each color group defines 5 key shades (100, 300, 500, 700, 900)
+   * and derives 6 intermediate shades (50, 200, 400, 600, 800, 950)
+   * via color-mix() in OKLCH space.
+   */
+
+  :root.aura {
+    /* ===== PALETTE: AURA ===== */
+
+    /* ===== Root Colors ===== */
+
+    --palette-surface: oklch(98.8% 0.005 260); /* Surface color - faintest violet tint */
+
+    /* ===== Core Palettes ===== */
+
+    /* Error palette - key shades */
+    --palette-error-100: oklch(95% 0.04 8);
+    --palette-error-300: oklch(82% 0.07 8);
+    --palette-error-500: oklch(58% 0.09 8);
+    --palette-error-700: oklch(38% 0.08 8);
+    --palette-error-900: oklch(20% 0.05 8);
+
+    /* Error palette - derived shades */
+    --palette-error-50: color-mix(in oklch, var(--palette-error-100), white 50%);
+    --palette-error-200: color-mix(
+      in oklch,
+      var(--palette-error-100),
+      var(--palette-error-300) 50%
+    );
+    --palette-error-400: color-mix(
+      in oklch,
+      var(--palette-error-300),
+      var(--palette-error-500) 50%
+    );
+    --palette-error-600: color-mix(
+      in oklch,
+      var(--palette-error-500),
+      var(--palette-error-700) 50%
+    );
+    --palette-error-800: color-mix(
+      in oklch,
+      var(--palette-error-700),
+      var(--palette-error-900) 50%
+    );
+    --palette-error-950: color-mix(in oklch, var(--palette-error-900), black 50%);
+
+    /* Info palette - key shades */
+    --palette-info-100: oklch(95% 0.04 230);
+    --palette-info-300: oklch(82% 0.07 230);
+    --palette-info-500: oklch(58% 0.09 230);
+    --palette-info-700: oklch(38% 0.08 230);
+    --palette-info-900: oklch(20% 0.05 230);
+
+    /* Info palette - derived shades */
+    --palette-info-50: color-mix(in oklch, var(--palette-info-100), white 50%);
+    --palette-info-200: color-mix(in oklch, var(--palette-info-100), var(--palette-info-300) 50%);
+    --palette-info-400: color-mix(in oklch, var(--palette-info-300), var(--palette-info-500) 50%);
+    --palette-info-600: color-mix(in oklch, var(--palette-info-500), var(--palette-info-700) 50%);
+    --palette-info-800: color-mix(in oklch, var(--palette-info-700), var(--palette-info-900) 50%);
+    --palette-info-950: color-mix(in oklch, var(--palette-info-900), black 50%);
+
+    /* Neutral palette - key shades */
+    --palette-neutral-100: oklch(95% 0.012 260);
+    --palette-neutral-300: oklch(82% 0.018 260);
+    --palette-neutral-500: oklch(58% 0.018 260);
+    --palette-neutral-700: oklch(38% 0.016 260);
+    --palette-neutral-900: oklch(20% 0.012 260);
+
+    /* Neutral palette - derived shades */
+    --palette-neutral-50: color-mix(in oklch, var(--palette-neutral-100), white 50%);
+    --palette-neutral-200: color-mix(
+      in oklch,
+      var(--palette-neutral-100),
+      var(--palette-neutral-300) 50%
+    );
+    --palette-neutral-400: color-mix(
+      in oklch,
+      var(--palette-neutral-300),
+      var(--palette-neutral-500) 50%
+    );
+    --palette-neutral-600: color-mix(
+      in oklch,
+      var(--palette-neutral-500),
+      var(--palette-neutral-700) 50%
+    );
+    --palette-neutral-800: color-mix(
+      in oklch,
+      var(--palette-neutral-700),
+      var(--palette-neutral-900) 50%
+    );
+    --palette-neutral-950: color-mix(in oklch, var(--palette-neutral-900), black 50%);
+
+    /* Primary palette - key shades */
+    --palette-primary-100: oklch(95% 0.04 255);
+    --palette-primary-300: oklch(82% 0.07 255);
+    --palette-primary-500: oklch(58% 0.09 255);
+    --palette-primary-700: oklch(38% 0.08 255);
+    --palette-primary-900: oklch(20% 0.05 255);
+
+    /* Primary palette - derived shades */
+    --palette-primary-50: color-mix(in oklch, var(--palette-primary-100), white 50%);
+    --palette-primary-200: color-mix(
+      in oklch,
+      var(--palette-primary-100),
+      var(--palette-primary-300) 50%
+    );
+    --palette-primary-400: color-mix(
+      in oklch,
+      var(--palette-primary-300),
+      var(--palette-primary-500) 50%
+    );
+    --palette-primary-600: color-mix(
+      in oklch,
+      var(--palette-primary-500),
+      var(--palette-primary-700) 50%
+    );
+    --palette-primary-800: color-mix(
+      in oklch,
+      var(--palette-primary-700),
+      var(--palette-primary-900) 50%
+    );
+    --palette-primary-950: color-mix(in oklch, var(--palette-primary-900), black 50%);
+
+    /* Success palette - key shades */
+    --palette-success-100: oklch(95% 0.04 152);
+    --palette-success-300: oklch(82% 0.07 152);
+    --palette-success-500: oklch(58% 0.09 152);
+    --palette-success-700: oklch(38% 0.08 152);
+    --palette-success-900: oklch(20% 0.05 152);
+
+    /* Success palette - derived shades */
+    --palette-success-50: color-mix(in oklch, var(--palette-success-100), white 50%);
+    --palette-success-200: color-mix(
+      in oklch,
+      var(--palette-success-100),
+      var(--palette-success-300) 50%
+    );
+    --palette-success-400: color-mix(
+      in oklch,
+      var(--palette-success-300),
+      var(--palette-success-500) 50%
+    );
+    --palette-success-600: color-mix(
+      in oklch,
+      var(--palette-success-500),
+      var(--palette-success-700) 50%
+    );
+    --palette-success-800: color-mix(
+      in oklch,
+      var(--palette-success-700),
+      var(--palette-success-900) 50%
+    );
+    --palette-success-950: color-mix(in oklch, var(--palette-success-900), black 50%);
+
+    /* Warning palette - key shades */
+    --palette-warning-100: oklch(95% 0.04 58);
+    --palette-warning-300: oklch(82% 0.07 58);
+    --palette-warning-500: oklch(58% 0.09 58);
+    --palette-warning-700: oklch(38% 0.08 58);
+    --palette-warning-900: oklch(20% 0.05 58);
+
+    /* Warning palette - derived shades */
+    --palette-warning-50: color-mix(in oklch, var(--palette-warning-100), white 50%);
+    --palette-warning-200: color-mix(
+      in oklch,
+      var(--palette-warning-100),
+      var(--palette-warning-300) 50%
+    );
+    --palette-warning-400: color-mix(
+      in oklch,
+      var(--palette-warning-300),
+      var(--palette-warning-500) 50%
+    );
+    --palette-warning-600: color-mix(
+      in oklch,
+      var(--palette-warning-500),
+      var(--palette-warning-700) 50%
+    );
+    --palette-warning-800: color-mix(
+      in oklch,
+      var(--palette-warning-700),
+      var(--palette-warning-900) 50%
+    );
+    --palette-warning-950: color-mix(in oklch, var(--palette-warning-900), black 50%);
+
+    /* ===== Presentational Palettes ===== */
+
+    /* Accent 1 palette - Rose-Pink - key shades */
+    --palette-accent-1-100: oklch(95% 0.04 310);
+    --palette-accent-1-300: oklch(82% 0.07 310);
+    --palette-accent-1-500: oklch(58% 0.09 310);
+    --palette-accent-1-700: oklch(38% 0.08 310);
+    --palette-accent-1-900: oklch(20% 0.05 310);
+
+    /* Accent 1 palette - derived shades */
+    --palette-accent-1-50: color-mix(in oklch, var(--palette-accent-1-100), white 50%);
+    --palette-accent-1-200: color-mix(
+      in oklch,
+      var(--palette-accent-1-100),
+      var(--palette-accent-1-300) 50%
+    );
+    --palette-accent-1-400: color-mix(
+      in oklch,
+      var(--palette-accent-1-300),
+      var(--palette-accent-1-500) 50%
+    );
+    --palette-accent-1-600: color-mix(
+      in oklch,
+      var(--palette-accent-1-500),
+      var(--palette-accent-1-700) 50%
+    );
+    --palette-accent-1-800: color-mix(
+      in oklch,
+      var(--palette-accent-1-700),
+      var(--palette-accent-1-900) 50%
+    );
+    --palette-accent-1-950: color-mix(in oklch, var(--palette-accent-1-900), black 50%);
+
+    /* Accent 2 palette - Golden - key shades */
+    --palette-accent-2-100: oklch(95% 0.04 80);
+    --palette-accent-2-300: oklch(82% 0.07 80);
+    --palette-accent-2-500: oklch(58% 0.09 80);
+    --palette-accent-2-700: oklch(38% 0.08 80);
+    --palette-accent-2-900: oklch(20% 0.05 80);
+
+    /* Accent 2 palette - derived shades */
+    --palette-accent-2-50: color-mix(in oklch, var(--palette-accent-2-100), white 50%);
+    --palette-accent-2-200: color-mix(
+      in oklch,
+      var(--palette-accent-2-100),
+      var(--palette-accent-2-300) 50%
+    );
+    --palette-accent-2-400: color-mix(
+      in oklch,
+      var(--palette-accent-2-300),
+      var(--palette-accent-2-500) 50%
+    );
+    --palette-accent-2-600: color-mix(
+      in oklch,
+      var(--palette-accent-2-500),
+      var(--palette-accent-2-700) 50%
+    );
+    --palette-accent-2-800: color-mix(
+      in oklch,
+      var(--palette-accent-2-700),
+      var(--palette-accent-2-900) 50%
+    );
+    --palette-accent-2-950: color-mix(in oklch, var(--palette-accent-2-900), black 50%);
+
+    /* Accent 3 palette - Emerald - key shades */
+    --palette-accent-3-100: oklch(95% 0.04 140);
+    --palette-accent-3-300: oklch(82% 0.07 140);
+    --palette-accent-3-500: oklch(58% 0.09 140);
+    --palette-accent-3-700: oklch(38% 0.08 140);
+    --palette-accent-3-900: oklch(20% 0.05 140);
+
+    /* Accent 3 palette - derived shades */
+    --palette-accent-3-50: color-mix(in oklch, var(--palette-accent-3-100), white 50%);
+    --palette-accent-3-200: color-mix(
+      in oklch,
+      var(--palette-accent-3-100),
+      var(--palette-accent-3-300) 50%
+    );
+    --palette-accent-3-400: color-mix(
+      in oklch,
+      var(--palette-accent-3-300),
+      var(--palette-accent-3-500) 50%
+    );
+    --palette-accent-3-600: color-mix(
+      in oklch,
+      var(--palette-accent-3-500),
+      var(--palette-accent-3-700) 50%
+    );
+    --palette-accent-3-800: color-mix(
+      in oklch,
+      var(--palette-accent-3-700),
+      var(--palette-accent-3-900) 50%
+    );
+    --palette-accent-3-950: color-mix(in oklch, var(--palette-accent-3-900), black 50%);
+
+    /* Accent 4 palette - Coral - key shades */
+    --palette-accent-4-100: oklch(95% 0.04 30);
+    --palette-accent-4-300: oklch(82% 0.07 30);
+    --palette-accent-4-500: oklch(58% 0.09 30);
+    --palette-accent-4-700: oklch(38% 0.08 30);
+    --palette-accent-4-900: oklch(20% 0.05 30);
+
+    /* Accent 4 palette - derived shades */
+    --palette-accent-4-50: color-mix(in oklch, var(--palette-accent-4-100), white 50%);
+    --palette-accent-4-200: color-mix(
+      in oklch,
+      var(--palette-accent-4-100),
+      var(--palette-accent-4-300) 50%
+    );
+    --palette-accent-4-400: color-mix(
+      in oklch,
+      var(--palette-accent-4-300),
+      var(--palette-accent-4-500) 50%
+    );
+    --palette-accent-4-600: color-mix(
+      in oklch,
+      var(--palette-accent-4-500),
+      var(--palette-accent-4-700) 50%
+    );
+    --palette-accent-4-800: color-mix(
+      in oklch,
+      var(--palette-accent-4-700),
+      var(--palette-accent-4-900) 50%
+    );
+    --palette-accent-4-950: color-mix(in oklch, var(--palette-accent-4-900), black 50%);
+
+    /* Accent 5 palette - Sky Blue - key shades */
+    --palette-accent-5-100: oklch(95% 0.04 200);
+    --palette-accent-5-300: oklch(82% 0.07 200);
+    --palette-accent-5-500: oklch(58% 0.09 200);
+    --palette-accent-5-700: oklch(38% 0.08 200);
+    --palette-accent-5-900: oklch(20% 0.05 200);
+
+    /* Accent 5 palette - derived shades */
+    --palette-accent-5-50: color-mix(in oklch, var(--palette-accent-5-100), white 50%);
+    --palette-accent-5-200: color-mix(
+      in oklch,
+      var(--palette-accent-5-100),
+      var(--palette-accent-5-300) 50%
+    );
+    --palette-accent-5-400: color-mix(
+      in oklch,
+      var(--palette-accent-5-300),
+      var(--palette-accent-5-500) 50%
+    );
+    --palette-accent-5-600: color-mix(
+      in oklch,
+      var(--palette-accent-5-500),
+      var(--palette-accent-5-700) 50%
+    );
+    --palette-accent-5-800: color-mix(
+      in oklch,
+      var(--palette-accent-5-700),
+      var(--palette-accent-5-900) 50%
+    );
+    --palette-accent-5-950: color-mix(in oklch, var(--palette-accent-5-900), black 50%);
+
+    /* Secondary palette - Aqua-Cyan - key shades */
+    --palette-secondary-100: oklch(95% 0.04 190);
+    --palette-secondary-300: oklch(82% 0.07 190);
+    --palette-secondary-500: oklch(58% 0.09 190);
+    --palette-secondary-700: oklch(38% 0.08 190);
+    --palette-secondary-900: oklch(20% 0.05 190);
+
+    /* Secondary palette - derived shades */
+    --palette-secondary-50: color-mix(in oklch, var(--palette-secondary-100), white 50%);
+    --palette-secondary-200: color-mix(
+      in oklch,
+      var(--palette-secondary-100),
+      var(--palette-secondary-300) 50%
+    );
+    --palette-secondary-400: color-mix(
+      in oklch,
+      var(--palette-secondary-300),
+      var(--palette-secondary-500) 50%
+    );
+    --palette-secondary-600: color-mix(
+      in oklch,
+      var(--palette-secondary-500),
+      var(--palette-secondary-700) 50%
+    );
+    --palette-secondary-800: color-mix(
+      in oklch,
+      var(--palette-secondary-700),
+      var(--palette-secondary-900) 50%
+    );
+    --palette-secondary-950: color-mix(in oklch, var(--palette-secondary-900), black 50%);
+  }
+}

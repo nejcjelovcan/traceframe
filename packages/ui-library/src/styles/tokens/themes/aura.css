@@ -1,0 +1,73 @@
+@layer base {
+  /**
+   * Theme: "aura"
+   *
+   * Ethereal, luminous, sophisticated. Soft edges and diffused shadows create a dreamy, refined feel. Plus Jakarta Sans brings elegant geometric warmth; Inconsolata offers graceful readability for code. The most rounded radii in the system invite touch and convey approachability. Built for creative tools, design systems, and immersive interfaces.
+   */
+
+  :root.aura {
+    /* ===== THEME: AURA ===== */
+
+    /* Typography */
+    --token-font-sans:
+      'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', Inter, system-ui, sans-serif;
+    --token-font-mono: 'Inconsolata', 'JetBrains Mono', Menlo, monospace;
+
+    /* Shadows — Soft, diffused glow. Medium opacity with wider spread. */
+    --token-shadow-sm: 0 1px 3px 0 color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-md:
+      0 3px 8px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent),
+      0 1px 3px -1px color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-lg:
+      0 8px 20px -4px color-mix(in srgb, var(--token-shadow-color) 9%, transparent),
+      0 3px 8px -3px color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-interactive: 0 1px 4px 0
+      color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-interactive-hover:
+      0 4px 12px -1px color-mix(in srgb, var(--token-shadow-color) 7%, transparent),
+      0 2px 6px -1px color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-interactive-pressed: 0 1px 2px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-highlight:
+      0 2px 6px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent),
+      0 1px 3px -1px color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-highlight-hover:
+      0 6px 18px -2px color-mix(in srgb, var(--token-shadow-color) 9%, transparent),
+      0 3px 8px -2px color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+    --token-shadow-highlight-pressed: 0 1px 3px 0
+      color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-inset-sm: inset 0 2px 4px 0
+      color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
+    --token-shadow-inset-md: inset 0 4px 8px 0
+      color-mix(in srgb, var(--token-shadow-color) 5%, transparent);
+    --token-shadow-inset-underline: inset 0 -2px 0 0;
+
+    /* Border Radius — Most rounded in the system */
+    --token-radius-sm: 0.5rem;
+    --token-radius-md: 0.75rem;
+    --token-radius-lg: 1rem;
+    --token-radius-xl: 1.5rem;
+
+    /* Element Sizing — Standard-spacious */
+    --token-size-xs: 1.375rem;
+    --token-size-sm: 1.875rem;
+    --token-size-md: 2.5rem;
+    --token-size-lg: 3rem;
+    --token-size-xl: 3.5rem;
+
+    /* Custom Spacing — Generous, breathing room */
+    --token-spacing-2xs: 0.125rem;
+    --token-spacing-xs: 0.25rem;
+    --token-spacing-sm: 0.5rem;
+    --token-spacing-md: 0.75rem;
+    --token-spacing-base: 1rem;
+    --token-spacing-lg: 2rem;
+    --token-spacing-xl: 4rem;
+    --token-spacing-2xl: 8rem;
+
+    /* Border Styles */
+    --token-border-style-line: 1px solid;
+    --token-border-style-thick: 2px solid;
+    --token-border-style-highlight: 2px dashed;
+  }
+}

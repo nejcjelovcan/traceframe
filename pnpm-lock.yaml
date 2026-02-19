@@ -284,9 +284,15 @@ importers:
       '@fontsource-variable/instrument-sans':
         specifier: ^5.2.8
         version: 5.2.8
+      '@fontsource-variable/plus-jakarta-sans':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@fontsource/ibm-plex-mono':
         specifier: ^5.2.7
         version: 5.2.7
+      '@fontsource/inconsolata':
+        specifier: ^5.2.8
+        version: 5.2.8
       '@radix-ui/react-collapsible':
         specifier: ^1.1.12
         version: 1.1.12(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -1345,8 +1351,14 @@ packages:
   '@fontsource-variable/instrument-sans@5.2.8':
     resolution: {integrity: sha512-mTCaukbdIjjoipj2E3Q5XoZM3ZxJWdzyHevf/LG/0PHlfF9Q85pxOM7B7A9MerFyxmRzz5kVlumgIvgDSG4CPg==}
 
+  '@fontsource-variable/plus-jakarta-sans@5.2.8':
+    resolution: {integrity: sha512-iQecBizIdZxezODNHzOn4SvvRMrZL/S8k4MEXGDynCmUrImVW0VmX+tIAMqnADwH4haXlHSXqMgU6+kcfBQJdw==}
+
   '@fontsource/ibm-plex-mono@5.2.7':
     resolution: {integrity: sha512-MKAb8qV+CaiMQn2B0dIi1OV3565NYzp3WN5b4oT6LTkk+F0jR6j0ZN+5BKJiIhffDC3rtBULsYZE65+0018z9w==}
+
+  '@fontsource/inconsolata@5.2.8':
+    resolution: {integrity: sha512-lIZW+WOZYpUH91g9r6rYYhfTmptF3YPPM54ZOs8IYVeeL4SeiAu4tfj7mdr8llYEq31DLYgi6JtGIJa192gB0Q==}
 
   '@hono/node-server@1.19.9':
     resolution: {integrity: sha512-vHL6w3ecZsky+8P5MD+eFfaGTyCeOHUIFYMGpQGbrBTSmNNoxv0if69rEZ5giu36weC5saFuznL411gRX7bJDw==}
@@ -7412,7 +7424,11 @@ snapshots:
 
   '@fontsource-variable/instrument-sans@5.2.8': {}
 
+  '@fontsource-variable/plus-jakarta-sans@5.2.8': {}
+
   '@fontsource/ibm-plex-mono@5.2.7': {}
+
+  '@fontsource/inconsolata@5.2.8': {}
 
   '@hono/node-server@1.19.9(hono@4.11.9)':
     dependencies:

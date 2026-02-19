@@ -24,6 +24,8 @@ const preview: Preview = {
         'Forge Dark': 'forge dark',
         'Mist Light': 'mist light',
         'Mist Dark': 'mist dark',
+        'Aura Light': 'aura light',
+        'Aura Dark': 'aura dark',
       },
       defaultTheme: 'Arctic Light',
       parentSelector: 'html',
