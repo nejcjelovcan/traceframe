@@ -20,6 +20,8 @@ const THEME_MAP: Record<string, { mode: Mode; theme: Theme }> = {
   'Forge Dark': { mode: 'dark', theme: 'forge' },
   Mist: { mode: 'light', theme: 'mist' },
   'Mist Dark': { mode: 'dark', theme: 'mist' },
+  Aura: { mode: 'light', theme: 'aura' },
+  'Aura Dark': { mode: 'dark', theme: 'aura' },
 }
 
 function parseTheme(themeInput: ThemeValue | undefined): {

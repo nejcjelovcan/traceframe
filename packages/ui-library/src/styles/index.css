@@ -4,9 +4,11 @@
 @import './tokens/palettes/arctic.css';
 @import './tokens/palettes/forge.css';
 @import './tokens/palettes/mist.css';
+@import './tokens/palettes/aura.css';
 @import './tokens/themes/arctic.css';
 @import './tokens/themes/forge.css';
 @import './tokens/themes/mist.css';
+@import './tokens/themes/aura.css';
 @import './tokens/modes/light.css';
 @import './tokens/modes/dark.css';
 @import './border-utilities.css';

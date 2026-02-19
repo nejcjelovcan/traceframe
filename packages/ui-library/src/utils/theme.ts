@@ -2,20 +2,20 @@
  * Theme utilities for managing color modes and themes.
  *
  * Mode: light/dark - Controls semantic color mappings (light vs dark backgrounds)
- * Theme: arctic/forge/mist - Controls the color palette
+ * Theme: arctic/forge/mist/aura - Controls the color palette
  *
  * Both are applied via CSS classes on the document root:
  * - Mode: 'light' or 'dark' class
- * - Theme: 'arctic', 'forge', or 'mist' class
+ * - Theme: 'arctic', 'forge', 'mist', or 'aura' class
  *
- * Example: <html class="light arctic"> or <html class="dark forge">
+ * Example: <html class="light arctic"> or <html class="dark aura">
  */
 
 export type Mode = 'light' | 'dark'
-export type Theme = 'arctic' | 'forge' | 'mist'
+export type Theme = 'arctic' | 'forge' | 'mist' | 'aura'
 
 export const MODES: readonly Mode[] = ['light', 'dark'] as const
-export const THEMES: readonly Theme[] = ['arctic', 'forge', 'mist'] as const
+export const THEMES: readonly Theme[] = ['arctic', 'forge', 'mist', 'aura'] as const
 
 export const MODE_LABELS: Record<Mode, string> = {
   light: 'Light',
@@ -26,12 +26,14 @@ export const THEME_LABELS: Record<Theme, string> = {
   arctic: 'Arctic',
   forge: 'Forge',
   mist: 'Mist',
+  aura: 'Aura',
 }
 
 export const THEME_DESCRIPTIONS: Record<Theme, string> = {
   arctic: 'Clean, precise palette for analytical interfaces',
   forge: 'Precision warmth with graphite and oxidized bronze editorial restraint',
   mist: 'Near-monochrome precision for dense, content-first interfaces',
+  aura: 'Luminous depth for refined, immersive interfaces',
 }
 
 /**

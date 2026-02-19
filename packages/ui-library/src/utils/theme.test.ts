@@ -5,11 +5,11 @@ import { applyMode, applyTheme, MODES, THEMES } from './theme'
 describe('theme utilities', () => {
   beforeEach(() => {
     // Reset document classes
-    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist', 'aura')
   })
 
   afterEach(() => {
-    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist', 'aura')
   })
 
   describe('MODES constant', () => {
@@ -25,7 +25,8 @@ describe('theme utilities', () => {
       expect(THEMES).toContain('arctic')
       expect(THEMES).toContain('forge')
       expect(THEMES).toContain('mist')
-      expect(THEMES.length).toBe(3)
+      expect(THEMES).toContain('aura')
+      expect(THEMES.length).toBe(4)
     })
   })
 
