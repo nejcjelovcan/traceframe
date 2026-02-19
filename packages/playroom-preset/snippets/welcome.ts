@@ -7,13 +7,21 @@ export const welcomeSnippets: Snippet[] = [
     code: `<PageLayout
   header={
     <PageHeader title="Traceframe Playroom">
-      <Navigation orientation="horizontal">
-        <NavItem href="#" active>Components</NavItem>
-        <NavItem href="#">Examples</NavItem>
-        <NavItem href="#">Documentation</NavItem>
-      </Navigation>
+      <SidebarToggle />
     </PageHeader>
   }
+  sidebar={
+    <div className="p-base">
+      <Navigation orientation="vertical">
+        <NavItem href="#" icon="components" active>Components</NavItem>
+        <NavItem href="#" icon="palette">Themes</NavItem>
+        <NavItem href="#" icon="code">Snippets</NavItem>
+        <NavItem href="#" icon="file">Documentation</NavItem>
+      </Navigation>
+    </div>
+  }
+  sidebarWidth="sm"
+  sidebarSticky
 >
   <Flex gap="lg">
     <div>

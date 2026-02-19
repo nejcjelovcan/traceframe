@@ -13,9 +13,16 @@ export type PageLayoutColor =
 interface PageLayoutContextValue {
   variant?: PageLayoutVariant
   color?: PageLayoutColor
+  sidebarOpen: boolean
+  setSidebarOpen: (open: boolean) => void
+  sidebarCollapsible: boolean
 }
 
-const PageLayoutContext = createContext<PageLayoutContextValue>({})
+const PageLayoutContext = createContext<PageLayoutContextValue>({
+  sidebarOpen: false,
+  setSidebarOpen: () => {},
+  sidebarCollapsible: false,
+})
 
 export const usePageLayoutContext = () => {
   return useContext(PageLayoutContext)

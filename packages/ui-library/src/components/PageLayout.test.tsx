@@ -1,9 +1,12 @@
 import { render, screen } from '@testing-library/react'
-import { describe, expect, it } from 'vitest'
+import userEvent from '@testing-library/user-event'
+import { describe, expect, it, vi } from 'vitest'
 
 import { Navigation, NavItem } from './Navigation'
-import { PageLayout, PageHeader } from './PageLayout'
+import { PageLayout, PageHeader, SidebarToggle, sidebarWidthMap } from './PageLayout'
 import { usePageLayoutContext } from './PageLayoutContext'
+
+import type { SidebarWidth } from './PageLayout'
 
 describe('PageLayout', () => {
   it('renders children in main content area', () => {
@@ -258,6 +261,211 @@ describe('PageLayout', () => {
       )
       const header = screen.getByText('Test').parentElement
       expect(header?.className).toContain('text-foreground-filled')
+    })
+  })
+
+  describe('sidebar width', () => {
+    it.each([
+      ['xs', 'w-48'],
+      ['sm', 'w-56'],
+      ['md', 'w-64'],
+      ['lg', 'w-72'],
+      ['xl', 'w-80'],
+    ] as const)('applies %s width class (%s)', (size, expectedClass) => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>} sidebarWidth={size as SidebarWidth}>
+          Content
+        </PageLayout>
+      )
+      const sidebar = screen.getByText('Sidebar').parentElement
+      expect(sidebar?.className).toContain(expectedClass)
+    })
+
+    it('does not apply width class when sidebarWidth is omitted', () => {
+      render(<PageLayout sidebar={<div>Sidebar</div>}>Content</PageLayout>)
+      const sidebar = screen.getByText('Sidebar').parentElement
+      const widthClasses = Object.values(sidebarWidthMap)
+      for (const cls of widthClasses) {
+        expect(sidebar?.className).not.toContain(cls)
+      }
+    })
+  })
+
+  describe('sidebar sticky', () => {
+    it('applies sticky classes when sidebarSticky is true', () => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>} sidebarSticky>
+          Content
+        </PageLayout>
+      )
+      const sidebar = screen.getByText('Sidebar').parentElement
+      expect(sidebar?.className).toContain('sticky')
+      expect(sidebar?.className).toContain('top-0')
+      expect(sidebar?.className).toContain('self-start')
+    })
+
+    it('applies overflow-y-auto to body when sidebarSticky is true', () => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>} sidebarSticky>
+          Content
+        </PageLayout>
+      )
+      const main = screen.getByRole('main')
+      const body = main.parentElement
+      expect(body?.className).toContain('overflow-y-auto')
+    })
+
+    it('does not apply sticky classes by default', () => {
+      render(<PageLayout sidebar={<div>Sidebar</div>}>Content</PageLayout>)
+      const sidebar = screen.getByText('Sidebar').parentElement
+      expect(sidebar?.className).not.toContain('sticky')
+      expect(sidebar?.className).not.toContain('self-start')
+    })
+
+    it('does not apply overflow-y-auto to body by default', () => {
+      render(<PageLayout sidebar={<div>Sidebar</div>}>Content</PageLayout>)
+      const main = screen.getByRole('main')
+      const body = main.parentElement
+      expect(body?.className).not.toContain('overflow-y-auto')
+    })
+  })
+
+  describe('SidebarToggle', () => {
+    it('renders button with menu icon and md:hidden', () => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      const button = screen.getByTestId('toggle')
+      expect(button.tagName).toBe('BUTTON')
+      expect(button.className).toContain('md:hidden')
+    })
+
+    it('has correct aria-label', () => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      const button = screen.getByTestId('toggle')
+      expect(button.getAttribute('aria-label')).toBe('Toggle sidebar')
+    })
+
+    it('has aria-expanded attribute', () => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      const button = screen.getByTestId('toggle')
+      expect(button.getAttribute('aria-expanded')).toBe('false')
+    })
+
+    it('returns null when sidebarCollapsible is false', () => {
+      render(
+        <PageLayout sidebar={<div>Sidebar</div>} sidebarCollapsible={false}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      expect(screen.queryByTestId('toggle')).toBeNull()
+    })
+
+    it('returns null when there is no sidebar', () => {
+      render(
+        <PageLayout>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      expect(screen.queryByTestId('toggle')).toBeNull()
+    })
+  })
+
+  describe('mobile sidebar overlay', () => {
+    it('opens overlay when SidebarToggle is clicked', async () => {
+      const user = userEvent.setup()
+      render(
+        <PageLayout sidebar={<div>Sidebar Content</div>}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      await user.click(screen.getByTestId('toggle'))
+      // The dialog should render the sidebar content in the overlay
+      expect(screen.getByRole('dialog')).toBeDefined()
+    })
+
+    it('renders close button in overlay', async () => {
+      const user = userEvent.setup()
+      render(
+        <PageLayout sidebar={<div>Sidebar Content</div>}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      await user.click(screen.getByTestId('toggle'))
+      expect(screen.getByLabelText('Close sidebar')).toBeDefined()
+    })
+
+    it('closes overlay when close button is clicked', async () => {
+      const user = userEvent.setup()
+      render(
+        <PageLayout sidebar={<div>Sidebar Content</div>}>
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      await user.click(screen.getByTestId('toggle'))
+      expect(screen.getByRole('dialog')).toBeDefined()
+
+      await user.click(screen.getByLabelText('Close sidebar'))
+      expect(screen.queryByRole('dialog')).toBeNull()
+    })
+  })
+
+  describe('controlled mode', () => {
+    it('respects controlled sidebarOpen prop', () => {
+      render(
+        <PageLayout
+          sidebar={<div>Sidebar Content</div>}
+          sidebarOpen={true}
+          onSidebarOpenChange={() => {}}
+        >
+          Content
+        </PageLayout>
+      )
+      expect(screen.getByRole('dialog')).toBeDefined()
+    })
+
+    it('calls onSidebarOpenChange when toggle is clicked', async () => {
+      const onOpenChange = vi.fn()
+      const user = userEvent.setup()
+      render(
+        <PageLayout
+          sidebar={<div>Sidebar Content</div>}
+          sidebarOpen={false}
+          onSidebarOpenChange={onOpenChange}
+        >
+          <SidebarToggle data-testid="toggle" />
+        </PageLayout>
+      )
+      await user.click(screen.getByTestId('toggle'))
+      expect(onOpenChange).toHaveBeenCalledWith(true)
+    })
+  })
+
+  describe('backwards compatibility', () => {
+    it('works without any new props', () => {
+      render(
+        <PageLayout
+          header={<div>Header</div>}
+          sidebar={<div>Sidebar</div>}
+          footer={<div>Footer</div>}
+        >
+          Content
+        </PageLayout>
+      )
+      expect(screen.getByText('Header')).toBeDefined()
+      expect(screen.getByText('Sidebar')).toBeDefined()
+      expect(screen.getByText('Footer')).toBeDefined()
+      expect(screen.getByText('Content')).toBeDefined()
     })
   })
 })

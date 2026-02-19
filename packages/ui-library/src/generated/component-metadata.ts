@@ -1123,6 +1123,21 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         ],
         defaultValue: 'primary',
       },
+      {
+        name: 'sidebarWidth',
+        description: 'Predefined sidebar width',
+        type: 'select',
+        required: false,
+        options: ['xs', 'sm', 'md', 'lg', 'xl'],
+        defaultValue: 'undefined',
+      },
+      {
+        name: 'sidebarSticky',
+        description: 'Makes sidebar sticky within scroll container',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
+      },
     ],
   },
   SearchInput: {
