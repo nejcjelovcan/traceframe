@@ -541,7 +541,7 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
     const { variant } = usePageLayoutContext()
 
     // Apply appropriate text color based on variant
-    const textColorClass = variant === 'colorful' ? 'text-foreground-filled' : ''
+    const textColorClass = variant === 'colorful' ? 'text-foreground' : ''
 
     return (
       <div

@@ -253,14 +253,14 @@ describe('PageLayout', () => {
       expect(nav.className).toContain('bg-interactive-secondary-muted')
     })
 
-    it('PageHeader applies filled text color when variant is colorful', () => {
+    it('PageHeader applies foreground text color when variant is colorful', () => {
       render(
         <PageLayout variant="colorful" color="primary" header={<PageHeader title="Test" />}>
           Content
         </PageLayout>
       )
       const header = screen.getByText('Test').parentElement
-      expect(header?.className).toContain('text-foreground-filled')
+      expect(header?.className).toContain('text-foreground')
     })
   })
 

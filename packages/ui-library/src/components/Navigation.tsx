@@ -157,25 +157,25 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'colorful',
       orientation: 'horizontal',
       active: false,
-      className: 'text-foreground-filled',
+      className: 'text-foreground',
     },
     {
       parentVariant: 'colorful',
       orientation: 'vertical',
       active: false,
-      className: 'text-foreground-filled hover:bg-shadow/10',
+      className: 'text-foreground hover:bg-surface',
     },
     {
       parentVariant: 'colorful',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground-filled font-medium bg-shadow/20 px-sm',
+      className: 'text-foreground font-medium bg-surface px-sm',
     },
     {
       parentVariant: 'colorful',
       orientation: 'vertical',
       active: true,
-      className: 'bg-shadow/20 text-foreground-filled font-medium',
+      className: 'bg-surface text-foreground font-medium',
     },
     // Subtle variant styles
     {
