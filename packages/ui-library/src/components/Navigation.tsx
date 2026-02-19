@@ -138,7 +138,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'default',
       orientation: 'vertical',
       active: false,
-      className: 'text-foreground-muted hover:bg-surface-subtle',
+      className: 'text-foreground-muted hover:bg-surface-subtle hover:text-foreground',
     },
     {
       parentVariant: 'default',
