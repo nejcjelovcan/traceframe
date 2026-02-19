@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-export type PageLayoutVariant = 'default' | 'filled' | 'subtle'
+export type PageLayoutVariant = 'default' | 'colorful' | 'subtle'
 export type PageLayoutColor =
   | 'primary'
   | 'secondary'

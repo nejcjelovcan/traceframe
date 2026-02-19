@@ -86,7 +86,7 @@ A full-page layout component with header, sidebar, main content, and footer slot
     variant: {
       description: 'Visual variant for header and sidebar backgrounds',
       control: 'select',
-      options: ['default', 'filled', 'subtle'],
+      options: ['default', 'colorful', 'subtle'],
       table: {
         defaultValue: { summary: 'default' },
       },
@@ -423,18 +423,18 @@ export const WithSkipLink: Story = {
   ),
 }
 
-export const FilledHeaderVariant: Story = {
+export const ColorfulHeaderVariant: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'Demonstrates the filled variant with primary color on the header. The Navigation inherits the variant context and adjusts its text colors accordingly.',
+          'Demonstrates the colorful variant with primary color on the header. The Navigation inherits the variant context and adjusts its text colors accordingly.',
       },
     },
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="primary"
       header={
         <PageHeader title="Traceframe">
@@ -454,18 +454,18 @@ export const FilledHeaderVariant: Story = {
   ),
 }
 
-export const FilledSidebarVariant: Story = {
+export const ColorfulSidebarVariant: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'Shows the filled variant applied to the sidebar with accent-1 color. The Navigation component inherits the variant and displays appropriate text colors.',
+          'Shows the colorful variant applied to the sidebar with accent-1 color. The Navigation component inherits the variant and displays appropriate text colors.',
       },
     },
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="accent-1"
       header={<SampleHeader />}
       sidebar={
@@ -551,7 +551,7 @@ export const MixedVariants: Story = {
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="primary"
       header={
         <PageHeader title="Traceframe">
@@ -569,8 +569,8 @@ export const MixedVariants: Story = {
       <Flex gap="md">
         <Heading level={1}>Mixed Variants</Heading>
         <p className="text-foreground-muted">
-          The PageLayout has variant="filled" and color="primary", but the Navigation in the header
-          explicitly overrides with variant="subtle" and color="secondary".
+          The PageLayout has variant="colorful" and color="primary", but the Navigation in the
+          header explicitly overrides with variant="subtle" and color="secondary".
         </p>
       </Flex>
     </PageLayout>

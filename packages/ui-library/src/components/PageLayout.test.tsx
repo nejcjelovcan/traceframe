@@ -155,9 +155,9 @@ describe('PageLayout', () => {
   })
 
   describe('variant and color props', () => {
-    it('applies filled variant to header', () => {
+    it('applies colorful variant to header', () => {
       render(
-        <PageLayout variant="filled" color="primary" header={<div>Header</div>}>
+        <PageLayout variant="colorful" color="primary" header={<div>Header</div>}>
           Content
         </PageLayout>
       )
@@ -175,9 +175,9 @@ describe('PageLayout', () => {
       expect(header?.className).toContain('bg-interactive-secondary-muted')
     })
 
-    it('applies filled variant to sidebar', () => {
+    it('applies colorful variant to sidebar', () => {
       render(
-        <PageLayout variant="filled" color="accent-1" sidebar={<div>Sidebar</div>}>
+        <PageLayout variant="colorful" color="accent-1" sidebar={<div>Sidebar</div>}>
           Content
         </PageLayout>
       )
@@ -206,11 +206,11 @@ describe('PageLayout', () => {
       }
 
       render(
-        <PageLayout variant="filled" color="primary">
+        <PageLayout variant="colorful" color="primary">
           <TestComponent />
         </PageLayout>
       )
-      expect(screen.getByText('filled-primary')).toBeDefined()
+      expect(screen.getByText('colorful-primary')).toBeDefined()
     })
   })
 
@@ -218,7 +218,7 @@ describe('PageLayout', () => {
     it('Navigation inherits variant from PageLayout', () => {
       render(
         <PageLayout
-          variant="filled"
+          variant="colorful"
           color="primary"
           header={
             <Navigation orientation="horizontal">
@@ -237,7 +237,7 @@ describe('PageLayout', () => {
     it('Navigation can override inherited context', () => {
       render(
         <PageLayout
-          variant="filled"
+          variant="colorful"
           color="primary"
           header={
             <Navigation orientation="horizontal" variant="subtle" color="secondary">
@@ -253,9 +253,9 @@ describe('PageLayout', () => {
       expect(nav.className).toContain('bg-interactive-secondary-muted')
     })
 
-    it('PageHeader applies filled text color when variant is filled', () => {
+    it('PageHeader applies filled text color when variant is colorful', () => {
       render(
-        <PageLayout variant="filled" color="primary" header={<PageHeader title="Test" />}>
+        <PageLayout variant="colorful" color="primary" header={<PageHeader title="Test" />}>
           Content
         </PageLayout>
       )

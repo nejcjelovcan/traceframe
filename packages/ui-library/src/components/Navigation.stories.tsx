@@ -25,10 +25,10 @@ A navigation component that supports both horizontal (header) and vertical (side
 
 **Variants:**
 - \`default\` - Standard navigation with minimal styling
-- \`filled\` - Strong emphasis background with prominent active states
+- \`colorful\` - Strong emphasis background with prominent active states
 - \`subtle\` - Muted background with soft active states
 
-**Colors (for filled/subtle variants):**
+**Colors (for colorful/subtle variants):**
 - \`primary\`, \`secondary\`, \`accent-1\` through \`accent-5\`
 
 **Features:**
@@ -52,7 +52,7 @@ A navigation component that supports both horizontal (header) and vertical (side
     variant: {
       description: 'Visual variant of the navigation',
       control: 'radio',
-      options: ['default', 'filled', 'subtle'],
+      options: ['default', 'colorful', 'subtle'],
       table: {
         defaultValue: { summary: 'default' },
       },
@@ -267,17 +267,17 @@ export const SidebarExample: Story = {
   ),
 }
 
-export const FilledPrimaryHorizontal: Story = {
+export const ColorfulPrimaryHorizontal: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'Filled variant with primary color emphasis background for prominent navigation areas.',
+          'Colorful variant with primary color emphasis background for prominent navigation areas.',
       },
     },
   },
   render: () => (
-    <Navigation orientation="horizontal" variant="filled" color="primary">
+    <Navigation orientation="horizontal" variant="colorful" color="primary">
       <NavItem href="#" icon="dashboard" active>
         Dashboard
       </NavItem>
@@ -294,11 +294,11 @@ export const FilledPrimaryHorizontal: Story = {
   ),
 }
 
-export const FilledSecondaryVertical: Story = {
+export const ColorfulSecondaryVertical: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Filled variant with secondary color for alternative navigation sections.',
+        story: 'Colorful variant with secondary color for alternative navigation sections.',
       },
     },
   },
@@ -310,7 +310,7 @@ export const FilledSecondaryVertical: Story = {
     ),
   ],
   render: () => (
-    <Navigation orientation="vertical" variant="filled" color="secondary">
+    <Navigation orientation="vertical" variant="colorful" color="secondary">
       <NavItem href="#" icon="dashboard" active>
         Overview
       </NavItem>
@@ -387,11 +387,11 @@ export const SubtleAccentVertical: Story = {
   ),
 }
 
-export const FilledColorShowcase: Story = {
+export const ColorfulColorShowcase: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Showcase of all available colors in filled variant.',
+        story: 'Showcase of all available colors in colorful variant.',
       },
     },
   },
@@ -399,7 +399,7 @@ export const FilledColorShowcase: Story = {
     <div className="space-y-base">
       <div>
         <p className="mb-sm text-sm text-foreground-muted">Primary</p>
-        <Navigation orientation="horizontal" variant="filled" color="primary">
+        <Navigation orientation="horizontal" variant="colorful" color="primary">
           <NavItem href="#" active>
             Active
           </NavItem>
@@ -409,7 +409,7 @@ export const FilledColorShowcase: Story = {
       </div>
       <div>
         <p className="mb-sm text-sm text-foreground-muted">Secondary</p>
-        <Navigation orientation="horizontal" variant="filled" color="secondary">
+        <Navigation orientation="horizontal" variant="colorful" color="secondary">
           <NavItem href="#" active>
             Active
           </NavItem>
@@ -419,7 +419,7 @@ export const FilledColorShowcase: Story = {
       </div>
       <div>
         <p className="mb-sm text-sm text-foreground-muted">Accent 1</p>
-        <Navigation orientation="horizontal" variant="filled" color="accent-1">
+        <Navigation orientation="horizontal" variant="colorful" color="accent-1">
           <NavItem href="#" active>
             Active
           </NavItem>
@@ -429,7 +429,7 @@ export const FilledColorShowcase: Story = {
       </div>
       <div>
         <p className="mb-sm text-sm text-foreground-muted">Accent 2</p>
-        <Navigation orientation="horizontal" variant="filled" color="accent-2">
+        <Navigation orientation="horizontal" variant="colorful" color="accent-2">
           <NavItem href="#" active>
             Active
           </NavItem>
@@ -439,7 +439,7 @@ export const FilledColorShowcase: Story = {
       </div>
       <div>
         <p className="mb-sm text-sm text-foreground-muted">Accent 3</p>
-        <Navigation orientation="horizontal" variant="filled" color="accent-3">
+        <Navigation orientation="horizontal" variant="colorful" color="accent-3">
           <NavItem href="#" active>
             Active
           </NavItem>
@@ -536,7 +536,7 @@ export const ComplexLayoutExample: Story = {
         <Heading level={3} size="sm" color="muted" className="mb-md uppercase tracking-wider">
           Workspace
         </Heading>
-        <Navigation orientation="vertical" variant="filled" color="primary">
+        <Navigation orientation="vertical" variant="colorful" color="primary">
           <NavItem href="#" icon="dashboard" active>
             Dashboard
           </NavItem>
@@ -590,13 +590,13 @@ export const ContextInheritance: Story = {
     docs: {
       description: {
         story:
-          'Demonstrates how Navigation inherits variant and color from PageLayout context. The PageLayout has variant="filled" and color="accent-2", which the Navigation components automatically inherit without needing explicit props.',
+          'Demonstrates how Navigation inherits variant and color from PageLayout context. The PageLayout has variant="colorful" and color="accent-2", which the Navigation components automatically inherit without needing explicit props.',
       },
     },
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="accent-2"
       header={
         <PageHeader title="Context Inheritance Demo">
@@ -631,7 +631,7 @@ export const ContextInheritance: Story = {
       <Flex gap="md">
         <Heading level={1}>Context Inheritance</Heading>
         <p className="text-foreground-muted">
-          The Navigation components in both the header and sidebar inherit the filled variant and
+          The Navigation components in both the header and sidebar inherit the colorful variant and
           accent-2 color from the PageLayout, without needing explicit variant or color props.
         </p>
         <div className="rounded-lg border border-border bg-surface-subtle p-base">
@@ -656,13 +656,13 @@ export const ContextOverride: Story = {
     docs: {
       description: {
         story:
-          'Shows that Navigation can still override the inherited context with explicit props. Here the PageLayout has variant="filled" but the header Navigation overrides with variant="subtle".',
+          'Shows that Navigation can still override the inherited context with explicit props. Here the PageLayout has variant="colorful" but the header Navigation overrides with variant="subtle".',
       },
     },
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="primary"
       header={
         <PageHeader title="Override Demo">
@@ -679,7 +679,7 @@ export const ContextOverride: Story = {
         <div className="w-64 p-base">
           <Navigation orientation="vertical">
             <NavItem href="#" icon="dashboard" active>
-              Inherits Filled
+              Inherits Colorful
             </NavItem>
             <NavItem href="#" icon="components">
               From PageLayout
@@ -695,7 +695,7 @@ export const ContextOverride: Story = {
         <Heading level={1}>Context Override</Heading>
         <p className="text-foreground-muted">
           The header Navigation explicitly sets variant="subtle" and color="secondary", overriding
-          the PageLayout context. The sidebar Navigation inherits the filled/primary from
+          the PageLayout context. The sidebar Navigation inherits the colorful/primary from
           PageLayout.
         </p>
       </Flex>

@@ -15,7 +15,7 @@ const navigationVariants = cva('transition-colors', {
     },
     variant: {
       default: '',
-      filled: 'rounded-md p-sm',
+      colorful: 'rounded-md p-sm',
       subtle: 'rounded-md p-sm',
     },
     color: {
@@ -29,39 +29,39 @@ const navigationVariants = cva('transition-colors', {
     },
   },
   compoundVariants: [
-    // Filled variant with solid backgrounds and borders
+    // Colorful variant with solid backgrounds and borders
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       className: 'bg-interactive-primary border-line-interactive-primary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       className: 'bg-interactive-secondary border-line-interactive-secondary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
       className: 'bg-accent-1-emphasis border-line-accent-1-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
       className: 'bg-accent-2-emphasis border-line-accent-2-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
       className: 'bg-accent-3-emphasis border-line-accent-3-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
       className: 'bg-accent-4-emphasis border-line-accent-4-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
       className: 'bg-accent-5-emphasis border-line-accent-5-border',
     },
@@ -121,7 +121,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
     },
     parentVariant: {
       default: '',
-      filled: '',
+      colorful: '',
       subtle: '',
     },
   },
@@ -152,31 +152,30 @@ const navItemVariants = cva('rounded-md transition-colors', {
       className:
         'bg-surface-muted text-foreground font-medium border-l-thick-interactive-primary-border -ml-[2px] pl-[calc(0.75rem+2px)]',
     },
-    // Filled variant styles
+    // Colorful variant styles
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'horizontal',
       active: false,
-      className: 'text-foreground-filled/80 hover:text-foreground-filled',
+      className: 'text-foreground-filled',
     },
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'vertical',
       active: false,
-      className: 'text-foreground-filled/80 hover:bg-white/10 hover:text-foreground-filled',
+      className: 'text-foreground-filled hover:bg-shadow/10',
     },
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground-filled font-medium bg-white/20 px-sm',
+      className: 'text-foreground-filled font-medium bg-shadow/20 px-sm',
     },
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'vertical',
       active: true,
-      className:
-        'bg-white/20 text-foreground-filled font-medium border-l-thick-white/60 -ml-[2px] pl-[calc(0.75rem+2px)]',
+      className: 'bg-shadow/20 text-foreground-filled font-medium',
     },
     // Subtle variant styles
     {
@@ -213,7 +212,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
 })
 
 type Orientation = 'horizontal' | 'vertical'
-type Variant = 'default' | 'filled' | 'subtle'
+type Variant = 'default' | 'colorful' | 'subtle'
 type Color =
   | 'primary'
   | 'secondary'
@@ -237,7 +236,7 @@ export interface NavigationProps
   orientation?: Orientation
   /** Visual variant of the navigation */
   variant?: Variant
-  /** Color scheme for filled and subtle variants */
+  /** Color scheme for colorful and subtle variants */
   color?: Color
 }
 

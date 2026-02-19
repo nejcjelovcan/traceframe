@@ -26,7 +26,7 @@ const headerVariants = cva('sticky top-0 z-10 shrink-0 border-b', {
   variants: {
     variant: {
       default: 'border-border bg-surface',
-      filled: '',
+      colorful: '',
       subtle: '',
     },
     color: {
@@ -40,39 +40,39 @@ const headerVariants = cva('sticky top-0 z-10 shrink-0 border-b', {
     },
   },
   compoundVariants: [
-    // Filled variant with solid backgrounds
+    // Colorful variant with solid backgrounds
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       className: 'bg-interactive-primary border-interactive-primary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       className: 'bg-interactive-secondary border-interactive-secondary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
       className: 'bg-accent-1-emphasis border-accent-1-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
       className: 'bg-accent-2-emphasis border-accent-2-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
       className: 'bg-accent-3-emphasis border-accent-3-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
       className: 'bg-accent-4-emphasis border-accent-4-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
       className: 'bg-accent-5-emphasis border-accent-5-border',
     },
@@ -135,7 +135,7 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
     },
     variant: {
       default: '',
-      filled: '',
+      colorful: '',
       subtle: '',
     },
     color: {
@@ -160,87 +160,87 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
       position: 'right',
       className: 'border-border',
     },
-    // Filled variant with solid backgrounds
+    // Colorful variant with solid backgrounds
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       position: 'left',
       className: 'bg-interactive-primary border-interactive-primary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       position: 'right',
       className: 'bg-interactive-primary border-interactive-primary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       position: 'left',
       className: 'bg-interactive-secondary border-interactive-secondary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       position: 'right',
       className: 'bg-interactive-secondary border-interactive-secondary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
       position: 'left',
       className: 'bg-accent-1-emphasis border-accent-1-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
       position: 'right',
       className: 'bg-accent-1-emphasis border-accent-1-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
       position: 'left',
       className: 'bg-accent-2-emphasis border-accent-2-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
       position: 'right',
       className: 'bg-accent-2-emphasis border-accent-2-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
       position: 'left',
       className: 'bg-accent-3-emphasis border-accent-3-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
       position: 'right',
       className: 'bg-accent-3-emphasis border-accent-3-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
       position: 'left',
       className: 'bg-accent-4-emphasis border-accent-4-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
       position: 'right',
       className: 'bg-accent-4-emphasis border-accent-4-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
       position: 'left',
       className: 'bg-accent-5-emphasis border-accent-5-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
       position: 'right',
       className: 'bg-accent-5-emphasis border-accent-5-border',
@@ -370,9 +370,9 @@ export interface PageLayoutProps
   sidebarCollapsible?: boolean
   /** Text for the skip navigation link. When provided, renders a skip link as the first focusable element. */
   skipLinkText?: string
-  /** Visual variant for header and sidebar backgrounds */
+  /** Visual variant for header and sidebar backgrounds. 'colorful' applies strong emphasis backgrounds. */
   variant?: PageLayoutVariant
-  /** Color scheme for filled and subtle variants */
+  /** Color scheme for colorful and subtle variants */
   color?: PageLayoutColor
   /** Predefined sidebar width */
   sidebarWidth?: SidebarWidth
@@ -541,7 +541,7 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
     const { variant } = usePageLayoutContext()
 
     // Apply appropriate text color based on variant
-    const textColorClass = variant === 'filled' ? 'text-foreground-filled' : ''
+    const textColorClass = variant === 'colorful' ? 'text-foreground-filled' : ''
 
     return (
       <div
