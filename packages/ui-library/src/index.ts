@@ -63,8 +63,10 @@ export {
 export {
   Navigation,
   NavItem,
+  NavHeading,
   type NavigationProps,
   type NavItemProps,
+  type NavHeadingProps,
 } from './components/Navigation.js'
 export {
   PageLayout,

@@ -2,6 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { createContext, forwardRef, useContext, type HTMLAttributes, type ReactNode } from 'react'
 
+import { Heading, type HeadingProps } from './Heading.js'
 import { usePageLayoutContext } from './PageLayoutContext.js'
 import { Icon } from '../icons/Icon.js'
 import { type IconName } from '../icons/types.js'
@@ -143,14 +144,13 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'default',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground font-medium border-b-thick-interactive-primary-border pb-xs',
+      className: 'text-foreground font-medium',
     },
     {
       parentVariant: 'default',
       orientation: 'vertical',
       active: true,
-      className:
-        'bg-surface-muted text-foreground font-medium border-l-thick-interactive-primary-border -ml-[2px] pl-[calc(0.75rem+2px)]',
+      className: 'bg-surface-muted text-foreground font-medium',
     },
     // Colorful variant styles
     {
@@ -200,8 +200,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'subtle',
       orientation: 'vertical',
       active: true,
-      className:
-        'bg-surface text-foreground font-medium shadow-inset-sm border-l-thick-interactive-primary-border -ml-[2px] pl-[calc(0.75rem+2px)]',
+      className: 'bg-surface text-foreground font-medium shadow-inset-sm',
     },
   ],
   defaultVariants: {
@@ -307,4 +306,32 @@ const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
 
 NavItem.displayName = 'Navigation.Item'
 
-export { Navigation, NavItem, navigationVariants, navItemVariants }
+export interface NavHeadingProps extends Omit<HeadingProps, 'level' | 'size' | 'color'> {
+  /** Semantic heading level (defaults to 3) */
+  level?: HeadingProps['level']
+  /** Text size (defaults to "sm") */
+  size?: HeadingProps['size']
+}
+
+const NavHeading = forwardRef<HTMLHeadingElement, NavHeadingProps>(
+  ({ className, level = 3, size = 'sm', ...props }, ref) => {
+    const { variant } = useContext(NavigationContext)
+
+    const variantClass = variant === 'colorful' ? 'text-foreground/70' : 'text-foreground-muted'
+
+    return (
+      <Heading
+        ref={ref}
+        level={level}
+        size={size}
+        color={undefined}
+        className={cn(variantClass, 'uppercase tracking-wider', className)}
+        {...props}
+      />
+    )
+  }
+)
+
+NavHeading.displayName = 'Navigation.Heading'
+
+export { Navigation, NavItem, NavHeading, navigationVariants, navItemVariants }
