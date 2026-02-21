@@ -1,25 +1,19 @@
+import { Select } from './Select.js'
 import { useTheme } from './ThemeProvider.js'
-import { ToggleGroup, type ToggleGroupOption } from './ToggleGroup.js'
-import { THEME_LABELS, type Theme } from '../utils/theme.js'
+import { THEME_DESCRIPTIONS, THEME_LABELS, THEMES, type Theme } from '../utils/theme.js'
 
-const themeOptions: readonly ToggleGroupOption<Theme>[] = [
-  { value: 'arctic', label: THEME_LABELS.arctic, icon: 'database' },
-  { value: 'forge', label: THEME_LABELS.forge, icon: 'settings' },
-  { value: 'mist', label: THEME_LABELS.mist, icon: 'empty' },
-  { value: 'aura', label: THEME_LABELS.aura, icon: 'sparkles' },
-]
+import type { selectTriggerVariants } from './Select.js'
+import type { VariantProps } from 'class-variance-authority'
 
 export interface ThemeSwitcherProps {
   /** Additional className for the container */
   className?: string
-  /** Display mode for the toggle group */
-  displayMode?: 'icon' | 'text'
-  /** Size of the toggle group */
-  size?: 'sm' | 'md' | 'lg'
+  /** Size of the select trigger */
+  size?: VariantProps<typeof selectTriggerVariants>['size']
 }
 
 /**
- * ThemeSwitcher provides a toggle group for switching between color themes.
+ * ThemeSwitcher provides a select dropdown for switching between color themes.
  *
  * Requires ThemeProvider to be present in the component tree.
  *
@@ -30,30 +24,22 @@ export interface ThemeSwitcherProps {
  * </ThemeProvider>
  * ```
  */
-export function ThemeSwitcher({
-  className,
-  displayMode = 'icon',
-  size = 'sm',
-}: ThemeSwitcherProps) {
+export function ThemeSwitcher({ className, size = 'sm' }: ThemeSwitcherProps) {
   const { theme, setTheme } = useTheme()
 
-  const handleThemeChange = (value: Theme | undefined) => {
-    // ThemeSwitcher doesn't allow deselection - always keep a theme selected
-    if (value) {
-      setTheme(value)
-    }
-  }
-
   return (
-    <ToggleGroup
-      options={themeOptions}
-      value={theme}
-      onChange={handleThemeChange}
-      aria-label="Select color theme"
-      size={size}
-      displayMode={displayMode}
-      {...(className ? { className } : {})}
-    />
+    <Select.Root value={theme} onValueChange={(value) => setTheme(value as Theme)}>
+      <Select.Trigger size={size} className={className} aria-label="Select color theme">
+        <Select.Value />
+      </Select.Trigger>
+      <Select.Content>
+        {THEMES.map((t) => (
+          <Select.Item key={t} value={t} description={THEME_DESCRIPTIONS[t]}>
+            {THEME_LABELS[t]}
+          </Select.Item>
+        ))}
+      </Select.Content>
+    </Select.Root>
   )
 }
 

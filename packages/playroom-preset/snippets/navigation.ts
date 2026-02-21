@@ -21,8 +21,8 @@ export const navigationSnippets: Snippet[] = [
   },
   {
     group: 'Navigation',
-    name: 'Horizontal Filled Primary',
-    code: `<Navigation orientation="horizontal" variant="filled" color="primary">
+    name: 'Horizontal Colorful Primary',
+    code: `<Navigation orientation="horizontal" variant="colorful" color="primary">
   <NavItem href="#" icon="dashboard" active>Dashboard</NavItem>
   <NavItem href="#" icon="components">Components</NavItem>
   <NavItem href="#" icon="settings">Settings</NavItem>
@@ -30,8 +30,8 @@ export const navigationSnippets: Snippet[] = [
   },
   {
     group: 'Navigation',
-    name: 'Horizontal Filled Secondary',
-    code: `<Navigation orientation="horizontal" variant="filled" color="secondary">
+    name: 'Horizontal Colorful Secondary',
+    code: `<Navigation orientation="horizontal" variant="colorful" color="secondary">
   <NavItem href="#" active>Overview</NavItem>
   <NavItem href="#">Analytics</NavItem>
   <NavItem href="#">Reports</NavItem>
@@ -72,9 +72,9 @@ export const navigationSnippets: Snippet[] = [
   },
   {
     group: 'Navigation',
-    name: 'Vertical Filled Primary',
+    name: 'Vertical Colorful Primary',
     code: `<div className="w-64">
-  <Navigation orientation="vertical" variant="filled" color="primary">
+  <Navigation orientation="vertical" variant="colorful" color="primary">
     <NavItem href="#" icon="dashboard" active>Dashboard</NavItem>
     <NavItem href="#" icon="package">Packages</NavItem>
     <NavItem href="#" icon="components">Components</NavItem>

@@ -19,6 +19,7 @@ const cardVariants = cva('rounded-sm border-line', {
     variant: {
       // Core variants
       outlined: 'bg-surface border-line-border',
+      gradient: 'bg-gradient-surface-light border-line-border',
       elevated: 'bg-surface border-line-border shadow-md',
 
       // Primary/secondary variants with light gradient backgrounds
@@ -53,6 +54,7 @@ const cardVariants = cva('rounded-sm border-line', {
       actionable: true,
       variant: [
         'outlined',
+        'gradient',
         'elevated',
         'primary',
         'secondary',
@@ -133,7 +135,8 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       )
     }
 
-    const baseClassName = cn(cardVariants({ variant, actionable }), className)
+    const resolvedVariant = variant ?? (actionable ? 'gradient' : undefined)
+    const baseClassName = cn(cardVariants({ variant: resolvedVariant, actionable }), className)
     const contentId = useId()
 
     // If not accordion mode, render normal card with proper focus for actionable

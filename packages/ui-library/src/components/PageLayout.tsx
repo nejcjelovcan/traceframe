@@ -1,5 +1,12 @@
+import * as Dialog from '@radix-ui/react-dialog'
 import { cva, type VariantProps } from 'class-variance-authority'
-import { forwardRef, type HTMLAttributes, type ReactNode } from 'react'
+import {
+  forwardRef,
+  useState,
+  type ButtonHTMLAttributes,
+  type HTMLAttributes,
+  type ReactNode,
+} from 'react'
 
 import { Container } from './Container.js'
 import {
@@ -8,6 +15,7 @@ import {
   type PageLayoutVariant,
   type PageLayoutColor,
 } from './PageLayoutContext.js'
+import { Icon } from '../icons/Icon.js'
 import { cn } from '../utils/cn.js'
 
 const pageLayoutVariants = cva('flex h-screen flex-col', {
@@ -18,7 +26,7 @@ const headerVariants = cva('sticky top-0 z-10 shrink-0 border-b', {
   variants: {
     variant: {
       default: 'border-border bg-surface',
-      filled: '',
+      colorful: '',
       subtle: '',
     },
     color: {
@@ -32,41 +40,41 @@ const headerVariants = cva('sticky top-0 z-10 shrink-0 border-b', {
     },
   },
   compoundVariants: [
-    // Filled variant with solid backgrounds
+    // Colorful variant with solid backgrounds
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       className: 'bg-interactive-primary border-interactive-primary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       className: 'bg-interactive-secondary border-interactive-secondary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
-      className: 'bg-accent-1-emphasis border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
-      className: 'bg-accent-2-emphasis border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
-      className: 'bg-accent-3-emphasis border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
-      className: 'bg-accent-4-emphasis border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
-      className: 'bg-accent-5-emphasis border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border',
     },
     // Subtle variant with muted backgrounds
     {
@@ -121,9 +129,13 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
       true: 'hidden md:block',
       false: '',
     },
+    sticky: {
+      true: 'sticky top-0 self-start',
+      false: '',
+    },
     variant: {
       default: '',
-      filled: '',
+      colorful: '',
       subtle: '',
     },
     color: {
@@ -148,90 +160,90 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
       position: 'right',
       className: 'border-border',
     },
-    // Filled variant with solid backgrounds
+    // Colorful variant with solid backgrounds
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       position: 'left',
-      className: 'bg-interactive-primary border-interactive-primary-border',
+      className: 'bg-interactive-primary border-interactive-primary-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       position: 'right',
-      className: 'bg-interactive-primary border-interactive-primary-border',
+      className: 'bg-interactive-primary border-interactive-primary-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       position: 'left',
-      className: 'bg-interactive-secondary border-interactive-secondary-border',
+      className: 'bg-interactive-secondary border-interactive-secondary-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       position: 'right',
-      className: 'bg-interactive-secondary border-interactive-secondary-border',
+      className: 'bg-interactive-secondary border-interactive-secondary-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
       position: 'left',
-      className: 'bg-accent-1-emphasis border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
       position: 'right',
-      className: 'bg-accent-1-emphasis border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
       position: 'left',
-      className: 'bg-accent-2-emphasis border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
       position: 'right',
-      className: 'bg-accent-2-emphasis border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
       position: 'left',
-      className: 'bg-accent-3-emphasis border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
       position: 'right',
-      className: 'bg-accent-3-emphasis border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
       position: 'left',
-      className: 'bg-accent-4-emphasis border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
       position: 'right',
-      className: 'bg-accent-4-emphasis border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
       position: 'left',
-      className: 'bg-accent-5-emphasis border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border shadow-lg',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
       position: 'right',
-      className: 'bg-accent-5-emphasis border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border shadow-lg',
     },
     // Subtle variant with muted backgrounds
     {
@@ -322,10 +334,21 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
   defaultVariants: {
     position: 'left',
     collapsible: true,
+    sticky: false,
     variant: 'default',
     color: 'primary',
   },
 })
+
+export type SidebarWidth = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+
+const sidebarWidthMap: Record<SidebarWidth, string> = {
+  xs: 'w-48',
+  sm: 'w-56',
+  md: 'w-64',
+  lg: 'w-72',
+  xl: 'w-80',
+}
 
 export interface PageLayoutProps
   extends
@@ -347,10 +370,18 @@ export interface PageLayoutProps
   sidebarCollapsible?: boolean
   /** Text for the skip navigation link. When provided, renders a skip link as the first focusable element. */
   skipLinkText?: string
-  /** Visual variant for header and sidebar backgrounds */
+  /** Visual variant for header and sidebar backgrounds. 'colorful' applies strong backgrounds. */
   variant?: PageLayoutVariant
-  /** Color scheme for filled and subtle variants */
+  /** Color scheme for colorful and subtle variants */
   color?: PageLayoutColor
+  /** Predefined sidebar width */
+  sidebarWidth?: SidebarWidth
+  /** Makes sidebar sticky within scroll container */
+  sidebarSticky?: boolean
+  /** Controlled mobile overlay open state */
+  sidebarOpen?: boolean
+  /** Callback for mobile overlay state changes */
+  onSidebarOpenChange?: (open: boolean) => void
 }
 
 const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
@@ -367,27 +398,90 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
       skipLinkText,
       variant = 'default',
       color = 'primary',
+      sidebarWidth,
+      sidebarSticky = false,
+      sidebarOpen: controlledOpen,
+      onSidebarOpenChange,
       ...props
     },
     ref
   ) => {
+    const [internalOpen, setInternalOpen] = useState(false)
+    const isControlled = controlledOpen !== undefined
+    const sidebarOpen = isControlled ? controlledOpen : internalOpen
+    const setSidebarOpen = (open: boolean) => {
+      if (!isControlled) {
+        setInternalOpen(open)
+      }
+      onSidebarOpenChange?.(open)
+    }
+
     const sidebarElement = sidebar && (
       <aside
         className={cn(
           sidebarVariants({
             position: sidebarPosition,
             collapsible: sidebarCollapsible,
+            sticky: sidebarSticky,
             variant,
             color,
-          })
+          }),
+          sidebarWidth && sidebarWidthMap[sidebarWidth],
+          sidebarSticky && 'h-[calc(100vh-var(--header-height,0px))]'
         )}
       >
         {sidebar}
       </aside>
     )
 
+    const mobileSidebarOverlay = sidebar && sidebarCollapsible && (
+      <Dialog.Root open={sidebarOpen} onOpenChange={setSidebarOpen}>
+        <Dialog.Portal>
+          <Dialog.Overlay className="fixed inset-0 z-40 bg-foreground/50 md:hidden data-[state=open]:animate-sidebar-overlay-in data-[state=closed]:animate-sidebar-overlay-out" />
+          <Dialog.Content
+            aria-describedby={undefined}
+            className={cn(
+              'fixed inset-y-0 z-50 flex flex-col bg-surface md:hidden',
+              sidebarPosition === 'left'
+                ? 'left-0 data-[state=open]:animate-sidebar-slide-in-left data-[state=closed]:animate-sidebar-slide-out-left'
+                : 'right-0 data-[state=open]:animate-sidebar-slide-in-right data-[state=closed]:animate-sidebar-slide-out-right',
+              sidebarWidth ? sidebarWidthMap[sidebarWidth] : 'w-64',
+              sidebarVariants({
+                position: sidebarPosition,
+                collapsible: false,
+                sticky: false,
+                variant,
+                color,
+              })
+            )}
+          >
+            <Dialog.Title className="sr-only">Sidebar navigation</Dialog.Title>
+            <div className="flex items-center justify-end p-sm">
+              <Dialog.Close asChild>
+                <button
+                  className="rounded-sm p-xs hover:bg-interactive-hover"
+                  aria-label="Close sidebar"
+                >
+                  <Icon name="close" size="sm" />
+                </button>
+              </Dialog.Close>
+            </div>
+            <div className="flex-1 overflow-y-auto">{sidebar}</div>
+          </Dialog.Content>
+        </Dialog.Portal>
+      </Dialog.Root>
+    )
+
     return (
-      <PageLayoutContext.Provider value={{ variant, color }}>
+      <PageLayoutContext.Provider
+        value={{
+          variant,
+          color,
+          sidebarOpen,
+          setSidebarOpen,
+          sidebarCollapsible: sidebarCollapsible && !!sidebar,
+        }}
+      >
         <div className={cn(pageLayoutVariants({ className }))} ref={ref} {...props}>
           {/* Skip link - first focusable element */}
           {skipLinkText && (
@@ -403,14 +497,18 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
           {header && <header className={cn(headerVariants({ variant, color }))}>{header}</header>}
 
           {/* Body - flex row with sidebar and main */}
-          <div className="flex min-h-0 flex-1">
+          <div className={cn('flex min-h-0 flex-1', sidebarSticky && 'overflow-y-auto')}>
             {/* Left sidebar */}
             {sidebarPosition === 'left' && sidebarElement}
 
             {/* Main content - skip link target */}
-            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-hidden">
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className="flex-1 bg-surface-muted focus:outline-hidden"
+            >
               {contentWidth === 'contained' ? (
-                <Container className="py-lg">{children}</Container>
+                <Container className="py-lg bg-surface-muted">{children}</Container>
               ) : (
                 children
               )}
@@ -425,6 +523,9 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             <footer className="shrink-0 border-t border-border bg-surface">{footer}</footer>
           )}
         </div>
+
+        {/* Mobile sidebar overlay */}
+        {mobileSidebarOverlay}
       </PageLayoutContext.Provider>
     )
   }
@@ -444,7 +545,7 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
     const { variant } = usePageLayoutContext()
 
     // Apply appropriate text color based on variant
-    const textColorClass = variant === 'filled' ? 'text-foreground-filled' : ''
+    const textColorClass = variant === 'colorful' ? 'text-foreground' : ''
 
     return (
       <div
@@ -465,4 +566,40 @@ const PageHeader = forwardRef<HTMLDivElement, PageHeaderProps>(
 
 PageHeader.displayName = 'PageHeader'
 
-export { pageLayoutVariants, sidebarVariants, headerVariants, PageLayout, PageHeader }
+export type SidebarToggleProps = ButtonHTMLAttributes<HTMLButtonElement>
+
+const SidebarToggle = forwardRef<HTMLButtonElement, SidebarToggleProps>(
+  ({ className, ...props }, ref) => {
+    const { sidebarOpen, setSidebarOpen, sidebarCollapsible } = usePageLayoutContext()
+
+    if (!sidebarCollapsible) {
+      return null
+    }
+
+    return (
+      <button
+        ref={ref}
+        type="button"
+        className={cn('rounded-sm p-xs hover:bg-interactive-hover md:hidden', className)}
+        aria-label="Toggle sidebar"
+        aria-expanded={sidebarOpen}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        {...props}
+      >
+        <Icon name="menu" size="sm" />
+      </button>
+    )
+  }
+)
+
+SidebarToggle.displayName = 'SidebarToggle'
+
+export {
+  pageLayoutVariants,
+  sidebarVariants,
+  headerVariants,
+  sidebarWidthMap,
+  PageLayout,
+  PageHeader,
+  SidebarToggle,
+}

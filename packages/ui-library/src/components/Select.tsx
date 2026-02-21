@@ -101,7 +101,7 @@ const selectTriggerVariants = cva(
 const selectContentVariants = cva(
   [
     'relative z-50 overflow-hidden',
-    'rounded-md border border-border bg-surface shadow-highlight',
+    'rounded-md border border-border bg-surface shadow-md',
     'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95',
     'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95',
     'data-[side=bottom]:slide-in-from-top-2',
@@ -158,7 +158,7 @@ const selectItemVariants = cva(
         spacious: 'py-sm px-base text-base',
       },
       hasIcon: {
-        true: 'pl-lg',
+        true: '',
         false: '',
       },
     },
@@ -366,12 +366,13 @@ const SelectItem = forwardRef<ComponentRef<typeof SelectPrimitive.Item>, SelectI
       <SelectPrimitive.Item
         ref={ref}
         className={cn(selectItemVariants({ variant, density, hasIcon, className }))}
+        style={hasIcon ? { paddingLeft: 'calc(var(--spacing-lg) * 1.5)' } : undefined}
         {...props}
       >
         {showIndicator && (
-          <span className="absolute left-sm flex h-size-xs w-size-xs items-center justify-center">
+          <span className="absolute left-sm flex h-size-sm w-size-sm items-center justify-center">
             <SelectPrimitive.ItemIndicator>
-              <Icon name={indicatorIcon} size="xs" className="text-status-success-foreground" />
+              <Icon name={indicatorIcon} size="sm" className="text-status-success-foreground" />
             </SelectPrimitive.ItemIndicator>
           </span>
         )}

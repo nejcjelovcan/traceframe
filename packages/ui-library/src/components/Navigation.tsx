@@ -2,6 +2,7 @@ import { Slot, Slottable } from '@radix-ui/react-slot'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { createContext, forwardRef, useContext, type HTMLAttributes, type ReactNode } from 'react'
 
+import { Heading, type HeadingProps } from './Heading.js'
 import { usePageLayoutContext } from './PageLayoutContext.js'
 import { Icon } from '../icons/Icon.js'
 import { type IconName } from '../icons/types.js'
@@ -15,7 +16,7 @@ const navigationVariants = cva('transition-colors', {
     },
     variant: {
       default: '',
-      filled: 'rounded-md p-sm',
+      colorful: 'rounded-md p-sm',
       subtle: 'rounded-md p-sm',
     },
     color: {
@@ -29,43 +30,43 @@ const navigationVariants = cva('transition-colors', {
     },
   },
   compoundVariants: [
-    // Filled variant with solid backgrounds and borders
+    // Colorful variant with solid backgrounds and borders
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'primary',
       className: 'bg-interactive-primary border-line-interactive-primary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'secondary',
       className: 'bg-interactive-secondary border-line-interactive-secondary-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-1',
-      className: 'bg-accent-1-emphasis border-line-accent-1-border',
+      className: 'bg-accent-1 border-line-accent-1-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-2',
-      className: 'bg-accent-2-emphasis border-line-accent-2-border',
+      className: 'bg-accent-2 border-line-accent-2-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-3',
-      className: 'bg-accent-3-emphasis border-line-accent-3-border',
+      className: 'bg-accent-3 border-line-accent-3-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-4',
-      className: 'bg-accent-4-emphasis border-line-accent-4-border',
+      className: 'bg-accent-4 border-line-accent-4-border',
     },
     {
-      variant: 'filled',
+      variant: 'colorful',
       color: 'accent-5',
-      className: 'bg-accent-5-emphasis border-line-accent-5-border',
+      className: 'bg-accent-5 border-line-accent-5-border',
     },
-    // Subtle variant with muted backgrounds and subtle borders
+    // Subtle variant with muted backgrounds and muted borders
     {
       variant: 'subtle',
       color: 'primary',
@@ -79,27 +80,27 @@ const navigationVariants = cva('transition-colors', {
     {
       variant: 'subtle',
       color: 'accent-1',
-      className: 'bg-accent-1-muted border-line-accent-1-border/50',
+      className: 'bg-accent-1-muted border-line-accent-1-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-2',
-      className: 'bg-accent-2-muted border-line-accent-2-border/50',
+      className: 'bg-accent-2-muted border-line-accent-2-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-3',
-      className: 'bg-accent-3-muted border-line-accent-3-border/50',
+      className: 'bg-accent-3-muted border-line-accent-3-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-4',
-      className: 'bg-accent-4-muted border-line-accent-4-border/50',
+      className: 'bg-accent-4-muted border-line-accent-4-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-5',
-      className: 'bg-accent-5-muted border-line-accent-5-border/50',
+      className: 'bg-accent-5-muted border-line-accent-5-muted-border',
     },
   ],
   defaultVariants: {
@@ -121,7 +122,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
     },
     parentVariant: {
       default: '',
-      filled: '',
+      colorful: '',
       subtle: '',
     },
   },
@@ -137,46 +138,44 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'default',
       orientation: 'vertical',
       active: false,
-      className: 'text-foreground-muted hover:bg-surface-subtle',
+      className: 'text-foreground-muted hover:bg-surface-subtle hover:text-foreground',
     },
     {
       parentVariant: 'default',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground font-medium border-b-thick-interactive-primary-border pb-xs',
+      className: 'text-foreground font-medium',
     },
     {
       parentVariant: 'default',
       orientation: 'vertical',
       active: true,
-      className:
-        'bg-surface-muted text-foreground font-medium border-l-thick-interactive-primary-border -ml-[2px] pl-[calc(0.75rem+2px)]',
+      className: 'bg-surface-muted text-foreground font-medium',
     },
-    // Filled variant styles
+    // Colorful variant styles
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'horizontal',
       active: false,
-      className: 'text-foreground-filled/80 hover:text-foreground-filled',
+      className: 'text-foreground text-shadow-light',
     },
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'vertical',
       active: false,
-      className: 'text-foreground-filled/80 hover:bg-white/10 hover:text-foreground-filled',
+      className: 'text-foreground text-shadow-light hover:bg-surface/20',
     },
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground-filled font-medium bg-white/20 px-sm',
+      className: 'text-foreground text-shadow-light font-medium bg-surface/40 px-sm',
     },
     {
-      parentVariant: 'filled',
+      parentVariant: 'colorful',
       orientation: 'vertical',
       active: true,
-      className:
-        'bg-white/20 text-foreground-filled font-medium border-l-thick-white/60 -ml-[2px] pl-[calc(0.75rem+2px)]',
+      className: 'bg-surface/40 text-foreground text-shadow-light font-medium',
     },
     // Subtle variant styles
     {
@@ -201,8 +200,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'subtle',
       orientation: 'vertical',
       active: true,
-      className:
-        'bg-surface text-foreground font-medium shadow-inset-sm border-l-thick-interactive-primary-border -ml-[2px] pl-[calc(0.75rem+2px)]',
+      className: 'bg-surface text-foreground font-medium shadow-inset-sm',
     },
   ],
   defaultVariants: {
@@ -213,7 +211,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
 })
 
 type Orientation = 'horizontal' | 'vertical'
-type Variant = 'default' | 'filled' | 'subtle'
+type Variant = 'default' | 'colorful' | 'subtle'
 type Color =
   | 'primary'
   | 'secondary'
@@ -237,7 +235,7 @@ export interface NavigationProps
   orientation?: Orientation
   /** Visual variant of the navigation */
   variant?: Variant
-  /** Color scheme for filled and subtle variants */
+  /** Color scheme for colorful and subtle variants */
   color?: Color
 }
 
@@ -308,4 +306,32 @@ const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
 
 NavItem.displayName = 'Navigation.Item'
 
-export { Navigation, NavItem, navigationVariants, navItemVariants }
+export interface NavHeadingProps extends Omit<HeadingProps, 'level' | 'size' | 'color'> {
+  /** Semantic heading level (defaults to 3) */
+  level?: HeadingProps['level']
+  /** Text size (defaults to "sm") */
+  size?: HeadingProps['size']
+}
+
+const NavHeading = forwardRef<HTMLHeadingElement, NavHeadingProps>(
+  ({ className, level = 3, size = 'sm', ...props }, ref) => {
+    const { variant } = useContext(NavigationContext)
+
+    const variantClass = variant === 'colorful' ? 'text-foreground/70' : 'text-foreground-muted'
+
+    return (
+      <Heading
+        ref={ref}
+        level={level}
+        size={size}
+        color={undefined}
+        className={cn(variantClass, 'uppercase tracking-wider mb-sm', className)}
+        {...props}
+      />
+    )
+  }
+)
+
+NavHeading.displayName = 'Navigation.Heading'
+
+export { Navigation, NavItem, NavHeading, navigationVariants, navItemVariants }

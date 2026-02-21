@@ -4,7 +4,7 @@ import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
 import { Navigation, NavItem } from './Navigation'
-import { PageLayout, PageHeader } from './PageLayout'
+import { PageLayout, PageHeader, SidebarToggle } from './PageLayout'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -86,7 +86,7 @@ A full-page layout component with header, sidebar, main content, and footer slot
     variant: {
       description: 'Visual variant for header and sidebar backgrounds',
       control: 'select',
-      options: ['default', 'filled', 'subtle'],
+      options: ['default', 'colorful', 'subtle'],
       table: {
         defaultValue: { summary: 'default' },
       },
@@ -97,6 +97,21 @@ A full-page layout component with header, sidebar, main content, and footer slot
       options: ['primary', 'secondary', 'accent-1', 'accent-2', 'accent-3', 'accent-4', 'accent-5'],
       table: {
         defaultValue: { summary: 'primary' },
+      },
+    },
+    sidebarWidth: {
+      description: 'Predefined sidebar width',
+      control: 'select',
+      options: [undefined, 'xs', 'sm', 'md', 'lg', 'xl'],
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+    },
+    sidebarSticky: {
+      description: 'Makes sidebar sticky within scroll container',
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
       },
     },
   },
@@ -282,7 +297,16 @@ export const MobileView: Story = {
     },
   },
   render: () => (
-    <PageLayout header={<SampleHeader />} sidebar={<SampleSidebar />} footer={<SampleFooter />}>
+    <PageLayout
+      header={
+        <PageHeader title="Traceframe">
+          <SidebarToggle />
+        </PageHeader>
+      }
+      sidebar={<SampleSidebar />}
+      footer={<SampleFooter />}
+      sidebarWidth="md"
+    >
       <SampleContent />
     </PageLayout>
   ),
@@ -399,18 +423,18 @@ export const WithSkipLink: Story = {
   ),
 }
 
-export const FilledHeaderVariant: Story = {
+export const ColorfulHeaderVariant: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'Demonstrates the filled variant with primary color on the header. The Navigation inherits the variant context and adjusts its text colors accordingly.',
+          'Demonstrates the colorful variant with primary color on the header. The Navigation inherits the variant context and adjusts its text colors accordingly.',
       },
     },
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="primary"
       header={
         <PageHeader title="Traceframe">
@@ -430,18 +454,18 @@ export const FilledHeaderVariant: Story = {
   ),
 }
 
-export const FilledSidebarVariant: Story = {
+export const ColorfulSidebarVariant: Story = {
   parameters: {
     docs: {
       description: {
         story:
-          'Shows the filled variant applied to the sidebar with accent-1 color. The Navigation component inherits the variant and displays appropriate text colors.',
+          'Shows the colorful variant applied to the sidebar with accent-1 color. The Navigation component inherits the variant and displays appropriate text colors.',
       },
     },
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="accent-1"
       header={<SampleHeader />}
       sidebar={
@@ -527,7 +551,7 @@ export const MixedVariants: Story = {
   },
   render: () => (
     <PageLayout
-      variant="filled"
+      variant="colorful"
       color="primary"
       header={
         <PageHeader title="Traceframe">
@@ -545,10 +569,112 @@ export const MixedVariants: Story = {
       <Flex gap="md">
         <Heading level={1}>Mixed Variants</Heading>
         <p className="text-foreground-muted">
-          The PageLayout has variant="filled" and color="primary", but the Navigation in the header
-          explicitly overrides with variant="subtle" and color="secondary".
+          The PageLayout has variant="colorful" and color="primary", but the Navigation in the
+          header explicitly overrides with variant="subtle" and color="secondary".
         </p>
       </Flex>
+    </PageLayout>
+  ),
+}
+
+export const FixedSidebar: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates sidebarWidth and sidebarSticky combined. The sidebar has a fixed width of "md" (w-64) and stays visible as main content scrolls.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      header={<SampleHeader />}
+      sidebar={<SampleSidebar />}
+      footer={<SampleFooter />}
+      sidebarWidth="md"
+      sidebarSticky
+    >
+      <Flex gap="lg">
+        <Heading level={1}>Sticky Sidebar</Heading>
+        {Array.from({ length: 15 }).map((_, i) => (
+          <Card key={i}>
+            <CardContent>
+              <Heading level={3}>Section {i + 1}</Heading>
+              <p className="mt-sm text-foreground-muted">
+                Scroll to see the sidebar stay fixed while content scrolls.
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </Flex>
+    </PageLayout>
+  ),
+}
+
+export const MobileSidebarToggle: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+    docs: {
+      description: {
+        story:
+          'Shows the SidebarToggle button in the header on mobile viewports. Click the hamburger icon to open the sidebar overlay.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      header={
+        <PageHeader title="Traceframe">
+          <SidebarToggle />
+        </PageHeader>
+      }
+      sidebar={<SampleSidebar />}
+      sidebarWidth="md"
+    >
+      <SampleContent />
+    </PageLayout>
+  ),
+}
+
+export const MobileSidebarRight: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+    docs: {
+      description: {
+        story: 'Right-side mobile sidebar overlay. The panel slides in from the right edge.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      header={
+        <PageHeader title="Traceframe">
+          <SidebarToggle />
+        </PageHeader>
+      }
+      sidebar={
+        <div className="p-base">
+          <Heading level={3} className="mb-md">
+            On This Page
+          </Heading>
+          <Navigation orientation="vertical">
+            <NavItem href="#" active>
+              Introduction
+            </NavItem>
+            <NavItem href="#">Getting Started</NavItem>
+            <NavItem href="#">Configuration</NavItem>
+            <NavItem href="#">API Reference</NavItem>
+          </Navigation>
+        </div>
+      }
+      sidebarPosition="right"
+      sidebarWidth="md"
+    >
+      <SampleContent />
     </PageLayout>
   ),
 }

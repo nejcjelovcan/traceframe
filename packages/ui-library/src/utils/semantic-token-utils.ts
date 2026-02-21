@@ -540,7 +540,7 @@ export function isNonSemanticBorderClass(className: string): boolean {
 /**
  * Check if a class uses non-semantic shadow values.
  * Non-semantic: shadow, shadow-none (standard tailwind shadows without semantic meaning)
- * Semantic: shadow-sm, shadow-md, shadow-lg, shadow-interactive-*, shadow-highlight-*, shadow-inset-*
+ * Semantic: shadow-sm, shadow-md, shadow-lg, shadow-interactive-*, shadow-inset-*
  */
 export function isNonSemanticShadowClass(className: string): boolean {
   const clean = stripModifiers(className)
@@ -646,7 +646,7 @@ export function getShadowSuggestion(className: string): string | undefined {
   } else if (clean === 'shadow-inner') {
     return `${modifier}shadow-inset-sm or ${modifier}shadow-inset-md`
   } else if (clean === 'shadow-xl') {
-    return `${modifier}shadow-lg or ${modifier}shadow-highlight`
+    return `${modifier}shadow-lg`
   } else if (clean === 'shadow-2xl') {
     return `${modifier}shadow-lg`
   }

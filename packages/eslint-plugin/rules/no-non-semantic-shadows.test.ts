@@ -38,10 +38,6 @@ ruleTester.run('no-non-semantic-shadows', noNonSemanticShadows, {
     {
       code: '<div className="shadow-interactive shadow-interactive-hover shadow-interactive-pressed" />',
     },
-    // Highlight shadows
-    {
-      code: '<div className="shadow-highlight shadow-highlight-hover shadow-highlight-pressed" />',
-    },
     // Inset shadows
     {
       code: '<div className="shadow-inset-sm shadow-inset-md shadow-inset-underline" />',
@@ -154,18 +150,13 @@ ruleTester.run('no-non-semantic-shadows', noNonSemanticShadows, {
           messageId: 'nonSemanticShadow',
           data: {
             className: 'shadow-xl',
-            suggestion: 'shadow-lg or shadow-highlight',
+            suggestion: 'shadow-lg',
           },
           suggestions: [
             {
               messageId: 'suggestSemantic',
               data: { replacement: 'shadow-lg' },
               output: '<div className="shadow-lg" />',
-            },
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'shadow-highlight' },
-              output: '<div className="shadow-highlight" />',
             },
           ],
         },
@@ -235,18 +226,13 @@ ruleTester.run('no-non-semantic-shadows', noNonSemanticShadows, {
           messageId: 'nonSemanticShadow',
           data: {
             className: 'shadow-xl',
-            suggestion: 'shadow-lg or shadow-highlight',
+            suggestion: 'shadow-lg',
           },
           suggestions: [
             {
               messageId: 'suggestSemantic',
               data: { replacement: 'shadow-lg' },
               output: '<div className={`shadow-lg`} />',
-            },
-            {
-              messageId: 'suggestSemantic',
-              data: { replacement: 'shadow-highlight' },
-              output: '<div className={`shadow-highlight`} />',
             },
           ],
         },

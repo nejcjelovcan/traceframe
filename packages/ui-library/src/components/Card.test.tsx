@@ -479,6 +479,12 @@ describe('Card actionable variant', () => {
     expect(card.className).toContain('active:shadow-interactive-pressed')
   })
 
+  it('defaults to gradient variant when actionable and no variant set', () => {
+    render(<Card actionable>Actionable</Card>)
+    const card = screen.getByText('Actionable')
+    expect(card.className).toContain('bg-gradient-surface-light')
+  })
+
   it('does not apply actionable classes when actionable=false', () => {
     render(<Card actionable={false}>Not Actionable</Card>)
     const card = screen.getByText('Not Actionable')
@@ -556,7 +562,7 @@ describe('Card actionable variant', () => {
     const card = screen.getByText('Actionable Inverse')
     expect(card.className).toContain('cursor-pointer')
     expect(card.className).toContain('shadow-interactive')
-    expect(card.className).toContain('bg-surface')
+    expect(card.className).toContain('bg-gradient-surface-light')
   })
 
   it('combines actionable with status variant in inverse context', () => {

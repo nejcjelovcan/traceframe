@@ -1,0 +1,19 @@
+/**
+ * Text shadow utilities using Tailwind v4 @utility directive.
+ * Provides light and dark text shadows for improving readability
+ * on mid-tone backgrounds (e.g., gradient buttons, interactive cards).
+ *
+ * Values are mode-dependent: defined in modes/light.css and modes/dark.css.
+ */
+
+@utility text-shadow-light {
+  text-shadow: var(--token-text-shadow-light);
+}
+
+@utility text-shadow-dark {
+  text-shadow: var(--token-text-shadow-dark);
+}
+
+@utility text-shadow-none {
+  text-shadow: none;
+}

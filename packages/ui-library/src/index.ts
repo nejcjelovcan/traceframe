@@ -63,17 +63,23 @@ export {
 export {
   Navigation,
   NavItem,
+  NavHeading,
   type NavigationProps,
   type NavItemProps,
+  type NavHeadingProps,
 } from './components/Navigation.js'
 export {
   PageLayout,
   PageHeader,
+  SidebarToggle,
   pageLayoutVariants,
   sidebarVariants,
   headerVariants,
+  sidebarWidthMap,
   type PageLayoutProps,
   type PageHeaderProps,
+  type SidebarToggleProps,
+  type SidebarWidth,
 } from './components/PageLayout.js'
 export { Spinner, spinnerVariants, type SpinnerProps } from './components/Spinner.js'
 export {

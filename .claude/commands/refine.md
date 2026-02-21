@@ -136,10 +136,10 @@ Is this component purely visual with no complex interactions?
 | `borderStyle` | line, thick, highlight | Composite border styles (via `border-line`, `border-thick`, `border-highlight` utilities) |
 | `gradient` | primary, secondary, destructive, status (info, success, warning, error), accent (1-5), surface — each with strong and `-light` variants | Background gradients (via `bg-gradient-*` utilities) |
 | `interactive` | hover, active, pressed, primary (with hover/foreground/border), secondary (with hover/foreground/border), destructive (with hover/foreground/border) | Interactive element states |
-| `status` | info, success, warning, error (each with: DEFAULT, muted, foreground, emphasis, border) | Status indicators |
+| `status` | info, success, warning, error (each with: DEFAULT, muted, foreground, border, muted-border) | Status indicators |
 | `disabled` | DEFAULT, foreground | Disabled state colors |
 | `tooltip` | DEFAULT, foreground | Tooltip colors |
-| `accent` | 1-5 (each with: DEFAULT, muted, foreground, emphasis, border) | Categorical data visualization |
+| `accent` | 1-5 (each with: DEFAULT, muted, foreground, border, muted-border) | Categorical data visualization |
 
 **Available semantic spacing tokens:**
 

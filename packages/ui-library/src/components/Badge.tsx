@@ -14,19 +14,19 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       secondary: 'bg-surface-subtle text-foreground-muted border-border-muted',
 
       // Status variants with proper contrast
-      info: 'bg-status-info-muted text-status-info-foreground border-status-info-border',
+      info: 'bg-status-info-muted text-status-info-foreground border-status-info-muted-border',
       success:
-        'bg-status-success-muted text-status-success-foreground border-status-success-border',
+        'bg-status-success-muted text-status-success-foreground border-status-success-muted-border',
       warning:
-        'bg-status-warning-muted text-status-warning-foreground border-status-warning-border',
-      error: 'bg-status-error-muted text-status-error-foreground border-status-error-border',
+        'bg-status-warning-muted text-status-warning-foreground border-status-warning-muted-border',
+      error: 'bg-status-error-muted text-status-error-foreground border-status-error-muted-border',
 
       // Accent variants for categorization and data visualization
-      accent1: 'bg-accent-1-muted text-accent-1-foreground border-accent-1-border',
-      accent2: 'bg-accent-2-muted text-accent-2-foreground border-accent-2-border',
-      accent3: 'bg-accent-3-muted text-accent-3-foreground border-accent-3-border',
-      accent4: 'bg-accent-4-muted text-accent-4-foreground border-accent-4-border',
-      accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-border',
+      accent1: 'bg-accent-1-muted text-accent-1-foreground border-accent-1-muted-border',
+      accent2: 'bg-accent-2-muted text-accent-2-foreground border-accent-2-muted-border',
+      accent3: 'bg-accent-3-muted text-accent-3-foreground border-accent-3-muted-border',
+      accent4: 'bg-accent-4-muted text-accent-4-foreground border-accent-4-muted-border',
+      accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-muted-border',
 
       // Outline variants (ghost style with surface background for inverse contexts)
       'outline-default': 'bg-surface border-thick-border text-foreground',

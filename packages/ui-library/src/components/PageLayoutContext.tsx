@@ -1,6 +1,6 @@
 import { createContext, useContext } from 'react'
 
-export type PageLayoutVariant = 'default' | 'filled' | 'subtle'
+export type PageLayoutVariant = 'default' | 'colorful' | 'subtle'
 export type PageLayoutColor =
   | 'primary'
   | 'secondary'
@@ -13,9 +13,16 @@ export type PageLayoutColor =
 interface PageLayoutContextValue {
   variant?: PageLayoutVariant
   color?: PageLayoutColor
+  sidebarOpen: boolean
+  setSidebarOpen: (open: boolean) => void
+  sidebarCollapsible: boolean
 }
 
-const PageLayoutContext = createContext<PageLayoutContextValue>({})
+const PageLayoutContext = createContext<PageLayoutContextValue>({
+  sidebarOpen: false,
+  setSidebarOpen: () => {},
+  sidebarCollapsible: false,
+})
 
 export const usePageLayoutContext = () => {
   return useContext(PageLayoutContext)

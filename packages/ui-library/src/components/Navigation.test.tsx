@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react'
 import { createRef } from 'react'
 import { describe, expect, it } from 'vitest'
 
-import { NavItem, Navigation } from './Navigation'
+import { NavItem, NavHeading, Navigation } from './Navigation'
 
 describe('Navigation', () => {
   it('renders children', () => {
@@ -70,7 +70,7 @@ describe('NavItem', () => {
     expect(ref.current).toBeInstanceOf(HTMLAnchorElement)
   })
 
-  it('applies border-b-thick classes when active in horizontal orientation', () => {
+  it('applies font-medium when active in horizontal orientation', () => {
     const { container } = render(
       <Navigation orientation="horizontal">
         <NavItem href="#" active>
@@ -79,10 +79,10 @@ describe('NavItem', () => {
       </Navigation>
     )
     const activeItem = container.querySelector('a')
-    expect(activeItem?.className).toContain('border-b-thick-interactive-primary-border')
+    expect(activeItem?.className).toContain('font-medium')
   })
 
-  it('applies border-l-thick classes when active in vertical orientation', () => {
+  it('applies bg-surface-muted when active in vertical orientation', () => {
     const { container } = render(
       <Navigation orientation="vertical">
         <NavItem href="#" active>
@@ -91,18 +91,18 @@ describe('NavItem', () => {
       </Navigation>
     )
     const activeItem = container.querySelector('a')
-    expect(activeItem?.className).toContain('border-l-thick-interactive-primary-border')
+    expect(activeItem?.className).toContain('bg-surface-muted')
   })
 
-  it('does not apply border classes when inactive', () => {
+  it('does not apply active classes when inactive', () => {
     const { container } = render(
       <Navigation orientation="horizontal">
         <NavItem href="#">Inactive</NavItem>
       </Navigation>
     )
     const inactiveItem = container.querySelector('a')
-    expect(inactiveItem?.className).not.toContain('border-b-thick')
-    expect(inactiveItem?.className).not.toContain('border-l-thick')
+    expect(inactiveItem?.className).not.toContain('font-medium')
+    expect(inactiveItem?.className).not.toContain('bg-surface-muted')
   })
 
   describe('asChild', () => {
@@ -150,5 +150,78 @@ describe('NavItem', () => {
       // Icon is rendered as an SVG inside the button
       expect(button.querySelector('svg')).toBeDefined()
     })
+  })
+})
+
+describe('NavHeading', () => {
+  it('renders as h3 by default', () => {
+    render(
+      <Navigation orientation="vertical">
+        <NavHeading>Section</NavHeading>
+      </Navigation>
+    )
+    const heading = screen.getByRole('heading', { level: 3 })
+    expect(heading).toBeDefined()
+    expect(heading.textContent).toBe('Section')
+  })
+
+  it('applies uppercase tracking-wider classes', () => {
+    render(
+      <Navigation orientation="vertical">
+        <NavHeading>Section</NavHeading>
+      </Navigation>
+    )
+    const heading = screen.getByRole('heading')
+    expect(heading.className).toContain('uppercase')
+    expect(heading.className).toContain('tracking-wider')
+  })
+
+  it('uses muted text for default variant', () => {
+    render(
+      <Navigation orientation="vertical">
+        <NavHeading>Section</NavHeading>
+      </Navigation>
+    )
+    const heading = screen.getByRole('heading')
+    expect(heading.className).toContain('text-foreground-muted')
+  })
+
+  it('uses foreground/70 text for colorful variant', () => {
+    render(
+      <Navigation orientation="vertical" variant="colorful" color="primary">
+        <NavHeading>Section</NavHeading>
+      </Navigation>
+    )
+    const heading = screen.getByRole('heading')
+    expect(heading.className).toContain('text-foreground/70')
+  })
+
+  it('allows custom heading level', () => {
+    render(
+      <Navigation orientation="vertical">
+        <NavHeading level={4}>Section</NavHeading>
+      </Navigation>
+    )
+    expect(screen.getByRole('heading', { level: 4 })).toBeDefined()
+  })
+
+  it('merges custom className', () => {
+    render(
+      <Navigation orientation="vertical">
+        <NavHeading className="mb-lg">Section</NavHeading>
+      </Navigation>
+    )
+    const heading = screen.getByRole('heading')
+    expect(heading.className).toContain('mb-lg')
+  })
+
+  it('forwards ref', () => {
+    const ref = createRef<HTMLHeadingElement>()
+    render(
+      <Navigation orientation="vertical">
+        <NavHeading ref={ref}>Section</NavHeading>
+      </Navigation>
+    )
+    expect(ref.current).toBeInstanceOf(HTMLHeadingElement)
   })
 })

@@ -94,13 +94,13 @@ export const pageLayoutSnippets: Snippet[] = [
   },
   {
     group: 'PageLayout',
-    name: 'Filled Primary Theme',
+    name: 'Colorful Primary Theme',
     code: `<PageLayout
-  variant="filled"
+  variant="colorful"
   color="primary"
   header={
-    <PageHeader title="Filled Primary">
-      <Navigation orientation="horizontal" variant="filled" color="primary">
+    <PageHeader title="Colorful Primary">
+      <Navigation orientation="horizontal" variant="colorful" color="primary">
         <NavItem href="#" active>Dashboard</NavItem>
         <NavItem href="#">Analytics</NavItem>
         <NavItem href="#">Settings</NavItem>
@@ -109,7 +109,7 @@ export const pageLayoutSnippets: Snippet[] = [
   }
   sidebar={
     <div className="w-64 p-base">
-      <Navigation orientation="vertical" variant="filled" color="primary">
+      <Navigation orientation="vertical" variant="colorful" color="primary">
         <NavItem href="#" icon="dashboard" active>Overview</NavItem>
         <NavItem href="#" icon="package">Packages</NavItem>
         <NavItem href="#" icon="components">Components</NavItem>
@@ -118,8 +118,8 @@ export const pageLayoutSnippets: Snippet[] = [
   }
 >
   <Flex gap="lg">
-    <h1 className="text-2xl font-bold">Filled Primary Layout</h1>
-    <p className="text-foreground-muted">Header and sidebar use filled variant with primary color for cohesive theming.</p>
+    <h1 className="text-2xl font-bold">Colorful Primary Layout</h1>
+    <p className="text-foreground-muted">Header and sidebar use colorful variant with primary color for cohesive theming.</p>
   </Flex>
 </PageLayout>`,
   },
