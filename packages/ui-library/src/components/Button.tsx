@@ -132,16 +132,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {loading && <Spinner size={spinnerSize} label={loadingText} />}
         {loading && <span className={iconOnly ? 'sr-only' : ''}>{loadingText}</span>}
         {!loading && leftIcon && <Icon name={leftIcon} size={iconSize} className="shrink-0" />}
-        {!loading && iconOnly && (
-          <span className="sr-only">
+        {!loading &&
+          (asChild ? (
             <Slottable>{children}</Slottable>
-          </span>
-        )}
-        {!loading && !iconOnly && (
-          <span className="truncate">
-            <Slottable>{children}</Slottable>
-          </span>
-        )}
+          ) : (
+            <span className={iconOnly ? 'sr-only' : 'truncate'}>
+              <Slottable>{children}</Slottable>
+            </span>
+          ))}
         {!loading && rightIcon && <Icon name={rightIcon} size={iconSize} className="shrink-0" />}
       </Comp>
     )
