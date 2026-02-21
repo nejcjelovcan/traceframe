@@ -13,7 +13,7 @@ const linkVariants = cva(
     variants: {
       variant: {
         default:
-          'text-interactive-accent hover:text-interactive-primary-hover underline underline-offset-2 decoration-interactive-accent/30 hover:decoration-interactive-primary focus:decoration-interactive-primary',
+          'text-interactive-accent hover:text-interactive-primary-hover underline underline-offset-2 decoration-interactive-accent hover:decoration-interactive-primary focus:decoration-interactive-primary',
         subtle:
           'text-foreground-muted hover:text-foreground hover:underline hover:underline-offset-2',
         standalone:

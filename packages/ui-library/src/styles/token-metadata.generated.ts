@@ -229,54 +229,54 @@ export const TOKEN_METADATA = {
     },
     shadow: {
       sm: {
-        value: '0 1px 2px 0 color-mix(in srgb, var(--token-shadow-color) 3%, transparent)',
+        value: '0 1px 2px 0 color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
         description: 'Shadows',
       },
       md: {
         value:
-          '0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent),\n      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 3%, transparent)',
+          '0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),\n      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
         description: '',
       },
       lg: {
         value:
-          '0 6px 12px -3px color-mix(in srgb, var(--token-shadow-color) 7%, transparent),\n      0 3px 6px -3px color-mix(in srgb, var(--token-shadow-color) 4%, transparent)',
+          '0 6px 12px -3px color-mix(in srgb, var(--token-shadow-color) 14%, transparent),\n      0 3px 6px -3px color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       interactive: {
-        value: '0 1px 3px 0\n      color-mix(in srgb, var(--token-shadow-color) 4%, transparent)',
+        value: '0 1px 3px 0\n      color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       'interactive-hover': {
         value:
-          '0 4px 8px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent),\n      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 4%, transparent)',
+          '0 4px 8px -1px color-mix(in srgb, var(--token-shadow-color) 12%, transparent),\n      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       'interactive-pressed': {
-        value: '0 1px 2px 0\n      color-mix(in srgb, var(--token-shadow-color) 3%, transparent)',
+        value: '0 1px 2px 0\n      color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
         description: '',
       },
       highlight: {
         value:
-          '0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 5%, transparent),\n      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 3%, transparent)',
+          '0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),\n      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
         description: '',
       },
       'highlight-hover': {
         value:
-          '0 6px 12px -2px color-mix(in srgb, var(--token-shadow-color) 8%, transparent),\n      0 3px 6px -2px color-mix(in srgb, var(--token-shadow-color) 5%, transparent)',
+          '0 6px 12px -2px color-mix(in srgb, var(--token-shadow-color) 16%, transparent),\n      0 3px 6px -2px color-mix(in srgb, var(--token-shadow-color) 10%, transparent)',
         description: '',
       },
       'highlight-pressed': {
-        value: '0 1px 3px 0\n      color-mix(in srgb, var(--token-shadow-color) 4%, transparent)',
+        value: '0 1px 3px 0\n      color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       'inset-sm': {
         value:
-          'inset 0 2px 4px 0\n      color-mix(in srgb, var(--token-shadow-color) 3%, transparent)',
+          'inset 0 2px 4px 0\n      color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
         description: '',
       },
       'inset-md': {
         value:
-          'inset 0 4px 8px 0\n      color-mix(in srgb, var(--token-shadow-color) 4%, transparent)',
+          'inset 0 4px 8px 0\n      color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       'inset-underline': {
@@ -347,7 +347,7 @@ export const TOKEN_METADATA = {
     gradient: {
       'accent-1': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-accent-1-600),\n      var(--palette-accent-1-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-accent-1-400),\n      var(--palette-accent-1-500)\n    )',
         description: 'Accent 1 emphasis gradient',
       },
       'accent-1-light': {
@@ -357,7 +357,7 @@ export const TOKEN_METADATA = {
       },
       'accent-2': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-accent-2-600),\n      var(--palette-accent-2-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-accent-2-400),\n      var(--palette-accent-2-500)\n    )',
         description: 'Accent 2 emphasis gradient',
       },
       'accent-2-light': {
@@ -367,7 +367,7 @@ export const TOKEN_METADATA = {
       },
       'accent-3': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-accent-3-600),\n      var(--palette-accent-3-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-accent-3-400),\n      var(--palette-accent-3-500)\n    )',
         description: 'Accent 3 emphasis gradient',
       },
       'accent-3-light': {
@@ -377,7 +377,7 @@ export const TOKEN_METADATA = {
       },
       'accent-4': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-accent-4-600),\n      var(--palette-accent-4-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-accent-4-400),\n      var(--palette-accent-4-500)\n    )',
         description: 'Accent 4 emphasis gradient',
       },
       'accent-4-light': {
@@ -387,7 +387,7 @@ export const TOKEN_METADATA = {
       },
       'accent-5': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-accent-5-600),\n      var(--palette-accent-5-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-accent-5-400),\n      var(--palette-accent-5-500)\n    )',
         description: 'Accent 5 emphasis gradient',
       },
       'accent-5-light': {
@@ -397,7 +397,7 @@ export const TOKEN_METADATA = {
       },
       destructive: {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-error-600),\n      var(--palette-error-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-error-400),\n      var(--palette-error-500)\n    )',
         description: 'Destructive button gradient',
       },
       'destructive-light': {
@@ -407,7 +407,7 @@ export const TOKEN_METADATA = {
       },
       primary: {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-primary-600),\n      var(--palette-primary-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-primary-400),\n      var(--palette-primary-500)\n    )',
         description: 'Primary button and CTA gradient',
       },
       'primary-light': {
@@ -417,7 +417,7 @@ export const TOKEN_METADATA = {
       },
       secondary: {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-secondary-600),\n      var(--palette-secondary-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-secondary-400),\n      var(--palette-secondary-500)\n    )',
         description: 'Secondary button gradient',
       },
       'secondary-light': {
@@ -427,7 +427,7 @@ export const TOKEN_METADATA = {
       },
       'status-error': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-error-600),\n      var(--palette-error-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-error-400),\n      var(--palette-error-500)\n    )',
         description: 'Error status emphasis gradient',
       },
       'status-error-light': {
@@ -437,7 +437,7 @@ export const TOKEN_METADATA = {
       },
       'status-info': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-info-600),\n      var(--palette-info-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-info-400),\n      var(--palette-info-500)\n    )',
         description: 'Info status emphasis gradient',
       },
       'status-info-light': {
@@ -447,7 +447,7 @@ export const TOKEN_METADATA = {
       },
       'status-success': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-success-600),\n      var(--palette-success-700)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-success-400),\n      var(--palette-success-500)\n    )',
         description: 'Success status emphasis gradient',
       },
       'status-success-light': {
@@ -457,7 +457,7 @@ export const TOKEN_METADATA = {
       },
       'status-warning': {
         value:
-          'linear-gradient(\n      180deg,\n      var(--palette-warning-500),\n      var(--palette-warning-600)\n    )',
+          'linear-gradient(\n      180deg,\n      var(--palette-warning-400),\n      var(--palette-warning-500)\n    )',
         description: 'Warning status emphasis gradient',
       },
       'status-warning-light': {

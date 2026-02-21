@@ -19,6 +19,7 @@ const cardVariants = cva('rounded-sm border-line', {
     variant: {
       // Core variants
       outlined: 'bg-surface border-line-border',
+      gradient: 'bg-gradient-surface-light border-line-border',
       elevated: 'bg-surface border-line-border shadow-md',
 
       // Primary/secondary variants with light gradient backgrounds

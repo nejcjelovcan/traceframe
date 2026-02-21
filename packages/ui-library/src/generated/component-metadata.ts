@@ -1009,7 +1009,7 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         description: 'Visual variant of the navigation',
         type: 'select',
         required: false,
-        options: ['default', 'filled', 'subtle'],
+        options: ['default', 'colorful', 'subtle'],
         defaultValue: 'default',
       },
       {
@@ -1104,7 +1104,7 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         description: 'Visual variant for header and sidebar backgrounds',
         type: 'select',
         required: false,
-        options: ['default', 'filled', 'subtle'],
+        options: ['default', 'colorful', 'subtle'],
         defaultValue: 'default',
       },
       {

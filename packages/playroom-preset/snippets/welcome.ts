@@ -5,19 +5,18 @@ export const welcomeSnippets: Snippet[] = [
     group: '🏠 Welcome',
     name: 'Traceframe Playroom',
     code: `<PageLayout
-  header={
-    <PageHeader title="Traceframe Playroom">
-      <SidebarToggle />
-    </PageHeader>
-  }
+  variant="colorful"
   sidebar={
     <div className="p-base">
-      <Navigation orientation="vertical">
-        <NavItem href="#" icon="components" active>Components</NavItem>
-        <NavItem href="#" icon="palette">Themes</NavItem>
-        <NavItem href="#" icon="code">Snippets</NavItem>
-        <NavItem href="#" icon="file">Documentation</NavItem>
-      </Navigation>
+      <Flex gap="md" className="pt-sm">
+        <Heading level="1" className="block text-lg p-xs">Traceframe playroom</Heading>
+        <Navigation orientation="vertical">
+          <NavItem href="#" icon="components" active>Components</NavItem>
+          <NavItem href="#" icon="palette">Themes</NavItem>
+          <NavItem href="#" icon="code">Snippets</NavItem>
+          <NavItem href="#" icon="file">Documentation</NavItem>
+        </Navigation>
+      </Flex>
     </div>
   }
   sidebarWidth="sm"

@@ -54,27 +54,27 @@ const headerVariants = cva('sticky top-0 z-10 shrink-0 border-b', {
     {
       variant: 'colorful',
       color: 'accent-1',
-      className: 'bg-accent-1-emphasis border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border',
     },
     {
       variant: 'colorful',
       color: 'accent-2',
-      className: 'bg-accent-2-emphasis border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border',
     },
     {
       variant: 'colorful',
       color: 'accent-3',
-      className: 'bg-accent-3-emphasis border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border',
     },
     {
       variant: 'colorful',
       color: 'accent-4',
-      className: 'bg-accent-4-emphasis border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border',
     },
     {
       variant: 'colorful',
       color: 'accent-5',
-      className: 'bg-accent-5-emphasis border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border',
     },
     // Subtle variant with muted backgrounds
     {
@@ -189,61 +189,61 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
       variant: 'colorful',
       color: 'accent-1',
       position: 'left',
-      className: 'bg-accent-1-emphasis border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border',
     },
     {
       variant: 'colorful',
       color: 'accent-1',
       position: 'right',
-      className: 'bg-accent-1-emphasis border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border',
     },
     {
       variant: 'colorful',
       color: 'accent-2',
       position: 'left',
-      className: 'bg-accent-2-emphasis border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border',
     },
     {
       variant: 'colorful',
       color: 'accent-2',
       position: 'right',
-      className: 'bg-accent-2-emphasis border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border',
     },
     {
       variant: 'colorful',
       color: 'accent-3',
       position: 'left',
-      className: 'bg-accent-3-emphasis border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border',
     },
     {
       variant: 'colorful',
       color: 'accent-3',
       position: 'right',
-      className: 'bg-accent-3-emphasis border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border',
     },
     {
       variant: 'colorful',
       color: 'accent-4',
       position: 'left',
-      className: 'bg-accent-4-emphasis border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border',
     },
     {
       variant: 'colorful',
       color: 'accent-4',
       position: 'right',
-      className: 'bg-accent-4-emphasis border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border',
     },
     {
       variant: 'colorful',
       color: 'accent-5',
       position: 'left',
-      className: 'bg-accent-5-emphasis border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border',
     },
     {
       variant: 'colorful',
       color: 'accent-5',
       position: 'right',
-      className: 'bg-accent-5-emphasis border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border',
     },
     // Subtle variant with muted backgrounds
     {
@@ -370,7 +370,7 @@ export interface PageLayoutProps
   sidebarCollapsible?: boolean
   /** Text for the skip navigation link. When provided, renders a skip link as the first focusable element. */
   skipLinkText?: string
-  /** Visual variant for header and sidebar backgrounds. 'colorful' applies strong emphasis backgrounds. */
+  /** Visual variant for header and sidebar backgrounds. 'colorful' applies strong backgrounds. */
   variant?: PageLayoutVariant
   /** Color scheme for colorful and subtle variants */
   color?: PageLayoutColor

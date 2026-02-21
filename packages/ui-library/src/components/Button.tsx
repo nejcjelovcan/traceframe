@@ -7,7 +7,7 @@ import { Icon, type IconName, type IconSize } from '../icons/index.js'
 import { cn } from '../utils/cn.js'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
+  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-all text-shadow-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
   {
     variants: {
       variant: {

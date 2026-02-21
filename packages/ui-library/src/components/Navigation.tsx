@@ -44,27 +44,27 @@ const navigationVariants = cva('transition-colors', {
     {
       variant: 'colorful',
       color: 'accent-1',
-      className: 'bg-accent-1-emphasis border-line-accent-1-border',
+      className: 'bg-accent-1 border-line-accent-1-border',
     },
     {
       variant: 'colorful',
       color: 'accent-2',
-      className: 'bg-accent-2-emphasis border-line-accent-2-border',
+      className: 'bg-accent-2 border-line-accent-2-border',
     },
     {
       variant: 'colorful',
       color: 'accent-3',
-      className: 'bg-accent-3-emphasis border-line-accent-3-border',
+      className: 'bg-accent-3 border-line-accent-3-border',
     },
     {
       variant: 'colorful',
       color: 'accent-4',
-      className: 'bg-accent-4-emphasis border-line-accent-4-border',
+      className: 'bg-accent-4 border-line-accent-4-border',
     },
     {
       variant: 'colorful',
       color: 'accent-5',
-      className: 'bg-accent-5-emphasis border-line-accent-5-border',
+      className: 'bg-accent-5 border-line-accent-5-border',
     },
     // Subtle variant with muted backgrounds and subtle borders
     {
@@ -169,13 +169,13 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'colorful',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground font-medium bg-surface/20 px-sm',
+      className: 'text-foreground font-medium bg-surface/40 px-sm',
     },
     {
       parentVariant: 'colorful',
       orientation: 'vertical',
       active: true,
-      className: 'bg-surface/20 text-foreground font-medium',
+      className: 'bg-surface/40 text-foreground font-medium',
     },
     // Subtle variant styles
     {
@@ -325,7 +325,7 @@ const NavHeading = forwardRef<HTMLHeadingElement, NavHeadingProps>(
         level={level}
         size={size}
         color={undefined}
-        className={cn(variantClass, 'uppercase tracking-wider', className)}
+        className={cn(variantClass, 'uppercase tracking-wider mb-sm', className)}
         {...props}
       />
     )
