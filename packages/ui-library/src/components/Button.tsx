@@ -7,7 +7,7 @@ import { Icon, type IconName, type IconSize } from '../icons/index.js'
 import { cn } from '../utils/cn.js'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
+  'inline-flex items-center justify-center gap-sm rounded-sm font-medium whitespace-nowrap transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
   {
     variants: {
       variant: {
@@ -63,6 +63,16 @@ const BUTTON_SIZE_TO_ICON_SIZE: Record<
   lg: 'md',
 }
 
+/** Larger icon sizes for icon-only buttons where the icon is the sole content */
+const BUTTON_SIZE_TO_ICON_ONLY_SIZE: Record<
+  NonNullable<VariantProps<typeof buttonVariants>['size']>,
+  IconSize
+> = {
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg',
+}
+
 const BUTTON_SIZE_TO_SPINNER_SIZE: Record<
   NonNullable<VariantProps<typeof buttonVariants>['size']>,
   'sm' | 'md' | 'lg'
@@ -105,7 +115,9 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     },
     ref
   ) => {
-    const iconSize = BUTTON_SIZE_TO_ICON_SIZE[size ?? 'md']
+    const iconSize = iconOnly
+      ? BUTTON_SIZE_TO_ICON_ONLY_SIZE[size ?? 'md']
+      : BUTTON_SIZE_TO_ICON_SIZE[size ?? 'md']
     const spinnerSize = BUTTON_SIZE_TO_SPINNER_SIZE[size ?? 'md']
     const Comp = asChild ? Slot : 'button'
 
@@ -119,14 +131,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       >
         {loading && <Spinner size={spinnerSize} label={loadingText} />}
         {loading && <span className={iconOnly ? 'sr-only' : ''}>{loadingText}</span>}
-        {!loading && leftIcon && <Icon name={leftIcon} size={iconSize} />}
+        {!loading && leftIcon && <Icon name={leftIcon} size={iconSize} className="shrink-0" />}
         {!loading && iconOnly && (
           <span className="sr-only">
             <Slottable>{children}</Slottable>
           </span>
         )}
-        {!loading && !iconOnly && <Slottable>{children}</Slottable>}
-        {!loading && rightIcon && <Icon name={rightIcon} size={iconSize} />}
+        {!loading && !iconOnly && <span className="truncate"><Slottable>{children}</Slottable></span>}
+        {!loading && rightIcon && <Icon name={rightIcon} size={iconSize} className="shrink-0" />}
       </Comp>
     )
   }
