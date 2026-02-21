@@ -70,36 +70,6 @@ export const TOKEN_METADATA = {
     },
   },
   semantic: {
-    accent: {
-      description: '',
-      variants: {
-        '1': 'Accent 1 base color for categorical data and visual distinction',
-        '2': 'Accent 2 base color for categorical data and visual distinction',
-        '3': 'Accent 3 base color for categorical data and visual distinction',
-        '4': 'Accent 4 base color for categorical data and visual distinction',
-        '5': 'Accent 5 base color for categorical data and visual distinction',
-        '1-border': 'Accent 1 border color for containers and elements',
-        '1-emphasis': 'Accent 1 emphasis color for icons and strong indicators',
-        '1-foreground': 'Accent 1 text color for readability on accent backgrounds',
-        '1-muted': 'Accent 1 muted background for subtle indicators',
-        '2-border': 'Accent 2 border color for containers and elements',
-        '2-emphasis': 'Accent 2 emphasis color for icons and strong indicators',
-        '2-foreground': 'Accent 2 text color for readability on accent backgrounds',
-        '2-muted': 'Accent 2 muted background for subtle indicators',
-        '3-border': 'Accent 3 border color for containers and elements',
-        '3-emphasis': 'Accent 3 emphasis color for icons and strong indicators',
-        '3-foreground': 'Accent 3 text color for readability on accent backgrounds',
-        '3-muted': 'Accent 3 muted background for subtle indicators',
-        '4-border': 'Accent 4 border color for containers and elements',
-        '4-emphasis': 'Accent 4 emphasis color for icons and strong indicators',
-        '4-foreground': 'Accent 4 text color for readability on accent backgrounds',
-        '4-muted': 'Accent 4 muted background for subtle indicators',
-        '5-border': 'Accent 5 border color for containers and elements',
-        '5-emphasis': 'Accent 5 emphasis color for icons and strong indicators',
-        '5-foreground': 'Accent 5 text color for readability on accent backgrounds',
-        '5-muted': 'Accent 5 muted background for subtle indicators',
-      },
-    },
     border: {
       description: 'Primary border color for inputs, cards, and containers',
       variants: {
@@ -114,6 +84,14 @@ export const TOKEN_METADATA = {
         foreground: 'Disabled text and icon color for inactive elements',
       },
     },
+    surface: {
+      description: 'Primary surface color for backgrounds and containers',
+      variants: {
+        DEFAULT: 'Primary surface color for backgrounds and containers',
+        muted: 'Secondary surface for sidebars, alternating rows, and nested elements',
+        subtle: 'Tertiary surface for hover states, wells, and recessed areas',
+      },
+    },
     foreground: {
       description: 'Primary text and icon color for headings and body text',
       variants: {
@@ -121,6 +99,13 @@ export const TOKEN_METADATA = {
         filled: 'Text color on filled/emphasis backgrounds like primary buttons and badges',
         'filled-muted': 'Secondary text color on filled/emphasis backgrounds',
         muted: 'Secondary text for descriptions, placeholders, and less prominent content',
+      },
+    },
+    tooltip: {
+      description: 'Tooltip background color for contextual help and hints',
+      variants: {
+        DEFAULT: 'Tooltip background color for contextual help and hints',
+        foreground: 'Tooltip text color for readability on dark tooltip backgrounds',
       },
     },
     interactive: {
@@ -152,6 +137,36 @@ export const TOKEN_METADATA = {
         DEFAULT: 'Focus ring color for accessibility outlines and focus states',
       },
     },
+    accent: {
+      description: '',
+      variants: {
+        '1': 'Accent 1 base color for categorical data and visual distinction',
+        '2': 'Accent 2 base color for categorical data and visual distinction',
+        '3': 'Accent 3 base color for categorical data and visual distinction',
+        '4': 'Accent 4 base color for categorical data and visual distinction',
+        '5': 'Accent 5 base color for categorical data and visual distinction',
+        '1-border': 'Accent 1 border color for containers and elements',
+        '1-emphasis': 'Accent 1 emphasis color for icons and strong indicators',
+        '1-foreground': 'Accent 1 text color for readability on accent backgrounds',
+        '1-muted': 'Accent 1 muted background for subtle indicators',
+        '2-border': 'Accent 2 border color for containers and elements',
+        '2-emphasis': 'Accent 2 emphasis color for icons and strong indicators',
+        '2-foreground': 'Accent 2 text color for readability on accent backgrounds',
+        '2-muted': 'Accent 2 muted background for subtle indicators',
+        '3-border': 'Accent 3 border color for containers and elements',
+        '3-emphasis': 'Accent 3 emphasis color for icons and strong indicators',
+        '3-foreground': 'Accent 3 text color for readability on accent backgrounds',
+        '3-muted': 'Accent 3 muted background for subtle indicators',
+        '4-border': 'Accent 4 border color for containers and elements',
+        '4-emphasis': 'Accent 4 emphasis color for icons and strong indicators',
+        '4-foreground': 'Accent 4 text color for readability on accent backgrounds',
+        '4-muted': 'Accent 4 muted background for subtle indicators',
+        '5-border': 'Accent 5 border color for containers and elements',
+        '5-emphasis': 'Accent 5 emphasis color for icons and strong indicators',
+        '5-foreground': 'Accent 5 text color for readability on accent backgrounds',
+        '5-muted': 'Accent 5 muted background for subtle indicators',
+      },
+    },
     status: {
       description: '',
       variants: {
@@ -175,21 +190,6 @@ export const TOKEN_METADATA = {
         'warning-emphasis': 'Warning status emphasis color for icons and strong indicators',
         'warning-foreground': 'Warning status text color for readability on warning backgrounds',
         'warning-muted': 'Warning status muted background for subtle warning indicators',
-      },
-    },
-    surface: {
-      description: 'Primary surface color for backgrounds and containers',
-      variants: {
-        DEFAULT: 'Primary surface color for backgrounds and containers',
-        muted: 'Secondary surface for sidebars, alternating rows, and nested elements',
-        subtle: 'Tertiary surface for hover states, wells, and recessed areas',
-      },
-    },
-    tooltip: {
-      description: 'Tooltip background color for contextual help and hints',
-      variants: {
-        DEFAULT: 'Tooltip background color for contextual help and hints',
-        foreground: 'Tooltip text color for readability on dark tooltip backgrounds',
       },
     },
   },

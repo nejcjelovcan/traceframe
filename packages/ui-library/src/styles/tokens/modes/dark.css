@@ -2,6 +2,78 @@
   :root.dark,
   :root.light .inverse,
   :root.dark .inverse .inverse {
+    /* Primary border color for inputs, cards, and containers */
+    --token-border: var(--palette-neutral-500);
+    /* Subtle border for dividers, separators, and less prominent boundaries */
+    --token-border-muted: var(--palette-neutral-800);
+
+    /* Disabled background color for inactive interactive elements */
+    --token-disabled: var(--palette-neutral-800);
+    /* Disabled text and icon color for inactive elements */
+    --token-disabled-foreground: var(--palette-neutral-500);
+
+    /* Primary surface color for backgrounds and containers */
+    --token-surface: var(--palette-neutral-950);
+    /* Secondary surface for sidebars, alternating rows, and nested elements */
+    --token-surface-muted: var(--palette-neutral-900);
+    /* Tertiary surface for hover states, wells, and recessed areas */
+    --token-surface-subtle: var(--palette-neutral-800);
+
+    /* Primary text and icon color for headings and body text */
+    --token-foreground: var(--palette-neutral-50);
+    /* Text color on filled/emphasis backgrounds like primary buttons and badges */
+    --token-foreground-filled: var(--palette-neutral-950);
+    /* Secondary text color on filled/emphasis backgrounds */
+    --token-foreground-filled-muted: var(--palette-neutral-800);
+    /* Secondary text for descriptions, placeholders, and less prominent content */
+    --token-foreground-muted: var(--palette-neutral-400);
+
+    /* Tooltip background color for contextual help and hints */
+    --token-tooltip: var(--palette-neutral-800);
+    /* Tooltip text color for readability on dark tooltip backgrounds */
+    --token-tooltip-foreground: var(--palette-neutral-50);
+
+    /* Primary shadow color for elevation effects */
+    --token-shadow-color: var(--palette-neutral-50);
+
+    /* Background color for active or selected states */
+    --token-interactive-active: var(--palette-neutral-700);
+    /* Destructive action button background color */
+    --token-interactive-destructive: var(--palette-error-600);
+    /* Border color for destructive buttons and outlined destructive elements */
+    --token-interactive-destructive-border: var(--palette-error-400);
+    /* Text and icon color on destructive buttons */
+    --token-interactive-destructive-foreground: var(--palette-neutral-50);
+    /* Destructive button background on hover */
+    --token-interactive-destructive-hover: var(--palette-error-700);
+    /* Background color for hover states on neutral interactive elements */
+    --token-interactive-hover: var(--palette-neutral-800);
+    /* Background color for pressed or clicking states */
+    --token-interactive-pressed: var(--palette-neutral-600);
+    /* Primary button and CTA background color */
+    --token-interactive-primary: var(--palette-primary-600);
+    /* Border color for primary buttons and outlined primary elements */
+    --token-interactive-primary-border: var(--palette-primary-500);
+    /* Text and icon color on primary buttons */
+    --token-interactive-primary-foreground: var(--palette-primary-950);
+    /* Primary button background on hover */
+    --token-interactive-primary-hover: var(--palette-primary-600);
+    /* Muted primary background for subtle containers and indicators */
+    --token-interactive-primary-muted: var(--palette-primary-900);
+    /* Secondary button and accent background color */
+    --token-interactive-secondary: var(--palette-secondary-600);
+    /* Border color for secondary buttons and outlined secondary elements */
+    --token-interactive-secondary-border: var(--palette-secondary-500);
+    /* Text and icon color on secondary buttons */
+    --token-interactive-secondary-foreground: var(--palette-neutral-50);
+    /* Secondary button background on hover */
+    --token-interactive-secondary-hover: var(--palette-secondary-600);
+    /* Muted secondary background for subtle containers and indicators */
+    --token-interactive-secondary-muted: var(--palette-secondary-900);
+
+    /* Focus ring color for accessibility outlines and focus states */
+    --token-ring: var(--palette-primary-400);
+
     /* Accent 1 base color for categorical data and visual distinction */
     --token-accent-1: var(--palette-accent-1-600);
     /* Accent 1 border color for containers and elements */
@@ -53,24 +125,46 @@
     /* Accent 5 muted background for subtle indicators */
     --token-accent-5-muted: var(--palette-accent-5-800);
 
-    /* Primary border color for inputs, cards, and containers */
-    --token-border: var(--palette-neutral-500);
-    /* Subtle border for dividers, separators, and less prominent boundaries */
-    --token-border-muted: var(--palette-neutral-800);
-
-    /* Disabled background color for inactive interactive elements */
-    --token-disabled: var(--palette-neutral-800);
-    /* Disabled text and icon color for inactive elements */
-    --token-disabled-foreground: var(--palette-neutral-500);
-
-    /* Primary text and icon color for headings and body text */
-    --token-foreground: var(--palette-neutral-50);
-    /* Text color on filled/emphasis backgrounds like primary buttons and badges */
-    --token-foreground-filled: var(--palette-neutral-950);
-    /* Secondary text color on filled/emphasis backgrounds */
-    --token-foreground-filled-muted: var(--palette-neutral-800);
-    /* Secondary text for descriptions, placeholders, and less prominent content */
-    --token-foreground-muted: var(--palette-neutral-400);
+    /* Error status color for failures, critical issues, and destructive actions */
+    --token-status-error: var(--palette-error-600);
+    /* Error status border color for error containers and alerts */
+    --token-status-error-border: var(--palette-error-500);
+    /* Error status emphasis color for icons and strong indicators */
+    --token-status-error-emphasis: var(--palette-error-500);
+    /* Error status text color for readability on error backgrounds */
+    --token-status-error-foreground: var(--palette-error-300);
+    /* Error status muted background for subtle error indicators */
+    --token-status-error-muted: var(--palette-error-900);
+    /* Info status color for informational messages, tips, and non-critical alerts */
+    --token-status-info: var(--palette-info-600);
+    /* Info status border color for info containers and alerts */
+    --token-status-info-border: var(--palette-info-500);
+    /* Info status emphasis color for icons and strong indicators */
+    --token-status-info-emphasis: var(--palette-info-500);
+    /* Info status text color for readability on info backgrounds */
+    --token-status-info-foreground: var(--palette-info-300);
+    /* Info status muted background for subtle info indicators */
+    --token-status-info-muted: var(--palette-info-900);
+    /* Success status color for positive outcomes, completed actions, and confirmations */
+    --token-status-success: var(--palette-success-600);
+    /* Success status border color for success containers and alerts */
+    --token-status-success-border: var(--palette-success-500);
+    /* Success status emphasis color for icons and strong indicators */
+    --token-status-success-emphasis: var(--palette-success-500);
+    /* Success status text color for readability on success backgrounds */
+    --token-status-success-foreground: var(--palette-success-300);
+    /* Success status muted background for subtle success indicators */
+    --token-status-success-muted: var(--palette-success-900);
+    /* Warning status color for cautions, pending states, and attention required */
+    --token-status-warning: var(--palette-warning-600);
+    /* Warning status border color for warning containers and alerts */
+    --token-status-warning-border: var(--palette-warning-500);
+    /* Warning status emphasis color for icons and strong indicators */
+    --token-status-warning-emphasis: var(--palette-warning-500);
+    /* Warning status text color for readability on warning backgrounds */
+    --token-status-warning-foreground: var(--palette-warning-300);
+    /* Warning status muted background for subtle warning indicators */
+    --token-status-warning-muted: var(--palette-warning-900);
 
     /* Accent 1 emphasis gradient */
     --token-gradient-accent-1: linear-gradient(
@@ -228,99 +322,5 @@
       var(--palette-neutral-800),
       var(--palette-neutral-900)
     );
-
-    /* Background color for active or selected states */
-    --token-interactive-active: var(--palette-neutral-700);
-    /* Destructive action button background color */
-    --token-interactive-destructive: var(--palette-error-600);
-    /* Border color for destructive buttons and outlined destructive elements */
-    --token-interactive-destructive-border: var(--palette-error-400);
-    /* Text and icon color on destructive buttons */
-    --token-interactive-destructive-foreground: var(--palette-neutral-50);
-    /* Destructive button background on hover */
-    --token-interactive-destructive-hover: var(--palette-error-700);
-    /* Background color for hover states on neutral interactive elements */
-    --token-interactive-hover: var(--palette-neutral-800);
-    /* Background color for pressed or clicking states */
-    --token-interactive-pressed: var(--palette-neutral-600);
-    /* Primary button and CTA background color */
-    --token-interactive-primary: var(--palette-primary-600);
-    /* Border color for primary buttons and outlined primary elements */
-    --token-interactive-primary-border: var(--palette-primary-500);
-    /* Text and icon color on primary buttons */
-    --token-interactive-primary-foreground: var(--palette-primary-950);
-    /* Primary button background on hover */
-    --token-interactive-primary-hover: var(--palette-primary-600);
-    /* Muted primary background for subtle containers and indicators */
-    --token-interactive-primary-muted: var(--palette-primary-900);
-    /* Secondary button and accent background color */
-    --token-interactive-secondary: var(--palette-secondary-600);
-    /* Border color for secondary buttons and outlined secondary elements */
-    --token-interactive-secondary-border: var(--palette-secondary-500);
-    /* Text and icon color on secondary buttons */
-    --token-interactive-secondary-foreground: var(--palette-neutral-50);
-    /* Secondary button background on hover */
-    --token-interactive-secondary-hover: var(--palette-secondary-600);
-    /* Muted secondary background for subtle containers and indicators */
-    --token-interactive-secondary-muted: var(--palette-secondary-900);
-
-    /* Focus ring color for accessibility outlines and focus states */
-    --token-ring: var(--palette-primary-400);
-
-    /* Error status color for failures, critical issues, and destructive actions */
-    --token-status-error: var(--palette-error-600);
-    /* Error status border color for error containers and alerts */
-    --token-status-error-border: var(--palette-error-500);
-    /* Error status emphasis color for icons and strong indicators */
-    --token-status-error-emphasis: var(--palette-error-500);
-    /* Error status text color for readability on error backgrounds */
-    --token-status-error-foreground: var(--palette-error-300);
-    /* Error status muted background for subtle error indicators */
-    --token-status-error-muted: var(--palette-error-900);
-    /* Info status color for informational messages, tips, and non-critical alerts */
-    --token-status-info: var(--palette-info-600);
-    /* Info status border color for info containers and alerts */
-    --token-status-info-border: var(--palette-info-500);
-    /* Info status emphasis color for icons and strong indicators */
-    --token-status-info-emphasis: var(--palette-info-500);
-    /* Info status text color for readability on info backgrounds */
-    --token-status-info-foreground: var(--palette-info-300);
-    /* Info status muted background for subtle info indicators */
-    --token-status-info-muted: var(--palette-info-900);
-    /* Success status color for positive outcomes, completed actions, and confirmations */
-    --token-status-success: var(--palette-success-600);
-    /* Success status border color for success containers and alerts */
-    --token-status-success-border: var(--palette-success-500);
-    /* Success status emphasis color for icons and strong indicators */
-    --token-status-success-emphasis: var(--palette-success-500);
-    /* Success status text color for readability on success backgrounds */
-    --token-status-success-foreground: var(--palette-success-300);
-    /* Success status muted background for subtle success indicators */
-    --token-status-success-muted: var(--palette-success-900);
-    /* Warning status color for cautions, pending states, and attention required */
-    --token-status-warning: var(--palette-warning-600);
-    /* Warning status border color for warning containers and alerts */
-    --token-status-warning-border: var(--palette-warning-500);
-    /* Warning status emphasis color for icons and strong indicators */
-    --token-status-warning-emphasis: var(--palette-warning-500);
-    /* Warning status text color for readability on warning backgrounds */
-    --token-status-warning-foreground: var(--palette-warning-300);
-    /* Warning status muted background for subtle warning indicators */
-    --token-status-warning-muted: var(--palette-warning-900);
-
-    /* Primary surface color for backgrounds and containers */
-    --token-surface: var(--palette-neutral-950);
-    /* Secondary surface for sidebars, alternating rows, and nested elements */
-    --token-surface-muted: var(--palette-neutral-900);
-    /* Tertiary surface for hover states, wells, and recessed areas */
-    --token-surface-subtle: var(--palette-neutral-800);
-
-    /* Tooltip background color for contextual help and hints */
-    --token-tooltip: var(--palette-neutral-800);
-    /* Tooltip text color for readability on dark tooltip backgrounds */
-    --token-tooltip-foreground: var(--palette-neutral-50);
-
-    /* Primary shadow color for elevation effects */
-    --token-shadow-color: var(--palette-neutral-50);
   }
 }
