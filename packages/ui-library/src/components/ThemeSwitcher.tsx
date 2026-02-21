@@ -2,8 +2,8 @@ import { Select } from './Select.js'
 import { useTheme } from './ThemeProvider.js'
 import { THEME_DESCRIPTIONS, THEME_LABELS, THEMES, type Theme } from '../utils/theme.js'
 
-import type { VariantProps } from 'class-variance-authority'
 import type { selectTriggerVariants } from './Select.js'
+import type { VariantProps } from 'class-variance-authority'
 
 export interface ThemeSwitcherProps {
   /** Additional className for the container */

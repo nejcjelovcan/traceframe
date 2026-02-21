@@ -1,5 +1,4 @@
 import { Flex } from './Flex'
-import { Heading } from './Heading'
 import { ModeSwitcher } from './ModeSwitcher'
 import { ThemeSwitcher } from './ThemeSwitcher'
 

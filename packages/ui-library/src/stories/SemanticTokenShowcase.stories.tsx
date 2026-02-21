@@ -190,7 +190,11 @@ const statusInfoTokens = [
   { name: 'status-info', cssVar: '--color-status-info', description: 'Base' },
   { name: 'status-info-muted', cssVar: '--color-status-info-muted', description: 'Background' },
   { name: 'status-info-foreground', cssVar: '--color-status-info-foreground', description: 'Text' },
-  { name: 'status-info-muted-border', cssVar: '--color-status-info-muted-border', description: 'Muted border' },
+  {
+    name: 'status-info-muted-border',
+    cssVar: '--color-status-info-muted-border',
+    description: 'Muted border',
+  },
   { name: 'status-info-border', cssVar: '--color-status-info-border', description: 'Border' },
 ]
 
@@ -242,7 +246,11 @@ const statusErrorTokens = [
     cssVar: '--color-status-error-foreground',
     description: 'Text',
   },
-  { name: 'status-error-muted-border', cssVar: '--color-status-error-muted-border', description: 'Muted border' },
+  {
+    name: 'status-error-muted-border',
+    cssVar: '--color-status-error-muted-border',
+    description: 'Muted border',
+  },
   { name: 'status-error-border', cssVar: '--color-status-error-border', description: 'Border' },
 ]
 
@@ -250,7 +258,11 @@ const accent1Tokens = [
   { name: 'accent-1', cssVar: '--color-accent-1', description: 'Base' },
   { name: 'accent-1-muted', cssVar: '--color-accent-1-muted', description: 'Background' },
   { name: 'accent-1-foreground', cssVar: '--color-accent-1-foreground', description: 'Text' },
-  { name: 'accent-1-muted-border', cssVar: '--color-accent-1-muted-border', description: 'Muted border' },
+  {
+    name: 'accent-1-muted-border',
+    cssVar: '--color-accent-1-muted-border',
+    description: 'Muted border',
+  },
   { name: 'accent-1-border', cssVar: '--color-accent-1-border', description: 'Border' },
 ]
 
@@ -258,7 +270,11 @@ const accent2Tokens = [
   { name: 'accent-2', cssVar: '--color-accent-2', description: 'Base' },
   { name: 'accent-2-muted', cssVar: '--color-accent-2-muted', description: 'Background' },
   { name: 'accent-2-foreground', cssVar: '--color-accent-2-foreground', description: 'Text' },
-  { name: 'accent-2-muted-border', cssVar: '--color-accent-2-muted-border', description: 'Muted border' },
+  {
+    name: 'accent-2-muted-border',
+    cssVar: '--color-accent-2-muted-border',
+    description: 'Muted border',
+  },
   { name: 'accent-2-border', cssVar: '--color-accent-2-border', description: 'Border' },
 ]
 
@@ -266,7 +282,11 @@ const accent3Tokens = [
   { name: 'accent-3', cssVar: '--color-accent-3', description: 'Base' },
   { name: 'accent-3-muted', cssVar: '--color-accent-3-muted', description: 'Background' },
   { name: 'accent-3-foreground', cssVar: '--color-accent-3-foreground', description: 'Text' },
-  { name: 'accent-3-muted-border', cssVar: '--color-accent-3-muted-border', description: 'Muted border' },
+  {
+    name: 'accent-3-muted-border',
+    cssVar: '--color-accent-3-muted-border',
+    description: 'Muted border',
+  },
   { name: 'accent-3-border', cssVar: '--color-accent-3-border', description: 'Border' },
 ]
 
@@ -274,7 +294,11 @@ const accent4Tokens = [
   { name: 'accent-4', cssVar: '--color-accent-4', description: 'Base' },
   { name: 'accent-4-muted', cssVar: '--color-accent-4-muted', description: 'Background' },
   { name: 'accent-4-foreground', cssVar: '--color-accent-4-foreground', description: 'Text' },
-  { name: 'accent-4-muted-border', cssVar: '--color-accent-4-muted-border', description: 'Muted border' },
+  {
+    name: 'accent-4-muted-border',
+    cssVar: '--color-accent-4-muted-border',
+    description: 'Muted border',
+  },
   { name: 'accent-4-border', cssVar: '--color-accent-4-border', description: 'Border' },
 ]
 
@@ -282,7 +306,11 @@ const accent5Tokens = [
   { name: 'accent-5', cssVar: '--color-accent-5', description: 'Base' },
   { name: 'accent-5-muted', cssVar: '--color-accent-5-muted', description: 'Background' },
   { name: 'accent-5-foreground', cssVar: '--color-accent-5-foreground', description: 'Text' },
-  { name: 'accent-5-muted-border', cssVar: '--color-accent-5-muted-border', description: 'Muted border' },
+  {
+    name: 'accent-5-muted-border',
+    cssVar: '--color-accent-5-muted-border',
+    description: 'Muted border',
+  },
   { name: 'accent-5-border', cssVar: '--color-accent-5-border', description: 'Border' },
 ]
 

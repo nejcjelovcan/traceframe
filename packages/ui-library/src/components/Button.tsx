@@ -137,7 +137,11 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             <Slottable>{children}</Slottable>
           </span>
         )}
-        {!loading && !iconOnly && <span className="truncate"><Slottable>{children}</Slottable></span>}
+        {!loading && !iconOnly && (
+          <span className="truncate">
+            <Slottable>{children}</Slottable>
+          </span>
+        )}
         {!loading && rightIcon && <Icon name={rightIcon} size={iconSize} className="shrink-0" />}
       </Comp>
     )
