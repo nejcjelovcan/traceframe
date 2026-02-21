@@ -446,12 +446,12 @@ Token metadata in `packages/ui-library/src/styles/token-metadata.ts` provides de
 
 Shadow tokens are defined per theme in `src/styles/tokens/themes/*.css` and vary by theme personality.
 
-| Category    | Tokens                                                    | Tailwind Classes                                                               | Usage                                |
-| ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ | ------------------------------------ |
-| Elevation   | `sm`, `md`, `lg`                                          | `shadow-sm`, `shadow-md`, `shadow-lg`                                          | Static elevation (cards, modals)     |
-| Interactive | `interactive`, `interactive-hover`, `interactive-pressed` | `shadow-interactive`, `shadow-interactive-hover`, `shadow-interactive-pressed` | Clickable elements (cards, rows)     |
-| Inset       | `inset-sm`, `inset-md`, `inset-underline`                 | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                 | Pressed/active states, underlines    |
-| Text        | `text-shadow-light`, `text-shadow-dark`                   | `text-shadow-light`, `text-shadow-dark`, `text-shadow-none`                    | Text readability on mid-tone bgs     |
+| Category    | Tokens                                                    | Tailwind Classes                                                               | Usage                             |
+| ----------- | --------------------------------------------------------- | ------------------------------------------------------------------------------ | --------------------------------- |
+| Elevation   | `sm`, `md`, `lg`                                          | `shadow-sm`, `shadow-md`, `shadow-lg`                                          | Static elevation (cards, modals)  |
+| Interactive | `interactive`, `interactive-hover`, `interactive-pressed` | `shadow-interactive`, `shadow-interactive-hover`, `shadow-interactive-pressed` | Clickable elements (cards, rows)  |
+| Inset       | `inset-sm`, `inset-md`, `inset-underline`                 | `shadow-inset-sm`, `shadow-inset-md`, `shadow-inset-underline`                 | Pressed/active states, underlines |
+| Text        | `text-shadow-light`, `text-shadow-dark`                   | `text-shadow-light`, `text-shadow-dark`, `text-shadow-none`                    | Text readability on mid-tone bgs  |
 
 ### Border Style Tokens (Per Theme)
 

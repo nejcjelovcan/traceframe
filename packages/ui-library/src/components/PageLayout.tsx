@@ -165,85 +165,85 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
       variant: 'colorful',
       color: 'primary',
       position: 'left',
-      className: 'bg-interactive-primary border-interactive-primary-border',
+      className: 'bg-interactive-primary border-interactive-primary-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'primary',
       position: 'right',
-      className: 'bg-interactive-primary border-interactive-primary-border',
+      className: 'bg-interactive-primary border-interactive-primary-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'secondary',
       position: 'left',
-      className: 'bg-interactive-secondary border-interactive-secondary-border',
+      className: 'bg-interactive-secondary border-interactive-secondary-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'secondary',
       position: 'right',
-      className: 'bg-interactive-secondary border-interactive-secondary-border',
+      className: 'bg-interactive-secondary border-interactive-secondary-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-1',
       position: 'left',
-      className: 'bg-accent-1 border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-1',
       position: 'right',
-      className: 'bg-accent-1 border-accent-1-border',
+      className: 'bg-accent-1 border-accent-1-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-2',
       position: 'left',
-      className: 'bg-accent-2 border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-2',
       position: 'right',
-      className: 'bg-accent-2 border-accent-2-border',
+      className: 'bg-accent-2 border-accent-2-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-3',
       position: 'left',
-      className: 'bg-accent-3 border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-3',
       position: 'right',
-      className: 'bg-accent-3 border-accent-3-border',
+      className: 'bg-accent-3 border-accent-3-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-4',
       position: 'left',
-      className: 'bg-accent-4 border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-4',
       position: 'right',
-      className: 'bg-accent-4 border-accent-4-border',
+      className: 'bg-accent-4 border-accent-4-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-5',
       position: 'left',
-      className: 'bg-accent-5 border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border shadow-lg',
     },
     {
       variant: 'colorful',
       color: 'accent-5',
       position: 'right',
-      className: 'bg-accent-5 border-accent-5-border',
+      className: 'bg-accent-5 border-accent-5-border shadow-lg',
     },
     // Subtle variant with muted backgrounds
     {
@@ -502,9 +502,13 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             {sidebarPosition === 'left' && sidebarElement}
 
             {/* Main content - skip link target */}
-            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-hidden">
+            <main
+              id="main-content"
+              tabIndex={-1}
+              className="flex-1 bg-surface-muted focus:outline-hidden"
+            >
               {contentWidth === 'contained' ? (
-                <Container className="py-lg bg-surface-muted">{children}</Container>
+                <Container className="py-lg">{children}</Container>
               ) : (
                 children
               )}

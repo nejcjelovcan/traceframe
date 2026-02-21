@@ -72,15 +72,17 @@ const toggleGroupItemVariants = cva(
       variant: {
         default: cn(
           'border border-border bg-surface text-foreground',
+          'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-md data-[state=on]:border-interactive-primary',
-          'data-[state=on]:hover:bg-interactive-primary-hover'
+          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-dark data-[state=on]:border-interactive-primary',
+          'data-[state=on]:hover:opacity-90'
         ),
         solid: cn(
           'bg-surface-muted text-foreground',
+          'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-md',
-          'data-[state=on]:hover:bg-interactive-primary-hover'
+          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-dark',
+          'data-[state=on]:hover:opacity-90'
         ),
         ghost: cn(
           'bg-transparent text-foreground',
