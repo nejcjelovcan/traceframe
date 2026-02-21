@@ -1,5 +1,25 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 2.1.0
+
+### Minor Changes
+
+- [#106](https://github.com/nejcjelovcan/traceframe/pull/106) [`edc63de`](https://github.com/nejcjelovcan/traceframe/commit/edc63debbe9bb1145b88060cce3c4e297894bb64) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Replace emphasis color tokens with muted-border tokens for status and accent categories, update Badge and Navigation subtle variant to use muted-border for borders on muted backgrounds
+
+- [#106](https://github.com/nejcjelovcan/traceframe/pull/106) [`edc63de`](https://github.com/nejcjelovcan/traceframe/commit/edc63debbe9bb1145b88060cce3c4e297894bb64) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add fixed sidebar support to PageLayout: sidebarWidth prop for predefined widths, sidebarSticky for sticky positioning, mobile sidebar overlay with SidebarToggle sub-component
+
+- [#106](https://github.com/nejcjelovcan/traceframe/pull/106) [`edc63de`](https://github.com/nejcjelovcan/traceframe/commit/edc63debbe9bb1145b88060cce3c4e297894bb64) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Rename "filled" variant to "colorful" in Navigation and PageLayout, add NavHeading subcomponent, improve nav item styling with surface-based active/hover states
+
+- [#105](https://github.com/nejcjelovcan/traceframe/pull/105) [`679d39b`](https://github.com/nejcjelovcan/traceframe/commit/679d39bcbe6c06c60ee11a7c85505e33678cc493) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add "Aura" theme with deep indigo primary, aqua-cyan secondary, soft diffused shadows, and the most rounded radii in the system
+
+- [#106](https://github.com/nejcjelovcan/traceframe/pull/106) [`edc63de`](https://github.com/nejcjelovcan/traceframe/commit/edc63debbe9bb1145b88060cce3c4e297894bb64) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Overhaul shadow system: move text shadows to per-theme definitions, remove highlight shadows, fix interactive shadow tokens, add text-shadow-light and text-shadow-dark utilities
+
+### Patch Changes
+
+- [#103](https://github.com/nejcjelovcan/traceframe/pull/103) [`eab32be`](https://github.com/nejcjelovcan/traceframe/commit/eab32becbb3c73f458c78f5d0906da646ad18598) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Simplify palette definitions to 5 key OKLCH shades per color group with 6 intermediate shades derived via color-mix(), reducing maintenance burden while preserving all CSS custom property names
+
+- [#106](https://github.com/nejcjelovcan/traceframe/pull/106) [`edc63de`](https://github.com/nejcjelovcan/traceframe/commit/edc63debbe9bb1145b88060cce3c4e297894bb64) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix icon sizing in Button and Select, fix PageLayout background color, make gradient the default Card variant for actionable cards, update light/dark token mappings and spacing
+
 ## 2.0.0
 
 ### Major Changes
