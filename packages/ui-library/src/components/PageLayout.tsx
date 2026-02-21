@@ -508,7 +508,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
               className="flex-1 bg-surface-muted focus:outline-hidden"
             >
               {contentWidth === 'contained' ? (
-                <Container className="py-lg">{children}</Container>
+                <Container className="py-lg bg-surface-muted">{children}</Container>
               ) : (
                 children
               )}
