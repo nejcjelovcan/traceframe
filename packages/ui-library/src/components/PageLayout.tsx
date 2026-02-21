@@ -504,7 +504,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             {/* Main content - skip link target */}
             <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-hidden">
               {contentWidth === 'contained' ? (
-                <Container className="py-lg">{children}</Container>
+                <Container className="py-lg bg-surface-muted">{children}</Container>
               ) : (
                 children
               )}
