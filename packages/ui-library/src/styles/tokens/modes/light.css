@@ -84,6 +84,7 @@
     --token-accent-1-foreground: var(--palette-accent-1-700);
     /* Accent 1 muted background for subtle indicators */
     --token-accent-1-muted: var(--palette-accent-1-100);
+
     /* Accent 2 base color for categorical data and visual distinction */
     --token-accent-2: var(--palette-accent-2-400);
     /* Accent 2 border color for containers and elements */
@@ -95,6 +96,7 @@
     /* Accent 2 muted background for subtle indicators */
     --token-accent-2-muted: var(--palette-accent-2-100);
     /* Accent 3 base color for categorical data and visual distinction */
+
     --token-accent-3: var(--palette-accent-3-400);
     /* Accent 3 border color for containers and elements */
     --token-accent-3-border: var(--palette-accent-3-500);
@@ -105,6 +107,7 @@
     /* Accent 3 muted background for subtle indicators */
     --token-accent-3-muted: var(--palette-accent-3-100);
     /* Accent 4 base color for categorical data and visual distinction */
+
     --token-accent-4: var(--palette-accent-4-400);
     /* Accent 4 border color for containers and elements */
     --token-accent-4-border: var(--palette-accent-4-500);
@@ -114,6 +117,7 @@
     --token-accent-4-foreground: var(--palette-accent-4-700);
     /* Accent 4 muted background for subtle indicators */
     --token-accent-4-muted: var(--palette-accent-4-100);
+
     /* Accent 5 base color for categorical data and visual distinction */
     --token-accent-5: var(--palette-accent-5-400);
     /* Accent 5 border color for containers and elements */
@@ -135,6 +139,7 @@
     --token-status-error-foreground: var(--palette-error-700);
     /* Error status muted background for subtle error indicators */
     --token-status-error-muted: var(--palette-error-100);
+
     /* Info status color for informational messages, tips, and non-critical alerts */
     --token-status-info: var(--palette-info-400);
     /* Info status border color for info containers and alerts */
@@ -145,6 +150,7 @@
     --token-status-info-foreground: var(--palette-info-700);
     /* Info status muted background for subtle info indicators */
     --token-status-info-muted: var(--palette-info-100);
+
     /* Success status color for positive outcomes, completed actions, and confirmations */
     --token-status-success: var(--palette-success-400);
     /* Success status border color for success containers and alerts */
@@ -155,6 +161,7 @@
     --token-status-success-foreground: var(--palette-success-700);
     /* Success status muted background for subtle success indicators */
     --token-status-success-muted: var(--palette-success-100);
+
     /* Warning status color for cautions, pending states, and attention required */
     --token-status-warning: var(--palette-warning-400);
     /* Warning status border color for warning containers and alerts */
