@@ -110,9 +110,6 @@
   --shadow-interactive: var(--token-shadow-interactive);
   --shadow-interactive-hover: var(--token-shadow-interactive-hover);
   --shadow-interactive-pressed: var(--token-shadow-interactive-pressed);
-  --shadow-highlight: var(--token-shadow-highlight);
-  --shadow-highlight-hover: var(--token-shadow-highlight-hover);
-  --shadow-highlight-pressed: var(--token-shadow-highlight-pressed);
   --shadow-inset-sm: var(--token-shadow-inset-sm);
   --shadow-inset-md: var(--token-shadow-inset-md);
   --shadow-inset-underline: var(--token-shadow-inset-underline);

@@ -7,14 +7,14 @@ import { Icon, type IconName, type IconSize } from '../icons/index.js'
 import { cn } from '../utils/cn.js'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-all text-shadow-sm focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
+  'inline-flex items-center justify-center gap-sm rounded-sm font-medium transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
   {
     variants: {
       variant: {
         primary:
-          'bg-gradient-primary text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-primary text-foreground-filled text-shadow-dark hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         secondary:
-          'bg-gradient-secondary text-foreground-filled hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-secondary text-foreground-filled text-shadow-dark hover:opacity-90 shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
         outline:
           'border border-border bg-transparent hover:bg-surface-subtle focus-visible:ring-ring',
         ghost: 'hover:bg-interactive-hover focus-visible:ring-ring',

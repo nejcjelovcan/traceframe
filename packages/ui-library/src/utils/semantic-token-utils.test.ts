@@ -376,12 +376,6 @@ describe('isNonSemanticShadowClass', () => {
     expect(isNonSemanticShadowClass('shadow-interactive-pressed')).toBe(false)
   })
 
-  it('does NOT flag highlight shadow tokens', () => {
-    expect(isNonSemanticShadowClass('shadow-highlight')).toBe(false)
-    expect(isNonSemanticShadowClass('shadow-highlight-hover')).toBe(false)
-    expect(isNonSemanticShadowClass('shadow-highlight-pressed')).toBe(false)
-  })
-
   it('does NOT flag inset shadow tokens', () => {
     expect(isNonSemanticShadowClass('shadow-inset-sm')).toBe(false)
     expect(isNonSemanticShadowClass('shadow-inset-md')).toBe(false)
@@ -487,8 +481,8 @@ describe('getShadowSuggestion', () => {
     expect(getShadowSuggestion('shadow-inner')).toBe('shadow-inset-sm or shadow-inset-md')
   })
 
-  it('suggests shadow-lg or shadow-highlight for shadow-xl', () => {
-    expect(getShadowSuggestion('shadow-xl')).toBe('shadow-lg or shadow-highlight')
+  it('suggests shadow-lg for shadow-xl', () => {
+    expect(getShadowSuggestion('shadow-xl')).toBe('shadow-lg')
   })
 
   it('suggests shadow-lg for shadow-2xl', () => {

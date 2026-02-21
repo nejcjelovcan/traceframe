@@ -70,6 +70,13 @@ export const TOKEN_METADATA = {
     },
   },
   semantic: {
+    text: {
+      description: '',
+      variants: {
+        'shadow-light': '',
+        'shadow-dark': '',
+      },
+    },
     border: {
       description: 'Primary border color for inputs, cards, and containers',
       variants: {
@@ -243,30 +250,17 @@ export const TOKEN_METADATA = {
         description: '',
       },
       interactive: {
-        value: '0 1px 3px 0\n      color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
+        value:
+          '0 2px 6px -1px color-mix(in srgb, var(--token-shadow-color) 12%, transparent),\n      0 1px 3px -1px color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       'interactive-hover': {
         value:
-          '0 4px 8px -1px color-mix(in srgb, var(--token-shadow-color) 12%, transparent),\n      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
+          '0 6px 14px -2px color-mix(in srgb, var(--token-shadow-color) 16%, transparent),\n      0 3px 6px -2px color-mix(in srgb, var(--token-shadow-color) 10%, transparent)',
         description: '',
       },
       'interactive-pressed': {
         value: '0 1px 2px 0\n      color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
-        description: '',
-      },
-      highlight: {
-        value:
-          '0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),\n      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent)',
-        description: '',
-      },
-      'highlight-hover': {
-        value:
-          '0 6px 12px -2px color-mix(in srgb, var(--token-shadow-color) 16%, transparent),\n      0 3px 6px -2px color-mix(in srgb, var(--token-shadow-color) 10%, transparent)',
-        description: '',
-      },
-      'highlight-pressed': {
-        value: '0 1px 3px 0\n      color-mix(in srgb, var(--token-shadow-color) 8%, transparent)',
         description: '',
       },
       'inset-sm': {

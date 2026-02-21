@@ -20,26 +20,21 @@
     --token-shadow-lg:
       0 6px 12px -3px color-mix(in srgb, var(--token-shadow-color) 12%, transparent),
       0 2px 4px -3px color-mix(in srgb, var(--token-shadow-color) 8%, transparent);
-    --token-shadow-interactive: 0 1px 2px 0
-      color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+    --token-shadow-interactive:
+      0 2px 5px -1px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),
+      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
     --token-shadow-interactive-hover:
-      0 3px 6px -1px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),
-      0 1px 3px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
+      0 4px 10px -2px color-mix(in srgb, var(--token-shadow-color) 14%, transparent),
+      0 2px 4px -2px color-mix(in srgb, var(--token-shadow-color) 8%, transparent);
     --token-shadow-interactive-pressed: 0 1px 1px 0
       color-mix(in srgb, var(--token-shadow-color) 4%, transparent);
-    --token-shadow-highlight:
-      0 2px 4px -1px color-mix(in srgb, var(--token-shadow-color) 10%, transparent),
-      0 1px 2px -1px color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
-    --token-shadow-highlight-hover:
-      0 4px 10px -2px color-mix(in srgb, var(--token-shadow-color) 12%, transparent),
-      0 2px 4px -2px color-mix(in srgb, var(--token-shadow-color) 8%, transparent);
-    --token-shadow-highlight-pressed: 0 1px 2px 0
-      color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
     --token-shadow-inset-sm: inset 0 2px 4px 0
       color-mix(in srgb, var(--token-shadow-color) 6%, transparent);
     --token-shadow-inset-md: inset 0 4px 8px 0
       color-mix(in srgb, var(--token-shadow-color) 8%, transparent);
     --token-shadow-inset-underline: inset 0 -2px 0 0;
+    --token-text-shadow-light: 0 1px 1px color-mix(in srgb, var(--token-surface) 50%, transparent);
+    --token-text-shadow-dark: 0 1px 1px color-mix(in srgb, var(--token-shadow-color) 15%, transparent);
 
     /* Border Radius — Sharpest in the system */
     --token-radius-sm: 0.0625rem;

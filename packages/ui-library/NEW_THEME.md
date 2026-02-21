@@ -244,9 +244,6 @@ Theme tokens control the structural, non-color aspects of your theme. These are 
     --token-shadow-interactive: /* ... */;
     --token-shadow-interactive-hover: /* ... */;
     --token-shadow-interactive-pressed: /* ... */;
-    --token-shadow-highlight: /* ... */;
-    --token-shadow-highlight-hover: /* ... */;
-    --token-shadow-highlight-pressed: /* ... */;
     --token-shadow-inset-sm: /* ... */;
     --token-shadow-inset-md: /* ... */;
     --token-shadow-inset-underline: /* ... */;
