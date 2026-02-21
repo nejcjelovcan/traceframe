@@ -66,7 +66,7 @@ const navigationVariants = cva('transition-colors', {
       color: 'accent-5',
       className: 'bg-accent-5 border-line-accent-5-border',
     },
-    // Subtle variant with muted backgrounds and subtle borders
+    // Subtle variant with muted backgrounds and muted borders
     {
       variant: 'subtle',
       color: 'primary',
@@ -80,27 +80,27 @@ const navigationVariants = cva('transition-colors', {
     {
       variant: 'subtle',
       color: 'accent-1',
-      className: 'bg-accent-1-muted border-line-accent-1-border/50',
+      className: 'bg-accent-1-muted border-line-accent-1-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-2',
-      className: 'bg-accent-2-muted border-line-accent-2-border/50',
+      className: 'bg-accent-2-muted border-line-accent-2-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-3',
-      className: 'bg-accent-3-muted border-line-accent-3-border/50',
+      className: 'bg-accent-3-muted border-line-accent-3-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-4',
-      className: 'bg-accent-4-muted border-line-accent-4-border/50',
+      className: 'bg-accent-4-muted border-line-accent-4-muted-border',
     },
     {
       variant: 'subtle',
       color: 'accent-5',
-      className: 'bg-accent-5-muted border-line-accent-5-border/50',
+      className: 'bg-accent-5-muted border-line-accent-5-muted-border',
     },
   ],
   defaultVariants: {

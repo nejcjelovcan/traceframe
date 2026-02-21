@@ -182,7 +182,7 @@ describe('PageLayout', () => {
         </PageLayout>
       )
       const sidebar = screen.getByText('Sidebar').parentElement
-      expect(sidebar?.className).toContain('bg-accent-1-emphasis')
+      expect(sidebar?.className).toContain('bg-accent-1')
     })
 
     it('applies subtle variant to sidebar', () => {

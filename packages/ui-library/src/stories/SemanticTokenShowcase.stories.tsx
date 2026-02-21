@@ -190,7 +190,7 @@ const statusInfoTokens = [
   { name: 'status-info', cssVar: '--color-status-info', description: 'Base' },
   { name: 'status-info-muted', cssVar: '--color-status-info-muted', description: 'Background' },
   { name: 'status-info-foreground', cssVar: '--color-status-info-foreground', description: 'Text' },
-  { name: 'status-info-emphasis', cssVar: '--color-status-info-emphasis', description: 'Strong' },
+  { name: 'status-info-muted-border', cssVar: '--color-status-info-muted-border', description: 'Muted border' },
   { name: 'status-info-border', cssVar: '--color-status-info-border', description: 'Border' },
 ]
 
@@ -207,9 +207,9 @@ const statusSuccessTokens = [
     description: 'Text',
   },
   {
-    name: 'status-success-emphasis',
-    cssVar: '--color-status-success-emphasis',
-    description: 'Strong',
+    name: 'status-success-muted-border',
+    cssVar: '--color-status-success-muted-border',
+    description: 'Muted border',
   },
   { name: 'status-success-border', cssVar: '--color-status-success-border', description: 'Border' },
 ]
@@ -227,9 +227,9 @@ const statusWarningTokens = [
     description: 'Text',
   },
   {
-    name: 'status-warning-emphasis',
-    cssVar: '--color-status-warning-emphasis',
-    description: 'Strong',
+    name: 'status-warning-muted-border',
+    cssVar: '--color-status-warning-muted-border',
+    description: 'Muted border',
   },
   { name: 'status-warning-border', cssVar: '--color-status-warning-border', description: 'Border' },
 ]
@@ -242,7 +242,7 @@ const statusErrorTokens = [
     cssVar: '--color-status-error-foreground',
     description: 'Text',
   },
-  { name: 'status-error-emphasis', cssVar: '--color-status-error-emphasis', description: 'Strong' },
+  { name: 'status-error-muted-border', cssVar: '--color-status-error-muted-border', description: 'Muted border' },
   { name: 'status-error-border', cssVar: '--color-status-error-border', description: 'Border' },
 ]
 
@@ -250,7 +250,7 @@ const accent1Tokens = [
   { name: 'accent-1', cssVar: '--color-accent-1', description: 'Base' },
   { name: 'accent-1-muted', cssVar: '--color-accent-1-muted', description: 'Background' },
   { name: 'accent-1-foreground', cssVar: '--color-accent-1-foreground', description: 'Text' },
-  { name: 'accent-1-emphasis', cssVar: '--color-accent-1-emphasis', description: 'Strong' },
+  { name: 'accent-1-muted-border', cssVar: '--color-accent-1-muted-border', description: 'Muted border' },
   { name: 'accent-1-border', cssVar: '--color-accent-1-border', description: 'Border' },
 ]
 
@@ -258,7 +258,7 @@ const accent2Tokens = [
   { name: 'accent-2', cssVar: '--color-accent-2', description: 'Base' },
   { name: 'accent-2-muted', cssVar: '--color-accent-2-muted', description: 'Background' },
   { name: 'accent-2-foreground', cssVar: '--color-accent-2-foreground', description: 'Text' },
-  { name: 'accent-2-emphasis', cssVar: '--color-accent-2-emphasis', description: 'Strong' },
+  { name: 'accent-2-muted-border', cssVar: '--color-accent-2-muted-border', description: 'Muted border' },
   { name: 'accent-2-border', cssVar: '--color-accent-2-border', description: 'Border' },
 ]
 
@@ -266,7 +266,7 @@ const accent3Tokens = [
   { name: 'accent-3', cssVar: '--color-accent-3', description: 'Base' },
   { name: 'accent-3-muted', cssVar: '--color-accent-3-muted', description: 'Background' },
   { name: 'accent-3-foreground', cssVar: '--color-accent-3-foreground', description: 'Text' },
-  { name: 'accent-3-emphasis', cssVar: '--color-accent-3-emphasis', description: 'Strong' },
+  { name: 'accent-3-muted-border', cssVar: '--color-accent-3-muted-border', description: 'Muted border' },
   { name: 'accent-3-border', cssVar: '--color-accent-3-border', description: 'Border' },
 ]
 
@@ -274,7 +274,7 @@ const accent4Tokens = [
   { name: 'accent-4', cssVar: '--color-accent-4', description: 'Base' },
   { name: 'accent-4-muted', cssVar: '--color-accent-4-muted', description: 'Background' },
   { name: 'accent-4-foreground', cssVar: '--color-accent-4-foreground', description: 'Text' },
-  { name: 'accent-4-emphasis', cssVar: '--color-accent-4-emphasis', description: 'Strong' },
+  { name: 'accent-4-muted-border', cssVar: '--color-accent-4-muted-border', description: 'Muted border' },
   { name: 'accent-4-border', cssVar: '--color-accent-4-border', description: 'Border' },
 ]
 
@@ -282,7 +282,7 @@ const accent5Tokens = [
   { name: 'accent-5', cssVar: '--color-accent-5', description: 'Base' },
   { name: 'accent-5-muted', cssVar: '--color-accent-5-muted', description: 'Background' },
   { name: 'accent-5-foreground', cssVar: '--color-accent-5-foreground', description: 'Text' },
-  { name: 'accent-5-emphasis', cssVar: '--color-accent-5-emphasis', description: 'Strong' },
+  { name: 'accent-5-muted-border', cssVar: '--color-accent-5-muted-border', description: 'Muted border' },
   { name: 'accent-5-border', cssVar: '--color-accent-5-border', description: 'Border' },
 ]
 
@@ -424,9 +424,9 @@ export const AllTokens: Story = {
               </span>
             </Flex>
             <Flex direction="row" align="center" gap="sm">
-              <div className="w-size-xs h-size-xs rounded-sm bg-status-info-emphasis" />
+              <div className="w-size-xs h-size-xs rounded-sm bg-status-info-muted-border" />
               <span className="text-foreground-muted">
-                <strong>emphasis</strong> - Strong
+                <strong>muted-border</strong> - Muted border
               </span>
             </Flex>
             <Flex direction="row" align="center" gap="sm">
@@ -594,13 +594,13 @@ const AccentTagsExample = () => (
     </Flex>
     {/* Solid variants */}
     <Flex direction="row" gap="sm" wrap={true}>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1-emphasis text-foreground-filled">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-1 text-foreground-filled">
         Solid Accent 1
       </span>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-2-emphasis text-foreground-filled">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-2 text-foreground-filled">
         Solid Accent 2
       </span>
-      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3-emphasis text-foreground-filled">
+      <span className="inline-flex items-center px-md py-xs rounded-full text-xs font-medium bg-accent-3 text-foreground-filled">
         Solid Accent 3
       </span>
     </Flex>

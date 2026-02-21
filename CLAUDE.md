@@ -426,10 +426,10 @@ Token metadata in `packages/ui-library/src/styles/token-metadata.ts` provides de
 | `border`      | DEFAULT, muted                                                                                                                                       | Border colors                  |
 | `ring`        | DEFAULT                                                                                                                                              | Focus ring color               |
 | `interactive` | hover, active, pressed, primary (with hover/foreground/border), secondary (with hover/foreground/border), destructive (with hover/foreground/border) | Interactive element states     |
-| `status`      | info, success, warning, error (each with: DEFAULT, muted, foreground, emphasis, border)                                                              | Status indicators              |
+| `status`      | info, success, warning, error (each with: DEFAULT, muted, foreground, border, muted-border)                                                          | Status indicators              |
 | `disabled`    | DEFAULT, foreground                                                                                                                                  | Disabled state colors          |
 | `tooltip`     | DEFAULT, foreground                                                                                                                                  | Tooltip colors                 |
-| `accent`      | 1-5 (each with: DEFAULT, muted, foreground, emphasis, border)                                                                                        | Categorical data visualization |
+| `accent`      | 1-5 (each with: DEFAULT, muted, foreground, border, muted-border)                                                                                    | Categorical data visualization |
 
 ### Semantic Spacing Tokens
 

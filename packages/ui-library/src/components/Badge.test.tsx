@@ -30,7 +30,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Info')
     expect(badge.className).toContain('bg-status-info-muted')
     expect(badge.className).toContain('text-status-info-foreground')
-    expect(badge.className).toContain('border-status-info-border')
+    expect(badge.className).toContain('border-status-info-muted-border')
   })
 
   it('applies success variant classes', () => {
@@ -38,7 +38,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Success')
     expect(badge.className).toContain('bg-status-success-muted')
     expect(badge.className).toContain('text-status-success-foreground')
-    expect(badge.className).toContain('border-status-success-border')
+    expect(badge.className).toContain('border-status-success-muted-border')
   })
 
   it('applies warning variant classes', () => {
@@ -46,7 +46,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Warning')
     expect(badge.className).toContain('bg-status-warning-muted')
     expect(badge.className).toContain('text-status-warning-foreground')
-    expect(badge.className).toContain('border-status-warning-border')
+    expect(badge.className).toContain('border-status-warning-muted-border')
   })
 
   it('applies error variant classes', () => {
@@ -54,7 +54,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Error')
     expect(badge.className).toContain('bg-status-error-muted')
     expect(badge.className).toContain('text-status-error-foreground')
-    expect(badge.className).toContain('border-status-error-border')
+    expect(badge.className).toContain('border-status-error-muted-border')
   })
 
   it('applies outline variant classes', () => {
@@ -69,7 +69,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Accent')
     expect(badge.className).toContain('bg-accent-1-muted')
     expect(badge.className).toContain('text-accent-1-foreground')
-    expect(badge.className).toContain('border-accent-1-border')
+    expect(badge.className).toContain('border-accent-1-muted-border')
   })
 
   it('applies accent4 variant classes', () => {
@@ -77,7 +77,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Accent4')
     expect(badge.className).toContain('bg-accent-4-muted')
     expect(badge.className).toContain('text-accent-4-foreground')
-    expect(badge.className).toContain('border-accent-4-border')
+    expect(badge.className).toContain('border-accent-4-muted-border')
   })
 
   it('applies outline-accent1 variant classes', () => {
