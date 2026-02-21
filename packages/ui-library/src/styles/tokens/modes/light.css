@@ -50,6 +50,7 @@
     --token-interactive-hover: var(--palette-neutral-100);
     /* Background color for pressed or clicking states */
     --token-interactive-pressed: var(--palette-neutral-300);
+
     /* Primary button and CTA background color */
     --token-interactive-primary: var(--palette-primary-400);
     /* Border color for primary buttons and outlined primary elements */
@@ -60,6 +61,7 @@
     --token-interactive-primary-hover: var(--palette-primary-700);
     /* Muted primary background for subtle containers and indicators */
     --token-interactive-primary-muted: var(--palette-primary-100);
+
     /* Secondary button and accent background color */
     --token-interactive-secondary: var(--palette-secondary-300);
     /* Border color for secondary buttons and outlined secondary elements */
