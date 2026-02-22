@@ -18,6 +18,7 @@ const navigationVariants = cva('transition-colors', {
       default: '',
       colorful: 'rounded-md p-sm',
       subtle: 'rounded-md p-sm',
+      transparent: 'rounded-lg p-sm',
     },
     color: {
       primary: '',
@@ -30,6 +31,42 @@ const navigationVariants = cva('transition-colors', {
     },
   },
   compoundVariants: [
+    // Transparent variant with semi-transparent backgrounds and backdrop blur
+    {
+      variant: 'transparent',
+      color: 'primary',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
+    {
+      variant: 'transparent',
+      color: 'secondary',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
+    {
+      variant: 'transparent',
+      color: 'accent-1',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
+    {
+      variant: 'transparent',
+      color: 'accent-2',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
+    {
+      variant: 'transparent',
+      color: 'accent-3',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
+    {
+      variant: 'transparent',
+      color: 'accent-4',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
+    {
+      variant: 'transparent',
+      color: 'accent-5',
+      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+    },
     // Colorful variant with solid backgrounds and borders
     {
       variant: 'colorful',
@@ -124,6 +161,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
       default: '',
       colorful: '',
       subtle: '',
+      transparent: '',
     },
   },
   compoundVariants: [
@@ -177,6 +215,31 @@ const navItemVariants = cva('rounded-md transition-colors', {
       active: true,
       className: 'bg-surface/40 text-foreground text-shadow-light font-medium',
     },
+    // Transparent variant styles (edge-to-edge NavItems)
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      active: false,
+      className: 'text-foreground text-shadow-light hover:text-foreground',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'vertical',
+      active: false,
+      className: '-mx-sm px-md rounded-none text-foreground hover:bg-surface/20',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      active: true,
+      className: 'text-foreground text-shadow-light font-medium bg-surface/40 px-sm',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'vertical',
+      active: true,
+      className: '-mx-sm px-md rounded-none bg-surface/40 text-foreground font-medium',
+    },
     // Subtle variant styles
     {
       parentVariant: 'subtle',
@@ -211,7 +274,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
 })
 
 type Orientation = 'horizontal' | 'vertical'
-type Variant = 'default' | 'colorful' | 'subtle'
+type Variant = 'default' | 'colorful' | 'subtle' | 'transparent'
 type Color =
   | 'primary'
   | 'secondary'
@@ -317,7 +380,10 @@ const NavHeading = forwardRef<HTMLHeadingElement, NavHeadingProps>(
   ({ className, level = 3, size = 'sm', ...props }, ref) => {
     const { variant } = useContext(NavigationContext)
 
-    const variantClass = variant === 'colorful' ? 'text-foreground/70' : 'text-foreground-muted'
+    const variantClass =
+      variant === 'colorful' || variant === 'transparent'
+        ? 'text-foreground/70'
+        : 'text-foreground-muted'
 
     return (
       <Heading

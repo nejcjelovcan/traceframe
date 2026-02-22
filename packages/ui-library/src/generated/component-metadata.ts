@@ -1054,7 +1054,7 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         description: 'Visual variant of the navigation',
         type: 'select',
         required: false,
-        options: ['default', 'colorful', 'subtle'],
+        options: ['default', 'colorful', 'subtle', 'transparent'],
         defaultValue: 'default',
       },
       {
