@@ -1,6 +1,6 @@
 @layer base {
   body {
-    background-color: var(--token-surface);
+    background-color: var(--token-surface-muted);
     color: var(--token-foreground);
   }
 

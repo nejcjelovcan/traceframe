@@ -119,7 +119,7 @@ const headerVariants = cva('sticky top-0 z-10 shrink-0 border-b', {
   },
 })
 
-const sidebarVariants = cva('shrink-0 overflow-y-auto', {
+const sidebarVariants = cva('shrink-0 overflow-x-hidden overflow-y-auto', {
   variants: {
     position: {
       left: 'border-r',
@@ -130,7 +130,7 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
       false: '',
     },
     sticky: {
-      true: 'sticky top-0 self-start',
+      true: 'sticky top-0',
       false: '',
     },
     variant: {
@@ -153,12 +153,12 @@ const sidebarVariants = cva('shrink-0 overflow-y-auto', {
     {
       variant: 'default',
       position: 'left',
-      className: 'border-border',
+      className: 'border-border bg-surface',
     },
     {
       variant: 'default',
       position: 'right',
-      className: 'border-border',
+      className: 'border-border bg-surface',
     },
     // Colorful variant with solid backgrounds
     {
@@ -426,8 +426,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             variant,
             color,
           }),
-          sidebarWidth && sidebarWidthMap[sidebarWidth],
-          sidebarSticky && 'h-[calc(100vh-var(--header-height,0px))]'
+          sidebarWidth && sidebarWidthMap[sidebarWidth]
         )}
       >
         {sidebar}
@@ -502,13 +501,9 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             {sidebarPosition === 'left' && sidebarElement}
 
             {/* Main content - skip link target */}
-            <main
-              id="main-content"
-              tabIndex={-1}
-              className="flex-1 bg-surface-muted focus:outline-hidden"
-            >
+            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
               {contentWidth === 'contained' ? (
-                <Container className="py-lg bg-surface-muted">{children}</Container>
+                <Container className="py-lg">{children}</Container>
               ) : (
                 children
               )}
