@@ -16,11 +16,17 @@ const meta: Meta<typeof ActionList.Root> = {
 ActionList is a selectable list component that displays items inline without a trigger/popover.
 Perfect for displaying selectable items like agent sessions, tasks, or any list where users need to pick one item from a visible list.
 
+Designed to be placed inside containers (such as Card) that provide their own borders and styling.
+
 ## Features
-- Single selection state management
+- Single selection state management (controlled and uncontrolled)
 - Full keyboard navigation (Arrow keys, Enter/Space, Home/End, Type-ahead)
-- Status indicators (active, completed, failed, pending)
-- Rich content with descriptions
+- Status indicators with colored icons (active, completed, failed, pending)
+- Optional left border stripe per status (\`showStripe\` prop, always on for active)
+- Rich content with titles and descriptions
+- Density variants (compact, comfortable, spacious)
+- Horizontal and vertical orientation
+- Groups with accessible labels
 - Accessible with WAI-ARIA listbox pattern
         `,
       },

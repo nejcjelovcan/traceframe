@@ -22,13 +22,16 @@ import type { IconName } from '../icons/types.js'
 /**
  * ActionList component for inline selection from a visible list.
  *
- * Provides accessible list selection with:
- * - WAI-ARIA listbox pattern
+ * Designed to be placed inside containers (such as Card) that provide
+ * their own borders and styling.
+ *
+ * Features:
+ * - WAI-ARIA listbox pattern with accessible group labels
  * - Full keyboard navigation (Arrow keys, Enter, Space, Home/End, Type-ahead)
  * - Focus management with roving tabindex
- * - Screen reader announcements
- * - Status indicators and rich content
- * - Single selection state management
+ * - Status indicators with colored icons and optional left border stripe
+ * - Single selection state management (controlled and uncontrolled)
+ * - Density variants (compact, comfortable, spacious)
  *
  * @example
  * ```tsx
@@ -516,7 +519,13 @@ const ActionListGroup = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div
     const labelId = useId()
     return (
       <GroupContext.Provider value={labelId}>
-        <div ref={ref} role="group" aria-labelledby={labelId} className={cn(className)} {...props} />
+        <div
+          ref={ref}
+          role="group"
+          aria-labelledby={labelId}
+          className={cn(className)}
+          {...props}
+        />
       </GroupContext.Provider>
     )
   }

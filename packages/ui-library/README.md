@@ -147,7 +147,7 @@ pnpm test         # Run tests
 | Layout     | `Container`, `Grid`, `Stack`, `PageLayout` (+ `PageHeader`)                                                    |
 | Data       | `DataTable`, `BarChart`, `StatCard`, `LogView` (+ `LogEntry`, `LogPrompt`)                                     |
 | Feedback   | `EmptyState`, `ErrorState`                                                                                     |
-| Selection  | `Select`, `SearchInput`, `ToggleGroup`                                                                         |
+| Selection  | `ActionList`, `Select`, `SearchInput`, `ToggleGroup`                                                           |
 | Behavioral | `Collapsible` (+ trigger/content/header), `Tooltip` (+ provider/trigger/content), `Navigation` (+ `NavItem`)   |
 | Theme      | `ThemeProvider`, `ModeSwitcher`, `ThemeSwitcher`                                                               |
 | Icons      | `Icon` (+ `getAllIconNames`, `getIconsByCategory`, `searchIcons`)                                              |
