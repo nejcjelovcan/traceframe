@@ -215,21 +215,21 @@ export const CoreVariants: Story = {
   name: 'Core Variants (Primary, Default, Secondary)',
   render: () => (
     <div className="flex flex-col gap-base">
-      <Heading size="sm">Filled Style</Heading>
+      <Heading level={3} size="sm">Filled Style</Heading>
       <div className="flex gap-sm">
         <Badge variant="primary">Primary</Badge>
         <Badge variant="default">Default</Badge>
         <Badge variant="secondary">Secondary</Badge>
       </div>
 
-      <Heading size="sm">Outline Style</Heading>
+      <Heading level={3} size="sm">Outline Style</Heading>
       <div className="flex gap-sm">
         <Badge variant="outline-primary">Primary</Badge>
         <Badge variant="outline-default">Default</Badge>
         <Badge variant="outline-secondary">Secondary</Badge>
       </div>
 
-      <Heading size="sm">Emphasis Style</Heading>
+      <Heading level={3} size="sm">Emphasis Style</Heading>
       <div className="flex gap-sm">
         <Badge variant="emphasis-primary">Primary</Badge>
         <Badge variant="emphasis-default">Default</Badge>

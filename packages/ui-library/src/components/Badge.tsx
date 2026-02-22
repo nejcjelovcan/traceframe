@@ -32,21 +32,20 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
 
       // Outline variants (ghost style with surface background for inverse contexts)
       'outline-default': 'bg-surface border-thick-border text-foreground',
-      'outline-primary':
-        'bg-surface border-thick-interactive-primary-border text-interactive-primary-foreground',
+      'outline-primary': 'bg-surface border-thick-interactive-primary-border text-interactive-primary',
       'outline-secondary':
-        'bg-surface border-thick-interactive-secondary-border text-interactive-secondary-foreground',
-      'outline-info': 'bg-surface border-thick-status-info text-status-info-foreground',
-      'outline-success': 'bg-surface border-thick-status-success text-status-success-foreground',
-      'outline-warning': 'bg-surface border-thick-status-warning text-status-warning-foreground',
-      'outline-error': 'bg-surface border-thick-status-error text-status-error-foreground',
+        'bg-surface border-thick-interactive-secondary-border text-interactive-secondary',
+      'outline-info': 'bg-surface border-thick-status-info text-status-info',
+      'outline-success': 'bg-surface border-thick-status-success text-status-success',
+      'outline-warning': 'bg-surface border-thick-status-warning text-status-warning',
+      'outline-error': 'bg-surface border-thick-status-error text-status-error',
 
       // Outline accent variants for categorization with thick borders
-      'outline-accent1': 'bg-surface border-thick-accent-1 text-accent-1-foreground',
-      'outline-accent2': 'bg-surface border-thick-accent-2 text-accent-2-foreground',
-      'outline-accent3': 'bg-surface border-thick-accent-3 text-accent-3-foreground',
-      'outline-accent4': 'bg-surface border-thick-accent-4 text-accent-4-foreground',
-      'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5-foreground',
+      'outline-accent1': 'bg-surface border-thick-accent-1 text-accent-1',
+      'outline-accent2': 'bg-surface border-thick-accent-2 text-accent-2',
+      'outline-accent3': 'bg-surface border-thick-accent-3 text-accent-3',
+      'outline-accent4': 'bg-surface border-thick-accent-4 text-accent-4',
+      'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5',
 
       // Emphasis variants using gradient backgrounds (no border)
       'emphasis-default': 'bg-gradient-surface text-foreground',
