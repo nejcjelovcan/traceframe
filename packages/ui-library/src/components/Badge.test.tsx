@@ -17,6 +17,14 @@ describe('Badge', () => {
     expect(badge.className).toContain('border-border')
   })
 
+  it('applies primary variant classes', () => {
+    render(<Badge variant="primary">Primary</Badge>)
+    const badge = screen.getByText('Primary')
+    expect(badge.className).toContain('bg-interactive-primary')
+    expect(badge.className).toContain('text-interactive-primary-foreground')
+    expect(badge.className).toContain('border-interactive-primary-border')
+  })
+
   it('applies secondary variant classes', () => {
     render(<Badge variant="secondary">Secondary</Badge>)
     const badge = screen.getByText('Secondary')
@@ -55,6 +63,30 @@ describe('Badge', () => {
     expect(badge.className).toContain('bg-status-error-muted')
     expect(badge.className).toContain('text-status-error-foreground')
     expect(badge.className).toContain('border-status-error-muted-border')
+  })
+
+  it('applies outline-default variant classes', () => {
+    render(<Badge variant="outline-default">Outline Default</Badge>)
+    const badge = screen.getByText('Outline Default')
+    expect(badge.className).toContain('bg-surface')
+    expect(badge.className).toContain('border-thick-border')
+    expect(badge.className).toContain('text-foreground')
+  })
+
+  it('applies outline-primary variant classes', () => {
+    render(<Badge variant="outline-primary">Outline Primary</Badge>)
+    const badge = screen.getByText('Outline Primary')
+    expect(badge.className).toContain('bg-surface')
+    expect(badge.className).toContain('border-thick-interactive-primary-border')
+    expect(badge.className).toContain('text-interactive-primary-foreground')
+  })
+
+  it('applies outline-secondary variant classes', () => {
+    render(<Badge variant="outline-secondary">Outline Secondary</Badge>)
+    const badge = screen.getByText('Outline Secondary')
+    expect(badge.className).toContain('bg-surface')
+    expect(badge.className).toContain('border-thick-interactive-secondary-border')
+    expect(badge.className).toContain('text-interactive-secondary-foreground')
   })
 
   it('applies outline variant classes', () => {
@@ -118,6 +150,33 @@ describe('Badge', () => {
     expect(badge.className).toContain('bg-surface')
     expect(badge.className).toContain('border-thick-accent-5')
     expect(badge.className).toContain('text-accent-5-foreground')
+  })
+
+  it('applies emphasis-default variant classes', () => {
+    render(<Badge variant="emphasis-default">Emphasis Default</Badge>)
+    const badge = screen.getByText('Emphasis Default')
+    expect(badge.className).toContain('bg-gradient-surface')
+    expect(badge.className).toContain('text-foreground')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-primary variant classes', () => {
+    render(<Badge variant="emphasis-primary">Emphasis Primary</Badge>)
+    const badge = screen.getByText('Emphasis Primary')
+    expect(badge.className).toContain('bg-gradient-primary')
+    expect(badge.className).toContain('text-foreground-filled')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
+  })
+
+  it('applies emphasis-secondary variant classes', () => {
+    render(<Badge variant="emphasis-secondary">Emphasis Secondary</Badge>)
+    const badge = screen.getByText('Emphasis Secondary')
+    expect(badge.className).toContain('bg-gradient-secondary')
+    expect(badge.className).toContain('text-foreground-filled')
+    // Verify no border classes are applied
+    expect(badge.className).not.toMatch(/border-/)
   })
 
   it('applies emphasis-info variant classes', () => {

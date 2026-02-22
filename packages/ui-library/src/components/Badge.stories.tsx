@@ -33,6 +33,7 @@ A small label component for displaying status, categories, or counts.
       control: 'select',
       options: [
         'default',
+        'primary',
         'secondary',
         'info',
         'success',
@@ -44,6 +45,8 @@ A small label component for displaying status, categories, or counts.
         'accent4',
         'accent5',
         'outline-default',
+        'outline-primary',
+        'outline-secondary',
         'outline-info',
         'outline-success',
         'outline-warning',
@@ -53,6 +56,9 @@ A small label component for displaying status, categories, or counts.
         'outline-accent3',
         'outline-accent4',
         'outline-accent5',
+        'emphasis-default',
+        'emphasis-primary',
+        'emphasis-secondary',
         'emphasis-info',
         'emphasis-success',
         'emphasis-warning',
@@ -110,10 +116,17 @@ export const Default: Story = {
   },
 }
 
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: 'Primary',
+  },
+}
+
 export const Secondary: Story = {
   args: {
     variant: 'secondary',
-    children: 'Local',
+    children: 'Secondary',
   },
 }
 
@@ -198,9 +211,42 @@ export const OutlineVariant: Story = {
   },
 }
 
+export const CoreVariants: Story = {
+  name: 'Core Variants (Primary, Default, Secondary)',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      <Heading size="sm">Filled Style</Heading>
+      <div className="flex gap-sm">
+        <Badge variant="primary">Primary</Badge>
+        <Badge variant="default">Default</Badge>
+        <Badge variant="secondary">Secondary</Badge>
+      </div>
+
+      <Heading size="sm">Outline Style</Heading>
+      <div className="flex gap-sm">
+        <Badge variant="outline-primary">Primary</Badge>
+        <Badge variant="outline-default">Default</Badge>
+        <Badge variant="outline-secondary">Secondary</Badge>
+      </div>
+
+      <Heading size="sm">Emphasis Style</Heading>
+      <div className="flex gap-sm">
+        <Badge variant="emphasis-primary">Primary</Badge>
+        <Badge variant="emphasis-default">Default</Badge>
+        <Badge variant="emphasis-secondary">Secondary</Badge>
+      </div>
+    </div>
+  ),
+}
+
 export const Emphasis: Story = {
   render: () => (
     <div className="flex flex-col gap-sm">
+      <div className="flex gap-sm">
+        <Badge variant="emphasis-default">Default</Badge>
+        <Badge variant="emphasis-primary">Primary</Badge>
+        <Badge variant="emphasis-secondary">Secondary</Badge>
+      </div>
       <div className="flex gap-sm">
         <Badge variant="emphasis-info" icon="info-circle">
           New
@@ -352,6 +398,7 @@ export const AllVariants: Story = {
     <div className="flex flex-col gap-base">
       <div className="flex gap-sm">
         <Badge variant="default">Default</Badge>
+        <Badge variant="primary">Primary</Badge>
         <Badge variant="secondary">Secondary</Badge>
         <Badge variant="info">Info</Badge>
         <Badge variant="success">Success</Badge>

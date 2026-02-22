@@ -11,6 +11,8 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
     variant: {
       // Core semantic variants (filled style)
       default: 'bg-surface-muted text-foreground border-border',
+      primary:
+        'bg-interactive-primary text-interactive-primary-foreground border-interactive-primary-border',
       secondary: 'bg-surface-subtle text-foreground-muted border-border-muted',
 
       // Status variants with proper contrast
@@ -30,6 +32,10 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
 
       // Outline variants (ghost style with surface background for inverse contexts)
       'outline-default': 'bg-surface border-thick-border text-foreground',
+      'outline-primary':
+        'bg-surface border-thick-interactive-primary-border text-interactive-primary-foreground',
+      'outline-secondary':
+        'bg-surface border-thick-interactive-secondary-border text-interactive-secondary-foreground',
       'outline-info': 'bg-surface border-thick-status-info text-status-info-foreground',
       'outline-success': 'bg-surface border-thick-status-success text-status-success-foreground',
       'outline-warning': 'bg-surface border-thick-status-warning text-status-warning-foreground',
@@ -43,6 +49,9 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
       'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5-foreground',
 
       // Emphasis variants using gradient backgrounds (no border)
+      'emphasis-default': 'bg-gradient-surface text-foreground',
+      'emphasis-primary': 'bg-gradient-primary text-foreground-filled',
+      'emphasis-secondary': 'bg-gradient-secondary text-foreground-filled',
       'emphasis-info': 'bg-gradient-status-info text-foreground-filled',
       'emphasis-success': 'bg-gradient-status-success text-foreground-filled',
       'emphasis-warning': 'bg-gradient-status-warning text-foreground-filled',
