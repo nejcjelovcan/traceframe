@@ -614,13 +614,13 @@ export const ColorfulWithTransparentNav: Story = {
             <NavItem href="#" icon="components">
               Primitives
             </NavItem>
-            <NavItem href="#" icon="layer">
+            <NavItem href="#" icon="components">
               Layout
             </NavItem>
             <NavItem href="#" icon="database">
               Data Display
             </NavItem>
-            <NavItem href="#" icon="bell">
+            <NavItem href="#" icon="info-circle">
               Feedback
             </NavItem>
           </Navigation>
@@ -628,7 +628,7 @@ export const ColorfulWithTransparentNav: Story = {
             Resources
           </Heading>
           <Navigation orientation="vertical" variant="transparent" color="primary">
-            <NavItem href="#" icon="book">
+            <NavItem href="#" icon="file-description">
               Documentation
             </NavItem>
             <NavItem href="#" icon="code">
@@ -686,7 +686,7 @@ export const ColorfulWithTransparentNav: Story = {
           </CardContent>
         </Card>
 
-        <Grid cols="3" gap="md">
+        <Grid cols={3 as const} gap="md">
           {['primary', 'secondary', 'accent-1', 'accent-2', 'accent-3'].map((color) => (
             <Card key={color}>
               <CardContent>
@@ -694,7 +694,11 @@ export const ColorfulWithTransparentNav: Story = {
                   className={`mb-sm rounded-md bg-gradient-${color} p-sm`}
                   style={{ '--tw-bg-opacity': 1 } as React.CSSProperties}
                 >
-                  <Navigation orientation="horizontal" variant="transparent" color={color as any}>
+                  <Navigation
+                    orientation="horizontal"
+                    variant="transparent"
+                    color={color as 'primary' | 'secondary' | 'accent-1' | 'accent-2' | 'accent-3'}
+                  >
                     <NavItem href="#" active>
                       Active
                     </NavItem>
