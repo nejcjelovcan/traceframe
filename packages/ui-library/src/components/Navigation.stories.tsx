@@ -27,8 +27,9 @@ A navigation component that supports both horizontal (header) and vertical (side
 - \`default\` - Standard navigation with minimal styling
 - \`colorful\` - Strong emphasis background with prominent active states
 - \`subtle\` - Muted background with soft active states
+- \`transparent\` - Semi-transparent background with edge-to-edge items (for use on colorful backgrounds)
 
-**Colors (for colorful/subtle variants):**
+**Colors (for colorful/subtle/transparent variants):**
 - \`primary\`, \`secondary\`, \`accent-1\` through \`accent-5\`
 
 **Features:**
@@ -52,7 +53,7 @@ A navigation component that supports both horizontal (header) and vertical (side
     variant: {
       description: 'Visual variant of the navigation',
       control: 'radio',
-      options: ['default', 'colorful', 'subtle'],
+      options: ['default', 'colorful', 'subtle', 'transparent'],
       table: {
         defaultValue: { summary: 'default' },
       },
@@ -644,6 +645,186 @@ export const ContextInheritance: Story = {
             <li>Background colors apply to PageLayout header/sidebar, not Navigation</li>
             <li>Navigation adjusts text colors based on inherited variant</li>
           </ol>
+        </div>
+      </Flex>
+    </PageLayout>
+  ),
+}
+
+export const TransparentOnColorfulBackground: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Transparent variant designed for use on colorful PageLayout backgrounds. Features semi-transparent background with backdrop blur and edge-to-edge NavItems.',
+      },
+    },
+  },
+  decorators: [
+    (Story) => (
+      <div className="bg-gradient-primary p-lg rounded-lg">
+        <Story />
+      </div>
+    ),
+  ],
+  render: () => (
+    <div className="space-y-base">
+      <div>
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Transparent on Primary</p>
+        <Navigation orientation="horizontal" variant="transparent" color="primary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Reports</NavItem>
+          <NavItem href="#">Settings</NavItem>
+        </Navigation>
+      </div>
+      <div className="w-64">
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Vertical Transparent</p>
+        <Navigation orientation="vertical" variant="transparent" color="primary">
+          <NavItem href="#" icon="dashboard" active>
+            Dashboard
+          </NavItem>
+          <NavItem href="#" icon="components">
+            Components
+          </NavItem>
+          <NavItem href="#" icon="hierarchy">
+            Dependencies
+          </NavItem>
+        </Navigation>
+      </div>
+    </div>
+  ),
+}
+
+export const TransparentColorShowcase: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Showcase of transparent variant with all available colors on their respective colorful backgrounds.',
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-base">
+      <div className="bg-gradient-primary p-base rounded-lg">
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Primary</p>
+        <Navigation orientation="horizontal" variant="transparent" color="primary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div className="bg-gradient-secondary p-base rounded-lg">
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Secondary</p>
+        <Navigation orientation="horizontal" variant="transparent" color="secondary">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div className="bg-accent-1 p-base rounded-lg">
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Accent 1</p>
+        <Navigation orientation="horizontal" variant="transparent" color="accent-1">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div className="bg-accent-2 p-base rounded-lg">
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Accent 2</p>
+        <Navigation orientation="horizontal" variant="transparent" color="accent-2">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+      <div className="bg-accent-3 p-base rounded-lg">
+        <p className="mb-sm text-sm text-foreground text-shadow-light">Accent 3</p>
+        <Navigation orientation="horizontal" variant="transparent" color="accent-3">
+          <NavItem href="#" active>
+            Active
+          </NavItem>
+          <NavItem href="#">Link</NavItem>
+          <NavItem href="#">Link</NavItem>
+        </Navigation>
+      </div>
+    </div>
+  ),
+}
+
+export const TransparentWithPageLayout: Story = {
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story:
+          'Demonstrates the transparent Navigation variant used within a colorful PageLayout. The transparent variant provides better contrast than the colorful variant when both PageLayout and Navigation would otherwise have solid backgrounds.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="colorful"
+      color="primary"
+      header={
+        <PageHeader title="Transparent Navigation Demo">
+          <Navigation orientation="horizontal" variant="transparent" color="primary">
+            <NavItem href="#" active>
+              Dashboard
+            </NavItem>
+            <NavItem href="#">Reports</NavItem>
+            <NavItem href="#">Settings</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={
+        <div className="w-64 p-base">
+          <Navigation orientation="vertical" variant="transparent" color="primary">
+            <NavItem href="#" icon="dashboard" active>
+              Overview
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Components
+            </NavItem>
+            <NavItem href="#" icon="hierarchy">
+              Dependencies
+            </NavItem>
+            <NavItem href="#" icon="alert-circle">
+              Issues
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+    >
+      <Flex gap="md">
+        <Heading level={1}>Transparent Variant</Heading>
+        <p className="text-foreground-muted">
+          The transparent variant provides better visual separation when used on colorful PageLayout
+          backgrounds. Notice how the Navigation has a semi-transparent surface with backdrop blur,
+          and the NavItems extend edge-to-edge in vertical orientation for clearer hover and active
+          states.
+        </p>
+        <div className="rounded-lg border border-border bg-surface-subtle p-base">
+          <Heading level={2} className="mb-sm">
+            Key Features:
+          </Heading>
+          <ul className="list-inside list-disc space-y-xs text-sm text-foreground-muted">
+            <li>Semi-transparent background (80% opacity) with backdrop blur</li>
+            <li>Edge-to-edge NavItems in vertical orientation (no rounded corners)</li>
+            <li>Stronger surface colors for active/hover states</li>
+            <li>Text shadows for improved readability on colorful backgrounds</li>
+            <li>Works with all color options (primary, secondary, accent-1 through accent-5)</li>
+          </ul>
         </div>
       </Flex>
     </PageLayout>

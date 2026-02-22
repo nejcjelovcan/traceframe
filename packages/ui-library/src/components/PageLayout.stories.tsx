@@ -3,7 +3,7 @@ import { DataTable, type Column } from './DataTable'
 import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
-import { Navigation, NavItem } from './Navigation'
+import { Navigation, NavItem, NavHeading } from './Navigation'
 import { PageLayout, PageHeader, SidebarToggle } from './PageLayout'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -572,6 +572,127 @@ export const MixedVariants: Story = {
           The PageLayout has variant="colorful" and color="primary", but the Navigation in the
           header explicitly overrides with variant="subtle" and color="secondary".
         </p>
+      </Flex>
+    </PageLayout>
+  ),
+}
+
+export const ColorfulWithTransparentNav: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Showcases the transparent Navigation variant on colorful PageLayout backgrounds. The transparent variant provides better visual hierarchy than using two solid colorful components together.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="colorful"
+      color="primary"
+      header={
+        <PageHeader title="Traceframe Design System">
+          <Navigation orientation="horizontal" variant="transparent" color="primary">
+            <NavItem href="#" active>
+              Components
+            </NavItem>
+            <NavItem href="#">Tokens</NavItem>
+            <NavItem href="#">Icons</NavItem>
+            <NavItem href="#">Patterns</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebarSticky
+      sidebar={
+        <div className="w-64 p-base">
+          <Navigation orientation="vertical" variant="transparent" color="primary">
+            <NavHeading>Components</NavHeading>
+            <NavItem href="#" icon="package" active>
+              Overview
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Primitives
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Layout
+            </NavItem>
+            <NavItem href="#" icon="database">
+              Data Display
+            </NavItem>
+            <NavItem href="#" icon="info-circle">
+              Feedback
+            </NavItem>
+            <NavHeading className="mt-md">Resources</NavHeading>
+            <NavItem href="#" icon="file-description">
+              Documentation
+            </NavItem>
+            <NavItem href="#" icon="code">
+              Examples
+            </NavItem>
+            <NavItem href="#" icon="github">
+              GitHub
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+      footer={
+        <div className="flex items-center justify-between px-base py-sm text-sm text-foreground/70">
+          <span>© 2024 Traceframe</span>
+          <div className="flex gap-md">
+            <a href="#" className="hover:text-foreground">
+              Documentation
+            </a>
+            <a href="#" className="hover:text-foreground">
+              Support
+            </a>
+            <a href="#" className="hover:text-foreground">
+              GitHub
+            </a>
+          </div>
+        </div>
+      }
+    >
+      <Flex gap="lg">
+        <Card>
+          <CardContent>
+            <Heading level={1}>Transparent Navigation on Colorful Background</Heading>
+            <p className="mt-sm text-foreground-muted">
+              This story demonstrates how the transparent Navigation variant creates better visual
+              hierarchy when used with colorful PageLayout backgrounds.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <Heading level={2}>Why Use Transparent?</Heading>
+            <div className="mt-sm space-y-sm text-sm text-foreground-muted">
+              <p>
+                When both PageLayout and Navigation have solid colorful backgrounds, the visual
+                hierarchy can become overwhelming. The transparent variant solves this by:
+              </p>
+              <ul className="list-inside list-disc space-y-xs pl-sm">
+                <li>Creating visual breathing room with semi-transparent surfaces</li>
+                <li>Maintaining color context while reducing visual weight</li>
+                <li>Providing better contrast for active states</li>
+                <li>Using backdrop blur for depth and sophistication</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Card key={i}>
+            <CardContent>
+              <Heading level={3}>Section {i + 1}</Heading>
+              <p className="mt-sm text-foreground-muted">
+                Scroll to see the sticky sidebar stay in place while content scrolls. The
+                transparent navigation provides a subtle, frosted-glass appearance on the colorful
+                background.
+              </p>
+            </CardContent>
+          </Card>
+        ))}
       </Flex>
     </PageLayout>
   ),
