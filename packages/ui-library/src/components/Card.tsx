@@ -197,10 +197,33 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
       defaultOpen,
     }
 
+    // Extract layout-related props that should go on the wrapper
+    const { style, ...otherProps } = props
+    // Extract data-* attributes for the wrapper
+    const dataAttributes: Record<string, any> = {}
+    const innerProps: Record<string, any> = {}
+
+    Object.keys(otherProps).forEach((key) => {
+      if (key.startsWith('data-')) {
+        dataAttributes[key] = (otherProps as any)[key]
+      } else {
+        innerProps[key] = (otherProps as any)[key]
+      }
+    })
+
+    // Apply user's className and layout props to the wrapper
+    // Apply only card variant classes to the inner div
+    const cardClassName = cardVariants({ variant: resolvedVariant, actionable })
+
     return (
-      <CollapsiblePrimitive.Root {...collapsibleProps}>
+      <CollapsiblePrimitive.Root
+        {...collapsibleProps}
+        className={className}
+        style={style}
+        {...dataAttributes}
+      >
         <CardContext.Provider value={{ isAccordion: true, contentId, size }}>
-          <div className={baseClassName} ref={ref} {...props}>
+          <div className={cardClassName} ref={ref} {...innerProps}>
             {children}
           </div>
         </CardContext.Provider>
