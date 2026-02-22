@@ -441,7 +441,7 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
         tabIndex={isFocused ? 0 : -1}
         className={cn(
           actionListItemVariants({ variant, status, density: context.density }),
-          hasStripe && `border-l-4 ${stripeColor} pl-base`,
+          hasStripe && `border-l-4 ${stripeColor}`,
           className
         )}
         onClick={handleClick}
