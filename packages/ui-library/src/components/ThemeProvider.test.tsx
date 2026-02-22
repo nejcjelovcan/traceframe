@@ -1,15 +1,17 @@
 import { act, renderHook } from '@testing-library/react'
-import { afterEach, beforeEach, describe, expect, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ThemeProvider, useTheme } from './ThemeProvider'
 
 describe('ThemeProvider', () => {
   beforeEach(() => {
-    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist', 'aura')
+    localStorage.clear()
   })
 
   afterEach(() => {
-    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist')
+    document.documentElement.classList.remove('dark', 'light', 'arctic', 'forge', 'mist', 'aura')
+    localStorage.clear()
   })
 
   describe('mode', () => {
@@ -130,6 +132,127 @@ describe('ThemeProvider', () => {
       expect(() => {
         renderHook(() => useTheme())
       }).toThrow('useTheme must be used within a ThemeProvider')
+    })
+  })
+
+  describe('localStorage persistence', () => {
+    it('does not persist by default', () => {
+      const { result } = renderHook(() => useTheme(), {
+        wrapper: ({ children }) => <ThemeProvider>{children}</ThemeProvider>,
+      })
+
+      act(() => {
+        result.current.setMode('dark')
+        result.current.setTheme('forge')
+      })
+
+      expect(localStorage.getItem('traceframe-theme-mode')).toBeNull()
+      expect(localStorage.getItem('traceframe-theme-theme')).toBeNull()
+    })
+
+    it('persists mode and theme when persistToStorage is true', () => {
+      const { result } = renderHook(() => useTheme(), {
+        wrapper: ({ children }) => <ThemeProvider persistToStorage>{children}</ThemeProvider>,
+      })
+
+      act(() => {
+        result.current.setMode('dark')
+        result.current.setTheme('forge')
+      })
+
+      expect(localStorage.getItem('traceframe-theme-mode')).toBe('dark')
+      expect(localStorage.getItem('traceframe-theme-theme')).toBe('forge')
+    })
+
+    it('loads persisted values on mount', () => {
+      localStorage.setItem('traceframe-theme-mode', 'dark')
+      localStorage.setItem('traceframe-theme-theme', 'mist')
+
+      const { result } = renderHook(() => useTheme(), {
+        wrapper: ({ children }) => <ThemeProvider persistToStorage>{children}</ThemeProvider>,
+      })
+
+      expect(result.current.mode).toBe('dark')
+      expect(result.current.theme).toBe('mist')
+      expect(document.documentElement.classList.contains('dark')).toBe(true)
+      expect(document.documentElement.classList.contains('mist')).toBe(true)
+    })
+
+    it('falls back to defaults when stored values are invalid', () => {
+      localStorage.setItem('traceframe-theme-mode', 'invalid-mode')
+      localStorage.setItem('traceframe-theme-theme', 'invalid-theme')
+
+      const { result } = renderHook(() => useTheme(), {
+        wrapper: ({ children }) => (
+          <ThemeProvider persistToStorage defaultMode="light" defaultTheme="arctic">
+            {children}
+          </ThemeProvider>
+        ),
+      })
+
+      expect(result.current.mode).toBe('light')
+      expect(result.current.theme).toBe('arctic')
+    })
+
+    it('uses custom storage key when provided', () => {
+      const { result } = renderHook(() => useTheme(), {
+        wrapper: ({ children }) => (
+          <ThemeProvider persistToStorage storageKey="custom-key">
+            {children}
+          </ThemeProvider>
+        ),
+      })
+
+      act(() => {
+        result.current.setMode('dark')
+        result.current.setTheme('aura')
+      })
+
+      expect(localStorage.getItem('custom-key-mode')).toBe('dark')
+      expect(localStorage.getItem('custom-key-theme')).toBe('aura')
+      expect(localStorage.getItem('traceframe-theme-mode')).toBeNull()
+      expect(localStorage.getItem('traceframe-theme-theme')).toBeNull()
+    })
+
+    it('handles localStorage unavailability gracefully', () => {
+      const originalLocalStorage = window.localStorage
+      const mockGetItem = vi.fn(() => {
+        throw new Error('localStorage unavailable')
+      })
+      const mockSetItem = vi.fn(() => {
+        throw new Error('localStorage unavailable')
+      })
+
+      Object.defineProperty(window, 'localStorage', {
+        configurable: true,
+        value: {
+          getItem: mockGetItem,
+          setItem: mockSetItem,
+          clear: vi.fn(),
+        },
+      })
+
+      const { result } = renderHook(() => useTheme(), {
+        wrapper: ({ children }) => (
+          <ThemeProvider persistToStorage defaultMode="light" defaultTheme="arctic">
+            {children}
+          </ThemeProvider>
+        ),
+      })
+
+      expect(result.current.mode).toBe('light')
+      expect(result.current.theme).toBe('arctic')
+
+      act(() => {
+        result.current.setMode('dark')
+      })
+
+      expect(result.current.mode).toBe('dark')
+
+      Object.defineProperty(window, 'localStorage', {
+        configurable: true,
+        value: originalLocalStorage,
+      })
     })
   })
 })

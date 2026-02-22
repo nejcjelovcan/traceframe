@@ -391,3 +391,38 @@ export const AllComponents: Story = {
     layout: 'fullscreen',
   },
 }
+
+export const WithPersistence: Story = {
+  render: () => <DesignSystemShowcase />,
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        story: `
+This story demonstrates the ThemeProvider with localStorage persistence enabled.
+Theme and mode selections will persist across page refreshes.
+
+When persistence is enabled:
+- Theme and mode preferences are saved to localStorage
+- On page refresh, the saved preferences are automatically restored
+- Storage keys used: \`traceframe-theme-mode\` and \`traceframe-theme-theme\`
+
+To test persistence:
+1. Change the theme and/or mode using the switchers
+2. Refresh the page
+3. The selected theme and mode should persist
+        `,
+      },
+    },
+  },
+  decorators: [
+    (Story) => {
+      const ThemeProvider = require('../components/ThemeProvider').ThemeProvider
+      return (
+        <ThemeProvider persistToStorage storageKey="storybook-theme">
+          <Story />
+        </ThemeProvider>
+      )
+    },
+  ],
+}
