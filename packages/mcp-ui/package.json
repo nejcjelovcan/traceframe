@@ -33,11 +33,14 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.25.0",
-    "@nejcjelovcan/traceframe-ui-library": "workspace:^",
     "glob": "^13.0.1",
     "zod": "^3.24.0"
   },
+  "peerDependencies": {
+    "@nejcjelovcan/traceframe-ui-library": ">=1.0.0 <3.0.0"
+  },
   "devDependencies": {
+    "@nejcjelovcan/traceframe-ui-library": "workspace:^",
     "@types/node": "^22.19.11",
     "tsx": "^4.19.2",
     "typescript": "^5.9.3",

@@ -136,9 +136,6 @@ importers:
       '@modelcontextprotocol/sdk':
         specifier: ^1.25.0
         version: 1.26.0(zod@3.25.76)
-      '@nejcjelovcan/traceframe-ui-library':
-        specifier: workspace:^
-        version: link:../ui-library
       glob:
         specifier: ^13.0.1
         version: 13.0.3
@@ -146,6 +143,9 @@ importers:
         specifier: ^3.24.0
         version: 3.25.76
     devDependencies:
+      '@nejcjelovcan/traceframe-ui-library':
+        specifier: workspace:^
+        version: link:../ui-library
       '@types/node':
         specifier: ^22.19.11
         version: 22.19.11
