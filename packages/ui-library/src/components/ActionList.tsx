@@ -6,6 +6,7 @@ import {
   useCallback,
   useContext,
   useEffect,
+  useId,
   useRef,
   useState,
   type ComponentPropsWithoutRef,
@@ -311,7 +312,7 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
           ref={ref}
           role="listbox"
           aria-orientation={orientation ?? undefined}
-          aria-disabled={disabled}
+          aria-disabled={disabled || undefined}
           className={cn(actionListRootVariants({ orientation }), className)}
           onKeyDown={handleKeyDown}
           tabIndex={-1}
@@ -437,7 +438,7 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
         ref={mergedRef}
         role="option"
         aria-selected={isSelected}
-        aria-disabled={isDisabled}
+        aria-disabled={isDisabled || undefined}
         tabIndex={isFocused ? 0 : -1}
         className={cn(
           actionListItemVariants({ variant, status, density: context.density }),
@@ -506,27 +507,39 @@ const ActionListItemDescription = forwardRef<HTMLSpanElement, ComponentPropsWith
 
 ActionListItemDescription.displayName = 'ActionList.ItemDescription'
 
+// Group context for label association
+const GroupContext = createContext<string | undefined>(undefined)
+
 // Group component
 const ActionListGroup = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
-  ({ className, ...props }, ref) => (
-    <div ref={ref} role="group" className={cn(className)} {...props} />
-  )
+  ({ className, ...props }, ref) => {
+    const labelId = useId()
+    return (
+      <GroupContext.Provider value={labelId}>
+        <div ref={ref} role="group" aria-labelledby={labelId} className={cn(className)} {...props} />
+      </GroupContext.Provider>
+    )
+  }
 )
 
 ActionListGroup.displayName = 'ActionList.Group'
 
 // Label component
 const ActionListLabel = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
-  ({ className, ...props }, ref) => (
-    <div
-      ref={ref}
-      className={cn(
-        'px-md py-xs text-xs font-medium text-foreground-muted uppercase tracking-wider',
-        className
-      )}
-      {...props}
-    />
-  )
+  ({ className, ...props }, ref) => {
+    const labelId = useContext(GroupContext)
+    return (
+      <div
+        ref={ref}
+        id={labelId}
+        className={cn(
+          'px-md py-xs text-xs font-medium text-foreground-muted uppercase tracking-wider',
+          className
+        )}
+        {...props}
+      />
+    )
+  }
 )
 
 ActionListLabel.displayName = 'ActionList.Label'
