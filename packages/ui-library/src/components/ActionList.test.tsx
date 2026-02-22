@@ -78,12 +78,12 @@ describe('ActionList', () => {
         </ActionList.Root>
       )
 
-      // Check that status classes are applied
+      // Active status gets a left border stripe
       const items = container.querySelectorAll('[role="option"]')
-      expect(items[0]).toHaveClass('bg-status-success-muted')
-      expect(items[1]).toHaveClass('bg-status-info-muted')
-      expect(items[2]).toHaveClass('bg-status-error-muted')
-      expect(items[3]).toHaveClass('bg-surface-muted')
+      expect(items[0]).toHaveClass('border-l-4')
+      expect(items[0]).toHaveClass('border-status-success')
+      // Pending status gets reduced opacity
+      expect(items[3]).toHaveClass('opacity-75')
     })
 
     it('applies density styles to items', () => {

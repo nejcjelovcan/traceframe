@@ -59,7 +59,7 @@ const actionListRootVariants = cva('relative w-full', {
 // Item variants
 const actionListItemVariants = cva(
   [
-    'relative flex cursor-pointer select-none items-center gap-sm',
+    'relative flex cursor-pointer select-none items-start gap-sm',
     'outline-hidden transition-colors',
     'focus:outline-hidden focus:z-10 focus:ring-2 focus:ring-ring focus:ring-offset-1 focus:ring-offset-surface',
   ],
@@ -80,10 +80,10 @@ const actionListItemVariants = cva(
         ],
       },
       status: {
-        active: 'bg-status-success-muted border-l-4 border-status-success',
-        completed: 'bg-status-info-muted',
-        failed: 'bg-status-error-muted',
-        pending: 'bg-surface-muted opacity-75',
+        active: '',
+        completed: '',
+        failed: '',
+        pending: 'opacity-75',
       },
       density: {
         compact: 'py-xs px-sm text-sm min-h-size-sm',
@@ -95,13 +95,7 @@ const actionListItemVariants = cva(
       variant: 'default',
       density: 'comfortable',
     },
-    compoundVariants: [
-      {
-        status: ['active', 'completed', 'failed', 'pending'],
-        variant: 'default',
-        className: 'pl-base',
-      },
-    ],
+    compoundVariants: [],
   }
 )
 
@@ -342,6 +336,8 @@ export interface ActionListItemProps
   leftIcon?: IconName
   rightIcon?: IconName
   asChild?: boolean
+  /** Show a colored left border stripe matching the status color. Active status always shows a stripe. */
+  showStripe?: boolean
 }
 
 const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
@@ -355,6 +351,7 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
       leftIcon,
       rightIcon,
       asChild,
+      showStripe,
       children,
       onClick,
       onFocus,
@@ -422,6 +419,19 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
               ? 'empty'
               : undefined
 
+    // Determine if stripe should be shown (active always, others opt-in)
+    const hasStripe = status === 'active' || (showStripe && !!status)
+    const stripeColor =
+      status === 'active'
+        ? 'border-status-success'
+        : status === 'completed'
+          ? 'border-status-info'
+          : status === 'failed'
+            ? 'border-status-error'
+            : status === 'pending'
+              ? 'border-border-muted'
+              : undefined
+
     return (
       <Component
         ref={mergedRef}
@@ -431,6 +441,7 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
         tabIndex={isFocused ? 0 : -1}
         className={cn(
           actionListItemVariants({ variant, status, density: context.density }),
+          hasStripe && `border-l-4 ${stripeColor} pl-base`,
           className
         )}
         onClick={handleClick}
@@ -442,7 +453,7 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
             name={statusIcon || leftIcon!}
             size={iconSize}
             className={cn(
-              'shrink-0',
+              'shrink-0 mt-[0.1875rem]',
               status === 'active' && 'text-status-success-foreground',
               status === 'completed' && 'text-status-info-foreground',
               status === 'failed' && 'text-status-error-foreground',
@@ -456,14 +467,14 @@ const ActionListItem = forwardRef<HTMLDivElement, ActionListItemProps>(
           <Icon
             name="check"
             size={iconSize}
-            className="shrink-0 text-status-success-foreground ml-auto"
+            className="shrink-0 mt-[0.1875rem] text-status-success-foreground ml-auto"
           />
         )}
         {rightIcon && (
           <Icon
             name={rightIcon}
             size={iconSize}
-            className="shrink-0 text-foreground-muted ml-auto"
+            className="shrink-0 mt-[0.1875rem] text-foreground-muted ml-auto"
           />
         )}
       </Component>
