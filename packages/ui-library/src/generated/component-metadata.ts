@@ -112,6 +112,13 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
         options: ['left', 'right'],
         defaultValue: 'left',
       },
+      {
+        name: 'compact',
+        description: 'Compact mode for icon-only or dot-only display',
+        type: 'boolean',
+        required: false,
+        defaultValue: 'false',
+      },
     ],
   },
   BarChart: {

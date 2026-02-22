@@ -90,6 +90,13 @@ A small label component for displaying status, categories, or counts.
         defaultValue: { summary: 'left' },
       },
     },
+    compact: {
+      description: 'Compact mode for icon-only or dot-only display',
+      control: 'boolean',
+      table: {
+        defaultValue: { summary: 'false' },
+      },
+    },
   },
 }
 
@@ -212,6 +219,129 @@ export const Emphasis: Story = {
         <Badge variant="emphasis-accent3">Accent 3</Badge>
         <Badge variant="emphasis-accent4">Accent 4</Badge>
         <Badge variant="emphasis-accent5">Accent 5</Badge>
+      </div>
+    </div>
+  ),
+}
+
+export const CompactWithIcon: Story = {
+  name: 'Compact Mode (Icon)',
+  args: {
+    compact: true,
+    icon: 'check',
+    variant: 'success',
+    size: 'xs',
+  },
+}
+
+export const CompactDot: Story = {
+  name: 'Compact Mode (Dot)',
+  args: {
+    compact: true,
+    variant: 'error',
+    size: 'xs',
+  },
+}
+
+export const CompactVariants: Story = {
+  name: 'Compact Mode Variants',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      <div className="flex items-center gap-sm">
+        <span className="text-sm w-20">With Icons:</span>
+        <Badge compact variant="default" icon="info-circle" size="xs" />
+        <Badge compact variant="info" icon="info-circle" size="xs" />
+        <Badge compact variant="success" icon="check" size="xs" />
+        <Badge compact variant="warning" icon="alert-circle" size="xs" />
+        <Badge compact variant="error" icon="close" size="xs" />
+        <Badge compact variant="accent1" icon="coffee" size="xs" />
+        <Badge compact variant="accent2" icon="archive" size="xs" />
+      </div>
+      <div className="flex items-center gap-sm">
+        <span className="text-sm w-20">Dots Only:</span>
+        <Badge compact variant="default" size="xs" />
+        <Badge compact variant="info" size="xs" />
+        <Badge compact variant="success" size="xs" />
+        <Badge compact variant="warning" size="xs" />
+        <Badge compact variant="error" size="xs" />
+        <Badge compact variant="accent1" size="xs" />
+        <Badge compact variant="accent2" size="xs" />
+      </div>
+      <div className="flex items-center gap-sm">
+        <span className="text-sm w-20">Emphasis:</span>
+        <Badge compact variant="emphasis-info" icon="info-circle" size="xs" />
+        <Badge compact variant="emphasis-success" icon="check" size="xs" />
+        <Badge compact variant="emphasis-warning" icon="alert-circle" size="xs" />
+        <Badge compact variant="emphasis-error" icon="close" size="xs" />
+      </div>
+      <div className="flex items-center gap-sm">
+        <span className="text-sm w-20">Outline:</span>
+        <Badge compact variant="outline-info" icon="info-circle" size="xs" />
+        <Badge compact variant="outline-success" icon="check" size="xs" />
+        <Badge compact variant="outline-warning" icon="alert-circle" size="xs" />
+        <Badge compact variant="outline-error" icon="close" size="xs" />
+      </div>
+    </div>
+  ),
+}
+
+export const CompactSizes: Story = {
+  name: 'Compact Mode Sizes',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      <div className="flex items-center gap-sm">
+        <span className="text-sm w-32">Icons (xs to lg):</span>
+        <Badge compact variant="success" icon="check" size="xs" />
+        <Badge compact variant="success" icon="check" size="sm" />
+        <Badge compact variant="success" icon="check" size="md" />
+        <Badge compact variant="success" icon="check" size="lg" />
+      </div>
+      <div className="flex items-center gap-sm">
+        <span className="text-sm w-32">Dots (xs to lg):</span>
+        <Badge compact variant="error" size="xs" />
+        <Badge compact variant="error" size="sm" />
+        <Badge compact variant="error" size="md" />
+        <Badge compact variant="error" size="lg" />
+      </div>
+    </div>
+  ),
+}
+
+export const CompactInContext: Story = {
+  name: 'Compact Mode in Context',
+  render: () => (
+    <div className="flex flex-col gap-base">
+      {/* Simulated navigation items */}
+      <div className="flex flex-col gap-xs bg-surface-muted p-md rounded-lg">
+        <div className="flex items-center justify-between px-sm py-xs hover:bg-surface rounded">
+          <span className="text-sm">Dashboard</span>
+          <Badge compact variant="info" icon="info-circle" size="xs" />
+        </div>
+        <div className="flex items-center justify-between px-sm py-xs hover:bg-surface rounded">
+          <span className="text-sm">Agents</span>
+          <Badge compact variant="success" icon="check" size="xs" />
+        </div>
+        <div className="flex items-center justify-between px-sm py-xs hover:bg-surface rounded">
+          <span className="text-sm">Settings</span>
+          <Badge compact variant="warning" size="xs" />
+        </div>
+        <div className="flex items-center justify-between px-sm py-xs hover:bg-surface rounded">
+          <span className="text-sm">Logs</span>
+          <Badge compact variant="error" icon="alert-circle" size="xs" />
+        </div>
+      </div>
+
+      {/* With regular badges for comparison */}
+      <div className="flex items-center gap-sm">
+        <span className="text-sm">Regular vs Compact:</span>
+        <Badge variant="success" icon="check" size="xs">
+          Active
+        </Badge>
+        <Badge compact variant="success" icon="check" size="xs" />
+        <Badge variant="error" size="xs">
+          3
+        </Badge>
+        <Badge compact variant="error" size="xs" />
       </div>
     </div>
   ),
@@ -392,6 +522,27 @@ export const Showcase: Story = {
           <Badge variant="emphasis-success" size="xs">
             Live
           </Badge>
+        </div>
+      </section>
+
+      {/* Compact Mode */}
+      <section>
+        <Heading level={3} className="mb-base">
+          Compact Mode
+        </Heading>
+        <div className="flex flex-wrap items-center gap-sm">
+          <Badge compact variant="success" icon="check" size="xs" />
+          <Badge compact variant="warning" icon="alert-circle" size="xs" />
+          <Badge compact variant="error" icon="close" size="xs" />
+          <Badge compact variant="info" icon="info-circle" size="xs" />
+          <Badge compact variant="default" size="xs" />
+          <Badge compact variant="success" size="xs" />
+          <Badge compact variant="warning" size="xs" />
+          <Badge compact variant="error" size="xs" />
+          <Badge compact variant="accent1" icon="coffee" size="sm" />
+          <Badge compact variant="accent2" size="sm" />
+          <Badge compact variant="emphasis-success" icon="check" size="md" />
+          <Badge compact variant="emphasis-error" size="lg" />
         </div>
       </section>
     </Flex>

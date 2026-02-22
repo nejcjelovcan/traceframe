@@ -298,4 +298,126 @@ describe('Badge', () => {
     render(<Badge ref={ref}>Ref</Badge>)
     expect(ref.current).toBeInstanceOf(HTMLSpanElement)
   })
+
+  describe('compact mode', () => {
+    it('renders icon-only badge in compact mode with icon', () => {
+      render(
+        <Badge compact icon="check" variant="success">
+          This text should not appear
+        </Badge>
+      )
+      const icon = screen.getByTestId('icon')
+      expect(icon).toBeDefined()
+      // Children should not be rendered
+      expect(screen.queryByText('This text should not appear')).toBeNull()
+    })
+
+    it('renders dot-only badge in compact mode without icon', () => {
+      render(<Badge compact variant="error" data-testid="compact-dot" />)
+      const dot = screen.getByTestId('compact-dot')
+      expect(dot).toBeDefined()
+      // Should have rounded-full and size classes
+      expect(dot.className).toContain('rounded-full')
+      expect(dot.className).toContain('w-2.5') // md size default
+      expect(dot.className).toContain('h-2.5')
+    })
+
+    it('applies correct padding for compact mode with icon', () => {
+      const { rerender } = render(
+        <Badge compact icon="check" size="xs" data-testid="compact-badge">
+          Text
+        </Badge>
+      )
+      let badge = screen.getByTestId('compact-badge')
+      expect(badge.className).toContain('p-2xs')
+
+      rerender(
+        <Badge compact icon="check" size="sm" data-testid="compact-badge">
+          Text
+        </Badge>
+      )
+      badge = screen.getByTestId('compact-badge')
+      expect(badge.className).toContain('p-2xs')
+
+      rerender(
+        <Badge compact icon="check" size="md" data-testid="compact-badge">
+          Text
+        </Badge>
+      )
+      badge = screen.getByTestId('compact-badge')
+      expect(badge.className).toContain('p-xs')
+
+      rerender(
+        <Badge compact icon="check" size="lg" data-testid="compact-badge">
+          Text
+        </Badge>
+      )
+      badge = screen.getByTestId('compact-badge')
+      expect(badge.className).toContain('p-xs')
+    })
+
+    it('applies correct dot sizes for each size variant', () => {
+      const { rerender } = render(<Badge compact size="xs" data-testid="compact-dot" />)
+      let dot = screen.getByTestId('compact-dot')
+      expect(dot.className).toContain('w-1.5')
+      expect(dot.className).toContain('h-1.5')
+
+      rerender(<Badge compact size="sm" data-testid="compact-dot" />)
+      dot = screen.getByTestId('compact-dot')
+      expect(dot.className).toContain('w-2')
+      expect(dot.className).toContain('h-2')
+
+      rerender(<Badge compact size="md" data-testid="compact-dot" />)
+      dot = screen.getByTestId('compact-dot')
+      expect(dot.className).toContain('w-2.5')
+      expect(dot.className).toContain('h-2.5')
+
+      rerender(<Badge compact size="lg" data-testid="compact-dot" />)
+      dot = screen.getByTestId('compact-dot')
+      expect(dot.className).toContain('w-3')
+      expect(dot.className).toContain('h-3')
+    })
+
+    it('ignores children when compact is true', () => {
+      render(
+        <Badge compact icon="check">
+          This should not render
+        </Badge>
+      )
+      expect(screen.queryByText('This should not render')).toBeNull()
+      expect(screen.getByTestId('icon')).toBeDefined()
+    })
+
+    it('works with all variants in compact mode', () => {
+      const variants = [
+        'success',
+        'error',
+        'warning',
+        'info',
+        'accent1',
+        'emphasis-success',
+      ] as const
+
+      variants.forEach((variant) => {
+        const { unmount } = render(
+          <Badge compact variant={variant} icon="check" data-testid={`compact-${variant}`} />
+        )
+        const badge = screen.getByTestId(`compact-${variant}`)
+        expect(badge).toBeDefined()
+        unmount()
+      })
+    })
+
+    it('applies aria-label to dot-only badges', () => {
+      render(<Badge compact variant="error" aria-label="Error status" />)
+      const dot = screen.getByLabelText('Error status')
+      expect(dot).toBeDefined()
+    })
+
+    it('applies default aria-label when not provided for dot-only badges', () => {
+      render(<Badge compact variant="error" data-testid="dot" />)
+      const dot = screen.getByTestId('dot')
+      expect(dot.getAttribute('aria-label')).toBe('Status indicator')
+    })
+  })
 })
