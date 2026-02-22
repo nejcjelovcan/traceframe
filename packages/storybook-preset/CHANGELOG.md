@@ -1,5 +1,12 @@
 # @nejcjelovcan/traceframe-storybook-preset
 
+## 1.3.5
+
+### Patch Changes
+
+- Updated dependencies [[`67598fb`](https://github.com/nejcjelovcan/traceframe/commit/67598fb399f801c3846f93ce5ba33ecaf9fb2b8f), [`17806ed`](https://github.com/nejcjelovcan/traceframe/commit/17806ed861f48f29f29959c85359b50ef921553e), [`f5dc92c`](https://github.com/nejcjelovcan/traceframe/commit/f5dc92cc6d3e8a31cb48635b3216808d80183888), [`fd13e14`](https://github.com/nejcjelovcan/traceframe/commit/fd13e149f07448682869692b12e963d9dfcce9eb)]:
+  - @nejcjelovcan/traceframe-ui-library@2.4.0
+
 ## 1.3.4
 
 ### Patch Changes
