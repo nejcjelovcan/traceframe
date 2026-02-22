@@ -577,6 +577,142 @@ export const MixedVariants: Story = {
   ),
 }
 
+export const ColorfulWithTransparentNav: Story = {
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Showcases the transparent Navigation variant on colorful PageLayout backgrounds. The transparent variant provides better visual hierarchy than using two solid colorful components together.',
+      },
+    },
+  },
+  render: () => (
+    <PageLayout
+      variant="colorful"
+      color="primary"
+      header={
+        <PageHeader title="Traceframe Design System">
+          <Navigation orientation="horizontal" variant="transparent" color="primary">
+            <NavItem href="#" active>
+              Components
+            </NavItem>
+            <NavItem href="#">Tokens</NavItem>
+            <NavItem href="#">Icons</NavItem>
+            <NavItem href="#">Patterns</NavItem>
+          </Navigation>
+        </PageHeader>
+      }
+      sidebar={
+        <div className="w-64 p-base">
+          <Heading level={3} className="mb-md text-foreground/70 text-shadow-light">
+            Components
+          </Heading>
+          <Navigation orientation="vertical" variant="transparent" color="primary">
+            <NavItem href="#" icon="package" active>
+              Overview
+            </NavItem>
+            <NavItem href="#" icon="components">
+              Primitives
+            </NavItem>
+            <NavItem href="#" icon="layer">
+              Layout
+            </NavItem>
+            <NavItem href="#" icon="database">
+              Data Display
+            </NavItem>
+            <NavItem href="#" icon="bell">
+              Feedback
+            </NavItem>
+          </Navigation>
+          <Heading level={3} className="mb-md mt-lg text-foreground/70 text-shadow-light">
+            Resources
+          </Heading>
+          <Navigation orientation="vertical" variant="transparent" color="primary">
+            <NavItem href="#" icon="book">
+              Documentation
+            </NavItem>
+            <NavItem href="#" icon="code">
+              Examples
+            </NavItem>
+            <NavItem href="#" icon="github">
+              GitHub
+            </NavItem>
+          </Navigation>
+        </div>
+      }
+      footer={
+        <div className="flex items-center justify-between px-base py-sm text-sm text-foreground/70">
+          <span>© 2024 Traceframe</span>
+          <div className="flex gap-md">
+            <a href="#" className="hover:text-foreground">
+              Documentation
+            </a>
+            <a href="#" className="hover:text-foreground">
+              Support
+            </a>
+            <a href="#" className="hover:text-foreground">
+              GitHub
+            </a>
+          </div>
+        </div>
+      }
+    >
+      <Flex gap="lg">
+        <Card>
+          <CardContent>
+            <Heading level={1}>Transparent Navigation on Colorful Background</Heading>
+            <p className="mt-sm text-foreground-muted">
+              This story demonstrates how the transparent Navigation variant creates better visual
+              hierarchy when used with colorful PageLayout backgrounds.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardContent>
+            <Heading level={2}>Why Use Transparent?</Heading>
+            <div className="mt-sm space-y-sm text-sm text-foreground-muted">
+              <p>
+                When both PageLayout and Navigation have solid colorful backgrounds, the visual
+                hierarchy can become overwhelming. The transparent variant solves this by:
+              </p>
+              <ul className="list-inside list-disc space-y-xs pl-sm">
+                <li>Creating visual breathing room with semi-transparent surfaces</li>
+                <li>Maintaining color context while reducing visual weight</li>
+                <li>Providing better contrast for active states</li>
+                <li>Using backdrop blur for depth and sophistication</li>
+              </ul>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Grid cols="3" gap="md">
+          {['primary', 'secondary', 'accent-1', 'accent-2', 'accent-3'].map((color) => (
+            <Card key={color}>
+              <CardContent>
+                <div
+                  className={`mb-sm rounded-md bg-gradient-${color} p-sm`}
+                  style={{ '--tw-bg-opacity': 1 } as React.CSSProperties}
+                >
+                  <Navigation orientation="horizontal" variant="transparent" color={color as any}>
+                    <NavItem href="#" active>
+                      Active
+                    </NavItem>
+                    <NavItem href="#">Link</NavItem>
+                  </Navigation>
+                </div>
+                <p className="text-sm text-foreground-muted">
+                  Transparent on <span className="font-medium">{color}</span>
+                </p>
+              </CardContent>
+            </Card>
+          ))}
+        </Grid>
+      </Flex>
+    </PageLayout>
+  ),
+}
+
 export const FixedSidebar: Story = {
   parameters: {
     docs: {
