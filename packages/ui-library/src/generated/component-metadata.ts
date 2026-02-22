@@ -31,6 +31,38 @@ export interface ComponentMeta {
 }
 
 export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
+  ActionList: {
+    name: 'ActionList',
+    category: 'other',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'ActionList is a selectable list component that displays items inline without a trigger/popover.',
+    usage: '',
+    accessibility: [],
+    props: [
+      {
+        name: 'density',
+        description: '',
+        type: 'select',
+        required: false,
+        options: ['compact', 'comfortable', 'spacious'],
+      },
+      {
+        name: 'orientation',
+        description: '',
+        type: 'select',
+        required: false,
+        options: ['vertical', 'horizontal'],
+      },
+      {
+        name: 'disabled',
+        description: '',
+        type: 'boolean',
+        required: false,
+      },
+    ],
+  },
   Badge: {
     name: 'Badge',
     category: 'primitives',

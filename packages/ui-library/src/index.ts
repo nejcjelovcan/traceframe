@@ -1,4 +1,11 @@
 // Components
+export {
+  ActionList,
+  actionListRootVariants,
+  actionListItemVariants,
+  type ActionListRootProps,
+  type ActionListItemProps,
+} from './components/ActionList.js'
 export { Badge, badgeVariants, type BadgeProps } from './components/Badge.js'
 export {
   Collapsible,
