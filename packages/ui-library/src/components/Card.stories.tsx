@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { ActionList } from './ActionList'
 import { Card, CardContent, CardFooter, CardHeader } from './Card'
 import { Heading } from './Heading'
 import { ToggleGroup } from './ToggleGroup'
@@ -386,7 +387,7 @@ export const FullCard: Story = {
 export const StatusVariants: Story = {
   name: 'All Status Variants',
   render: () => (
-    <div className="flex flex-wrap gap-base">
+    <div className="flex flex-wrap items-start gap-base">
       <Card variant="info" className="w-56">
         <CardHeader icon="info-circle">Info</CardHeader>
         <CardContent>
@@ -418,7 +419,7 @@ export const StatusVariants: Story = {
 export const AccentVariants: Story = {
   name: 'All Accent Variants',
   render: () => (
-    <div className="flex flex-wrap gap-base">
+    <div className="flex flex-wrap items-start gap-base">
       <Card variant="accent1" className="w-48">
         <CardHeader>Accent 1</CardHeader>
         <CardContent>
@@ -461,7 +462,7 @@ export const AllInverse: Story = {
         <Heading level={3} size="base" className="mb-base">
           Core Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card variant="outlined" className="inverse w-56">
             <CardHeader>Outlined</CardHeader>
             <CardContent>
@@ -481,7 +482,7 @@ export const AllInverse: Story = {
         <Heading level={3} size="base" className="mb-base">
           Status Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card variant="info" className="inverse w-56">
             <CardHeader icon="info-circle">Info</CardHeader>
             <CardContent>
@@ -513,7 +514,7 @@ export const AllInverse: Story = {
         <Heading level={3} size="base" className="mb-base">
           Accent Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card variant="accent1" className="inverse w-48">
             <CardHeader>Accent 1</CardHeader>
             <CardContent>
@@ -583,7 +584,7 @@ export const Actionable: Story = {
 export const ActionableVariants: Story = {
   name: 'All Actionable Variants',
   render: () => (
-    <div className="flex flex-wrap gap-base">
+    <div className="flex flex-wrap items-start gap-base">
       <Card variant="outlined" actionable className="w-56">
         <CardHeader>Outlined</CardHeader>
         <CardContent>
@@ -622,7 +623,7 @@ export const InteractiveComparison: Story = {
   name: 'Normal vs Actionable',
   render: () => (
     <div className="space-y-base">
-      <div className="flex flex-wrap gap-base">
+      <div className="flex flex-wrap items-start gap-base">
         <Card variant="outlined" className="w-64">
           <CardHeader>Normal Card</CardHeader>
           <CardContent>
@@ -655,7 +656,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             Basic Usage
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card accordion className="w-80">
               <CardHeader>Collapsed by Default</CardHeader>
               <CardContent>
@@ -722,7 +723,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             With Header Icons
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card accordion className="w-80">
               <CardHeader icon="settings">Left Icon</CardHeader>
               <CardContent>
@@ -745,7 +746,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             All Variants
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card variant="outlined" accordion className="w-64">
               <CardHeader>Outlined</CardHeader>
               <CardContent>
@@ -840,7 +841,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             Inverse
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card accordion className="inverse w-64">
               <CardHeader>Inverse Accordion</CardHeader>
               <CardContent>
@@ -962,7 +963,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Core Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
@@ -1001,7 +1002,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Status Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
@@ -1046,7 +1047,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Accent Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
@@ -1100,7 +1101,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Compositions
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card
             actionable={mode === 'actionable'}
             accordion={mode === 'accordion'}
@@ -1154,4 +1155,330 @@ export const Showcase: Story = {
     },
   },
   render: () => <ShowcaseContent />,
+}
+
+export const WithActionList: Story = {
+  name: 'With ActionList Integration',
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        story:
+          'Demonstrates Card + ActionList integration with overflow and padding control features. Perfect for agent lists, configuration options, and scrollable item lists.',
+      },
+    },
+  },
+  render: () => {
+    const [selectedAgent, setSelectedAgent] = useState('agent-2')
+    const [selectedConfig, setSelectedConfig] = useState('theme')
+    const [selectedSession, setSelectedSession] = useState('session-1')
+    const [selectedFile, setSelectedFile] = useState('file-3')
+    const [accordionOpen, setAccordionOpen] = useState(true)
+
+    // Mock data for demonstration
+    const agents = [
+      { id: 'agent-1', name: 'Code Review Agent', status: 'pending' as const },
+      { id: 'agent-2', name: 'Test Runner Agent', status: 'active' as const },
+      { id: 'agent-3', name: 'Documentation Agent', status: 'completed' as const },
+      { id: 'agent-4', name: 'Deployment Agent', status: 'failed' as const },
+      { id: 'agent-5', name: 'Monitoring Agent', status: 'pending' as const },
+    ]
+
+    const sessions = [
+      { id: 'session-1', name: 'Current Live Session', time: 'Started 5 minutes ago' },
+      { id: 'session-2', name: 'Test Session #42', time: 'Started 1 hour ago' },
+      { id: 'session-3', name: 'Debug Session', time: 'Started 2 hours ago' },
+    ]
+
+    const manyFiles = Array.from({ length: 15 }, (_, i) => ({
+      id: `file-${i + 1}`,
+      name: `component-${i + 1}.tsx`,
+      status: (i === 0 ? 'active' : i === 5 ? 'failed' : i === 8 ? 'completed' : undefined) as
+        | 'active'
+        | 'failed'
+        | 'completed'
+        | undefined,
+      modified: i % 3 === 0 ? 'Modified' : '',
+    }))
+
+    const configOptions = [
+      { id: 'theme', name: 'Theme', value: 'Auto' },
+      { id: 'language', name: 'Language', value: 'English' },
+      { id: 'timezone', name: 'Timezone', value: 'UTC' },
+      { id: 'notifications', name: 'Notifications', value: 'Enabled' },
+    ]
+
+    return (
+      <div className="space-y-lg p-base">
+        {/* Section 1: Basic List Card */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Basic List Card
+          </Heading>
+          <p className="mb-base text-sm text-foreground-muted">
+            Card with ActionList, default padding. Good for small lists that don't need scrolling.
+          </p>
+          <Card className="w-96">
+            <CardHeader icon="users">Active Agents</CardHeader>
+            <CardContent>
+              <ActionList.Root value={selectedAgent} onValueChange={setSelectedAgent}>
+                {agents.slice(0, 3).map((agent) => (
+                  <ActionList.Item key={agent.id} value={agent.id} status={agent.status}>
+                    <ActionList.ItemText>{agent.name}</ActionList.ItemText>
+                  </ActionList.Item>
+                ))}
+              </ActionList.Root>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Section 2: Scrollable List Card */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Scrollable List Card
+          </Heading>
+          <p className="mb-base text-sm text-foreground-muted">
+            Card with overflow enabled (max-height: 320px). The list scrolls within the card content
+            area.
+          </p>
+          <div className="flex items-start gap-base">
+            <Card className="w-96">
+              <CardHeader icon="file">Project Files (Default Overflow)</CardHeader>
+              <CardContent overflow>
+                <ActionList.Root value={selectedFile} onValueChange={setSelectedFile}>
+                  {manyFiles.map((file) => (
+                    <ActionList.Item
+                      key={file.id}
+                      value={file.id}
+                      status={file.status}
+                      {...(file.modified && { rightIcon: 'edit' as const })}
+                    >
+                      <ActionList.ItemText>{file.name}</ActionList.ItemText>
+                      {file.modified && (
+                        <ActionList.ItemDescription>{file.modified}</ActionList.ItemDescription>
+                      )}
+                    </ActionList.Item>
+                  ))}
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+
+            <Card className="w-96">
+              <CardHeader icon="file">Custom Max Height (200px)</CardHeader>
+              <CardContent overflow={{ maxHeight: '200px' }}>
+                <ActionList.Root value={selectedFile} onValueChange={setSelectedFile}>
+                  {manyFiles.map((file) => (
+                    <ActionList.Item
+                      key={file.id}
+                      value={file.id}
+                      status={file.status}
+                      {...(file.modified && { rightIcon: 'edit' as const })}
+                    >
+                      <ActionList.ItemText>{file.name}</ActionList.ItemText>
+                      {file.modified && (
+                        <ActionList.ItemDescription>{file.modified}</ActionList.ItemDescription>
+                      )}
+                    </ActionList.Item>
+                  ))}
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Section 3: No-Padding List Card */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            No-Padding List Card
+          </Heading>
+          <p className="mb-base text-sm text-foreground-muted">
+            Card with noPadding for edge-to-edge list items. Creates a cleaner visual integration.
+          </p>
+          <Card className="w-96">
+            <CardHeader icon="settings">Configuration</CardHeader>
+            <CardContent noPadding>
+              <ActionList.Root value={selectedConfig} onValueChange={setSelectedConfig}>
+                {configOptions.map((option) => (
+                  <ActionList.Item key={option.id} value={option.id}>
+                    <ActionList.ItemText>{option.name}</ActionList.ItemText>
+                    <ActionList.ItemDescription>{option.value}</ActionList.ItemDescription>
+                  </ActionList.Item>
+                ))}
+              </ActionList.Root>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Section 4: Full Integration */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Full Integration (Accordion + Overflow + No Padding)
+          </Heading>
+          <p className="mb-base text-sm text-foreground-muted">
+            Accordion Card with overflow and noPadding, demonstrating all features combined. Perfect
+            for collapsible agent or session lists.
+          </p>
+          <Card accordion open={accordionOpen} onOpenChange={setAccordionOpen} className="w-96">
+            <CardHeader
+              icon="agent"
+              rightContent={
+                <span className="text-xs text-foreground-muted">{agents.length} agents</span>
+              }
+            >
+              System Agents
+            </CardHeader>
+            <CardContent overflow noPadding>
+              <ActionList.Root
+                value={selectedAgent}
+                onValueChange={setSelectedAgent}
+                density="comfortable"
+              >
+                {agents
+                  .concat(agents)
+                  .concat(agents)
+                  .map((agent, index) => (
+                    <ActionList.Item
+                      key={`${agent.id}-${index}`}
+                      value={`${agent.id}-${index}`}
+                      status={agent.status}
+                      showStripe
+                    >
+                      <ActionList.ItemText>{agent.name}</ActionList.ItemText>
+                      <ActionList.ItemDescription>Instance #{index + 1}</ActionList.ItemDescription>
+                    </ActionList.Item>
+                  ))}
+              </ActionList.Root>
+            </CardContent>
+          </Card>
+        </section>
+
+        {/* Section 5: Multiple Densities */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Card Size & ActionList Density
+          </Heading>
+          <p className="mb-base text-sm text-foreground-muted">
+            Showing how Card sizes relate to ActionList densities for optimal visual pairing.
+          </p>
+          <div className="flex flex-wrap items-start gap-base">
+            {/* Default Card + Comfortable ActionList */}
+            <Card size="default" className="w-80">
+              <CardHeader>Default + Comfortable</CardHeader>
+              <CardContent noPadding>
+                <ActionList.Root
+                  value={selectedSession}
+                  onValueChange={setSelectedSession}
+                  density="comfortable"
+                >
+                  {sessions.map((session) => (
+                    <ActionList.Item key={session.id} value={session.id}>
+                      <ActionList.ItemText>{session.name}</ActionList.ItemText>
+                      <ActionList.ItemDescription>{session.time}</ActionList.ItemDescription>
+                    </ActionList.Item>
+                  ))}
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+
+            {/* Small Card + Compact ActionList */}
+            <Card size="sm" className="w-80">
+              <CardHeader>Small + Compact</CardHeader>
+              <CardContent noPadding>
+                <ActionList.Root
+                  value={selectedSession}
+                  onValueChange={setSelectedSession}
+                  density="compact"
+                >
+                  {sessions.map((session) => (
+                    <ActionList.Item key={session.id} value={session.id}>
+                      <ActionList.ItemText>{session.name}</ActionList.ItemText>
+                      <ActionList.ItemDescription>{session.time}</ActionList.ItemDescription>
+                    </ActionList.Item>
+                  ))}
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+
+            {/* Default Card + Spacious ActionList */}
+            <Card size="default" className="w-80">
+              <CardHeader>Default + Spacious</CardHeader>
+              <CardContent noPadding>
+                <ActionList.Root
+                  value={selectedSession}
+                  onValueChange={setSelectedSession}
+                  density="spacious"
+                >
+                  {sessions.map((session) => (
+                    <ActionList.Item key={session.id} value={session.id}>
+                      <ActionList.ItemText>{session.name}</ActionList.ItemText>
+                      <ActionList.ItemDescription>{session.time}</ActionList.ItemDescription>
+                    </ActionList.Item>
+                  ))}
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+
+        {/* Section 6: Status Variants with ActionList */}
+        <section>
+          <Heading level={3} size="base" className="mb-base">
+            Status Cards with ActionList
+          </Heading>
+          <p className="mb-base text-sm text-foreground-muted">
+            Status variant cards with ActionList for themed containers.
+          </p>
+          <div className="flex flex-wrap items-start gap-base">
+            <Card variant="info" className="w-80">
+              <CardHeader icon="info-circle">Information</CardHeader>
+              <CardContent noPadding overflow>
+                <ActionList.Root>
+                  <ActionList.Item value="1">
+                    <ActionList.ItemText>Info item 1</ActionList.ItemText>
+                  </ActionList.Item>
+                  <ActionList.Item value="2">
+                    <ActionList.ItemText>Info item 2</ActionList.ItemText>
+                  </ActionList.Item>
+                  <ActionList.Item value="3">
+                    <ActionList.ItemText>Info item 3</ActionList.ItemText>
+                  </ActionList.Item>
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+
+            <Card variant="success" className="w-80">
+              <CardHeader icon="check">Completed Tasks</CardHeader>
+              <CardContent noPadding>
+                <ActionList.Root>
+                  <ActionList.Item value="1" status="completed">
+                    <ActionList.ItemText>Setup environment</ActionList.ItemText>
+                  </ActionList.Item>
+                  <ActionList.Item value="2" status="completed">
+                    <ActionList.ItemText>Run tests</ActionList.ItemText>
+                  </ActionList.Item>
+                  <ActionList.Item value="3" status="completed">
+                    <ActionList.ItemText>Deploy to production</ActionList.ItemText>
+                  </ActionList.Item>
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+
+            <Card variant="error" className="w-80">
+              <CardHeader icon="alert-circle">Failed Jobs</CardHeader>
+              <CardContent noPadding>
+                <ActionList.Root>
+                  <ActionList.Item value="1" status="failed">
+                    <ActionList.ItemText>Build #142</ActionList.ItemText>
+                  </ActionList.Item>
+                  <ActionList.Item value="2" status="failed">
+                    <ActionList.ItemText>Test Suite #3</ActionList.ItemText>
+                  </ActionList.Item>
+                </ActionList.Root>
+              </CardContent>
+            </Card>
+          </div>
+        </section>
+      </div>
+    )
+  },
 }

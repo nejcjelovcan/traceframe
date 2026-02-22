@@ -335,12 +335,33 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
 CardHeader.displayName = 'CardHeader'
 
 // CardContent
-export type CardContentProps = HTMLAttributes<HTMLDivElement>
+export interface CardContentProps extends HTMLAttributes<HTMLDivElement> {
+  /** Enables scrollable content with a default max-height of 320px (max-h-80), or custom height when object is passed */
+  overflow?: boolean | { maxHeight?: string }
+  /** Removes all padding for full-width content scenarios like ActionList */
+  noPadding?: boolean
+}
 
 export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
-  ({ className, children, ...props }, ref) => {
+  ({ className, overflow, noPadding, children, ...props }, ref) => {
     const { isAccordion, contentId, size } = useContext(CardContext)
-    const padding = size === 'sm' ? 'px-sm py-xs' : 'px-base py-base'
+    const padding = noPadding ? '' : size === 'sm' ? 'px-sm py-xs' : 'px-base py-base'
+
+    // Build overflow classes
+    let overflowClasses = ''
+    if (overflow) {
+      if (typeof overflow === 'boolean') {
+        overflowClasses = 'max-h-80 overflow-y-auto'
+      } else if (overflow.maxHeight) {
+        // Use inline style for custom max-height
+        overflowClasses = 'overflow-y-auto'
+      }
+    }
+
+    const customStyle =
+      overflow && typeof overflow === 'object' && overflow.maxHeight
+        ? { ...props.style, maxHeight: overflow.maxHeight }
+        : props.style
 
     if (isAccordion) {
       return (
@@ -348,7 +369,12 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
           id={contentId}
           className="overflow-hidden border-t border-inherit data-[state=open]:animate-collapsible-down data-[state=closed]:animate-collapsible-up"
         >
-          <div className={cn(padding, 'text-foreground', className)} ref={ref} {...props}>
+          <div
+            className={cn(padding, overflowClasses, 'text-foreground', className)}
+            ref={ref}
+            style={customStyle}
+            {...props}
+          >
             {children}
           </div>
         </CollapsiblePrimitive.Content>
@@ -360,10 +386,12 @@ export const CardContent = forwardRef<HTMLDivElement, CardContentProps>(
         className={cn(
           'border-t border-inherit first:border-t-0',
           padding,
+          overflowClasses,
           'text-foreground',
           className
         )}
         ref={ref}
+        style={customStyle}
         {...props}
       >
         {children}
