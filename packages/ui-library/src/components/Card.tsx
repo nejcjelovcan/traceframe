@@ -200,14 +200,14 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(
     // Extract layout-related props that should go on the wrapper
     const { style, ...otherProps } = props
     // Extract data-* attributes for the wrapper
-    const dataAttributes: Record<string, any> = {}
-    const innerProps: Record<string, any> = {}
+    const dataAttributes: Record<string, unknown> = {}
+    const innerProps: Record<string, unknown> = {}
 
     Object.keys(otherProps).forEach((key) => {
       if (key.startsWith('data-')) {
-        dataAttributes[key] = (otherProps as any)[key]
+        dataAttributes[key] = (otherProps as Record<string, unknown>)[key]
       } else {
-        innerProps[key] = (otherProps as any)[key]
+        innerProps[key] = (otherProps as Record<string, unknown>)[key]
       }
     })
 

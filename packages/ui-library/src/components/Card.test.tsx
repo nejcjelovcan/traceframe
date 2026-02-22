@@ -1134,7 +1134,7 @@ describe('Card accordion functionality', () => {
       </div>
     )
 
-    const flexContainer = container.firstChild
+    const flexContainer = container.firstChild as Element
     // Get only the root-level accordion wrappers (direct children of flex container)
     const cards = flexContainer?.querySelectorAll(':scope > [data-state]')
     expect(cards?.length).toBe(2)
