@@ -147,42 +147,6 @@ export const WithGroups: Story = {
   },
 }
 
-export const NavigationMenu: Story = {
-  render: () => {
-    const [currentPage, setCurrentPage] = useState('dashboard')
-
-    return (
-      <ActionList.Root
-        value={currentPage}
-        onValueChange={setCurrentPage}
-        variant="ghost"
-        density="comfortable"
-        className="w-64"
-      >
-        <ActionList.Item value="dashboard" leftIcon="dashboard">
-          <ActionList.ItemText>Dashboard</ActionList.ItemText>
-        </ActionList.Item>
-        <ActionList.Item value="agents" leftIcon="agent">
-          <ActionList.ItemText>Agents</ActionList.ItemText>
-        </ActionList.Item>
-        <ActionList.Item value="tasks" leftIcon="components">
-          <ActionList.ItemText>Tasks</ActionList.ItemText>
-        </ActionList.Item>
-        <ActionList.Item value="analytics" leftIcon="chart">
-          <ActionList.ItemText>Analytics</ActionList.ItemText>
-        </ActionList.Item>
-        <ActionList.Separator />
-        <ActionList.Item value="settings" leftIcon="settings">
-          <ActionList.ItemText>Settings</ActionList.ItemText>
-        </ActionList.Item>
-        <ActionList.Item value="help" leftIcon="help">
-          <ActionList.ItemText>Help & Support</ActionList.ItemText>
-        </ActionList.Item>
-      </ActionList.Root>
-    )
-  },
-}
-
 export const TaskSelection: Story = {
   render: () => {
     const [selectedTask, setSelectedTask] = useState<string>()
