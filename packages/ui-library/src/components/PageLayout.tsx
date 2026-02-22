@@ -427,7 +427,7 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             color,
           }),
           sidebarWidth && sidebarWidthMap[sidebarWidth],
-          sidebarSticky && 'h-[calc(100vh-var(--header-height,0px))]'
+          sidebarSticky && header && 'max-h-[calc(100vh-theme(size.xl))]'
         )}
       >
         {sidebar}
@@ -502,13 +502,9 @@ const PageLayout = forwardRef<HTMLDivElement, PageLayoutProps>(
             {sidebarPosition === 'left' && sidebarElement}
 
             {/* Main content - skip link target */}
-            <main
-              id="main-content"
-              tabIndex={-1}
-              className="flex-1 bg-surface-muted focus:outline-hidden"
-            >
+            <main id="main-content" tabIndex={-1} className="flex-1 focus:outline-none">
               {contentWidth === 'contained' ? (
-                <Container className="py-lg bg-surface-muted">{children}</Container>
+                <Container className="py-lg">{children}</Container>
               ) : (
                 children
               )}
