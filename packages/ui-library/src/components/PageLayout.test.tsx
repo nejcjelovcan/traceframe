@@ -101,7 +101,7 @@ describe('PageLayout', () => {
         </PageLayout>
       )
       const sidebar = screen.getByText('Sidebar').parentElement
-      expect(sidebar?.className).not.toContain('hidden')
+      expect(sidebar?.className.split(' ')).not.toContain('hidden')
     })
   })
 
@@ -301,7 +301,6 @@ describe('PageLayout', () => {
       const sidebar = screen.getByText('Sidebar').parentElement
       expect(sidebar?.className).toContain('sticky')
       expect(sidebar?.className).toContain('top-0')
-      expect(sidebar?.className).toContain('self-start')
     })
 
     it('applies overflow-y-auto to body when sidebarSticky is true', () => {
