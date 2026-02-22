@@ -54,7 +54,7 @@
     /* Primary button and CTA background color */
     --token-interactive-primary: var(--palette-primary-600);
     /* Border color for primary buttons and outlined primary elements */
-    --token-interactive-primary-border: var(--palette-primary-500);
+    --token-interactive-primary-border: var(--palette-primary-400);
     /* Text and icon color on primary buttons */
     --token-interactive-primary-foreground: var(--palette-primary-950);
     /* Primary button background on hover */
@@ -65,9 +65,9 @@
     /* Secondary button and accent background color */
     --token-interactive-secondary: var(--palette-secondary-600);
     /* Border color for secondary buttons and outlined secondary elements */
-    --token-interactive-secondary-border: var(--palette-secondary-500);
+    --token-interactive-secondary-border: var(--palette-secondary-400);
     /* Text and icon color on secondary buttons */
-    --token-interactive-secondary-foreground: var(--palette-neutral-50);
+    --token-interactive-secondary-foreground: var(--palette-neutral-950);
     /* Secondary button background on hover */
     --token-interactive-secondary-hover: var(--palette-secondary-600);
     /* Muted secondary background for subtle containers and indicators */
@@ -79,7 +79,7 @@
     /* Accent 1 base color for categorical data and visual distinction */
     --token-accent-1: var(--palette-accent-1-600);
     /* Accent 1 border color for containers and elements */
-    --token-accent-1-border: var(--palette-accent-1-500);
+    --token-accent-1-border: var(--palette-accent-1-400);
     /* Accent 1 text color for readability on accent backgrounds */
     --token-accent-1-foreground: var(--palette-accent-1-300);
     /* Accent 1 muted background for subtle indicators */
@@ -90,7 +90,7 @@
     /* Accent 2 base color for categorical data and visual distinction */
     --token-accent-2: var(--palette-accent-2-600);
     /* Accent 2 border color for containers and elements */
-    --token-accent-2-border: var(--palette-accent-2-500);
+    --token-accent-2-border: var(--palette-accent-2-400);
     /* Accent 2 text color for readability on accent backgrounds */
     --token-accent-2-foreground: var(--palette-accent-2-300);
     /* Accent 2 muted background for subtle indicators */
@@ -101,7 +101,7 @@
     /* Accent 3 base color for categorical data and visual distinction */
     --token-accent-3: var(--palette-accent-3-600);
     /* Accent 3 border color for containers and elements */
-    --token-accent-3-border: var(--palette-accent-3-500);
+    --token-accent-3-border: var(--palette-accent-3-400);
     /* Accent 3 text color for readability on accent backgrounds */
     --token-accent-3-foreground: var(--palette-accent-3-300);
     /* Accent 3 muted background for subtle indicators */
@@ -112,7 +112,7 @@
     /* Accent 4 base color for categorical data and visual distinction */
     --token-accent-4: var(--palette-accent-4-600);
     /* Accent 4 border color for containers and elements */
-    --token-accent-4-border: var(--palette-accent-4-500);
+    --token-accent-4-border: var(--palette-accent-4-400);
     /* Accent 4 text color for readability on accent backgrounds */
     --token-accent-4-foreground: var(--palette-accent-4-300);
     /* Accent 4 muted background for subtle indicators */
@@ -123,7 +123,7 @@
     /* Accent 5 base color for categorical data and visual distinction */
     --token-accent-5: var(--palette-accent-5-600);
     /* Accent 5 border color for containers and elements */
-    --token-accent-5-border: var(--palette-accent-5-500);
+    --token-accent-5-border: var(--palette-accent-5-400);
     /* Accent 5 text color for readability on accent backgrounds */
     --token-accent-5-foreground: var(--palette-accent-5-300);
     /* Accent 5 muted background for subtle indicators */
@@ -134,7 +134,7 @@
     /* Error status color for failures, critical issues, and destructive actions */
     --token-status-error: var(--palette-error-600);
     /* Error status border color for error containers and alerts */
-    --token-status-error-border: var(--palette-error-500);
+    --token-status-error-border: var(--palette-error-400);
     /* Error status text color for readability on error backgrounds */
     --token-status-error-foreground: var(--palette-error-300);
     /* Error status muted background for subtle error indicators */
@@ -145,7 +145,7 @@
     /* Info status color for informational messages, tips, and non-critical alerts */
     --token-status-info: var(--palette-info-600);
     /* Info status border color for info containers and alerts */
-    --token-status-info-border: var(--palette-info-500);
+    --token-status-info-border: var(--palette-info-400);
     /* Info status text color for readability on info backgrounds */
     --token-status-info-foreground: var(--palette-info-300);
     /* Info status muted background for subtle info indicators */
@@ -156,7 +156,7 @@
     /* Success status color for positive outcomes, completed actions, and confirmations */
     --token-status-success: var(--palette-success-600);
     /* Success status border color for success containers and alerts */
-    --token-status-success-border: var(--palette-success-500);
+    --token-status-success-border: var(--palette-success-400);
     /* Success status text color for readability on success backgrounds */
     --token-status-success-foreground: var(--palette-success-300);
     /* Success status muted background for subtle success indicators */
@@ -167,7 +167,7 @@
     /* Warning status color for cautions, pending states, and attention required */
     --token-status-warning: var(--palette-warning-600);
     /* Warning status border color for warning containers and alerts */
-    --token-status-warning-border: var(--palette-warning-500);
+    --token-status-warning-border: var(--palette-warning-400);
     /* Warning status text color for readability on warning backgrounds */
     --token-status-warning-foreground: var(--palette-warning-300);
     /* Warning status muted background for subtle warning indicators */
