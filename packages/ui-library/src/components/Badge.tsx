@@ -32,7 +32,8 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
 
       // Outline variants (ghost style with surface background for inverse contexts)
       'outline-default': 'bg-surface border-thick-border text-foreground',
-      'outline-primary': 'bg-surface border-thick-interactive-primary-border text-interactive-primary',
+      'outline-primary':
+        'bg-surface border-thick-interactive-primary-border text-interactive-primary',
       'outline-secondary':
         'bg-surface border-thick-interactive-secondary-border text-interactive-secondary',
       'outline-info': 'bg-surface border-thick-status-info text-status-info',
