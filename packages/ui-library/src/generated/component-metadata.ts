@@ -42,13 +42,6 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
     accessibility: [],
     props: [
       {
-        name: 'variant',
-        description: '',
-        type: 'select',
-        required: false,
-        options: ['card', 'subtle', 'ghost'],
-      },
-      {
         name: 'density',
         description: '',
         type: 'select',

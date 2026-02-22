@@ -21,17 +21,12 @@ Perfect for displaying selectable items like agent sessions, tasks, or any list 
 - Full keyboard navigation (Arrow keys, Enter/Space, Home/End, Type-ahead)
 - Status indicators (active, completed, failed, pending)
 - Rich content with descriptions
-- Multiple visual variants
 - Accessible with WAI-ARIA listbox pattern
         `,
       },
     },
   },
   argTypes: {
-    variant: {
-      control: 'select',
-      options: ['card', 'subtle', 'ghost'],
-    },
     density: {
       control: 'select',
       options: ['compact', 'comfortable', 'spacious'],
@@ -51,12 +46,10 @@ type Story = StoryObj<typeof ActionList.Root>
 
 // Helper component for controlled examples
 function ControlledExample({
-  variant = 'subtle',
   density = 'comfortable',
   orientation = 'vertical',
   disabled = false,
 }: {
-  variant?: 'card' | 'subtle' | 'ghost'
   density?: 'compact' | 'comfortable' | 'spacious'
   orientation?: 'vertical' | 'horizontal'
   disabled?: boolean
@@ -68,7 +61,6 @@ function ControlledExample({
       <ActionList.Root
         value={value}
         onValueChange={setValue}
-        variant={variant}
         density={density}
         orientation={orientation}
         disabled={disabled}
@@ -107,12 +99,7 @@ export const WithGroups: Story = {
     const [value, setValue] = useState<string>()
 
     return (
-      <ActionList.Root
-        value={value ?? ''}
-        onValueChange={setValue}
-        variant="card"
-        className="max-w-[32rem]"
-      >
+      <ActionList.Root value={value ?? ''} onValueChange={setValue} className="max-w-[32rem]">
         <ActionList.Group>
           <ActionList.Label>Active Sessions</ActionList.Label>
           <ActionList.Item value="session-1" status="active">
@@ -155,7 +142,6 @@ export const TaskSelection: Story = {
       <ActionList.Root
         value={selectedTask ?? ''}
         onValueChange={setSelectedTask}
-        variant="subtle"
         density="spacious"
         className="max-w-[42rem]"
       >
@@ -189,75 +175,6 @@ export const TaskSelection: Story = {
   },
 }
 
-export const DifferentVariants: Story = {
-  render: () => {
-    const [value1, setValue1] = useState('option-1')
-    const [value2, setValue2] = useState('option-1')
-    const [value3, setValue3] = useState('option-1')
-
-    const items = [
-      { value: 'option-1', text: 'Option 1', description: 'First option' },
-      { value: 'option-2', text: 'Option 2', description: 'Second option' },
-      { value: 'option-3', text: 'Option 3', description: 'Third option' },
-    ]
-
-    return (
-      <div className="space-y-lg">
-        <div>
-          <h3 className="text-lg font-semibold mb-sm">Card Variant</h3>
-          <ActionList.Root
-            value={value1}
-            onValueChange={setValue1}
-            variant="card"
-            className="max-w-[28rem]"
-          >
-            {items.map((item) => (
-              <ActionList.Item key={item.value} value={item.value}>
-                <ActionList.ItemText>{item.text}</ActionList.ItemText>
-                <ActionList.ItemDescription>{item.description}</ActionList.ItemDescription>
-              </ActionList.Item>
-            ))}
-          </ActionList.Root>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-sm">Subtle Variant</h3>
-          <ActionList.Root
-            value={value2}
-            onValueChange={setValue2}
-            variant="subtle"
-            className="max-w-[28rem]"
-          >
-            {items.map((item) => (
-              <ActionList.Item key={item.value} value={item.value}>
-                <ActionList.ItemText>{item.text}</ActionList.ItemText>
-                <ActionList.ItemDescription>{item.description}</ActionList.ItemDescription>
-              </ActionList.Item>
-            ))}
-          </ActionList.Root>
-        </div>
-
-        <div>
-          <h3 className="text-lg font-semibold mb-sm">Ghost Variant</h3>
-          <ActionList.Root
-            value={value3}
-            onValueChange={setValue3}
-            variant="ghost"
-            className="max-w-[28rem]"
-          >
-            {items.map((item) => (
-              <ActionList.Item key={item.value} value={item.value}>
-                <ActionList.ItemText>{item.text}</ActionList.ItemText>
-                <ActionList.ItemDescription>{item.description}</ActionList.ItemDescription>
-              </ActionList.Item>
-            ))}
-          </ActionList.Root>
-        </div>
-      </div>
-    )
-  },
-}
-
 export const DifferentDensities: Story = {
   render: () => {
     const [value1, setValue1] = useState('item-1')
@@ -277,7 +194,6 @@ export const DifferentDensities: Story = {
           <ActionList.Root
             value={value1}
             onValueChange={setValue1}
-            variant="card"
             density="compact"
             className="max-w-[24rem]"
           >
@@ -294,7 +210,6 @@ export const DifferentDensities: Story = {
           <ActionList.Root
             value={value2}
             onValueChange={setValue2}
-            variant="card"
             density="comfortable"
             className="max-w-[24rem]"
           >
@@ -313,7 +228,6 @@ export const DifferentDensities: Story = {
           <ActionList.Root
             value={value3}
             onValueChange={setValue3}
-            variant="card"
             density="spacious"
             className="max-w-[24rem]"
           >
@@ -340,7 +254,6 @@ export const HorizontalOrientation: Story = {
         value={value}
         onValueChange={setValue}
         orientation="horizontal"
-        variant="subtle"
         density="compact"
         className="w-fit"
       >
@@ -364,12 +277,7 @@ export const WithDisabledState: Story = {
 
     return (
       <div className="space-y-md">
-        <ActionList.Root
-          value={value ?? ''}
-          onValueChange={setValue}
-          variant="card"
-          className="max-w-[28rem]"
-        >
+        <ActionList.Root value={value ?? ''} onValueChange={setValue} className="max-w-[28rem]">
           <ActionList.Item value="enabled-1">
             <ActionList.ItemText>Enabled Option 1</ActionList.ItemText>
           </ActionList.Item>
@@ -384,7 +292,7 @@ export const WithDisabledState: Story = {
 
         <div>
           <p className="text-sm text-foreground-muted mb-sm">Entire list disabled:</p>
-          <ActionList.Root value="option-1" disabled variant="card" className="max-w-[28rem]">
+          <ActionList.Root value="option-1" disabled className="max-w-[28rem]">
             <ActionList.Item value="option-1">
               <ActionList.ItemText>Option 1</ActionList.ItemText>
             </ActionList.Item>
@@ -425,7 +333,6 @@ export const LongList: Story = {
         <ActionList.Root
           value={value ?? ''}
           onValueChange={setValue}
-          variant="card"
           density="compact"
           className="max-w-[32rem] max-h-96 overflow-y-auto"
         >
@@ -454,24 +361,11 @@ export const InteractiveExample: Story = {
   name: 'Interactive Example',
   render: () => {
     const [value, setValue] = useState<string>()
-    const [variant, setVariant] = useState<'card' | 'subtle' | 'ghost'>('card')
     const [density, setDensity] = useState<'compact' | 'comfortable' | 'spacious'>('comfortable')
 
     return (
       <div className="space-y-lg">
         <div className="flex gap-md">
-          <div>
-            <label className="text-sm font-medium">Variant:</label>
-            <select
-              value={variant}
-              onChange={(e) => setVariant(e.target.value as 'card' | 'subtle' | 'ghost')}
-              className="ml-sm px-sm py-xs border border-border rounded"
-            >
-              <option value="card">Card</option>
-              <option value="subtle">Subtle</option>
-              <option value="ghost">Ghost</option>
-            </select>
-          </div>
           <div>
             <label className="text-sm font-medium">Density:</label>
             <select
@@ -492,7 +386,6 @@ export const InteractiveExample: Story = {
         <ActionList.Root
           value={value ?? ''}
           onValueChange={setValue}
-          variant={variant}
           density={density}
           className="max-w-[32rem]"
         >

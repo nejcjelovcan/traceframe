@@ -46,24 +46,12 @@ import type { IconName } from '../icons/types.js'
 // Root container variants
 const actionListRootVariants = cva('relative w-full', {
   variants: {
-    variant: {
-      card: 'rounded-lg border border-border bg-surface shadow-sm',
-      subtle: 'rounded-lg bg-surface-subtle',
-      ghost: 'rounded-lg',
-    },
-    density: {
-      compact: 'p-xs',
-      comfortable: 'p-sm',
-      spacious: 'p-md',
-    },
     orientation: {
       vertical: 'flex flex-col',
       horizontal: 'flex flex-row',
     },
   },
   defaultVariants: {
-    variant: 'subtle',
-    density: 'comfortable',
     orientation: 'vertical',
   },
 })
@@ -148,13 +136,13 @@ export interface ActionListRootProps
   defaultValue?: string
   onValueChange?: (value: string) => void
   disabled?: boolean
+  density?: 'compact' | 'comfortable' | 'spacious'
 }
 
 const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
   (
     {
       className,
-      variant,
       density,
       orientation = 'vertical',
       value: controlledValue,
@@ -330,7 +318,7 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
           role="listbox"
           aria-orientation={orientation ?? undefined}
           aria-disabled={disabled}
-          className={cn(actionListRootVariants({ variant, density, orientation }), className)}
+          className={cn(actionListRootVariants({ orientation }), className)}
           onKeyDown={handleKeyDown}
           tabIndex={-1}
           {...props}
@@ -535,7 +523,7 @@ ActionListLabel.displayName = 'ActionList.Label'
 // Separator component
 const ActionListSeparator = forwardRef<HTMLHRElement, ComponentPropsWithoutRef<'hr'>>(
   ({ className, ...props }, ref) => (
-    <hr ref={ref} className={cn('my-sm border-border', className)} {...props} />
+    <hr ref={ref} className={cn('my-sm border-none', className)} {...props} />
   )
 )
 

@@ -86,30 +86,8 @@ describe('ActionList', () => {
       expect(items[3]).toHaveClass('bg-surface-muted')
     })
 
-    it('applies variant styles', () => {
-      const { container, rerender } = render(
-        <ActionList.Root variant="card">
-          <ActionList.Item value="item-1">
-            <ActionList.ItemText>Item</ActionList.ItemText>
-          </ActionList.Item>
-        </ActionList.Root>
-      )
-
-      expect(container.querySelector('[role="listbox"]')).toHaveClass('border')
-
-      rerender(
-        <ActionList.Root variant="subtle">
-          <ActionList.Item value="item-1">
-            <ActionList.ItemText>Item</ActionList.ItemText>
-          </ActionList.Item>
-        </ActionList.Root>
-      )
-
-      expect(container.querySelector('[role="listbox"]')).toHaveClass('bg-surface-subtle')
-    })
-
-    it('applies density styles', () => {
-      const { container, rerender } = render(
+    it('applies density styles to items', () => {
+      const { rerender } = render(
         <ActionList.Root density="compact">
           <ActionList.Item value="item-1">
             <ActionList.ItemText>Item</ActionList.ItemText>
@@ -117,7 +95,7 @@ describe('ActionList', () => {
         </ActionList.Root>
       )
 
-      expect(container.querySelector('[role="listbox"]')).toHaveClass('p-xs')
+      expect(screen.getByRole('option')).toHaveClass('py-xs')
 
       rerender(
         <ActionList.Root density="spacious">
@@ -127,7 +105,7 @@ describe('ActionList', () => {
         </ActionList.Root>
       )
 
-      expect(container.querySelector('[role="listbox"]')).toHaveClass('p-md')
+      expect(screen.getByRole('option')).toHaveClass('py-md')
     })
   })
 
