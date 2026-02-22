@@ -61,7 +61,7 @@ const actionListItemVariants = cva(
   [
     'relative flex cursor-pointer select-none items-center gap-sm',
     'outline-hidden transition-colors',
-    'focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-1 focus:ring-offset-surface',
+    'focus:outline-hidden focus:z-10 focus:ring-2 focus:ring-ring focus:ring-offset-1 focus:ring-offset-surface',
   ],
   {
     variants: {
