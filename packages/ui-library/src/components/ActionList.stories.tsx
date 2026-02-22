@@ -107,7 +107,12 @@ export const WithGroups: Story = {
     const [value, setValue] = useState<string>()
 
     return (
-      <ActionList.Root value={value ?? ''} onValueChange={setValue} variant="card" className="max-w-lg">
+      <ActionList.Root
+        value={value ?? ''}
+        onValueChange={setValue}
+        variant="card"
+        className="max-w-lg"
+      >
         <ActionList.Group>
           <ActionList.Label>Active Sessions</ActionList.Label>
           <ActionList.Item value="session-1" status="active">
@@ -395,7 +400,12 @@ export const WithDisabledState: Story = {
 
     return (
       <div className="space-y-md">
-        <ActionList.Root value={value ?? ''} onValueChange={setValue} variant="card" className="max-w-md">
+        <ActionList.Root
+          value={value ?? ''}
+          onValueChange={setValue}
+          variant="card"
+          className="max-w-md"
+        >
           <ActionList.Item value="enabled-1">
             <ActionList.ItemText>Enabled Option 1</ActionList.ItemText>
           </ActionList.Item>
@@ -456,7 +466,11 @@ export const LongList: Story = {
           className="max-w-lg max-h-96 overflow-y-auto"
         >
           {items.map((item) => (
-            <ActionList.Item key={item.value} value={item.value} status={item.status as 'active' | 'completed' | 'failed' | 'pending'}>
+            <ActionList.Item
+              key={item.value}
+              value={item.value}
+              status={item.status as 'active' | 'completed' | 'failed' | 'pending'}
+            >
               <ActionList.ItemText>{item.text}</ActionList.ItemText>
               <ActionList.ItemDescription>{item.description}</ActionList.ItemDescription>
             </ActionList.Item>
