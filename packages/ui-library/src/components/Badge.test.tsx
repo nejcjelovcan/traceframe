@@ -116,40 +116,40 @@ describe('Badge', () => {
     render(<Badge variant="outline-accent1">Outline Accent 1</Badge>)
     const badge = screen.getByText('Outline Accent 1')
     expect(badge.className).toContain('bg-surface')
-    expect(badge.className).toContain('border-thick-accent-1')
-    expect(badge.className).toContain('text-accent-1')
+    expect(badge.className).toContain('border-thick-accent-1-border')
+    expect(badge.className).toContain('text-accent-1-foreground')
   })
 
   it('applies outline-accent2 variant classes', () => {
     render(<Badge variant="outline-accent2">Outline Accent 2</Badge>)
     const badge = screen.getByText('Outline Accent 2')
     expect(badge.className).toContain('bg-surface')
-    expect(badge.className).toContain('border-thick-accent-2')
-    expect(badge.className).toContain('text-accent-2')
+    expect(badge.className).toContain('border-thick-accent-2-border')
+    expect(badge.className).toContain('text-accent-2-foreground')
   })
 
   it('applies outline-accent3 variant classes', () => {
     render(<Badge variant="outline-accent3">Outline Accent 3</Badge>)
     const badge = screen.getByText('Outline Accent 3')
     expect(badge.className).toContain('bg-surface')
-    expect(badge.className).toContain('border-thick-accent-3')
-    expect(badge.className).toContain('text-accent-3')
+    expect(badge.className).toContain('border-thick-accent-3-border')
+    expect(badge.className).toContain('text-accent-3-foreground')
   })
 
   it('applies outline-accent4 variant classes', () => {
     render(<Badge variant="outline-accent4">Outline Accent 4</Badge>)
     const badge = screen.getByText('Outline Accent 4')
     expect(badge.className).toContain('bg-surface')
-    expect(badge.className).toContain('border-thick-accent-4')
-    expect(badge.className).toContain('text-accent-4')
+    expect(badge.className).toContain('border-thick-accent-4-border')
+    expect(badge.className).toContain('text-accent-4-foreground')
   })
 
   it('applies outline-accent5 variant classes', () => {
     render(<Badge variant="outline-accent5">Outline Accent 5</Badge>)
     const badge = screen.getByText('Outline Accent 5')
     expect(badge.className).toContain('bg-surface')
-    expect(badge.className).toContain('border-thick-accent-5')
-    expect(badge.className).toContain('text-accent-5')
+    expect(badge.className).toContain('border-thick-accent-5-border')
+    expect(badge.className).toContain('text-accent-5-foreground')
   })
 
   it('applies emphasis-default variant classes', () => {
