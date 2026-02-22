@@ -176,24 +176,24 @@ describe('NavHeading', () => {
     expect(heading.className).toContain('tracking-wider')
   })
 
-  it('uses muted text for default variant', () => {
+  it('uses foreground text color', () => {
     render(
       <Navigation orientation="vertical">
         <NavHeading>Section</NavHeading>
       </Navigation>
     )
     const heading = screen.getByRole('heading')
-    expect(heading.className).toContain('text-foreground-muted')
+    expect(heading.className).toContain('text-foreground')
   })
 
-  it('uses foreground/70 text for colorful variant', () => {
+  it('uses bold font weight', () => {
     render(
-      <Navigation orientation="vertical" variant="colorful" color="primary">
+      <Navigation orientation="vertical">
         <NavHeading>Section</NavHeading>
       </Navigation>
     )
     const heading = screen.getByRole('heading')
-    expect(heading.className).toContain('text-foreground/70')
+    expect(heading.className).toContain('font-bold')
   })
 
   it('allows custom heading level', () => {
