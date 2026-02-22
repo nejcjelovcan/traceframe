@@ -72,7 +72,7 @@ function ControlledExample({
         density={density}
         orientation={orientation}
         disabled={disabled}
-        className="max-w-lg"
+        className="max-w-[32rem]"
       >
         <ActionList.Item value="session-1" status="active">
           <ActionList.ItemText>Current Live Session</ActionList.ItemText>
@@ -111,7 +111,7 @@ export const WithGroups: Story = {
         value={value ?? ''}
         onValueChange={setValue}
         variant="card"
-        className="max-w-lg"
+        className="max-w-[32rem]"
       >
         <ActionList.Group>
           <ActionList.Label>Active Sessions</ActionList.Label>
@@ -193,7 +193,7 @@ export const TaskSelection: Story = {
         onValueChange={setSelectedTask}
         variant="subtle"
         density="spacious"
-        className="max-w-2xl"
+        className="max-w-[42rem]"
       >
         <ActionList.Label>Available Tasks</ActionList.Label>
         <ActionList.Item value="code-review" leftIcon="code" rightIcon="chevron-right">
@@ -245,7 +245,7 @@ export const DifferentVariants: Story = {
             value={value1}
             onValueChange={setValue1}
             variant="card"
-            className="max-w-md"
+            className="max-w-[28rem]"
           >
             {items.map((item) => (
               <ActionList.Item key={item.value} value={item.value}>
@@ -262,7 +262,7 @@ export const DifferentVariants: Story = {
             value={value2}
             onValueChange={setValue2}
             variant="subtle"
-            className="max-w-md"
+            className="max-w-[28rem]"
           >
             {items.map((item) => (
               <ActionList.Item key={item.value} value={item.value}>
@@ -279,7 +279,7 @@ export const DifferentVariants: Story = {
             value={value3}
             onValueChange={setValue3}
             variant="ghost"
-            className="max-w-md"
+            className="max-w-[28rem]"
           >
             {items.map((item) => (
               <ActionList.Item key={item.value} value={item.value}>
@@ -315,7 +315,7 @@ export const DifferentDensities: Story = {
             onValueChange={setValue1}
             variant="card"
             density="compact"
-            className="max-w-sm"
+            className="max-w-[24rem]"
           >
             {items.map((item) => (
               <ActionList.Item key={item.value} value={item.value} leftIcon={item.icon}>
@@ -332,7 +332,7 @@ export const DifferentDensities: Story = {
             onValueChange={setValue2}
             variant="card"
             density="comfortable"
-            className="max-w-sm"
+            className="max-w-[24rem]"
           >
             {items.map((item) => (
               <ActionList.Item key={item.value} value={item.value} leftIcon={item.icon}>
@@ -351,7 +351,7 @@ export const DifferentDensities: Story = {
             onValueChange={setValue3}
             variant="card"
             density="spacious"
-            className="max-w-sm"
+            className="max-w-[24rem]"
           >
             {items.map((item) => (
               <ActionList.Item key={item.value} value={item.value} leftIcon={item.icon}>
@@ -404,7 +404,7 @@ export const WithDisabledState: Story = {
           value={value ?? ''}
           onValueChange={setValue}
           variant="card"
-          className="max-w-md"
+          className="max-w-[28rem]"
         >
           <ActionList.Item value="enabled-1">
             <ActionList.ItemText>Enabled Option 1</ActionList.ItemText>
@@ -420,7 +420,7 @@ export const WithDisabledState: Story = {
 
         <div>
           <p className="text-sm text-foreground-muted mb-sm">Entire list disabled:</p>
-          <ActionList.Root value="option-1" disabled variant="card" className="max-w-md">
+          <ActionList.Root value="option-1" disabled variant="card" className="max-w-[28rem]">
             <ActionList.Item value="option-1">
               <ActionList.ItemText>Option 1</ActionList.ItemText>
             </ActionList.Item>
@@ -463,7 +463,7 @@ export const LongList: Story = {
           onValueChange={setValue}
           variant="card"
           density="compact"
-          className="max-w-lg max-h-96 overflow-y-auto"
+          className="max-w-[32rem] max-h-96 overflow-y-auto"
         >
           {items.map((item) => (
             <ActionList.Item
@@ -530,7 +530,7 @@ export const InteractiveExample: Story = {
           onValueChange={setValue}
           variant={variant}
           density={density}
-          className="max-w-lg"
+          className="max-w-[32rem]"
         >
           <ActionList.Group>
             <ActionList.Label>Agent Sessions</ActionList.Label>
