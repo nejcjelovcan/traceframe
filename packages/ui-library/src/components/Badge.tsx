@@ -6,7 +6,7 @@ import { cn } from '../utils/cn.js'
 
 import type { IconName } from '../icons/types.js'
 
-const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-medium', {
+const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounded-xl font-medium', {
   variants: {
     variant: {
       // Core semantic variants (filled style)
@@ -61,10 +61,22 @@ const badgeVariants = cva('inline-flex items-center gap-xs rounded-xl font-mediu
       md: 'px-sm py-xs text-sm', // Default size
       lg: 'px-md py-xs text-sm', // Prominent badges
     },
+    compact: {
+      true: '',
+      false: '',
+    },
   },
+  compoundVariants: [
+    // Compact mode with icon: equal padding on all sides
+    { compact: true, size: 'xs', className: 'p-2xs px-2xs py-2xs' },
+    { compact: true, size: 'sm', className: 'p-2xs px-2xs py-2xs' },
+    { compact: true, size: 'md', className: 'p-xs px-xs py-xs' },
+    { compact: true, size: 'lg', className: 'p-xs px-xs py-xs' },
+  ],
   defaultVariants: {
     variant: 'default',
     size: 'md',
+    compact: false,
   },
 })
 
@@ -74,14 +86,61 @@ export interface BadgeProps
   icon?: IconName
   /** Icon position relative to text */
   iconPosition?: 'left' | 'right'
+  /** Compact mode for icon-only or dot-only display */
+  compact?: boolean
 }
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
-  ({ className, variant, size, icon, iconPosition = 'left', children, ...props }, ref) => {
+  (
+    { className, variant, size, icon, iconPosition = 'left', compact = false, children, ...props },
+    ref
+  ) => {
     const iconSize = size === 'xs' || size === 'sm' ? 'xs' : 'sm'
 
+    // Determine the dot size classes based on badge size
+    const dotSizeClasses = {
+      xs: 'w-1.5 h-1.5',
+      sm: 'w-2 h-2',
+      md: 'w-2.5 h-2.5',
+      lg: 'w-3 h-3',
+    }[size || 'md']
+
+    // In compact mode without icon, render a dot
+    if (compact && !icon) {
+      return (
+        <span
+          className={cn(
+            badgeVariants({ variant, size, compact, className }),
+            dotSizeClasses,
+            'rounded-full p-0'
+          )}
+          ref={ref}
+          {...props}
+          aria-label={props['aria-label'] || 'Status indicator'}
+        />
+      )
+    }
+
+    // In compact mode with icon, only render the icon (no children)
+    if (compact && icon) {
+      return (
+        <span
+          className={cn(badgeVariants({ variant, size, compact, className }))}
+          ref={ref}
+          {...props}
+        >
+          <Icon name={icon} size={iconSize} aria-hidden="true" />
+        </span>
+      )
+    }
+
+    // Regular mode - render as before
     return (
-      <span className={cn(badgeVariants({ variant, size, className }))} ref={ref} {...props}>
+      <span
+        className={cn(badgeVariants({ variant, size, compact, className }))}
+        ref={ref}
+        {...props}
+      >
         {icon && iconPosition === 'left' && <Icon name={icon} size={iconSize} aria-hidden="true" />}
         {children}
         {icon && iconPosition === 'right' && (
