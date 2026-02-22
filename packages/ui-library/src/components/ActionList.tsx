@@ -6,13 +6,11 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useId,
   useRef,
   useState,
   type ComponentPropsWithoutRef,
   type KeyboardEvent,
   type MouseEvent,
-  type ReactNode,
 } from 'react'
 
 import { Icon } from '../icons/index.js'
@@ -214,7 +212,7 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
 
         switch (e.key) {
           case 'ArrowDown':
-          case 'ArrowRight':
+          case 'ArrowRight': {
             e.preventDefault()
             if (orientation === 'vertical' && e.key === 'ArrowRight') return
             if (orientation === 'horizontal' && e.key === 'ArrowDown') return
@@ -225,9 +223,10 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
               itemsArray[nextIndex][1].focus()
             }
             break
+          }
 
           case 'ArrowUp':
-          case 'ArrowLeft':
+          case 'ArrowLeft': {
             e.preventDefault()
             if (orientation === 'vertical' && e.key === 'ArrowLeft') return
             if (orientation === 'horizontal' && e.key === 'ArrowUp') return
@@ -238,6 +237,7 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
               itemsArray[prevIndex][1].focus()
             }
             break
+          }
 
           case 'Home':
             e.preventDefault()
@@ -247,7 +247,7 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
             }
             break
 
-          case 'End':
+          case 'End': {
             e.preventDefault()
             const lastItem = itemsArray[itemsArray.length - 1]
             if (lastItem) {
@@ -255,9 +255,10 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
               lastItem[1].focus()
             }
             break
+          }
 
           case 'Enter':
-          case ' ':
+          case ' ': {
             e.preventDefault()
             // Use the focused item from the document's active element if available
             const activeItem = document.activeElement as HTMLElement
@@ -270,6 +271,7 @@ const ActionListRoot = forwardRef<HTMLDivElement, ActionListRootProps>(
               handleValueChange(focusedValue)
             }
             break
+          }
 
           default:
             // Type-ahead search

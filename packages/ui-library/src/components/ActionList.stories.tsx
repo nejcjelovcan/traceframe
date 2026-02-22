@@ -1,8 +1,9 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
 
 import { ActionList } from './ActionList.js'
 import { Button } from './Button.js'
+
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof ActionList.Root> = {
   title: 'Components/ActionList',
@@ -106,7 +107,7 @@ export const WithGroups: Story = {
     const [value, setValue] = useState<string>()
 
     return (
-      <ActionList.Root value={value} onValueChange={setValue} variant="card" className="max-w-lg">
+      <ActionList.Root value={value ?? ''} onValueChange={setValue} variant="card" className="max-w-lg">
         <ActionList.Group>
           <ActionList.Label>Active Sessions</ActionList.Label>
           <ActionList.Item value="session-1" status="active">
@@ -153,23 +154,23 @@ export const NavigationMenu: Story = {
         density="comfortable"
         className="w-64"
       >
-        <ActionList.Item value="dashboard" leftIcon="layout-dashboard">
+        <ActionList.Item value="dashboard" leftIcon="dashboard">
           <ActionList.ItemText>Dashboard</ActionList.ItemText>
         </ActionList.Item>
-        <ActionList.Item value="agents" leftIcon="robot">
+        <ActionList.Item value="agents" leftIcon="agent">
           <ActionList.ItemText>Agents</ActionList.ItemText>
         </ActionList.Item>
-        <ActionList.Item value="tasks" leftIcon="checklist">
+        <ActionList.Item value="tasks" leftIcon="components">
           <ActionList.ItemText>Tasks</ActionList.ItemText>
         </ActionList.Item>
-        <ActionList.Item value="analytics" leftIcon="chart-bar">
+        <ActionList.Item value="analytics" leftIcon="chart">
           <ActionList.ItemText>Analytics</ActionList.ItemText>
         </ActionList.Item>
         <ActionList.Separator />
         <ActionList.Item value="settings" leftIcon="settings">
           <ActionList.ItemText>Settings</ActionList.ItemText>
         </ActionList.Item>
-        <ActionList.Item value="help" leftIcon="help-circle">
+        <ActionList.Item value="help" leftIcon="help">
           <ActionList.ItemText>Help & Support</ActionList.ItemText>
         </ActionList.Item>
       </ActionList.Root>
@@ -183,7 +184,7 @@ export const TaskSelection: Story = {
 
     return (
       <ActionList.Root
-        value={selectedTask}
+        value={selectedTask ?? ''}
         onValueChange={setSelectedTask}
         variant="subtle"
         density="spacious"
@@ -208,7 +209,7 @@ export const TaskSelection: Story = {
             Implement dark mode toggle for user preferences
           </ActionList.ItemDescription>
         </ActionList.Item>
-        <ActionList.Item value="refactor" leftIcon="code-2" rightIcon="chevron-right">
+        <ActionList.Item value="refactor" leftIcon="code" rightIcon="chevron-right">
           <ActionList.ItemText>Refactoring</ActionList.ItemText>
           <ActionList.ItemDescription>
             Optimize database queries for improved performance
@@ -297,7 +298,7 @@ export const DifferentDensities: Story = {
     const items = [
       { value: 'item-1', text: 'Compact Item 1', icon: 'file' as const },
       { value: 'item-2', text: 'Compact Item 2', icon: 'folder' as const },
-      { value: 'item-3', text: 'Compact Item 3', icon: 'archive' as const },
+      { value: 'item-3', text: 'Compact Item 3', icon: 'package' as const },
     ]
 
     return (
@@ -374,13 +375,13 @@ export const HorizontalOrientation: Story = {
         density="compact"
         className="w-fit"
       >
-        <ActionList.Item value="view-grid" leftIcon="layout-grid">
+        <ActionList.Item value="view-grid" leftIcon="components">
           <ActionList.ItemText>Grid</ActionList.ItemText>
         </ActionList.Item>
-        <ActionList.Item value="view-list" leftIcon="layout-list">
+        <ActionList.Item value="view-list" leftIcon="menu">
           <ActionList.ItemText>List</ActionList.ItemText>
         </ActionList.Item>
-        <ActionList.Item value="view-cards" leftIcon="layout-cards">
+        <ActionList.Item value="view-cards" leftIcon="dashboard">
           <ActionList.ItemText>Cards</ActionList.ItemText>
         </ActionList.Item>
       </ActionList.Root>
@@ -394,7 +395,7 @@ export const WithDisabledState: Story = {
 
     return (
       <div className="space-y-md">
-        <ActionList.Root value={value} onValueChange={setValue} variant="card" className="max-w-md">
+        <ActionList.Root value={value ?? ''} onValueChange={setValue} variant="card" className="max-w-md">
           <ActionList.Item value="enabled-1">
             <ActionList.ItemText>Enabled Option 1</ActionList.ItemText>
           </ActionList.Item>
@@ -448,14 +449,14 @@ export const LongList: Story = {
           Testing performance with 50 items. Use keyboard navigation to move through the list.
         </p>
         <ActionList.Root
-          value={value}
+          value={value ?? ''}
           onValueChange={setValue}
           variant="card"
           density="compact"
           className="max-w-lg max-h-96 overflow-y-auto"
         >
           {items.map((item) => (
-            <ActionList.Item key={item.value} value={item.value} status={item.status}>
+            <ActionList.Item key={item.value} value={item.value} status={item.status as 'active' | 'completed' | 'failed' | 'pending'}>
               <ActionList.ItemText>{item.text}</ActionList.ItemText>
               <ActionList.ItemDescription>{item.description}</ActionList.ItemDescription>
             </ActionList.Item>
@@ -485,7 +486,7 @@ export const InteractiveExample: Story = {
             <label className="text-sm font-medium">Variant:</label>
             <select
               value={variant}
-              onChange={(e) => setVariant(e.target.value as any)}
+              onChange={(e) => setVariant(e.target.value as 'card' | 'subtle' | 'ghost')}
               className="ml-sm px-sm py-xs border border-border rounded"
             >
               <option value="card">Card</option>
@@ -497,7 +498,7 @@ export const InteractiveExample: Story = {
             <label className="text-sm font-medium">Density:</label>
             <select
               value={density}
-              onChange={(e) => setDensity(e.target.value as any)}
+              onChange={(e) => setDensity(e.target.value as 'compact' | 'comfortable' | 'spacious')}
               className="ml-sm px-sm py-xs border border-border rounded"
             >
               <option value="compact">Compact</option>
@@ -511,7 +512,7 @@ export const InteractiveExample: Story = {
         </div>
 
         <ActionList.Root
-          value={value}
+          value={value ?? ''}
           onValueChange={setValue}
           variant={variant}
           density={density}
@@ -519,23 +520,23 @@ export const InteractiveExample: Story = {
         >
           <ActionList.Group>
             <ActionList.Label>Agent Sessions</ActionList.Label>
-            <ActionList.Item value="agent-1" status="active" leftIcon="robot">
+            <ActionList.Item value="agent-1" status="active" leftIcon="agent">
               <ActionList.ItemText>Production Agent</ActionList.ItemText>
               <ActionList.ItemDescription>Processing 125 requests/min</ActionList.ItemDescription>
             </ActionList.Item>
-            <ActionList.Item value="agent-2" status="active" leftIcon="robot">
+            <ActionList.Item value="agent-2" status="active" leftIcon="agent">
               <ActionList.ItemText>Development Agent</ActionList.ItemText>
               <ActionList.ItemDescription>Testing new features</ActionList.ItemDescription>
             </ActionList.Item>
-            <ActionList.Item value="agent-3" status="completed" leftIcon="robot">
+            <ActionList.Item value="agent-3" status="completed" leftIcon="agent">
               <ActionList.ItemText>Batch Processing Agent</ActionList.ItemText>
               <ActionList.ItemDescription>Completed 5,000 items</ActionList.ItemDescription>
             </ActionList.Item>
-            <ActionList.Item value="agent-4" status="failed" leftIcon="robot">
+            <ActionList.Item value="agent-4" status="failed" leftIcon="agent">
               <ActionList.ItemText>Data Migration Agent</ActionList.ItemText>
               <ActionList.ItemDescription>Connection lost</ActionList.ItemDescription>
             </ActionList.Item>
-            <ActionList.Item value="agent-5" status="pending" leftIcon="robot">
+            <ActionList.Item value="agent-5" status="pending" leftIcon="agent">
               <ActionList.ItemText>Scheduled Agent</ActionList.ItemText>
               <ActionList.ItemDescription>Starts at 2:00 PM</ActionList.ItemDescription>
             </ActionList.Item>
