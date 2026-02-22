@@ -80,7 +80,7 @@ const actionListItemVariants = cva(
       variant: {
         default: [
           'text-foreground',
-          'hover:brightness-[0.93]',
+          'hover:brightness-[0.93] dark:hover:brightness-[1.1]',
           'aria-selected:bg-interactive-primary-muted aria-selected:text-foreground',
           'aria-disabled:pointer-events-none aria-disabled:opacity-50',
         ],
