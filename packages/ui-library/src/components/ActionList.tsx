@@ -86,9 +86,9 @@ const actionListItemVariants = cva(
         pending: 'opacity-75',
       },
       density: {
-        compact: 'py-xs pl-xs pr-sm text-sm min-h-size-sm',
-        comfortable: 'py-sm pl-sm pr-md text-base min-h-size-md',
-        spacious: 'py-md pl-md pr-base text-base min-h-size-lg',
+        compact: 'py-xs pl-xs pr-sm text-sm',
+        comfortable: 'py-sm pl-sm pr-md text-base',
+        spacious: 'py-md pl-md pr-base text-base',
       },
     },
     defaultVariants: {
