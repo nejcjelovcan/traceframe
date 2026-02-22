@@ -1,5 +1,19 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 2.3.0
+
+### Minor Changes
+
+- [#115](https://github.com/nejcjelovcan/traceframe/pull/115) [`7b03b67`](https://github.com/nejcjelovcan/traceframe/commit/7b03b673eab9304f941cf0fbfb73e8f0c0200619) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add ActionList selectable list component with WAI-ARIA listbox pattern, keyboard navigation, status indicators, density variants, and accessible group labels
+
+- [#112](https://github.com/nejcjelovcan/traceframe/pull/112) [`4672e88`](https://github.com/nejcjelovcan/traceframe/commit/4672e880940f5f2e6285d01470db7505052a5cd7) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add localStorage persistence option to ThemeProvider for maintaining theme selection across sessions
+
+### Patch Changes
+
+- [#114](https://github.com/nejcjelovcan/traceframe/pull/114) [`a44304b`](https://github.com/nejcjelovcan/traceframe/commit/a44304b623eeea500d1b58d68cbc014eeb69b5d9) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix Badge component text color for primary and secondary variants to use normal foreground tokens instead of colored ones for better readability
+
+- [#116](https://github.com/nejcjelovcan/traceframe/pull/116) [`792f617`](https://github.com/nejcjelovcan/traceframe/commit/792f6175f543aa0c1daa9544838a79cd232aed60) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add borders and enhanced hover feedback to Button component
+
 ## 2.2.0
 
 ### Minor Changes
