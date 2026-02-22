@@ -11,9 +11,8 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
     variant: {
       // Core semantic variants (filled style)
       default: 'bg-surface-muted text-foreground border-border',
-      primary:
-        'bg-interactive-primary text-interactive-primary-foreground border-interactive-primary-border',
-      secondary: 'bg-surface-subtle text-foreground-muted border-border-muted',
+      primary: 'bg-interactive-primary text-foreground border-interactive-primary-border',
+      secondary: 'bg-surface-subtle text-foreground border-border-muted',
 
       // Status variants with proper contrast
       info: 'bg-status-info-muted text-status-info-foreground border-status-info-muted-border',
