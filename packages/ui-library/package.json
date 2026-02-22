@@ -35,8 +35,8 @@
     "test": "vitest run",
     "test:ci": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
-    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
-    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
+    "lint": "ESLINT_USE_FLAT_CONFIG=false eslint --config ../../.eslintrc.json --resolve-plugins-relative-to ../.. \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
+    "lint:fix": "ESLINT_USE_FLAT_CONFIG=false eslint --fix --config ../../.eslintrc.json --resolve-plugins-relative-to ../.. \"src/**/*.{ts,tsx}\" --ignore-pattern \"dist/**\"",
     "format": "prettier --write \"**/*.{ts,tsx,json,md,css}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx,json,md,css}\""
   },

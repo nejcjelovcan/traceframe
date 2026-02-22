@@ -2,7 +2,7 @@ import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it, vi } from 'vitest'
 
-import { Card, CardContent, CardFooter, CardHeader, CardProps } from './Card'
+import { Card, CardContent, CardFooter, CardHeader, type CardProps } from './Card'
 
 describe('Card', () => {
   it('renders children', () => {
