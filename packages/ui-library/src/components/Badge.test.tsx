@@ -20,16 +20,16 @@ describe('Badge', () => {
   it('applies primary variant classes', () => {
     render(<Badge variant="primary">Primary</Badge>)
     const badge = screen.getByText('Primary')
-    expect(badge.className).toContain('bg-interactive-primary')
-    expect(badge.className).toContain('text-interactive-primary-foreground')
+    expect(badge.className).toContain('bg-interactive-primary-muted')
+    expect(badge.className).toContain('text-foreground')
     expect(badge.className).toContain('border-interactive-primary-border')
   })
 
   it('applies secondary variant classes', () => {
     render(<Badge variant="secondary">Secondary</Badge>)
     const badge = screen.getByText('Secondary')
-    expect(badge.className).toContain('bg-surface-subtle')
-    expect(badge.className).toContain('text-foreground-muted')
+    expect(badge.className).toContain('bg-interactive-secondary-muted')
+    expect(badge.className).toContain('text-foreground')
     expect(badge.className).toContain('border-border-muted')
   })
 
@@ -78,7 +78,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Outline Primary')
     expect(badge.className).toContain('bg-surface')
     expect(badge.className).toContain('border-thick-interactive-primary-border')
-    expect(badge.className).toContain('text-interactive-primary')
+    expect(badge.className).toContain('text-foreground')
   })
 
   it('applies outline-secondary variant classes', () => {
@@ -86,7 +86,7 @@ describe('Badge', () => {
     const badge = screen.getByText('Outline Secondary')
     expect(badge.className).toContain('bg-surface')
     expect(badge.className).toContain('border-thick-interactive-secondary-border')
-    expect(badge.className).toContain('text-interactive-secondary')
+    expect(badge.className).toContain('text-foreground')
   })
 
   it('applies outline variant classes', () => {
