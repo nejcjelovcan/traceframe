@@ -24,6 +24,7 @@ import {
   Spinner,
   Flex,
   StatCard,
+  ThemeProvider,
   ThemeSwitcher,
   ToggleGroup,
   Tooltip,
@@ -417,7 +418,6 @@ To test persistence:
   },
   decorators: [
     (Story) => {
-      const ThemeProvider = require('../components/ThemeProvider').ThemeProvider
       return (
         <ThemeProvider persistToStorage storageKey="storybook-theme">
           <Story />

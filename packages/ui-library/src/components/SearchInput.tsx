@@ -1,7 +1,7 @@
 import { type VariantProps } from 'class-variance-authority'
 import { forwardRef, type InputHTMLAttributes } from 'react'
 
-import { Input, inputWrapperVariants } from './Input.js'
+import { Input, type inputWrapperVariants } from './Input.js'
 
 export interface SearchInputProps
   extends
