@@ -1,5 +1,19 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 2.4.0
+
+### Minor Changes
+
+- [#119](https://github.com/nejcjelovcan/traceframe/pull/119) [`67598fb`](https://github.com/nejcjelovcan/traceframe/commit/67598fb399f801c3846f93ce5ba33ecaf9fb2b8f) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add transparent variant to Navigation component for use on colorful backgrounds
+
+### Patch Changes
+
+- [#117](https://github.com/nejcjelovcan/traceframe/pull/117) [`17806ed`](https://github.com/nejcjelovcan/traceframe/commit/17806ed861f48f29f29959c85359b50ef921553e) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix PageLayout overflow, backgrounds, and sticky positioning
+
+- [#120](https://github.com/nejcjelovcan/traceframe/pull/120) [`f5dc92c`](https://github.com/nejcjelovcan/traceframe/commit/f5dc92cc6d3e8a31cb48635b3216808d80183888) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix vertical stretching of cards in Storybook when displayed horizontally
+
+- [#121](https://github.com/nejcjelovcan/traceframe/pull/121) [`fd13e14`](https://github.com/nejcjelovcan/traceframe/commit/fd13e149f07448682869692b12e963d9dfcce9eb) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix Badge default variant borders by using border-line utility for visible 1px solid borders with correct muted-border colors on accent and status variants
+
 ## 2.3.0
 
 ### Minor Changes
