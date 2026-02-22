@@ -254,8 +254,8 @@ export const CompactVariants: Story = {
         <Badge compact variant="success" icon="check" size="xs" />
         <Badge compact variant="warning" icon="alert-circle" size="xs" />
         <Badge compact variant="error" icon="close" size="xs" />
-        <Badge compact variant="accent1" icon="coffee" size="xs" />
-        <Badge compact variant="accent2" icon="archive" size="xs" />
+        <Badge compact variant="accent1" icon="bookmark" size="xs" />
+        <Badge compact variant="accent2" icon="filter" size="xs" />
       </div>
       <div className="flex items-center gap-sm">
         <span className="text-sm w-20">Dots Only:</span>
@@ -539,7 +539,7 @@ export const Showcase: Story = {
           <Badge compact variant="success" size="xs" />
           <Badge compact variant="warning" size="xs" />
           <Badge compact variant="error" size="xs" />
-          <Badge compact variant="accent1" icon="coffee" size="sm" />
+          <Badge compact variant="accent1" icon="bookmark" size="sm" />
           <Badge compact variant="accent2" size="sm" />
           <Badge compact variant="emphasis-success" icon="check" size="md" />
           <Badge compact variant="emphasis-error" size="lg" />
