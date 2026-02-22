@@ -33,8 +33,9 @@
     --token-shadow-inset-md: inset 0 4px 8px 0
       color-mix(in srgb, var(--token-shadow-color) 12%, transparent);
     --token-shadow-inset-underline: inset 0 -2px 0 0;
-    --token-text-shadow-light: 0 0 5px color-mix(in srgb, var(--token-surface) 90%, transparent);
-    --token-text-shadow-dark: 0 0 5px color-mix(in srgb, var(--token-shadow-color) 25%, transparent);
+    --token-text-shadow-light: 0 1px 3px color-mix(in srgb, var(--token-surface) 40%, transparent);
+    --token-text-shadow-dark: 0 1px 3px
+      color-mix(in srgb, var(--token-shadow-color) 25%, transparent);
 
     /* Border Radius */
     --token-radius-sm: 0.125rem;

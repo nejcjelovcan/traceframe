@@ -3,7 +3,7 @@ import { DataTable, type Column } from './DataTable'
 import { Flex } from './Flex'
 import { Grid } from './Grid'
 import { Heading } from './Heading'
-import { Navigation, NavItem } from './Navigation'
+import { Navigation, NavItem, NavHeading } from './Navigation'
 import { PageLayout, PageHeader, SidebarToggle } from './PageLayout'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -602,12 +602,11 @@ export const ColorfulWithTransparentNav: Story = {
           </Navigation>
         </PageHeader>
       }
+      sidebarSticky
       sidebar={
         <div className="w-64 p-base">
-          <Heading level={3} className="mb-md text-foreground/70 text-shadow-light">
-            Components
-          </Heading>
           <Navigation orientation="vertical" variant="transparent" color="primary">
+            <NavHeading>Components</NavHeading>
             <NavItem href="#" icon="package" active>
               Overview
             </NavItem>
@@ -623,11 +622,7 @@ export const ColorfulWithTransparentNav: Story = {
             <NavItem href="#" icon="info-circle">
               Feedback
             </NavItem>
-          </Navigation>
-          <Heading level={3} className="mb-md mt-lg text-foreground/70 text-shadow-light">
-            Resources
-          </Heading>
-          <Navigation orientation="vertical" variant="transparent" color="primary">
+            <NavHeading className="mt-md">Resources</NavHeading>
             <NavItem href="#" icon="file-description">
               Documentation
             </NavItem>
@@ -686,32 +681,18 @@ export const ColorfulWithTransparentNav: Story = {
           </CardContent>
         </Card>
 
-        <Grid cols={3 as const} gap="md">
-          {['primary', 'secondary', 'accent-1', 'accent-2', 'accent-3'].map((color) => (
-            <Card key={color}>
-              <CardContent>
-                <div
-                  className={`mb-sm rounded-md bg-gradient-${color} p-sm`}
-                  style={{ '--tw-bg-opacity': 1 } as React.CSSProperties}
-                >
-                  <Navigation
-                    orientation="horizontal"
-                    variant="transparent"
-                    color={color as 'primary' | 'secondary' | 'accent-1' | 'accent-2' | 'accent-3'}
-                  >
-                    <NavItem href="#" active>
-                      Active
-                    </NavItem>
-                    <NavItem href="#">Link</NavItem>
-                  </Navigation>
-                </div>
-                <p className="text-sm text-foreground-muted">
-                  Transparent on <span className="font-medium">{color}</span>
-                </p>
-              </CardContent>
-            </Card>
-          ))}
-        </Grid>
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Card key={i}>
+            <CardContent>
+              <Heading level={3}>Section {i + 1}</Heading>
+              <p className="mt-sm text-foreground-muted">
+                Scroll to see the sticky sidebar stay in place while content scrolls. The
+                transparent navigation provides a subtle, frosted-glass appearance on the colorful
+                background.
+              </p>
+            </CardContent>
+          </Card>
+        ))}
       </Flex>
     </PageLayout>
   ),

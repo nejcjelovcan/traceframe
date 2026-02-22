@@ -35,37 +35,37 @@ const navigationVariants = cva('transition-colors', {
     {
       variant: 'transparent',
       color: 'primary',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'secondary',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-1',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-2',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-3',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-4',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-5',
-      className: 'bg-surface/80 backdrop-blur-sm border-line-surface/40',
+      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
     },
     // Colorful variant with solid backgrounds and borders
     {
@@ -378,20 +378,12 @@ export interface NavHeadingProps extends Omit<HeadingProps, 'level' | 'size' | '
 
 const NavHeading = forwardRef<HTMLHeadingElement, NavHeadingProps>(
   ({ className, level = 3, size = 'sm', ...props }, ref) => {
-    const { variant } = useContext(NavigationContext)
-
-    const variantClass =
-      variant === 'colorful' || variant === 'transparent'
-        ? 'text-foreground/70'
-        : 'text-foreground-muted'
-
     return (
       <Heading
         ref={ref}
         level={level}
         size={size}
-        color={undefined}
-        className={cn(variantClass, 'uppercase tracking-wider mb-sm', className)}
+        className={cn('uppercase tracking-wider font-bold mb-sm', className)}
         {...props}
       />
     )
