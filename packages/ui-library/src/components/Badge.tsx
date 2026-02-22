@@ -10,40 +10,43 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
   variants: {
     variant: {
       // Core semantic variants (filled style)
-      default: 'bg-surface-muted text-foreground border-border',
-      primary: 'bg-interactive-primary-muted text-foreground border-interactive-primary-border',
-      secondary: 'bg-interactive-secondary-muted text-foreground border-border-muted',
+      default: 'bg-surface-muted text-foreground border-line',
+      primary:
+        'bg-interactive-primary-muted text-foreground border-line-interactive-primary-border',
+      secondary:
+        'bg-interactive-secondary-muted text-foreground border-line-interactive-secondary-border',
 
       // Status variants with proper contrast
-      info: 'bg-status-info-muted text-status-info-foreground border-status-info-muted-border',
+      info: 'bg-status-info-muted text-status-info-foreground border-line-status-info-muted-border',
       success:
-        'bg-status-success-muted text-status-success-foreground border-status-success-muted-border',
+        'bg-status-success-muted text-status-success-foreground border-line-status-success-muted-border',
       warning:
-        'bg-status-warning-muted text-status-warning-foreground border-status-warning-muted-border',
-      error: 'bg-status-error-muted text-status-error-foreground border-status-error-muted-border',
+        'bg-status-warning-muted text-status-warning-foreground border-line-status-warning-muted-border',
+      error:
+        'bg-status-error-muted text-status-error-foreground border-line-status-error-muted-border',
 
       // Accent variants for categorization and data visualization
-      accent1: 'bg-accent-1-muted text-accent-1-foreground border-accent-1-muted-border',
-      accent2: 'bg-accent-2-muted text-accent-2-foreground border-accent-2-muted-border',
-      accent3: 'bg-accent-3-muted text-accent-3-foreground border-accent-3-muted-border',
-      accent4: 'bg-accent-4-muted text-accent-4-foreground border-accent-4-muted-border',
-      accent5: 'bg-accent-5-muted text-accent-5-foreground border-accent-5-muted-border',
+      accent1: 'bg-accent-1-muted text-accent-1-foreground border-line-accent-1-muted-border',
+      accent2: 'bg-accent-2-muted text-accent-2-foreground border-line-accent-2-muted-border',
+      accent3: 'bg-accent-3-muted text-accent-3-foreground border-line-accent-3-muted-border',
+      accent4: 'bg-accent-4-muted text-accent-4-foreground border-line-accent-4-muted-border',
+      accent5: 'bg-accent-5-muted text-accent-5-foreground border-line-accent-5-muted-border',
 
       // Outline variants (ghost style with surface background for inverse contexts)
       'outline-default': 'bg-surface border-thick-border text-foreground',
       'outline-primary': 'bg-surface border-thick-interactive-primary-border text-foreground',
       'outline-secondary': 'bg-surface border-thick-interactive-secondary-border text-foreground',
-      'outline-info': 'bg-surface border-thick-status-info text-status-info',
-      'outline-success': 'bg-surface border-thick-status-success text-status-success',
-      'outline-warning': 'bg-surface border-thick-status-warning text-status-warning',
-      'outline-error': 'bg-surface border-thick-status-error text-status-error',
+      'outline-info': 'bg-surface border-thick-status-info text-status-info-foreground',
+      'outline-success': 'bg-surface border-thick-status-success text-status-success-foreground',
+      'outline-warning': 'bg-surface border-thick-status-warning text-status-warning-foreground',
+      'outline-error': 'bg-surface border-thick-status-error text-status-error-foreground',
 
       // Outline accent variants for categorization with thick borders
-      'outline-accent1': 'bg-surface border-thick-accent-1 text-accent-1',
-      'outline-accent2': 'bg-surface border-thick-accent-2 text-accent-2',
-      'outline-accent3': 'bg-surface border-thick-accent-3 text-accent-3',
-      'outline-accent4': 'bg-surface border-thick-accent-4 text-accent-4',
-      'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5',
+      'outline-accent1': 'bg-surface border-thick-accent-1 text-accent-1-foreground',
+      'outline-accent2': 'bg-surface border-thick-accent-2 text-accent-2-foreground',
+      'outline-accent3': 'bg-surface border-thick-accent-3 text-accent-3-foreground',
+      'outline-accent4': 'bg-surface border-thick-accent-4 text-accent-4-foreground',
+      'outline-accent5': 'bg-surface border-thick-accent-5 text-accent-5-foreground',
 
       // Emphasis variants using gradient backgrounds (no border)
       'emphasis-default': 'bg-gradient-surface text-foreground-filled',
