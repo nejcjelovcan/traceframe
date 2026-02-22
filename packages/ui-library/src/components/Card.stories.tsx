@@ -387,7 +387,7 @@ export const FullCard: Story = {
 export const StatusVariants: Story = {
   name: 'All Status Variants',
   render: () => (
-    <div className="flex flex-wrap gap-base">
+    <div className="flex flex-wrap items-start gap-base">
       <Card variant="info" className="w-56">
         <CardHeader icon="info-circle">Info</CardHeader>
         <CardContent>
@@ -419,7 +419,7 @@ export const StatusVariants: Story = {
 export const AccentVariants: Story = {
   name: 'All Accent Variants',
   render: () => (
-    <div className="flex flex-wrap gap-base">
+    <div className="flex flex-wrap items-start gap-base">
       <Card variant="accent1" className="w-48">
         <CardHeader>Accent 1</CardHeader>
         <CardContent>
@@ -462,7 +462,7 @@ export const AllInverse: Story = {
         <Heading level={3} size="base" className="mb-base">
           Core Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card variant="outlined" className="inverse w-56">
             <CardHeader>Outlined</CardHeader>
             <CardContent>
@@ -482,7 +482,7 @@ export const AllInverse: Story = {
         <Heading level={3} size="base" className="mb-base">
           Status Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card variant="info" className="inverse w-56">
             <CardHeader icon="info-circle">Info</CardHeader>
             <CardContent>
@@ -514,7 +514,7 @@ export const AllInverse: Story = {
         <Heading level={3} size="base" className="mb-base">
           Accent Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card variant="accent1" className="inverse w-48">
             <CardHeader>Accent 1</CardHeader>
             <CardContent>
@@ -584,7 +584,7 @@ export const Actionable: Story = {
 export const ActionableVariants: Story = {
   name: 'All Actionable Variants',
   render: () => (
-    <div className="flex flex-wrap gap-base">
+    <div className="flex flex-wrap items-start gap-base">
       <Card variant="outlined" actionable className="w-56">
         <CardHeader>Outlined</CardHeader>
         <CardContent>
@@ -623,7 +623,7 @@ export const InteractiveComparison: Story = {
   name: 'Normal vs Actionable',
   render: () => (
     <div className="space-y-base">
-      <div className="flex flex-wrap gap-base">
+      <div className="flex flex-wrap items-start gap-base">
         <Card variant="outlined" className="w-64">
           <CardHeader>Normal Card</CardHeader>
           <CardContent>
@@ -656,7 +656,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             Basic Usage
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card accordion className="w-80">
               <CardHeader>Collapsed by Default</CardHeader>
               <CardContent>
@@ -723,7 +723,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             With Header Icons
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card accordion className="w-80">
               <CardHeader icon="settings">Left Icon</CardHeader>
               <CardContent>
@@ -746,7 +746,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             All Variants
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card variant="outlined" accordion className="w-64">
               <CardHeader>Outlined</CardHeader>
               <CardContent>
@@ -841,7 +841,7 @@ export const AllAccordion: Story = {
           <Heading level={3} size="base" className="mb-base">
             Inverse
           </Heading>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card accordion className="inverse w-64">
               <CardHeader>Inverse Accordion</CardHeader>
               <CardContent>
@@ -963,7 +963,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Core Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
@@ -1002,7 +1002,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Status Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
@@ -1047,7 +1047,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Accent Variants
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <ShowcaseCard
             mode={mode}
             inverse={inverse}
@@ -1101,7 +1101,7 @@ function ShowcaseContent() {
         <Heading level={3} size="base" className="mb-base">
           Compositions
         </Heading>
-        <div className="flex flex-wrap gap-base">
+        <div className="flex flex-wrap items-start gap-base">
           <Card
             actionable={mode === 'actionable'}
             accordion={mode === 'accordion'}
@@ -1241,7 +1241,7 @@ export const WithActionList: Story = {
             Card with overflow enabled (max-height: 320px). The list scrolls within the card content
             area.
           </p>
-          <div className="flex gap-base">
+          <div className="flex items-start gap-base">
             <Card className="w-96">
               <CardHeader icon="file">Project Files (Default Overflow)</CardHeader>
               <CardContent overflow>
@@ -1360,7 +1360,7 @@ export const WithActionList: Story = {
           <p className="mb-base text-sm text-foreground-muted">
             Showing how Card sizes relate to ActionList densities for optimal visual pairing.
           </p>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             {/* Default Card + Comfortable ActionList */}
             <Card size="default" className="w-80">
               <CardHeader>Default + Comfortable</CardHeader>
@@ -1428,7 +1428,7 @@ export const WithActionList: Story = {
           <p className="mb-base text-sm text-foreground-muted">
             Status variant cards with ActionList for themed containers.
           </p>
-          <div className="flex flex-wrap gap-base">
+          <div className="flex flex-wrap items-start gap-base">
             <Card variant="info" className="w-80">
               <CardHeader icon="info-circle">Information</CardHeader>
               <CardContent noPadding overflow>
