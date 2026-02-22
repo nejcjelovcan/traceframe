@@ -5,6 +5,7 @@
 @import './tokens/palettes/forge.css';
 @import './tokens/palettes/mist.css';
 @import './tokens/palettes/aura.css';
+@import './tokens/palette-fallbacks.generated.css';
 @import './tokens/themes/arctic.css';
 @import './tokens/themes/forge.css';
 @import './tokens/themes/mist.css';

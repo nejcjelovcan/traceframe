@@ -41,6 +41,7 @@ pnpm-debug.log*
 
 # Generated output
 screenshots
+packages/ui-library/src/styles/tokens/palette-fallbacks.generated.css
 
 # Claude Code
 .claude/settings.local.json
