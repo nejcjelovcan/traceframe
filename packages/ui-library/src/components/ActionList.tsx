@@ -510,7 +510,7 @@ ActionListItemDescription.displayName = 'ActionList.ItemDescription'
 // Group component
 const ActionListGroup = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} role="group" className={cn('space-y-xs', className)} {...props} />
+    <div ref={ref} role="group" className={cn(className)} {...props} />
   )
 )
 
