@@ -1059,4 +1059,129 @@ describe('Card accordion functionality', () => {
     // Focus should remain on header
     expect(document.activeElement).toBe(header)
   })
+
+  it('applies className to wrapper in accordion mode', () => {
+    const { container } = render(
+      <Card accordion className="flex-1 custom-class">
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    // The wrapper with data-state should have the className
+    const wrapper = container.querySelector('[data-state]')
+    expect(wrapper).toBeDefined()
+    expect(wrapper?.className).toContain('flex-1')
+    expect(wrapper?.className).toContain('custom-class')
+
+    // The inner card div should only have card variant classes
+    const innerCard = wrapper?.querySelector('div')
+    expect(innerCard).toBeDefined()
+    expect(innerCard?.className).toContain('bg-surface') // default variant
+    expect(innerCard?.className).toContain('border-line-border')
+    // But not the user's custom classes
+    expect(innerCard?.className).not.toContain('flex-1')
+    expect(innerCard?.className).not.toContain('custom-class')
+  })
+
+  it('applies style to wrapper in accordion mode', () => {
+    const { container } = render(
+      <Card accordion style={{ width: '300px', padding: '10px' }}>
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    // The wrapper with data-state should have the style
+    const wrapper = container.querySelector('[data-state]') as HTMLElement
+    expect(wrapper).toBeDefined()
+    expect(wrapper?.style.width).toBe('300px')
+    expect(wrapper?.style.padding).toBe('10px')
+
+    // The inner card div should not have the style
+    const innerCard = wrapper?.querySelector('div') as HTMLElement
+    expect(innerCard).toBeDefined()
+    expect(innerCard?.style.width).toBe('')
+    expect(innerCard?.style.padding).toBe('')
+  })
+
+  it('applies data attributes to wrapper in accordion mode', () => {
+    const { container } = render(
+      <Card accordion data-testid="accordion-card" data-custom="value">
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    // The wrapper with data-state should have the data attributes
+    const wrapper = container.querySelector('[data-state]')
+    expect(wrapper).toBeDefined()
+    expect(wrapper?.getAttribute('data-testid')).toBe('accordion-card')
+    expect(wrapper?.getAttribute('data-custom')).toBe('value')
+  })
+
+  it('works with flex layout when accordion is used', () => {
+    const { container } = render(
+      <div style={{ display: 'flex', gap: '16px' }}>
+        <Card accordion className="flex-1">
+          <CardHeader>Card 1</CardHeader>
+          <CardContent>Content 1</CardContent>
+        </Card>
+        <Card accordion className="flex-1">
+          <CardHeader>Card 2</CardHeader>
+          <CardContent>Content 2</CardContent>
+        </Card>
+      </div>
+    )
+
+    const flexContainer = container.firstChild as Element
+    // Get only the root-level accordion wrappers (direct children of flex container)
+    const cards = flexContainer?.querySelectorAll(':scope > [data-state]')
+    expect(cards?.length).toBe(2)
+
+    // Both accordion wrappers should have flex-1 class
+    cards?.forEach((card) => {
+      expect(card.className).toContain('flex-1')
+    })
+  })
+
+  it('preserves card variant styling on inner div in accordion mode', () => {
+    const { container } = render(
+      <Card accordion variant="info" className="custom-layout">
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    // Wrapper gets the custom className
+    const wrapper = container.querySelector('[data-state]')
+    expect(wrapper?.className).toBe('custom-layout')
+
+    // Inner div gets the variant styling
+    const innerCard = wrapper?.querySelector('div')
+    expect(innerCard?.className).toContain('bg-gradient-status-info-light')
+    expect(innerCard?.className).toContain('text-status-info-foreground')
+    expect(innerCard?.className).toContain('border-line-status-info-border')
+  })
+
+  it('maintains proper DOM structure with className forwarding', () => {
+    const { container } = render(
+      <Card accordion className="w-full">
+        <CardHeader>Header</CardHeader>
+        <CardContent>Content</CardContent>
+      </Card>
+    )
+
+    // Root should be the CollapsiblePrimitive.Root with className
+    const root = container.firstChild
+    expect(root?.nodeName).toBe('DIV')
+    expect((root as HTMLElement)?.className).toBe('w-full')
+    expect((root as HTMLElement)?.getAttribute('data-state')).toBeDefined()
+
+    // Inner div should have card variant classes
+    const innerCard = root?.firstChild
+    expect(innerCard?.nodeName).toBe('DIV')
+    expect((innerCard as HTMLElement)?.className).toContain('rounded-sm')
+    expect((innerCard as HTMLElement)?.className).toContain('border-line')
+  })
 })
