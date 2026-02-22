@@ -1,6 +1,6 @@
 {
   "name": "@nejcjelovcan/traceframe-storybook-preset",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "type": "module",
   "description": "Storybook preset for Traceframe theme integration",
   "main": "./preset.js",

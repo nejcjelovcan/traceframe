@@ -1,5 +1,17 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 2.2.0
+
+### Minor Changes
+
+- [#110](https://github.com/nejcjelovcan/traceframe/pull/110) [`ade8550`](https://github.com/nejcjelovcan/traceframe/commit/ade855072312f1334e2a83660088a7b91e29efe8) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add compact mode to Badge component for space-constrained UIs
+
+### Patch Changes
+
+- [#109](https://github.com/nejcjelovcan/traceframe/pull/109) [`e3e1564`](https://github.com/nejcjelovcan/traceframe/commit/e3e1564e393b607542d73b75455559f325d09853) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix className forwarding to accordion wrapper in Card component
+
+- [#111](https://github.com/nejcjelovcan/traceframe/pull/111) [`5738d7d`](https://github.com/nejcjelovcan/traceframe/commit/5738d7d9749ac06a9961b3eea401be5cdaea3b7c) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Update semantic shades for secondary and -border
+
 ## 2.1.0
 
 ### Minor Changes
