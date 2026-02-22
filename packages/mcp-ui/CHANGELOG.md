@@ -1,5 +1,24 @@
 # @nejcjelovcan/traceframe-mcp-ui
 
+## 1.0.0
+
+### Major Changes
+
+- [#107](https://github.com/nejcjelovcan/traceframe/pull/107) [`8bcc936`](https://github.com/nejcjelovcan/traceframe/commit/8bcc93692101668da47dac3e97f2e194e44ad73a) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Convert traceframe-ui-library to peer dependency to prevent duplicate React instances
+
+  BREAKING CHANGE: @nejcjelovcan/traceframe-ui-library is now a peer dependency. Consumers must install it explicitly:
+
+  ```bash
+  npm install @nejcjelovcan/traceframe-ui-library@^2.0.0
+  ```
+
+  This change prevents duplicate React instances when using mcp-ui in monorepos or with different ui-library versions.
+
+### Patch Changes
+
+- Updated dependencies [[`e3e1564`](https://github.com/nejcjelovcan/traceframe/commit/e3e1564e393b607542d73b75455559f325d09853), [`ade8550`](https://github.com/nejcjelovcan/traceframe/commit/ade855072312f1334e2a83660088a7b91e29efe8), [`5738d7d`](https://github.com/nejcjelovcan/traceframe/commit/5738d7d9749ac06a9961b3eea401be5cdaea3b7c)]:
+  - @nejcjelovcan/traceframe-ui-library@2.2.0
+
 ## 0.4.1
 
 ### Patch Changes
