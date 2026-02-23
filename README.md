@@ -303,6 +303,37 @@ traceframe/
 └── package.json            # Workspace root
 ```
 
+## Versioning and Releases
+
+This repository uses [Changesets](https://github.com/changesets/changesets) for versioning and release management.
+
+### Fixed Package Versioning
+
+The following packages are configured as "fixed" and always share the same version number:
+
+- `@nejcjelovcan/traceframe-ui-library`
+- `@nejcjelovcan/traceframe-mcp-ui`
+
+When either package changes, both are published with the same version. This ensures version synchronization between the UI library and its MCP companion server, as mcp-ui exposes ui-library's metadata and must stay in sync.
+
+### Creating a Changeset
+
+When making changes that should be released:
+
+```bash
+# Create a changeset interactively
+pnpm changeset
+
+# Or use mcp-dev for non-interactive creation
+pnpm mcp-dev create_changeset
+```
+
+### Release Process
+
+1. Create PRs with changeset files describing the changes
+2. When PRs are merged, the CI creates a "Version Packages" PR
+3. Merging the version PR publishes packages to GitHub Packages
+
 ## License
 
 MIT
