@@ -11,8 +11,8 @@ import { cn } from '../utils/cn.js'
 const navigationVariants = cva('transition-colors', {
   variants: {
     orientation: {
-      horizontal: 'flex items-center gap-base',
-      vertical: 'flex flex-col gap-xs',
+      horizontal: 'flex items-center',
+      vertical: 'flex flex-col',
     },
     variant: {
       default: '',
@@ -35,37 +35,39 @@ const navigationVariants = cva('transition-colors', {
     {
       variant: 'transparent',
       color: 'primary',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className:
+        'bg-surface/40 backdrop-blur-md border-line-interactive-primary-border shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'secondary',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className:
+        'bg-surface/40 backdrop-blur-md border-line-interactive-secondary-border shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-1',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className: 'bg-surface/40 backdrop-blur-md border-line-accent-1-border shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-2',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className: 'bg-surface/40 backdrop-blur-md border-line-accent-2-border shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-3',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className: 'bg-surface/40 backdrop-blur-md border-line-accent-3-border shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-4',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className: 'bg-surface/40 backdrop-blur-md border-line-accent-4-border shadow-inset-sm',
     },
     {
       variant: 'transparent',
       color: 'accent-5',
-      className: 'bg-surface/40 backdrop-blur-md border-line-surface/30 shadow-inset-sm',
+      className: 'bg-surface/40 backdrop-blur-md border-line-accent-5-border shadow-inset-sm',
     },
     // Colorful variant with solid backgrounds and borders
     {
@@ -147,7 +149,7 @@ const navigationVariants = cva('transition-colors', {
   },
 })
 
-const navItemVariants = cva('rounded-md transition-colors', {
+const navItemVariants = cva('rounded-md transition-colors relative', {
   variants: {
     orientation: {
       horizontal: 'inline-flex items-center gap-xs',
@@ -162,6 +164,15 @@ const navItemVariants = cva('rounded-md transition-colors', {
       colorful: '',
       subtle: '',
       transparent: '',
+    },
+    parentColor: {
+      primary: '',
+      secondary: '',
+      'accent-1': '',
+      'accent-2': '',
+      'accent-3': '',
+      'accent-4': '',
+      'accent-5': '',
     },
   },
   compoundVariants: [
@@ -215,12 +226,56 @@ const navItemVariants = cva('rounded-md transition-colors', {
       active: true,
       className: 'bg-surface/40 text-foreground text-shadow-light font-medium',
     },
-    // Transparent variant styles (edge-to-edge NavItems)
+    // Transparent variant styles (edge-to-edge NavItems) with separators
     {
       parentVariant: 'transparent',
       orientation: 'horizontal',
       active: false,
-      className: 'text-foreground text-shadow-light hover:text-foreground',
+      className:
+        'text-foreground text-shadow-light hover:text-foreground first:before:hidden before:absolute before:left-0 before:inset-y-0 before:w-px',
+    },
+    // Separator colors for each color variant in transparent horizontal mode
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'primary',
+      className: 'before:bg-primary-500/30',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'secondary',
+      className: 'before:bg-secondary-500/30',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'accent-1',
+      className: 'before:bg-accent-1-500/30',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'accent-2',
+      className: 'before:bg-accent-2-500/30',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'accent-3',
+      className: 'before:bg-accent-3-500/30',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'accent-4',
+      className: 'before:bg-accent-4-500/30',
+    },
+    {
+      parentVariant: 'transparent',
+      orientation: 'horizontal',
+      parentColor: 'accent-5',
+      className: 'before:bg-accent-5-500/30',
     },
     {
       parentVariant: 'transparent',
@@ -232,7 +287,8 @@ const navItemVariants = cva('rounded-md transition-colors', {
       parentVariant: 'transparent',
       orientation: 'horizontal',
       active: true,
-      className: 'text-foreground text-shadow-light font-medium bg-surface/40 px-sm',
+      className:
+        'text-foreground text-shadow-light font-medium bg-surface/40 px-sm first:before:hidden before:absolute before:left-0 before:inset-y-0 before:w-px',
     },
     {
       parentVariant: 'transparent',
@@ -270,6 +326,7 @@ const navItemVariants = cva('rounded-md transition-colors', {
     orientation: 'horizontal',
     active: false,
     parentVariant: 'default',
+    parentColor: 'primary',
   },
 })
 
@@ -287,9 +344,11 @@ type Color =
 const NavigationContext = createContext<{
   orientation: Orientation
   variant: Variant
+  color: Color
 }>({
   orientation: 'horizontal',
   variant: 'default',
+  color: 'primary',
 })
 
 export interface NavigationProps
@@ -323,7 +382,9 @@ const Navigation = forwardRef<HTMLElement, NavigationProps>(
       : navigationVariants({ orientation, variant: 'default', className })
 
     return (
-      <NavigationContext.Provider value={{ orientation, variant: effectiveVariant }}>
+      <NavigationContext.Provider
+        value={{ orientation, variant: effectiveVariant, color: effectiveColor }}
+      >
         <nav ref={ref} className={cn(navClassName)} {...props}>
           {children}
         </nav>
@@ -349,14 +410,22 @@ export interface NavItemProps extends HTMLAttributes<HTMLAnchorElement> {
 
 const NavItem = forwardRef<HTMLAnchorElement, NavItemProps>(
   ({ className, href, active = false, icon, asChild = false, children, ...props }, ref) => {
-    const { orientation, variant } = useContext(NavigationContext)
+    const { orientation, variant, color } = useContext(NavigationContext)
     const Comp = asChild ? Slot : 'a'
 
     return (
       <Comp
         ref={ref}
         href={asChild ? undefined : href}
-        className={cn(navItemVariants({ orientation, active, parentVariant: variant, className }))}
+        className={cn(
+          navItemVariants({
+            orientation,
+            active,
+            parentVariant: variant,
+            parentColor: color,
+            className,
+          })
+        )}
         aria-current={active ? 'page' : undefined}
         {...props}
       >
