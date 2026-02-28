@@ -136,14 +136,25 @@ Check each item in the issue's "Acceptance Criteria" section.
 4. `typecheck_package` - Verify types
 5. `test_package` - Run tests
 
-### 10. Commit Changes
+### 10. Add Changeset (if needed)
+
+If the PR changes code in a **publishable** package (ui-library, playroom-preset, storybook-preset, eslint-plugin, mcp-dev, mcp-shared), create a changeset using the `create_changeset` mcp-dev tool:
+
+```
+create_changeset(packages: ["ui-library"], bump: "minor", summary: "Add MyComponent")
+```
+
+- `patch` for bug fixes, `minor` for new features, `major` for breaking changes
+- Skip for changes to private packages only (mcp-ui, playroom) or non-code changes (docs, CI)
+
+### 11. Commit Changes
 
 **Stage and commit using git MCP tools:**
 1. Use `git_add` to stage specific files (never use `.` or `-A`)
 2. Use `git_commit` with a descriptive message including the issue identifier and `Co-Authored-By: Claude <noreply@anthropic.com>`
 3. Use `git_push` to push the branch
 
-### 11. Output PR Description
+### 12. Output PR Description
 
 **Your final output message must be the PR description** in the following format. The orchestrator will use this to create the PR automatically.
 
