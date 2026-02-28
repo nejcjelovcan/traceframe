@@ -74,9 +74,9 @@ Tools accept package names in multiple formats:
 - Full scoped name: `@nejcjelovcan/traceframe-ui-library`
 - Bare name: `ui-library`, `mcp-ui`
 
-## Claude Code Commands
+## Claude Code Skills
 
-| Command      | Purpose                                               |
+| Skill        | Purpose                                               |
 | ------------ | ----------------------------------------------------- |
 | `/refine`    | Refine a Linear issue to make it implementation-ready |
 | `/implement` | Implement a refined Linear issue                      |
