@@ -6,7 +6,7 @@ import { cn } from '../utils/cn.js'
 
 /** Base styles shared between standalone input and wrapper */
 const baseInputStyles =
-  'rounded-sm border-line bg-surface transition-colors placeholder:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-50'
+  'rounded-sm border-line bg-surface transition-colors-token placeholder:text-foreground-muted disabled:cursor-not-allowed disabled:opacity-50'
 
 /** Focus styles for standalone input (no icons) */
 const focusStyles =

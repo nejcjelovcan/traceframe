@@ -76,6 +76,10 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
       true: '',
       false: '',
     },
+    pulse: {
+      true: 'animate-pulse-token',
+      false: '',
+    },
   },
   compoundVariants: [
     // Compact mode with icon: equal padding on all sides
@@ -88,6 +92,7 @@ const badgeVariants = cva('inline-flex items-center justify-center gap-xs rounde
     variant: 'default',
     size: 'md',
     compact: false,
+    pulse: false,
   },
 })
 
@@ -99,11 +104,23 @@ export interface BadgeProps
   iconPosition?: 'left' | 'right'
   /** Compact mode for icon-only or dot-only display */
   compact?: boolean
+  /** Enable pulse animation for status indicators */
+  pulse?: boolean
 }
 
 export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
   (
-    { className, variant, size, icon, iconPosition = 'left', compact = false, children, ...props },
+    {
+      className,
+      variant,
+      size,
+      icon,
+      iconPosition = 'left',
+      compact = false,
+      pulse = false,
+      children,
+      ...props
+    },
     ref
   ) => {
     const iconSize = size === 'xs' || size === 'sm' ? 'xs' : 'sm'
@@ -121,7 +138,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
       return (
         <span
           className={cn(
-            badgeVariants({ variant, size, compact, className }),
+            badgeVariants({ variant, size, compact, pulse, className }),
             dotSizeClasses,
             'rounded-full p-0'
           )}
@@ -136,7 +153,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     if (compact && icon) {
       return (
         <span
-          className={cn(badgeVariants({ variant, size, compact, className }))}
+          className={cn(badgeVariants({ variant, size, compact, pulse, className }))}
           ref={ref}
           {...props}
         >
@@ -148,7 +165,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     // Regular mode - render as before
     return (
       <span
-        className={cn(badgeVariants({ variant, size, compact, className }))}
+        className={cn(badgeVariants({ variant, size, compact, pulse, className }))}
         ref={ref}
         {...props}
       >

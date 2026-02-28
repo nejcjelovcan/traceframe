@@ -44,7 +44,7 @@ const cardVariants = cva('rounded-sm border-line', {
       accent5: 'bg-gradient-accent-5-light text-accent-5-foreground border-line-accent-5-border',
     },
     actionable: {
-      true: 'cursor-pointer transition-shadow',
+      true: 'cursor-pointer transition-shadow-token',
       false: '',
     },
   },
@@ -274,7 +274,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
           <Icon
             name="chevron-right"
             size="sm"
-            className="shrink-0 transition-transform duration-200 [[data-state=open]>&]:rotate-90"
+            className="shrink-0 transition-transform-token [[data-state=open]>&]:rotate-90"
             aria-hidden="true"
           />
         )}
@@ -301,7 +301,7 @@ export const CardHeader = forwardRef<HTMLDivElement, CardHeaderProps>(
               'flex w-full items-center gap-sm font-medium text-left',
               isSmall ? 'px-sm py-xs text-sm' : 'px-base py-md',
               'rounded-t-sm last:rounded-b-sm',
-              'hover:bg-foreground/5 transition-colors',
+              'hover:bg-foreground/5 transition-colors-token',
               'focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
               'disabled:cursor-not-allowed disabled:opacity-50',
               className

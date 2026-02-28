@@ -8,7 +8,7 @@ import { cn } from '../utils/cn.js'
 import type { IconName, IconSize } from '../icons/types.js'
 
 const linkVariants = cva(
-  'inline-flex items-center gap-xs transition-colors focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-xs',
+  'inline-flex items-center gap-xs transition-colors-token focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface rounded-xs',
   {
     variants: {
       variant: {

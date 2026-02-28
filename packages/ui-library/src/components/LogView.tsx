@@ -253,7 +253,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
     return (
       <CollapsiblePrimitive.Root defaultOpen={defaultExpanded} asChild>
         <div ref={ref} className={cn(levelStyle, className)} {...props}>
-          <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm text-left transition-colors hover:bg-surface-muted overflow-hidden">
+          <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm text-left transition-colors-fast hover:bg-surface-muted overflow-hidden">
             {timestampEl}
             {iconEl}
             <span className="min-w-0 flex-1 break-all px-xs py-2xs pt-xs">{children}</span>
@@ -261,7 +261,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
               name="chevron-right"
               size="sm"
               aria-hidden="true"
-              className="shrink-0 mx-xs text-foreground-muted transition-transform duration-200 [[data-state=open]>&]:rotate-90"
+              className="shrink-0 mx-xs text-foreground-muted transition-transform-fast [[data-state=open]>&]:rotate-90"
               style={{ marginTop: 'calc(var(--token-spacing-xs) * 1.6)' }}
             />
           </CollapsiblePrimitive.Trigger>

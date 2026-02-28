@@ -1,0 +1,102 @@
+/**
+ * Transition utilities using Tailwind v4 @utility directive.
+ * These utilities provide theme-aware transitions using design tokens.
+ */
+
+/* Transition property utilities */
+@utility transition-colors-token {
+  transition: var(--transition-colors);
+}
+
+@utility transition-opacity-token {
+  transition: var(--transition-opacity);
+}
+
+@utility transition-transform-token {
+  transition: var(--transition-transform);
+}
+
+@utility transition-shadow-token {
+  transition: var(--transition-shadow);
+}
+
+@utility transition-all-token {
+  transition: var(--transition-all);
+}
+
+/* Scale transform utilities using theme tokens */
+@utility scale-hover-on-hover {
+  &:hover {
+    transform: scale(var(--transition-scale-hover));
+  }
+}
+
+@utility scale-active-on-active {
+  &:active {
+    transform: scale(var(--transition-scale-active));
+  }
+}
+
+/* Combined hover and active scale */
+@utility scale-interactive {
+  transition: var(--transition-transform);
+
+  &:hover {
+    transform: scale(var(--transition-scale-hover));
+  }
+
+  &:active {
+    transform: scale(var(--transition-scale-active));
+  }
+}
+
+/* Pulse animation utility */
+@utility animate-pulse-token {
+  animation: var(--animate-pulse);
+}
+
+/* Duration utilities for custom transitions */
+@utility duration-instant {
+  transition-duration: var(--duration-instant);
+}
+
+@utility duration-fast {
+  transition-duration: var(--duration-fast);
+}
+
+@utility duration-moderate {
+  transition-duration: var(--duration-moderate);
+}
+
+@utility duration-slow {
+  transition-duration: var(--duration-slow);
+}
+
+@utility duration-deliberate {
+  transition-duration: var(--duration-deliberate);
+}
+
+/* Easing function utilities */
+@utility ease-linear-token {
+  transition-timing-function: var(--ease-linear);
+}
+
+@utility ease-in-token {
+  transition-timing-function: var(--ease-in);
+}
+
+@utility ease-out-token {
+  transition-timing-function: var(--ease-out);
+}
+
+@utility ease-in-out-token {
+  transition-timing-function: var(--ease-in-out);
+}
+
+@utility ease-spring-token {
+  transition-timing-function: var(--ease-spring);
+}
+
+@utility ease-bounce-token {
+  transition-timing-function: var(--ease-bounce);
+}

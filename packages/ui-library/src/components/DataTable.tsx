@@ -357,7 +357,7 @@ function DataTableInner<T>(
         <Icon
           name="chevron-right"
           size="sm"
-          className={cn('transform transition-transform duration-150', isExpanded && 'rotate-90')}
+          className={cn('transform transition-transform-token', isExpanded && 'rotate-90')}
         />
       </button>
     )

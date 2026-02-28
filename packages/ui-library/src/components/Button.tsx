@@ -7,20 +7,20 @@ import { Icon, type IconName, type IconSize } from '../icons/index.js'
 import { cn } from '../utils/cn.js'
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-sm rounded-sm font-medium whitespace-nowrap transition-all focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
+  'inline-flex items-center justify-center gap-sm rounded-sm font-medium whitespace-nowrap transition-all-token focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-surface disabled:pointer-events-none disabled:bg-disabled disabled:text-disabled-foreground',
   {
     variants: {
       variant: {
         primary:
-          'bg-gradient-primary text-foreground-filled text-shadow-dark border-line-interactive-primary-border hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-primary text-foreground-filled text-shadow-dark border-line-interactive-primary-border hover:opacity-90 scale-hover-on-hover scale-active-on-active shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow-token focus-visible:ring-ring',
         secondary:
-          'bg-gradient-secondary text-foreground-filled text-shadow-dark border-line-interactive-secondary-border hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-secondary text-foreground-filled text-shadow-dark border-line-interactive-secondary-border hover:opacity-90 scale-hover-on-hover scale-active-on-active shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow-token focus-visible:ring-ring',
         outline:
-          'border border-border bg-transparent hover:bg-surface-subtle hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-ring',
+          'border border-border bg-transparent hover:bg-surface-subtle scale-hover-on-hover scale-active-on-active focus-visible:ring-ring',
         ghost:
-          'hover:bg-interactive-hover hover:scale-[1.02] active:scale-[0.98] focus-visible:ring-ring',
+          'hover:bg-interactive-hover scale-hover-on-hover scale-active-on-active focus-visible:ring-ring',
         destructive:
-          'bg-gradient-destructive text-foreground-filled border-line-interactive-destructive-border hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed focus-visible:ring-ring',
+          'bg-gradient-destructive text-foreground-filled border-line-interactive-destructive-border hover:opacity-90 scale-hover-on-hover scale-active-on-active shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow-token focus-visible:ring-ring',
       },
       size: {
         sm: 'h-size-sm px-md text-sm',

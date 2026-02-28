@@ -8,7 +8,7 @@ import { Icon } from '../icons/Icon.js'
 import { type IconName } from '../icons/types.js'
 import { cn } from '../utils/cn.js'
 
-const navigationVariants = cva('transition-colors', {
+const navigationVariants = cva('transition-colors-token', {
   variants: {
     orientation: {
       horizontal: 'flex items-center',
@@ -149,7 +149,7 @@ const navigationVariants = cva('transition-colors', {
   },
 })
 
-const navItemVariants = cva('rounded-md transition-colors relative', {
+const navItemVariants = cva('rounded-md transition-colors-token relative', {
   variants: {
     orientation: {
       horizontal: 'inline-flex items-center gap-xs',
