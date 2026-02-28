@@ -1700,6 +1700,17 @@ export const COMPONENT_METADATA: Record<string, ComponentMeta> = {
       },
     ],
   },
+  Transitions: {
+    name: 'Transitions',
+    category: 'other',
+    tier: 1,
+    tierLabel: 'Tailwind + CVA',
+    description:
+      'The transition token system provides theme-specific animations and transitions for interactive elements.',
+    usage: '',
+    accessibility: [],
+    props: [],
+  },
   Icons: {
     name: 'Icons',
     category: 'foundation',

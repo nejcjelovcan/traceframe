@@ -39,7 +39,7 @@ import type { IconName } from '../icons/types.js'
 // Trigger variants
 const selectTriggerVariants = cva(
   [
-    'inline-flex items-center justify-between gap-sm rounded-md border transition-colors',
+    'inline-flex items-center justify-between gap-sm rounded-md border transition-colors-token',
     'bg-surface text-foreground',
     'focus:outline-hidden focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-surface',
     'disabled:cursor-not-allowed disabled:opacity-50',
@@ -132,7 +132,7 @@ const selectContentVariants = cva(
 const selectItemVariants = cva(
   [
     'relative flex cursor-default select-none items-center gap-sm',
-    'rounded-xs outline-hidden transition-colors',
+    'rounded-xs outline-hidden transition-colors-token',
     'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
   ],
   {

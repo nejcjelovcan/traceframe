@@ -137,7 +137,7 @@ export function BarChart({
                     <button
                       type="button"
                       className={cn(
-                        'absolute inset-y-0 left-0 rounded-sm transition-all duration-200',
+                        'absolute inset-y-0 left-0 rounded-sm transition-all-token',
                         getBarColor(item, index),
                         onBarClick && 'cursor-pointer hover:opacity-80',
                         !onBarClick && 'cursor-default'
@@ -162,7 +162,7 @@ export function BarChart({
                     <button
                       type="button"
                       className={cn(
-                        'absolute inset-x-0 bottom-0 rounded-sm transition-all duration-200',
+                        'absolute inset-x-0 bottom-0 rounded-sm transition-all-token',
                         getBarColor(item, index),
                         onBarClick && 'cursor-pointer hover:opacity-80',
                         !onBarClick && 'cursor-default'

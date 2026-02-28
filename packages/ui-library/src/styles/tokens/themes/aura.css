@@ -65,5 +65,34 @@
     --token-border-style-line: 1px solid;
     --token-border-style-thick: 2px solid;
     --token-border-style-highlight: 2px dashed;
+
+    /* Transition Durations */
+    --token-duration-instant: 50ms;
+    --token-duration-fast: 150ms;
+    --token-duration-moderate: 250ms;
+    --token-duration-slow: 350ms;
+    --token-duration-deliberate: 500ms;
+
+    /* Easing Functions */
+    --token-ease-linear: linear;
+    --token-ease-in: cubic-bezier(0.4, 0, 1, 1);
+    --token-ease-out: cubic-bezier(0, 0, 0.2, 1);
+    --token-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+    --token-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --token-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    /* Transition Properties - Aura: Gentle, elegant transitions */
+    --token-transition-colors: colors var(--token-duration-slow) var(--token-ease-in-out);
+    --token-transition-opacity: opacity var(--token-duration-slow) var(--token-ease-in-out);
+    --token-transition-transform: transform var(--token-duration-slow) var(--token-ease-bounce);
+    --token-transition-shadow: box-shadow var(--token-duration-slow) var(--token-ease-in-out);
+    --token-transition-all: all var(--token-duration-slow) var(--token-ease-in-out);
+
+    /* Transition Scale Values */
+    --token-transition-scale-hover: 1.01;
+    --token-transition-scale-active: 0.99;
+
+    /* Animation Speeds */
+    --token-animate-pulse: pulse 2.5s var(--token-ease-in-out) infinite;
   }
 }

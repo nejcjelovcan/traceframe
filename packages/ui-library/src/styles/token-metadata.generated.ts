@@ -77,6 +77,45 @@ export const TOKEN_METADATA = {
         'shadow-dark': '',
       },
     },
+    duration: {
+      description: '',
+      variants: {
+        instant: 'Transition Durations',
+        fast: '',
+        moderate: '',
+        slow: '',
+        deliberate: '',
+      },
+    },
+    ease: {
+      description: '',
+      variants: {
+        linear: 'Easing Functions',
+        in: '',
+        out: '',
+        'in-out': '',
+        spring: '',
+        bounce: '',
+      },
+    },
+    transition: {
+      description: '',
+      variants: {
+        colors: 'Transition Properties - Arctic: Sharp, crisp transitions',
+        opacity: '',
+        transform: '',
+        shadow: '',
+        all: '',
+        'scale-hover': 'Transition Scale Values',
+        'scale-active': '',
+      },
+    },
+    animate: {
+      description: '',
+      variants: {
+        pulse: 'Animation Speeds',
+      },
+    },
     border: {
       description: 'Primary border color for inputs, cards, and containers',
       variants: {

@@ -113,7 +113,7 @@ export const CollapsibleTrigger = forwardRef<
           <Icon
             name="chevron-right"
             size={iconSize}
-            className="shrink-0 transition-transform duration-200 [[data-state=open]>&]:rotate-90"
+            className="shrink-0 transition-transform-fast [[data-state=open]>&]:rotate-90"
           />
         )}
         {children}

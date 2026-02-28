@@ -64,7 +64,7 @@ const actionListRootVariants = cva('relative w-full', {
 const actionListItemVariants = cva(
   [
     'relative flex cursor-pointer select-none items-start gap-sm',
-    'outline-hidden transition-colors',
+    'outline-hidden transition-colors-token',
     'focus:outline-hidden focus:z-10 focus:ring-2 focus:ring-ring focus:ring-offset-1 focus:ring-offset-surface',
   ],
   {

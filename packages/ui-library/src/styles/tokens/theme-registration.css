@@ -175,15 +175,43 @@
   --font-size-3xl: 1.875rem;
   --font-size-4xl: 2.25rem;
 
+  /* ===== Transition Durations ===== */
+  --duration-instant: var(--token-duration-instant);
+  --duration-fast: var(--token-duration-fast);
+  --duration-moderate: var(--token-duration-moderate);
+  --duration-slow: var(--token-duration-slow);
+  --duration-deliberate: var(--token-duration-deliberate);
+
+  /* ===== Easing Functions ===== */
+  --ease-linear: var(--token-ease-linear);
+  --ease-in: var(--token-ease-in);
+  --ease-out: var(--token-ease-out);
+  --ease-in-out: var(--token-ease-in-out);
+  --ease-spring: var(--token-ease-spring);
+  --ease-bounce: var(--token-ease-bounce);
+
+  /* ===== Transition Properties ===== */
+  --transition-colors: var(--token-transition-colors);
+  --transition-opacity: var(--token-transition-opacity);
+  --transition-transform: var(--token-transition-transform);
+  --transition-shadow: var(--token-transition-shadow);
+  --transition-all: var(--token-transition-all);
+
+  /* ===== Transition Scale Values ===== */
+  --transition-scale-hover: var(--token-transition-scale-hover);
+  --transition-scale-active: var(--token-transition-scale-active);
+
   /* ===== Animations ===== */
-  --animate-collapsible-down: collapsible-down 200ms ease-out;
-  --animate-collapsible-up: collapsible-up 200ms ease-out;
-  --animate-sidebar-slide-in-left: sidebar-slide-in-left 200ms ease-out;
-  --animate-sidebar-slide-out-left: sidebar-slide-out-left 200ms ease-out;
-  --animate-sidebar-slide-in-right: sidebar-slide-in-right 200ms ease-out;
-  --animate-sidebar-slide-out-right: sidebar-slide-out-right 200ms ease-out;
-  --animate-sidebar-overlay-in: sidebar-overlay-in 200ms ease-out;
-  --animate-sidebar-overlay-out: sidebar-overlay-out 200ms ease-out;
+  --animate-collapsible-down: collapsible-down var(--duration-moderate) var(--ease-out);
+  --animate-collapsible-up: collapsible-up var(--duration-moderate) var(--ease-out);
+  --animate-sidebar-slide-in-left: sidebar-slide-in-left var(--duration-moderate) var(--ease-out);
+  --animate-sidebar-slide-out-left: sidebar-slide-out-left var(--duration-moderate) var(--ease-out);
+  --animate-sidebar-slide-in-right: sidebar-slide-in-right var(--duration-moderate) var(--ease-out);
+  --animate-sidebar-slide-out-right: sidebar-slide-out-right var(--duration-moderate)
+    var(--ease-out);
+  --animate-sidebar-overlay-in: sidebar-overlay-in var(--duration-moderate) var(--ease-out);
+  --animate-sidebar-overlay-out: sidebar-overlay-out var(--duration-moderate) var(--ease-out);
+  --animate-pulse: var(--token-animate-pulse);
 }
 
 @keyframes collapsible-down {
@@ -255,5 +283,15 @@
   }
   to {
     opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
   }
 }

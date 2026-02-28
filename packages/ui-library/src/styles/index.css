@@ -14,6 +14,7 @@
 @import './border-utilities.css';
 @import './gradient-utilities.css';
 @import './text-shadow-utilities.css';
+@import './transition-utilities.css';
 
 @source "../../.storybook/**/*.{ts,tsx}";
 @variant dark (&:where(.dark, .dark *));
