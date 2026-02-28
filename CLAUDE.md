@@ -74,9 +74,9 @@ Tools accept package names in multiple formats:
 - Full scoped name: `@nejcjelovcan/traceframe-ui-library`
 - Bare name: `ui-library`, `mcp-ui`
 
-## Claude Code Commands
+## Claude Code Skills
 
-| Command      | Purpose                                               |
+| Skill        | Purpose                                               |
 | ------------ | ----------------------------------------------------- |
 | `/refine`    | Refine a Linear issue to make it implementation-ready |
 | `/implement` | Implement a refined Linear issue                      |
@@ -122,6 +122,11 @@ This creates a `.changeset/<random-name>.md` file. Commit this file with your PR
 1. PRs with changeset files merge to `main`
 2. The release workflow creates a "Version Packages" PR that bumps versions and updates CHANGELOGs
 3. When that PR is merged, packages are published to GitHub Packages
+
+### When Creating or Modifying ui-library Components
+
+1. **Storybook stories** - Update `packages/ui-library/src/components/<Component>.stories.tsx`. Prefer one story per feature (e.g. one story for all outline variants, not separate stories for each). Many components have a "Showcase" story - update it when the component API changes.
+2. **Playroom snippets** - Update `packages/playroom-preset/snippets/<component-name>.ts` with 3-5+ examples showing key variants and usage patterns. For new components, also register the snippet file in `packages/playroom-preset/snippets/index.ts`.
 
 ### Previewing UI Changes
 
@@ -330,10 +335,14 @@ get_issue(id: "TRA-42", includeRelations: true)
 
 ```
 packages/
-├── ui-library/     # Shared UI components (publishable)
-├── playroom/       # Playroom design environment
-├── mcp-ui/         # UI tooling MCP server
-└── eslint-plugin/  # ESLint plugin for semantic token enforcement
+├── ui-library/        # Shared UI components (publishable)
+├── playroom-preset/   # Playroom config factory + snippets (publishable)
+├── storybook-preset/  # Storybook theme integration addon (publishable)
+├── eslint-plugin/     # ESLint plugin for semantic token enforcement (publishable)
+├── mcp-dev/           # MCP server for dev tools (publishable)
+├── mcp-shared/        # Shared MCP server utilities (publishable)
+├── mcp-ui/            # UI tooling MCP server (internal)
+└── playroom/          # Internal Playroom instance (internal)
 ```
 
 ## Testing Standards
