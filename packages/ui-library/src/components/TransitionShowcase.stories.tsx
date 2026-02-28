@@ -1,16 +1,16 @@
-import type { Meta, StoryObj } from '@storybook/react'
 import { useState } from 'react'
+
 
 import { Badge } from './Badge.js'
 import { Button } from './Button.js'
 import { Card, CardContent, CardHeader } from './Card.js'
+import { Heading } from './Heading.js'
 import { Input } from './Input.js'
 import { Link } from './Link.js'
 import { Select } from './Select.js'
 import { ToggleGroup } from './ToggleGroup.js'
-import { Heading } from './Heading.js'
-import { Icon } from '../icons/Icon.js'
-import { cn } from '../utils/cn.js'
+
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 /**
  * Transition Token System Showcase
@@ -182,17 +182,19 @@ function TransitionShowcase() {
         <div className="space-y-md">
           <ToggleGroup
             value={selectedOption}
-            onChange={setSelectedOption}
+            onChange={(value) => setSelectedOption(value as string)}
+            aria-label="Filter items"
             options={[
               { value: 'all', label: 'All Items', icon: 'package' },
-              { value: 'active', label: 'Active', icon: 'check-circle' },
-              { value: 'archived', label: 'Archived', icon: 'archive' },
+              { value: 'active', label: 'Active', icon: 'check' },
+              { value: 'archived', label: 'Archived', icon: 'package' },
             ]}
           />
           <ToggleGroup
             variant="tabs"
             value={selectedOption}
-            onChange={setSelectedOption}
+            onChange={(value) => setSelectedOption(value as string)}
+            aria-label="View selection"
             options={[
               { value: 'all', label: 'Overview' },
               { value: 'active', label: 'Details' },
@@ -223,7 +225,7 @@ function TransitionShowcase() {
             <Badge variant="info" pulse>
               Processing
             </Badge>
-            <Badge variant="success" pulse compact icon="check-circle" />
+            <Badge variant="success" pulse compact icon="check" />
           </div>
         </div>
 
@@ -362,7 +364,7 @@ export const CompareThemes: Story = {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
         <Card actionable variant="outlined">
-          <CardHeader icon="sparkle">Interactive Card</CardHeader>
+          <CardHeader icon="sparkles">Interactive Card</CardHeader>
           <CardContent>
             Hover to see shadow transitions. Click to see active state. Each theme has unique
             transition timing and scale values.
@@ -370,7 +372,7 @@ export const CompareThemes: Story = {
         </Card>
 
         <div className="space-y-md">
-          <Button variant="primary" leftIcon="zap" fullWidth>
+          <Button variant="primary" leftIcon="bolt" fullWidth>
             Primary Button
           </Button>
           <Button variant="secondary" rightIcon="arrow-right" fullWidth>
