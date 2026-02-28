@@ -66,39 +66,41 @@ const toggleGroupVariants = cva('inline-flex', {
 })
 
 const toggleGroupItemVariants = cva(
-  'inline-flex items-center justify-center font-medium transition-colors-token focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
+  'inline-flex items-center justify-center font-medium transition-all-token focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 scale-hover-on-hover scale-active-on-active',
   {
     variants: {
       variant: {
         default: cn(
-          'border border-border bg-surface text-foreground',
-          'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
+          'border bg-surface text-foreground',
+          'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow-token',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-dark data-[state=on]:border-interactive-primary',
+          'data-[state=on]:bg-gradient-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-dark data-[state=on]:border-line-interactive-primary-border',
           'data-[state=on]:hover:opacity-90'
         ),
         solid: cn(
-          'bg-surface-muted text-foreground',
-          'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed',
+          'bg-surface-muted text-foreground border-transparent',
+          'shadow-interactive hover:shadow-interactive-hover active:shadow-interactive-pressed transition-shadow-token',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-interactive-primary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-dark',
+          'data-[state=on]:bg-gradient-secondary data-[state=on]:text-foreground-filled data-[state=on]:text-shadow-dark data-[state=on]:border-line-interactive-secondary-border',
           'data-[state=on]:hover:opacity-90'
         ),
         ghost: cn(
           'bg-transparent text-foreground',
           'hover:bg-surface-subtle',
-          'data-[state=on]:bg-surface-subtle data-[state=on]:text-foreground'
+          'data-[state=on]:bg-surface-subtle data-[state=on]:text-foreground',
+          'scale-100' // Override scale animations for ghost variant
         ),
         tabs: cn(
           'bg-transparent text-foreground-muted border-b-2 border-transparent rounded-none',
           'hover:text-foreground',
-          'data-[state=on]:text-foreground data-[state=on]:border-interactive-primary'
+          'data-[state=on]:text-foreground data-[state=on]:border-interactive-primary',
+          'scale-100' // Override scale animations for tabs
         ),
       },
       size: {
-        sm: 'h-size-sm px-md text-xs',
-        md: 'h-size-md px-base text-sm',
-        lg: 'h-size-lg px-lg text-base',
+        sm: 'h-size-sm px-md text-sm',
+        md: 'h-size-md px-base text-base',
+        lg: 'h-size-lg px-lg text-lg',
       },
       orientation: {
         horizontal: '',
@@ -115,19 +117,25 @@ const toggleGroupItemVariants = cva(
       },
     },
     compoundVariants: [
+      // Non-attached items get rounded corners like buttons
+      {
+        variant: ['default', 'solid'],
+        attached: false,
+        className: 'rounded-sm',
+      },
       // Attached styling for default and solid variants (horizontal)
       {
         variant: ['default', 'solid'],
         orientation: 'horizontal',
         attached: true,
-        className: '-ml-px first:ml-0 rounded-none first:rounded-l last:rounded-r',
+        className: '-ml-px first:ml-0 rounded-none first:rounded-l-sm last:rounded-r-sm',
       },
       // Attached styling for default and solid variants (vertical)
       {
         variant: ['default', 'solid'],
         orientation: 'vertical',
         attached: true,
-        className: '-mt-px first:mt-0 rounded-none first:rounded-t last:rounded-b',
+        className: '-mt-px first:mt-0 rounded-none first:rounded-t-sm last:rounded-b-sm',
       },
       // Ghost variant rounded corners
       {

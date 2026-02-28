@@ -255,7 +255,7 @@ describe('ToggleGroup', () => {
       )
       const item = screen.getByRole('radio', { name: 'All' })
       expect(item.className).toContain('h-size-sm')
-      expect(item.className).toContain('text-xs')
+      expect(item.className).toContain('text-sm')
     })
 
     it('applies medium size styles', () => {
@@ -270,7 +270,7 @@ describe('ToggleGroup', () => {
       )
       const item = screen.getByRole('radio', { name: 'All' })
       expect(item.className).toContain('h-size-md')
-      expect(item.className).toContain('text-sm')
+      expect(item.className).toContain('text-base')
     })
 
     it('applies large size styles', () => {
@@ -285,7 +285,7 @@ describe('ToggleGroup', () => {
       )
       const item = screen.getByRole('radio', { name: 'All' })
       expect(item.className).toContain('h-size-lg')
-      expect(item.className).toContain('text-base')
+      expect(item.className).toContain('text-lg')
     })
   })
 

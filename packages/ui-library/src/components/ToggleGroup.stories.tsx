@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { Button } from './Button'
 import { Flex } from './Flex'
 import { Heading } from './Heading'
 import { ToggleGroup, type ToggleGroupOption } from './ToggleGroup'
@@ -884,6 +885,166 @@ export const Accessibility: Story = {
             <li>{rovingFocus ? 'Roving tabindex enabled' : 'Static tabindex'}</li>
           </ul>
         </div>
+      </Flex>
+    )
+  },
+}
+
+export const ButtonComparison: Story = {
+  name: 'Button vs ToggleGroup Comparison',
+  render: () => {
+    const [toggleValue, setToggleValue] = useState<FilterValue>('all')
+    const [solidValue, setSolidValue] = useState<FilterValue>('all')
+
+    return (
+      <Flex gap="xl">
+        <Heading level={2} className="mb-base">
+          Visual Consistency: Buttons vs ToggleGroups
+        </Heading>
+        <p className="text-foreground-muted">
+          ToggleGroups now use the same styling as regular Buttons for consistent UI appearance.
+        </p>
+
+        {/* Primary/Default Comparison */}
+        <section className="w-full">
+          <Heading level={3} size="md" className="mb-base">
+            Primary Button vs Default ToggleGroup
+          </Heading>
+          <Flex gap="lg" align="start">
+            <div className="flex-1">
+              <p className="mb-sm text-sm text-foreground-muted">Button (Primary)</p>
+              <Flex direction="row" gap="sm">
+                <Button variant="primary" size="sm">
+                  All
+                </Button>
+                <Button variant="primary" size="sm">
+                  External
+                </Button>
+                <Button variant="primary" size="sm">
+                  Local
+                </Button>
+              </Flex>
+              <p className="mt-xs text-xs text-foreground-muted">Individual buttons</p>
+            </div>
+            <div className="flex-1">
+              <p className="mb-sm text-sm text-foreground-muted">ToggleGroup (Default)</p>
+              <ToggleGroup
+                variant="default"
+                options={filterOptions}
+                value={toggleValue}
+                onChange={(value) => value && setToggleValue(value)}
+                aria-label="Default toggle group"
+              />
+              <p className="mt-xs text-xs text-foreground-muted">Selected: {toggleValue}</p>
+            </div>
+          </Flex>
+        </section>
+
+        {/* Secondary/Solid Comparison */}
+        <section className="w-full">
+          <Heading level={3} size="md" className="mb-base">
+            Secondary Button vs Solid ToggleGroup
+          </Heading>
+          <Flex gap="lg" align="start">
+            <div className="flex-1">
+              <p className="mb-sm text-sm text-foreground-muted">Button (Secondary)</p>
+              <Flex direction="row" gap="sm">
+                <Button variant="secondary" size="sm">
+                  All
+                </Button>
+                <Button variant="secondary" size="sm">
+                  External
+                </Button>
+                <Button variant="secondary" size="sm">
+                  Local
+                </Button>
+              </Flex>
+              <p className="mt-xs text-xs text-foreground-muted">Individual buttons</p>
+            </div>
+            <div className="flex-1">
+              <p className="mb-sm text-sm text-foreground-muted">ToggleGroup (Solid)</p>
+              <ToggleGroup
+                variant="solid"
+                options={filterOptions}
+                value={solidValue}
+                onChange={(value) => value && setSolidValue(value)}
+                aria-label="Solid toggle group"
+              />
+              <p className="mt-xs text-xs text-foreground-muted">Selected: {solidValue}</p>
+            </div>
+          </Flex>
+        </section>
+
+        {/* Size Comparison */}
+        <section className="w-full">
+          <Heading level={3} size="md" className="mb-base">
+            Size Consistency
+          </Heading>
+          <Flex gap="base">
+            <div className="w-full">
+              <p className="mb-sm text-sm text-foreground-muted">Small Size (sm)</p>
+              <Flex direction="row" gap="base" align="center">
+                <Button variant="primary" size="sm" leftIcon="components">
+                  Button
+                </Button>
+                <ToggleGroup
+                  size="sm"
+                  options={filterOptionsWithIcons}
+                  value={toggleValue}
+                  onChange={(value) => value && setToggleValue(value)}
+                  aria-label="Small toggle group"
+                />
+              </Flex>
+            </div>
+            <div className="w-full">
+              <p className="mb-sm text-sm text-foreground-muted">Medium Size (md)</p>
+              <Flex direction="row" gap="base" align="center">
+                <Button variant="primary" size="md" leftIcon="components">
+                  Button
+                </Button>
+                <ToggleGroup
+                  size="md"
+                  options={filterOptionsWithIcons}
+                  value={toggleValue}
+                  onChange={(value) => value && setToggleValue(value)}
+                  aria-label="Medium toggle group"
+                />
+              </Flex>
+            </div>
+            <div className="w-full">
+              <p className="mb-sm text-sm text-foreground-muted">Large Size (lg)</p>
+              <Flex direction="row" gap="base" align="center">
+                <Button variant="primary" size="lg" leftIcon="components">
+                  Button
+                </Button>
+                <ToggleGroup
+                  size="lg"
+                  options={filterOptionsWithIcons}
+                  value={toggleValue}
+                  onChange={(value) => value && setToggleValue(value)}
+                  aria-label="Large toggle group"
+                />
+              </Flex>
+            </div>
+          </Flex>
+        </section>
+
+        {/* Interaction States */}
+        <section className="w-full">
+          <Heading level={3} size="md" className="mb-base">
+            Interaction Features
+          </Heading>
+          <div className="p-base bg-surface-subtle rounded-lg">
+            <ul className="list-disc list-inside space-y-xs text-sm text-foreground-muted">
+              <li>Both use gradient backgrounds for selected/active states</li>
+              <li>Both have colored borders matching their variant</li>
+              <li>Both include scale animations on hover and active</li>
+              <li>Both use consistent rounded corners (rounded-sm)</li>
+              <li>Both follow the same shadow and transition tokens</li>
+              <li>Text sizes and padding are now aligned</li>
+            </ul>
+          </div>
+        </section>
       </Flex>
     )
   },
