@@ -229,7 +229,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
         >
           {timestampEl}
           {iconEl}
-          <span className="min-w-0 flex-1 break-words">{children}</span>
+          <span className="min-w-0 flex-1 break-all">{children}</span>
         </div>
       )
     }
@@ -244,7 +244,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
         >
           {timestampEl}
           {iconEl}
-          <span className="min-w-0 flex-1 break-words px-xs py-2xs pt-xs">{children}</span>
+          <span className="min-w-0 flex-1 break-all px-xs py-2xs pt-xs">{children}</span>
         </div>
       )
     }
@@ -256,7 +256,7 @@ export const LogEntry = forwardRef<HTMLDivElement, LogEntryProps>(
           <CollapsiblePrimitive.Trigger className="flex w-full cursor-pointer items-start gap-sm text-left transition-colors hover:bg-surface-muted overflow-hidden">
             {timestampEl}
             {iconEl}
-            <span className="min-w-0 flex-1 break-words px-xs py-2xs pt-xs">{children}</span>
+            <span className="min-w-0 flex-1 break-all px-xs py-2xs pt-xs">{children}</span>
             <Icon
               name="chevron-right"
               size="sm"
