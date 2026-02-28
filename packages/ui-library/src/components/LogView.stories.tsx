@@ -427,6 +427,128 @@ export const AutoScroll: Story = {
 }
 
 // ---------------------------------------------------------------------------
+// Word Wrapping Edge Cases
+// ---------------------------------------------------------------------------
+
+export const WordWrappingEdgeCases: Story = {
+  name: 'Word Wrapping Edge Cases',
+  parameters: {
+    docs: {
+      description: {
+        story:
+          'Demonstrates word wrapping for long filenames, paths, URLs, and continuous strings without spaces. These edge cases should wrap gracefully without breaking the layout.',
+      },
+    },
+  },
+  render: () => (
+    <div className="space-y-lg">
+      <section>
+        <Heading level={3} size="sm" className="mb-sm">
+          CLI Variant - Long Filenames
+        </Heading>
+        <LogView variant="cli" maxHeight="200px">
+          <LogEntry timestamp="10:30:00" level="info">
+            Processing
+            very-long-component-name-with-many-hyphens-and-no-natural-break-points-that-would-normally-overflow.tsx
+          </LogEntry>
+          <LogEntry timestamp="10:30:01" level="warning">
+            Warning in
+            super-duper-extra-long-filename-that-keeps-going-and-going-without-any-spaces-or-word-boundaries.component.tsx:42
+          </LogEntry>
+        </LogView>
+      </section>
+
+      <section>
+        <Heading level={3} size="sm" className="mb-sm">
+          Rich Variant - Long Paths
+        </Heading>
+        <LogView variant="rich" maxHeight="200px">
+          <LogEntry timestamp="10:30:00" icon="folder" level="info">
+            Reading
+            /deeply/nested/folder/structure/with/many/levels/and/a/very/long/filename/that/goes/on/and/on/file.js
+          </LogEntry>
+          <LogEntry timestamp="10:30:01" icon="read">
+            Found match in
+            /usr/local/share/applications/development/projects/my-awesome-project/src/components/very-long-component-name.tsx
+          </LogEntry>
+        </LogView>
+      </section>
+
+      <section>
+        <Heading level={3} size="sm" className="mb-sm">
+          Continuous Strings (Hashes, IDs, URLs)
+        </Heading>
+        <LogView variant="cli" maxHeight="200px">
+          <LogEntry timestamp="10:30:00" level="info">
+            Commit SHA:
+            a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z6a7b8c9d0e1f2g3h4i5j6k7l8m9n0
+          </LogEntry>
+          <LogEntry timestamp="10:30:01" level="success">
+            Deployed to
+            https://my-super-long-subdomain-name.my-application-with-a-very-long-domain.cloud-provider-region-1.amazonaws.com/api/v2/endpoints/really/long/path/structure
+          </LogEntry>
+          <LogEntry timestamp="10:30:02">
+            Session ID:
+            xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx-extremely-long-uuid
+          </LogEntry>
+        </LogView>
+      </section>
+
+      <section>
+        <Heading level={3} size="sm" className="mb-sm">
+          Rich Variant with Expandable Long Content
+        </Heading>
+        <LogView variant="rich" maxHeight="250px">
+          <LogEntry
+            timestamp="10:30:00"
+            icon="tool"
+            level="error"
+            detail={
+              <div className="font-mono text-xs break-all">
+                <div>
+                  Error: Cannot find module
+                  &apos;./components/super-extra-mega-ultra-long-component-name-that-just-keeps-going-and-going-without-any-spaces-whatsoever.tsx&apos;
+                </div>
+                <div className="text-foreground-muted">
+                  at
+                  /very/long/absolute/path/to/the/project/folder/with/many/nested/directories/src/index.tsx:1:1
+                </div>
+              </div>
+            }
+          >
+            Module resolution failed for
+            extremely-long-module-name-without-word-boundaries-that-would-typically-cause-horizontal-overflow.tsx
+          </LogEntry>
+          <LogEntry timestamp="10:30:05" icon="database">
+            Querying
+            database_table_with_an_unnecessarily_long_name_that_follows_some_legacy_naming_convention_from_years_ago
+          </LogEntry>
+        </LogView>
+      </section>
+
+      <section>
+        <Heading level={3} size="sm" className="mb-sm">
+          Constrained Width Container
+        </Heading>
+        <div className="max-w-xs border border-border-muted rounded-sm p-sm">
+          <LogView variant="cli">
+            <LogEntry level="info">
+              ThisIsAVeryLongContinuousStringWithoutAnySpacesOrWordBoundariesThatNeedsToWrapProperly
+            </LogEntry>
+            <LogEntry level="warning">
+              camelCaseMethodNameThatIsExtremelyLongAndDescriptiveFollowingJavaConventions()
+            </LogEntry>
+            <LogEntry level="error">
+              CONSTANT_NAME_IN_ALL_CAPS_WITH_UNDERSCORES_THAT_IS_VERY_VERY_LONG
+            </LogEntry>
+          </LogView>
+        </div>
+      </section>
+    </div>
+  ),
+}
+
+// ---------------------------------------------------------------------------
 // Showcase
 // ---------------------------------------------------------------------------
 
