@@ -1,5 +1,12 @@
 # @nejcjelovcan/eslint-plugin-traceframe
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [[`a9cb9b8`](https://github.com/nejcjelovcan/traceframe/commit/a9cb9b87896903675df61f21ada702c55056a815), [`2f7bb8e`](https://github.com/nejcjelovcan/traceframe/commit/2f7bb8e5bff1a4f2983ca64692f2ab58916b0c51), [`8e050be`](https://github.com/nejcjelovcan/traceframe/commit/8e050be2aa1c92663d7b79fe42fb3dc13e890f66)]:
+  - @nejcjelovcan/traceframe-ui-library@3.0.0
+
 ## 0.3.1
 
 ### Patch Changes

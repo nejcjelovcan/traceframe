@@ -1,6 +1,6 @@
 {
   "name": "@nejcjelovcan/traceframe-mcp-ui",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "type": "module",
   "main": "./dist/main.js",
   "types": "./dist/main.d.ts",
@@ -37,7 +37,7 @@
     "zod": "^3.24.0"
   },
   "peerDependencies": {
-    "@nejcjelovcan/traceframe-ui-library": "2.4.0"
+    "@nejcjelovcan/traceframe-ui-library": "3.0.0"
   },
   "devDependencies": {
     "@nejcjelovcan/traceframe-ui-library": "workspace:^",
