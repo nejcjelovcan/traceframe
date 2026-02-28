@@ -23,6 +23,6 @@ echo "Installing dependencies..."
 pnpm install
 
 echo "Building all packages..."
-pnpm turbo run build
+pnpm turbo run build --filter='!@nejcjelovcan/traceframe-playroom'
 
 echo "Reset complete!"
