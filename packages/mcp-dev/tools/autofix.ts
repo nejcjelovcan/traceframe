@@ -1,3 +1,6 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
+
 import { execCommand, getWorkspaceRoot, truncateOutput } from '@nejcjelovcan/mcp-shared'
 
 /**
@@ -104,9 +107,25 @@ function parseFormatted(output: string): number {
 }
 
 /**
+ * Check if a script exists in the root package.json
+ */
+async function hasRootScript(scriptName: string): Promise<boolean> {
+  const workspaceRoot = getWorkspaceRoot()
+  const packageJsonPath = join(workspaceRoot, 'package.json')
+  try {
+    const raw = await readFile(packageJsonPath, 'utf-8')
+    const parsed = JSON.parse(raw) as { scripts?: Record<string, string> }
+    return parsed.scripts !== undefined && scriptName in parsed.scripts
+  } catch {
+    return false
+  }
+}
+
+/**
  * Run lint:fix and format to automatically fix code quality issues
  *
- * Runs both commands sequentially, continuing even if linting has unfixable errors.
+ * If a root `autofix` script exists, it will be used instead of the default behavior.
+ * Otherwise, runs lint:fix and format sequentially, continuing even if linting has unfixable errors.
  * Returns structured results indicating whether code is ready to commit.
  *
  * @param _args - Tool input arguments (currently unused)
@@ -130,53 +149,96 @@ export async function autofix(_args: object): Promise<AutofixResult> {
     nextSteps: '',
   }
 
-  // Step 1: Run lint:fix
-  try {
-    const { stdout, stderr, exitCode } = await execCommand('pnpm lint:fix', workspaceRoot)
+  // Check if root autofix script exists
+  const hasRootAutofix = await hasRootScript('autofix')
 
-    const output = stdout + stderr
-    const fixed = parseLintFixed(output)
-    const errors = exitCode === 0 ? 0 : parseLintErrors(stderr)
+  if (hasRootAutofix) {
+    // Use the root autofix script
+    try {
+      const { stdout, stderr, exitCode } = await execCommand('pnpm autofix', workspaceRoot)
 
-    result.lintResults = {
-      ran: true,
-      fixed,
-      errors,
-      output: truncateOutput(output.trim(), 50),
+      const output = stdout + stderr
+      const fixed = parseLintFixed(output)
+      const formatted = parseFormatted(output)
+      const errors = exitCode === 0 ? 0 : parseLintErrors(stderr)
+
+      // Since autofix combines both operations, we'll populate both results
+      result.lintResults = {
+        ran: true,
+        fixed,
+        errors,
+        output: truncateOutput(output.trim(), 50),
+      }
+
+      result.formatResults = {
+        ran: true,
+        formatted,
+        output: '', // Output is already in lintResults
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      result.lintResults = {
+        ran: true,
+        fixed: 0,
+        errors: 1,
+        output: `Failed to run autofix: ${message}`,
+      }
+      result.formatResults = {
+        ran: true,
+        formatted: 0,
+        output: '',
+      }
     }
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
-    result.lintResults = {
-      ran: true,
-      fixed: 0,
-      errors: 1,
-      output: `Failed to run lint:fix: ${message}`,
+  } else {
+    // Fallback to hardcoded behavior: run lint:fix then format
+    // Step 1: Run lint:fix
+    try {
+      const { stdout, stderr, exitCode } = await execCommand('pnpm lint:fix', workspaceRoot)
+
+      const output = stdout + stderr
+      const fixed = parseLintFixed(output)
+      const errors = exitCode === 0 ? 0 : parseLintErrors(stderr)
+
+      result.lintResults = {
+        ran: true,
+        fixed,
+        errors,
+        output: truncateOutput(output.trim(), 50),
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      result.lintResults = {
+        ran: true,
+        fixed: 0,
+        errors: 1,
+        output: `Failed to run lint:fix: ${message}`,
+      }
     }
-  }
 
-  // Step 2: Run format (even if linting failed)
-  try {
-    const { stdout, stderr, exitCode } = await execCommand('pnpm format', workspaceRoot)
+    // Step 2: Run format (even if linting failed)
+    try {
+      const { stdout, stderr, exitCode } = await execCommand('pnpm format', workspaceRoot)
 
-    const output = stdout + stderr
-    const formatted = parseFormatted(output)
+      const output = stdout + stderr
+      const formatted = parseFormatted(output)
 
-    result.formatResults = {
-      ran: true,
-      formatted,
-      output: truncateOutput(output.trim(), 50),
-    }
+      result.formatResults = {
+        ran: true,
+        formatted,
+        output: truncateOutput(output.trim(), 50),
+      }
 
-    // If format failed but lint succeeded, mark as not ready
-    if (exitCode !== 0 && result.lintResults.errors === 0) {
-      result.lintResults.errors = 1
-    }
-  } catch (error) {
-    const message = error instanceof Error ? error.message : 'Unknown error'
-    result.formatResults = {
-      ran: true,
-      formatted: 0,
-      output: `Failed to run format: ${message}`,
+      // If format failed but lint succeeded, mark as not ready
+      if (exitCode !== 0 && result.lintResults.errors === 0) {
+        result.lintResults.errors = 1
+      }
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Unknown error'
+      result.formatResults = {
+        ran: true,
+        formatted: 0,
+        output: `Failed to run format: ${message}`,
+      }
     }
   }
 
