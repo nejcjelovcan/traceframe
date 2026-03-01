@@ -16,7 +16,24 @@ The issue should contain an implementation plan. If not refined, suggest running
 
 ## Workflow
 
-### 1. Fetch Issue Details
+### 1. Check MCP Server Availability
+
+**Verify critical MCP servers are available before proceeding:**
+
+Check for the availability of required MCP tools by attempting to list resources or use a simple query:
+- **Linear MCP:** Try `list_teams` or a simple Linear operation
+- **Git MCP:** Try `git_status` to verify git operations work
+- **mcp-ui:** Try `list_icons` with a limit to verify UI tooling works
+- **mcp-dev:** Try `list_package_scripts` to verify dev tools work
+
+**If any critical MCP server is unavailable:**
+- Report which MCP servers are not responding
+- Suggest checking `.mcp.json` configuration
+- Advise user to restart Claude Code or check MCP server logs
+- Stop execution if Linear or Git MCPs are unavailable (critical for workflow)
+- Warn but continue if mcp-ui or mcp-dev are unavailable (can use fallback methods)
+
+### 2. Fetch Issue Details
 
 Use Linear MCP tools:
 
@@ -29,7 +46,7 @@ get_issue(id: "$ARGUMENTS", includeRelations: true)
 - Issue has an implementation plan (warn if not)
 - Extract implementation plan from issue description
 
-### 2. Create Feature Branch
+### 3. Create Feature Branch
 
 Use git MCP tools to create the branch:
 
@@ -45,13 +62,13 @@ Use the `gitBranchName` from the Linear issue response when available.
 - For mcp-ui: `feat/mcp-ui-<description>`
 - General: `feat/<description>` or `fix/<description>`
 
-### 3. Check Dependencies
+### 4. Check Dependencies
 
 From the issue's relations (blockedBy):
 - If issue has `blockedBy` relations, verify those issues are completed
 - If dependencies are not met, warn user and ask if they want to proceed anyway
 
-### 4. Design System Check
+### 5. Design System Check
 
 **CRITICAL: Before implementing, evaluate design system impact.**
 
@@ -78,7 +95,7 @@ New semantic tokens require changes to:
 New icons require changes to:
 - `packages/ui-library/src/icons/icons.ts`, `metadata.ts`, `types.ts`
 
-### 5. Execute Implementation Plan
+### 6. Execute Implementation Plan
 
 **Follow the issue's "Implementation Steps" section:**
 
@@ -102,11 +119,11 @@ src/components/
 4. Use `typecheck_package` mcp-dev tool to check types
 5. Fix any errors before proceeding
 
-### 6. Export New Components (ui-library only)
+### 7. Export New Components (ui-library only)
 
 If you added a **new** component to ui-library, update `packages/ui-library/src/index.ts` to export it.
 
-### 7. Update Storybook Stories and Playroom Snippets
+### 8. Update Storybook Stories and Playroom Snippets
 
 When a ui-library component is **created or modified** (new/changed props, variants, features), update:
 
@@ -115,7 +132,7 @@ When a ui-library component is **created or modified** (new/changed props, varia
 
 For **new** components, also register the snippet file in `packages/playroom-preset/snippets/index.ts`.
 
-### 8. Create Tests
+### 9. Create Tests
 
 All components need colocated tests covering:
 - Renders correctly with default props
@@ -125,7 +142,7 @@ All components need colocated tests covering:
 - Keyboard navigation (if interactive)
 - Ref forwarding
 
-### 9. Verify Acceptance Criteria
+### 10. Verify Acceptance Criteria
 
 Check each item in the issue's "Acceptance Criteria" section.
 
@@ -136,7 +153,7 @@ Check each item in the issue's "Acceptance Criteria" section.
 4. `typecheck_package` - Verify types
 5. `test_package` - Run tests
 
-### 10. Add Changeset (if needed)
+### 11. Add Changeset (if needed)
 
 If the PR changes code in a **publishable** package (ui-library, playroom-preset, storybook-preset, eslint-plugin, mcp-dev, mcp-shared), create a changeset using the `create_changeset` mcp-dev tool:
 
@@ -147,14 +164,14 @@ create_changeset(packages: ["ui-library"], bump: "minor", summary: "Add MyCompon
 - `patch` for bug fixes, `minor` for new features, `major` for breaking changes
 - Skip for changes to private packages only (mcp-ui, playroom) or non-code changes (docs, CI)
 
-### 11. Commit Changes
+### 12. Commit Changes
 
 **Stage and commit using git MCP tools:**
 1. Use `git_add` to stage specific files (never use `.` or `-A`)
 2. Use `git_commit` with a descriptive message including the issue identifier and `Co-Authored-By: Claude <noreply@anthropic.com>`
 3. Use `git_push` to push the branch
 
-### 12. Output PR Description
+### 13. Output PR Description
 
 **Your final output message must be the PR description** in the following format. The orchestrator will use this to create the PR automatically.
 

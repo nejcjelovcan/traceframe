@@ -12,7 +12,22 @@ Refine a Linear issue for the Traceframe design system to make it implementation
 
 ## Workflow
 
-### 1. Fetch Issue Context
+### 1. Check MCP Server Availability
+
+**Verify critical MCP servers are available before proceeding:**
+
+Check for the availability of required MCP tools by attempting to list resources or use a simple query:
+- **Linear MCP:** Try `list_teams` or a simple Linear operation
+- **mcp-ui:** Try `list_icons` with a limit to verify UI tooling works
+
+**If any critical MCP server is unavailable:**
+- Report which MCP servers are not responding
+- Suggest checking `.mcp.json` configuration
+- Advise user to restart Claude Code or check MCP server logs
+- Stop execution if Linear MCP is unavailable (critical for workflow)
+- Warn but continue if mcp-ui is unavailable (can use manual exploration)
+
+### 2. Fetch Issue Context
 
 Use Linear MCP tools:
 
@@ -26,7 +41,7 @@ get_issue(id: "$ARGUMENTS", includeRelations: true)
 - All comments (use `list_comments`)
 - Linked/blocked issues (from relations)
 
-### 2. Understand the Request
+### 3. Understand the Request
 
 **Analyze:**
 - What is the user trying to achieve? (the "why")
@@ -42,7 +57,7 @@ get_issue(id: "$ARGUMENTS", includeRelations: true)
 
 **If unclear, ask questions before proceeding.**
 
-### 3. Design System Evaluation
+### 4. Design System Evaluation
 
 **CRITICAL: Always evaluate UI work through a design system lens.**
 
@@ -120,7 +135,7 @@ Include an "Icon Proposal" section with:
 - Category and metadata (description, usage, aliases)
 - Files to modify: `icons/icons.ts`, `icons/metadata.ts`, `icons/types.ts`
 
-### 4. Identify Options and Trade-offs
+### 5. Identify Options and Trade-offs
 
 **If multiple valid approaches exist:**
 
@@ -128,7 +143,7 @@ Include an "Icon Proposal" section with:
 2. Note which aligns better with existing patterns
 3. **Ask the user to choose** before proceeding
 
-### 5. Create Implementation Plan
+### 6. Create Implementation Plan
 
 ```markdown
 ## Implementation Plan
@@ -188,7 +203,7 @@ interface MyComponentProps { ... }
 - [ ] Meets accessibility requirements
 ```
 
-### 6. Propose Refined Issue Body
+### 7. Propose Refined Issue Body
 
 ```markdown
 ## Summary
@@ -221,7 +236,7 @@ interface MyComponentProps { ... }
 *Refined by Claude Code*
 ```
 
-### 7. Update the Issue
+### 8. Update the Issue
 
 Update the issue on Linear with the refined body:
 ```
