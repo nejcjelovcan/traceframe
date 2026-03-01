@@ -20,7 +20,7 @@ git reset --hard origin/main
 # git submodule update --init --depth 1
 
 echo "Installing dependencies..."
-pnpm install
+CI=true pnpm install
 
 echo "Building all packages..."
 pnpm turbo run build --filter='!@nejcjelovcan/traceframe-playroom'
