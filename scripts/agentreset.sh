@@ -11,7 +11,7 @@ echo "Fetching..."
 git fetch
 
 echo "Checking out main branch..."
-git checkout main
+git checkout main 2>&1
 
 echo "Resetting..."
 git reset --hard origin/main
