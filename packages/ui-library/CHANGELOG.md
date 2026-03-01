@@ -1,5 +1,29 @@
 # @nejcjelovcan/traceframe-ui-library
 
+## 3.0.0
+
+### Minor Changes
+
+- [#124](https://github.com/nejcjelovcan/traceframe/pull/124) [`a9cb9b8`](https://github.com/nejcjelovcan/traceframe/commit/a9cb9b87896903675df61f21ada702c55056a815) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add thin borders to transparent navigation variant
+  - Update transparent navigation to use color-specific borders instead of generic surface borders
+  - Add separator lines between navigation items in horizontal transparent mode
+  - Remove gap between navigation items to enable edge-to-edge separators
+  - Color-coded separators match the navigation color theme (primary, secondary, accent-1 through accent-5)
+
+- [#132](https://github.com/nejcjelovcan/traceframe/pull/132) [`2f7bb8e`](https://github.com/nejcjelovcan/traceframe/commit/2f7bb8e5bff1a4f2983ca64692f2ab58916b0c51) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Add theme-specific transition token system
+  - Added transition-duration tokens for each theme (arctic: 150ms, mist: 250ms, forge: 50ms, aura: 350ms)
+  - Added transition-easing tokens with theme-specific easing functions (arctic: ease-in-out, mist: cubic-bezier, forge: linear, aura: cubic-bezier bounce)
+  - Added scale tokens for interactive states (hover and active) with theme-specific scale values
+  - Added pulse animation tokens with theme-specific durations
+  - Created Tailwind utility classes for applying transition tokens (transition-colors-fast, transition-transform-fast, etc.)
+  - Added scale utilities for interactive elements (scale-interactive, scale-hover-on-hover, scale-active-on-active)
+  - Updated all components to use new transition tokens instead of hardcoded Tailwind utilities
+  - Added TransitionShowcase story to demonstrate theme-specific motion characteristics
+
+### Patch Changes
+
+- [#129](https://github.com/nejcjelovcan/traceframe/pull/129) [`8e050be`](https://github.com/nejcjelovcan/traceframe/commit/8e050be2aa1c92663d7b79fe42fb3dc13e890f66) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Fix LogView word wrapping for long strings without spaces by adding break-words utility class
+
 ## 2.4.0
 
 ### Minor Changes
