@@ -1,5 +1,11 @@
 # @nejcjelovcan/mcp-dev
 
+## 0.3.2
+
+### Patch Changes
+
+- [#137](https://github.com/nejcjelovcan/traceframe/pull/137) [`5057b2e`](https://github.com/nejcjelovcan/traceframe/commit/5057b2ea0cb85addeb1f86bf5ece128f4c27fc56) Thanks [@nejcjelovcan](https://github.com/nejcjelovcan)! - Respect root autofix script when present instead of always using hardcoded turbo commands
+
 ## 0.3.1
 
 ### Patch Changes
